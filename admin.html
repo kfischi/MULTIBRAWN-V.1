@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מערכת ניהול - Multibrawn Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-bg: #1a0b2e;
+            --secondary-bg: #16213e;
+            --accent-purple: #7c3aed;
+            --light-purple: #a855f7;
+            --dark-purple: #5b21b6;
+            --text-light: #f8fafc;
+            --text-muted: #cbd5e1;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Heebo', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--primary-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Login Screen */
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, 
+                rgba(26, 11, 46, 0.9) 0%, 
+                rgba(124, 58, 237, 0.6) 50%, 
+                rgba(168, 85, 247, 0.4) 100%);
+        }
+
+        .login-card {
+            background: var(--secondary-bg);
+            border-radius: 25px;
+            padding: 3rem;
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            backdrop-filter: blur(15px);
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .login-title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--text-light), var(--accent-purple));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        /* Dashboard Layout */
+        .dashboard-container {
+            display: none;
+            min-height: 100vh;
+        }
+
+        .admin-sidebar {
+            width: 280px;
+            background: var(--secondary-bg);
+            border-left: 1px solid rgba(124, 58, 237, 0.2);
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+
+        .sidebar-header {
+            padding: 2rem;
+            border-bottom: 1px solid rgba(124, 58, 237, 0.2);
+            text-align: center;
+        }
+
+        .admin-logo {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: transparent;
+            background: linear-gradient(45deg, #f8fafc, #7c3aed, #a855f7);
+            background-clip: text;
+            -webkit-background-clip: text;
+        }
+
+        .admin-nav {
+            padding: 2rem 0;
+        }
+
+        .admin-nav-item {
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-right: 3px solid transparent;
+        }
+
+        .admin-nav-item:hover {
+            background: rgba(124, 58, 237, 0.1);
+            color: var(--text-light);
+            border-right-color: var(--accent-purple);
+        }
+
+        .admin-nav-item.active {
+            background: rgba(124, 58, 237, 0.2);
+            color: var(--light-purple);
+            border-right-color: var(--light-purple);
+        }
+
+        .badge {
+            background: var(--error);
+            color: white;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 10px;
+            margin-right: auto;
+        }
+
+        .admin-main {
+            margin-right: 280px;
+            min-height: 100vh;
+        }
+
+        .admin-header {
+            background: var(--secondary-bg);
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid rgba(124, 58, 237, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .admin-content {
+            padding: 2rem;
+        }
+
+        /* Dashboard Cards */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .metric-card {
+            background: linear-gradient(135deg, 
+                rgba(22, 33, 62, 0.8) 0%, 
+                rgba(26, 11, 46, 0.8) 100%);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(124, 58, 237, 0.3);
+        }
+
+        .metric-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .metric-title {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .metric-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-change {
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .metric-change.positive {
+            color: var(--success);
+        }
+
+        /* Data Tables */
+        .admin-table-container {
+            background: var(--secondary-bg);
+            border-radius: 15px;
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .admin-table-header {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid rgba(124, 58, 237, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .admin-table-title {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .admin-table th,
+        .admin-table td {
+            padding: 1rem 1.5rem;
+            text-align: right;
+            border-bottom: 1px solid rgba(124, 58, 237, 0.1);
+        }
+
+        .admin-table th {
+            background: rgba(124, 58, 237, 0.1);
+            color: var(--light-purple);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .admin-table td {
+            color: var(--text-muted);
+        }
+
+        .admin-table tr:hover {
+            background: rgba(124, 58, 237, 0.05);
+        }
+
+        /* Status Badges */
+        .status-badge {
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .status-new { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
+        .status-pending { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
+        .status-approved { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+        .status-completed { background: rgba(107, 114, 128, 0.2); color: #9ca3af; }
+
+        /* Action Buttons */
+        .admin-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 0 0.3rem;
+        }
+
+        .admin-btn-primary {
+            background: linear-gradient(135deg, var(--accent-purple), var(--dark-purple));
+            color: white;
+        }
+
+        .admin-btn-secondary {
+            background: rgba(124, 58, 237, 0.1);
+            color: var(--light-purple);
+            border: 1px solid rgba(124, 58, 237, 0.3);
+        }
+
+        .admin-btn-success {
+            background: var(--success);
+            color: white;
+        }
+
+        .admin-btn-danger {
+            background: var(--error);
+            color: white;
+        }
+
+        .admin-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        /* Form Elements */
+        .admin-form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .admin-form-label {
+            display: block;
+            color: var(--text-light);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .admin-form-input, .admin-form-select, .admin-form-textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background: rgba(124, 58, 237, 0.1);
+            border: 2px solid rgba(124, 58, 237, 0.3);
+            border-radius: 8px;
+            color: var(--text-light);
+            font-family: var(--font-body);
+            transition: all 0.3s ease;
+        }
+
+        .admin-form-input:focus, .admin-form-select:focus, .admin-form-textarea:focus {
+            outline: none;
+            border-color: var(--accent-purple);
+            box-shadow: 0 0 15px rgba(124, 58, 237, 0.3);
+        }
+
+        /* Loading States */
+        .admin-loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Success/Error Messages */
+        .admin-alert {
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .admin-alert-success {
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--success);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .admin-alert-error {
+            background: rgba(239, 68, 68, 0.2);
+            color: var(--error);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .admin-sidebar {
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+            }
+
+            .admin-sidebar.open {
+                transform: translateX(0);
+            }
+
+            .admin-main {
+                margin-right: 0;
+            }
+
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .admin-table-header {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: stretch;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Screen -->
+    <div class="login-container" id="loginScreen">
+        <div class="login-card">
+            <h1 class="login-title">Multibrawn</h1>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">מערכת ניהול אדמין</p>
+            
+            <form id="loginForm">
+                <div class="admin-form-group">
+                    <label class="admin-form-label">שם משתמש</label>
+                    <input type="text" id="username" class="admin-form-input" placeholder="הכניסו שם משתמש" required>
+                </div>
+                
+                <div class="admin-form-group">
+                    <label class="admin-form-label">סיסמה</label>
+                    <input type="password" id="password" class="admin-form-input" placeholder="הכניסו סיסמה" required>
+                </div>
+                
+                <button type="submit" class="admin-btn admin-btn-primary" style="width: 100%; padding: 1rem;">
+                    <span id="loginText">התחברות</span>
+                    <span class="admin-loading" id="loginLoading" style="display: none;"></span>
+                </button>
+            </form>
+            
+            <div class="admin-alert admin-alert-error" id="loginError">
+                שם משתמש או סיסמה שגויים
+            </div>
+            
+            <p style="text-align: center; color: var(--text-muted); font-size: 0.9rem; margin-top: 1rem;">
+                שם משתמש: <strong>admin</strong> | סיסמה: <strong>multibrawn2024</strong>
+            </p>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div class="dashboard-container" id="dashboard">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar" id="adminSidebar">
+            <div class="sidebar-header">
+                <div class="admin-logo">Multibrawn</div>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">מערכת ניהול</p>
+            </div>
+            <nav class="admin-nav">
+                <div class="admin-nav-item active" data-section="dashboard">
+                    <i class="fas fa-chart-pie"></i>
+                    <span>דשבורד</span>
+                </div>
+                <div class="admin-nav-item" data-section="leads">
+                    <i class="fas fa-users"></i>
+                    <span>לידים</span>
+                    <span class="badge" id="newLeadsBadge">0</span>
+                </div>
+                <div class="admin-nav-item" data-section="bookings">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>הזמנות</span>
+                    <span class="badge" id="pendingBookingsBadge">0</span>
+                </div>
+                <div class="admin-nav-item" data-section="analytics">
+                    <i class="fas fa-chart-line"></i>
+                    <span>דוחות</span>
+                </div>
+                <div class="admin-nav-item" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>התנתקות</span>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <!-- Header -->
+            <header class="admin-header">
+                <button class="admin-btn admin-btn-secondary" id="sidebarToggle" style="display: none;">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1 id="pageTitle">דשבורד ראשי</h1>
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <span style="color: var(--text-muted);">ערדית בראון</span>
+                    <div style="width: 40px; height: 40px; background: linear-gradient(135deg, var(--accent-purple), var(--light-purple)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
+                        ע
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content -->
+            <div class="admin-content">
+                <!-- Dashboard Section -->
+                <div id="dashboard-section">
+                    <!-- Metrics Grid -->
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-header">
+                                <div class="metric-title">לידים חדשים היום</div>
+                                <div class="metric-icon" style="background: linear-gradient(135deg, #3b82f6, #1d4ed8);">
+                                    <i class="fas fa-user-plus"></i>
+                                </div>
+                            </div>
+                            <div class="metric-value" id="todayLeads">0</div>
+                            <div class="metric-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>+15% מאתמול</span>
+                            </div>
+                        </div>
+
+                        <div class="metric-card">
+                            <div class="metric-header">
+                                <div class="metric-title">הזמנות פעילות</div>
+                                <div class="metric-icon" style="background: linear-gradient(135deg, var(--success), #059669);">
+                                    <i class="fas fa-calendar-check"></i>
+                                </div>
+                            </div>
+                            <div class="metric-value" id="activeBookings">0</div>
+                            <div class="metric-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>+8% מהשבוע שעבר</span>
+                            </div>
+                        </div>
+
+                        <div class="metric-card">
+                            <div class="metric-header">
+                                <div class="metric-title">הכנסות החודש</div>
+                                <div class="metric-icon" style="background: linear-gradient(135deg, var(--warning), #d97706);">
+                                    <i class="fas fa-shekel-sign"></i>
+                                </div>
+                            </div>
+                            <div class="metric-value">₪47,850</div>
+                            <div class="metric-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>+23% מהחודש שעבר</span>
+                            </div>
+                        </div>
+
+                        <div class="metric-card">
+                            <div class="metric-header">
+                                <div class="metric-title">שיעור המרה</div>
+                                <div class="metric-icon" style="background: linear-gradient(135deg, var(--accent-purple), var(--dark-purple));">
+                                    <i class="fas fa-percentage"></i>
+                                </div>
+                            </div>
+                            <div class="metric-value">68%</div>
+                            <div class="metric-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>+5% מהחודש שעבר</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity -->
+                    <div class="admin-table-container">
+                        <div class="admin-table-header">
+                            <h3 class="admin-table-title">פעילות אחרונה</h3>
+                            <button class="admin-btn admin-btn-primary" onclick="refreshDashboard()">
+                                <i class="fas fa-sync-alt"></i>
+                                רענן
+                            </button>
+                        </div>
+                        <div style="overflow-x: auto;">
+                            <table class="admin-table">
+                                <thead>
+                                    <tr>
+                                        <th>פעולה</th>
+                                        <th>לקוח</th>
+                                        <th>פרטים</th>
+                                        <th>סטטוס</th>
+                                        <th>זמן</th>
+                                        <th>פעולות</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="recentActivityTable">
+                                    <tr>
+                                        <td colspan="6" style="text-align: center; padding: 2rem; color: var(--text-muted);">
+                                            <i class="fas fa-inbox" style="font-size: 2rem; margin-bottom: 1rem; display: block; opacity: 0.5;"></i>
+                                            אין נתונים עדיין - התחל להשתמש במערכת כדי לראות פעילות
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Leads Section -->
+                <div id="leads-section" style="display: none;">
+                    <div class="admin-table-container">
+                        <div class="admin-table-header">
+                            <h3 class="admin-table-title">ניהול לידים</h3>
+                            <div style="display: flex; gap: 1rem; align-items: center;">
+                                <select class="admin-form-select" style="width: auto;" id="leadsFilter">
+                                    <option value="all">כל הלידים</option>
+                                    <option value="new">חדשים</option>
+                                    <option value="contacted">נוצר קשר</option>
+                                    <option value="qualified">מתאימים</option>
+                                    <option value="closed">סגורים</option>
+                                </select>
+                                <button class="admin-btn admin-btn-primary" onclick="exportLeads()">
+                                    <i class="fas fa-download"></i>
+                                    ייצוא
+                                </button>
+                            </div>
+                        </div>
+                        <div style="overflow-x: auto;">
+                            <table class="admin-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>שם</th>
+                                        <th>טלפון</th>
+                                        <th>שירות</th>
+                                        <th>תקציב</th>
+                                        <th>סטטוס</th>
+                                        <th>תאריך</th>
+                                        <th>פעולות</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="leadsTable">
+                                    <tr>
+                                        <td colspan="8" style="text-align: center; padding: 2rem; color: var(--text-muted);">
+                                            <i class="fas fa-users" style="font-size: 2rem; margin-bottom: 1rem; display: block; opacity: 0.5;"></i>
+                                            אין לידים עדיין - הלידים מהאתר יופיעו כאן
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bookings Section -->
+                <div id="bookings-section" style="display: none;">
+                    <div class="admin-table-container">
+                        <div class="admin-table-header">
+                            <h3 class="admin-table-title">ניהול הזמנות</h3>
+                            <select class="admin-form-select" style="width: auto;" id="bookingsFilter">
+                                <option value="all">כל ההזמנות</option>
+                                <option value="pending">ממתין לאישור</option>
+                                <option value="confirmed">מאושר</option>
+                                <option value="cancelled">מבוטל</option>
+                                <option value="completed">הושלם</option>
+                            </select>
+                        </div>
+                        <div style="overflow-x: auto;">
+                            <table class="admin-table">
+                                <thead>
+                                    <tr>
+                                        <th>מספר הזמנה</th>
+                                        <th>לקוח</th>
+                                        <th>נכס</th>
+                                        <th>תאריכים</th>
+                                        <th>אורחים</th>
+                                        <th>ערך</th>
+                                        <th>סטטוס</th>
+                                        <th>פעולות</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="bookingsTable">
+                                    <tr>
+                                        <td colspan="8" style="text-align: center; padding: 2rem; color: var(--text-muted);">
+                                            <i class="fas fa-calendar" style="font-size: 2rem; margin-bottom: 1rem; display: block; opacity: 0.5;"></i>
+                                            אין הזמנות עדיין - ההזמנות מהאתר יופיעו כאן
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Analytics Section -->
+                <div id="analytics-section" style="display: none;">
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <h3 style="margin-bottom: 2rem; color: var(--text-light);">מקורות לידים</h3>
+                            <div style="space-y-4;">
+                                <div style="margin-bottom: 1.5rem;">
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                        <span>אתר האינטרנט</span>
+                                        <span style="color: var(--accent-purple); font-weight: 600;">45%</span>
+                                    </div>
+                                    <div style="background: rgba(124, 58, 237, 0.1); height: 10px; border-radius: 5px;">
+                                        <div style="background: var(--accent-purple); height: 100%; width: 45%; border-radius: 5px;"></div>
+                                    </div>
+                                </div>
+                                
+                                <div style="margin-bottom: 1.5rem;">
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                        <span>WhatsApp</span>
+                                        <span style="color: var(--success); font-weight: 600;">30%</span>
+                                    </div>
+                                    <div style="background: rgba(124, 58, 237, 0.1); height: 10px; border-radius: 5px;">
+                                        <div style="background: var(--success); height: 100%; width: 30%; border-radius: 5px;"></div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                        <span>המלצות</span>
+                                        <span style="color: var(--warning); font-weight: 600;">25%</span>
+                                    </div>
+                                    <div style="background: rgba(124, 58, 237, 0.1); height: 10px; border-radius: 5px;">
+                                        <div style="background: var(--warning); height: 100%; width: 25%; border-radius: 5px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="metric-card">
+                            <h3 style="margin-bottom: 2rem; color: var(--text-light);">ביצועים חודשיים</h3>
+                            <div class="metric-value" style="font-size: 2rem;">₪125K</div>
+                            <div style="color: var(--text-muted); margin-bottom: 2rem;">צפוי לרבעון הבא</div>
+                            
+                            <div style="margin-top: 2rem;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                                    <span>לידים השבוע</span>
+                                    <span style="color: var(--success);">+18</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                                    <span>הזמנות השבוע</span>
+                                    <span style="color: var(--success);">+12</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between;">
+                                    <span>שיעור המרה</span>
+                                    <span style="color: var(--success);">68%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="metric-card">
+                            <h3 style="margin-bottom: 2rem; color: var(--text-light);">דירוג שביעות רצון</h3>
+                            <div class="metric-value" style="font-size: 3rem;">4.8</div>
+                            <div style="color: var(--warning); margin-bottom: 1rem; font-size: 1.2rem;">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div style="color: var(--text-muted);">מבוסס על 156 חוות דעת</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Global Variables
+        let currentUser = null;
+        let leads = [];
+        let bookings = [];
+        let currentSection = 'dashboard';
+
+        // Initialize System
+        document.addEventListener('DOMContentLoaded', () => {
+            loadData();
+            setupLoginForm();
+            setupNavigation();
+            setupMobileMenu();
+            
+            // Check if already logged in
+            if (localStorage.getItem('multibrawn_admin_session')) {
+                showDashboard();
+            }
+        });
+
+        // Login System
+        function setupLoginForm() {
+            const loginForm = document.getElementById('loginForm');
+            loginForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+                const loginText = document.getElementById('loginText');
+                const loginLoading = document.getElementById('loginLoading');
+                const loginError = document.getElementById('loginError');
+                
+                // Show loading
+                loginText.style.display = 'none';
+                loginLoading.style.display = 'inline-block';
+                loginError.style.display = 'none';
+                
+                // Simulate API call
+                await new Promise(resolve => setTimeout(resolve, 1500));
+                
+                if (username === 'admin' && password === 'multibrawn2024') {
+                    localStorage.setItem('multibrawn_admin_session', 'active');
+                    showDashboard();
+                } else {
+                    loginError.style.display = 'block';
+                    loginText.style.display = 'inline';
+                    loginLoading.style.display = 'none';
+                }
+            });
+        }
+
+        function showDashboard() {
+            document.getElementById('loginScreen').style.display = 'none';
+            document.getElementById('dashboard').style.display = 'block';
+            loadDashboardData();
+        }
+
+        function logout() {
+            localStorage.removeItem('multibrawn_admin_session');
+            location.reload();
+        }
+
+        // Load Data
+        function loadData() {
+            leads = JSON.parse(localStorage.getItem('multibrawn_leads') || '[]');
+            bookings = JSON.parse(localStorage.getItem('multibrawn_bookings') || '[]');
+        }
+
+        function loadDashboardData() {
+            updateMetrics();
+            renderRecentActivity();
+            renderLeadsTable();
+            renderBookingsTable();
+        }
+
+        // Update Metrics
+        function updateMetrics() {
+            const today = new Date();
+            const todayLeads = leads.filter(lead => {
+                const leadDate = new Date(lead.timestamp);
+                return leadDate.toDateString() === today.toDateString();
+            }).length;
+            
+            const activeBookingsCount = bookings.filter(booking => 
+                booking.status === 'pending' || booking.status === 'confirmed'
+            ).length;
+            
+            const newLeadsCount = leads.filter(lead => !lead.status || lead.status === 'new').length;
+            const pendingBookingsCount = bookings.filter(booking => booking.status === 'pending').length;
+            
+            document.getElementById('todayLeads').textContent = todayLeads;
+            document.getElementById('activeBookings').textContent = activeBookingsCount;
+            document.getElementById('newLeadsBadge').textContent = newLeadsCount;
+            document.getElementById('pendingBookingsBadge').textContent = pendingBookingsCount;
+        }
+
+        // Navigation
+        function setupNavigation() {
+            const navItems = document.querySelectorAll('.admin-nav-item[data-section]');
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const section = item.getAttribute('data-section');
+                    switchSection(section);
+                    
+                    navItems.forEach(nav => nav.classList.remove('active'));
+                    item.classList.add('active');
+                });
+            });
+        }
+
+        function switchSection(section) {
+            // Hide all sections
+            const sections = document.querySelectorAll('[id$="-section"]');
+            sections.forEach(s => s.style.display = 'none');
+            
+            // Show selected section
+            const selectedSection = document.getElementById(section + '-section');
+            if (selectedSection) selectedSection.style.display = 'block';
+            
+            // Update page title
+            const titles = {
+                dashboard: 'דשבורד ראשי',
+                leads: 'ניהול לידים',
+                bookings: 'ניהול הזמנות',
+                analytics: 'דוחות ואנליטיקס'
+            };
+            document.getElementById('pageTitle').textContent = titles[section];
+            currentSection = section;
+        }
+
+        // Render Tables
+        function renderRecentActivity() {
+            const tbody = document.getElementById('recentActivityTable');
+            tbody.innerHTML = '';
+            
+            const activities = [
+                ...leads.slice(-5).map(lead => ({
+                    action: 'ליד חדש',
+                    client: lead.fullName,
+                    details: getServiceName(lead.serviceType),
+                    status: 'new',
+                    time: formatTime(lead.timestamp),
+                    id: lead.id,
+                    type: 'lead',
+                    phone: lead.phone
+                })),
+                ...bookings.slice(-5).map(booking => ({
+                    action: 'הזמנה חדשה',
+                    client: booking.fullName,
+                    details: booking.propertyName || 'נכס לא צוין',
+                    status: booking.status,
+                    time: formatTime(booking.timestamp),
+                    id: booking.id,
+                    type: 'booking',
+                    phone: booking.phone
+                }))
+            ].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp)).slice(0, 8);
+            
+            if (activities.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="6" style="text-align: center; padding: 2rem; color: var(--text-muted);">
+                            <i class="fas fa-inbox" style="font-size: 2rem; margin-bottom: 1rem; display: block; opacity: 0.5;"></i>
+                            אין פעילות עדיין - הפעילויות מהאתר יופיעו כאן
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+            
+            activities.forEach(activity => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${activity.action}</td>
+                    <td>${activity.client}</td>
+                    <td>${activity.details}</td>
+                    <td><span class="status-badge status-${activity.status}">${getStatusName(activity.status)}</span></td>
+                    <td>${activity.time}</td>
+                    <td>
+                        <button class="admin-btn admin-btn-primary" onclick="viewDetails('${activity.type}', ${activity.id})">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                        <button class="admin-btn admin-btn-success" onclick="contactClient('${activity.client}', '${activity.phone || ''}')">
+                            <i class="fab fa-whatsapp"></i>
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function renderLeadsTable() {
+            const tbody = document.getElementById('leadsTable');
+            tbody.innerHTML = '';
+            
+            if (leads.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="8" style="text-align: center; padding: 2rem; color: var(--text-muted);">
+                            <i class="fas fa-users" style="font-size: 2rem; margin-bottom: 1rem; display: block; opacity: 0.5;"></i>
+                            אין לידים עדיין - הלידים מהאתר יופיעו כאן
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+            
+            leads.forEach(lead => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>#${lead.id}</td>
+                    <td>${lead.fullName}</td>
+                    <td>
+                        <a href="tel:${lead.phone}" style="color: var(--light-purple);">
+                            ${lead.phone}
+                        </a>
+                    </td>
+                    <td>${getServiceName(lead.serviceType)}</td>
+                    <td>${lead.budget || 'לא צוין'}</td>
+                    <td><span class="status-badge status-${lead.status || 'new'}">${getStatusName(lead.status || 'new')}</span></td>
+                    <td>${formatDate(lead.timestamp)}</td>
+                    <td>
+                        <button class="admin-btn admin-btn-primary" onclick="editLead(${lead.id})">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="admin-btn admin-btn-success" onclick="contactClient('${lead.fullName}', '${lead.phone}')">
+                            <i class="fab fa-whatsapp"></i>
+                        </button>
+                        <button class="admin-btn admin-btn-danger" onclick="deleteLead(${lead.id})">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function renderBookingsTable() {
+            const tbody = document.getElementById('bookingsTable');
+            tbody.innerHTML = '';
+            
+            if (bookings.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="8" style="text-align: center; padding: 2rem; color: var(--text-muted);">
+                            <i class="fas fa-calendar" style="font-size: 2rem; margin-bottom: 1rem; display: block; opacity: 0.5;"></i>
+                            אין הזמנות עדיין - ההזמנות מהאתר יופיעו כאן
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+            
+            bookings.forEach(booking => {
+                const row = document.createElement('tr');
+                const estimatedValue = booking.nights ? booking.nights * 1500 : 0;
+                
+                row.innerHTML = `
+                    <td>#${booking.id}</td>
+                    <td>${booking.fullName}</td>
+                    <td>${booking.propertyName || 'לא צוין'}</td>
+                    <td>${booking.checkIn || 'לא צוין'} - ${booking.checkOut || 'לא צוין'}</td>
+                    <td>${booking.guests || 'לא צוין'}</td>
+                    <td>₪${estimatedValue.toLocaleString()}</td>
+                    <td><span class="status-badge status-${booking.status || 'pending'}">${getStatusName(booking.status || 'pending')}</span></td>
+                    <td>
+                        <button class="admin-btn admin-btn-primary" onclick="editBooking(${booking.id})">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="admin-btn admin-btn-success" onclick="contactClient('${booking.fullName}', '${booking.phone}')">
+                            <i class="fab fa-whatsapp"></i>
+                        </button>
+                        <button class="admin-btn admin-btn-danger" onclick="deleteBooking(${booking.id})">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // Utility Functions
+        function getServiceName(type) {
+            const services = {
+                'villa': 'וילה',
+                'hotel': 'מלון',
+                'zimmer': 'צימר',
+                'apartment': 'דירה',
+                'event-venue': 'מקום לאירוע',
+                'digital-marketing': 'שיווק דיגיטלי',
+                'website': 'פיתוח אתר',
+                'social-media': 'רשתות חברתיות'
+            };
+            return services[type] || type;
+        }
+
+        function getStatusName(status) {
+            const statuses = {
+                'new': 'חדש',
+                'contacted': 'נוצר קשר',
+                'qualified': 'מתאים',
+                'closed': 'סגור',
+                'pending': 'ממתין',
+                'confirmed': 'מאושר',
+                'cancelled': 'מבוטל',
+                'completed': 'הושלם'
+            };
+            return statuses[status] || status;
+        }
+
+        function formatDate(timestamp) {
+            return new Date(timestamp).toLocaleDateString('he-IL');
+        }
+
+        function formatTime(timestamp) {
+            const date = new Date(timestamp);
+            const now = new Date();
+            const diffMs = now - date;
+            const diffMins = Math.floor(diffMs / 60000);
+            const diffHours = Math.floor(diffMins / 60);
+            const diffDays = Math.floor(diffHours / 24);
+
+            if (diffMins < 60) return `לפני ${diffMins} דקות`;
+            if (diffHours < 24) return `לפני ${diffHours} שעות`;
+            if (diffDays < 7) return `לפני ${diffDays} ימים`;
+            return date.toLocaleDateString('he-IL');
+        }
+
+        // Action Functions
+        function contactClient(name, phone) {
+            if (!phone) {
+                alert('אין מספר טלפון זמין ללקוח זה');
+                return;
+            }
+            const message = `שלום ${name}, אני יוצרת קשר בעקבות הפנייה שלך ל-Multibrawn. איך נוכל לעזור?`;
+            window.open(`https://wa.me/972${phone.replace(/^0/, '')}?text=${encodeURIComponent(message)}`);
+        }
+
+        function editLead(leadId) {
+            const lead = leads.find(l => l.id === leadId);
+            if (lead) {
+                const newStatus = prompt('עדכון סטטוס ליד:\n1. new\n2. contacted\n3. qualified\n4. closed');
+                if (newStatus && ['new', 'contacted', 'qualified', 'closed'].includes(newStatus)) {
+                    lead.status = newStatus;
+                    localStorage.setItem('multibrawn_leads', JSON.stringify(leads));
+                    renderLeadsTable();
+                    updateMetrics();
+                    alert('הליד עודכן בהצלחה!');
+                }
+            }
+        }
+
+        function deleteLead(leadId) {
+            if (confirm('האם אתה בטוח שברצונך למחוק את הליד?')) {
+                leads = leads.filter(l => l.id !== leadId);
+                localStorage.setItem('multibrawn_leads', JSON.stringify(leads));
+                renderLeadsTable();
+                updateMetrics();
+                alert('הליד נמחק בהצלחה!');
+            }
+        }
+
+        function editBooking(bookingId) {
+            const booking = bookings.find(b => b.id === bookingId);
+            if (booking) {
+                const newStatus = prompt('עדכון סטטוס הזמנה:\n1. pending\n2. confirmed\n3. cancelled\n4. completed');
+                if (newStatus && ['pending', 'confirmed', 'cancelled', 'completed'].includes(newStatus)) {
+                    booking.status = newStatus;
+                    localStorage.setItem('multibrawn_bookings', JSON.stringify(bookings));
+                    renderBookingsTable();
+                    updateMetrics();
+                    alert('ההזמנה עודכנה בהצלחה!');
+                }
+            }
+        }
+
+        function deleteBooking(bookingId) {
+            if (confirm('האם אתה בטוח שברצונך למחוק את ההזמנה?')) {
+                bookings = bookings.filter(b => b.id !== bookingId);
+                localStorage.setItem('multibrawn_bookings', JSON.stringify(bookings));
+                renderBookingsTable();
+                updateMetrics();
+                alert('ההזמנה נמחקה בהצלחה!');
+            }
+        }
+
+        function exportLeads() {
+            if (leads.length === 0) {
+                alert('אין לידים לייצוא');
+                return;
+            }
+            
+            const csvContent = "data:text/csv;charset=utf-8," 
+                + "ID,שם,טלפון,אימייל,שירות,תקציב,סטטוס,תאריך,הודעה\n"
+                + leads.map(lead => 
+                    `${lead.id},"${lead.fullName}","${lead.phone}","${lead.email || ''}","${getServiceName(lead.serviceType)}","${lead.budget || ''}","${getStatusName(lead.status || 'new')}","${formatDate(lead.timestamp)}","${(lead.message || '').replace(/"/g, '""')}"`
+                ).join("\n");
+
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", `multibrawn_leads_${new Date().toISOString().split('T')[0]}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            alert('הקובץ ירד בהצלחה!');
+        }
+
+        function refreshDashboard() {
+            loadData();
+            loadDashboardData();
+            alert('הנתונים עודכנו בהצלחה!');
+        }
+
+        function viewDetails(type, id) {
+            if (type === 'lead') {
+                const lead = leads.find(l => l.id === id);
+                if (lead) {
+                    alert(`פרטי ליד:\n\nשם: ${lead.fullName}\nטלפון: ${lead.phone}\nאימייל: ${lead.email || 'לא צוין'}\nשירות: ${getServiceName(lead.serviceType)}\nתקציב: ${lead.budget || 'לא צוין'}\nהודעה: ${lead.message || 'אין'}`);
+                }
+            } else if (type === 'booking') {
+                const booking = bookings.find(b => b.id === id);
+                if (booking) {
+                    alert(`פרטי הזמנה:\n\nשם: ${booking.fullName}\nטלפון: ${booking.phone}\nנכס: ${booking.propertyName || 'לא צוין'}\nתאריכים: ${booking.checkIn || 'לא צוין'} - ${booking.checkOut || 'לא צוין'}\nאורחים: ${booking.guests || 'לא צוין'}\nהערות: ${booking.notes || 'אין'}`);
+                }
+            }
+        }
+
+        // Mobile Menu Setup
+        function setupMobileMenu() {
+            const toggle = document.getElementById('sidebarToggle');
+            const sidebar = document.getElementById('adminSidebar');
+            
+            if (window.innerWidth <= 768) {
+                toggle.style.display = 'block';
+                toggle.addEventListener('click', () => {
+                    sidebar.classList.toggle('open');
+                });
+            }
+        }
+
+        // Responsive handling
+        window.addEventListener('resize', () => {
+            if (window.innerWidth <= 768) {
+                document.getElementById('sidebarToggle').style.display = 'block';
+            } else {
+                document.getElementById('sidebarToggle').style.display = 'none';
+                document.getElementById('adminSidebar').classList.remove('open');
+            }
+        });
+
+        // Performance monitoring
+        window.addEventListener('load', () => {
+            console.log('Admin system loaded successfully!');
+            
+            // Auto-refresh data every 5 minutes
+            setInterval(() => {
+                if (document.getElementById('dashboard').style.display !== 'none') {
+                    loadData();
+                    updateMetrics();
+                    console.log('Data auto-refreshed');
+                }
+            }, 300000); // 5 minutes
+        });
+    </script>
+</body>
+</html>
