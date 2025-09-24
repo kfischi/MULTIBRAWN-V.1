@@ -1,72 +1,1103 @@
+<!DOCTYPE html>
 <html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הסיפור שלנו - Multibrawn</title>
+    <meta name="description" content="הכירו את ערדית בראון ואת הסיפור של Multibrawn - מחברים בין חלומות למציאות בעולם הנופש והשיווק הדיגיטלי">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-bg: #1a0b2e;
+            --secondary-bg: #16213e;
+            --accent-purple: #7c3aed;
+            --light-purple: #a855f7;
+            --dark-purple: #5b21b6;
+            --text-light: #f8fafc;
+            --text-muted: #cbd5e1;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Heebo', sans-serif;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<main>
-<section class="hero" data-aos="fade-up">
-<h1>אודות Multibrawn – מחברים חלומות ללוקיישנים</h1>
-<p class="sub">נבנה כדי לייצר חוויות ברמה הגבוהה ביותר: לוקיישנים נבחרים לנופש ואירועים + מעטפת שיווקית 360° לבעלי מתחמים.</p>
-<div class="chips" aria-label="ערכי המותג">
-<span class="chip">דיוק בפרטים</span>
-<span class="chip">חוויה פרימיום</span>
-<span class="chip">טכנולוגיה ואוטומציות</span>
-<span class="chip">מהירות וביצועים</span>
-</div>
-</section>
+        body {
+            font-family: var(--font-body);
+            background: var(--primary-bg);
+            color: var(--text-light);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
 
+        /* Navigation */
+        .header-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(26, 11, 46, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(124, 58, 237, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-<section class="container" data-aos="fade-up">
-<h2>החזון</h2>
-<p class="lead">לייצר חיבור חכם בין אנשים למקומות. אנחנו מאמינים בלוקיישנים שמספרים סיפור, שירות שגורם לחיוך, וטכנולוגיה שמפשטת תהליכים: הזמנות, תקשורת, תשלומים ושיווק – הכל עובד חלק.</p>
-<div class="grid-3" style="margin-top:18px">
-<div class="card"><h3><i class="icon fa-solid fa-wand-magic-sparkles"></i>חווית מותג</h3><p>זהות ויזואלית אחידה ומרגשת, עיצוב סגול-יוקרתי, ותוכן שמדבר ללב – כדי להעלות יחס המרות.</p></div>
-<div class="card"><h3><i class="icon fa-solid fa-rocket"></i>ביצועים ומהירות</h3><p>טעינה מהירה, Lazy loading, מדידות, ו-CDN – כי כל שנייה משפיעה על הזמנה.</p></div>
-<div class="card"><h3><i class="icon fa-solid fa-robot"></i>אוטומציות חכמות</h3><p>טפסים אינטליגנטיים, חיבור WhatsApp Business, ניהול לידים ו-CRM – הכל מסונכרן.</p></div>
-</div>
-</section>
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 40px;
+        }
 
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 900;
+            color: transparent;
+            background: linear-gradient(45deg, #f8fafc, #7c3aed, #a855f7);
+            background-clip: text;
+            -webkit-background-clip: text;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
 
-<section class="container" data-aos="fade-up">
-<h2>איך זה עובד</h2>
-<div class="timeline">
-<div class="step"><strong>1. אפיון</strong> – מגדירים יחד יעדים: סוגי נכסים, קהלי יעד, תהליך הזמנה.</div>
-<div class="step"><strong>2. בנייה</strong> – עיצוב חווייתי + פיתוח מהיר, רספונסיבי ונגיש.</div>
-<div class="step"><strong>3. חיבורי עומק</strong> – CRM, וואטסאפ, יומנים, תשלומים, אנליטיקס.</div>
-<div class="step"><strong>4. השקה ומדידה</strong> – A/B testing, שיפור מתמשך, סקייל.</div>
-</div>
-<div class="cta-band" role="note">
-<strong>בעלי נכסים?</strong> יש לכם וילה, צימר, דירת נופש או לוקיישן? <a class="cta" href="marketing.html" style="margin-inline:6px;display:inline-block">בואו לשיווק חכם</a>
-</div>
-</section>
-</main>
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+            align-items: center;
+        }
 
+        .nav-menu a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 8px 0;
+        }
 
-<footer>
-<div class="container">
-<div class="social" aria-label="רשתות חברתיות">
-<a href="#" target="_blank" rel="noopener" title="Facebook" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-<a href="#" target="_blank" rel="noopener" title="Instagram" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-<a href="#" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-</div>
-<p style="margin:8px 0 0">© 2025 Multibrawn. כל הזכויות שמורות. · <a href="privacy.html">מדיניות פרטיות</a> · <a href="accessibility.html">הצהרת נגישות</a> · <a href="faq.html">שאלות ותשובות</a></p>
-</div>
-</footer>
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-purple);
+            transition: width 0.3s ease;
+        }
 
+        .nav-menu a:hover {
+            color: var(--text-light);
+        }
 
-<a class="wa" href="https://wa.me/972523983394?text=שלום, אשמח לפרטים" target="_blank" rel="noopener" aria-label="צור קשר בוואטסאפ"><i class="fab fa-whatsapp"></i></a>
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
 
+        .cta-button {
+            background: linear-gradient(135deg, var(--accent-purple), var(--dark-purple));
+            color: white;
+            padding: 12px 28px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(124, 58, 237, 0.3);
+        }
 
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer integrity="sha384-U0wqH8KcC0KZyBta7oY2f8m3mOeYt7+9t5E9y3s1m9cQH2m1t1m7W3kqkKq2K7Yz" crossorigin="anonymous"></script>
-<script>
-// Toggle menu (נגישות)
-const toggle=document.getElementById('navToggle');
-const nav=document.getElementById('primaryNav');
-if(toggle && nav){
-toggle.addEventListener('click',()=>{const open=nav.classList.toggle('active');toggle.setAttribute('aria-expanded',String(open));});
-}
-// AOS safe init
-window.addEventListener('DOMContentLoaded',()=>{ if(window.AOS && typeof AOS.init==='function'){ AOS.init({duration:1000,once:true,easing:'ease-out-cubic',offset:60}); } });
-// Reduce motion
-if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.querySelectorAll('*').forEach(el=>{el.style.animation='none';el.style.transition='none';});}
-</script>
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: linear-gradient(135deg, 
+                rgba(26, 11, 46, 0.9) 0%, 
+                rgba(124, 58, 237, 0.7) 50%, 
+                rgba(168, 85, 247, 0.5) 100%),
+                url('https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Untitled%20design.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            min-height: 80vh;
+        }
+
+        .hero-text {
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            line-height: 1.1;
+            color: white;
+            text-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+            margin-bottom: 2rem;
+            animation: titleGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            from { text-shadow: 0 0 30px rgba(0, 0, 0, 0.8); }
+            to { text-shadow: 0 0 30px rgba(124, 58, 237, 0.6), 0 0 60px rgba(168, 85, 247, 0.4); }
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 700;
+            color: var(--light-purple);
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-description {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            margin-bottom: 2rem;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            background: rgba(124, 58, 237, 0.2);
+            padding: 2rem 1rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(124, 58, 237, 0.4);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        /* Story Sections */
+        .story-section {
+            padding: 8rem 2rem;
+            position: relative;
+        }
+
+        .story-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--text-light), var(--accent-purple), var(--light-purple));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                var(--accent-purple), 
+                var(--light-purple), 
+                transparent);
+            border-radius: 2px;
+        }
+
+        .story-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 6rem;
+        }
+
+        .story-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--text-muted);
+        }
+
+        .story-text h3 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .story-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .story-text .highlight {
+            color: var(--light-purple);
+            font-weight: 700;
+        }
+
+        .story-image {
+            position: relative;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(124, 58, 237, 0.3);
+            transition: all 0.5s ease;
+        }
+
+        .story-image:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 30px 80px rgba(124, 58, 237, 0.5);
+        }
+
+        .story-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .story-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            padding: 8rem 2rem;
+            background: linear-gradient(135deg, var(--secondary-bg) 0%, var(--primary-bg) 100%);
+        }
+
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            right: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--accent-purple), var(--light-purple));
+            border-radius: 2px;
+            transform: translateX(50%);
+        }
+
+        .timeline-item {
+            margin-bottom: 4rem;
+            position: relative;
+            width: 45%;
+        }
+
+        .timeline-item:nth-child(even) {
+            margin-right: auto;
+            padding-left: 3rem;
+        }
+
+        .timeline-item:nth-child(odd) {
+            margin-left: auto;
+            padding-right: 3rem;
+            text-align: left;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--accent-purple);
+            border-radius: 50%;
+            top: 0;
+            box-shadow: 0 0 20px rgba(124, 58, 237, 0.5);
+        }
+
+        .timeline-item:nth-child(even)::before {
+            left: -13px;
+        }
+
+        .timeline-item:nth-child(odd)::before {
+            right: -13px;
+        }
+
+        .timeline-content {
+            background: linear-gradient(135deg, 
+                rgba(22, 33, 62, 0.8) 0%, 
+                rgba(26, 11, 46, 0.8) 100%);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(124, 58, 237, 0.3);
+            border-color: var(--accent-purple);
+        }
+
+        .timeline-date {
+            color: var(--light-purple);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-title {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .timeline-description {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Values Section */
+        .values-section {
+            padding: 8rem 2rem;
+            background: var(--primary-bg);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .value-card {
+            background: linear-gradient(135deg, 
+                rgba(22, 33, 62, 0.8) 0%, 
+                rgba(26, 11, 46, 0.8) 100%);
+            padding: 3rem 2rem;
+            border-radius: 25px;
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .value-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+                rgba(124, 58, 237, 0.1) 0%, 
+                rgba(168, 85, 247, 0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .value-card:hover::before {
+            opacity: 1;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(124, 58, 237, 0.3);
+            border-color: var(--accent-purple);
+        }
+
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--accent-purple), var(--light-purple));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            margin: 0 auto 2rem auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .value-title {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .value-description {
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 8rem 2rem;
+            background: linear-gradient(135deg, var(--secondary-bg) 0%, var(--primary-bg) 100%);
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, 
+                rgba(124, 58, 237, 0.2) 0%, 
+                rgba(168, 85, 247, 0.1) 100%);
+            padding: 4rem 3rem;
+            border-radius: 30px;
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            backdrop-filter: blur(15px);
+        }
+
+        .cta-title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-weight: 900;
+        }
+
+        .cta-description {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 3rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-btn-primary {
+            background: linear-gradient(135deg, var(--accent-purple), var(--dark-purple));
+            color: white;
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.4);
+        }
+
+        .cta-btn-secondary {
+            background: rgba(124, 58, 237, 0.1);
+            color: var(--light-purple);
+            border: 2px solid rgba(124, 58, 237, 0.3);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .cta-btn-primary:hover {
+            box-shadow: 0 15px 40px rgba(124, 58, 237, 0.6);
+        }
+
+        .cta-btn-secondary:hover {
+            background: rgba(124, 58, 237, 0.2);
+            border-color: var(--accent-purple);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .hamburger-line {
+            width: 30px;
+            height: 3px;
+            background: white;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        /* Floating WhatsApp */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            animation: bounce 3s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.15);
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.6);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .story-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .timeline::before {
+                right: 20px;
+                transform: none;
+            }
+
+            .timeline-item {
+                width: 100%;
+                margin-left: 0;
+                margin-right: 0;
+                padding-left: 3rem;
+                padding-right: 0;
+                text-align: right;
+            }
+
+            .timeline-item::before {
+                right: 13px;
+                left: auto;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                right: -100%;
+                top: 80px;
+                flex-direction: column;
+                background: rgba(26, 11, 46, 0.98);
+                width: 100%;
+                padding: 20px;
+                transition: 0.3s;
+                border-top: 1px solid rgba(124, 58, 237, 0.3);
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-menu li {
+                padding: 15px 0;
+                border-bottom: 1px solid rgba(124, 58, 237, 0.2);
+                width: 100%;
+                text-align: center;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header-nav">
+        <nav class="nav-content">
+            <a href="index.html" class="logo">Multibrawn</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">דף הבית</a></li>
+                <li><a href="about.html">אודות</a></li>
+                <li><a href="gallery.html">גלריה</a></li>
+                <li><a href="marketing.html">שיווק דיגיטלי</a></li>
+                <li><a href="contact.html">צור קשר</a></li>
+                <li><a href="contact.html" class="cta-button">קבלו הצעה</a></li>
+            </ul>
+            <button class="mobile-menu-toggle" id="mobileToggle">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text" data-aos="fade-right">
+                <h1 class="hero-title">ערדית בראון</h1>
+                <p class="hero-subtitle">החזון שמאחורי המותג</p>
+                <p class="hero-description">
+                    במהלך למעלה מ-15 שנה אני בונה גשרים בין חלומות למציאות. 
+                    מחברת לקוחות איכותיים למתחמים מושלמים ומלווה עסקים 
+                    בדרכם להצלחה בעולם הדיגיטלי.
+                </p>
+                <div class="hero-stats">
+                    <div class="stat-item" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">שנות ניסיון</div>
+                    </div>
+                    <div class="stat-item" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">לקוחות מרוצים</div>
+                    </div>
+                    <div class="stat-item" data-aos="zoom-in" data-aos-delay="600">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">נכסים איכותיים</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story Beginning -->
+    <section class="story-section">
+        <div class="story-container">
+            <h2 class="section-title" data-aos="fade-up">הסיפור מתחיל</h2>
+            
+            <div class="story-content" data-aos="fade-up" data-aos-delay="200">
+                <div class="story-text">
+                    <h3>מהקורונה לחזון חדש</h3>
+                    <p>
+                        במהלך הקורונה, כשהאולמות נסגרו ואנשים חיפשו פתרונות – החלטתי להישאר בבית ולבנות דרך חדשה. 
+                        במקום לחכות שהמצב ישתפר, ראיתי הזדמנות: <span class="highlight">נופש ואירועים במתחמים אינטימיים</span>.
+                    </p>
+                    <p>
+                        למדתי לעומק את תחום הווילות, הצימרים והמלונות. התחלתי לחבר בין לקוחות איכותיים לבעלי מתחמים, 
+                        גם מהעולם הדתי והחרדי. כל לקוח קיבל יחס אישי ופתרון שמתאים בדיוק לצרכים שלו.
+                    </p>
+                    <p>
+                        עם הזמן נפתחו בפניי שיתופי פעולה גדולים שחיברו אותי לכל יעד אפשרי: 
+                        <span class="highlight">וילות, מלונות, גני אירועים, מרכזי כנסים ועוד</span>.
+                    </p>
+                </div>
+                <div class="story-image" data-aos="fade-left" data-aos-delay="400">
+                    <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Ardit.jpg" alt="ערדית בראון, מייסדת Multibrawn">
+                </div>
+            </div>
+
+            <div class="story-content" data-aos="fade-up" data-aos-delay="200" style="direction: ltr;">
+                <div class="story-image" data-aos="fade-right" data-aos-delay="400">
+                    <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Multibrawn.jpg" alt="צוות Multibrawn">
+                </div>
+                <div class="story-text" style="direction: rtl;">
+                    <h3>הולדת המותג MULTIBRAWN</h3>
+                    <p>
+                        את השם <span class="highlight">MULTI BRAWN</span> קיבלתי מהצעה מחברה טובה – 
+                        אבל הבחירה לקחת את השם, לפתח אותו ולהפוך אותו למותג חזק הייתה שלי לחלוטין.
+                    </p>
+                    <p>
+                        מכאן נולד מותג שמבוסס על יוזמה, יצירתיות וחשיבה מחוץ לקופסה. 
+                        מותג שמציע <span class="highlight">שירות אישי ברמה הגבוהה ביותר</span>, 
+                        עם הבנה עמוקה של צרכי הלקוח ומתן פתרונות מדויקים.
+                    </p>
+                    <p>
+                        היום, Multibrawn הוא הרבה יותר מסתם שירותי נופש. אנחנו מציעים פתרון 360 מעלות 
+                        שמשלב <span class="highlight">נופש איכותי עם שיווק מתקדם</span>, 
+                        ומלווים עסקים בדרכם להצלחה.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="timeline-section">
+        <div class="story-container">
+            <h2 class="section-title" data-aos="fade-up">המסע שלנו לאורך השנים</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2020-2021</div>
+                        <h3 class="timeline-title">התחלות בקורונה</h3>
+                        <p class="timeline-description">
+                            כשהעולם נעצר, ראיתי הזדמנות. התחלתי לחקור את עולם הווילות והצימרים, 
+                            ולהבין איך אפשר לחבר בין אנשים למתחמים מושלמים.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2021-2022</div>
+                        <h3 class="timeline-title">שיתופי פעולה ראשונים</h3>
+                        <p class="timeline-description">
+                            השיתוף עם "מקומות לאירועים" פתח בפניי דלתות חדשות. 
+                            התחלתי לעבוד עם מגוון רחב של נכסים ולבנות מוניטין של מקצועיות ואמינות.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2022-2023</div>
+                        <h3 class="timeline-title">הרחבה לשיווק דיגיטלי</h3>
+                        <p class="timeline-description">
+                            ההבנה שעסקים צריכים נוכחות דיגיטלי חזקה הובילה אותי להתמחות בשיווק. 
+                            התחלתי לעזור לבעלי עסקים לבנות נוכחות מקוונת מנצחת.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2023-2024</div>
+                        <h3 class="timeline-title">מיתוג המותג MULTIBRAWN</h3>
+                        <p class="timeline-description">
+                            פיתוח המותג המלא עם זהות ויזואלית, אתר מתקדם, ומערכות CRM. 
+                            היום אנחנו מציעים חוויה דיגיטלית מושלמת ללקוחותינו.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2024 ואילך</div>
+                        <h3 class="timeline-title">המשך הצמיחה</h3>
+                        <p class="timeline-description">
+                            עם למעלה מ-500 לקוחות מרוצים ויותר מ-100 נכסים איכותיים ברשת, 
+                            אנחנו ממשיכים לצמוח ולחדש. המטרה: להיות המותג המוביל בתחום.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="story-container">
+            <h2 class="section-title" data-aos="fade-up">הערכים שלנו</h2>
+            
+            <div class="values-grid">
+                <div class="value-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="value-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="value-title">שירות אישי</h3>
+                    <p class="value-description">
+                        כל לקוח מקבל יחס אישי ופתרון מותאם במדויק לצרכים שלו. 
+                        אנחנו לא מאמינים בפתרונות גנריים - כל אחד מיוחד ומגיע לו יחס מיוחד.
+                    </p>
+                </div>
+
+                <div class="value-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="value-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3 class="value-title">איכות ללא פשרות</h3>
+                    <p class="value-description">
+                        כל נכס ושירות שאנחנו מציעים עובר בדיקה קפדנית. 
+                        אנחנו עובדים רק עם השותפים הטובים ביותר כדי להבטיח חוויה מושלמת.
+                    </p>
+                </div>
+
+                <div class="value-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="value-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="value-title">חדשנות וחשיבה יצירתית</h3>
+                    <p class="value-description">
+                        אנחנו תמיד מחפשים דרכים חדשות ויצירתיות לפתור בעיות. 
+                        חשיבה מחוץ לקופסה היא המנוע שלנו לחדשנות ושיפור מתמיד.
+                    </p>
+                </div>
+
+                <div class="value-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="value-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="value-title">שותפות ואמינות</h3>
+                    <p class="value-description">
+                        אנחנו רואים בכל לקוח שותף לטווח ארוך. 
+                        הצלחתכם היא הצלחתנו, ואנחנו כאן לליווי מלא בכל שלב.
+                    </p>
+                </div>
+
+                <div class="value-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="value-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="value-title">מצוינות דיגיטלית</h3>
+                    <p class="value-description">
+                        עולם הדיגיטל מתפתח מהר, ואנחנו תמיד בחזית הטכנולוגיה. 
+                        אנחנו משתמשים בכלים המתקדמים ביותר כדי לספק תוצאות מיטביות.
+                    </p>
+                </div>
+
+                <div class="value-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="value-title">קהילה וחיבורים</h3>
+                    <p class="value-description">
+                        אנחנו בונים לא רק עסקים, אלא קהילות. 
+                        מחברים בין אנשים, יוצרים חיבורים משמעותיים ובונים רשת של אמון הדדי.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="story-container">
+            <div class="cta-content" data-aos="zoom-in">
+                <h2 class="cta-title">מוכנים להצטרף אלינו?</h2>
+                <p class="cta-description">
+                    אם אתם מחפשים נכס מושלם לחופשה או לאירוע, או רוצים לקפוץ מדרגה בעולם הדיגיטלי - 
+                    בואו נכיר ונראה איך נוכל לעזור לכם להגשים את החלום.
+                </p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="cta-btn cta-btn-primary">בואו נתחיל לעבוד</a>
+                    <a href="https://wa.me/972523983394?text=שלום, קראתי על הסיפור שלכם ואני מעוניין לשמוע עוד" 
+                       target="_blank" class="cta-btn cta-btn-secondary">
+                        <i class="fab fa-whatsapp" style="margin-left: 8px;"></i>
+                        שלחו הודעה ב-WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-16 text-center" style="background: var(--primary-bg); border-top: 1px solid rgba(124, 58, 237, 0.2);">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-12">
+                <a href="index.html" class="logo mb-6 md:mb-0">Multibrawn</a>
+                <div class="flex gap-8 text-4xl">
+                    <a href="#" class="text-gray-400 hover:text-purple-400 transition duration-300" title="פייסבוק">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-purple-400 transition duration-300" title="אינסטגרם">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-purple-400 transition duration-300" title="לינקדאין">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-purple-500/20 pt-8">
+                <p class="text-gray-400 mb-4">© 2024 Multibrawn. כל הזכויות שמורות.</p>
+                <div class="text-sm text-gray-500 space-x-4">
+                    <a href="privacy.html" class="hover:text-gray-300">מדיניות פרטיות</a>
+                    <span>|</span>
+                    <a href="accessibility.html" class="hover:text-gray-300">נגישות</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/972523983394?text=שלום, קראתי על הסיפור שלכם ואני מעוניין לשמוע עוד" 
+       class="floating-whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script>
+        // Fallback CSS animations if AOS doesn't load
+        const fallbackAnimations = `
+            <style>
+                [data-aos] {
+                    opacity: 1 !important;
+                    transform: none !important;
+                    animation: fadeInUp 0.8s ease-out;
+                }
+                
+                @keyframes fadeInUp {
+                    from {
+                        opacity: 0;
+                        transform: translateY(30px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+                
+                .hero-stats .stat-item:nth-child(1) {
+                    animation-delay: 0.2s;
+                }
+                .hero-stats .stat-item:nth-child(2) {
+                    animation-delay: 0.4s;
+                }
+                .hero-stats .stat-item:nth-child(3) {
+                    animation-delay: 0.6s;
+                }
+            </style>
+        `;
+
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', () => {
+            // Try to load AOS
+            const aosScript = document.createElement('script');
+            aosScript.src = 'https://unpkg.com/aos@2.3.1/dist/aos.js';
+            aosScript.onload = function() {
+                if (typeof AOS !== 'undefined') {
+                    AOS.init({
+                        duration: 1200,
+                        once: true,
+                        offset: 50
+                    });
+                    console.log('AOS animations loaded successfully');
+                }
+            };
+            aosScript.onerror = function() {
+                console.warn('AOS library failed to load, using fallback animations');
+                document.head.insertAdjacentHTML('beforeend', fallbackAnimations);
+            };
+            document.head.appendChild(aosScript);
+
+            setupMobileMenu();
+            setupScrollEffects();
+        });
+
+        // Mobile Menu Setup
+        function setupMobileMenu() {
+            const toggle = document.getElementById('mobileToggle');
+            const menu = document.querySelector('.nav-menu');
+            
+            if (toggle && menu) {
+                toggle.addEventListener('click', () => {
+                    menu.classList.toggle('active');
+                });
+            }
+        }
+
+        // Scroll Effects
+        function setupScrollEffects() {
+            window.addEventListener('scroll', () => {
+                const nav = document.querySelector('.header-nav');
+                if (window.scrollY > 100) {
+                    nav.style.background = 'rgba(26, 11, 46, 0.98)';
+                } else {
+                    nav.style.background = 'rgba(26, 11, 46, 0.95)';
+                }
+            });
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Performance tracking
+        window.addEventListener('load', () => {
+            console.log('About page loaded successfully!');
+        });
+    </script>
 </body>
 </html>
