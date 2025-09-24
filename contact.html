@@ -1,713 +1,104 @@
-<!DOCTYPE html>
-<html lang="he" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>צור קשר - Multibrawn</title>
-    <meta name="description" content="צור קשר עם Multibrawn - נשמח לעזור לך למצוא את הנכס המושלם לחופשה או לאירוע">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <style>
-        :root {
-            --primary-bg: #2C113C; /* Dark Purple */
-            --secondary-color: #6A0DAD; /* Vibrant Purple */
-            --text-color: #F3EAFB; /* Light Purple-Grey */
-            --font-family-heading: 'Playfair Display', serif;
-            --font-family-body: 'Heebo', sans-serif;
-        }
+<!DOCTYPE html><html lang="he" dir="rtl"><head><title>Multibrawn – צור קשר</title><meta name="description" content="צור קשר עם Multibrawn: בקשות פרטים, הזמנות, ושאלות." />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Secular+One&family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+<style>
+  :root{
+    --primary-bg:#1a0b2e; --secondary-bg:#16213e;
+    --accent-purple:#7c3aed; --light-purple:#a855f7; --dark-purple:#5b21b6;
+    --text-light:#f8fafc; --text-muted:#cbd5e1;
+    --font-heading:'Secular One',sans-serif; --font-body:'Heebo',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:var(--font-body);background:linear-gradient(180deg,var(--primary-bg),var(--secondary-bg));color:var(--text-light);overflow-x:hidden;line-height:1.6}
+  a{color:inherit}
+  .header-nav{position:sticky;top:0;width:100%;z-index:1000;background:rgba(26,11,46,.95);backdrop-filter:blur(16px);border-bottom:1px solid rgba(124,58,237,.25)}
+  .nav-content{display:flex;justify-content:space-between;align-items:center;max-width:1400px;margin:0 auto;padding:18px 40px}
+  .logo{font-family:var(--font-heading);font-size:2rem;font-weight:900;color:transparent;background:linear-gradient(45deg,#fff,var(--accent-purple),var(--light-purple));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+  .nav-menu{display:flex;list-style:none;gap:28px;align-items:center}
+  .nav-menu a{color:var(--text-muted);text-decoration:none;font-weight:700;position:relative;padding:6px 0}
+  .nav-menu a:hover{color:#fff}
+  .nav-menu a[aria-current="page"]{color:#fff}
+  .cta-button{background:linear-gradient(135deg,var(--accent-purple),var(--dark-purple));color:#fff;padding:10px 18px;border:none;border-radius:999px;font-weight:800;text-decoration:none;box-shadow:0 4px 20px rgba(124,58,237,.3)}
+  .mobile-menu-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:10px}
+  .hamburger-line{width:30px;height:3px;background:#fff;border-radius:2px}
+  @media (max-width:768px){
+    .mobile-menu-toggle{display:flex}
+    .nav-menu{position:fixed;right:-100%;top:72px;flex-direction:column;background:rgba(26,11,46,.98);width:100%;padding:20px;transition:.3s;border-top:1px solid rgba(124,58,237,.3)}
+    .nav-menu.active{right:0}
+    .nav-menu li{padding:14px 0;border-bottom:1px solid rgba(124,58,237,.2);width:100%;text-align:center}
+  }
+  .hero{min-height:42vh;display:grid;place-items:center;text-align:center;position:relative;overflow:hidden;
+        background:radial-gradient(1200px 600px at 70% -10%,rgba(124,58,237,.25),transparent),
+                   radial-gradient(1000px 500px at 10% 10%,rgba(168,85,247,.18),transparent)}
+  .page-title{font-family:var(--font-heading);font-size:clamp(2.2rem,7vw,4rem);font-weight:900;letter-spacing:.3px}
+  .page-sub{color:var(--text-muted);max-width:900px;margin:8px auto 0}
+  .section{padding:64px 20px}
+  .container{max-width:1200px;margin:auto}
+  .card{border:1px solid rgba(124,58,237,.25);border-radius:16px;padding:20px;background:linear-gradient(135deg,rgba(22,33,62,.85),rgba(26,11,46,.85));box-shadow:0 24px 48px rgba(124,58,237,.15)}
+  footer{border-top:1px solid rgba(124,58,237,.25);padding:24px 0;text-align:center;color:#cbd5e1}
+  .wa{position:fixed;left:18px;bottom:18px;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:#25d366;color:#fff;box-shadow:0 12px 28px rgba(0,0,0,.25);z-index:1002}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  .form{max-width:760px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .form label{font-weight:700}
+  .form input,.form textarea,.form select{background:#0f1228;border:1px solid rgba(124,58,237,.35);color:#fff;padding:12px;border-radius:10px}
+  .form textarea{grid-column:1 / -1;min-height:120px}
+  .actions{display:flex;gap:10px;margin-top:10px}
+  .btn{background:linear-gradient(135deg,var(--accent-purple),#5b21b6);color:#fff;border:0;border-radius:12px;padding:12px 18px;font-weight:800;cursor:pointer}
+  .btn:disabled{opacity:.6;cursor:not-allowed}
+  .hint{color:var(--text-muted);font-size:.95rem;margin-top:6px}
+</style></head><body>
+  <header class="header-nav" role="banner">
+    <nav class="nav-content">
+      <a href="index.html" class="logo" aria-label="Multibrawn">Multibrawn</a>
+      <ul class="nav-menu" id="primaryNav" role="menubar">
+        <li role="none"><a role="menuitem" href="index.html">דף הבית</a></li><li role="none"><a role="menuitem" href="about.html">אודות</a></li><li role="none"><a role="menuitem" href="gallery.html">גלריה</a></li><li role="none"><a role="menuitem" href="marketing.html">שיווק</a></li><li role="none"><a role="menuitem" href="faq.html">שאלות ותשובות</a></li><li role="none"><a role="menuitem" class="cta-button" href="contact.html">צור קשר</a></li>
+      </ul>
+      <button class="mobile-menu-toggle" id="mobileToggle" aria-label="פתח תפריט" aria-controls="primaryNav" aria-expanded="false">
+        <span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span>
+      </button>
+    </nav>
+  </header>
+<section class="hero"><div><h1 class="page-title">צור קשר</h1><p class="page-sub">ספרו לנו מה אתם צריכים ונחזור עם התאמות מדויקות.</p></div></section><main class="section"><div class="container"><form class="form" id="contactForm" novalidate><div><label>שם מלא</label><input required name="name" placeholder="שם ושם משפחה"></div><div><label>טלפון</label><input required name="phone" placeholder="05x-xxxxxxx" inputmode="tel"></div><div><label>אימייל (לא חובה)</label><input name="email" type="email" placeholder="example@mail.com"></div><div><label>מספר אורחים</label><input name="guests" type="number" min="1" placeholder="לדוגמה: 8"></div><div><label>תאריכים (משוער)</label><input name="dates" placeholder="לדוגמה: 14–16/10"></div><div><label>אזור מועדף</label><select name="region"><option value="">לא משנה</option><option>צפון</option><option>מרכז</option><option>דרום</option></select></div><textarea name="message" placeholder="ספרו לנו על סוג חופשה/אירוע, העדפות ומידע נוסף..."></textarea><div class="actions" style="grid-column:1 / -1"><button class="btn" type="submit" id="sendBtn">שלחו בוואטסאפ</button><a class="btn" href="tel:0523983394">התקשרו עכשיו</a></div><p class="hint">שליחה פותחת שיחה ב-WhatsApp עם כל הפרטים שמילאתם.</p></form></div></main>
+  <footer>
+    <div class="container">
+      © 2025 Multibrawn · <a href="privacy.html">מדיניות פרטיות</a> · <a href="accessibility.html">נגישות</a> · <a href="faq.html">שאלות ותשובות</a>
+    </div>
+  </footer>
+  <a class="wa" href="https://wa.me/972523983394?text=שלום, אשמח לפרטים" target="_blank" rel="noopener" aria-label="וואטסאפ"><i class="fab fa-whatsapp"></i></a>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // AOS safe init
+    document.addEventListener('DOMContentLoaded',()=>{ if(window.AOS && typeof AOS.init==='function'){ AOS.init({duration:1000,once:true,easing:'ease-out-cubic',offset:60}); } });
+    // Mobile nav
+    const t=document.getElementById('mobileToggle'); const m=document.getElementById('primaryNav');
+    if(t&&m){ t.addEventListener('click',()=>{ const open=m.classList.toggle('active'); t.setAttribute('aria-expanded',String(open)); }); }
+  </script>
 
-        body {
-            font-family: var(--font-family-body);
-            background: var(--primary-bg);
-            color: var(--text-color);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Navigation */
-        .header-nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(44, 17, 60, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .nav-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px 40px;
-        }
-
-        .logo {
-            font-family: var(--font-family-heading);
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: white;
-            text-decoration: none;
-            background: linear-gradient(45deg, #FFF, var(--secondary-color));
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .nav-menu a {
-            color: var(--text-color);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            position: relative;
-            padding: 8px 0;
-        }
-
-        .cta-button {
-            background: linear-gradient(135deg, var(--secondary-color), #51257C);
-            color: white;
-            padding: 12px 28px;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            box-shadow: 0 4px 15px rgba(106, 13, 173, 0.3);
-        }
-
-        /* Mobile Menu */
-        .mobile-menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 10px;
-        }
-        .hamburger-line {
-            width: 30px;
-            height: 3px;
-            background: white;
-            transition: 0.3s;
-            border-radius: 2px;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 70vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg,
-                rgba(44, 17, 60, 0.9) 0%,
-                rgba(106, 13, 173, 0.6) 50%,
-                rgba(168, 85, 247, 0.4) 100%),
-                url('https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Multibrawn.jpg');
-            background-size: cover;
-            background-position: center;
-            position: relative;
-            margin-top: 80px;
-        }
-
-        .hero-content {
-            text-align: center;
-            max-width: 900px;
-            padding: 0 2rem;
-        }
-        .hero-title {
-            font-family: var(--font-family-heading);
-            font-size: clamp(3rem, 8vw, 5rem);
-            font-weight: 900;
-            line-height: 1.1;
-            color: white;
-            text-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
-            margin-bottom: 1rem;
-        }
-        .hero-subtitle {
-            font-size: clamp(1.2rem, 4vw, 1.8rem);
-            color: var(--text-color);
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
-        }
-
-        /* Contact Section */
-        .contact-section {
-            padding: 6rem 2rem;
-            background: linear-gradient(180deg, var(--primary-bg) 0%, #1A0C28 100%);
-        }
-
-        .contact-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: start;
-        }
-
-        .contact-info, .contact-form-container {
-            background: linear-gradient(135deg,
-                rgba(26, 11, 46, 0.8) 0%,
-                rgba(44, 17, 60, 0.8) 100%);
-            border-radius: 25px;
-            padding: 3rem;
-            border: 1px solid rgba(106, 13, 173, 0.2);
-            backdrop-filter: blur(15px);
-        }
-        .section-title {
-            font-family: var(--font-family-heading);
-            font-size: 2.5rem;
-            font-weight: 900;
-            background: linear-gradient(45deg, var(--text-color), var(--secondary-color));
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 2rem;
-        }
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            background: rgba(106, 13, 173, 0.1);
-            border-radius: 15px;
-            border: 1px solid rgba(106, 13, 173, 0.2);
-            transition: all 0.3s ease;
-        }
-        .contact-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(106, 13, 173, 0.3);
-            border-color: var(--secondary-color);
-        }
-        .contact-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--secondary-color), #51257C);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: white;
-            flex-shrink: 0;
-        }
-        .contact-details h3 {
-            color: var(--text-color);
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-        .contact-details p {
-            color: rgba(243, 234, 251, 0.8);
-            line-height: 1.6;
-        }
-        .contact-details a {
-            color: var(--secondary-color);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        .contact-details a:hover {
-            color: var(--text-color);
-        }
-
-        /* Form Styling */
-        .contact-form {
-            display: grid;
-            gap: 2rem;
-        }
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-        .form-label {
-            color: var(--text-color);
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-        .form-input, .form-select, .form-textarea {
-            padding: 15px 20px;
-            border: 2px solid rgba(106, 13, 173, 0.3);
-            border-radius: 15px;
-            background: rgba(106, 13, 173, 0.1);
-            color: var(--text-color);
-            font-size: 1rem;
-            font-family: var(--font-family-body);
-            transition: all 0.3s ease;
-        }
-        .form-input:focus, .form-select:focus, .form-textarea:focus {
-            outline: none;
-            border-color: var(--secondary-color);
-            background: rgba(106, 13, 173, 0.2);
-            box-shadow: 0 0 20px rgba(106, 13, 173, 0.3);
-        }
-        .form-input::placeholder, .form-textarea::placeholder {
-            color: rgba(243, 234, 251, 0.5);
-        }
-        .submit-btn {
-            padding: 18px 40px;
-            background: linear-gradient(135deg, var(--secondary-color), #51257C);
-            color: white;
-            border: none;
-            border-radius: 15px;
-            font-size: 1.2rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 10px 30px rgba(106, 13, 173, 0.4);
-            position: relative;
-            overflow: hidden;
-        }
-        .submit-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(106, 13, 173, 0.6);
-        }
-        .success-message {
-            background: linear-gradient(135deg, #25d366, #128c7e);
-            color: white;
-            padding: 1.5rem;
-            border-radius: 15px;
-            margin-top: 1rem;
-            text-align: center;
-            display: none;
-            animation: slideIn 0.5s ease;
-        }
-        @keyframes slideIn {
-            from { transform: translateY(-20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        .loading {
-            display: none;
-            width: 20px;
-            height: 20px;
-            border: 2px solid rgba(255,255,255,0.3);
-            border-radius: 50%;
-            border-top-color: white;
-            animation: spin 1s ease-in-out infinite;
-            margin: 0 auto;
-        }
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        
-        /* Floating WhatsApp */
-        .floating-whatsapp {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, #25d366, #128c7e);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
-            z-index: 1000;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            text-decoration: none;
-            animation: bounce 3s ease-in-out infinite;
-        }
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        .floating-whatsapp:hover {
-            transform: scale(1.15);
-            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.6);
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 968px) {
-            .contact-container {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-        }
-        @media (max-width: 768px) {
-            .mobile-menu-toggle {
-                display: flex;
-            }
-            .nav-menu {
-                position: fixed;
-                right: -100%;
-                top: 80px;
-                flex-direction: column;
-                background: rgba(44, 17, 60, 0.98);
-                width: 100%;
-                padding: 20px;
-                transition: 0.3s;
-                border-top: 1px solid rgba(106, 13, 173, 0.3);
-            }
-            .nav-menu.active {
-                right: 0;
-            }
-            .nav-menu li {
-                padding: 15px 0;
-                border-bottom: 1px solid rgba(106, 13, 173, 0.2);
-                width: 100%;
-                text-align: center;
-            }
-            .hero {
-                min-height: 50vh;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- Navigation -->
-    <header class="header-nav">
-        <nav class="nav-content">
-            <a href="index.html" class="logo">Multibrawn</a>
-            <ul class="nav-menu">
-                <li><a href="index.html">דף הבית</a></li>
-                <li><a href="about.html">אודות</a></li>
-                <li><a href="gallery.html">גלריה</a></li>
-                <li><a href="#contact-form" class="cta-button">קבלו הצעה</a></li>
-            </ul>
-            <button class="mobile-menu-toggle" id="mobileToggle">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-            </button>
-        </nav>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content" data-aos="fade-up">
-            <h1 class="hero-title">צור קשר</h1>
-            <p class="hero-subtitle">נשמח לעזור לכם למצוא את הנכס המושלם</p>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact-section" id="contact-form">
-        <div class="contact-container">
-            <!-- Contact Info -->
-            <div class="contact-info" data-aos="fade-right">
-                <h2 class="section-title">בואו נדבר</h2>
-                
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fab fa-whatsapp"></i>
-                    </div>
-                    <div class="contact-details">
-                        <h3>WhatsApp</h3>
-                        <p>לתגובה מיידית וייעוץ מקצועי</p>
-                        <a href="https://wa.me/972523983394" target="_blank">052-398-3394</a>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <div class="contact-details">
-                        <h3>טלפון</h3>
-                        <p>ימים א'-ה', 9:00-20:00<br>שבת לפי תיאום מראש</p>
-                        <a href="tel:0723311083">072-331-1083</a>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div class="contact-details">
-                        <h3>אימייל</h3>
-                        <p>נחזור אליכם תוך 24 שעות</p>
-                        <a href="mailto:multibrawn@gmail.com">multibrawn@gmail.com</a>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <div class="contact-details">
-                        <h3>זמני פעילות</h3>
-                        <p>ימים א'-ה': 9:00-20:00<br>
-                            שישי: 9:00-15:00<br>
-                            שבת: לפי תיאום</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Contact Form -->
-            <div class="contact-form-container" data-aos="fade-left">
-                <h2 class="section-title">שלחו לנו הודעה</h2>
-                
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <label class="form-label">שם מלא *</label>
-                        <input type="text" name="fullName" class="form-input" placeholder="הכניסו את השם המלא" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">טלפון *</label>
-                        <input type="tel" name="phone" class="form-input" placeholder="050-1234567" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">אימייל</label>
-                        <input type="email" name="email" class="form-input" placeholder="your@email.com">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">סוג השירות</label>
-                        <select name="serviceType" class="form-select">
-                            <option value="">בחרו סוג שירות</option>
-                            <option value="villa">וילה לחופשה או אירוע</option>
-                            <option value="hotel">מלון בוטיק</option>
-                            <option value="zimmer">צימר רומנטי</option>
-                            <option value="apartment">דירת נופש</option>
-                            <option value="event-venue">מקום לאירוע מיוחד</option>
-                            <option value="consultation">ייעוץ כללי</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">תאריכים רצויים</label>
-                        <input type="text" name="dates" class="form-input" placeholder="למשל: 15-20 בינואר">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">מספר אורחים</label>
-                        <input type="number" name="guests" class="form-input" placeholder="כמה אנשים?">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">ספרו לנו על הצרכים שלכם *</label>
-                        <textarea name="message" class="form-textarea" rows="5" 
-                                placeholder="ספרו לנו בפירוט מה אתם מחפשים, כמה אנשים, אילו דרישות מיוחדות יש לכם..." required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="submit-btn">
-                        <span class="btn-text">שלחו הודעה</span>
-                        <span class="loading"></span>
-                    </button>
-                    
-                    <div class="success-message" id="successMessage">
-                        <i class="fas fa-check-circle" style="margin-left: 8px;"></i>
-                        תודה רבה! קיבלנו את הפנייה ונחזור אליכם בהקדם האפשרי
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="py-16 text-center" style="background: var(--primary-bg); border-top: 1px solid rgba(106, 13, 173, 0.2);">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center mb-12">
-                <a href="index.html" class="logo mb-6 md:mb-0">Multibrawn</a>
-                <div class="flex gap-8 text-4xl">
-                    <a href="#" class="text-gray-400 hover:text-purple-400 transition duration-300" title="פייסבוק">
-                        <i class="fab fa-facebook"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-purple-400 transition duration-300" title="אינסטגרם">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-purple-400 transition duration-300" title="לינקדאין">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="border-t border-purple-500/20 pt-8">
-                <p class="text-gray-400 mb-4">© 2024 Multibrawn. כל הזכויות שמורות.</p>
-                <div class="text-sm text-gray-500 space-x-4">
-                    <a href="privacy.html" class="hover:text-gray-300">מדיניות פרטיות</a>
-                    <span>|</span>
-                    <a href="accessibility.html" class="hover:text-gray-300">נגישות</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- WhatsApp Float -->
-    <a href="https://wa.me/972523983394?text=שלום, אני מעוניין לקבל מידע נוסף על שירותי Multibrawn" 
-       class="floating-whatsapp" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <!-- Scripts -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        // Initialize AOS
-        document.addEventListener('DOMContentLoaded', () => {
-            // Check if AOS is loaded before initializing
-            if (typeof AOS !== 'undefined') {
-                AOS.init({
-                    duration: 1200,
-                    once: true,
-                    offset: 50
-                });
-            } else {
-                console.warn('AOS library not loaded, animations will be disabled');
-            }
-
-            setupMobileMenu();
-            setupContactForm();
-        });
-
-        // Mobile Menu Setup
-        function setupMobileMenu() {
-            const toggle = document.getElementById('mobileToggle');
-            const menu = document.querySelector('.nav-menu');
-            
-            if (toggle && menu) {
-                toggle.addEventListener('click', () => {
-                    menu.classList.toggle('active');
-                });
-            }
-        }
-
-        // Contact Form Setup
-        function setupContactForm() {
-            const form = document.getElementById('contactForm');
-            
-            form.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                
-                const submitBtn = form.querySelector('.submit-btn');
-                const btnText = submitBtn.querySelector('.btn-text');
-                const loading = submitBtn.querySelector('.loading');
-                const successMessage = document.getElementById('successMessage');
-                
-                // Show loading
-                btnText.style.display = 'none';
-                loading.style.display = 'inline-block';
-                submitBtn.disabled = true;
-                
-                try {
-                    // Get form data
-                    const formData = new FormData(form);
-                    const data = Object.fromEntries(formData);
-                    
-                    // Simulate API call
-                    await new Promise(resolve => setTimeout(resolve, 2000));
-                    
-                    // Store lead (in real app, send to server)
-                    const leads = JSON.parse(localStorage.getItem('multibrawn_leads') || '[]');
-                    const newLead = {
-                        id: Date.now(),
-                        ...data,
-                        timestamp: new Date().toISOString(),
-                        status: 'new',
-                        source: 'contact_page'
-                    };
-                    
-                    leads.push(newLead);
-                    localStorage.setItem('multibrawn_leads', JSON.stringify(leads));
-                    
-                    // Send WhatsApp message
-                    const message = `פנייה חדשה מדף יצירת קשר:
-
-👤 שם: ${data.fullName}
-📞 טלפון: ${data.phone}
-📧 אימייל: ${data.email || 'לא צוין'}
-🎯 שירות: ${getServiceName(data.serviceType)}
-📅 תאריכים: ${data.dates || 'לא צוין'}
-👥 אורחים: ${data.guests || 'לא צוין'}
-
-💬 הודעה:
-${data.message}
-
----
-נשלח מאתר Multibrawn`;
-                    
-                    setTimeout(() => {
-                        window.open(`https://wa.me/972523983394?text=${encodeURIComponent(message)}`);
-                    }, 1000);
-                    
-                    // Show success message
-                    successMessage.style.display = 'block';
-                    form.reset();
-                    
-                    // Auto-hide success message
-                    setTimeout(() => {
-                        successMessage.style.display = 'none';
-                    }, 8000);
-                    
-                } catch (error) {
-                    // Instead of an alert, we can show a message on the page
-                    const errorMessage = document.createElement('div');
-                    errorMessage.classList.add('success-message');
-                    errorMessage.style.backgroundColor = '#ef4444';
-                    errorMessage.innerText = 'שגיאה בשליחת ההודעה. אנא נסו שוב או צרו קשר ישירות.';
-                    form.appendChild(errorMessage);
-                    setTimeout(() => errorMessage.remove(), 8000);
-                } finally {
-                    // Reset button
-                    btnText.style.display = 'inline';
-                    loading.style.display = 'none';
-                    submitBtn.disabled = false;
-                }
-            });
-        }
-
-        // Utility Functions
-        function getServiceName(type) {
-            const services = {
-                'villa': 'וילה לחופשה או אירוע',
-                'hotel': 'מלון בוטיק',
-                'zimmer': 'צימר רומנטי',
-                'apartment': 'דירת נופש',
-                'event-venue': 'מקום לאירוע מיוחד',
-                'consultation': 'ייעוץ כללי'
-            };
-            return services[type] || type;
-        }
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Performance tracking
-        window.addEventListener('load', () => {
-            console.log('Contact page loaded successfully!');
-        });
-    </script>
-</body>
-</html>
+  <script>
+    const form=document.getElementById('contactForm'); const sendBtn=document.getElementById('sendBtn');
+    form.addEventListener('submit',e=>{ e.preventDefault();
+      const fd=new FormData(form);
+      const required = ['name','phone']; for(const k of required){ if(!(fd.get(k)||'').trim()){ alert('אנא מלאו '+(k==='name'?'שם מלא':'טלפון')); return; } }
+      sendBtn.disabled=true; sendBtn.textContent='מכין הודעה...';
+      const lines=[
+        'פניה חדשה מהאתר:',
+        'שם: '+fd.get('name'),
+        'טלפון: '+fd.get('phone'),
+        fd.get('email')?'אימייל: '+fd.get('email'):null,
+        fd.get('guests')?'אורחים: '+fd.get('guests'):null,
+        fd.get('dates')?'תאריכים: '+fd.get('dates'):null,
+        fd.get('region')?'אזור: '+fd.get('region'):null,
+        fd.get('message')?'פרטים: '+fd.get('message'):null,
+        '— נשלח מהאתר Multibrawn'
+      ].filter(Boolean);
+      const text=encodeURIComponent(lines.join('\n'));
+      const wa='https://wa.me/972523983394?text='+text;
+      window.open(wa,'_blank','noopener'); sendBtn.disabled=false; sendBtn.textContent='שלחו בוואטסאפ';
+    });
+  </script>
+</body></html>
