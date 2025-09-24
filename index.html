@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multibrawn - שירותי נופש, אירועים ושיווק דיגיטלי</title>
+    <meta name="description" content="פורטל Multibrawn - מחברים בין לקוחות איכותיים למתחמים נבחרים, ומציעים פתרונות שיווק דיגיטלי לעסקים.">
+    <meta name="keywords" content="וילות, נופש, אירועים, שיווק דיגיטלי, צימרים, מלונות">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-bg: #1a0b2e;
+            --secondary-bg: #16213e;
+            --accent-purple: #7c3aed;
+            --light-purple: #a855f7;
+            --dark-purple: #5b21b6;
+            --text-light: #f8fafc;
+            --text-muted: #cbd5e1;
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Heebo', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--primary-bg);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--primary-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-purple);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--light-purple);
+        }
+
+        /* Navigation */
+        .header-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(26, 11, 46, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(124, 58, 237, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 40px;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 900;
+            color: transparent;
+            background: linear-gradient(45deg, #f8fafc, #7c3aed, #a855f7);
+            background-clip: text;
+            -webkit-background-clip: text;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-purple);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--text-light);
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--accent-purple), var(--dark-purple));
+            color: white;
+            padding: 12px 28px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(124, 58, 237, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(124, 58, 237, 0.5);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-background {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            object-fit: cover;
+            filter: brightness(0.7) contrast(1.2);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                rgba(26, 11, 46, 0.8) 0%, 
+                rgba(124, 58, 237, 0.4) 50%, 
+                rgba(168, 85, 247, 0.3) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: clamp(3rem, 10vw, 8rem);
+            font-weight: 900;
+            line-height: 1.1;
+            color: white;
+            text-shadow: 
+                0 0 30px rgba(0, 0, 0, 0.9), 
+                0 0 60px rgba(124, 58, 237, 0.5);
+            animation: titleFloat 6s ease-in-out infinite;
+        }
+
+        @keyframes titleFloat {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-15px) scale(1.02); }
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 4vw, 2.5rem);
+            font-weight: 600;
+            color: white;
+            letter-spacing: 2px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+            animation: subtitleGlow 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes subtitleGlow {
+            from { text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8); }
+            to { text-shadow: 0 4px 20px rgba(124, 58, 237, 0.6); }
+        }
+
+        .hero-cta {
+            display: inline-block;
+            padding: 20px 50px;
+            background: linear-gradient(135deg, var(--accent-purple), var(--dark-purple));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.3rem;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 15px 40px rgba(124, 58, 237, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s;
+        }
+
+        .hero-cta:hover::before {
+            left: 100%;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 25px 60px rgba(124, 58, 237, 0.6);
+        }
+
+        /* Chat Bot Trigger */
+        .chat-trigger {
+            position: fixed;
+            bottom: 100px;
+            left: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent-purple), var(--light-purple));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(124, 58, 237, 0.4);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(124, 58, 237, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0); }
+        }
+
+        .chat-trigger:hover {
+            transform: scale(1.1);
+        }
+
+        /* Chat Bot Modal */
+        .chat-modal {
+            position: fixed;
+            bottom: 100px;
+            left: 30px;
+            width: 350px;
+            height: 500px;
+            background: var(--secondary-bg);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            z-index: 1001;
+            display: none;
+            flex-direction: column;
+            border: 1px solid rgba(124, 58, 237, 0.3);
+        }
+
+        .chat-header {
+            background: linear-gradient(135deg, var(--accent-purple), var(--dark-purple));
+            padding: 20px;
+            border-radius: 20px 20px 0 0;
+            color: white;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 12px 16px;
+            border-radius: 18px;
+            word-wrap: break-word;
+        }
+
+        .bot-message {
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.2), rgba(168, 85, 247, 0.2));
+            color: var(--text-light);
+            align-self: flex-start;
+            border: 1px solid rgba(124, 58, 237, 0.3);
+        }
+
+        .user-message {
+            background: linear-gradient(135deg, var(--accent-purple), var(--light-purple));
+            color: white;
+            align-self: flex-end;
+        }
+
+        .chat-input-container {
+            padding: 20px;
+            border-top: 1px solid rgba(124, 58, 237, 0.2);
+        }
+
+        .chat-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            border-radius: 25px;
+            background: rgba(124, 58, 237, 0.1);
+            color: var(--text-light);
+            outline: none;
+            font-family: var(--font-body);
+        }
+
+        .chat-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        /* Property Cards */
+        .property-card {
+            background: linear-gradient(135deg, 
+                rgba(22, 33, 62, 0.8) 0%, 
+                rgba(26, 11, 46, 0.8) 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .property-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+                rgba(124, 58, 237, 0.1) 0%, 
+                rgba(168, 85, 247, 0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .property-card:hover::before {
+            opacity: 1;
+        }
+
+        .property-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(124, 58, 237, 0.3);
+            border-color: var(--accent-purple);
+        }
+
+        /* Sections */
+        .section-padding {
+            padding: 8rem 2rem;
+        }
+
+        .section-heading {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--text-light), var(--accent-purple), var(--light-purple));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                var(--accent-purple), 
+                var(--light-purple), 
+                transparent);
+            border-radius: 2px;
+        }
+
+        /* WhatsApp Float */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            animation: bounce 3s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-5px) rotate(5deg); }
+            75% { transform: translateY(-3px) rotate(-5deg); }
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.15) rotate(15deg);
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.6);
+        }
+
+        /* Lead Capture Form */
+        .lead-form {
+            background: linear-gradient(135deg, 
+                rgba(22, 33, 62, 0.9) 0%, 
+                rgba(26, 11, 46, 0.9) 100%);
+            border-radius: 25px;
+            padding: 3rem;
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            backdrop-filter: blur(15px);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-label {
+            display: block;
+            color: var(--text-light);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid rgba(124, 58, 237, 0.3);
+            border-radius: 15px;
+            background: rgba(124, 58, 237, 0.1);
+            color: var(--text-light);
+            font-size: 1rem;
+            font-family: var(--font-body);
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--accent-purple);
+            background: rgba(124, 58, 237, 0.2);
+            box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
+        }
+
+        .form-input::placeholder, .form-textarea::placeholder {
+            color: var(--text-muted);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, var(--accent-purple), var(--dark-purple));
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.4);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(124, 58, 237, 0.6);
+        }
+
+        /* Mobile Responsive */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .hamburger-line {
+            width: 30px;
+            height: 3px;
+            background: white;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                right: -100%;
+                top: 80px;
+                flex-direction: column;
+                background: rgba(26, 11, 46, 0.98);
+                width: 100%;
+                padding: 20px;
+                transition: 0.3s;
+                border-top: 1px solid rgba(124, 58, 237, 0.3);
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-menu li {
+                padding: 15px 0;
+                border-bottom: 1px solid rgba(124, 58, 237, 0.2);
+                width: 100%;
+                text-align: center;
+            }
+
+            .chat-modal {
+                width: calc(100vw - 40px);
+                height: 60vh;
+                left: 20px;
+                bottom: 80px;
+            }
+
+            .section-padding {
+                padding: 4rem 1rem;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Success Message */
+        .success-message {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            text-align: center;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header-nav">
+        <nav class="nav-content">
+            <a href="index.html" class="logo">Multibrawn</a>
+            <ul class="nav-menu">
+                <li><a href="#about">אודות</a></li>
+                <li><a href="#services">שירותים</a></li>
+                <li><a href="#properties">נכסים</a></li>
+                <li><a href="#contact">צור קשר</a></li>
+                <li><a href="#contact" class="cta-button">קבלו הצעה</a></li>
+            </ul>
+            <button class="mobile-menu-toggle" id="mobileToggle">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <video autoplay muted loop playsinline class="video-background">
+            <source src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Video.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="1500">
+            <h1 class="hero-title">Multibrawn</h1>
+            <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="300">שירותי נופש, אירועים ושיווק דיגיטלי</p>
+            <a href="#properties" class="hero-cta" data-aos="zoom-in" data-aos-delay="600">גלו את הנכס הבא שלכם</a>
+        </div>
+    </section>
+
+    <main>
+        <!-- Properties Section -->
+        <section id="properties" class="section-padding" style="background: linear-gradient(180deg, var(--primary-bg) 0%, var(--secondary-bg) 100%);">
+            <div class="max-w-7xl mx-auto px-4">
+                <h2 class="section-heading" data-aos="fade-up">מחברים בין לקוחות איכותיים למתחמים נבחרים</h2>
+                <p class="text-center text-xl text-gray-300 mb-16 max-w-3xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="200">
+                    מלונות בוטיק, וילות יוקרה, צימרים רומנטיים ודירות נופש איכותיות - כל מה שאתם צריכים לחופשה מושלמת או אירוע בלתי נשכח
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="property-card p-8 text-center" data-aos="fade-up" data-aos-delay="100">
+                        <div class="mb-6">
+                            <i class="fas fa-hotel text-4xl" style="color: var(--accent-purple);"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">מלונות בוטיק</h3>
+                        <p class="text-gray-300 leading-relaxed">חווית אירוח יוקרתית ואישית עם שירות ברמה הגבוהה ביותר</p>
+                    </div>
+                    <div class="property-card p-8 text-center" data-aos="fade-up" data-aos-delay="200">
+                        <div class="mb-6">
+                            <i class="fas fa-home text-4xl" style="color: var(--light-purple);"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">וילות יוקרה</h3>
+                        <p class="text-gray-300 leading-relaxed">מרחבים פרטיים מרווחים לאירוח אירועים וחופשות משפחתיות</p>
+                    </div>
+                    <div class="property-card p-8 text-center" data-aos="fade-up" data-aos-delay="300">
+                        <div class="mb-6">
+                            <i class="fas fa-tree text-4xl" style="color: var(--accent-purple);"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">צימרים רומנטיים</h3>
+                        <p class="text-gray-300 leading-relaxed">נופש קסום ואינטימי בטבע עם אווירה רומנטית ומרגיעה</p>
+                    </div>
+                    <div class="property-card p-8 text-center" data-aos="fade-up" data-aos-delay="400">
+                        <div class="mb-6">
+                            <i class="fas fa-building text-4xl" style="color: var(--light-purple);"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">דירות נופש</h3>
+                        <p class="text-gray-300 leading-relaxed">חופשה אורבנית מושלמת בלב הערים הגדולות עם כל השירותים</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Events Section -->
+        <section id="events" class="section-padding" style="background: var(--primary-bg);">
+            <div class="max-w-7xl mx-auto px-4">
+                <h2 class="section-heading" data-aos="fade-up">פתרונות ייחודיים לכל סוג אירוע</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-16">
+                    <div class="property-card p-8 text-center" data-aos="fade-up" data-aos-delay="100">
+                        <div class="mb-6">
+                            <i class="fas fa-star-of-david text-4xl" style="color: var(--accent-purple);"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">שבתות חתן ואירועים דתיים</h3>
+                        <p class="text-gray-300 leading-relaxed">מתחמים מרווחים ומותאמים לאירוח משפחה מורחבת עם כל הדרישות הכשרות</p>
+                    </div>
+                    <div class="property-card p-8 text-center" data-aos="fade-up" data-aos-delay="200">
+                        <div class="mb-6">
+                            <i class="fas fa-users text-4xl" style="color: var(--light-purple);"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">כנסים וימי גיבוש</h3>
+                        <p class="text-gray-300 leading-relaxed">פתרונות אירוח לקבוצות עסקיות עם חדרי ישיבות מתקדמים ומתקני פנאי</p>
+                    </div>
+                    <div class="property-card p-8 text-center" data-aos="fade-up" data-aos-delay="300">
+                        <div class="mb-6">
+                            <i class="fas fa-birthday-cake text-4xl" style="color: var(--accent-purple);"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">מסיבות וחגיגות</h3>
+                        <p class="text-gray-300 leading-relaxed">וילות עם בריכה, מערכות סאונד מתקדמות ופינות ישיבה למסיבה בלתי נשכחת</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Digital Marketing Section -->
+        <section id="services" class="section-padding" style="background: linear-gradient(180deg, var(--primary-bg) 0%, var(--secondary-bg) 100%);">
+            <div class="max-w-7xl mx-auto px-4">
+                <h2 class="section-heading" data-aos="fade-up">שירותי שיווק דיגיטלי מתקדמים</h2>
+                <p class="text-center text-xl text-gray-300 mb-16 max-w-3xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="200">
+                    מלווים עסקים בכל השלבים - מנוכחות דיגיטלית ראשונית ועד לייצור לידים איכותיים והגדלת מכירות
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="property-card p-8 text-center" data-aos="fade-up" data-aos-delay="100">
+                        <div class="mb-6">
+                            <i class="fas fa-chart-line text-4xl" style="color: var(--accent-purple);"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-4">ניהול דפים עסקיים</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">ניהול מקצועי של נוכחותכם ברשתות החברתיות עם תוכן איכותי ואסטרטגיה מנצחת</p>
+                    </div>
+                    <div class="property-card p-8 text-center" data-aos="fade-up" data-aos-delay="200">
+                        <div class="mb-6">
+                            <i class="fas fa-users-cog text-4xl" style="color: var(--light-purple);"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-4">בניית קהילות</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">יצירת קהילה נאמנה ופעילה סביב המותג שלכם עם אנגייג'מנט גבוה</p>
+                    </div>
+                    <div class="property-card p-8 text-center" data-aos="fade-up" data-aos-delay="300">
+                        <div class="mb-6">
+                            <i class="fas fa-globe-americas text-4xl" style="color: var(--accent-purple);"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-4">פיתוח אתרים</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">בניית אתרי תדמית ודפי נחיתה מותאמים להמרות גבוהות ול-SEO</p>
+                    </div>
+                    <div class="property-card p-8 text-center" data-aos="fade-up" data-aos-delay="400">
+                        <div class="mb-6">
+                            <i class="fas fa-video text-4xl" style="color: var(--light-purple);"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-4">יצירת תוכן</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">פרודקציה של תוכן ויזואלי וטקסטואלי איכותי המותאם לקהל היעד</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section-padding" style="background: var(--primary-bg);">
+            <div class="max-w-7xl mx-auto px-4">
+                <h2 class="section-heading" data-aos="fade-up">הסיפור שלנו</h2>
+                <div class="flex flex-col lg:flex-row gap-12 items-center mt-16">
+                    <div class="lg:w-1/2" data-aos="fade-right">
+                        <p class="text-lg mb-6 text-gray-300 leading-relaxed">
+                            <strong style="color: var(--accent-purple);">Multibrawn</strong> מציעה פתרון 360 מעלות שמשלב בין שני עולמות: מצד אחד, אנו מציעים ללקוחותינו מגוון נכסים איכותיים - וילות יוקרה, צימרים רומנטיים, דירות נופש מעוצבות ומלונות בוטיק שנבחרו בקפידה רבה.
+                        </p>
+                        <p class="text-lg mb-6 text-gray-300 leading-relaxed">
+                            אנו מבינים שכל חופשה או אירוע הוא חלום בפני עצמו, ואנו כאן כדי לוודא שהוא מתגשם בדיוק כפי שדמיינתם - עם תשומת לב לכל פרט ושירות אישי ברמה הגבוהה ביותר.
+                        </p>
+                        <p class="text-lg mb-6 text-gray-300 leading-relaxed">
+                            מהצד השני, אנו מציעים לבעלי העסקים את הידע, הכלים והליווי הדרושים להצלחה בעולם הדיגיטלי המתפתח. המודל העסקי שפיתחנו מלווה עסקים מהשלבים הראשונים ועד להשגת יעדים עסקיים משמעותיים.
+                        </p>
+                        <p class="text-lg text-gray-300 leading-relaxed font-bold" style="color: var(--light-purple);">
+                            ההצלחה של לקוחותינו היא ההצלחה שלנו. הצטרפו אלינו למסע של איכות, יוקרה ושיווק מתקדם.
+                        </p>
+                    </div>
+                    <div class="lg:w-1/2" data-aos="fade-left">
+                        <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Multibrawn.jpg" 
+                             alt="צוות Multibrawn" 
+                             class="w-full rounded-3xl shadow-2xl border border-purple-500/20"
+                             style="box-shadow: 0 25px 50px rgba(124, 58, 237, 0.3);">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact & Lead Form Section -->
+        <section id="contact" class="section-padding" style="background: linear-gradient(135deg, var(--secondary-bg) 0%, var(--primary-bg) 100%);">
+            <div class="max-w-7xl mx-auto px-4">
+                <h2 class="section-heading" data-aos="fade-up">צרו קשר וקבלו הצעה מותאמת</h2>
+                <p class="text-center text-xl text-gray-300 mb-16 max-w-3xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="200">
+                    מלאו את הפרטים ונחזור אליכם תוך 24 שעות עם הצעה מותאמת אישית לצרכים שלכם
+                </p>
+                
+                <div class="lead-form" data-aos="fade-up" data-aos-delay="300">
+                    <form id="leadForm">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="form-group">
+                                <label for="fullName" class="form-label">שם מלא *</label>
+                                <input type="text" id="fullName" name="fullName" class="form-input" placeholder="הכניסו את השם המלא" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" class="form-label">טלפון *</label>
+                                <input type="tel" id="phone" name="phone" class="form-input" placeholder="050-1234567" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">אימייל</label>
+                            <input type="email" id="email" name="email" class="form-input" placeholder="example@email.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="serviceType" class="form-label">סוג השירות *</label>
+                            <select id="serviceType" name="serviceType" class="form-select" required>
+                                <option value="">בחרו סוג שירות</option>
+                                <option value="villa">וילה לחופשה</option>
+                                <option value="event-venue">מקום לאירוע</option>
+                                <option value="hotel">מלון בוטיק</option>
+                                <option value="zimmer">צימר רומנטי</option>
+                                <option value="apartment">דירת נופש</option>
+                                <option value="digital-marketing">שיווק דיגיטלי</option>
+                                <option value="website">פיתוח אתר</option>
+                                <option value="social-media">ניהול רשתות חברתיות</option>
+                                <option value="other">אחר</option>
+                            </select>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="form-group">
+                                <label for="dates" class="form-label">תאריכים רצויים</label>
+                                <input type="text" id="dates" name="dates" class="form-input" placeholder="למשל: 15-20 בינואר">
+                            </div>
+                            <div class="form-group">
+                                <label for="guests" class="form-label">מספר אורחים</label>
+                                <input type="number" id="guests" name="guests" class="form-input" placeholder="כמה אנשים?">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="budget" class="form-label">תקציב משוער</label>
+                            <select id="budget" name="budget" class="form-select">
+                                <option value="">בחרו טווח תקציב</option>
+                                <option value="up-to-5k">עד 5,000 ₪</option>
+                                <option value="5k-10k">5,000-10,000 ₪</option>
+                                <option value="10k-20k">10,000-20,000 ₪</option>
+                                <option value="20k-50k">20,000-50,000 ₪</option>
+                                <option value="50k+">מעל 50,000 ₪</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label">הודעה נוספת</label>
+                            <textarea id="message" name="message" rows="4" class="form-textarea" placeholder="ספרו לנו עוד על מה שאתם מחפשים..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">
+                            <span class="btn-text">שלחו הצעה</span>
+                            <span class="loading" style="display: none;"></span>
+                        </button>
+                        
+                        <div class="success-message" id="successMessage">
+                            <i class="fas fa-check-circle" style="margin-left: 8px;"></i>
+                            תודה! קיבלנו את הפנייה ונחזור אליכם בהקדם
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16" data-aos="fade-up" data-aos-delay="400">
+                    <a href="https://wa.me/972523983394" target="_blank" class="property-card p-8 text-center hover:scale-105 transition-transform">
+                        <i class="fab fa-whatsapp text-5xl text-green-400 mb-4"></i>
+                        <h3 class="text-xl font-bold text-white mb-2">וואטסאפ</h3>
+                        <p class="text-gray-400">לתגובה מיידית</p>
+                        <p class="text-sm text-green-400 mt-2">052-398-3394</p>
+                    </a>
+                    <a href="tel:0723311083" class="property-card p-8 text-center hover:scale-105 transition-transform">
+                        <i class="fas fa-phone-alt text-5xl text-blue-400 mb-4"></i>
+                        <h3 class="text-xl font-bold text-white mb-2">טלפון</h3>
+                        <p class="text-gray-400">ימים א'-ה' 9:00-20:00</p>
+                        <p class="text-sm text-blue-400 mt-2">072-331-1083</p>
+                    </a>
+                    <a href="mailto:multibrawn@gmail.com" class="property-card p-8 text-center hover:scale-105 transition-transform">
+                        <i class="fas fa-envelope text-5xl text-purple-400 mb-4"></i>
+                        <h3 class="text-xl font-bold text-white mb-2">אימייל</h3>
+                        <p class="text-gray-400">נחזור תוך 24 שעות</p>
+                        <p class="text-sm text-purple-400 mt-2">multibrawn@gmail.com</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-16 text-center" style="background: var(--primary-bg); border-top: 1px solid rgba(124, 58, 237, 0.2);">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-12">
+                <a href="index.html" class="logo mb-6 md:mb-0">Multibrawn</a>
+                <div class="flex gap-8 text-4xl">
+                    <a href="#" class="text-gray-400 hover:text-purple-400 transition duration-300" title="פייסבוק">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-purple-400 transition duration-300" title="אינסטגרם">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-purple-400 transition duration-300" title="לינקדאין">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-purple-500/20 pt-8">
+                <p class="text-gray-400 mb-4">© 2024 Multibrawn. כל הזכויות שמורות.</p>
+                <p class="text-sm text-gray-500">מחברים חלומות למציאות | שירותי נופש ושיווק דיגיטלי</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Elements -->
+    <a href="https://wa.me/972523983394?text=שלום, אני מעוניין לקבל מידע נוסף על שירותי Multibrawn" 
+       class="floating-whatsapp" target="_blank" aria-label="צור קשר בוואטסאפ">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Chat Bot -->
+    <div class="chat-trigger" id="chatTrigger">
+        <i class="fas fa-comments"></i>
+    </div>
+
+    <div class="chat-modal" id="chatModal">
+        <div class="chat-header">
+            <h3>צ'אט עם Multibrawn</h3>
+            <p class="text-sm opacity-75">איך נוכל לעזור לכם?</p>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot-message">
+                שלום! ברוכים הבאים ל-Multibrawn 👋<br>
+                איך נוכל לעזור לכם היום?
+            </div>
+        </div>
+        <div class="chat-input-container">
+            <input type="text" class="chat-input" id="chatInput" placeholder="הקלידו את ההודעה שלכם...">
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 1200,
+                    once: true,
+                    easing: 'ease-out-cubic',
+                    offset: 50
+                });
+            }
+
+            // Mobile Menu Toggle
+            const toggle = document.getElementById('mobileToggle');
+            const menu = document.querySelector('.nav-menu');
+            
+            if (toggle && menu) {
+                toggle.addEventListener('click', () => {
+                    menu.classList.toggle('active');
+                });
+            }
+
+            // Chat Bot Functionality
+            const chatTrigger = document.getElementById('chatTrigger');
+            const chatModal = document.getElementById('chatModal');
+            const chatInput = document.getElementById('chatInput');
+            const chatMessages = document.getElementById('chatMessages');
+
+            if (chatTrigger) {
+                chatTrigger.addEventListener('click', () => {
+                    chatModal.style.display = chatModal.style.display === 'flex' ? 'none' : 'flex';
+                });
+            }
+
+            // Simple chat bot responses
+            const botResponses = {
+                'שלום': 'שלום! איך נוכל לעזור לכם?',
+                'מחירים': 'המחירים משתנים לפי סוג הנכס והתאריכים. נשמח לתת לכם הצעה מדויקת - צרו קשר!',
+                'וילה': 'יש לנו מבחר וילות יוקרה מרהיבות! איזה אזור מעניין אתכם?',
+                'צימר': 'הצימרים שלנו מושלמים לחופשה רומנטית. כמה אנשים אתם?',
+                'אירוע': 'איזה סוג אירוע אתם מתכננים? יש לנו פתרונות מושלמים לכל אירוע!',
+                'שיווק': 'אנחנו מתמחים בשיווק דיגיטלי לעסקים. רוצים לשמוע על השירותים שלנו?',
+                'default': 'תודה על ההודעה! נציג שלנו יחזור אליכם בהקדם. או צרו קשר ישירות: 052-398-3394'
+            };
+
+            if (chatInput) {
+                chatInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter' && chatInput.value.trim()) {
+                        const userMessage = chatInput.value.trim();
+                        
+                        // Add user message
+                        const userMsgDiv = document.createElement('div');
+                        userMsgDiv.className = 'message user-message';
+                        userMsgDiv.textContent = userMessage;
+                        chatMessages.appendChild(userMsgDiv);
+                        
+                        // Find bot response
+                        let botResponse = botResponses.default;
+                        for (const keyword in botResponses) {
+                            if (userMessage.includes(keyword)) {
+                                botResponse = botResponses[keyword];
+                                break;
+                            }
+                        }
+                        
+                        // Add bot response after delay
+                        setTimeout(() => {
+                            const botMsgDiv = document.createElement('div');
+                            botMsgDiv.className = 'message bot-message';
+                            botMsgDiv.innerHTML = botResponse;
+                            chatMessages.appendChild(botMsgDiv);
+                            chatMessages.scrollTop = chatMessages.scrollHeight;
+                        }, 1000);
+                        
+                        chatInput.value = '';
+                        chatMessages.scrollTop = chatMessages.scrollHeight;
+                    }
+                });
+            }
+
+            // Lead Form Handling
+            const leadForm = document.getElementById('leadForm');
+            if (leadForm) {
+                leadForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    
+                    const submitBtn = leadForm.querySelector('.submit-btn');
+                    const btnText = submitBtn.querySelector('.btn-text');
+                    const loading = submitBtn.querySelector('.loading');
+                    const successMessage = document.getElementById('successMessage');
+                    
+                    // Show loading
+                    btnText.style.display = 'none';
+                    loading.style.display = 'inline-block';
+                    submitBtn.disabled = true;
+                    
+                    // Collect form data
+                    const formData = new FormData(leadForm);
+                    const data = Object.fromEntries(formData);
+                    
+                    // Here you would normally send to your CRM/backend
+                    // For now, we'll simulate success
+                    try {
+                        // Simulate API call
+                        await new Promise(resolve => setTimeout(resolve, 2000));
+                        
+                        // Store in memory (in real app, send to server)
+                        const leads = JSON.parse(localStorage.getItem('multibrawn_leads') || '[]');
+                        leads.push({
+                            ...data,
+                            timestamp: new Date().toISOString(),
+                            id: Date.now()
+                        });
+                        localStorage.setItem('multibrawn_leads', JSON.stringify(leads));
+                        
+                        // Show success
+                        successMessage.style.display = 'block';
+                        leadForm.reset();
+                        
+                        // Send WhatsApp message
+                        const message = `פנייה חדשה מהאתר:
+שם: ${data.fullName}
+טלפון: ${data.phone}
+שירות: ${data.serviceType}
+תאריכים: ${data.dates || 'לא צוין'}
+תקציב: ${data.budget || 'לא צוין'}
+הודעה: ${data.message || 'אין'}`;
+                        
+                        window.open(`https://wa.me/972523983394?text=${encodeURIComponent(message)}`);
+                        
+                    } catch (error) {
+                        alert('שגיאה בשליחת הטופס. אנא נסו שוב או צרו קשר טלפונית.');
+                    } finally {
+                        // Reset button
+                        btnText.style.display = 'inline';
+                        loading.style.display = 'none';
+                        submitBtn.disabled = false;
+                        
+                        setTimeout(() => {
+                            successMessage.style.display = 'none';
+                        }, 5000);
+                    }
+                });
+            }
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Performance tracking
+            window.addEventListener('load', () => {
+                console.log('Multibrawn website loaded successfully!');
+            });
+        });
+    </script>
+</body>
+</html>
