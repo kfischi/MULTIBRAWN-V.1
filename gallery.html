@@ -1,1 +1,1094 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>גלריית נכסים - Multibrawn</title>
+    <meta name="description" content="גלריה מלאה של וילות יוקרה, צימרים, מלונות ונכסים נבחרים של Multibrawn">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-bg: #1a0b2e;
+            --secondary-bg: #16213e;
+            --accent-purple: #7c3aed;
+            --light-purple: #a855f7;
+            --dark-purple: #5b21b6;
+            --text-light: #f8fafc;
+            --text-muted: #cbd5e1;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Heebo', sans-serif;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--primary-bg);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Navigation - Same as homepage */
+        .header-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(26, 11, 46, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(124, 58, 237, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 40px;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 900;
+            color: transparent;
+            background: linear-gradient(45deg, #f8fafc, #7c3aed, #a855f7);
+            background-clip: text;
+            -webkit-background-clip: text;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-purple);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--text-light);
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--accent-purple), var(--dark-purple));
+            color: white;
+            padding: 12px 28px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(124, 58, 237, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, 
+                rgba(26, 11, 46, 0.9) 0%, 
+                rgba(124, 58, 237, 0.6) 50%, 
+                rgba(168, 85, 247, 0.4) 100%),
+                url('https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villa1.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            margin-top: 80px;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            color: white;
+            text-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 4vw, 1.8rem);
+            color: var(--text-muted);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Filter Section */
+        .filter-section {
+            background: var(--secondary-bg);
+            padding: 3rem 2rem;
+            border-bottom: 1px solid rgba(124, 58, 237, 0.2);
+            position: sticky;
+            top: 80px;
+            z-index: 100;
+        }
+
+        .filter-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 12px 24px;
+            background: rgba(124, 58, 237, 0.1);
+            border: 2px solid rgba(124, 58, 237, 0.3);
+            border-radius: 25px;
+            color: var(--text-light);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .filter-btn:hover {
+            background: rgba(124, 58, 237, 0.2);
+            border-color: var(--accent-purple);
+            transform: translateY(-2px);
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, var(--accent-purple), var(--light-purple));
+            border-color: var(--light-purple);
+            color: white;
+            box-shadow: 0 8px 20px rgba(124, 58, 237, 0.4);
+        }
+
+        /* Gallery Grid */
+        .gallery-section {
+            padding: 4rem 2rem;
+            min-height: 80vh;
+        }
+
+        .gallery-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .property-item {
+            background: linear-gradient(135deg, 
+                rgba(22, 33, 62, 0.8) 0%, 
+                rgba(26, 11, 46, 0.8) 100%);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        .property-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(124, 58, 237, 0.3);
+            border-color: var(--accent-purple);
+        }
+
+        .property-image {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .property-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .property-item:hover .property-image img {
+            transform: scale(1.1);
+        }
+
+        .property-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, 
+                rgba(0,0,0,0) 0%, 
+                rgba(0,0,0,0.8) 100%);
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .property-item:hover .property-overlay {
+            opacity: 1;
+        }
+
+        .property-info {
+            padding: 2rem;
+        }
+
+        .property-title {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .property-location {
+            color: var(--accent-purple);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .property-description {
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .property-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-tag {
+            background: rgba(124, 58, 237, 0.2);
+            color: var(--light-purple);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .property-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--light-purple);
+            margin-bottom: 1rem;
+        }
+
+        .property-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-purple), var(--dark-purple));
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(124, 58, 237, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(124, 58, 237, 0.1);
+            color: var(--text-light);
+            padding: 12px 24px;
+            border: 2px solid rgba(124, 58, 237, 0.3);
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(124, 58, 237, 0.2);
+            border-color: var(--accent-purple);
+        }
+
+        /* Property Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            padding: 2rem;
+        }
+
+        .modal-content {
+            background: var(--secondary-bg);
+            border-radius: 25px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            position: relative;
+        }
+
+        .modal-header {
+            padding: 2rem;
+            border-bottom: 1px solid rgba(124, 58, 237, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: rgba(124, 58, 237, 0.2);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .booking-form {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-label {
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .form-input, .form-select, .form-textarea {
+            padding: 12px 16px;
+            border: 2px solid rgba(124, 58, 237, 0.3);
+            border-radius: 10px;
+            background: rgba(124, 58, 237, 0.1);
+            color: var(--text-light);
+            font-family: var(--font-body);
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--accent-purple);
+            box-shadow: 0 0 15px rgba(124, 58, 237, 0.3);
+        }
+
+        /* Loading States */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Mobile Responsive */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .hamburger-line {
+            width: 30px;
+            height: 3px;
+            background: white;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                right: -100%;
+                top: 80px;
+                flex-direction: column;
+                background: rgba(26, 11, 46, 0.98);
+                width: 100%;
+                padding: 20px;
+                transition: 0.3s;
+                border-top: 1px solid rgba(124, 58, 237, 0.3);
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .properties-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .filter-container {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+
+            .property-buttons {
+                flex-direction: column;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                min-height: 40vh;
+            }
+        }
+
+        /* Floating WhatsApp */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            animation: bounce 3s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.15);
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.6);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header-nav">
+        <nav class="nav-content">
+            <a href="index.html" class="logo">Multibrawn</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">דף הבית</a></li>
+                <li><a href="about.html">אודות</a></li>
+                <li><a href="gallery.html">גלריה</a></li>
+                <li><a href="contact.html">צור קשר</a></li>
+                <li><a href="contact.html" class="cta-button">קבלו הצעה</a></li>
+            </ul>
+            <button class="mobile-menu-toggle" id="mobileToggle">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content" data-aos="fade-up">
+            <h1 class="hero-title">גלריית נכסים</h1>
+            <p class="hero-subtitle">מגוון נכסים איכותיים למטרות שונות</p>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="filter-container">
+            <button class="filter-btn active" data-filter="all">הכל</button>
+            <button class="filter-btn" data-filter="villa">וילות</button>
+            <button class="filter-btn" data-filter="hotel">מלונות</button>
+            <button class="filter-btn" data-filter="zimmer">צימרים</button>
+            <button class="filter-btn" data-filter="apartment">דירות נופש</button>
+            <button class="filter-btn" data-filter="event">אולמות אירועים</button>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <div class="gallery-container">
+            <div class="properties-grid" id="propertiesGrid">
+                <!-- Properties will be loaded here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Modal -->
+    <div class="modal" id="bookingModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle" style="font-family: var(--font-heading); font-size: 2rem; color: white;"></h2>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form class="booking-form" id="bookingForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">שם מלא *</label>
+                            <input type="text" name="fullName" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">טלפון *</label>
+                            <input type="tel" name="phone" class="form-input" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">תאריך כניסה *</label>
+                            <input type="date" name="checkIn" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">תאריך יציאה *</label>
+                            <input type="date" name="checkOut" class="form-input" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">מספר אורחים</label>
+                            <select name="guests" class="form-select">
+                                <option value="2">2 אורחים</option>
+                                <option value="4">4 אורחים</option>
+                                <option value="6">6 אורחים</option>
+                                <option value="8">8 אורחים</option>
+                                <option value="10+">10+ אורחים</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">אימייל</label>
+                            <input type="email" name="email" class="form-input">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">הערות נוספות</label>
+                        <textarea name="notes" class="form-textarea" rows="3" placeholder="ספרו לנו על הצרכים המיוחדים שלכם..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; padding: 15px;">
+                        <span class="btn-text">שלחו בקשת הזמנה</span>
+                        <span class="loading" style="display: none;"></span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/972523983394?text=שלום, אני מעוניין לקבל מידע נוסף על הנכסים" 
+       class="floating-whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Property Database
+        const properties = [
+            {
+                id: 1,
+                title: "וילה יוקרה בירושלים",
+                category: "villa",
+                location: "ירושלים",
+                price: "₪1,800 ללילה",
+                image: "https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villa1.jpg",
+                description: "וילה מרהיבה עם נוף מדהים לעיר העתיקה, 5 חדרי שינה, בריכה פרטית ומתקנים מתקדמים.",
+                features: ["5 חדרי שינה", "בריכה פרטית", "נוף מדהים", "מטבח מאובזר", "חנייה", "גקוזי"],
+                guests: "עד 12 אורחים"
+            },
+            {
+                id: 2,
+                title: "מלון בוטיק בתל אביב",
+                category: "hotel",
+                location: "תל אביב",
+                price: "₪950 ללילה",
+                image: "https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Hotel1.jpg",
+                description: "מלון בוטיק עכשווי במיקום מרכזי, חדרי יוקרה ושירות ברמה הגבוהה ביותר.",
+                features: ["חדרים יוקרתיים", "ספא", "מסעדה", "גישה לחוף", "חנייה", "שירותי קונסיירז'"],
+                guests: "זוג"
+            },
+            {
+                id: 3,
+                title: "צימר רומנטי בגליל",
+                category: "zimmer",
+                location: "גליל עליון",
+                price: "₪650 ללילה",
+                image: "https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Zimmer1.jpg",
+                description: "צימר אינטימי וחמים עם נוף מרהיב לטבע, מושלם לחופשה רומנטית.",
+                features: ["גקוזי פרטי", "פינת מנגל", "נוף לטבע", "פרטיות מלאה", "ארוחת בוקר", "חימום תת רצפתي"],
+                guests: "זוג"
+            },
+            {
+                id: 4,
+                title: "דירת יוקרה בירושלים",
+                category: "apartment",
+                location: "ירושלים מרכז",
+                price: "₪720 ללילה",
+                image: "https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Apartment1.jpg",
+                description: "דירה מעוצבת ברמה גבוהה במיקום מרכזי, מושלמת לחופשה עירונית.",
+                features: ["3 חדרי שינה", "מטבח מאובזר", "מיקום מרכזי", "WiFi", "מזגן", "מרפסת"],
+                guests: "עד 6 אורחים"
+            },
+            {
+                id: 5,
+                title: "אולם אירועים יוקרתי",
+                category: "event",
+                location: "פתח תקווה",
+                price: "₪15,000 לאירוע",
+                image: "https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Event1.jpg",
+                description: "אולם מהמם לאירועים במיקום נוח, עם שירות מלא ומתקנים מתקדמים.",
+                features: ["עד 200 אורח", "מערכת סאונד", "תאורה מקצועית", "קייטרינג", "חנייה", "צילום"],
+                guests: "עד 200 אורחים"
+            },
+            {
+                id: 6,
+                title: "וילה עם בריכה בהרצליה",
+                category: "villa",
+                location: "הרצליה פיתוח",
+                price: "₪2,200 ללילה",
+                image: "https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villa2.jpg",
+                description: "וילה מדהימה עם בריכה גדולה, מותאמת למשפחות גדולות ולאירועים.",
+                features: ["6 חדרי שינה", "בריכה גדולה", "גינה מעוצבת", "מטבח שף", "מרפסת גג", "ברביקיו"],
+                guests: "עד 15 אורחים"
+            }
+        ];
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            AOS.init({
+                duration: 1200,
+                once: true,
+                offset: 50
+            });
+
+            renderProperties(properties);
+            setupFilters();
+            setupMobileMenu();
+            setupBookingForm();
+        });
+
+        // Render properties
+        function renderProperties(propertiesToShow) {
+            const grid = document.getElementById('propertiesGrid');
+            grid.innerHTML = '';
+
+            propertiesToShow.forEach((property, index) => {
+                const propertyElement = document.createElement('div');
+                propertyElement.className = 'property-item';
+                propertyElement.setAttribute('data-aos', 'fade-up');
+                propertyElement.setAttribute('data-aos-delay', (index * 100).toString());
+
+                propertyElement.innerHTML = `
+                    <div class="property-image">
+                        <img src="${property.image}" alt="${property.title}" loading="lazy">
+                        <div class="property-overlay">
+                            <div style="color: white;">
+                                <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">${property.title}</h3>
+                                <p style="opacity: 0.9;">${property.guests}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="property-info">
+                        <h3 class="property-title">${property.title}</h3>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            ${property.location}
+                        </div>
+                        <p class="property-description">${property.description}</p>
+                        <div class="property-features">
+                            ${property.features.map(feature => `<span class="feature-tag">${feature}</span>`).join('')}
+                        </div>
+                        <div class="property-price">${property.price}</div>
+                        <div class="property-buttons">
+                            <button class="btn-primary" onclick="openBookingModal(${property.id})">
+                                <i class="fas fa-calendar-check"></i>
+                                הזמנה
+                            </button>
+                            <a href="https://wa.me/972523983394?text=שלום, אני מעוניין במידע נוסף על ${property.title}" 
+                               target="_blank" class="btn-secondary">
+                                <i class="fab fa-whatsapp"></i>
+                                פרטים
+                            </a>
+                        </div>
+                    </div>
+                `;
+
+                grid.appendChild(propertyElement);
+            });
+
+            // Refresh AOS
+            AOS.refresh();
+        }
+
+        // Setup filters
+        function setupFilters() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Update active state
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    // Filter properties
+                    const filter = btn.getAttribute('data-filter');
+                    let filteredProperties;
+
+                    if (filter === 'all') {
+                        filteredProperties = properties;
+                    } else {
+                        filteredProperties = properties.filter(property => 
+                            property.category === filter
+                        );
+                    }
+
+                    renderProperties(filteredProperties);
+                });
+            });
+        }
+
+        // Setup mobile menu
+        function setupMobileMenu() {
+            const toggle = document.getElementById('mobileToggle');
+            const menu = document.querySelector('.nav-menu');
+            
+            if (toggle && menu) {
+                toggle.addEventListener('click', () => {
+                    menu.classList.toggle('active');
+                });
+            }
+        }
+
+        // Open booking modal
+        function openBookingModal(propertyId) {
+            const property = properties.find(p => p.id === propertyId);
+            if (property) {
+                document.getElementById('modalTitle').textContent = property.title;
+                document.getElementById('bookingModal').style.display = 'flex';
+                
+                // Set minimum date to today
+                const today = new Date().toISOString().split('T')[0];
+                document.querySelector('input[name="checkIn"]').min = today;
+                document.querySelector('input[name="checkOut"]').min = today;
+                
+                // Store property ID in form
+                document.getElementById('bookingForm').setAttribute('data-property-id', propertyId);
+            }
+        }
+
+        // Close modal
+        function closeModal() {
+            document.getElementById('bookingModal').style.display = 'none';
+        }
+
+        // Setup booking form
+        function setupBookingForm() {
+            const form = document.getElementById('bookingForm');
+            
+            // Update checkout minimum when checkin changes
+            const checkinInput = form.querySelector('input[name="checkIn"]');
+            const checkoutInput = form.querySelector('input[name="checkOut"]');
+            
+            checkinInput.addEventListener('change', () => {
+                const checkinDate = new Date(checkinInput.value);
+                checkinDate.setDate(checkinDate.getDate() + 1);
+                checkoutInput.min = checkinDate.toISOString().split('T')[0];
+                
+                if (checkoutInput.value && checkoutInput.value <= checkinInput.value) {
+                    checkoutInput.value = '';
+                }
+            });
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const submitBtn = form.querySelector('button[type="submit"]');
+                const btnText = submitBtn.querySelector('.btn-text');
+                const loading = submitBtn.querySelector('.loading');
+                
+                // Show loading
+                btnText.style.display = 'none';
+                loading.style.display = 'inline-block';
+                submitBtn.disabled = true;
+                
+                try {
+                    // Get form data
+                    const formData = new FormData(form);
+                    const data = Object.fromEntries(formData);
+                    const propertyId = form.getAttribute('data-property-id');
+                    const property = properties.find(p => p.id == propertyId);
+                    
+                    // Calculate nights
+                    const checkin = new Date(data.checkIn);
+                    const checkout = new Date(data.checkOut);
+                    const nights = Math.ceil((checkout - checkin) / (1000 * 60 * 60 * 24));
+                    
+                    // Simulate API call
+                    await new Promise(resolve => setTimeout(resolve, 2000));
+                    
+                    // Store booking (in real app, send to server)
+                    const bookings = JSON.parse(localStorage.getItem('multibrawn_bookings') || '[]');
+                    const newBooking = {
+                        id: Date.now(),
+                        propertyId: propertyId,
+                        propertyName: property.title,
+                        ...data,
+                        nights: nights,
+                        timestamp: new Date().toISOString(),
+                        status: 'pending'
+                    };
+                    
+                    bookings.push(newBooking);
+                    localStorage.setItem('multibrawn_bookings', JSON.stringify(bookings));
+                    
+                    // Send WhatsApp message
+                    const message = `בקשת הזמנה חדשה:
+🏠 נכס: ${property.title}
+👤 שם: ${data.fullName}
+📞 טלפון: ${data.phone}
+📧 אימייל: ${data.email || 'לא צוין'}
+📅 כניסה: ${data.checkIn}
+📅 יציאה: ${data.checkOut}
+👥 אורחים: ${data.guests}
+🌙 לילות: ${nights}
+💬 הערות: ${data.notes || 'אין'}`;
+                    
+                    window.open(`https://wa.me/972523983394?text=${encodeURIComponent(message)}`);
+                    
+                    // Show success and close modal
+                    alert('בקשת ההזמנה נשלחה בהצלחה! נחזור אליכם בהקדם.');
+                    closeModal();
+                    form.reset();
+                    
+                } catch (error) {
+                    alert('שגיאה בשליחת הבקשה. אנא נסו שוב או צרו קשר טלפונית.');
+                } finally {
+                    // Reset button
+                    btnText.style.display = 'inline';
+                    loading.style.display = 'none';
+                    submitBtn.disabled = false;
+                }
+            });
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('bookingModal').addEventListener('click', (e) => {
+            if (e.target.id === 'bookingModal') {
+                closeModal();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && document.getElementById('bookingModal').style.display === 'flex') {
+                closeModal();
+            }
+        });
+
+        // Performance tracking
+        window.addEventListener('load', () => {
+            console.log('Gallery page loaded successfully!');
+            
+            // Lazy load images
+            const images = document.querySelectorAll('img[loading="lazy"]');
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('fade-in');
+                            imageObserver.unobserve(entry.target);
+                        }
+                    });
+                });
+                
+                images.forEach(img => imageObserver.observe(img));
+            }
+        });
+    </script>
+
+    <style>
+        /* Additional animations */
+        @keyframes fade-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .fade-in {
+            animation: fade-in 0.6s ease-in-out;
+        }
+
+        /* Scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Image loading state */
+        .property-image img {
+            background: linear-gradient(90deg, 
+                rgba(124, 58, 237, 0.1) 0%, 
+                rgba(168, 85, 247, 0.1) 50%, 
+                rgba(124, 58, 237, 0.1) 100%);
+            background-size: 200px 100%;
+            background-repeat: no-repeat;
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% { background-position: -200px 0; }
+            100% { background-position: calc(200px + 100%) 0; }
+        }
+
+        /* Enhanced hover effects */
+        .property-item {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .property-item:hover {
+            box-shadow: 0 30px 60px rgba(124, 58, 237, 0.4);
+        }
+
+        /* Filter animation */
+        .filter-btn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .filter-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .filter-btn:hover::before {
+            left: 100%;
+        }
+
+        /* Success states */
+        .success-state {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 1rem;
+        }
+    </style>
+</body>
+</html>
