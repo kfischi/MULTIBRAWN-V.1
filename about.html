@@ -19,6 +19,9 @@
             --accent-purple: #7c3aed;
             --light-purple: #a855f7;
             --dark-purple: #5b21b6;
+            --accent-yellow: #fbbf24;
+            --light-yellow: #fde047;
+            --dark-yellow: #f59e0b;
             --text-light: #f8fafc;
             --text-muted: #cbd5e1;
             --success: #10b981;
@@ -242,6 +245,7 @@
             background: linear-gradient(90deg, 
                 transparent, 
                 var(--accent-purple), 
+                var(--accent-yellow),
                 var(--light-purple), 
                 transparent);
             border-radius: 2px;
@@ -274,7 +278,10 @@
         }
 
         .story-text .highlight {
-            color: var(--light-purple);
+            background: linear-gradient(45deg, var(--light-purple), var(--accent-yellow));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             font-weight: 700;
         }
 
@@ -889,7 +896,7 @@
                     </p>
                 </div>
                 <div class="story-image" data-aos="fade-left" data-aos-delay="400">
-                    <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/23.jpg" alt="נכסי יוקרה של Multibrawn">
+                    <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/24.jpg" alt="נכסי יוקרה של Multibrawn">
                 </div>
             </div>
 
@@ -1097,11 +1104,14 @@
             </div>
             <div class="border-t border-purple-500/20 pt-8">
                 <p class="text-gray-400 mb-4">© 2024 Multibrawn. כל הזכויות שמורות.</p>
-                <div class="text-sm text-gray-500 space-x-4">
+                <div class="text-sm text-gray-500 space-x-4 mb-4">
                     <a href="privacy.html" class="hover:text-gray-300">מדיניות פרטיות</a>
                     <span>|</span>
                     <a href="accessibility.html" class="hover:text-gray-300">נגישות</a>
                 </div>
+                <p class="text-xs text-gray-500 mt-4" style="color: #7c3aed;">
+                    האתר נבנה ע"י Multi-Web מבית Multibrawn - אתרים שבונים עסקים
+                </p>
             </div>
         </div>
     </footer>
@@ -1160,7 +1170,75 @@
             </style>
         `;
 
-        // Initialize animations
+        // Accessibility functions - Global scope
+        let fontSizeMultiplier = 1;
+        let isHighContrast = false;
+
+        function increaseFontSize() {
+            fontSizeMultiplier += 0.1;
+            document.body.style.fontSize = (fontSizeMultiplier * 100) + '%';
+        }
+
+        function decreaseFontSize() {
+            if (fontSizeMultiplier > 0.8) {
+                fontSizeMultiplier -= 0.1;
+                document.body.style.fontSize = (fontSizeMultiplier * 100) + '%';
+            }
+        }
+
+        function toggleHighContrast() {
+            isHighContrast = !isHighContrast;
+            if (isHighContrast) {
+                document.body.style.filter = 'contrast(150%) brightness(120%)';
+            } else {
+                document.body.style.filter = 'none';
+            }
+        }
+
+        function resetAccessibility() {
+            fontSizeMultiplier = 1;
+            isHighContrast = false;
+            document.body.style.fontSize = '100%';
+            document.body.style.filter = 'none';
+        }
+
+        // Chatbot functionality
+        function setupChatbot() {
+            const chatbotButton = document.getElementById('chatbotButton');
+            if (chatbotButton) {
+                chatbotButton.addEventListener('click', () => {
+                    alert('הצ'אטבוט יפתח בקרוב... פרטים נוספים בוואטסאפ!');
+                });
+            }
+        }
+
+        // Accessibility functionality
+        function setupAccessibility() {
+            const accessibilityButton = document.getElementById('accessibilityButton');
+            const accessibilityPanel = document.getElementById('accessibilityPanel');
+            const closeAccessibility = document.getElementById('closeAccessibility');
+
+            if (accessibilityButton && accessibilityPanel && closeAccessibility) {
+                accessibilityButton.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    accessibilityPanel.classList.toggle('active');
+                });
+
+                closeAccessibility.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    accessibilityPanel.classList.remove('active');
+                });
+
+                // Close panel when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!accessibilityPanel.contains(e.target) && !accessibilityButton.contains(e.target)) {
+                        accessibilityPanel.classList.remove('active');
+                    }
+                });
+            }
+        }
+
+        // Initialize all functionality
         document.addEventListener('DOMContentLoaded', () => {
             // Try to load AOS
             const aosScript = document.createElement('script');
@@ -1183,6 +1261,8 @@
 
             setupMobileMenu();
             setupScrollEffects();
+            setupChatbot();
+            setupAccessibility();
         });
 
         // Mobile Menu Setup
