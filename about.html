@@ -130,7 +130,7 @@
             display: flex;
             align-items: center;
             position: relative;
-            background: url('https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Untitled%20design.jpg');
+            background: url('https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villa1.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -143,81 +143,68 @@
             display: flex;
             align-items: center;
             min-height: 80vh;
-            justify-content: flex-end;
+            justify-content: center;
         }
 
         .hero-text {
-            padding: 3rem;
-            border-radius: 20px;
-            text-align: right;
-            max-width: 600px;
+            text-align: center;
+            max-width: 800px;
         }
 
         .hero-title {
-            font-family: var(--font-heading);
-            font-size: clamp(3rem, 8vw, 6rem);
+            font-family: 'Arial Black', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: clamp(3.5rem, 9vw, 7rem);
             font-weight: 900;
             line-height: 1.1;
-            color: white;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8), 4px 4px 16px rgba(0, 0, 0, 0.6);
+            color: #5e17eb;
+            text-shadow: 
+                -5px -5px 0 #000,
+                5px -5px 0 #000,
+                -5px 5px 0 #000,
+                5px 5px 0 #000,
+                -4px 0 0 #000,
+                4px 0 0 #000,
+                0 -4px 0 #000,
+                0 4px 0 #000,
+                0 0 30px rgba(0,0,0,0.9);
             margin-bottom: 2rem;
-            animation: titleGlow 3s ease-in-out infinite alternate;
-        }
-
-        @keyframes titleGlow {
-            from { text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8), 4px 4px 16px rgba(0, 0, 0, 0.6); }
-            to { text-shadow: 0 0 30px rgba(124, 58, 237, 0.6), 0 0 60px rgba(168, 85, 247, 0.4); }
+            text-align: center;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         .hero-subtitle {
-            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-size: clamp(1.8rem, 5vw, 3rem);
             font-weight: 700;
-            color: var(--light-purple);
+            color: white;
             margin-bottom: 1.5rem;
-            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8), 3px 3px 12px rgba(0, 0, 0, 0.6);
+            text-shadow: 
+                -3px -3px 0 #000,
+                3px -3px 0 #000,
+                -3px 3px 0 #000,
+                3px 3px 0 #000,
+                -2px 0 0 #000,
+                2px 0 0 #000,
+                0 -2px 0 #000,
+                0 2px 0 #000,
+                0 0 20px rgba(0,0,0,0.9);
         }
 
         .hero-description {
-            font-size: 1.3rem;
-            color: var(--text-light);
-            line-height: 1.8;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8), 2px 2px 8px rgba(0, 0, 0, 0.6);
-            margin-bottom: 2rem;
-        }
-
-        .hero-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .stat-item {
-            text-align: center;
-            background: rgba(124, 58, 237, 0.2);
-            padding: 2rem 1rem;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(124, 58, 237, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .stat-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(124, 58, 237, 0.4);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 900;
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
             color: white;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            font-size: 1rem;
-            color: var(--text-muted);
-            font-weight: 600;
+            line-height: 1.8;
+            text-shadow: 
+                -2px -2px 0 #000,
+                2px -2px 0 #000,
+                -2px 2px 0 #000,
+                2px 2px 0 #000,
+                -1px 0 0 #000,
+                1px 0 0 #000,
+                0 -1px 0 #000,
+                0 1px 0 #000,
+                0 0 15px rgba(0,0,0,0.9);
+            margin-bottom: 2rem;
         }
 
         /* Story Sections */
@@ -724,13 +711,12 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <div class="hero-text" data-aos="fade-right">
-                <h1 class="hero-title">Multibrawn</h1>
-                <p class="hero-subtitle">החזון שמאחורי המותג</p>
+            <div class="hero-text" data-aos="fade-up">
+                <h1 class="hero-title">MULTIBRAWN</h1>
+                <p class="hero-subtitle">מגשרת בין חלומות למציאות</p>
                 <p class="hero-description">
-                    במהלך למעלה מ-10 שנים אני בונה גשרים בין חלומות למציאות. 
-                    מחברת לקוחות איכותיים למתחמים מושלמים ומלווה עסקים 
-                    בדרכם להצלחה בעולם הדיגיטלי.
+                    מחברת בין לקוחות איכותיים ללוקיישנים מושלמים<br>
+                    ובין עסקים ללקוחות בעזרת שיווק מתקדם
                 </p>
             </div>
         </div>
@@ -741,6 +727,27 @@
         <div class="story-container">
             <h2 class="section-title" data-aos="fade-up">הסיפור מתחיל</h2>
             
+            <div class="story-content" data-aos="fade-up" data-aos-delay="200">
+                <div class="story-text">
+                    <h3>ערדית בראון - מייסדת והלב הפועם מאחורי Multibrawn</h3>
+                    <p>
+                        שמי ערדית בראון, יזמית עם מעל 10 שנות ניסיון בחיבור בין אנשים לחלומות שלהם - 
+                        בין אם מדובר על החופשה המושלמת, האירוע הבלתי נשכח, או הצלחה עסקית בעולם השיווק.
+                    </p>
+                    <p>
+                        הדרך שלי החלה מרצון עמוק לעזור לאנשים להגשים רעיונות וחלומות. אני מאמינה ש<span class="highlight">לכל אדם מגיע שירות אישי ופתרון מדויק</span> 
+                        שמתאים בדיוק לצרכים ולשאיפות שלו.
+                    </p>
+                    <p>
+                        היום אני גאה להוביל צוות מקצועי שמשרת מאות לקוחות ועובד עם עשרות נכסים איכותיים. 
+                        מה שהתחיל כחלום אישי הופך לעסק משגשג שמשנה חיים.
+                    </p>
+                </div>
+                <div class="story-image" data-aos="fade-left" data-aos-delay="400">
+                    <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Ardit.jpg" alt="ערדית בראון, מייסדת Multibrawn">
+                </div>
+            </div>
+
             <div class="story-content" data-aos="fade-up" data-aos-delay="200">
                 <div class="story-text">
                     <h3>מהקורונה לחזון חדש</h3>
@@ -758,13 +765,13 @@
                     </p>
                 </div>
                 <div class="story-image" data-aos="fade-left" data-aos-delay="400">
-                    <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Ardit.jpg" alt="ערדית בראון, מייסדת Multibrawn">
+                    <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/23.jpg" alt="נכסי יוקרה של Multibrawn">
                 </div>
             </div>
 
             <div class="story-content" data-aos="fade-up" data-aos-delay="200" style="direction: ltr;">
                 <div class="story-image" data-aos="fade-right" data-aos-delay="400">
-                    <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Multibrawn.jpg" alt="צוות Multibrawn">
+                    <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/%D7%9C%D7%95%D7%92%D7%95.jpg" alt="לוגו Multibrawn">
                 </div>
                 <div class="story-text" style="direction: rtl;">
                     <h3>הולדת המותג MULTIBRAWN</h3>
@@ -932,7 +939,7 @@
             <div class="cta-content" data-aos="zoom-in">
                 <h2 class="cta-title">מוכנים להצטרף אלינו?</h2>
                 <p class="cta-description">
-                    אם אתם מחפשים נכס מושלם לחופשה או לאירוע, או רוצים לקפוץ מדרגה בעולם הדיגיטלי - 
+                    אם אתם מחפשים מקום מושלם לחופשה או אירוע, או אם יש לכם עסק בתחום החופשות והאירועים ורוצים לקפוץ מדרגה בשיווק - 
                     בואו נכיר ונראה איך נוכל לעזור לכם להגשים את החלום.
                 </p>
                 <div class="cta-buttons">
@@ -1001,16 +1008,6 @@
                         opacity: 1;
                         transform: translateY(0);
                     }
-                }
-                
-                .hero-stats .stat-item:nth-child(1) {
-                    animation-delay: 0.2s;
-                }
-                .hero-stats .stat-item:nth-child(2) {
-                    animation-delay: 0.4s;
-                }
-                .hero-stats .stat-item:nth-child(3) {
-                    animation-delay: 0.6s;
                 }
             </style>
         `;
