@@ -70,7 +70,7 @@
             font-size: 2rem;
             font-weight: 900;
             color: transparent;
-            background: linear-gradient(45deg, #f8fafc, #7c3aed, #a855f7);
+            background: linear-gradient(45deg, #f8fafc, #7c3aed, #fbbf24);
             background-clip: text;
             -webkit-background-clip: text;
             text-decoration: none;
@@ -101,7 +101,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--accent-purple);
+            background: linear-gradient(45deg, var(--accent-purple), var(--accent-yellow));
             transition: width 0.3s ease;
         }
 
@@ -114,7 +114,7 @@
         }
 
         .cta-button {
-            background: linear-gradient(135deg, var(--accent-purple), var(--dark-purple));
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-yellow));
             color: white;
             padding: 12px 28px;
             border: none;
@@ -154,32 +154,10 @@
             max-width: 800px;
         }
 
-        .hero-title {
-            font-family: 'Arial Black', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            font-size: clamp(3.5rem, 9vw, 7rem);
-            font-weight: 900;
-            line-height: 1.1;
-            color: #5e17eb;
-            text-shadow: 
-                -5px -5px 0 #000,
-                5px -5px 0 #000,
-                -5px 5px 0 #000,
-                5px 5px 0 #000,
-                -4px 0 0 #000,
-                4px 0 0 #000,
-                0 -4px 0 #000,
-                0 4px 0 #000,
-                0 0 30px rgba(0,0,0,0.9);
-            margin-bottom: 2rem;
-            text-align: center;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
         .hero-subtitle {
             font-size: clamp(1.8rem, 5vw, 3rem);
             font-weight: 700;
-            color: white;
+            color: var(--accent-yellow);
             margin-bottom: 1.5rem;
             text-shadow: 
                 -3px -3px 0 #000,
@@ -225,7 +203,7 @@
             font-family: var(--font-heading);
             font-size: clamp(2.5rem, 6vw, 4rem);
             font-weight: 900;
-            background: linear-gradient(45deg, var(--text-light), var(--accent-purple), var(--light-purple));
+            background: linear-gradient(45deg, var(--text-light), var(--accent-purple), var(--accent-yellow));
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -328,7 +306,7 @@
             top: 0;
             bottom: 0;
             width: 4px;
-            background: linear-gradient(to bottom, var(--accent-purple), var(--light-purple));
+            background: linear-gradient(to bottom, var(--accent-purple), var(--accent-yellow));
             border-radius: 2px;
             transform: translateX(50%);
         }
@@ -355,10 +333,10 @@
             position: absolute;
             width: 20px;
             height: 20px;
-            background: var(--accent-purple);
+            background: var(--accent-yellow);
             border-radius: 50%;
             top: 0;
-            box-shadow: 0 0 20px rgba(124, 58, 237, 0.5);
+            box-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
         }
 
         .timeline-item:nth-child(even)::before {
@@ -375,19 +353,19 @@
                 rgba(26, 11, 46, 0.8) 100%);
             padding: 2rem;
             border-radius: 20px;
-            border: 1px solid rgba(124, 58, 237, 0.2);
+            border: 1px solid rgba(251, 191, 36, 0.2);
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
         }
 
         .timeline-content:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(124, 58, 237, 0.3);
-            border-color: var(--accent-purple);
+            box-shadow: 0 15px 30px rgba(251, 191, 36, 0.3);
+            border-color: var(--accent-yellow);
         }
 
         .timeline-date {
-            color: var(--light-purple);
+            color: var(--accent-yellow);
             font-weight: 700;
             font-size: 1.1rem;
             margin-bottom: 1rem;
@@ -425,7 +403,7 @@
                 rgba(26, 11, 46, 0.8) 100%);
             padding: 3rem 2rem;
             border-radius: 25px;
-            border: 1px solid rgba(124, 58, 237, 0.2);
+            border: 1px solid rgba(251, 191, 36, 0.2);
             text-align: center;
             transition: all 0.4s ease;
             position: relative;
@@ -440,8 +418,8 @@
             right: 0;
             bottom: 0;
             background: linear-gradient(135deg, 
-                rgba(124, 58, 237, 0.1) 0%, 
-                rgba(168, 85, 247, 0.05) 100%);
+                rgba(251, 191, 36, 0.1) 0%, 
+                rgba(124, 58, 237, 0.05) 100%);
             opacity: 0;
             transition: opacity 0.4s ease;
         }
@@ -452,14 +430,14 @@
 
         .value-card:hover {
             transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 25px 50px rgba(124, 58, 237, 0.3);
-            border-color: var(--accent-purple);
+            box-shadow: 0 25px 50px rgba(251, 191, 36, 0.3);
+            border-color: var(--accent-yellow);
         }
 
         .value-icon {
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, var(--accent-purple), var(--light-purple));
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-yellow));
             border-radius: 20px;
             display: flex;
             align-items: center;
@@ -500,11 +478,11 @@
             max-width: 800px;
             margin: 0 auto;
             background: linear-gradient(135deg, 
-                rgba(124, 58, 237, 0.2) 0%, 
-                rgba(168, 85, 247, 0.1) 100%);
+                rgba(251, 191, 36, 0.2) 0%, 
+                rgba(124, 58, 237, 0.1) 100%);
             padding: 4rem 3rem;
             border-radius: 30px;
-            border: 1px solid rgba(124, 58, 237, 0.3);
+            border: 1px solid rgba(251, 191, 36, 0.3);
             backdrop-filter: blur(15px);
         }
 
@@ -543,15 +521,15 @@
         }
 
         .cta-btn-primary {
-            background: linear-gradient(135deg, var(--accent-purple), var(--dark-purple));
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-yellow), var(--dark-purple));
             color: white;
             box-shadow: 0 10px 30px rgba(124, 58, 237, 0.4);
         }
 
         .cta-btn-secondary {
-            background: rgba(124, 58, 237, 0.1);
-            color: var(--light-purple);
-            border: 2px solid rgba(124, 58, 237, 0.3);
+            background: rgba(251, 191, 36, 0.1);
+            color: var(--accent-yellow);
+            border: 2px solid rgba(251, 191, 36, 0.3);
         }
 
         .cta-btn:hover {
@@ -563,27 +541,8 @@
         }
 
         .cta-btn-secondary:hover {
-            background: rgba(124, 58, 237, 0.2);
-            border-color: var(--accent-purple);
-        }
-
-        /* Mobile Menu */
-        .mobile-menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 10px;
-        }
-
-        .hamburger-line {
-            width: 30px;
-            height: 3px;
-            background: white;
-            transition: 0.3s;
-            border-radius: 2px;
+            background: rgba(251, 191, 36, 0.2);
+            border-color: var(--accent-yellow);
         }
 
         /* Floating Buttons */
@@ -632,20 +591,22 @@
             right: 30px;
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, #10b981, #065f46);
+            background: linear-gradient(135deg, var(--accent-yellow), var(--dark-yellow));
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
-            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+            box-shadow: 0 4px 15px rgba(251, 191, 36, 0.4);
             z-index: 998;
             transition: all 0.3s ease;
             cursor: pointer;
         }
 
-        .floating-whatsapp:hover, .floating-chatbot:hover, .floating-accessibility:hover {
+        .floating-whatsapp:hover, 
+        .floating-chatbot:hover, 
+        .floating-accessibility:hover {
             transform: scale(1.1);
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
         }
@@ -663,7 +624,7 @@
             transform: translateX(300px);
             opacity: 0;
             transition: all 0.3s ease;
-            border: 2px solid var(--accent-purple);
+            border: 2px solid var(--accent-yellow);
         }
 
         .accessibility-panel.active {
@@ -673,8 +634,8 @@
 
         .accessibility-header {
             padding: 15px 20px;
-            background: var(--accent-purple);
-            color: white;
+            background: var(--accent-yellow);
+            color: black;
             border-radius: 15px 15px 0 0;
             display: flex;
             justify-content: space-between;
@@ -684,12 +645,13 @@
         .accessibility-header h3 {
             margin: 0;
             font-size: 1.1rem;
+            font-weight: 700;
         }
 
         .close-accessibility {
             background: none;
             border: none;
-            color: white;
+            color: black;
             font-size: 1.5rem;
             cursor: pointer;
             width: 25px;
@@ -699,10 +661,11 @@
             justify-content: center;
             border-radius: 50%;
             transition: background 0.3s ease;
+            font-weight: bold;
         }
 
         .close-accessibility:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.1);
         }
 
         .accessibility-options {
@@ -723,13 +686,32 @@
         }
 
         .accessibility-option:hover {
-            background: var(--accent-purple);
-            color: white;
-            border-color: var(--accent-purple);
+            background: var(--accent-yellow);
+            color: black;
+            border-color: var(--accent-yellow);
         }
 
         .accessibility-option:last-child {
             margin-bottom: 0;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .hamburger-line {
+            width: 30px;
+            height: 3px;
+            background: white;
+            transition: 0.3s;
+            border-radius: 2px;
         }
 
         @keyframes bounce {
@@ -737,24 +719,8 @@
             50% { transform: translateY(-10px); }
         }
 
-        .floating-whatsapp:hover {
-            transform: scale(1.15);
-            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.6);
-        }
-
         /* Mobile Responsive */
         @media (max-width: 968px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-                gap: 2rem;
-            }
-
-            .hero-stats {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
             .story-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
@@ -823,7 +789,7 @@
     <!-- Navigation -->
     <header class="header-nav">
         <nav class="nav-content">
-            <a href="index.html" class="logo">Multibrawn</a>
+            <a href="index.html" class="logo">MULTIBRAWN</a>
             <ul class="nav-menu">
                 <li><a href="index.html">דף הבית</a></li>
                 <li><a href="about.html">אודות</a></li>
@@ -844,7 +810,7 @@
     <section class="hero">
         <div class="hero-content">
             <div class="hero-text" data-aos="fade-up">
-                <p class="hero-subtitle">מאחורי הקלעים של Multibrawn</p>
+                <p class="hero-subtitle">מאחורי הקלעים של MULTIBRAWN</p>
                 <p class="hero-description">
                     הסיפור האמיתי מאחורי המותג - איך הכל התחיל, מי האנשים<br>
                     שמאחורי הקלעים ואיך אנחנו הופכים חלומות למציאות
@@ -860,7 +826,7 @@
             
             <div class="story-content" data-aos="fade-up" data-aos-delay="200">
                 <div class="story-text">
-                    <h3>ערדית בראון - מייסדת והלב הפועם מאחורי Multibrawn</h3>
+                    <h3>ערדית בראון - מייסדת והלב הפועם מאחורי MULTIBRAWN</h3>
                     <p>
                         שמי ערדית בראון, יזמית עם מעל 10 שנות ניסיון בחיבור בין אנשים לחלומות שלהם - 
                         בין אם מדובר על החופשה המושלמת, האירוע הבלתי נשכח, או הצלחה עסקית בעולם השיווק.
@@ -1089,7 +1055,7 @@
     <footer class="py-16 text-center" style="background: var(--primary-bg); border-top: 1px solid rgba(124, 58, 237, 0.2);">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex flex-col md:flex-row justify-between items-center mb-12">
-                <a href="index.html" class="logo mb-6 md:mb-0">Multibrawn</a>
+                <a href="index.html" class="logo mb-6 md:mb-0">MULTIBRAWN</a>
                 <div class="flex gap-8 text-4xl">
                     <a href="#" class="text-gray-400 hover:text-purple-400 transition duration-300" title="פייסבוק">
                         <i class="fab fa-facebook"></i>
@@ -1109,25 +1075,23 @@
                     <span>|</span>
                     <a href="accessibility.html" class="hover:text-gray-300">נגישות</a>
                 </div>
-                <p class="text-xs text-gray-500 mt-4" style="color: #7c3aed;">
+                <p class="text-xs text-gray-500 mt-4" style="color: #fbbf24;">
                     האתר נבנה ע"י Multi-Web מבית Multibrawn - אתרים שבונים עסקים
                 </p>
             </div>
         </div>
     </footer>
 
-    <!-- WhatsApp Float -->
+    <!-- Floating Buttons -->
     <a href="https://wa.me/972523983394?text=שלום, קראתי על הסיפור שלכם ואני מעוניין לשמוע עוד" 
        class="floating-whatsapp" target="_blank" title="שלחו הודעה בוואטסאפ">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- Chatbot Float -->
     <div class="floating-chatbot" id="chatbotButton" title="פתח צ'אט">
         <i class="fas fa-comments"></i>
     </div>
 
-    <!-- Accessibility Button -->
     <div class="floating-accessibility" id="accessibilityButton" title="נגישות">
         <i class="fas fa-universal-access"></i>
     </div>
@@ -1146,31 +1110,8 @@
         </div>
     </div>
 
-    <!-- Scripts -->
     <script>
-        // Fallback CSS animations if AOS doesn't load
-        const fallbackAnimations = `
-            <style>
-                [data-aos] {
-                    opacity: 1 !important;
-                    transform: none !important;
-                    animation: fadeInUp 0.8s ease-out;
-                }
-                
-                @keyframes fadeInUp {
-                    from {
-                        opacity: 0;
-                        transform: translateY(30px);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
-                }
-            </style>
-        `;
-
-        // Accessibility functions - Global scope
+        // Global accessibility functions
         let fontSizeMultiplier = 1;
         let isHighContrast = false;
 
@@ -1202,17 +1143,40 @@
             document.body.style.filter = 'none';
         }
 
-        // Chatbot functionality
-        function setupChatbot() {
-            const chatbotButton = document.getElementById('chatbotButton');
-            if (chatbotButton) {
-                chatbotButton.addEventListener('click', () => {
-                    alert('הצ'אטבוט יפתח בקרוב... פרטים נוספים בוואטסאפ!');
+        // Setup functions
+        function setupMobileMenu() {
+            const toggle = document.getElementById('mobileToggle');
+            const menu = document.querySelector('.nav-menu');
+            
+            if (toggle && menu) {
+                toggle.addEventListener('click', () => {
+                    menu.classList.toggle('active');
                 });
             }
         }
 
-        // Accessibility functionality
+        function setupScrollEffects() {
+            window.addEventListener('scroll', () => {
+                const nav = document.querySelector('.header-nav');
+                if (nav) {
+                    if (window.scrollY > 100) {
+                        nav.style.background = 'rgba(26, 11, 46, 0.98)';
+                    } else {
+                        nav.style.background = 'rgba(26, 11, 46, 0.95)';
+                    }
+                }
+            });
+        }
+
+        function setupChatbot() {
+            const chatbotButton = document.getElementById('chatbotButton');
+            if (chatbotButton) {
+                chatbotButton.addEventListener('click', function() {
+                    alert('הצ\'אטבוט יפתח בקרוב... פרטים נוספים בוואטסאפ!');
+                });
+            }
+        }
+
         function setupAccessibility() {
             const accessibilityButton = document.getElementById('accessibilityButton');
             const accessibilityPanel = document.getElementById('accessibilityPanel');
@@ -1229,7 +1193,6 @@
                     accessibilityPanel.classList.remove('active');
                 });
 
-                // Close panel when clicking outside
                 document.addEventListener('click', (e) => {
                     if (!accessibilityPanel.contains(e.target) && !accessibilityButton.contains(e.target)) {
                         accessibilityPanel.classList.remove('active');
@@ -1238,9 +1201,31 @@
             }
         }
 
-        // Initialize all functionality
-        document.addEventListener('DOMContentLoaded', () => {
-            // Try to load AOS
+        // Fallback CSS animations
+        const fallbackAnimations = `
+            <style>
+                [data-aos] {
+                    opacity: 1 !important;
+                    transform: none !important;
+                    animation: fadeInUp 0.8s ease-out;
+                }
+                
+                @keyframes fadeInUp {
+                    from {
+                        opacity: 0;
+                        transform: translateY(30px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+            </style>
+        `;
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load AOS animations
             const aosScript = document.createElement('script');
             aosScript.src = 'https://unpkg.com/aos@2.3.1/dist/aos.js';
             aosScript.onload = function() {
@@ -1250,48 +1235,23 @@
                         once: true,
                         offset: 50
                     });
-                    console.log('AOS animations loaded successfully');
                 }
             };
             aosScript.onerror = function() {
-                console.warn('AOS library failed to load, using fallback animations');
                 document.head.insertAdjacentHTML('beforeend', fallbackAnimations);
             };
             document.head.appendChild(aosScript);
 
+            // Setup all functionality
             setupMobileMenu();
             setupScrollEffects();
             setupChatbot();
             setupAccessibility();
         });
 
-        // Mobile Menu Setup
-        function setupMobileMenu() {
-            const toggle = document.getElementById('mobileToggle');
-            const menu = document.querySelector('.nav-menu');
-            
-            if (toggle && menu) {
-                toggle.addEventListener('click', () => {
-                    menu.classList.toggle('active');
-                });
-            }
-        }
-
-        // Scroll Effects
-        function setupScrollEffects() {
-            window.addEventListener('scroll', () => {
-                const nav = document.querySelector('.header-nav');
-                if (window.scrollY > 100) {
-                    nav.style.background = 'rgba(26, 11, 46, 0.98)';
-                } else {
-                    nav.style.background = 'rgba(26, 11, 46, 0.95)';
-                }
-            });
-        }
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
@@ -1301,11 +1261,6 @@
                     });
                 }
             });
-        });
-
-        // Performance tracking
-        window.addEventListener('load', () => {
-            console.log('About page loaded successfully!');
         });
     </script>
 </body>
