@@ -5,152 +5,150 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MULTIBRAWN - נופש, אירועים, לוקיישנים ומה שביניהם</title>
   <meta name="description" content="MULTIBRAWN מציעה פתרון 360°: מחברים בין לקוחות איכותיים למתחמים נבחרים, ומציעים פתרונות שיווק דיגיטלי מתקדמים לבעלי נכסים." />
-  <meta name="keywords" content="וילות, נופש, אירועים, שיווק דיגיטלי, צימרים, מלונות, לוקיישנים, גלריה" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Secular+One&family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <style>
     :root{
-      --primary-bg:#1a0b2e; --secondary-bg:#16213e;
-      --accent-purple:#7c3aed; --light-purple:#a855f7; --dark-purple:#5b21b6;
-      --accent-yellow:#fbbf24; --light-yellow:#fde047; --dark-yellow:#f59e0b;
-      --text-light:#f8fafc; --text-muted:#cbd5e1;
-      --font-heading:'Secular One',sans-serif; --font-body:'Heebo',sans-serif;
+      --primary-bg:#1a0b2e; 
+      --secondary-bg:#16213e;
+      --accent-purple:#7c3aed; 
+      --light-purple:#a855f7; 
+      --dark-purple:#5b21b6;
+      --accent-yellow:#fbbf24; 
+      --dark-yellow:#f59e0b;
+      --text-light:#f8fafc; 
+      --text-muted:#cbd5e1;
+      --font-heading:'Playfair Display',serif; 
+      --font-body:'Heebo',sans-serif;
     }
+    
     *{margin:0;padding:0;box-sizing:border-box}
     body{font-family:var(--font-body);background:var(--primary-bg);color:var(--text-light);overflow-x:hidden;line-height:1.6}
+    
     /* Scrollbar */
-    ::-webkit-scrollbar{width:8px} ::-webkit-scrollbar-track{background:var(--primary-bg)}
-    ::-webkit-scrollbar-thumb{background:linear-gradient(var(--accent-purple), var(--accent-yellow));border-radius:10px}
+    ::-webkit-scrollbar{width:8px}
+    ::-webkit-scrollbar-track{background:var(--primary-bg)}
+    ::-webkit-scrollbar-thumb{background:var(--accent-purple);border-radius:10px}
     ::-webkit-scrollbar-thumb:hover{background:var(--light-purple)}
-    /* Header / Nav */
+    
+    /* Header */
     .header-nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(26,11,46,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(124,58,237,.2);transition:all .3s}
     .nav-content{display:flex;justify-content:space-between;align-items:center;max-width:1400px;margin:0 auto;padding:20px 40px}
-    .logo{font-family:var(--font-heading);font-size:2rem;font-weight:900;color:transparent;background:linear-gradient(45deg,#f8fafc,#7c3aed,#fbbf24);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;transition:.3s}
+    
+    /* Logo */
+    .logo-container{display:flex;align-items:center;gap:15px}
+    .logo-img{width:60px;height:60px;border-radius:50%;object-fit:cover}
+    .logo{font-family:var(--font-heading);font-size:2rem;font-weight:900;color:transparent;background:linear-gradient(45deg,#f8fafc,#7c3aed);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;transition:.3s}
     .logo:hover{transform:scale(1.05)}
+    
+    /* Navigation */
     .nav-menu{display:flex;list-style:none;gap:28px;align-items:center}
     .nav-menu a{color:var(--text-muted);text-decoration:none;font-weight:600;font-size:1rem;transition:.3s;position:relative;padding:8px 0}
-    .nav-menu a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:linear-gradient(45deg, var(--accent-purple), var(--accent-yellow));transition:width .3s}
-    .nav-menu a:hover{color:var(--text-light)} .nav-menu a:hover::after{width:100%}
-    .cta-button{background:linear-gradient(135deg,var(--accent-purple),var(--accent-yellow),var(--dark-purple));color:#fff;padding:10px 18px;border:none;border-radius:999px;font-weight:800;font-size:1rem;cursor:pointer;transition:.3s;text-decoration:none;box-shadow:0 4px 20px rgba(124,58,237,.3)}
+    .nav-menu a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--accent-purple);transition:width .3s}
+    .nav-menu a:hover{color:var(--text-light)}
+    .nav-menu a:hover::after{width:100%}
+    .cta-button{background:linear-gradient(135deg,var(--accent-purple),var(--dark-purple));color:#fff;padding:10px 18px;border:none;border-radius:999px;font-weight:800;font-size:1rem;cursor:pointer;transition:.3s;text-decoration:none;box-shadow:0 4px 20px rgba(124,58,237,.3)}
     .cta-button:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(124,58,237,.5)}
-    /* Hero – image background (yoga.png) */
+    
+    /* Hero */
     .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;
       background:linear-gradient(135deg, rgba(26,11,46,.80) 0%, rgba(124,58,237,.40) 55%, rgba(168,85,247,.28) 100%),
       url('https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/yoga.png');
       background-size:cover;background-position:center}
     .hero-content{position:relative;z-index:10;text-align:center;max-width:90%;display:flex;flex-direction:column;align-items:center;gap:1.5rem}
-    .brand-title{font-family:'Arial Black', 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:clamp(3.4rem,12vw,8rem);font-weight:900;letter-spacing:.5px;line-height:1.05;color:#fff;text-shadow:
-      -5px -5px 0 #000,
-      5px -5px 0 #000,
-      -5px 5px 0 #000,
-      5px 5px 0 #000,
-      -4px 0 0 #000,
-      4px 0 0 #000,
-      0 -4px 0 #000,
-      0 4px 0 #000,
-      0 0 30px rgba(0,0,0,0.9);animation:titleFloat 6s ease-in-out infinite;text-transform:uppercase}
-    .tagline{font-family:Heebo,system-ui,sans-serif;font-size:clamp(1.2rem,3.8vw,2.2rem);font-weight:700;color:var(--accent-yellow);opacity:.96;text-shadow:
-      -2px -2px 0 #000,
-      2px -2px 0 #000,
-      -2px 2px 0 #000,
-      2px 2px 0 #000,
-      0 0 15px rgba(0,0,0,0.8)}
-    @keyframes titleFloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-10px) scale(1.02)}}
-    .hero-sub{font-size:clamp(1.1rem,3.2vw,1.8rem);font-weight:600;color:#fff;letter-spacing:.5px;opacity:.95;text-shadow:
-      -2px -2px 0 #000,
-      2px -2px 0 #000,
-      -2px 2px 0 #000,
-      2px 2px 0 #000,
-      0 0 15px rgba(0,0,0,0.8)}
+    .hero-title{font-family:'Arial Black',sans-serif;font-size:clamp(3.5rem,8vw,7rem);font-weight:900;color:var(--accent-yellow);text-shadow:3px 3px 0 #000,-3px -3px 0 #000,3px -3px 0 #000,-3px 3px 0 #000,0 0 15px rgba(255,215,0,0.5);margin-bottom:20px;letter-spacing:2px;text-transform:uppercase}
+    .hero-sub{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;color:var(--accent-yellow);text-shadow:2px 2px 0 #000,-2px -2px 0 #000,2px -2px 0 #000,-2px 2px 0 #000;margin-bottom:15px}
+    .hero-description{font-size:clamp(1.1rem,2.5vw,1.6rem);color:#fff;text-shadow:2px 2px 0 #000,-2px -2px 0 #000,2px -2px 0 #000,-2px 2px 0 #000;margin-bottom:40px;line-height:1.6;font-weight:500}
     .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
-    .hero-cta{display:inline-block;padding:16px 28px;background:linear-gradient(135deg,var(--accent-purple),var(--accent-yellow),var(--dark-purple));color:#fff;text-decoration:none;border-radius:999px;font-weight:800;font-size:1.05rem;transition:.35s;box-shadow:0 15px 40px rgba(124,58,237,.4);position:relative;overflow:hidden}
-    .hero-cta::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);transition:left .6s}
-    .hero-cta:hover::before{left:100%} .hero-cta:hover{transform:translateY(-3px) scale(1.03)}
-    /* Cards / Sections */
-    .property-card{background:linear-gradient(135deg,rgba(22,33,62,.85),rgba(26,11,46,.85));border-radius:20px;padding:2rem;transition:.4s;border:1px solid rgba(251,191,36,.25);position:relative;overflow:hidden;backdrop-filter:blur(10px)}
-    .property-card:hover{transform:translateY(-8px);box-shadow:0 30px 60px rgba(251,191,36,.3);border-color:var(--accent-yellow)}
+    .hero-cta{display:inline-block;padding:16px 28px;background:linear-gradient(135deg,var(--accent-purple),var(--dark-purple));color:#fff;text-decoration:none;border-radius:999px;font-weight:800;font-size:1.05rem;transition:.35s;box-shadow:0 15px 40px rgba(124,58,237,.4)}
+    .hero-cta:hover{transform:translateY(-3px) scale(1.03)}
+    
+    /* Sections */
     .section-padding{padding:8rem 2rem}
-    .section-heading{font-family:var(--font-heading);font-size:clamp(2.2rem,6vw,3.4rem);font-weight:900;background:linear-gradient(45deg,#fff,var(--accent-purple),var(--accent-yellow));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-align:center;margin-bottom:2.6rem;position:relative}
-    .section-heading::after{content:'';position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);width:120px;height:4px;background:linear-gradient(90deg,transparent,var(--accent-purple),var(--accent-yellow),transparent);border-radius:2px}
+    .section-heading{font-family:var(--font-heading);font-size:clamp(2.2rem,6vw,3.4rem);font-weight:900;background:linear-gradient(45deg,#fff,var(--accent-purple),var(--light-purple));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-align:center;margin-bottom:2.6rem;position:relative}
+    .section-heading::after{content:'';position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);width:120px;height:4px;background:linear-gradient(90deg,transparent,var(--accent-purple),var(--light-purple),transparent);border-radius:2px}
     
-    /* Floating Buttons */
-    .floating-whatsapp{position:fixed;bottom:30px;right:30px;width:70px;height:70px;background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 10px 30px rgba(37,211,102,.4);z-index:1000;transition:.3s;text-decoration:none;animation:bounce 3s ease-in-out infinite}
+    /* Cards */
+    .property-card{background:linear-gradient(135deg,rgba(22,33,62,.85),rgba(26,11,46,.85));border-radius:20px;padding:2rem;transition:.4s;border:1px solid rgba(124,58,237,.3);position:relative;overflow:hidden;backdrop-filter:blur(10px)}
+    .property-card:hover{transform:translateY(-8px);box-shadow:0 30px 60px rgba(124,58,237,.3);border-color:var(--accent-purple)}
+    .property-card .fas{color:var(--accent-purple)}
     
-    .floating-chatbot{position:fixed;bottom:120px;right:30px;width:60px;height:60px;background:linear-gradient(135deg,var(--accent-purple),var(--dark-purple));color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.8rem;box-shadow:0 6px 20px rgba(124,58,237,.4);z-index:999;transition:.3s;cursor:pointer}
-    
-    .floating-accessibility{position:fixed;bottom:200px;right:30px;width:50px;height:50px;background:linear-gradient(135deg,var(--accent-yellow),var(--dark-yellow));color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 4px 15px rgba(251,191,36,.4);z-index:998;transition:.3s;cursor:pointer}
-    
-    .floating-whatsapp:hover, .floating-chatbot:hover, .floating-accessibility:hover{transform:scale(1.1);box-shadow:0 15px 40px rgba(0,0,0,.3)}
-    
-    @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+    /* Floating Buttons - Fixed and Clean */
+    .floating-buttons{position:fixed;bottom:30px;right:30px;display:flex;flex-direction:column;gap:15px;z-index:1000}
+    .floating-btn{width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;text-decoration:none;font-size:1.5rem;box-shadow:0 4px 12px rgba(0,0,0,.3);transition:all .3s ease;border:none;cursor:pointer}
+    .floating-btn:hover{transform:scale(1.1)}
+    .whatsapp-btn{background:#25d366}
+    .chatbot-btn{background:var(--accent-purple)}
+    .accessibility-btn{background:var(--accent-yellow);color:#1a0b2e}
     
     /* Accessibility Panel */
-    .accessibility-panel{position:fixed;bottom:260px;right:30px;width:250px;background:#fff;border-radius:15px;box-shadow:0 10px 40px rgba(0,0,0,.2);z-index:997;transform:translateX(300px);opacity:0;transition:.3s;border:2px solid var(--accent-yellow)}
-    .accessibility-panel.active{transform:translateX(0);opacity:1}
-    .accessibility-header{padding:15px 20px;background:var(--accent-yellow);color:#000;border-radius:15px 15px 0 0;display:flex;justify-content:space-between;align-items:center}
-    .accessibility-header h3{margin:0;font-size:1.1rem;font-weight:700}
-    .close-accessibility{background:none;border:none;color:#000;font-size:1.5rem;cursor:pointer;width:25px;height:25px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:.3s;font-weight:bold}
-    .close-accessibility:hover{background:rgba(0,0,0,.1)}
-    .accessibility-options{padding:15px}
-    .accessibility-option{width:100%;padding:10px 15px;margin-bottom:8px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;cursor:pointer;transition:.3s;color:#1a202c;font-weight:500}
-    .accessibility-option:hover{background:var(--accent-yellow);color:#000;border-color:var(--accent-yellow)}
-    .accessibility-option:last-child{margin-bottom:0}
+    .accessibility-panel{position:fixed;top:50%;right:-300px;transform:translateY(-50%);width:300px;background:#fff;border:2px solid var(--accent-yellow);border-radius:15px;padding:20px;box-shadow:0 4px 15px rgba(0,0,0,.2);transition:right .3s ease;z-index:1001}
+    .accessibility-panel.open{right:20px}
+    .accessibility-panel h3{color:var(--accent-purple);margin-bottom:15px;text-align:center}
+    .accessibility-controls{display:flex;flex-direction:column;gap:10px}
+    .accessibility-btn-control{background:var(--accent-yellow);color:#1a0b2e;border:none;padding:10px;border-radius:8px;cursor:pointer;font-weight:600;transition:all .3s ease}
+    .accessibility-btn-control:hover{background:var(--dark-yellow)}
+    .close-accessibility{background:var(--accent-purple);color:#fff;margin-top:15px}
     
     /* Mobile */
     .mobile-menu-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:10px}
     .hamburger-line{width:30px;height:3px;background:#fff;transition:.3s;border-radius:2px}
+    
     @media (max-width:768px){
       .mobile-menu-toggle{display:flex}
       .nav-menu{position:fixed;right:-100%;top:80px;flex-direction:column;background:rgba(26,11,46,.98);width:100%;padding:20px;transition:.3s;border-top:1px solid rgba(124,58,237,.3)}
       .nav-menu.active{right:0}
       .nav-menu li{padding:14px 0;border-bottom:1px solid rgba(124,58,237,.2);width:100%;text-align:center}
       .section-padding{padding:4rem 1rem}
+      .floating-buttons{right:20px;bottom:20px}
+      .floating-btn{width:50px;height:50px;font-size:1.3rem}
     }
+    
+    /* Font Size Classes for Accessibility */
+    .font-large{font-size:120% !important}
+    .font-extra-large{font-size:140% !important}
+    .high-contrast{filter:contrast(200%) brightness(1.2)}
   </style>
 </head>
 <body>
   <!-- Navigation -->
-  <header class="header-nav" role="banner">
+  <header class="header-nav">
     <nav class="nav-content">
-      <div class="flex items-center gap-3">
-        <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/%D7%9C%D7%95%D7%92%D7%952.png" 
-             alt="לוגו MULTIBRAWN" 
-             style="width: 60px; height: 60px; object-fit: contain;">
-        <a href="index.html" class="logo" aria-label="MULTIBRAWN">MULTIBRAWN</a>
+      <div class="logo-container">
+        <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="לוגו MULTIBRAWN" class="logo-img">
+        <a href="index.html" class="logo">MULTIBRAWN</a>
       </div>
-      <ul class="nav-menu" id="primaryNav" role="menubar">
-        <li role="none"><a role="menuitem" href="index.html" aria-current="page">דף הבית</a></li>
-        <li role="none"><a role="menuitem" href="about.html">אודות</a></li>
-        <li role="none"><a role="menuitem" href="gallery.html">גלריה</a></li>
-        <li role="none"><a role="menuitem" href="marketing.html">שיווק</a></li>
-        <li role="none"><a role="menuitem" href="faq.html">שאלות ותשובות</a></li>
-        <li role="none"><a role="menuitem" class="cta-button" href="contact.html">צור קשר</a></li>
+      <ul class="nav-menu" id="primaryNav">
+        <li><a href="index.html">דף הבית</a></li>
+        <li><a href="about.html">אודות</a></li>
+        <li><a href="gallery.html">גלריה</a></li>
+        <li><a href="marketing.html">שיווק</a></li>
+        <li><a href="faq.html">שאלות ותשובות</a></li>
+        <li><a class="cta-button" href="contact.html">צור קשר</a></li>
       </ul>
-      <button class="mobile-menu-toggle" id="mobileToggle" aria-label="פתח תפריט" aria-controls="primaryNav" aria-expanded="false">
-        <span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span>
+      <button class="mobile-menu-toggle" id="mobileToggle">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
       </button>
     </nav>
   </header>
 
   <!-- Hero -->
-  <section class="hero" id="hero">
+  <section class="hero">
     <div class="hero-content" data-aos="fade-up" data-aos-duration="1200">
-      <h1 class="brand-title" data-aos="fade-up">MULTIBRAWN</h1>
-      <p class="tagline" data-aos="fade-up" data-aos-delay="100">נופש, אירועים, לוקיישנים ומה שביניהם</p>
-      <p class="hero-sub" data-aos="fade-up" data-aos-delay="200">מחברים חלומות למציאות – לוקיישנים נבחרים + מעטפת שיווק 360°</p>
-    </div>
-  </section>
-
-  <!-- Hero -->
-  <section class="hero" id="hero">
-    <div class="hero-content" data-aos="fade-up" data-aos-duration="1200">
-      <h1 class="brand-title" data-aos="fade-up">MULTIBRAWN</h1>
-      <p class="tagline" data-aos="fade-up" data-aos-delay="100">נופש, אירועים, לוקיישנים ומה שביניהם</p>
-      <p class="hero-sub" data-aos="fade-up" data-aos-delay="200">מחברים חלומות למציאות – לוקיישנים נבחרים + מעטפת שיווק 360°</p>
+      <h1 class="hero-title">MULTIBRAWN</h1>
+      <h2 class="hero-sub" data-aos="fade-up" data-aos-delay="200">נופש, אירועים, לוקיישנים ומה שביניהם</h2>
+      <p class="hero-description" data-aos="fade-up" data-aos-delay="300">מחברים חלומות למציאות – לוקיישנים נבחרים + מעטפת שיווק 360°</p>
+      <div class="hero-ctas" data-aos="zoom-in" data-aos-delay="450">
+        <a href="gallery.html" class="hero-cta">גלו את הגלריה</a>
+        <a href="marketing.html" class="hero-cta">פתרונות שיווק חכמים</a>
+        <a href="contact.html" class="hero-cta">קבלו הצעה</a>
+      </div>
     </div>
   </section>
 
@@ -160,84 +158,30 @@
       <div class="max-w-7xl mx-auto px-4">
         <h2 class="section-heading" data-aos="fade-up">מחברים בין לקוחות איכותיים למתחמים נבחרים</h2>
         <p class="text-center text-xl text-gray-300 mb-14 max-w-3xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="150">
-          מלונות בוטיק, וילות יוקרה, צימרים רומנטיים ודירות נופש – לכל מה שאתם צריכים לחופשה או אירוع.
+          מלונות בוטיק, וילות יוקרה, צימרים רומנטיים ודירות נופש – בדיוק למה שאתם צריכים לחופשה או אירוע.
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div class="property-card p-8 text-center" data-aos="fade-up" data-aos-delay="50">
-            <div class="mb-6"><i class="fas fa-hotel text-4xl" style="color:var(--accent-yellow)"></i></div>
+            <div class="mb-6"><i class="fas fa-hotel text-4xl"></i></div>
             <h3 class="text-2xl font-bold text-white mb-3">מלונות בוטיק</h3>
             <p class="text-gray-300 leading-relaxed">אינטימיות, שירות עילית ועיצוב מוקפד.</p>
           </div>
           <div class="property-card p-8 text-center" data-aos="fade-up" data-aos-delay="150">
-            <div class="mb-6"><i class="fas fa-home text-4xl" style="color:var(--accent-purple)"></i></div>
+            <div class="mb-6"><i class="fas fa-home text-4xl"></i></div>
             <h3 class="text-2xl font-bold text-white mb-3">וילות יוקרה</h3>
             <p class="text-gray-300 leading-relaxed">מתאים לאירועים ולמשפחות – עם פרטיות מלאה.</p>
           </div>
           <div class="property-card p-8 text-center" data-aos="fade-up" data-aos-delay="250">
-            <div class="mb-6"><i class="fas fa-tree text-4xl" style="color:var(--accent-yellow)"></i></div>
+            <div class="mb-6"><i class="fas fa-tree text-4xl"></i></div>
             <h3 class="text-2xl font-bold text-white mb-3">צימרים רומנטיים</h3>
             <p class="text-gray-300 leading-relaxed">בריחה לטבע עם אווירה קסומה.</p>
           </div>
           <div class="property-card p-8 text-center" data-aos="fade-up" data-aos-delay="350">
-            <div class="mb-6"><i class="fas fa-building text-4xl" style="color:var(--accent-purple)"></i></div>
+            <div class="mb-6"><i class="fas fa-building text-4xl"></i></div>
             <h3 class="text-2xl font-bold text-white mb-3">דירות נופש</h3>
             <p class="text-gray-300 leading-relaxed">חוויית עיר עם כל הנוחות בבית.</p>
           </div>
         </div>
-      </div>
-    </section>
-    
-    <!-- Info: What you'll find -->
-    <section class="section-padding" style="background:var(--primary-bg)">
-      <div class="max-w-7xl mx-auto px-4">
-        <h2 class="section-heading" data-aos="fade-up">מה תמצאו אצלנו</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-6">
-          <article class="property-card p-7" data-aos="fade-up" data-aos-delay="50">
-            <h3 class="text-xl font-bold mb-2">לוקיישנים מאושרים בלבד</h3>
-            <p class="text-gray-300">כל נכס עובר בדיקה: ניקיון, שירות, מתקנים ותמונות אמיתיות.</p>
-          </article>
-          <article class="property-card p-7" data-aos="fade-up" data-aos-delay="100">
-            <h3 class="text-xl font-bold mb-2">התאמה לצורך שלכם</h3>
-            <p class="text-gray-300">משפחות, זוגות, קבוצות או אירועים – נמצא את המתחם המדויק.</p>
-          </article>
-          <article class="property-card p-7" data-aos="fade-up" data-aos-delay="150">
-            <h3 class="text-xl font-bold mb-2">שקיפות מלאה</h3>
-            <p class="text-gray-300">מחירים, תנאי ביטול וזמינות – לפני שמזמינים.</p>
-          </article>
-          <article class="property-card p-7" data-aos="fade-up" data-aos-delay="200">
-            <h3 class="text-xl font-bold mb-2">ליווי אישי</h3>
-            <p class="text-gray-300">נציג/ה שמכיר/ה את הנכסים ומלווה עד סגירה.</p>
-          </article>
-          <article class="property-card p-7" data-aos="fade-up" data-aos-delay="250">
-            <h3 class="text-xl font-bold mb-2">אפשרויות שדרוג</h3>
-            <p class="text-gray-300">קייטרינג, צלם/ת, DJ, עיצוב, אטרקציות – במקום אחד.</p>
-          </article>
-          <article class="property-card p-7" data-aos="fade-up" data-aos-delay="300">
-            <h3 class="text-xl font-bold mb-2">זמינות מהירה</h3>
-            <p class="text-gray-300">מענה בוואטסאפ ושיחות – כדי שלא תפספסו תאריכים.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Info: How it works -->
-    <section class="section-padding" style="background:linear-gradient(180deg,var(--primary-bg) 0%, var(--secondary-bg) 100%);">
-      <div class="max-w-5xl mx-auto px-4">
-        <h2 class="section-heading" data-aos="fade-up">איך זה עובד</h2>
-        <ol class="grid gap-6 md:grid-cols-3 mt-6">
-          <li class="property-card p-7" data-aos="fade-up" data-aos-delay="60">
-            <h3 class="text-xl font-bold mb-2">1. מספרים לנו מה צריך</h3>
-            <p class="text-gray-300">תאריכים, מיקום מועדף, כמות אורחים וסוג חוויה.</p>
-          </li>
-          <li class="property-card p-7" data-aos="fade-up" data-aos-delay="140">
-            <h3 class="text-xl font-bold mb-2">2. מקבלים התאמות מדויקות</h3>
-            <p class="text-gray-300">נשלח לכם 2–4 מתחמים רלוונטיים עם מידע מלא.</p>
-          </li>
-          <li class="property-card p-7" data-aos="fade-up" data-aos-delay="220">
-            <h3 class="text-xl font-bold mb-2">3. סוגרים בנוחות</h3>
-            <p class="text-gray-300">שומרים תאריך וסוגרים פרטים קטנים – ונשאר רק לארוז.</p>
-          </li>
-        </ol>
       </div>
     </section>
 
@@ -247,129 +191,50 @@
         <h2 class="section-heading" data-aos="fade-up">פתרונות ייחודיים לכל סוג אירוע</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-12">
           <div class="property-card p-8 text-center" data-aos="fade-up" data-aos-delay="80">
-            <div class="mb-6"><i class="fas fa-star-of-david text-4xl" style="color:var(--accent-yellow)"></i></div>
+            <div class="mb-6"><i class="fas fa-star-of-david text-4xl"></i></div>
             <h3 class="text-2xl font-bold text-white mb-3">שבתות חתן ואירועים דתיים</h3>
             <p class="text-gray-300 leading-relaxed">מתחמים מותאמים למשפחה מורחבת ודרישות כשרות.</p>
           </div>
           <div class="property-card p-8 text-center" data-aos="fade-up" data-aos-delay="180">
-            <div class="mb-6"><i class="fas fa-users text-4xl" style="color:var(--accent-purple)"></i></div>
+            <div class="mb-6"><i class="fas fa-users text-4xl"></i></div>
             <h3 class="text-2xl font-bold text-white mb-3">כנסים וימי גיבוש</h3>
             <p class="text-gray-300 leading-relaxed">פתרונות מושלמים לקבוצות עסקיות עם חדרי ישיבות.</p>
           </div>
           <div class="property-card p-8 text-center" data-aos="fade-up" data-aos-delay="280">
-            <div class="mb-6"><i class="fas fa-birthday-cake text-4xl" style="color:var(--accent-yellow)"></i></div>
+            <div class="mb-6"><i class="fas fa-birthday-cake text-4xl"></i></div>
             <h3 class="text-2xl font-bold text-white mb-3">מסיבות וחגיגות</h3>
-            <p class="text-gray-300 leading-relaxed">וילות עם בריכה, סאונד ופינות ישיבה לאירוע מושלם.</p>
+            <p class="text-gray-300 leading-relaxed">וילות עם בריכה, סאונד ופינות ישיבה לאירוع מושלם.</p>
           </div>
-        </div>
-      </div>
-    </section>
-  </main>
-    <!-- Properties Section -->
-    <section id="properties" class="section-padding" style="background:linear-gradient(180deg,var(--primary-bg) 0%, var(--secondary-bg) 100%);">
-      <div class="max-w-7xl mx-auto px-4">
-        <h2 class="section-heading" data-aos="fade-up">מחברים בין לקוחות איכותיים למתחמים נבחרים</h2>
-        <p class="text-center text-xl text-gray-300 mb-14 max-w-3xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="150">
-          מלונות בוטיק, וילות יוקרה, צימרים רומנטיים ודירות נופש – לכל מה שאתם צריכים לחופשה או אירוע.
-        </p>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div class="property-card p-8 text-center" data-aos="fade-up" data-aos-delay="50">
-            <div class="mb-6"><i class="fas fa-hotel text-4xl" style="color:var(--accent-yellow)"></i></div>
-            <h3 class="text-2xl font-bold text-white mb-3">מלונות בוטיק</h3>
-            <p class="text-gray-300 leading-relaxed">אינטימיות, שירות עילית ועיצוב מוקפד.</p>
-          </div>
-          <div class="property-card p-8 text-center" data-aos="fade-up" data-aos-delay="150">
-            <div class="mb-6"><i class="fas fa-home text-4xl" style="color:var(--accent-purple)"></i></div>
-            <h3 class="text-2xl font-bold text-white mb-3">וילות יוקרה</h3>
-            <p class="text-gray-300 leading-relaxed">מתאים לאירועים ולמשפחות – עם פרטיות מלאה.</p>
-          </div>
-          <div class="property-card p-8 text-center" data-aos="fade-up" data-aos-delay="250">
-            <div class="mb-6"><i class="fas fa-tree text-4xl" style="color:var(--accent-yellow)"></i></div>
-            <h3 class="text-2xl font-bold text-white mb-3">צימרים רומנטיים</h3>
-            <p class="text-gray-300 leading-relaxed">בריחה לטבע עם אווירה קסומה.</p>
-          </div>
-          <div class="property-card p-8 text-center" data-aos="fade-up" data-aos-delay="350">
-            <div class="mb-6"><i class="fas fa-building text-4xl" style="color:var(--accent-purple)"></i></div>
-            <h3 class="text-2xl font-bold text-white mb-3">דירות נופש</h3>
-            <p class="text-gray-300 leading-relaxed">חוויית עיר עם כל הנוחות בבית.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-    <!-- Info: What you'll find -->
-    <section class="section-padding" style="background:var(--primary-bg)">
-      <div class="max-w-7xl mx-auto px-4">
-        <h2 class="section-heading" data-aos="fade-up">מה תמצאו אצלנו</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-6">
-          <article class="property-card p-7" data-aos="fade-up" data-aos-delay="50">
-            <h3 class="text-xl font-bold mb-2">לוקיישנים מאושרים בלבד</h3>
-            <p class="text-gray-300">כל נכס עובר בדיקה: ניקיון, שירות, מתקנים ותמונות אמיתיות.</p>
-          </article>
-          <article class="property-card p-7" data-aos="fade-up" data-aos-delay="100">
-            <h3 class="text-xl font-bold mb-2">התאמה לצורך שלכם</h3>
-            <p class="text-gray-300">משפחות, זוגות, קבוצות או אירועים – נמצא את המתחם המדויק.</p>
-          </article>
-          <article class="property-card p-7" data-aos="fade-up" data-aos-delay="150">
-            <h3 class="text-xl font-bold mb-2">שקיפות מלאה</h3>
-            <p class="text-gray-300">מחירים, תנאי ביטול וזמינות – לפני שמזמינים.</p>
-          </article>
-          <article class="property-card p-7" data-aos="fade-up" data-aos-delay="200">
-            <h3 class="text-xl font-bold mb-2">ליווי אישי</h3>
-            <p class="text-gray-300">נציג/ה שמכיר/ה את הנכסים ומלווה עד סגירה.</p>
-          </article>
-          <article class="property-card p-7" data-aos="fade-up" data-aos-delay="250">
-            <h3 class="text-xl font-bold mb-2">אפשרויות שדרוג</h3>
-            <p class="text-gray-300">קייטרינג, צלם/ת, DJ, עיצוב, אטרקציות – במקום אחד.</p>
-          </article>
-          <article class="property-card p-7" data-aos="fade-up" data-aos-delay="300">
-            <h3 class="text-xl font-bold mb-2">זמינות מהירה</h3>
-            <p class="text-gray-300">מענה בוואטסאפ ושיחות – כדי שלא תפספסו תאריכים.</p>
-          </article>
         </div>
       </div>
     </section>
 
-    <!-- Info: How it works -->
+    <!-- Digital Marketing Section -->
     <section class="section-padding" style="background:linear-gradient(180deg,var(--primary-bg) 0%, var(--secondary-bg) 100%);">
-      <div class="max-w-5xl mx-auto px-4">
-        <h2 class="section-heading" data-aos="fade-up">איך זה עובד</h2>
-        <ol class="grid gap-6 md:grid-cols-3 mt-6">
-          <li class="property-card p-7" data-aos="fade-up" data-aos-delay="60">
-            <h3 class="text-xl font-bold mb-2">1. מספרים לנו מה צריך</h3>
-            <p class="text-gray-300">תאריכים, מיקום מועדף, כמות אורחים וסוג חוויה.</p>
-          </li>
-          <li class="property-card p-7" data-aos="fade-up" data-aos-delay="140">
-            <h3 class="text-xl font-bold mb-2">2. מקבלים התאמות מדויקות</h3>
-            <p class="text-gray-300">נשלח לכם 2–4 מתחמים רלוונטיים עם מידע מלא.</p>
-          </li>
-          <li class="property-card p-7" data-aos="fade-up" data-aos-delay="220">
-            <h3 class="text-xl font-bold mb-2">3. סוגרים בנוחות</h3>
-            <p class="text-gray-300">שומרים תאריך וסוגרים פרטים קטנים – ונשאר רק לארוז.</p>
-          </li>
-        </ol>
+      <div class="max-w-7xl mx-auto px-4 text-center">
+        <h2 class="section-heading" data-aos="fade-up">שירותי שיווק דיגיטלי מתקדמים</h2>
+        <p class="text-center text-xl text-gray-300 mb-10 max-w-3xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="120">
+          לבעלי נכסים: אסטרטגיה, יצירת תוכן, קמפיינים, SEO ואוטומציות – הכול מחובר ל-CRM.
+        </p>
+        <a href="marketing.html" class="cta-button" data-aos="zoom-in" data-aos-delay="250">לפרטי שירותי השיווק</a>
       </div>
     </section>
 
-    <!-- Events Section -->
-    <section id="events" class="section-padding" style="background:var(--primary-bg)">
+    <!-- About Section -->
+    <section id="about" class="section-padding" style="background:var(--primary-bg)">
       <div class="max-w-7xl mx-auto px-4">
-        <h2 class="section-heading" data-aos="fade-up">פתרונות ייחודיים לכל סוג אירוע</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-12">
-          <div class="property-card p-8 text-center" data-aos="fade-up" data-aos-delay="80">
-            <div class="mb-6"><i class="fas fa-star-of-david text-4xl" style="color:var(--accent-yellow)"></i></div>
-            <h3 class="text-2xl font-bold text-white mb-3">שבתות חתן ואירועים דתיים</h3>
-            <p class="text-gray-300 leading-relaxed">מתחמים מותאמים למשפחה מורחבת ודרישות כשרות.</p>
+        <h2 class="section-heading" data-aos="fade-up">הסיפור שלנו</h2>
+        <div class="flex flex-col lg:flex-row gap-12 items-center mt-10">
+          <div class="lg:w-1/2" data-aos="fade-right">
+            <p class="text-lg mb-5 text-gray-300 leading-relaxed"><strong style="color:var(--accent-purple)">MULTIBRAWN</strong> מציעה פתרון 360°: מצד אחד – נכסים נבחרים (וילות, צימרים, דירות, מלונות), ומצד שני – מערך שיווק דיגיטלי שמביא תוצאות.</p>
+            <p class="text-lg mb-5 text-gray-300 leading-relaxed">כל חופשה או אירוע הוא סיפור, ואנחנו כאן כדי לוודא שהוא קורה – עם שירות אישי ותשומת לב לכל פרט.</p>
+            <div class="flex gap-10 mt-6">
+              <a class="cta-button" href="about.html">קראו עוד עלינו</a>
+              <a class="cta-button" href="gallery.html">לגלריה המלאה</a>
+            </div>
           </div>
-          <div class="property-card p-8 text-center" data-aos="fade-up" data-aos-delay="180">
-            <div class="mb-6"><i class="fas fa-users text-4xl" style="color:var(--accent-purple)"></i></div>
-            <h3 class="text-2xl font-bold text-white mb-3">כנסים וימי גיבוש</h3>
-            <p class="text-gray-300 leading-relaxed">פתרונות מושלמים לקבוצות עסקיות עם חדרי ישיבות.</p>
-          </div>
-          <div class="property-card p-8 text-center" data-aos="fade-up" data-aos-delay="280">
-            <div class="mb-6"><i class="fas fa-birthday-cake text-4xl" style="color:var(--accent-yellow)"></i></div>
-            <h3 class="text-2xl font-bold text-white mb-3">מסיבות וחגיגות</h3>
-            <p class="text-gray-300 leading-relaxed">וילות עם בריכה, סאונד ופינות ישיבה לאירוע מושלם.</p>
+          <div class="lg:w-1/2" data-aos="fade-left">
+            <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/MULTIBRAWN.jpg" alt="צוות MULTIBRAWN" class="w-full rounded-3xl shadow-2xl border border-purple-500/20" style="box-shadow:0 25px 50px rgba(124,58,237,.3)">
           </div>
         </div>
       </div>
@@ -380,11 +245,14 @@
   <footer class="py-12 text-center" style="background:var(--primary-bg);border-top:1px solid rgba(124,58,237,.2)">
     <div class="max-w-7xl mx-auto px-4">
       <div class="flex flex-col md:flex-row justify-between items-center mb-8">
-        <a href="index.html" class="logo mb-6 md:mb-0">MULTIBRAWN</a>
+        <div class="logo-container mb-6 md:mb-0">
+          <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="לוגו MULTIBRAWN" class="logo-img">
+          <a href="index.html" class="logo">MULTIBRAWN</a>
+        </div>
         <div class="flex gap-6 text-3xl">
-          <a href="#" class="text-gray-400 hover:text-purple-400 transition duration-300" title="פייסבוק" target="_blank" rel="noopener"><i class="fab fa-facebook"></i></a>
-          <a href="#" class="text-gray-400 hover:text-purple-400 transition duration-300" title="אינסטגרם" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
-          <a href="#" class="text-gray-400 hover:text-purple-400 transition duration-300" title="לינקדאין" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+          <a href="#" class="text-gray-400 hover:text-purple-400 transition duration-300" title="פייסבוק"><i class="fab fa-facebook"></i></a>
+          <a href="#" class="text-gray-400 hover:text-purple-400 transition duration-300" title="אינסטגרם"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="text-gray-400 hover:text-purple-400 transition duration-300" title="לינקדאין"><i class="fab fa-linkedin"></i></a>
         </div>
       </div>
       <div class="border-t border-purple-500/20 pt-6 text-gray-400">
@@ -394,7 +262,7 @@
           <a href="accessibility.html" class="hover:underline">הצהרת נגישות</a> ·
           <a href="faq.html" class="hover:underline">שאלות ותשובות</a>
         </p>
-        <p class="text-xs mt-4" style="color: #fbbf24;">
+        <p class="text-xs" style="color:var(--accent-yellow);">
           האתר נבנה ע"י Multi-Web מבית MULTIBRAWN - אתרים שבונים עסקים
         </p>
       </div>
@@ -402,122 +270,92 @@
   </footer>
 
   <!-- Floating Buttons -->
-  <a href="https://wa.me/972523983394?text=שלום,%20אני%20מעוניין/ת%20במידע%20נוסף%20על%20MULTIBRAWN" 
-     class="floating-whatsapp" target="_blank" rel="noopener" aria-label="צור קשר בוואטסאפ">
-    <i class="fab fa-whatsapp" aria-hidden="true"></i>
-  </a>
-
-  <div class="floating-chatbot" id="chatbotButton" title="פתח צ'אט">
-    <i class="fas fa-comments"></i>
-  </div>
-
-  <div class="floating-accessibility" id="accessibilityButton" title="נגישות">
-    <i class="fas fa-universal-access"></i>
+  <div class="floating-buttons">
+    <button class="floating-btn accessibility-btn" id="accessibilityBtn" title="נגישות">♿</button>
+    <button class="floating-btn chatbot-btn" id="chatbotBtn" title="צ'אטבוט">💬</button>
+    <a href="https://wa.me/972523983394?text=שלום! אשמח לשמוע עוד על השירותים של MULTIBRAWN" 
+       class="floating-btn whatsapp-btn" title="וואטסאפ">📱</a>
   </div>
 
   <!-- Accessibility Panel -->
   <div class="accessibility-panel" id="accessibilityPanel">
-    <div class="accessibility-header">
-      <h3>נגישות</h3>
-      <button class="close-accessibility" id="closeAccessibility">&times;</button>
-    </div>
-    <div class="accessibility-options">
-      <button class="accessibility-option" onclick="increaseFontSize()">הגדל גופן</button>
-      <button class="accessibility-option" onclick="decreaseFontSize()">הקטן גופן</button>
-      <button class="accessibility-option" onclick="toggleHighContrast()">ניגודיות גבוהה</button>
-      <button class="accessibility-option" onclick="resetAccessibility()">אפס הגדרות</button>
+    <h3>הגדרות נגישות</h3>
+    <div class="accessibility-controls">
+      <button class="accessibility-btn-control" onclick="increaseFontSize()">הגדל גופן</button>
+      <button class="accessibility-btn-control" onclick="decreaseFontSize()">הקטן גופן</button>
+      <button class="accessibility-btn-control" onclick="toggleHighContrast()">ניגודיות גבוהה</button>
+      <button class="accessibility-btn-control" onclick="resetAccessibility()">איפוס הגדרות</button>
+      <button class="accessibility-btn-control close-accessibility" onclick="closeAccessibility()">סגור</button>
     </div>
   </div>
 
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    // Global accessibility functions
-    let fontSizeMultiplier = 1;
-    let isHighContrast = false;
+    // Global variables
+    let fontSize = 100;
+    let highContrast = false;
 
+    // Accessibility Functions
     function increaseFontSize() {
-      fontSizeMultiplier += 0.1;
-      document.body.style.fontSize = (fontSizeMultiplier * 100) + '%';
+      fontSize += 20;
+      document.body.style.fontSize = fontSize + '%';
     }
 
     function decreaseFontSize() {
-      if (fontSizeMultiplier > 0.8) {
-        fontSizeMultiplier -= 0.1;
-        document.body.style.fontSize = (fontSizeMultiplier * 100) + '%';
+      if (fontSize > 80) {
+        fontSize -= 20;
+        document.body.style.fontSize = fontSize + '%';
       }
     }
 
     function toggleHighContrast() {
-      isHighContrast = !isHighContrast;
-      if (isHighContrast) {
-        document.body.style.filter = 'contrast(150%) brightness(120%)';
-      } else {
-        document.body.style.filter = 'none';
-      }
+      highContrast = !highContrast;
+      document.body.classList.toggle('high-contrast', highContrast);
     }
 
     function resetAccessibility() {
-      fontSizeMultiplier = 1;
-      isHighContrast = false;
-      document.body.style.fontSize = '100%';
-      document.body.style.filter = 'none';
+      fontSize = 100;
+      highContrast = false;
+      document.body.style.fontSize = '';
+      document.body.classList.remove('high-contrast');
     }
 
-    function setupChatbot() {
-      const chatbotButton = document.getElementById('chatbotButton');
-      if (chatbotButton) {
-        chatbotButton.addEventListener('click', function() {
-          alert('הצ\'אטבוט יפתח בקרוב... פרטים נוספים בוואטסאפ!');
-        });
-      }
+    function openAccessibility() {
+      document.getElementById('accessibilityPanel').classList.add('open');
     }
 
-    function setupAccessibility() {
-      const accessibilityButton = document.getElementById('accessibilityButton');
-      const accessibilityPanel = document.getElementById('accessibilityPanel');
-      const closeAccessibility = document.getElementById('closeAccessibility');
-
-      if (accessibilityButton && accessibilityPanel && closeAccessibility) {
-        accessibilityButton.addEventListener('click', function(e) {
-          e.stopPropagation();
-          accessibilityPanel.classList.toggle('active');
-        });
-
-        closeAccessibility.addEventListener('click', function(e) {
-          e.stopPropagation();
-          accessibilityPanel.classList.remove('active');
-        });
-
-        document.addEventListener('click', function(e) {
-          if (!accessibilityPanel.contains(e.target) && !accessibilityButton.contains(e.target)) {
-            accessibilityPanel.classList.remove('active');
-          }
-        });
-      }
+    function closeAccessibility() {
+      document.getElementById('accessibilityPanel').classList.remove('open');
     }
 
-    document.addEventListener('DOMContentLoaded', function() {
-      // AOS safe init
+    function openChatbot() {
+      alert('הצ\'אטבוט שלנו זמין בוואטסאפ! לחץ על הכפתור הירוק למטה כדי לפתוח שיחה');
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      // AOS Animation
       if (typeof AOS !== 'undefined') {
         AOS.init({ duration: 1000, once: true, easing: 'ease-out-cubic', offset: 60 });
       }
       
-      // Mobile Menu Toggle
+      // Mobile Menu
       const toggle = document.getElementById('mobileToggle');
       const menu = document.getElementById('primaryNav');
       if (toggle && menu) {
-        toggle.addEventListener('click', function() {
-          const open = menu.classList.toggle('active');
-          toggle.setAttribute('aria-expanded', String(open));
+        toggle.addEventListener('click', () => {
+          menu.classList.toggle('active');
         });
       }
+
+      // Event Listeners
+      document.getElementById('accessibilityBtn').addEventListener('click', openAccessibility);
+      document.getElementById('chatbotBtn').addEventListener('click', openChatbot);
       
-      // Setup functionality
-      setupChatbot();
-      setupAccessibility();
-      
-      // Smooth scrolling for in-page anchors
-      document.querySelectorAll('a[href^="#"]').forEach(function(a) {
-        a.addEventListener('click', function(e) {
+      // Smooth scrolling
+      document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
           const id = a.getAttribute('href');
           if (id.length > 1) {
             const target = document.querySelector(id);
@@ -528,7 +366,9 @@
           }
         });
       });
-    });
-  </script>
-</body>
-</html>
+
+      // Header scroll effect
+      window.addEventListener('scroll', function() {
+        const header = document.querySelector('.header-nav');
+        if (window.scrollY > 100) {
+          header.style.background = 'rgba(26, 11, 46, 0.98)';
