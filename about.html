@@ -579,7 +579,7 @@
             border-radius: 2px;
         }
 
-        /* Floating WhatsApp */
+        /* Floating Buttons */
         .floating-whatsapp {
             position: fixed;
             bottom: 30px;
@@ -598,6 +598,131 @@
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             text-decoration: none;
             animation: bounce 3s ease-in-out infinite;
+        }
+
+        .floating-chatbot {
+            position: fixed;
+            bottom: 120px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #7c3aed, #5b21b6);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 6px 20px rgba(124, 58, 237, 0.4);
+            z-index: 999;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .floating-accessibility {
+            position: fixed;
+            bottom: 200px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #10b981, #065f46);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+            z-index: 998;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .floating-whatsapp:hover, .floating-chatbot:hover, .floating-accessibility:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Accessibility Panel */
+        .accessibility-panel {
+            position: fixed;
+            bottom: 260px;
+            right: 30px;
+            width: 250px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            z-index: 997;
+            transform: translateX(300px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            border: 2px solid var(--accent-purple);
+        }
+
+        .accessibility-panel.active {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .accessibility-header {
+            padding: 15px 20px;
+            background: var(--accent-purple);
+            color: white;
+            border-radius: 15px 15px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .accessibility-header h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .close-accessibility {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+        }
+
+        .close-accessibility:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .accessibility-options {
+            padding: 15px;
+        }
+
+        .accessibility-option {
+            width: 100%;
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #1a202c;
+            font-weight: 500;
+        }
+
+        .accessibility-option:hover {
+            background: var(--accent-purple);
+            color: white;
+            border-color: var(--accent-purple);
+        }
+
+        .accessibility-option:last-child {
+            margin-bottom: 0;
         }
 
         @keyframes bounce {
@@ -983,9 +1108,33 @@
 
     <!-- WhatsApp Float -->
     <a href="https://wa.me/972523983394?text=שלום, קראתי על הסיפור שלכם ואני מעוניין לשמוע עוד" 
-       class="floating-whatsapp" target="_blank">
+       class="floating-whatsapp" target="_blank" title="שלחו הודעה בוואטסאפ">
         <i class="fab fa-whatsapp"></i>
     </a>
+
+    <!-- Chatbot Float -->
+    <div class="floating-chatbot" id="chatbotButton" title="פתח צ'אט">
+        <i class="fas fa-comments"></i>
+    </div>
+
+    <!-- Accessibility Button -->
+    <div class="floating-accessibility" id="accessibilityButton" title="נגישות">
+        <i class="fas fa-universal-access"></i>
+    </div>
+
+    <!-- Accessibility Panel -->
+    <div class="accessibility-panel" id="accessibilityPanel">
+        <div class="accessibility-header">
+            <h3>נגישות</h3>
+            <button class="close-accessibility" id="closeAccessibility">&times;</button>
+        </div>
+        <div class="accessibility-options">
+            <button class="accessibility-option" onclick="increaseFontSize()">הגדל גופן</button>
+            <button class="accessibility-option" onclick="decreaseFontSize()">הקטן גופן</button>
+            <button class="accessibility-option" onclick="toggleHighContrast()">ניגודיות גבוהה</button>
+            <button class="accessibility-option" onclick="resetAccessibility()">אפס הגדרות</button>
+        </div>
+    </div>
 
     <!-- Scripts -->
     <script>
