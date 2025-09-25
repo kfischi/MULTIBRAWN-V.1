@@ -1,1267 +1,534 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>הסיפור שלנו - Multibrawn</title>
-    <meta name="description" content="הכירו את ערדית בראון ואת הסיפור של Multibrawn - מחברים בין חלומות למציאות בעולם הנופש והשיווק הדיגיטלי">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MULTIBRAWN - נופש, אירועים, לוקיישנים ומה שביניהם</title>
+  <meta name="description" content="MULTIBRAWN מציעה פתרון 360°: מחברים בין לקוחות איכותיים למתחמים נבחרים, ומציעים פתרונות שיווק דיגיטלי מתקדמים לבעלי נכסים." />
+  <meta name="keywords" content="וילות, נופש, אירועים, שיווק דיגיטלי, צימרים, מלונות, לוקיישנים, גלריה" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Secular+One&family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <style>
+    :root{
+      --primary-bg:#1a0b2e; --secondary-bg:#16213e;
+      --accent-purple:#7c3aed; --light-purple:#a855f7; --dark-purple:#5b21b6;
+      --accent-yellow:#fbbf24; --light-yellow:#fde047; --dark-yellow:#f59e0b;
+      --text-light:#f8fafc; --text-muted:#cbd5e1;
+      --font-heading:'Secular One',sans-serif; --font-body:'Heebo',sans-serif;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:var(--font-body);background:var(--primary-bg);color:var(--text-light);overflow-x:hidden;line-height:1.6}
+    /* Scrollbar */
+    ::-webkit-scrollbar{width:8px} ::-webkit-scrollbar-track{background:var(--primary-bg)}
+    ::-webkit-scrollbar-thumb{background:linear-gradient(var(--accent-purple), var(--accent-yellow));border-radius:10px}
+    ::-webkit-scrollbar-thumb:hover{background:var(--light-purple)}
+    /* Header / Nav */
+    .header-nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(26,11,46,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(124,58,237,.2);transition:all .3s}
+    .nav-content{display:flex;justify-content:space-between;align-items:center;max-width:1400px;margin:0 auto;padding:20px 40px}
+    .logo{font-family:var(--font-heading);font-size:2rem;font-weight:900;color:transparent;background:linear-gradient(45deg,#f8fafc,#7c3aed,#fbbf24);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;transition:.3s}
+    .logo:hover{transform:scale(1.05)}
+    .nav-menu{display:flex;list-style:none;gap:28px;align-items:center}
+    .nav-menu a{color:var(--text-muted);text-decoration:none;font-weight:600;font-size:1rem;transition:.3s;position:relative;padding:8px 0}
+    .nav-menu a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:linear-gradient(45deg, var(--accent-purple), var(--accent-yellow));transition:width .3s}
+    .nav-menu a:hover{color:var(--text-light)} .nav-menu a:hover::after{width:100%}
+    .cta-button{background:linear-gradient(135deg,var(--accent-purple),var(--accent-yellow),var(--dark-purple));color:#fff;padding:10px 18px;border:none;border-radius:999px;font-weight:800;font-size:1rem;cursor:pointer;transition:.3s;text-decoration:none;box-shadow:0 4px 20px rgba(124,58,237,.3)}
+    .cta-button:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(124,58,237,.5)}
+    /* Hero – image background (yoga.png) */
+    .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;
+      background:linear-gradient(135deg, rgba(26,11,46,.80) 0%, rgba(124,58,237,.40) 55%, rgba(168,85,247,.28) 100%),
+      url('https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/yoga.png');
+      background-size:cover;background-position:center}
+    .hero-content{position:relative;z-index:10;text-align:center;max-width:90%;display:flex;flex-direction:column;align-items:center;gap:1.5rem}
+    .brand-title{font-family:'Arial Black', 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:clamp(3.4rem,12vw,8rem);font-weight:900;letter-spacing:.5px;line-height:1.05;color:#fff;text-shadow:
+      -5px -5px 0 #000,
+      5px -5px 0 #000,
+      -5px 5px 0 #000,
+      5px 5px 0 #000,
+      -4px 0 0 #000,
+      4px 0 0 #000,
+      0 -4px 0 #000,
+      0 4px 0 #000,
+      0 0 30px rgba(0,0,0,0.9);animation:titleFloat 6s ease-in-out infinite;text-transform:uppercase}
+    .tagline{font-family:Heebo,system-ui,sans-serif;font-size:clamp(1.2rem,3.8vw,2.2rem);font-weight:700;color:var(--accent-yellow);opacity:.96;text-shadow:
+      -2px -2px 0 #000,
+      2px -2px 0 #000,
+      -2px 2px 0 #000,
+      2px 2px 0 #000,
+      0 0 15px rgba(0,0,0,0.8)}
+    @keyframes titleFloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-10px) scale(1.02)}}
+    .hero-sub{font-size:clamp(1.1rem,3.2vw,1.8rem);font-weight:600;color:#fff;letter-spacing:.5px;opacity:.95;text-shadow:
+      -2px -2px 0 #000,
+      2px -2px 0 #000,
+      -2px 2px 0 #000,
+      2px 2px 0 #000,
+      0 0 15px rgba(0,0,0,0.8)}
+    .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+    .hero-cta{display:inline-block;padding:16px 28px;background:linear-gradient(135deg,var(--accent-purple),var(--accent-yellow),var(--dark-purple));color:#fff;text-decoration:none;border-radius:999px;font-weight:800;font-size:1.05rem;transition:.35s;box-shadow:0 15px 40px rgba(124,58,237,.4);position:relative;overflow:hidden}
+    .hero-cta::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);transition:left .6s}
+    .hero-cta:hover::before{left:100%} .hero-cta:hover{transform:translateY(-3px) scale(1.03)}
+    /* Cards / Sections */
+    .property-card{background:linear-gradient(135deg,rgba(22,33,62,.85),rgba(26,11,46,.85));border-radius:20px;padding:2rem;transition:.4s;border:1px solid rgba(251,191,36,.25);position:relative;overflow:hidden;backdrop-filter:blur(10px)}
+    .property-card:hover{transform:translateY(-8px);box-shadow:0 30px 60px rgba(251,191,36,.3);border-color:var(--accent-yellow)}
+    .section-padding{padding:8rem 2rem}
+    .section-heading{font-family:var(--font-heading);font-size:clamp(2.2rem,6vw,3.4rem);font-weight:900;background:linear-gradient(45deg,#fff,var(--accent-purple),var(--accent-yellow));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-align:center;margin-bottom:2.6rem;position:relative}
+    .section-heading::after{content:'';position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);width:120px;height:4px;background:linear-gradient(90deg,transparent,var(--accent-purple),var(--accent-yellow),transparent);border-radius:2px}
     
-    <style>
-        :root {
-            --primary-bg: #1a0b2e;
-            --secondary-bg: #16213e;
-            --accent-purple: #7c3aed;
-            --light-purple: #a855f7;
-            --dark-purple: #5b21b6;
-            --accent-yellow: #fbbf24;
-            --light-yellow: #fde047;
-            --dark-yellow: #f59e0b;
-            --text-light: #f8fafc;
-            --text-muted: #cbd5e1;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --font-heading: 'Playfair Display', serif;
-            --font-body: 'Heebo', sans-serif;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: var(--font-body);
-            background: var(--primary-bg);
-            color: var(--text-light);
-            line-height: 1.7;
-            overflow-x: hidden;
-        }
-
-        /* Navigation */
-        .header-nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(26, 11, 46, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(124, 58, 237, 0.2);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .nav-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px 40px;
-        }
-
-        .logo {
-            font-family: var(--font-heading);
-            font-size: 2rem;
-            font-weight: 900;
-            color: transparent;
-            background: linear-gradient(45deg, #f8fafc, #7c3aed, #fbbf24);
-            background-clip: text;
-            -webkit-background-clip: text;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .nav-menu a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            position: relative;
-            padding: 8px 0;
-        }
-
-        .nav-menu a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(45deg, var(--accent-purple), var(--accent-yellow));
-            transition: width 0.3s ease;
-        }
-
-        .nav-menu a:hover {
-            color: var(--text-light);
-        }
-
-        .nav-menu a:hover::after {
-            width: 100%;
-        }
-
-        .cta-button {
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-yellow));
-            color: white;
-            padding: 12px 28px;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            text-decoration: none;
-            box-shadow: 0 4px 20px rgba(124, 58, 237, 0.3);
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            background: url('https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villa1.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-
-        .hero-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            align-items: center;
-            min-height: 80vh;
-            justify-content: center;
-        }
-
-        .hero-text {
-            text-align: center;
-            max-width: 800px;
-        }
-
-        .hero-subtitle {
-            font-size: clamp(1.8rem, 5vw, 3rem);
-            font-weight: 700;
-            color: var(--accent-yellow);
-            margin-bottom: 1.5rem;
-            text-shadow: 
-                -3px -3px 0 #000,
-                3px -3px 0 #000,
-                -3px 3px 0 #000,
-                3px 3px 0 #000,
-                -2px 0 0 #000,
-                2px 0 0 #000,
-                0 -2px 0 #000,
-                0 2px 0 #000,
-                0 0 20px rgba(0,0,0,0.9);
-        }
-
-        .hero-description {
-            font-size: clamp(1.2rem, 3vw, 1.6rem);
-            color: white;
-            line-height: 1.8;
-            text-shadow: 
-                -2px -2px 0 #000,
-                2px -2px 0 #000,
-                -2px 2px 0 #000,
-                2px 2px 0 #000,
-                -1px 0 0 #000,
-                1px 0 0 #000,
-                0 -1px 0 #000,
-                0 1px 0 #000,
-                0 0 15px rgba(0,0,0,0.9);
-            margin-bottom: 2rem;
-        }
-
-        /* Story Sections */
-        .story-section {
-            padding: 8rem 2rem;
-            position: relative;
-        }
-
-        .story-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-family: var(--font-heading);
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 900;
-            background: linear-gradient(45deg, var(--text-light), var(--accent-purple), var(--accent-yellow));
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-align: center;
-            margin-bottom: 4rem;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 4px;
-            background: linear-gradient(90deg, 
-                transparent, 
-                var(--accent-purple), 
-                var(--accent-yellow),
-                var(--light-purple), 
-                transparent);
-            border-radius: 2px;
-        }
-
-        .story-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            margin-bottom: 6rem;
-        }
-
-        .story-text {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: var(--text-muted);
-        }
-
-        .story-text h3 {
-            font-family: var(--font-heading);
-            font-size: 2rem;
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-        }
-
-        .story-text p {
-            margin-bottom: 1.5rem;
-        }
-
-        .story-text .highlight {
-            background: linear-gradient(45deg, var(--light-purple), var(--accent-yellow));
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 700;
-        }
-
-        .story-image {
-            position: relative;
-            border-radius: 25px;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(124, 58, 237, 0.3);
-            transition: all 0.5s ease;
-        }
-
-        .story-image:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 30px 80px rgba(124, 58, 237, 0.5);
-        }
-
-        .story-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-
-        .story-image:hover img {
-            transform: scale(1.05);
-        }
-
-        /* Timeline Section */
-        .timeline-section {
-            padding: 8rem 2rem;
-            background: linear-gradient(135deg, var(--secondary-bg) 0%, var(--primary-bg) 100%);
-        }
-
-        .timeline {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            right: 50%;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: linear-gradient(to bottom, var(--accent-purple), var(--accent-yellow));
-            border-radius: 2px;
-            transform: translateX(50%);
-        }
-
-        .timeline-item {
-            margin-bottom: 4rem;
-            position: relative;
-            width: 45%;
-        }
-
-        .timeline-item:nth-child(even) {
-            margin-right: auto;
-            padding-left: 3rem;
-        }
-
-        .timeline-item:nth-child(odd) {
-            margin-left: auto;
-            padding-right: 3rem;
-            text-align: left;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: var(--accent-yellow);
-            border-radius: 50%;
-            top: 0;
-            box-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
-        }
-
-        .timeline-item:nth-child(even)::before {
-            left: -13px;
-        }
-
-        .timeline-item:nth-child(odd)::before {
-            right: -13px;
-        }
-
-        .timeline-content {
-            background: linear-gradient(135deg, 
-                rgba(22, 33, 62, 0.8) 0%, 
-                rgba(26, 11, 46, 0.8) 100%);
-            padding: 2rem;
-            border-radius: 20px;
-            border: 1px solid rgba(251, 191, 36, 0.2);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-
-        .timeline-content:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(251, 191, 36, 0.3);
-            border-color: var(--accent-yellow);
-        }
-
-        .timeline-date {
-            color: var(--accent-yellow);
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-        }
-
-        .timeline-title {
-            font-family: var(--font-heading);
-            font-size: 1.5rem;
-            color: var(--text-light);
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .timeline-description {
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-
-        /* Values Section */
-        .values-section {
-            padding: 8rem 2rem;
-            background: var(--primary-bg);
-        }
-
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 4rem;
-        }
-
-        .value-card {
-            background: linear-gradient(135deg, 
-                rgba(22, 33, 62, 0.8) 0%, 
-                rgba(26, 11, 46, 0.8) 100%);
-            padding: 3rem 2rem;
-            border-radius: 25px;
-            border: 1px solid rgba(251, 191, 36, 0.2);
-            text-align: center;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .value-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, 
-                rgba(251, 191, 36, 0.1) 0%, 
-                rgba(124, 58, 237, 0.05) 100%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .value-card:hover::before {
-            opacity: 1;
-        }
-
-        .value-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 25px 50px rgba(251, 191, 36, 0.3);
-            border-color: var(--accent-yellow);
-        }
-
-        .value-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-yellow));
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: white;
-            margin: 0 auto 2rem auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .value-title {
-            font-family: var(--font-heading);
-            font-size: 1.8rem;
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-            position: relative;
-            z-index: 1;
-        }
-
-        .value-description {
-            color: var(--text-muted);
-            line-height: 1.7;
-            font-size: 1.1rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            padding: 8rem 2rem;
-            background: linear-gradient(135deg, var(--secondary-bg) 0%, var(--primary-bg) 100%);
-            text-align: center;
-        }
-
-        .cta-content {
-            max-width: 800px;
-            margin: 0 auto;
-            background: linear-gradient(135deg, 
-                rgba(251, 191, 36, 0.2) 0%, 
-                rgba(124, 58, 237, 0.1) 100%);
-            padding: 4rem 3rem;
-            border-radius: 30px;
-            border: 1px solid rgba(251, 191, 36, 0.3);
-            backdrop-filter: blur(15px);
-        }
-
-        .cta-title {
-            font-family: var(--font-heading);
-            font-size: 2.5rem;
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-            font-weight: 900;
-        }
-
-        .cta-description {
-            font-size: 1.3rem;
-            color: var(--text-muted);
-            line-height: 1.7;
-            margin-bottom: 3rem;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .cta-btn {
-            padding: 18px 40px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            text-decoration: none;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-btn-primary {
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-yellow), var(--dark-purple));
-            color: white;
-            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.4);
-        }
-
-        .cta-btn-secondary {
-            background: rgba(251, 191, 36, 0.1);
-            color: var(--accent-yellow);
-            border: 2px solid rgba(251, 191, 36, 0.3);
-        }
-
-        .cta-btn:hover {
-            transform: translateY(-3px);
-        }
-
-        .cta-btn-primary:hover {
-            box-shadow: 0 15px 40px rgba(124, 58, 237, 0.6);
-        }
-
-        .cta-btn-secondary:hover {
-            background: rgba(251, 191, 36, 0.2);
-            border-color: var(--accent-yellow);
-        }
-
-        /* Floating Buttons */
-        .floating-whatsapp {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, #25d366, #128c7e);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
-            z-index: 1000;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            text-decoration: none;
-            animation: bounce 3s ease-in-out infinite;
-        }
-
-        .floating-chatbot {
-            position: fixed;
-            bottom: 120px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #7c3aed, #5b21b6);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            box-shadow: 0 6px 20px rgba(124, 58, 237, 0.4);
-            z-index: 999;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .floating-accessibility {
-            position: fixed;
-            bottom: 200px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--accent-yellow), var(--dark-yellow));
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            box-shadow: 0 4px 15px rgba(251, 191, 36, 0.4);
-            z-index: 998;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .floating-whatsapp:hover, 
-        .floating-chatbot:hover, 
-        .floating-accessibility:hover {
-            transform: scale(1.1);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Accessibility Panel */
-        .accessibility-panel {
-            position: fixed;
-            bottom: 260px;
-            right: 30px;
-            width: 250px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            z-index: 997;
-            transform: translateX(300px);
-            opacity: 0;
-            transition: all 0.3s ease;
-            border: 2px solid var(--accent-yellow);
-        }
-
-        .accessibility-panel.active {
-            transform: translateX(0);
-            opacity: 1;
-        }
-
-        .accessibility-header {
-            padding: 15px 20px;
-            background: var(--accent-yellow);
-            color: black;
-            border-radius: 15px 15px 0 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .accessibility-header h3 {
-            margin: 0;
-            font-size: 1.1rem;
-            font-weight: 700;
-        }
-
-        .close-accessibility {
-            background: none;
-            border: none;
-            color: black;
-            font-size: 1.5rem;
-            cursor: pointer;
-            width: 25px;
-            height: 25px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: background 0.3s ease;
-            font-weight: bold;
-        }
-
-        .close-accessibility:hover {
-            background: rgba(0, 0, 0, 0.1);
-        }
-
-        .accessibility-options {
-            padding: 15px;
-        }
-
-        .accessibility-option {
-            width: 100%;
-            padding: 10px 15px;
-            margin-bottom: 8px;
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            color: #1a202c;
-            font-weight: 500;
-        }
-
-        .accessibility-option:hover {
-            background: var(--accent-yellow);
-            color: black;
-            border-color: var(--accent-yellow);
-        }
-
-        .accessibility-option:last-child {
-            margin-bottom: 0;
-        }
-
-        /* Mobile Menu */
-        .mobile-menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 10px;
-        }
-
-        .hamburger-line {
-            width: 30px;
-            height: 3px;
-            background: white;
-            transition: 0.3s;
-            border-radius: 2px;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 968px) {
-            .story-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .timeline::before {
-                right: 20px;
-                transform: none;
-            }
-
-            .timeline-item {
-                width: 100%;
-                margin-left: 0;
-                margin-right: 0;
-                padding-left: 3rem;
-                padding-right: 0;
-                text-align: right;
-            }
-
-            .timeline-item::before {
-                right: 13px;
-                left: auto;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .mobile-menu-toggle {
-                display: flex;
-            }
-
-            .nav-menu {
-                position: fixed;
-                right: -100%;
-                top: 80px;
-                flex-direction: column;
-                background: rgba(26, 11, 46, 0.98);
-                width: 100%;
-                padding: 20px;
-                transition: 0.3s;
-                border-top: 1px solid rgba(124, 58, 237, 0.3);
-            }
-
-            .nav-menu.active {
-                right: 0;
-            }
-
-            .nav-menu li {
-                padding: 15px 0;
-                border-bottom: 1px solid rgba(124, 58, 237, 0.2);
-                width: 100%;
-                text-align: center;
-            }
-
-            .values-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    /* Floating Buttons */
+    .floating-whatsapp{position:fixed;bottom:30px;right:30px;width:70px;height:70px;background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 10px 30px rgba(37,211,102,.4);z-index:1000;transition:.3s;text-decoration:none;animation:bounce 3s ease-in-out infinite}
+    
+    .floating-chatbot{position:fixed;bottom:120px;right:30px;width:60px;height:60px;background:linear-gradient(135deg,var(--accent-purple),var(--dark-purple));color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.8rem;box-shadow:0 6px 20px rgba(124,58,237,.4);z-index:999;transition:.3s;cursor:pointer}
+    
+    .floating-accessibility{position:fixed;bottom:200px;right:30px;width:50px;height:50px;background:linear-gradient(135deg,var(--accent-yellow),var(--dark-yellow));color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 4px 15px rgba(251,191,36,.4);z-index:998;transition:.3s;cursor:pointer}
+    
+    .floating-whatsapp:hover, .floating-chatbot:hover, .floating-accessibility:hover{transform:scale(1.1);box-shadow:0 15px 40px rgba(0,0,0,.3)}
+    
+    @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+    
+    /* Accessibility Panel */
+    .accessibility-panel{position:fixed;bottom:260px;right:30px;width:250px;background:#fff;border-radius:15px;box-shadow:0 10px 40px rgba(0,0,0,.2);z-index:997;transform:translateX(300px);opacity:0;transition:.3s;border:2px solid var(--accent-yellow)}
+    .accessibility-panel.active{transform:translateX(0);opacity:1}
+    .accessibility-header{padding:15px 20px;background:var(--accent-yellow);color:#000;border-radius:15px 15px 0 0;display:flex;justify-content:space-between;align-items:center}
+    .accessibility-header h3{margin:0;font-size:1.1rem;font-weight:700}
+    .close-accessibility{background:none;border:none;color:#000;font-size:1.5rem;cursor:pointer;width:25px;height:25px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:.3s;font-weight:bold}
+    .close-accessibility:hover{background:rgba(0,0,0,.1)}
+    .accessibility-options{padding:15px}
+    .accessibility-option{width:100%;padding:10px 15px;margin-bottom:8px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;cursor:pointer;transition:.3s;color:#1a202c;font-weight:500}
+    .accessibility-option:hover{background:var(--accent-yellow);color:#000;border-color:var(--accent-yellow)}
+    .accessibility-option:last-child{margin-bottom:0}
+    
+    /* Mobile */
+    .mobile-menu-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:10px}
+    .hamburger-line{width:30px;height:3px;background:#fff;transition:.3s;border-radius:2px}
+    @media (max-width:768px){
+      .mobile-menu-toggle{display:flex}
+      .nav-menu{position:fixed;right:-100%;top:80px;flex-direction:column;background:rgba(26,11,46,.98);width:100%;padding:20px;transition:.3s;border-top:1px solid rgba(124,58,237,.3)}
+      .nav-menu.active{right:0}
+      .nav-menu li{padding:14px 0;border-bottom:1px solid rgba(124,58,237,.2);width:100%;text-align:center}
+      .section-padding{padding:4rem 1rem}
+    }
+  </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <header class="header-nav">
-        <nav class="nav-content">
-            <a href="index.html" class="logo">MULTIBRAWN</a>
-            <ul class="nav-menu">
-                <li><a href="index.html">דף הבית</a></li>
-                <li><a href="about.html">אודות</a></li>
-                <li><a href="gallery.html">גלריה</a></li>
-                <li><a href="marketing.html">שיווק דיגיטלי</a></li>
-                <li><a href="contact.html">צור קשר</a></li>
-                <li><a href="contact.html" class="cta-button">קבלו הצעה</a></li>
-            </ul>
-            <button class="mobile-menu-toggle" id="mobileToggle">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-            </button>
-        </nav>
-    </header>
+  <!-- Navigation -->
+  <header class="header-nav" role="banner">
+    <nav class="nav-content">
+      <div class="flex items-center gap-3">
+        <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/%D7%9C%D7%95%D7%92%D7%952.png" 
+             alt="לוגו MULTIBRAWN" 
+             style="width: 60px; height: 60px; object-fit: contain;">
+        <a href="index.html" class="logo" aria-label="MULTIBRAWN">MULTIBRAWN</a>
+      </div>
+      <ul class="nav-menu" id="primaryNav" role="menubar">
+        <li role="none"><a role="menuitem" href="index.html" aria-current="page">דף הבית</a></li>
+        <li role="none"><a role="menuitem" href="about.html">אודות</a></li>
+        <li role="none"><a role="menuitem" href="gallery.html">גלריה</a></li>
+        <li role="none"><a role="menuitem" href="marketing.html">שיווק</a></li>
+        <li role="none"><a role="menuitem" href="faq.html">שאלות ותשובות</a></li>
+        <li role="none"><a role="menuitem" class="cta-button" href="contact.html">צור קשר</a></li>
+      </ul>
+      <button class="mobile-menu-toggle" id="mobileToggle" aria-label="פתח תפריט" aria-controls="primaryNav" aria-expanded="false">
+        <span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span>
+      </button>
+    </nav>
+  </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <div class="hero-text" data-aos="fade-up">
-                <p class="hero-subtitle">מאחורי הקלעים של MULTIBRAWN</p>
-                <p class="hero-description">
-                    הסיפור האמיתי מאחורי המותג - איך הכל התחיל, מי האנשים<br>
-                    שמאחורי הקלעים ואיך אנחנו הופכים חלומות למציאות
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Story Beginning -->
-    <section class="story-section">
-        <div class="story-container">
-            <h2 class="section-title" data-aos="fade-up">הסיפור מתחיל</h2>
-            
-            <div class="story-content" data-aos="fade-up" data-aos-delay="200">
-                <div class="story-text">
-                    <h3>ערדית בראון - מייסדת והלב הפועם מאחורי MULTIBRAWN</h3>
-                    <p>
-                        שמי ערדית בראון, יזמית עם מעל 10 שנות ניסיון בחיבור בין אנשים לחלומות שלהם - 
-                        בין אם מדובר על החופשה המושלמת, האירוע הבלתי נשכח, או הצלחה עסקית בעולם השיווק.
-                    </p>
-                    <p>
-                        הדרך שלי החלה מרצון עמוק לעזור לאנשים להגשים רעיונות וחלומות. אני מאמינה ש<span class="highlight">לכל אדם מגיע שירות אישי ופתרון מדויק</span> 
-                        שמתאים בדיוק לצרכים ולשאיפות שלו.
-                    </p>
-                    <p>
-                        היום אני גאה להוביל צוות מקצועי שמשרת מאות לקוחות ועובד עם עשרות נכסים איכותיים. 
-                        מה שהתחיל כחלום אישי הופך לעסק משגשג שמשנה חיים.
-                    </p>
-                </div>
-                <div class="story-image" data-aos="fade-left" data-aos-delay="400">
-                    <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Ardit.jpg" alt="ערדית בראון, מייסדת Multibrawn">
-                </div>
-            </div>
-
-            <div class="story-content" data-aos="fade-up" data-aos-delay="200">
-                <div class="story-text">
-                    <h3>מהקורונה לחזון חדש</h3>
-                    <p>
-                        במהלך הקורונה, כשהאולמות נסגרו ואנשים חיפשו פתרונות – החלטתי להישאר בבית ולבנות דרך חדשה. 
-                        במקום לחכות שהמצב ישתפר, ראיתי הזדמנות: <span class="highlight">נופש ואירועים במתחמים אינטימיים</span>.
-                    </p>
-                    <p>
-                        למדתי לעומק את תחום הווילות, הצימרים והמלונות. התחלתי לחבר בין לקוחות איכותיים לבעלי מתחמים, 
-                        גם מהעולם הדתי והחרדי. כל לקוח קיבל יחס אישי ופתרון שמתאים בדיוק לצרכים שלו.
-                    </p>
-                    <p>
-                        עם הזמן נפתחו בפניי שיתופי פעולה גדולים שחיברו אותי לכל יעד אפשרי: 
-                        <span class="highlight">וילות, מלונות, גני אירועים, מרכזי כנסים ועוד</span>.
-                    </p>
-                </div>
-                <div class="story-image" data-aos="fade-left" data-aos-delay="400">
-                    <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/24.jpg" alt="נכסי יוקרה של Multibrawn">
-                </div>
-            </div>
-
-            <div class="story-content" data-aos="fade-up" data-aos-delay="200" style="direction: ltr;">
-                <div class="story-image" data-aos="fade-right" data-aos-delay="400">
-                    <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/%D7%9C%D7%95%D7%92%D7%95.jpg" alt="לוגו Multibrawn">
-                </div>
-                <div class="story-text" style="direction: rtl;">
-                    <h3>הולדת המותג MULTIBRAWN</h3>
-                    <p>
-                        את השם <span class="highlight">MULTI BRAWN</span> קיבלתי מהצעה מחברה טובה – 
-                        אבל הבחירה לקחת את השם, לפתח אותו ולהפוך אותו למותג חזק הייתה שלי לחלוטין.
-                    </p>
-                    <p>
-                        מכאן נולד מותג שמבוסס על יוזמה, יצירתיות וחשיבה מחוץ לקופסה. 
-                        מותג שמציע <span class="highlight">שירות אישי ברמה הגבוהה ביותר</span>, 
-                        עם הבנה עמוקה של צרכי הלקוח ומתן פתרונות מדויקים.
-                    </p>
-                    <p>
-                        היום, Multibrawn הוא הרבה יותר מסתם שירותי נופש. אנחנו מציעים פתרון 360 מעלות 
-                        שמשלב <span class="highlight">נופש איכותי עם שיווק מתקדם</span>, 
-                        ומלווים עסקים בדרכם להצלחה.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Timeline Section -->
-    <section class="timeline-section">
-        <div class="story-container">
-            <h2 class="section-title" data-aos="fade-up">המסע שלנו לאורך השנים</h2>
-            
-            <div class="timeline">
-                <div class="timeline-item" data-aos="fade-right">
-                    <div class="timeline-content">
-                        <div class="timeline-date">2020-2021</div>
-                        <h3 class="timeline-title">התחלות בקורונה</h3>
-                        <p class="timeline-description">
-                            כשהעולם נעצר, ראיתי הזדמנות. התחלתי לחקור את עולם הווילות והצימרים, 
-                            ולהבין איך אפשר לחבר בין אנשים למתחמים מושלמים.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="timeline-item" data-aos="fade-left">
-                    <div class="timeline-content">
-                        <div class="timeline-date">2021-2022</div>
-                        <h3 class="timeline-title">שיתופי פעולה ראשונים</h3>
-                        <p class="timeline-description">
-                            השיתוף עם "מקומות לאירועים" פתח בפניי דלתות חדשות. 
-                            התחלתי לעבוד עם מגוון רחב של נכסים ולבנות מוניטין של מקצועיות ואמינות.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="timeline-item" data-aos="fade-right">
-                    <div class="timeline-content">
-                        <div class="timeline-date">2022-2023</div>
-                        <h3 class="timeline-title">הרחבה לשיווק דיגיטלי</h3>
-                        <p class="timeline-description">
-                            ההבנה שעסקים צריכים נוכחות דיגיטלי חזקה הובילה אותי להתמחות בשיווק. 
-                            התחלתי לעזור לבעלי עסקים לבנות נוכחות מקוונת מנצחת.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="timeline-item" data-aos="fade-left">
-                    <div class="timeline-content">
-                        <div class="timeline-date">2023-2024</div>
-                        <h3 class="timeline-title">מיתוג המותג MULTIBRAWN</h3>
-                        <p class="timeline-description">
-                            פיתוח המותג המלא עם זהות ויזואלית, אתר מתקדם, ומערכות CRM. 
-                            היום אנחנו מציעים חוויה דיגיטלית מושלמת ללקוחותינו.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="timeline-item" data-aos="fade-right">
-                    <div class="timeline-content">
-                        <div class="timeline-date">2024 ואילך</div>
-                        <h3 class="timeline-title">המשך הצמיחה</h3>
-                        <p class="timeline-description">
-                            עם למעלה מ-500 לקוחות מרוצים ויותר מ-100 נכסים איכותיים ברשת, 
-                            אנחנו ממשיכים לצמוח ולחדש. המטרה: להיות המותג המוביל בתחום.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Values Section -->
-    <section class="values-section">
-        <div class="story-container">
-            <h2 class="section-title" data-aos="fade-up">הערכים שלנו</h2>
-            
-            <div class="values-grid">
-                <div class="value-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="value-icon">
-                        <i class="fas fa-heart"></i>
-                    </div>
-                    <h3 class="value-title">שירות אישי</h3>
-                    <p class="value-description">
-                        כל לקוח מקבל יחס אישי ופתרון מותאם במדויק לצרכים שלו. 
-                        אנחנו לא מאמינים בפתרונות גנריים - כל אחד מיוחד ומגיע לו יחס מיוחד.
-                    </p>
-                </div>
-
-                <div class="value-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="value-icon">
-                        <i class="fas fa-gem"></i>
-                    </div>
-                    <h3 class="value-title">איכות ללא פשרות</h3>
-                    <p class="value-description">
-                        כל נכס ושירות שאנחנו מציעים עובר בדיקה קפדנית. 
-                        אנחנו עובדים רק עם השותפים הטובים ביותר כדי להבטיח חוויה מושלמת.
-                    </p>
-                </div>
-
-                <div class="value-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="value-icon">
-                        <i class="fas fa-lightbulb"></i>
-                    </div>
-                    <h3 class="value-title">חדשנות וחשיבה יצירתית</h3>
-                    <p class="value-description">
-                        אנחנו תמיד מחפשים דרכים חדשות ויצירתיות לפתור בעיות. 
-                        חשיבה מחוץ לקופסה היא המנוע שלנו לחדשנות ושיפור מתמיד.
-                    </p>
-                </div>
-
-                <div class="value-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="value-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <h3 class="value-title">שותפות ואמינות</h3>
-                    <p class="value-description">
-                        אנחנו רואים בכל לקוח שותף לטווח ארוך. 
-                        הצלחתכם היא הצלחתנו, ואנחנו כאן לליווי מלא בכל שלב.
-                    </p>
-                </div>
-
-                <div class="value-card" data-aos="fade-up" data-aos-delay="500">
-                    <div class="value-icon">
-                        <i class="fas fa-rocket"></i>
-                    </div>
-                    <h3 class="value-title">מצוינות דיגיטלית</h3>
-                    <p class="value-description">
-                        עולם הדיגיטל מתפתח מהר, ואנחנו תמיד בחזית הטכנולוגיה. 
-                        אנחנו משתמשים בכלים המתקדמים ביותר כדי לספק תוצאות מיטביות.
-                    </p>
-                </div>
-
-                <div class="value-card" data-aos="fade-up" data-aos-delay="600">
-                    <div class="value-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3 class="value-title">קהילה וחיבורים</h3>
-                    <p class="value-description">
-                        אנחנו בונים לא רק עסקים, אלא קהילות. 
-                        מחברים בין אנשים, יוצרים חיבורים משמעותיים ובונים רשת של אמון הדדי.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="story-container">
-            <div class="cta-content" data-aos="zoom-in">
-                <h2 class="cta-title">מוכנים להצטרף אלינו?</h2>
-                <p class="cta-description">
-                    אם אתם מחפשים מקום מושלם לחופשה או אירוע, או אם יש לכם עסק בתחום החופשות והאירועים ורוצים לקפוץ מדרגה בשיווק - 
-                    בואו נכיר ונראה איך נוכל לעזור לכם להגשים את החלום.
-                </p>
-                <div class="cta-buttons">
-                    <a href="contact.html" class="cta-btn cta-btn-primary">בואו נתחיל לעבוד</a>
-                    <a href="https://wa.me/972523983394?text=שלום, קראתי על הסיפור שלכם ואני מעוניין לשמוע עוד" 
-                       target="_blank" class="cta-btn cta-btn-secondary">
-                        <i class="fab fa-whatsapp" style="margin-left: 8px;"></i>
-                        שלחו הודעה ב-WhatsApp
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="py-16 text-center" style="background: var(--primary-bg); border-top: 1px solid rgba(124, 58, 237, 0.2);">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center mb-12">
-                <a href="index.html" class="logo mb-6 md:mb-0">MULTIBRAWN</a>
-                <div class="flex gap-8 text-4xl">
-                    <a href="#" class="text-gray-400 hover:text-purple-400 transition duration-300" title="פייסבוק">
-                        <i class="fab fa-facebook"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-purple-400 transition duration-300" title="אינסטגרם">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-purple-400 transition duration-300" title="לינקדאין">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="border-t border-purple-500/20 pt-8">
-                <p class="text-gray-400 mb-4">© 2024 Multibrawn. כל הזכויות שמורות.</p>
-                <div class="text-sm text-gray-500 space-x-4 mb-4">
-                    <a href="privacy.html" class="hover:text-gray-300">מדיניות פרטיות</a>
-                    <span>|</span>
-                    <a href="accessibility.html" class="hover:text-gray-300">נגישות</a>
-                </div>
-                <p class="text-xs text-gray-500 mt-4" style="color: #fbbf24;">
-                    האתר נבנה ע"י Multi-Web מבית Multibrawn - אתרים שבונים עסקים
-                </p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Floating Buttons -->
-    <a href="https://wa.me/972523983394?text=שלום, קראתי על הסיפור שלכם ואני מעוניין לשמוע עוד" 
-       class="floating-whatsapp" target="_blank" title="שלחו הודעה בוואטסאפ">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <div class="floating-chatbot" id="chatbotButton" title="פתח צ'אט">
-        <i class="fas fa-comments"></i>
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="hero-content" data-aos="fade-up" data-aos-duration="1200">
+      <h1 class="brand-title" data-aos="fade-up">MULTIBRAWN</h1>
+      <p class="tagline" data-aos="fade-up" data-aos-delay="100">נופש, אירועים, לוקיישנים ומה שביניהם</p>
+      <p class="hero-sub" data-aos="fade-up" data-aos-delay="200">מחברים חלומות למציאות – לוקיישנים נבחרים + מעטפת שיווק 360°</p>
     </div>
+  </section>
 
-    <div class="floating-accessibility" id="accessibilityButton" title="נגישות">
-        <i class="fas fa-universal-access"></i>
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="hero-content" data-aos="fade-up" data-aos-duration="1200">
+      <h1 class="brand-title" data-aos="fade-up">MULTIBRAWN</h1>
+      <p class="tagline" data-aos="fade-up" data-aos-delay="100">נופש, אירועים, לוקיישנים ומה שביניהם</p>
+      <p class="hero-sub" data-aos="fade-up" data-aos-delay="200">מחברים חלומות למציאות – לוקיישנים נבחרים + מעטפת שיווק 360°</p>
     </div>
+  </section>
 
-    <!-- Accessibility Panel -->
-    <div class="accessibility-panel" id="accessibilityPanel">
-        <div class="accessibility-header">
-            <h3>נגישות</h3>
-            <button class="close-accessibility" id="closeAccessibility">&times;</button>
+  <main>
+    <!-- Properties Section -->
+    <section id="properties" class="section-padding" style="background:linear-gradient(180deg,var(--primary-bg) 0%, var(--secondary-bg) 100%);">
+      <div class="max-w-7xl mx-auto px-4">
+        <h2 class="section-heading" data-aos="fade-up">מחברים בין לקוחות איכותיים למתחמים נבחרים</h2>
+        <p class="text-center text-xl text-gray-300 mb-14 max-w-3xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="150">
+          מלונות בוטיק, וילות יוקרה, צימרים רומנטיים ודירות נופש – לכל מה שאתם צריכים לחופשה או אירוع.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="property-card p-8 text-center" data-aos="fade-up" data-aos-delay="50">
+            <div class="mb-6"><i class="fas fa-hotel text-4xl" style="color:var(--accent-yellow)"></i></div>
+            <h3 class="text-2xl font-bold text-white mb-3">מלונות בוטיק</h3>
+            <p class="text-gray-300 leading-relaxed">אינטימיות, שירות עילית ועיצוב מוקפד.</p>
+          </div>
+          <div class="property-card p-8 text-center" data-aos="fade-up" data-aos-delay="150">
+            <div class="mb-6"><i class="fas fa-home text-4xl" style="color:var(--accent-purple)"></i></div>
+            <h3 class="text-2xl font-bold text-white mb-3">וילות יוקרה</h3>
+            <p class="text-gray-300 leading-relaxed">מתאים לאירועים ולמשפחות – עם פרטיות מלאה.</p>
+          </div>
+          <div class="property-card p-8 text-center" data-aos="fade-up" data-aos-delay="250">
+            <div class="mb-6"><i class="fas fa-tree text-4xl" style="color:var(--accent-yellow)"></i></div>
+            <h3 class="text-2xl font-bold text-white mb-3">צימרים רומנטיים</h3>
+            <p class="text-gray-300 leading-relaxed">בריחה לטבע עם אווירה קסומה.</p>
+          </div>
+          <div class="property-card p-8 text-center" data-aos="fade-up" data-aos-delay="350">
+            <div class="mb-6"><i class="fas fa-building text-4xl" style="color:var(--accent-purple)"></i></div>
+            <h3 class="text-2xl font-bold text-white mb-3">דירות נופש</h3>
+            <p class="text-gray-300 leading-relaxed">חוויית עיר עם כל הנוחות בבית.</p>
+          </div>
         </div>
-        <div class="accessibility-options">
-            <button class="accessibility-option" onclick="increaseFontSize()">הגדל גופן</button>
-            <button class="accessibility-option" onclick="decreaseFontSize()">הקטן גופן</button>
-            <button class="accessibility-option" onclick="toggleHighContrast()">ניגודיות גבוהה</button>
-            <button class="accessibility-option" onclick="resetAccessibility()">אפס הגדרות</button>
+      </div>
+    </section>
+    
+    <!-- Info: What you'll find -->
+    <section class="section-padding" style="background:var(--primary-bg)">
+      <div class="max-w-7xl mx-auto px-4">
+        <h2 class="section-heading" data-aos="fade-up">מה תמצאו אצלנו</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-6">
+          <article class="property-card p-7" data-aos="fade-up" data-aos-delay="50">
+            <h3 class="text-xl font-bold mb-2">לוקיישנים מאושרים בלבד</h3>
+            <p class="text-gray-300">כל נכס עובר בדיקה: ניקיון, שירות, מתקנים ותמונות אמיתיות.</p>
+          </article>
+          <article class="property-card p-7" data-aos="fade-up" data-aos-delay="100">
+            <h3 class="text-xl font-bold mb-2">התאמה לצורך שלכם</h3>
+            <p class="text-gray-300">משפחות, זוגות, קבוצות או אירועים – נמצא את המתחם המדויק.</p>
+          </article>
+          <article class="property-card p-7" data-aos="fade-up" data-aos-delay="150">
+            <h3 class="text-xl font-bold mb-2">שקיפות מלאה</h3>
+            <p class="text-gray-300">מחירים, תנאי ביטול וזמינות – לפני שמזמינים.</p>
+          </article>
+          <article class="property-card p-7" data-aos="fade-up" data-aos-delay="200">
+            <h3 class="text-xl font-bold mb-2">ליווי אישי</h3>
+            <p class="text-gray-300">נציג/ה שמכיר/ה את הנכסים ומלווה עד סגירה.</p>
+          </article>
+          <article class="property-card p-7" data-aos="fade-up" data-aos-delay="250">
+            <h3 class="text-xl font-bold mb-2">אפשרויות שדרוג</h3>
+            <p class="text-gray-300">קייטרינג, צלם/ת, DJ, עיצוב, אטרקציות – במקום אחד.</p>
+          </article>
+          <article class="property-card p-7" data-aos="fade-up" data-aos-delay="300">
+            <h3 class="text-xl font-bold mb-2">זמינות מהירה</h3>
+            <p class="text-gray-300">מענה בוואטסאפ ושיחות – כדי שלא תפספסו תאריכים.</p>
+          </article>
         </div>
+      </div>
+    </section>
+
+    <!-- Info: How it works -->
+    <section class="section-padding" style="background:linear-gradient(180deg,var(--primary-bg) 0%, var(--secondary-bg) 100%);">
+      <div class="max-w-5xl mx-auto px-4">
+        <h2 class="section-heading" data-aos="fade-up">איך זה עובד</h2>
+        <ol class="grid gap-6 md:grid-cols-3 mt-6">
+          <li class="property-card p-7" data-aos="fade-up" data-aos-delay="60">
+            <h3 class="text-xl font-bold mb-2">1. מספרים לנו מה צריך</h3>
+            <p class="text-gray-300">תאריכים, מיקום מועדף, כמות אורחים וסוג חוויה.</p>
+          </li>
+          <li class="property-card p-7" data-aos="fade-up" data-aos-delay="140">
+            <h3 class="text-xl font-bold mb-2">2. מקבלים התאמות מדויקות</h3>
+            <p class="text-gray-300">נשלח לכם 2–4 מתחמים רלוונטיים עם מידע מלא.</p>
+          </li>
+          <li class="property-card p-7" data-aos="fade-up" data-aos-delay="220">
+            <h3 class="text-xl font-bold mb-2">3. סוגרים בנוחות</h3>
+            <p class="text-gray-300">שומרים תאריך וסוגרים פרטים קטנים – ונשאר רק לארוז.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="section-padding" style="background:var(--primary-bg)">
+      <div class="max-w-7xl mx-auto px-4">
+        <h2 class="section-heading" data-aos="fade-up">פתרונות ייחודיים לכל סוג אירוע</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-12">
+          <div class="property-card p-8 text-center" data-aos="fade-up" data-aos-delay="80">
+            <div class="mb-6"><i class="fas fa-star-of-david text-4xl" style="color:var(--accent-yellow)"></i></div>
+            <h3 class="text-2xl font-bold text-white mb-3">שבתות חתן ואירועים דתיים</h3>
+            <p class="text-gray-300 leading-relaxed">מתחמים מותאמים למשפחה מורחבת ודרישות כשרות.</p>
+          </div>
+          <div class="property-card p-8 text-center" data-aos="fade-up" data-aos-delay="180">
+            <div class="mb-6"><i class="fas fa-users text-4xl" style="color:var(--accent-purple)"></i></div>
+            <h3 class="text-2xl font-bold text-white mb-3">כנסים וימי גיבוש</h3>
+            <p class="text-gray-300 leading-relaxed">פתרונות מושלמים לקבוצות עסקיות עם חדרי ישיבות.</p>
+          </div>
+          <div class="property-card p-8 text-center" data-aos="fade-up" data-aos-delay="280">
+            <div class="mb-6"><i class="fas fa-birthday-cake text-4xl" style="color:var(--accent-yellow)"></i></div>
+            <h3 class="text-2xl font-bold text-white mb-3">מסיבות וחגיגות</h3>
+            <p class="text-gray-300 leading-relaxed">וילות עם בריכה, סאונד ופינות ישיבה לאירוע מושלם.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+    <!-- Properties Section -->
+    <section id="properties" class="section-padding" style="background:linear-gradient(180deg,var(--primary-bg) 0%, var(--secondary-bg) 100%);">
+      <div class="max-w-7xl mx-auto px-4">
+        <h2 class="section-heading" data-aos="fade-up">מחברים בין לקוחות איכותיים למתחמים נבחרים</h2>
+        <p class="text-center text-xl text-gray-300 mb-14 max-w-3xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="150">
+          מלונות בוטיק, וילות יוקרה, צימרים רומנטיים ודירות נופש – לכל מה שאתם צריכים לחופשה או אירוע.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="property-card p-8 text-center" data-aos="fade-up" data-aos-delay="50">
+            <div class="mb-6"><i class="fas fa-hotel text-4xl" style="color:var(--accent-yellow)"></i></div>
+            <h3 class="text-2xl font-bold text-white mb-3">מלונות בוטיק</h3>
+            <p class="text-gray-300 leading-relaxed">אינטימיות, שירות עילית ועיצוב מוקפד.</p>
+          </div>
+          <div class="property-card p-8 text-center" data-aos="fade-up" data-aos-delay="150">
+            <div class="mb-6"><i class="fas fa-home text-4xl" style="color:var(--accent-purple)"></i></div>
+            <h3 class="text-2xl font-bold text-white mb-3">וילות יוקרה</h3>
+            <p class="text-gray-300 leading-relaxed">מתאים לאירועים ולמשפחות – עם פרטיות מלאה.</p>
+          </div>
+          <div class="property-card p-8 text-center" data-aos="fade-up" data-aos-delay="250">
+            <div class="mb-6"><i class="fas fa-tree text-4xl" style="color:var(--accent-yellow)"></i></div>
+            <h3 class="text-2xl font-bold text-white mb-3">צימרים רומנטיים</h3>
+            <p class="text-gray-300 leading-relaxed">בריחה לטבע עם אווירה קסומה.</p>
+          </div>
+          <div class="property-card p-8 text-center" data-aos="fade-up" data-aos-delay="350">
+            <div class="mb-6"><i class="fas fa-building text-4xl" style="color:var(--accent-purple)"></i></div>
+            <h3 class="text-2xl font-bold text-white mb-3">דירות נופש</h3>
+            <p class="text-gray-300 leading-relaxed">חוויית עיר עם כל הנוחות בבית.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Info: What you'll find -->
+    <section class="section-padding" style="background:var(--primary-bg)">
+      <div class="max-w-7xl mx-auto px-4">
+        <h2 class="section-heading" data-aos="fade-up">מה תמצאו אצלנו</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-6">
+          <article class="property-card p-7" data-aos="fade-up" data-aos-delay="50">
+            <h3 class="text-xl font-bold mb-2">לוקיישנים מאושרים בלבד</h3>
+            <p class="text-gray-300">כל נכס עובר בדיקה: ניקיון, שירות, מתקנים ותמונות אמיתיות.</p>
+          </article>
+          <article class="property-card p-7" data-aos="fade-up" data-aos-delay="100">
+            <h3 class="text-xl font-bold mb-2">התאמה לצורך שלכם</h3>
+            <p class="text-gray-300">משפחות, זוגות, קבוצות או אירועים – נמצא את המתחם המדויק.</p>
+          </article>
+          <article class="property-card p-7" data-aos="fade-up" data-aos-delay="150">
+            <h3 class="text-xl font-bold mb-2">שקיפות מלאה</h3>
+            <p class="text-gray-300">מחירים, תנאי ביטול וזמינות – לפני שמזמינים.</p>
+          </article>
+          <article class="property-card p-7" data-aos="fade-up" data-aos-delay="200">
+            <h3 class="text-xl font-bold mb-2">ליווי אישי</h3>
+            <p class="text-gray-300">נציג/ה שמכיר/ה את הנכסים ומלווה עד סגירה.</p>
+          </article>
+          <article class="property-card p-7" data-aos="fade-up" data-aos-delay="250">
+            <h3 class="text-xl font-bold mb-2">אפשרויות שדרוג</h3>
+            <p class="text-gray-300">קייטרינג, צלם/ת, DJ, עיצוב, אטרקציות – במקום אחד.</p>
+          </article>
+          <article class="property-card p-7" data-aos="fade-up" data-aos-delay="300">
+            <h3 class="text-xl font-bold mb-2">זמינות מהירה</h3>
+            <p class="text-gray-300">מענה בוואטסאפ ושיחות – כדי שלא תפספסו תאריכים.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Info: How it works -->
+    <section class="section-padding" style="background:linear-gradient(180deg,var(--primary-bg) 0%, var(--secondary-bg) 100%);">
+      <div class="max-w-5xl mx-auto px-4">
+        <h2 class="section-heading" data-aos="fade-up">איך זה עובד</h2>
+        <ol class="grid gap-6 md:grid-cols-3 mt-6">
+          <li class="property-card p-7" data-aos="fade-up" data-aos-delay="60">
+            <h3 class="text-xl font-bold mb-2">1. מספרים לנו מה צריך</h3>
+            <p class="text-gray-300">תאריכים, מיקום מועדף, כמות אורחים וסוג חוויה.</p>
+          </li>
+          <li class="property-card p-7" data-aos="fade-up" data-aos-delay="140">
+            <h3 class="text-xl font-bold mb-2">2. מקבלים התאמות מדויקות</h3>
+            <p class="text-gray-300">נשלח לכם 2–4 מתחמים רלוונטיים עם מידע מלא.</p>
+          </li>
+          <li class="property-card p-7" data-aos="fade-up" data-aos-delay="220">
+            <h3 class="text-xl font-bold mb-2">3. סוגרים בנוחות</h3>
+            <p class="text-gray-300">שומרים תאריך וסוגרים פרטים קטנים – ונשאר רק לארוז.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="section-padding" style="background:var(--primary-bg)">
+      <div class="max-w-7xl mx-auto px-4">
+        <h2 class="section-heading" data-aos="fade-up">פתרונות ייחודיים לכל סוג אירוע</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-12">
+          <div class="property-card p-8 text-center" data-aos="fade-up" data-aos-delay="80">
+            <div class="mb-6"><i class="fas fa-star-of-david text-4xl" style="color:var(--accent-yellow)"></i></div>
+            <h3 class="text-2xl font-bold text-white mb-3">שבתות חתן ואירועים דתיים</h3>
+            <p class="text-gray-300 leading-relaxed">מתחמים מותאמים למשפחה מורחבת ודרישות כשרות.</p>
+          </div>
+          <div class="property-card p-8 text-center" data-aos="fade-up" data-aos-delay="180">
+            <div class="mb-6"><i class="fas fa-users text-4xl" style="color:var(--accent-purple)"></i></div>
+            <h3 class="text-2xl font-bold text-white mb-3">כנסים וימי גיבוש</h3>
+            <p class="text-gray-300 leading-relaxed">פתרונות מושלמים לקבוצות עסקיות עם חדרי ישיבות.</p>
+          </div>
+          <div class="property-card p-8 text-center" data-aos="fade-up" data-aos-delay="280">
+            <div class="mb-6"><i class="fas fa-birthday-cake text-4xl" style="color:var(--accent-yellow)"></i></div>
+            <h3 class="text-2xl font-bold text-white mb-3">מסיבות וחגיגות</h3>
+            <p class="text-gray-300 leading-relaxed">וילות עם בריכה, סאונד ופינות ישיבה לאירוע מושלם.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-12 text-center" style="background:var(--primary-bg);border-top:1px solid rgba(124,58,237,.2)">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+        <a href="index.html" class="logo mb-6 md:mb-0">MULTIBRAWN</a>
+        <div class="flex gap-6 text-3xl">
+          <a href="#" class="text-gray-400 hover:text-purple-400 transition duration-300" title="פייסבוק" target="_blank" rel="noopener"><i class="fab fa-facebook"></i></a>
+          <a href="#" class="text-gray-400 hover:text-purple-400 transition duration-300" title="אינסטגרם" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="text-gray-400 hover:text-purple-400 transition duration-300" title="לינקדאין" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+      <div class="border-t border-purple-500/20 pt-6 text-gray-400">
+        <p class="mb-2">© 2025 MULTIBRAWN. כל הזכויות שמורות.</p>
+        <p class="text-sm mb-4">
+          <a href="privacy.html" class="hover:underline">מדיניות פרטיות</a> ·
+          <a href="accessibility.html" class="hover:underline">הצהרת נגישות</a> ·
+          <a href="faq.html" class="hover:underline">שאלות ותשובות</a>
+        </p>
+        <p class="text-xs mt-4" style="color: #fbbf24;">
+          האתר נבנה ע"י Multi-Web מבית MULTIBRAWN - אתרים שבונים עסקים
+        </p>
+      </div>
     </div>
+  </footer>
 
-    <script>
-        // Global accessibility functions
-        let fontSizeMultiplier = 1;
-        let isHighContrast = false;
+  <!-- Floating Buttons -->
+  <a href="https://wa.me/972523983394?text=שלום,%20אני%20מעוניין/ת%20במידע%20נוסף%20על%20MULTIBRAWN" 
+     class="floating-whatsapp" target="_blank" rel="noopener" aria-label="צור קשר בוואטסאפ">
+    <i class="fab fa-whatsapp" aria-hidden="true"></i>
+  </a>
 
-        function increaseFontSize() {
-            fontSizeMultiplier += 0.1;
-            document.body.style.fontSize = (fontSizeMultiplier * 100) + '%';
-        }
+  <div class="floating-chatbot" id="chatbotButton" title="פתח צ'אט">
+    <i class="fas fa-comments"></i>
+  </div>
 
-        function decreaseFontSize() {
-            if (fontSizeMultiplier > 0.8) {
-                fontSizeMultiplier -= 0.1;
-                document.body.style.fontSize = (fontSizeMultiplier * 100) + '%';
-            }
-        }
+  <div class="floating-accessibility" id="accessibilityButton" title="נגישות">
+    <i class="fas fa-universal-access"></i>
+  </div>
 
-        function toggleHighContrast() {
-            isHighContrast = !isHighContrast;
-            if (isHighContrast) {
-                document.body.style.filter = 'contrast(150%) brightness(120%)';
-            } else {
-                document.body.style.filter = 'none';
-            }
-        }
+  <!-- Accessibility Panel -->
+  <div class="accessibility-panel" id="accessibilityPanel">
+    <div class="accessibility-header">
+      <h3>נגישות</h3>
+      <button class="close-accessibility" id="closeAccessibility">&times;</button>
+    </div>
+    <div class="accessibility-options">
+      <button class="accessibility-option" onclick="increaseFontSize()">הגדל גופן</button>
+      <button class="accessibility-option" onclick="decreaseFontSize()">הקטן גופן</button>
+      <button class="accessibility-option" onclick="toggleHighContrast()">ניגודיות גבוהה</button>
+      <button class="accessibility-option" onclick="resetAccessibility()">אפס הגדרות</button>
+    </div>
+  </div>
 
-        function resetAccessibility() {
-            fontSizeMultiplier = 1;
-            isHighContrast = false;
-            document.body.style.fontSize = '100%';
-            document.body.style.filter = 'none';
-        }
+  <script>
+    // Global accessibility functions
+    let fontSizeMultiplier = 1;
+    let isHighContrast = false;
 
-        // Setup functions
-        function setupMobileMenu() {
-            const toggle = document.getElementById('mobileToggle');
-            const menu = document.querySelector('.nav-menu');
-            
-            if (toggle && menu) {
-                toggle.addEventListener('click', () => {
-                    menu.classList.toggle('active');
-                });
-            }
-        }
+    function increaseFontSize() {
+      fontSizeMultiplier += 0.1;
+      document.body.style.fontSize = (fontSizeMultiplier * 100) + '%';
+    }
 
-        function setupScrollEffects() {
-            window.addEventListener('scroll', () => {
-                const nav = document.querySelector('.header-nav');
-                if (nav) {
-                    if (window.scrollY > 100) {
-                        nav.style.background = 'rgba(26, 11, 46, 0.98)';
-                    } else {
-                        nav.style.background = 'rgba(26, 11, 46, 0.95)';
-                    }
-                }
-            });
-        }
+    function decreaseFontSize() {
+      if (fontSizeMultiplier > 0.8) {
+        fontSizeMultiplier -= 0.1;
+        document.body.style.fontSize = (fontSizeMultiplier * 100) + '%';
+      }
+    }
 
-        function setupChatbot() {
-            const chatbotButton = document.getElementById('chatbotButton');
-            if (chatbotButton) {
-                chatbotButton.addEventListener('click', function() {
-                    alert('הצ\'אטבוט יפתח בקרוב... פרטים נוספים בוואטסאפ!');
-                });
-            }
-        }
+    function toggleHighContrast() {
+      isHighContrast = !isHighContrast;
+      if (isHighContrast) {
+        document.body.style.filter = 'contrast(150%) brightness(120%)';
+      } else {
+        document.body.style.filter = 'none';
+      }
+    }
 
-        function setupAccessibility() {
-            const accessibilityButton = document.getElementById('accessibilityButton');
-            const accessibilityPanel = document.getElementById('accessibilityPanel');
-            const closeAccessibility = document.getElementById('closeAccessibility');
+    function resetAccessibility() {
+      fontSizeMultiplier = 1;
+      isHighContrast = false;
+      document.body.style.fontSize = '100%';
+      document.body.style.filter = 'none';
+    }
 
-            if (accessibilityButton && accessibilityPanel && closeAccessibility) {
-                accessibilityButton.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    accessibilityPanel.classList.toggle('active');
-                });
+    function setupChatbot() {
+      const chatbotButton = document.getElementById('chatbotButton');
+      if (chatbotButton) {
+        chatbotButton.addEventListener('click', function() {
+          alert('הצ\'אטבוט יפתח בקרוב... פרטים נוספים בוואטסאפ!');
+        });
+      }
+    }
 
-                closeAccessibility.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    accessibilityPanel.classList.remove('active');
-                });
+    function setupAccessibility() {
+      const accessibilityButton = document.getElementById('accessibilityButton');
+      const accessibilityPanel = document.getElementById('accessibilityPanel');
+      const closeAccessibility = document.getElementById('closeAccessibility');
 
-                document.addEventListener('click', (e) => {
-                    if (!accessibilityPanel.contains(e.target) && !accessibilityButton.contains(e.target)) {
-                        accessibilityPanel.classList.remove('active');
-                    }
-                });
-            }
-        }
-
-        // Fallback CSS animations
-        const fallbackAnimations = `
-            <style>
-                [data-aos] {
-                    opacity: 1 !important;
-                    transform: none !important;
-                    animation: fadeInUp 0.8s ease-out;
-                }
-                
-                @keyframes fadeInUp {
-                    from {
-                        opacity: 0;
-                        transform: translateY(30px);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
-                }
-            </style>
-        `;
-
-        // Initialize everything
-        document.addEventListener('DOMContentLoaded', function() {
-            // Load AOS animations
-            const aosScript = document.createElement('script');
-            aosScript.src = 'https://unpkg.com/aos@2.3.1/dist/aos.js';
-            aosScript.onload = function() {
-                if (typeof AOS !== 'undefined') {
-                    AOS.init({
-                        duration: 1200,
-                        once: true,
-                        offset: 50
-                    });
-                }
-            };
-            aosScript.onerror = function() {
-                document.head.insertAdjacentHTML('beforeend', fallbackAnimations);
-            };
-            document.head.appendChild(aosScript);
-
-            // Setup all functionality
-            setupMobileMenu();
-            setupScrollEffects();
-            setupChatbot();
-            setupAccessibility();
+      if (accessibilityButton && accessibilityPanel && closeAccessibility) {
+        accessibilityButton.addEventListener('click', function(e) {
+          e.stopPropagation();
+          accessibilityPanel.classList.toggle('active');
         });
 
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
+        closeAccessibility.addEventListener('click', function(e) {
+          e.stopPropagation();
+          accessibilityPanel.classList.remove('active');
         });
-    </script>
+
+        document.addEventListener('click', function(e) {
+          if (!accessibilityPanel.contains(e.target) && !accessibilityButton.contains(e.target)) {
+            accessibilityPanel.classList.remove('active');
+          }
+        });
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // AOS safe init
+      if (typeof AOS !== 'undefined') {
+        AOS.init({ duration: 1000, once: true, easing: 'ease-out-cubic', offset: 60 });
+      }
+      
+      // Mobile Menu Toggle
+      const toggle = document.getElementById('mobileToggle');
+      const menu = document.getElementById('primaryNav');
+      if (toggle && menu) {
+        toggle.addEventListener('click', function() {
+          const open = menu.classList.toggle('active');
+          toggle.setAttribute('aria-expanded', String(open));
+        });
+      }
+      
+      // Setup functionality
+      setupChatbot();
+      setupAccessibility();
+      
+      // Smooth scrolling for in-page anchors
+      document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+        a.addEventListener('click', function(e) {
+          const id = a.getAttribute('href');
+          if (id.length > 1) {
+            const target = document.querySelector(id);
+            if (target) {
+              e.preventDefault();
+              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
