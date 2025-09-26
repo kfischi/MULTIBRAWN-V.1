@@ -131,7 +131,7 @@
           </div>
         </section>
     
-        <section id="events" class="section-padding">
+        <section id="events" class="section-padding" style="background: var(--secondary-bg);">
           <div class="container">
             <h2 class="section-heading">פתרונות ייחודיים לכל סוג אירוע</h2>
             <div class="grid grid-cols-4">
@@ -190,10 +190,14 @@
       const proactivePopup = document.getElementById('proactive-popup');
       const acceptChallengeBtn = document.getElementById('accept-challenge');
       const declineChallengeBtn = document.getElementById('decline-challenge');
+      let proactiveTimeout;
+      let chatOpened = false; // Flag to check if chat has been opened once
 
       function openChat() {
           chatPopup.classList.add('visible');
           proactivePopup.classList.remove('visible');
+          clearTimeout(proactiveTimeout); // Stop the proactive popup from appearing if chat is opened manually
+          chatOpened = true;
       }
       
       function closeChat() {
@@ -203,8 +207,8 @@
       chatbotBtn.addEventListener('click', openChat);
       closeChatBtn.addEventListener('click', closeChat);
 
-      setTimeout(() => {
-          if (!chatPopup.classList.contains('visible')) {
+      proactiveTimeout = setTimeout(() => {
+          if (!chatOpened) {
               proactivePopup.classList.remove('hidden');
               proactivePopup.classList.add('visible');
           }
