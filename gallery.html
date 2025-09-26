@@ -1,76 +1,1117 @@
-}!DOCTYPE html>
-const t=document.getElementById('navToggle');const m=document.getElementById('primaryNav');if(t&&m){t.addEventListener('click',()=>{const o=m.classList.toggle('active');t.setAttribute('aria-expanded',String(o));});}
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>גלריה - Multibrawn | וילות יוקרה, צימרים רומנטיים ולוקיישנים חלומיים</title>
+    <meta name="description" content="גלו את מגוון הנכסים המדהים שלנו: וילות יוקרה עם בריכות פרטיות, צימרים רומנטיים, מלונות בוטיק ולוקיישנים ייחודיים לכל אירוע">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-bg: #1a0b2e;
+            --secondary-bg: #16213e;
+            --accent-purple: #7c3aed;
+            --light-purple: #a855f7;
+            --dark-purple: #5b21b6;
+            --accent-gold: #b8860b;
+            --text-light: #f8fafc;
+            --text-muted: #cbd5e1;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Heebo', sans-serif;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-// טעינת קבצים מה-GitHub API
-const API='https://api.github.com/repos/kfischi/MULTIBRAWN-V.1/contents/Gallery';
-const grid=document.getElementById('grid');
-const search=document.getElementById('search');
-const filters=document.querySelectorAll('.filter');
-let items=[];let currentFilter='all';let query='';
+        body {
+            font-family: var(--font-body);
+            background: var(--primary-bg);
+            color: var(--text-light);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
 
+        /* Header */
+        .header-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(26, 11, 46, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(124, 58, 237, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-const isImage=(name)=>/(\.avif|\.webp|\.jpg|\.jpeg|\.png)$/i.test(name);
-const isVideo=(name)=>/(\.mp4|\.webm)$/i.test(name);
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 40px;
+        }
 
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 900;
+            color: transparent;
+            background: linear-gradient(45deg, #f8fafc, #7c3aed, #a855f7);
+            background-clip: text;
+            -webkit-background-clip: text;
+            text-decoration: none;
+        }
 
-async function load(){
-try{
-const res=await fetch(API,{headers:{'Accept':'application/vnd.github+json'}});
-if(!res.ok) throw new Error('GitHub API error');
-const data=await res.json();
-items=data.filter(x=>x.type==='file' && (isImage(x.name)||isVideo(x.name)))
-.map(x=>({name:x.name,url:x.download_url,type:isImage(x.name)?'image':'video'}));
-render();
-}catch(e){grid.innerHTML=`<div class="card" style="padding:18px">שגיאה בטעינת גלריה. אפשר להעלות קבצים ל-<code>Gallery/</code> ב-GitHub או לטעון מחדש.</div>`;}
-}
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+            align-items: center;
+        }
 
+        .nav-menu a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
 
-function render(){
-const filtered=items.filter(i=> (currentFilter==='all'||i.type===currentFilter) && i.name.toLowerCase().includes(query.toLowerCase()));
-grid.innerHTML = filtered.map(i=> card(i)).join('');
-attachLightbox();
-}
+        .nav-menu a:hover {
+            color: var(--text-light);
+        }
 
+        .cta-button {
+            background: linear-gradient(135deg, var(--accent-purple), var(--dark-purple));
+            color: white;
+            padding: 12px 28px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(124, 58, 237, 0.3);
+        }
 
-function card(i){
-const badge=i.type==='image'?'תמונה':'סרטון';
-const ctaMsg=encodeURIComponent(`שלום, אשמח פרטים על הקובץ: ${i.name}`);
-const wa=`https://wa.me/972523983394?text=${ctaMsg}`;
-const media=i.type==='image'
-? `<img src="${i.url}" loading="lazy" alt="${i.name}" />`
-: `<video src="${i.url}" controls preload="metadata"></video>`;
-return `<article class="card" data-type="${i.type}" data-name="${i.name}">
-<span class="badge">${badge}</span>
-<a href="#" class="open" data-url="${i.url}" data-kind="${i.type}" aria-label="פתח ${badge}">${media}</a>
-<div class="meta">
-<span title="שם קובץ">${i.name}</span>
-<a class="cta" href="${wa}" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> בקשת פרטים</a>
-</div>
-</article>`;
-}
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%);
+            overflow: hidden;
+        }
 
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villa1.jpg') center/cover;
+            opacity: 0.3;
+            z-index: 1;
+        }
 
-filters.forEach(f=>f.addEventListener('click',()=>{filters.forEach(x=>x.classList.remove('active'));f.classList.add('active');currentFilter=f.dataset.filter;render();}));
-search.addEventListener('input',e=>{query=e.target.value;render();});
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            position: relative;
+            max-width: 800px;
+            padding: 2rem;
+        }
 
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--text-light) 0%, var(--accent-purple) 50%, var(--accent-gold) 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 50px rgba(255, 255, 255, 0.1);
+        }
 
-// לייטבוקס
-const lb=document.getElementById('lightbox');
-const lbInner=document.getElementById('lbInner');
-const close=document.getElementById('closeLb');
-function attachLightbox(){
-document.querySelectorAll('.open').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();
-const url=a.getAttribute('data-url');
-const kind=a.getAttribute('data-kind');
-lbInner.innerHTML = kind==='image' ? `<img src="${url}" alt="preview" />` : `<video src="${url}" controls autoplay></video>`;
-lb.classList.add('open');
-}));
-close.addEventListener('click',()=> lb.classList.remove('open'));
-lb.addEventListener('click',e=>{ if(e.target===lb) lb.classList.remove('open'); });
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
 
+        /* Filter Tabs */
+        .filter-section {
+            padding: 4rem 2rem 2rem 2rem;
+            background: var(--secondary-bg);
+        }
 
-load();
-</script>
+        .filter-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .filter-tab {
+            background: rgba(124, 58, 237, 0.1);
+            color: var(--text-light);
+            padding: 12px 24px;
+            border-radius: 50px;
+            border: 2px solid rgba(124, 58, 237, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .filter-tab.active,
+        .filter-tab:hover {
+            background: linear-gradient(135deg, var(--accent-purple), var(--light-purple));
+            border-color: var(--accent-purple);
+            box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* Gallery Grid */
+        .gallery-section {
+            padding: 4rem 2rem;
+            background: var(--primary-bg);
+        }
+
+        .gallery-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            height: 400px;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(124, 58, 237, 0.4);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            padding: 2rem;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-title {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .gallery-description {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .gallery-badges {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .badge {
+            background: var(--accent-purple);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .badge.premium {
+            background: var(--accent-gold);
+        }
+
+        .badge.new {
+            background: #10b981;
+        }
+
+        /* Video Section */
+        .video-section {
+            padding: 6rem 2rem;
+            background: var(--secondary-bg);
+        }
+
+        .video-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--text-light), var(--accent-purple), var(--light-purple));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 3rem;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .video-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s ease;
+        }
+
+        .video-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 60px rgba(124, 58, 237, 0.3);
+        }
+
+        .video-thumbnail {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(124, 58, 237, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .play-button:hover {
+            background: var(--accent-purple);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .video-info {
+            padding: 1.5rem;
+            background: rgba(26, 11, 46, 0.9);
+        }
+
+        .video-title {
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .video-description {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 2001;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            transform: scale(1.2);
+            color: var(--accent-purple);
+        }
+
+        .modal img,
+        .modal video {
+            width: 100%;
+            height: auto;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%);
+        }
+
+        .stats-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--accent-purple);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 2rem;
+            background: var(--secondary-bg);
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, 
+                rgba(124, 58, 237, 0.2) 0%, 
+                rgba(168, 85, 247, 0.1) 100%);
+            padding: 4rem 3rem;
+            border-radius: 25px;
+            border: 1px solid rgba(124, 58, 237, 0.3);
+        }
+
+        .cta-title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-description {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn-primary {
+            background: linear-gradient(135deg, var(--accent-purple), var(--dark-purple));
+            color: white;
+            box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4);
+        }
+
+        .cta-btn-secondary {
+            background: transparent;
+            color: var(--light-purple);
+            border: 2px solid rgba(124, 58, 237, 0.5);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .filter-tabs {
+                gap: 0.5rem;
+            }
+
+            .filter-tab {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .gallery-item {
+                height: 300px;
+            }
+
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-btn {
+                width: 100%;
+                max-width: 250px;
+            }
+        }
+
+        /* Animation Classes */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(124, 58, 237, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--accent-purple);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header-nav">
+        <nav class="nav-content">
+            <a href="index.html" class="logo">Multibrawn</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">דף הבית</a></li>
+                <li><a href="about.html">אודות</a></li>
+                <li><a href="gallery.html">גלריה</a></li>
+                <li><a href="marketing.html">שיווק דיגיטלי</a></li>
+                <li><a href="contact.html">צור קשר</a></li>
+                <li><a href="contact.html" class="cta-button">קבלו הצעה</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content" data-aos="fade-up">
+            <h1 class="hero-title">גלריה מדהימה</h1>
+            <p class="hero-subtitle">
+                גלו את מגוון הנכסים הייחודיים שלנו - וילות יוקרה, צימרים רומנטיים, 
+                מלונות בוטיק ולוקיישנים חלומיים שיהפכו את האירוע שלכם לבלתי נשכח
+            </p>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="filter-container">
+            <div class="filter-tabs">
+                <div class="filter-tab active" data-filter="all">הכל</div>
+                <div class="filter-tab" data-filter="villas">וילות יוקרה</div>
+                <div class="filter-tab" data-filter="zimmer">צימרים רומנטיים</div>
+                <div class="filter-tab" data-filter="hotels">מלונות בוטיק</div>
+                <div class="filter-tab" data-filter="events">אולמי אירועים</div>
+                <div class="filter-tab" data-filter="unique">לוקיישנים ייחודיים</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <div class="gallery-container">
+            <div class="gallery-grid" id="galleryGrid">
+                
+                <!-- Villa Items -->
+                <div class="gallery-item" data-category="villas" data-aos="fade-up">
+                    <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villa1.jpg" alt="וילה יוקרתית עם בריכה פרטית">
+                    <div class="gallery-overlay">
+                        <div class="gallery-badges">
+                            <span class="badge premium">פרמיום</span>
+                            <span class="badge">בריכה פרטית</span>
+                        </div>
+                        <h3 class="gallery-title">וילת דקל - חוף הכרמל</h3>
+                        <p class="gallery-description">
+                            וילה מרהיבה עם נוף לים, בריכה אינפיניטי, 8 חדרי שינה ועיצוב מודרני מושלם לאירועים מיוחדים
+                        </p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="villas" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villa2.jpg" alt="וילה מעוצבת עם גינה">
+                    <div class="gallery-overlay">
+                        <div class="gallery-badges">
+                            <span class="badge premium">פרמיום</span>
+                            <span class="badge new">חדש</span>
+                        </div>
+                        <h3 class="gallery-title">וילת אירוס - הרי יהודה</h3>
+                        <p class="gallery-description">
+                            וילה מעוצבת בסגנון טוסקני עם גינה מטופחת, ג'קוזי זוגי וחדר קולנוע פרטי
+                        </p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="villas" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villa3.jpg" alt="וילה עם נוף הרים">
+                    <div class="gallery-overlay">
+                        <div class="gallery-badges">
+                            <span class="badge">נוף הרים</span>
+                            <span class="badge">12 אורחים</span>
+                        </div>
+                        <h3 class="gallery-title">וילת שקד - הגליל העליון</h3>
+                        <p class="gallery-description">
+                            וילה משפחתית גדולה עם נוף פנורמי להרים, מרפסות רחבות וחצר משחקים
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Zimmer Items -->
+                <div class="gallery-item" data-category="zimmer" data-aos="fade-up">
+                    <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Zimmer1.jpg" alt="צימר רומנטי">
+                    <div class="gallery-overlay">
+                        <div class="gallery-badges">
+                            <span class="badge">רומנטי</span>
+                            <span class="badge">ג'קוזי</span>
+                        </div>
+                        <h3 class="gallery-title">צימר ורד - רמת הגולן</h3>
+                        <p class="gallery-description">
+                            צימר אינטימי וחמים עם ג'קוזי פרטי, אח רומנטית ונוף מדהים לכנרת
+                        </p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="zimmer" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Zimmer2.jpg" alt="צימר עם בריכה">
+                    <div class="gallery-overlay">
+                        <div class="gallery-badges">
+                            <span class="badge new">חדש</span>
+                            <span class="badge">בריכה מחוממת</span>
+                        </div>
+                        <h3 class="gallery-title">צימר לוטוס - עמק החולה</h3>
+                        <p class="gallery-description">
+                            צימר מעוצב עם בריכה מחוממת פרטית, מטבחון מאובזר וגינה פרטית
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Hotels Items -->
+                <div class="gallery-item" data-category="hotels" data-aos="fade-up">
+                    <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Hotel1.jpg" alt="מלון בוטיק">
+                    <div class="gallery-overlay">
+                        <div class="gallery-badges">
+                            <span class="badge premium">בוטיק</span>
+                            <span class="badge">ספא</span>
+                        </div>
+                        <h3 class="gallery-title">מלון דיאנה - תל אביב</h3>
+                        <p class="gallery-description">
+                            מלון בוטיק יוקרתי בלב תל אביב עם ספא מלא, מסעדת שף וגג עם נוף לים
+                        </p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="hotels" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Hotel2.jpg" alt="מלון יוקרה">
+                    <div class="gallery-overlay">
+                        <div class="gallery-badges">
+                            <span class="badge premium">יוקרה</span>
+                            <span class="badge">חוף פרטי</span>
+                        </div>
+                        <h3 class="gallery-title">מלון סול מרין - אילת</h3>
+                        <p class="gallery-description">
+                            מלון יוקרה על חוף הים האדום עם חוף פרטי, בריכות אינפיניטי ומרכז צלילה
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Events Items -->
+                <div class="gallery-item" data-category="events" data-aos="fade-up">
+                    <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Event1.jpg" alt="אולם אירועים">
+                    <div class="gallery-overlay">
+                        <div class="gallery-badges">
+                            <span class="badge">500 אורחים</span>
+                            <span class="badge">כשר למהדרין</span>
+                        </div>
+                        <h3 class="gallery-title">אולמי גרנד פאלאס - ירושלים</h3>
+                        <p class="gallery-description">
+                            אולמי אירועים מפוארים עם תקרות גבוהות, עמודי שיש ותאורה מרהיבה
+                        </p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="events" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Event2.jpg" alt="גן אירועים">
+                    <div class="gallery-overlay">
+                        <div class="gallery-badges">
+                            <span class="badge">גן חלומי</span>
+                            <span class="badge new">זמין</span>
+                        </div>
+                        <h3 class="gallery-title">גן הורדים - רעננה</h3>
+                        <p class="gallery-description">
+                            גן אירועים מקסים עם פרחים צבעוניים, עצי פרי ופינות ישיבה נעימות
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Unique Items -->
+                <div class="gallery-item" data-category="unique" data-aos="fade-up">
+                    <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Unique1.jpg" alt="לוקיישן ייחודי">
+                    <div class="gallery-overlay">
+                        <div class="gallery-badges">
+                            <span class="badge">היסטורי</span>
+                            <span class="badge premium">ייחודי</span>
+                        </div>
+                        <h3 class="gallery-title">מבצר עתיק - צפת</h3>
+                        <p class="gallery-description">
+                            מבצר מתקופת הצלבנים המשוחזר, מושלם לצילומים ואירועים אקסקלוסיביים
+                        </p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="unique" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/yoga.png" alt="מתחם יוגה">
+                    <div class="gallery-overlay">
+                        <div class="gallery-badges">
+                            <span class="badge">רוחני</span>
+                            <span class="badge new">פופולרי</span>
+                        </div>
+                        <h3 class="gallery-title">מרכז הויט - מרכז הארץ</h3>
+                        <p class="gallery-description">
+                            מתחם רוחני מיוחד המיועד לרטריטים, סדנאות יוגה ומדיטציה
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="video-section">
+        <div class="video-container">
+            <h2 class="section-title" data-aos="fade-up">סרטונים וחוויות</h2>
+            <p style="text-align: center; color: var(--text-muted); font-size: 1.2rem; margin-bottom: 2rem;" data-aos="fade-up" data-aos-delay="200">
+                צפו בסיורים וירטואליים ובחוויות האמיתיות של לקוחותינו
+            </p>
+            
+            <div class="video-grid">
+                <div class="video-item" data-aos="fade-up">
+                    <div class="video-thumbnail" style="background-image: url('https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villa1.jpg')">
+                        <div class="play-button" onclick="openVideoModal('villa-tour')">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">סיור וירטואלי - וילת דקל</h3>
+                        <p class="video-description">צאו לסיור מלא בוילה היוקרתית שלנו עם הטכנולוגיה המתקדמת ביותר</p>
+                    </div>
+                </div>
+
+                <div class="video-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="video-thumbnail" style="background-image: url('https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Event1.jpg')">
+                        <div class="play-button" onclick="openVideoModal('event-highlights')">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">הדגשים מחתונה מדהימה</h3>
+                        <p class="video-description">רגעים מיוחדים מחתונה שנערכה באחד מהמתחמים שלנו</p>
+                    </div>
+                </div>
+
+                <div class="video-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="video-thumbnail" style="background-image: url('https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Zimmer1.jpg')">
+                        <div class="play-button" onclick="openVideoModal('zimmer-experience')">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">חוויית הצימר הרומנטי</h3>
+                        <p class="video-description">גלו את הקסם של הצימרים הרומנטיים שלנו עם נופים עוצרי נשימה</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <h2 class="section-title" data-aos="fade-up">המספרים מדברים</h2>
+            <div class="stats-grid">
+                <div class="stat-item fade-in-up">
+                    <div class="stat-number" data-count="150">0</div>
+                    <div class="stat-label">נכסים איכותיים</div>
+                </div>
+                <div class="stat-item fade-in-up">
+                    <div class="stat-number" data-count="1200">0</div>
+                    <div class="stat-label">לקוחות מרוצים</div>
+                </div>
+                <div class="stat-item fade-in-up">
+                    <div class="stat-number" data-count="50">0</div>
+                    <div class="stat-label">ערים בישראל</div>
+                </div>
+                <div class="stat-item fade-in-up">
+                    <div class="stat-number" data-count="98">0</div>
+                    <div class="stat-label">% שביעות רצון</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content" data-aos="zoom-in">
+            <h2 class="cta-title">מצאתם את החלום שלכם?</h2>
+            <p class="cta-description">
+                בואו נתחיל לתכנן את החוויה המושלמת שלכם. צוות המומחים שלנו כאן כדי להפוך את החלום שלכם למציאות.
+            </p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="cta-btn cta-btn-primary">בואו נתחיל</a>
+                <a href="https://wa.me/972523983394?text=היי, ראיתי את הגלריה ואני מעוניין לשמוע עוד פרטים" 
+                   target="_blank" class="cta-btn cta-btn-secondary">
+                    <i class="fab fa-whatsapp" style="margin-left: 8px;"></i>
+                    שלחו הודעה
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for Images/Videos -->
+    <div class="modal" id="modal">
+        <div class="modal-close" onclick="closeModal()">&times;</div>
+        <div class="modal-content" id="modalContent">
+            <!-- Dynamic content will be inserted here -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-16 text-center" style="background: var(--primary-bg); border-top: 1px solid rgba(124, 58, 237, 0.2);">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-12">
+                <a href="index.html" class="logo mb-6 md:mb-0">Multibrawn</a>
+                <div class="flex gap-8 text-4xl">
+                    <a href="#" class="text-gray-400 hover:text-purple-400 transition duration-300" title="פייסבוק">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-purple-400 transition duration-300" title="אינסטגרם">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-purple-400 transition duration-300" title="לינקדאין">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-purple-500/20 pt-8">
+                <p class="text-gray-400 mb-4">© 2024 Multibrawn. כל הזכויות שמורות.</p>
+                <div class="text-sm text-gray-500 space-x-4">
+                    <a href="privacy.html" class="hover:text-gray-300">מדיניות פרטיות</a>
+                    <span>|</span>
+                    <a href="accessibility.html" class="hover:text-gray-300">נגישות</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Filter functionality
+        const filterTabs = document.querySelectorAll('.filter-tab');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                filterTabs.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                const filter = tab.getAttribute('data-filter');
+                
+                galleryItems.forEach(item => {
+                    const category = item.getAttribute('data-category');
+                    
+                    if (filter === 'all' || category === filter) {
+                        item.style.display = 'block';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'scale(1)';
+                        }, 100);
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'scale(0.8)';
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        // Image modal functionality
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const img = item.querySelector('img');
+                const modal = document.getElementById('modal');
+                const modalContent = document.getElementById('modalContent');
+                
+                modalContent.innerHTML = `<img src="${img.src}" alt="${img.alt}">`;
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // Video modal functionality
+        function openVideoModal(videoType) {
+            const modal = document.getElementById('modal');
+            const modalContent = document.getElementById('modalContent');
+            
+            // This is a placeholder - in real implementation, you'd have actual video URLs
+            const videoSources = {
+                'villa-tour': 'https://www.w3schools.com/html/mov_bbb.mp4',
+                'event-highlights': 'https://www.w3schools.com/html/mov_bbb.mp4',
+                'zimmer-experience': 'https://www.w3schools.com/html/mov_bbb.mp4'
+            };
+            
+            modalContent.innerHTML = `
+                <video controls autoplay style="width: 100%; max-height: 80vh;">
+                    <source src="${videoSources[videoType]}" type="video/mp4">
+                    הדפדפן שלכם לא תומך בהצגת וידאו.
+                </video>
+            `;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            
+            // Stop any playing video
+            const video = modal.querySelector('video');
+            if (video) {
+                video.pause();
+            }
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('modal').addEventListener('click', (e) => {
+            if (e.target.id === 'modal') {
+                closeModal();
+            }
+        });
+
+        // Stats counter animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-count'));
+                const increment = target / 100;
+                let current = 0;
+                
+                const updateCounter = () => {
+                    if (current < target) {
+                        current += increment;
+                        counter.textContent = Math.ceil(current);
+                        setTimeout(updateCounter, 30);
+                    } else {
+                        counter.textContent = target;
+                    }
+                };
+                
+                updateCounter();
+            });
+        }
+
+        // Intersection Observer for stats
+        const statsSection = document.querySelector('.stats-section');
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        });
+
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Lazy loading for images
+        const imageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.style.opacity = '1';
+                    imageObserver.unobserve(img);
+                }
+            });
+        });
+
+        document.querySelectorAll('.gallery-item img').forEach(img => {
+            img.style.opacity = '0.8';
+            img.style.transition = 'opacity 0.3s ease';
+            imageObserver.observe(img);
+        });
+
+        // Keyboard navigation support
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Performance optimization
+        window.addEventListener('load', () => {
+            console.log('Gallery page loaded successfully!');
+        });
+    </script>
 </body>
 </html>
