@@ -78,9 +78,9 @@
     .chatbot-btn { background: var(--brand-purple); }
     .accessibility-btn { background: var(--accent-yellow); color: #1a0b2e; }
 
-    #accessibility-panel { position: fixed; bottom: 100px; right: 30px; width: 280px; background: #fff; color: #000; border-radius: 15px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: all 0.3s ease; z-index: 1001; opacity: 0; transform: translateY(20px); pointer-events: none; }
-    #accessibility-panel.open { opacity: 1; transform: translateY(0); pointer-events: auto; }
-    #accessibility-panel h3 { color: var(--primary-bg); text-align: center; margin-bottom: 15px; }
+    .accessibility-panel { position: fixed; bottom: 100px; right: 30px; width: 280px; background: #fff; color: #000; border-radius: 15px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: all 0.3s ease; z-index: 1001; opacity: 0; transform: translateY(20px); pointer-events: none; }
+    .accessibility-panel.open { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .accessibility-panel h3 { color: var(--primary-bg); text-align: center; margin-bottom: 15px; }
     .accessibility-controls { display: flex; flex-direction: column; gap: 10px; }
     .accessibility-btn-control { padding: 10px; border-radius: 8px; border: 1px solid #ccc; background-color: #f0f0f0; cursor: pointer; font-weight: 600; }
     
@@ -110,20 +110,93 @@
     }
   </style>
 </head>
+
 <body>
     <header class="header-nav">
-        </header>
-    <main>
-        </main>
-    <footer>
-        <div class="container">
-            <div class="footer-links">
-                <a href="privacy.html">הצהרת פרטיות</a> ·
-                <a href="accessibility.html">הצהרת נגישות</a>
-            </div>
-            <p style="margin: 1rem 0;">© 2025 MULTIBRAWN. כל הזכויות שמורות.</p>
-            <p class="footer-credit">האתר נבנה ע"י Multi-Site - אתרים שבונים עסקים מבית Multibrawn</p>
+        <nav class="nav-content">
+          <div class="logo-container">
+            <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="לוגו MULTIBRAWN" class="logo-img">
+            <a href="index.html" class="logo">MULTIBRAWN</a>
+          </div>
+          <ul class="nav-menu" id="primaryNav">
+            <li><a href="index.html">דף הבית</a></li>
+            <li><a href="about.html">אודות</a></li>
+            <li><a href="gallery.html">גלריה</a></li>
+            <li><a href="marketing.html">שיווק</a></li>
+            <li><a href="faq.html">שאלות ותשובות</a></li>
+            <li><a class="cta-button" href="contact.html">צור קשר</a></li>
+          </ul>
+          <button class="mobile-menu-toggle" id="mobileToggle">
+            <span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span>
+          </button>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+          <h1 class="hero-title">MULTIBRAWN</h1>
+          <h2 class="hero-sub">נופש, אירועים, לוקיישנים ומה שביניהם</h2>
+          <p class="hero-description">מחברים חלומות למציאות – לוקיישנים נבחרים + מעטפת שיווק 360°</p>
         </div>
+    </section>
+    
+    <main>
+        <section id="properties" class="section-padding">
+          <div class="container">
+            <h2 class="section-heading">מחברים בין לקוחות איכותיים למתחמים נבחרים</h2>
+            <div class="grid">
+              <div class="property-card"><div class="icon">🏨</div><h3>מלונות בוטיק</h3><p>אינטימיות, שירות עילית ועיצוב מוקפד.</p></div>
+              <div class="property-card"><div class="icon">🏡</div><h3>וילות יוקרה</h3><p>מתאים לאירועים ולמשפחות – עם פרטיות מלאה.</p></div>
+              <div class="property-card"><div class="icon">🌲</div><h3>צימרים רומנטיים</h3><p>בריחה לטבע עם אווירה קסומה.</p></div>
+              <div class="property-card"><div class="icon">🏢</div><h3>דירות נופש</h3><p>חוויית עיר עם כל הנוחות בבית.</p></div>
+            </div>
+          </div>
+        </section>
+    
+        <section id="events" class="section-padding" style="background: var(--secondary-bg);">
+          <div class="container">
+            <h2 class="section-heading">פתרונות ייחודיים לכל סוג אירוע</h2>
+            <div class="grid">
+              <div class="property-card"><div class="icon">✡️</div><h3>שבתות חתן</h3><p>מתחמים מותאמים למשפחה מורחבת ודרישות כשרות.</p></div>
+              <div class="property-card"><div class="icon">👥</div><h3>כנסים וימי גיבוש</h3><p>פתרונות לקבוצות עסקיות עם חדרי ישיבות.</p></div>
+              <div class="property-card"><div class="icon">🎉</div><h3>מסיבות וחגיגות</h3><p>וילות עם בריכה וסאונד לאירוע מושלם.</p></div>
+              <div class="property-card"><div class="icon">💍</div><h3>חתונות ואירועים</h3><p>אירועי החיים החשובים עם כל הפרטים המושלמים.</p></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-padding">
+          <div class="container" style="text-align: center;">
+            <h2 class="section-heading">שירותי שיווק דיגיטלי מתקדמים</h2>
+            <p style="font-size: 1.25rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 2rem auto;">
+              לבעלי נכסים: אסטרטגיה, יצירת תוכן, קמפיינים, SEO ואוטומציות – הכול מותאם אישית.
+            </p>
+            <a href="marketing.html" class="cta-button">לפרטי שירותי השיווק</a>
+          </div>
+        </section>
+
+        <section id="about" class="section-padding" style="background: var(--secondary-bg);">
+          <div class="container">
+            <h2 class="section-heading">הסיפור שלנו</h2>
+            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+              <p style="font-size: 1.25rem; color: var(--text-muted); margin-bottom: 2rem;">
+                <strong style="color: var(--brand-purple);">MULTIBRAWN</strong> מציעה פתרון 360°: נכסים נבחרים ומערך שיווק דיגיטלי שמביא תוצאות.
+              </p>
+              <a class="cta-button" href="about.html">קראו עוד עלינו</a>
+            </div>
+          </div>
+        </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-links">
+            <a href="privacy.html">הצהרת פרטיות</a> ·
+            <a href="accessibility.html">הצהרת נגישות</a>
+        </div>
+        <p style="margin: 1rem 0;">© 2025 MULTIBRAWN. כל הזכויות שמורות.</p>
+        <p class="footer-credit">האתר נבנה ע"י Multi-Site - אתרים שבונים עסקים מבית Multibrawn</p>
+      </div>
     </footer>
 
     <div class="floating-buttons">
