@@ -95,6 +95,10 @@
             { key: "phone", question: "תודה, {name}! 😊\n\nמה מספר הטלפון הטוב ביותר לחזור אליכם בו?", options: [] }
         ];
 
+        function initChat() {
+            askNextQuestion();
+        }
+
         function askNextQuestion() {
             if (chatState.currentStep >= chatFlow.length) {
                 finalizeAndPrepareSummary();
@@ -107,12 +111,12 @@
                 return;
             }
             let questionText = current.question.replace('{name}', chatState.userInfo.name || 'אורח');
-            if (current.options.length > 0) {
+            if (current.options && current.options.length > 0) {
                 chatInput.style.display = 'none'; sendButton.style.display = 'none';
                 addBotMessage(questionText, current.options);
             } else {
                 chatInput.style.display = 'block'; sendButton.style.display = 'block';
-                addBotMessage(questionText);
+                addBotMessage(questionText, []);
                 chatInput.focus();
             }
         }
@@ -166,7 +170,7 @@
             const i_start = isHtml ? '<i>' : '_';
             const i_end = isHtml ? '</i>' : '_';
             
-            let summary = `${b_start}סיכום בקשה ממולטי הבוט* 🤖${nl}`;
+            let summary = `${b_start}סיכום בקשה ממולטי הבוט${b_end} 🤖${nl}`;
             summary += `-----------------------------------${nl}${nl}`;
             summary += `${b_start}👤 פרטי לקוח:${b_end}${nl}`;
             summary += `• ${b_start}שם:${b_end} ${userInfo.name || 'לא צוין'}${nl}`;
