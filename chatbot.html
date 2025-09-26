@@ -53,7 +53,6 @@
         .summary-card { background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(6, 182, 212, 0.2)); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 15px; padding: 1.5rem; margin: 0.5rem 0; }
         .summary-title { font-weight: 700; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
         .summary-content { line-height: 1.6; margin-bottom: 1.5rem; white-space: pre-wrap; font-size: 0.9rem; }
-        .whatsapp-button { background: #25d366; color: white; padding: 1rem; border: none; border-radius: 25px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem; width: 100%; font-size: 1rem; text-decoration: none; }
         .chat-input-area { padding: 1rem; border-top: 1px solid rgba(124, 58, 237, 0.2); }
         .input-container { display: flex; gap: 0.5rem; }
         .chat-input { flex: 1; background: rgba(0,0,0,0.2); border: 1px solid rgba(124, 58, 237, 0.3); border-radius: 25px; padding: 0.8rem 1rem; color: white; outline: none; }
@@ -77,7 +76,6 @@
     </div>
 
     <script>
-        // --- CHATBOT LOGIC ---
         let chatState = { currentStep: 0, userInfo: {}, };
         const chatInput = document.getElementById('chatInput');
         const sendButton = document.getElementById('sendButton');
@@ -85,19 +83,14 @@
         const chatFlow = [
             { key: "vacationType", question: "שלום! אני מולטי! 🌟 בואו נתחיל לאסוף פרטים. מה סוג החופשה או האירוע?", options: ["חופשה משפחתית", "סופ\"ש רומנטי", "אירוע/מסיבה", "חתונה", "אירוע עסקי"] },
             { key: "groupSize", question: "מעולה! כמה אנשים אתם?", options: ["זוג (2)", "3-5", "6-10", "11-25", "25-50", "50-100", "100+ (אירוע גדול)"] },
-            { key: "preferredRegion", question: "באיזה אזור בארץ?", options: ["הצפון", "המרכז", "הדרום", "ירושלים והסביבה", "הכל פתוח"] },
             { key: "timeframe", question: "מתי בערך תרצו לצאת לחופשה?", options: ["הסופ\"ש הקרוב (דחוף!)", "החודש הקרוב", "בחודשיים הקרובים", "לקראת החגים", "גמיש / בודק אופציות"] },
-            { key: "specificDates", question: "הבנתי. האם יש תאריך ספציפי או טווח תאריכים מדויק שחשוב לכם? (אפשר לכתוב טקסט חופשי)", options: ["אין עדיין, להמשיך"] },
+            { key: "specificDates", question: "הבנתי. אם יש תאריך ספציפי או טווח תאריכים, <b>כתבו אותו כאן</b>.\nאם לא, פשוט הקלידו 'גמיש'.", options: [] },
             { key: "amenities", question: "איזה מתקנים הכי חשובים לכם במקום?", options: ["בריכה פרטית (מחוממת)", "ג'קוזי ספא גדול", "מטבח מאובזר", "נוף פנורמי", "הכל מהכל, רוצים להתפנק!", "בקשה מיוחדת (לפירוט טקסט)"] },
             { key: "otherAmenities", question: "בטח, מה הדבר הנוסף שחשוב לכם שיהיה במקום?", options: [] },
-            { key: "budget", question: "כדי שאוכל למקד את החיפוש ולמצוא לכם את ההצעה המשתלמת ביותר, מהו תקציבכם ללילה?", options: ["עד ₪1500", "₪1500 - ₪2500", "₪2500 - ₪4000", "₪4000 - ₪6000", "מעל ₪6000 (VIP)"] },
+            { key: "budget", question: "כדי שאוכל למקד את החיפוש ולמצוא לכם את ההצעה המשתלמת ביותר, מהו תקציבכם?", options: ["עד ₪2,500", "₪2,500 - ₪5,000", "₪5,000 - ₪10,000", "₪10,000 - ₪20,000", "מעל ₪20,000 (VIP)"] },
             { key: "name", question: "נהדר, אנחנו כמעט בסוף! 👍\n\nכדי שהצוות יוכל לפנות אליכם אישית, מה שמכם?", options: [] },
             { key: "phone", question: "תודה, {name}! 😊\n\nמה מספר הטלפון הטוב ביותר לחזור אליכם בו?", options: [] }
         ];
-
-        function initChat() {
-            askNextQuestion();
-        }
 
         function askNextQuestion() {
             if (chatState.currentStep >= chatFlow.length) {
@@ -125,11 +118,7 @@
             displayMessage('user', option);
             document.querySelectorAll('.quick-reply').forEach(btn => { btn.onclick = null; btn.style.pointerEvents = 'none'; btn.style.opacity = '0.5'; });
             const current = chatFlow[chatState.currentStep];
-            if (current.key === "specificDates" && option === "אין עדיין, להמשיך") {
-                chatState.userInfo[current.key] = "גמיש";
-            } else {
-                chatState.userInfo[current.key] = option;
-            }
+            chatState.userInfo[current.key] = option;
             chatState.currentStep++;
             updateProgress();
             setTimeout(askNextQuestion, 800);
@@ -152,14 +141,15 @@
             showTypingIndicator();
             setTimeout(() => {
                 hideTypingIndicator();
-                addBotMessage("תודה רבה! 🥳\nסיימתי לאסוף את כל המידע. אני מכין לכם סיכום של הבקשה.", [], false);
-                setTimeout(generateSummary, 2000);
+                addBotMessage("תודה רבה! 🥳\nסיימתי לאסוף את כל המידע. הנה סיכום הבקשה שלך:", [], false);
+                setTimeout(generateSummary, 1500);
             }, 1500);
         }
 
         function generateSummary() {
             const summaryText = createDetailedSummary(true);
             displaySummaryCard(summaryText);
+            addBotMessage("הסיכום שלך מוכן לשליחה! מה תרצה לעשות?", ["שלח את הסיכום לצוות", "אני רוצה לשנות פרטים (התחל מחדש)"]);
         }
 
         function createDetailedSummary(isHtml = false) {
@@ -180,10 +170,10 @@
             summary += `• ${b_start}כמות משתתפים:${b_end} ${i_start}${userInfo.groupSize || 'לא צוין'}${i_end}${nl}`;
             summary += `• ${b_start}אזור מועדף:${b_end} ${i_start}${userInfo.preferredRegion || 'לא צוין'}${i_end}${nl}`;
             summary += `• ${b_start}תאריכים כלליים:${b_end} ${i_start}${userInfo.timeframe || 'לא צוין'}${i_end}${nl}`;
-            if(userInfo.specificDates && userInfo.specificDates !== "גמיש") summary += `• ${b_start}תאריכים מדויקים:${b_end} ${i_start}${userInfo.specificDates}${i_end}${nl}`;
+            if(userInfo.specificDates) summary += `• ${b_start}תאריכים מדויקים:${b_end} ${i_start}${userInfo.specificDates}${i_end}${nl}`;
             if(userInfo.amenities) summary += `• ${b_start}דרישת חובה:${b_end} ${i_start}${userInfo.amenities}${i_end}${nl}`;
             if(userInfo.otherAmenities) summary += `• ${b_start}בקשה מיוחדת:${b_end} ${i_start}${userInfo.otherAmenities}${i_end}${nl}`;
-            summary += `• ${b_start}תקציב ללילה:${b_end} ${i_start}${userInfo.budget || 'לא צוין'}${i_end}${nl}${nl}`;
+            summary += `• ${b_start}תקציב:${b_end} ${i_start}${userInfo.budget || 'לא צוין'}${i_end}${nl}${nl}`;
             summary += `-----------------------------------${nl}`;
             summary += `נשלח באמצעות Multibrawn Bot`;
             return summary;
@@ -194,6 +184,22 @@
             const encodedSummary = encodeURIComponent(summary);
             const whatsappUrl = `https://wa.me/972523983394?text=${encodedSummary}`;
             window.open(whatsappUrl, '_blank');
+            addBotMessage("מעולה! פתחתי עבורך חלון לשליחת הסיכום בוואטסאפ. תודה שבחרת במולטי! 😊");
+        }
+        
+        function resetChat() {
+            document.getElementById('chatMessages').innerHTML = '';
+            chatState = { currentStep: 0, userInfo: {} };
+            updateProgress();
+            setTimeout(initChat, 500);
+        }
+
+        function handleFinalAction(action) {
+            if (action.includes("שלח")) {
+                sendToWhatsApp();
+            } else if (action.includes("לשנות")) {
+                resetChat();
+            }
         }
 
         function addBotMessage(text, options = [], showTyping = true) {
@@ -215,7 +221,12 @@
                     const reply = document.createElement('div');
                     reply.className = 'quick-reply';
                     reply.textContent = option;
-                    reply.onclick = () => handleOptionClick(option);
+                    // Check if it's the final action buttons
+                    if (chatState.currentStep >= chatFlow.length) {
+                        reply.onclick = () => handleFinalAction(option);
+                    } else {
+                        reply.onclick = () => handleOptionClick(option);
+                    }
                     repliesDiv.appendChild(reply);
                 });
                 msgDiv.querySelector('.message-content').appendChild(repliesDiv);
@@ -227,7 +238,7 @@
         function displaySummaryCard(summaryText) {
             const card = document.createElement('div');
             card.className = 'summary-card';
-            card.innerHTML = `<div class="summary-title"><i class="fas fa-file-alt"></i> הסיכום שלך מוכן!</div><div class="summary-content">${summaryText}</div><a href="#" onclick="sendToWhatsApp(); return false;" class="whatsapp-button"><i class="fab fa-whatsapp"></i> שלח את הסיכום לצוות</a>`;
+            card.innerHTML = `<div class="summary-title"><i class="fas fa-file-alt"></i> סיכום הבקשה שלך</div><div class="summary-content">${summaryText}</div>`;
             document.getElementById('chatMessages').appendChild(card);
             scrollToBottom();
         }
