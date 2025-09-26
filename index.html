@@ -1,243 +1,308 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>מולטי - יועץ חכם</title>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MULTIBRAWN - נופש, אירועים, לוקיישנים ומה שביניהם</title>
+  <meta name="description" content="MULTIBRAWN מציעה פתרון 360°: מחברים בין לקוחות איכותיים למתחמים נבחרים, ומציעים פתרונות שיווק דיגיטלי מתקדמים לבעלי נכסים.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      --primary-bg: #1a0b2e;
+      --secondary-bg: #16213e;
+      --accent-purple: #7c3aed;
+      --light-purple: #a855f7;
+      --dark-purple: #5b21b6;
+      --accent-yellow: #fbbf24;
+      --dark-yellow: #f59e0b;
+      --text-light: #f8fafc;
+      --text-muted: #cbd5e1;
+      --font-heading: 'Playfair Display', serif;
+      --font-body: 'Heebo', sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font-body); background: var(--primary-bg); color: var(--text-light); overflow-x: hidden; line-height: 1.6; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
     
-    <style>
-        :root {
-            --primary-bg: #1A1230;
-            --secondary-bg: #291a45;
-            --accent-gold: #fbbf24;
-            --accent-purple: #8e44ad;
-            --light-purple: #9b59b6;
-            --text-light: #ffffff;
-            --text-muted: #b3b3b3;
-            --font-body: 'Heebo', sans-serif;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { height: 100%; }
-        body {
-            font-family: var(--font-body);
-            background: var(--primary-bg);
-            color: var(--text-light);
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            overflow: hidden;
-        }
-        .chat-area { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
-        .chat-messages { flex: 1; overflow-y: auto; padding: 1rem; display: flex; flex-direction: column; gap: 1rem; }
-        .message { display: flex; gap: 0.75rem; max-width: 85%; animation: slideIn 0.3s ease-out; }
-        @keyframes slideIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-        .message.user { align-self: flex-end; flex-direction: row-reverse; }
-        .message-avatar { width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
-        .message.bot .message-avatar { background: linear-gradient(135deg, var(--accent-gold), var(--light-purple)); color: #000; }
-        .message.user .message-avatar { background: linear-gradient(135deg, var(--light-purple), var(--accent-purple)); color: #fff; }
-        .message-content { background: var(--secondary-bg); padding: 0.8rem 1.2rem; border-radius: 18px; border: 1px solid rgba(184, 134, 11, 0.2); }
-        .message-text { line-height: 1.6; white-space: pre-wrap; }
-        .quick-replies { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
-        .quick-reply { background: rgba(184, 134, 11, 0.2); color: var(--text-light); padding: 0.5rem 1rem; border-radius: 20px; border: 1px solid rgba(184, 134, 11, 0.3); cursor: pointer; font-size: 0.9rem; transition: all 0.2s ease; }
-        .quick-reply:hover { background: var(--accent-gold); color: #000; }
-        .typing-indicator { display: none; align-items: center; gap: 0.5rem; color: var(--text-muted); padding: 0 1rem 0.5rem; }
-        .typing-dots { display: flex; gap: 2px; }
-        .typing-dot { width: 6px; height: 6px; background: var(--accent-gold); border-radius: 50%; animation: typing 1.4s ease-in-out infinite; }
-        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
-        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
-        @keyframes typing { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-8px); } }
-        .progress-container { background: rgba(0,0,0,0.2); height: 4px; }
-        .progress-bar { height: 100%; background: linear-gradient(90deg, var(--accent-gold), var(--light-purple)); width: 0%; transition: width 0.3s ease; }
-        .summary-card { background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(6, 182, 212, 0.2)); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 15px; padding: 1.5rem; margin: 0.5rem 0; }
-        .summary-title { font-weight: 700; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
-        .summary-content { line-height: 1.6; margin-bottom: 1.5rem; white-space: pre-wrap; font-size: 0.9rem; }
-        .chat-input-area { padding: 1rem; border-top: 1px solid rgba(124, 58, 237, 0.2); }
-        .input-container { display: flex; gap: 0.5rem; }
-        .chat-input { flex: 1; background: rgba(0,0,0,0.2); border: 1px solid rgba(124, 58, 237, 0.3); border-radius: 25px; padding: 0.8rem 1rem; color: white; outline: none; }
-        .send-button { width: 45px; height: 45px; background: var(--accent-purple); border: none; border-radius: 50%; color: white; font-size: 1rem; cursor: pointer; }
-    </style>
+    /* Header & Navigation */
+    .header-nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(26, 11, 46, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(124, 58, 237, 0.2); transition: all 0.3s; }
+    .nav-content { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; padding: 20px 40px; }
+    .logo-container { display: flex; align-items: center; gap: 15px; }
+    .logo-img { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; }
+    .logo { font-family: var(--font-heading); font-size: 2rem; font-weight: 900; color: transparent; background: linear-gradient(45deg, #f8fafc, #7c3aed); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; }
+    .nav-menu { display: flex; list-style: none; gap: 28px; align-items: center; }
+    .nav-menu a { color: var(--text-muted); text-decoration: none; font-weight: 600; font-size: 1rem; transition: 0.3s; position: relative; padding: 8px 0; }
+    .nav-menu a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--accent-purple); transition: width 0.3s; }
+    .nav-menu a:hover { color: var(--text-light); }
+    .nav-menu a:hover::after { width: 100%; }
+    .cta-button { background: linear-gradient(135deg, var(--accent-purple), var(--dark-purple)); color: #fff; padding: 10px 18px; border: none; border-radius: 999px; font-weight: 800; font-size: 1rem; cursor: pointer; transition: 0.3s; text-decoration: none; box-shadow: 0 4px 20px rgba(124, 58, 237, 0.3); }
+    .cta-button:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(124, 58, 237, 0.5); }
+    .mobile-menu-toggle { display: none; }
+
+    /* Hero Section */
+    .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; background: linear-gradient(135deg, rgba(26, 11, 46, 0.80) 0%, rgba(124, 58, 237, 0.40) 55%, rgba(168, 85, 247, 0.28) 100%), url('https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/yoga.png'); background-size: cover; background-position: center; }
+    .hero-content { position: relative; z-index: 10; text-align: center; max-width: 90%; }
+    .hero-title { font-family: 'Arial Black', sans-serif; font-size: clamp(3.5rem, 8vw, 7rem); font-weight: 900; color: var(--accent-yellow); text-shadow: 3px 3px 0 #000, -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000, 0 0 15px rgba(255, 215, 0, 0.5); margin-bottom: 20px; letter-spacing: 2px; text-transform: uppercase; }
+    .hero-sub { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 700; color: var(--accent-yellow); text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000; margin-bottom: 15px; }
+    .hero-description { font-size: clamp(1.1rem, 2.5vw, 1.6rem); color: #fff; text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000; margin-bottom: 40px; line-height: 1.6; font-weight: 500; }
+    
+    /* General Section Styles */
+    .section-padding { padding: 8rem 2rem; }
+    .section-heading { font-family: var(--font-heading); font-size: clamp(2.2rem, 6vw, 3.4rem); font-weight: 900; background: linear-gradient(45deg, #fff, var(--accent-purple), var(--light-purple)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; text-align: center; margin-bottom: 2.6rem; position: relative; }
+    .section-heading::after { content: ''; position: absolute; bottom: -18px; left: 50%; transform: translateX(-50%); width: 120px; height: 4px; background: linear-gradient(90deg, transparent, var(--accent-purple), var(--light-purple), transparent); border-radius: 2px; }
+    
+    /* Card Styles */
+    .grid { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+    .property-card { background: linear-gradient(135deg, rgba(22, 33, 62, 0.85), rgba(26, 11, 46, 0.85)); border-radius: 20px; padding: 2rem; transition: 0.4s; border: 1px solid rgba(124, 58, 237, 0.3); text-align: center; }
+    .property-card:hover { transform: translateY(-8px); box-shadow: 0 30px 60px rgba(124, 58, 237, 0.3); border-color: var(--accent-purple); }
+    .property-card .icon { color: var(--accent-purple); font-size: 3rem; margin-bottom: 1.5rem; }
+    .property-card h3 { font-size: 1.5rem; font-weight: bold; color: white; margin-bottom: 1rem; }
+    .property-card p { color: var(--text-muted); line-height: 1.6; }
+    
+    /* Footer */
+    footer { padding: 3rem 0; text-align: center; background: var(--primary-bg); border-top: 1px solid rgba(124, 58, 237, 0.2); }
+    
+    /* Floating Buttons */
+    .floating-buttons { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 999; }
+    .floating-btn { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; font-size: 1.5rem; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); transition: all 0.3s ease; border: none; cursor: pointer; }
+    .floating-btn:hover { transform: scale(1.1); }
+    .whatsapp-btn { background: #4ade80; }
+    .chatbot-btn { background: var(--accent-purple); }
+    .accessibility-btn { background: var(--accent-yellow); color: #1a0b2e; }
+
+    /* Accessibility Panel */
+    #accessibility-panel { position: fixed; top: 50%; right: -300px; transform: translateY(-50%); width: 300px; background: #fff; border-radius: 15px; padding: 20px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); transition: right 0.3s ease; z-index: 1001; }
+    #accessibility-panel.open { right: 20px; }
+    #accessibility-panel h3 { color: var(--primary-bg); margin-bottom: 15px; text-align: center; }
+    .accessibility-controls { display: flex; flex-direction: column; gap: 10px; }
+    .accessibility-btn-control { background: var(--accent-yellow); color: var(--primary-bg); border: none; padding: 10px; border-radius: 8px; cursor: pointer; font-weight: 600; }
+
+    /* Chat Widget & Proactive Popup CSS */
+    #chat-popup { width: 380px; height: 75vh; max-height: 700px; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.4); position: fixed; bottom: 100px; right: 20px; display: flex; flex-direction: column; background-color: var(--primary-bg); border: 1px solid var(--accent-purple); transform: scale(0.5) translateY(100px); opacity: 0; transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); pointer-events: none; z-index: 1000; }
+    #chat-popup.visible { transform: scale(1) translateY(0); opacity: 1; pointer-events: auto; }
+    .chat-popup-header { padding: 15px; font-weight: 600; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(124, 58, 237, 0.2); }
+    #close-chat-btn { background: none; border: none; color: white; font-size: 24px; cursor: pointer; }
+    #proactive-popup { position: fixed; bottom: 100px; right: 30px; width: 320px; background: linear-gradient(135deg, #2c1d52, #1a0b2e); color: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.4); border: 1px solid var(--accent-yellow); z-index: 1001; opacity: 0; transform: translateY(20px); transition: all 0.5s ease-in-out; pointer-events: none; }
+    #proactive-popup.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .popup-header { font-weight: 700; padding: 15px; background: rgba(0,0,0,0.2); border-bottom: 1px solid rgba(184, 134, 11, 0.2); }
+    .popup-body { padding: 20px; line-height: 1.6; }
+    .popup-buttons { padding: 0 20px 20px; display: flex; flex-direction: column; gap: 10px; }
+    .popup-buttons button { width: 100%; padding: 12px; border-radius: 25px; border: none; cursor: pointer; transition: all 0.2s ease; }
+    #accept-challenge { background: var(--accent-yellow); color: var(--primary-bg); font-size: 1.1rem; font-weight: 800; }
+    #decline-challenge { background: transparent; color: var(--text-muted); }
+    .hidden { display: none; }
+    .high-contrast { filter: contrast(1.5); }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .mobile-menu-toggle { display: flex; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; }
+      .hamburger-line { width: 30px; height: 3px; background: #fff; }
+      .nav-menu { position: fixed; right: -100%; top: 80px; flex-direction: column; background: rgba(26, 11, 46, 0.98); width: 100%; padding: 20px; transition: 0.3s; }
+      .nav-menu.active { right: 0; }
+      .grid-cols-4 { grid-template-columns: 1fr; }
+      .floating-buttons { right: 20px; bottom: 20px; }
+      #chat-popup { width: calc(100vw - 30px); height: calc(100vh - 90px); bottom: 80px; right: 15px; }
+      #proactive-popup { width: calc(100vw - 40px); left: 20px; bottom: 90px; }
+    }
+  </style>
 </head>
+
 <body>
-    <div class="chat-area">
-        <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
-        <div class="chat-messages" id="chatMessages"></div>
-        <div class="typing-indicator" id="typingIndicator">
-            <span>מולטי כותב...</span>
-            <div class="typing-dots"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>
-        </div>
-        <div class="chat-input-area">
-            <div class="input-container">
-                <input type="text" class="chat-input" id="chatInput" placeholder="הקלד את תשובתך כאן...">
-                <button class="send-button" id="sendButton"><i class="fas fa-paper-plane"></i></button>
-            </div>
-        </div>
+  <header class="header-nav">
+    <nav class="nav-content">
+      <div class="logo-container">
+        <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="לוגו MULTIBRAWN" class="logo-img">
+        <a href="index.html" class="logo">MULTIBRAWN</a>
+      </div>
+      <ul class="nav-menu" id="primaryNav">
+        <li><a href="index.html">דף הבית</a></li>
+        <li><a href="about.html">אודות</a></li>
+        <li><a href="gallery.html">גלריה</a></li>
+        <li><a href="marketing.html">שיווק</a></li>
+        <li><a href="faq.html">שאלות ותשובות</a></li>
+        <li><a class="cta-button" href="contact.html">צור קשר</a></li>
+      </ul>
+      <button class="mobile-menu-toggle" id="mobileToggle">
+        <span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span>
+      </button>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">MULTIBRAWN</h1>
+      <h2 class="hero-sub">נופש, אירועים, לוקיישנים ומה שביניהם</h2>
+      <p class="hero-description">מחברים חלומות למציאות – לוקיישנים נבחרים + מעטפת שיווק 360°</p>
     </div>
+  </section>
+
+  <main>
+    <section id="properties" class="section-padding">
+      <div class="container">
+        <h2 class="section-heading">מחברים בין לקוחות איכותיים למתחמים נבחרים</h2>
+        <div class="grid">
+          <div class="property-card"><div class="icon">🏨</div><h3>מלונות בוטיק</h3><p>אינטימיות, שירות עילית ועיצוב מוקפד.</p></div>
+          <div class="property-card"><div class="icon">🏡</div><h3>וילות יוקרה</h3><p>מתאים לאירועים ולמשפחות – עם פרטיות מלאה.</p></div>
+          <div class="property-card"><div class="icon">🌲</div><h3>צימרים רומנטיים</h3><p>בריחה לטבע עם אווירה קסומה.</p></div>
+          <div class="property-card"><div class="icon">🏢</div><h3>דירות נופש</h3><p>חוויית עיר עם כל הנוחות בבית.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="events" class="section-padding" style="background: var(--secondary-bg);">
+      <div class="container">
+        <h2 class="section-heading">פתרונות ייחודיים לכל סוג אירוע</h2>
+        <div class="grid">
+          <div class="property-card"><div class="icon">✡️</div><h3>שבתות חתן</h3><p>מתחמים מותאמים למשפחה מורחבת ודרישות כשרות.</p></div>
+          <div class="property-card"><div class="icon">👥</div><h3>כנסים וימי גיבוש</h3><p>פתרונות לקבוצות עסקיות עם חדרי ישיבות.</p></div>
+          <div class="property-card"><div class="icon">🎉</div><h3>מסיבות וחגיגות</h3><p>וילות עם בריכה וסאונד לאירוע מושלם.</p></div>
+          <div class="property-card"><div class="icon">💍</div><h3>חתונות ואירועים</h3><p>אירועי החיים החשובים עם כל הפרטים המושלמים.</p></div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="section-padding">
+      <div class="container" style="text-align: center;">
+        <h2 class="section-heading">שירותי שיווק דיגיטלי מתקדמים</h2>
+        <p style="font-size: 1.25rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 2rem auto;">
+          לבעלי נכסים: אסטרטגיה, יצירת תוכן, קמפיינים, SEO ואוטומציות – הכול מותאם אישית.
+        </p>
+        <a href="marketing.html" class="cta-button">לפרטי שירותי השיווק</a>
+      </div>
+    </section>
+
+    <section id="about" class="section-padding" style="background: var(--secondary-bg);">
+      <div class="container">
+        <h2 class="section-heading">הסיפור שלנו</h2>
+        <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+          <p style="font-size: 1.25rem; color: var(--text-muted); margin-bottom: 2rem;">
+            <strong style="color: var(--accent-purple);">MULTIBRAWN</strong> מציעה פתרון 360°: נכסים נבחרים ומערך שיווק דיגיטלי שמביא תוצאות.
+          </p>
+          <a class="cta-button" href="about.html">קראו עוד עלינו</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container"><p>© 2025 MULTIBRAWN. כל הזכויות שמורות.</p></div>
+  </footer>
+
+  <div class="floating-buttons">
+    <button class="floating-btn accessibility-btn" id="accessibilityBtn" title="נגישות">♿</button>
+    <button class="floating-btn chatbot-btn" id="chatbotBtn" title="צ'אט עם יועץ חכם">💬</button>
+    <a href="https://wa.me/972523983394?text=שלום!" class="floating-btn whatsapp-btn" title="וואטסאפ" target="_blank">
+       <i class="fab fa-whatsapp" style="font-size: 1.8rem;"></i>
+    </a>
+  </div>
+
+  <div id="accessibility-panel" class="hidden">
+    <h3>הגדרות נגישות</h3>
+    <div class="accessibility-controls">
+        <button class="accessibility-btn-control" id="increase-font">הגדל גופן</button>
+        <button class="accessibility-btn-control" id="decrease-font">הקטן גופן</button>
+        <button class="accessibility-btn-control" id="toggle-contrast">ניגודיות גבוהה</button>
+        <button class="accessibility-btn-control" id="reset-accessibility">אפס הגדרות</button>
+    </div>
+  </div>
+
+  <div id="chat-popup" class="hidden">
+      <div class="chat-popup-header">
+          <span>דבר עם היועץ החכם</span>
+          <button id="close-chat-btn">&times;</button>
+      </div>
+      <iframe src="chatbot.html" style="width:100%; height:100%; border:none;"></iframe>
+  </div>
+
+  <div id="proactive-popup" class="hidden">
+      <div class="popup-header">🤖 תנו לי לעבוד בשבילכם!</div>
+      <div class="popup-body">
+          מתכננים חופשה או אירוע בקרוב? <br>ענו על כמה שאלות ואכין לצוות שלנו בריף מדויק.
+      </div>
+      <div class="popup-buttons">
+          <button id="accept-challenge">יאללה, מתחילים! 👍</button>
+          <button id="decline-challenge">לא תודה, רק גולש/ת</button>
+      </div>
+  </div>
 
     <script>
-        let chatState = {};
-        const chatInput = document.getElementById('chatInput');
-        const sendButton = document.getElementById('sendButton');
-        const chatMessages = document.getElementById('chatMessages');
-        const progressBar = document.getElementById('progressBar');
-        const typingIndicator = document.getElementById('typingIndicator');
+    document.addEventListener('DOMContentLoaded', function() {
+      // --- Mobile Menu ---
+      const toggle = document.getElementById('mobileToggle');
+      const menu = document.getElementById('primaryNav');
+      if (toggle && menu) {
+        toggle.addEventListener('click', () => menu.classList.toggle('active'));
+      }
+      
+      // --- Accessibility Panel Logic ---
+      const accessibilityBtn = document.getElementById('accessibilityBtn');
+      const accessibilityPanel = document.getElementById('accessibility-panel');
+      if (accessibilityBtn && accessibilityPanel) {
+        accessibilityBtn.addEventListener('click', () => accessibilityPanel.classList.toggle('hidden'));
+      }
+      let currentFontSize = 100;
+      document.getElementById('increase-font').addEventListener('click', () => {
+          currentFontSize += 10;
+          document.body.style.fontSize = `${currentFontSize}%`;
+      });
+      document.getElementById('decrease-font').addEventListener('click', () => {
+          currentFontSize -= 10;
+          document.body.style.fontSize = `${currentFontSize}%`;
+      });
+      document.getElementById('toggle-contrast').addEventListener('click', () => {
+          document.body.classList.toggle('high-contrast');
+      });
+      document.getElementById('reset-accessibility').addEventListener('click', () => {
+          currentFontSize = 100;
+          document.body.style.fontSize = `100%`;
+          document.body.classList.remove('high-contrast');
+      });
 
-        const chatFlow = [
-            { key: "vacationType", question: "שלום! אני מולטי! 🌟 בואו נתחיל לאסוף פרטים. מה סוג החופשה או האירוע?", options: ["חופשה משפחתית", "סופ\"ש רומנטי", "אירוע/מסיבה", "חתונה", "אירוע עסקי"] },
-            { key: "groupSize", question: "מעולה! כמה אנשים אתם?", options: ["זוג (2)", "3-5", "6-10", "11-25", "25-50", "50-100", "100+ (אירוע גדול)"] },
-            { key: "timeframe", question: "מתי בערך תרצו לצאת לחופשה?", options: ["הסופ\"ש הקרוב (דחוף!)", "החודש הקרוב", "בחודשיים הקרובים", "לקראת החגים", "גמיש / בודק אופציות"] },
-            { key: "specificDates", question: "הבנתי. אם יש תאריך ספציפי, <b>כתבו אותו כאן</b>.\nאם לא, פשוט הקלידו 'גמיש'.", options: [] },
-            { key: "amenities", question: "איזה מתקנים הכי חשובים לכם במקום?", options: ["בריכה פרטית (מחוממת)", "ג'קוזי ספא גדול", "מטבח מאובזר", "נוף פנורמי", "הכל מהכל, רוצים להתפנק!", "בקשה מיוחדת (לפירוט טקסט)"] },
-            { key: "otherAmenities", question: "בטח, מה הדבר הנוסף שחשוב לכם שיהיה במקום?", options: [] },
-            { key: "budget", question: "כדי שאוכל למקד את החיפוש ולמצוא לכם את ההצעה המשתלמת ביותר, מהו תקציבכם?", options: ["עד ₪2,500", "₪2,500 - ₪5,000", "₪5,000 - ₪10,000", "₪10,000 - ₪20,000", "מעל ₪20,000 (VIP)"] },
-            { key: "name", question: "נהדר, אנחנו כמעט בסוף! 👍\n\nכדי שהצוות יוכל לפנות אליכם אישית, מה שמכם?", options: [] },
-            { key: "phone", question: "תודה, {name}! 😊\n\nמה מספר הטלפון הטוב ביותר לחזור אליכם בו?", options: [] }
-        ];
 
-        function initChat() {
-            chatMessages.innerHTML = '';
-            chatState = { currentStep: 0, userInfo: {} };
-            updateProgress();
-            askNextQuestion();
-        }
+      // --- Chat Widget & Proactive Popup Logic ---
+      const chatbotBtn = document.getElementById('chatbotBtn');
+      const chatPopup = document.getElementById('chat-popup');
+      const closeChatBtn = document.getElementById('close-chat-btn');
+      const proactivePopup = document.getElementById('proactive-popup');
+      const acceptChallengeBtn = document.getElementById('accept-challenge');
+      const declineChallengeBtn = document.getElementById('decline-challenge');
+      let proactiveTimeout;
+      let chatOpened = false;
 
-        function askNextQuestion() {
-            if (chatState.currentStep >= chatFlow.length) {
-                finalizeAndPrepareSummary();
-                return;
-            }
-            const current = chatFlow[chatState.currentStep];
-            if (current.key === "otherAmenities" && chatState.userInfo.amenities !== "בקשה מיוחדת (לפירוט טקסט)") {
-                chatState.currentStep++;
-                askNextQuestion();
-                return;
-            }
-            let questionText = current.question.replace('{name}', chatState.userInfo.name || 'אורח');
-            toggleInput(current.options && current.options.length === 0);
-            addBotMessage(questionText, current.options);
-        }
-        
-        function handleOptionClick(option) {
-            displayMessage('user', option);
-            const current = chatFlow[chatState.currentStep];
-            chatState.userInfo[current.key] = option;
-            chatState.currentStep++;
-            updateProgress();
-            setTimeout(askNextQuestion, 500);
-        }
+      function openChat() {
+          chatPopup.classList.add('visible');
+          proactivePopup.classList.remove('visible');
+          clearTimeout(proactiveTimeout);
+          chatOpened = true;
+      }
+      
+      function closeChat() {
+          chatPopup.classList.remove('visible');
+      }
 
-        function handleTextInput() {
-            const message = chatInput.value.trim();
-            if (!message) return;
-            displayMessage('user', message);
-            const current = chatFlow[chatState.currentStep];
-            chatState.userInfo[current.key] = message;
-            chatInput.value = '';
-            chatState.currentStep++;
-            updateProgress();
-            setTimeout(askNextQuestion, 500);
-        }
+      chatbotBtn.addEventListener('click', openChat);
+      closeChatBtn.addEventListener('click', closeChat);
 
-        function finalizeAndPrepareSummary() {
-            toggleInput(false);
-            showTypingIndicator();
-            setTimeout(() => {
-                hideTypingIndicator();
-                addBotMessage("תודה רבה! 🥳\nהנה סיכום הבקשה שלך:", [], false);
-                setTimeout(() => {
-                    const summaryText = createDetailedSummary(true);
-                    displaySummaryCard(summaryText);
-                    addBotMessage("הסיכום מוכן לשליחה!", ["שלח את הסיכום לצוות", "אני רוצה לשנות פרטים (התחל מחדש)"]);
-                }, 1000);
-            }, 1000);
-        }
+      proactiveTimeout = setTimeout(() => {
+          if (!chatOpened) {
+              proactivePopup.classList.remove('hidden');
+              proactivePopup.classList.add('visible');
+          }
+      }, 5000);
 
-        function createDetailedSummary(isHtml = false) {
-            const { userInfo } = chatState;
-            const nl = isHtml ? '<br>' : '\n';
-            const b_start = isHtml ? '<b>' : '*'; const b_end = isHtml ? '</b>' : '*';
-            const i_start = isHtml ? '<i>' : '_'; const i_end = isHtml ? '</i>' : '_';
-            let summary = `${b_start}סיכום בקשה ממולטי הבוט${b_end} 🤖${nl}-----------------------------------${nl}${nl}`;
-            summary += `${b_start}👤 פרטי לקוח:${b_end}${nl}`;
-            summary += `• ${b_start}שם:${b_end} ${userInfo.name || ''}${nl}• ${b_start}טלפון:${b_end} ${userInfo.phone || ''}${nl}${nl}`;
-            summary += `${b_start}📝 פרטי הבקשה:${b_end}${nl}`;
-            summary += `• ${b_start}סוג אירוע:${b_end} ${i_start}${userInfo.vacationType || ''}${i_end}${nl}`;
-            summary += `• ${b_start}כמות משתתפים:${b_end} ${i_start}${userInfo.groupSize || ''}${i_end}${nl}`;
-            summary += `• ${b_start}תאריכים כלליים:${b_end} ${i_start}${userInfo.timeframe || ''}${i_end}${nl}`;
-            if(userInfo.specificDates) summary += `• ${b_start}תאריכים מדויקים:${b_end} ${i_start}${userInfo.specificDates}${i_end}${nl}`;
-            if(userInfo.amenities) summary += `• ${b_start}דרישת חובה:${b_end} ${i_start}${userInfo.amenities}${i_end}${nl}`;
-            if(userInfo.otherAmenities) summary += `• ${b_start}בקשה מיוחדת:${b_end} ${i_start}${userInfo.otherAmenities}${i_end}${nl}`;
-            summary += `• ${b_start}תקציב:${b_end} ${i_start}${userInfo.budget || ''}${i_end}${nl}${nl}`;
-            return summary;
-        }
+      acceptChallengeBtn.addEventListener('click', () => {
+          proactivePopup.classList.remove('visible');
+          openChat();
+      });
 
-        function sendToWhatsApp() {
-            const summary = createDetailedSummary(false);
-            const encodedSummary = encodeURIComponent(summary);
-            window.open(`https://wa.me/972523983394?text=${encodedSummary}`, '_blank');
-        }
-        
-        function handleFinalAction(action) {
-            document.querySelectorAll('.quick-reply').forEach(btn => { btn.onclick = null; btn.style.pointerEvents = 'none'; btn.style.opacity = '0.5'; });
-            if (action.includes("שלח")) {
-                sendToWhatsApp();
-                addBotMessage("מעולה! פתחתי עבורך חלון לשליחת הסיכום. תודה שבחרת במולטי! 😊");
-            } else if (action.includes("לשנות")) {
-                initChat();
-            }
-        }
-        
-        function addBotMessage(text, options = []) {
-            showTypingIndicator();
-            setTimeout(() => { hideTypingIndicator(); displayMessage('bot', text, options); }, 800);
-        }
-        
-        function displayMessage(type, text, options = []) {
-            const msgDiv = document.createElement('div');
-            msgDiv.className = `message ${type}`;
-            msgDiv.innerHTML = `<div class="message-avatar">${type === 'bot' ? '🤖' : '👤'}</div><div class="message-content"><div class="message-text">${text.replace(/\n/g, '<br>')}</div></div>`;
-            if (options && options.length > 0) {
-                const repliesDiv = document.createElement('div');
-                repliesDiv.className = 'quick-replies';
-                options.forEach(option => {
-                    const reply = document.createElement('div');
-                    reply.className = 'quick-reply';
-                    reply.textContent = option;
-                    if (chatState.currentStep >= chatFlow.length) {
-                        reply.onclick = () => handleFinalAction(option);
-                    } else {
-                        reply.onclick = () => handleOptionClick(option);
-                    }
-                    repliesDiv.appendChild(reply);
-                });
-                msgDiv.querySelector('.message-content').appendChild(repliesDiv);
-            }
-            chatMessages.appendChild(msgDiv);
-            scrollToBottom();
-        }
-
-        function displaySummaryCard(summaryText) {
-            const card = document.createElement('div');
-            card.className = 'summary-card';
-            card.innerHTML = `<div class="summary-title"><i class="fas fa-file-alt"></i> סיכום הבקשה שלך</div><div class="summary-content">${summaryText}</div>`;
-            chatMessages.appendChild(card);
-            scrollToBottom();
-        }
-
-        function updateProgress() {
-            const progress = Math.min((chatState.currentStep / chatFlow.length) * 100, 100);
-            progressBar.style.width = `${progress}%`;
-        }
-        
-        const toggleInput = (show) => document.querySelector('.input-container').style.display = show ? 'flex' : 'none';
-        const showTypingIndicator = () => { typingIndicator.style.display = 'flex'; scrollToBottom(); };
-        const hideTypingIndicator = () => { typingIndicator.style.display = 'none'; };
-        const scrollToBottom = () => { chatMessages.scrollTo({ top: chatMessages.scrollHeight, behavior: 'smooth' }); };
-
-        sendButton.addEventListener('click', handleTextInput);
-        chatInput.addEventListener('keypress', e => { if (e.key === 'Enter') handleTextInput(); });
-        document.addEventListener('DOMContentLoaded', initChat);
+      declineChallengeBtn.addEventListener('click', () => {
+          proactivePopup.classList.remove('visible');
+      });
+    });
     </script>
 </body>
 </html>
