@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
   <style>
     :root {
       --primary-bg: #1a0b2e;
@@ -23,601 +25,100 @@
       --font-body: 'Heebo', sans-serif;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: var(--font-body);
-      background: var(--primary-bg);
-      color: var(--text-light);
-      overflow-x: hidden;
-      line-height: 1.6;
-    }
-
-    /* Utilities */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    .flex {
-      display: flex;
-    }
-
-    .flex-col {
-      flex-direction: column;
-    }
-
-    .items-center {
-      align-items: center;
-    }
-
-    .justify-center {
-      justify-content: center;
-    }
-
-    .justify-between {
-      justify-content: space-between;
-    }
-
-    .gap-4 {
-      gap: 1rem;
-    }
-
-    .gap-6 {
-      gap: 1.5rem;
-    }
-
-    .gap-8 {
-      gap: 2rem;
-    }
-
-    .text-center {
-      text-align: center;
-    }
-
-    .mb-4 {
-      margin-bottom: 1rem;
-    }
-
-    .mb-8 {
-      margin-bottom: 2rem;
-    }
-
-    .mb-12 {
-      margin-bottom: 3rem;
-    }
-
-    .py-12 {
-      padding: 3rem 0;
-    }
-
-    .px-4 {
-      padding-left: 1rem;
-      padding-right: 1rem;
-    }
-
-    .p-8 {
-      padding: 2rem;
-    }
-
-    .w-full {
-      width: 100%;
-    }
-
-    .h-full {
-      height: 100%;
-    }
-
-    .rounded-3xl {
-      border-radius: 1.5rem;
-    }
-
-    .shadow-2xl {
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-    }
-
-    .grid {
-      display: grid;
-    }
-
-    .grid-cols-1 {
-      grid-template-columns: repeat(1, minmax(0, 1fr));
-    }
-
-    .grid-cols-2 {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .grid-cols-3 {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .grid-cols-4 {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
-
-    .transition {
-      transition: all 0.3s ease;
-    }
-
-    .hover\:underline:hover {
-      text-decoration: underline;
-    }
-
-    /* Scrollbar */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: var(--primary-bg);
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: var(--accent-purple);
-      border-radius: 10px;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: var(--light-purple);
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font-body); background: var(--primary-bg); color: var(--text-light); overflow-x: hidden; line-height: 1.6; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
     /* Header */
-    .header-nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-      background: rgba(26, 11, 46, 0.95);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(124, 58, 237, 0.2);
-      transition: all 0.3s;
-    }
-
-    .nav-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 20px 40px;
-    }
-
-    /* Logo */
-    .logo-container {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-
-    .logo-img {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-
-    .logo {
-      font-family: var(--font-heading);
-      font-size: 2rem;
-      font-weight: 900;
-      color: transparent;
-      background: linear-gradient(45deg, #f8fafc, #7c3aed);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-
-    .logo:hover {
-      transform: scale(1.05);
-    }
-
-    /* Navigation */
-    .nav-menu {
-      display: flex;
-      list-style: none;
-      gap: 28px;
-      align-items: center;
-    }
-
-    .nav-menu a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1rem;
-      transition: 0.3s;
-      position: relative;
-      padding: 8px 0;
-    }
-
-    .nav-menu a::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--accent-purple);
-      transition: width 0.3s;
-    }
-
-    .nav-menu a:hover {
-      color: var(--text-light);
-    }
-
-    .nav-menu a:hover::after {
-      width: 100%;
-    }
-
-    .cta-button {
-      background: linear-gradient(135deg, var(--accent-purple), var(--dark-purple));
-      color: #fff;
-      padding: 10px 18px;
-      border: none;
-      border-radius: 999px;
-      font-weight: 800;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: 0.3s;
-      text-decoration: none;
-      box-shadow: 0 4px 20px rgba(124, 58, 237, 0.3);
-    }
-
-    .cta-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(124, 58, 237, 0.5);
-    }
+    .header-nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(26, 11, 46, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(124, 58, 237, 0.2); transition: all 0.3s; }
+    .nav-content { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; padding: 20px 40px; }
+    .logo-container { display: flex; align-items: center; gap: 15px; }
+    .logo-img { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; }
+    .logo { font-family: var(--font-heading); font-size: 2rem; font-weight: 900; color: transparent; background: linear-gradient(45deg, #f8fafc, #7c3aed); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none; transition: 0.3s; }
+    .logo:hover { transform: scale(1.05); }
+    .nav-menu { display: flex; list-style: none; gap: 28px; align-items: center; }
+    .nav-menu a { color: var(--text-muted); text-decoration: none; font-weight: 600; font-size: 1rem; transition: 0.3s; position: relative; padding: 8px 0; }
+    .nav-menu a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--accent-purple); transition: width 0.3s; }
+    .nav-menu a:hover { color: var(--text-light); }
+    .nav-menu a:hover::after { width: 100%; }
+    .cta-button { background: linear-gradient(135deg, var(--accent-purple), var(--dark-purple)); color: #fff; padding: 10px 18px; border: none; border-radius: 999px; font-weight: 800; font-size: 1rem; cursor: pointer; transition: 0.3s; text-decoration: none; box-shadow: 0 4px 20px rgba(124, 58, 237, 0.3); }
+    .cta-button:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(124, 58, 237, 0.5); }
 
     /* Hero */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-      background: linear-gradient(135deg, rgba(26, 11, 46, 0.80) 0%, rgba(124, 58, 237, 0.40) 55%, rgba(168, 85, 247, 0.28) 100%),
-        url('https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/yoga.png');
-      background-size: cover;
-      background-position: center;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 10;
-      text-align: center;
-      max-width: 90%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.5rem;
-    }
-
-    .hero-title {
-      font-family: 'Arial Black', sans-serif;
-      font-size: clamp(3.5rem, 8vw, 7rem);
-      font-weight: 900;
-      color: var(--accent-yellow);
-      text-shadow: 3px 3px 0 #000, -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000, 0 0 15px rgba(255, 215, 0, 0.5);
-      margin-bottom: 20px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    .hero-sub {
-      font-size: clamp(1.5rem, 3vw, 2.2rem);
-      font-weight: 700;
-      color: var(--accent-yellow);
-      text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;
-      margin-bottom: 15px;
-    }
-
-    .hero-description {
-      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
-      color: #fff;
-      text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;
-      margin-bottom: 40px;
-      line-height: 1.6;
-      font-weight: 500;
-    }
-
-    .hero-ctas {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .hero-cta {
-      display: inline-block;
-      padding: 16px 28px;
-      background: linear-gradient(135deg, var(--accent-purple), var(--dark-purple));
-      color: #fff;
-      text-decoration: none;
-      border-radius: 999px;
-      font-weight: 800;
-      font-size: 1.05rem;
-      transition: 0.35s;
-      box-shadow: 0 15px 40px rgba(124, 58, 237, 0.4);
-    }
-
-    .hero-cta:hover {
-      transform: translateY(-3px) scale(1.03);
-    }
+    .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; background: linear-gradient(135deg, rgba(26, 11, 46, 0.80) 0%, rgba(124, 58, 237, 0.40) 55%, rgba(168, 85, 247, 0.28) 100%), url('https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/yoga.png'); background-size: cover; background-position: center; }
+    .hero-content { position: relative; z-index: 10; text-align: center; max-width: 90%; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
+    .hero-title { font-family: 'Arial Black', sans-serif; font-size: clamp(3.5rem, 8vw, 7rem); font-weight: 900; color: var(--accent-yellow); text-shadow: 3px 3px 0 #000, -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000, 0 0 15px rgba(255, 215, 0, 0.5); margin-bottom: 20px; letter-spacing: 2px; text-transform: uppercase; }
+    .hero-sub { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 700; color: var(--accent-yellow); text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000; margin-bottom: 15px; }
+    .hero-description { font-size: clamp(1.1rem, 2.5vw, 1.6rem); color: #fff; text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000; margin-bottom: 40px; line-height: 1.6; font-weight: 500; }
 
     /* Sections */
-    .section-padding {
-      padding: 8rem 2rem;
-    }
-
-    .section-heading {
-      font-family: var(--font-heading);
-      font-size: clamp(2.2rem, 6vw, 3.4rem);
-      font-weight: 900;
-      background: linear-gradient(45deg, #fff, var(--accent-purple), var(--light-purple));
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-align: center;
-      margin-bottom: 2.6rem;
-      position: relative;
-    }
-
-    .section-heading::after {
-      content: '';
-      position: absolute;
-      bottom: -18px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 120px;
-      height: 4px;
-      background: linear-gradient(90deg, transparent, var(--accent-purple), var(--light-purple), transparent);
-      border-radius: 2px;
-    }
-
-    /* Cards */
-    .property-card {
-      background: linear-gradient(135deg, rgba(22, 33, 62, 0.85), rgba(26, 11, 46, 0.85));
-      border-radius: 20px;
-      padding: 2rem;
-      transition: 0.4s;
-      border: 1px solid rgba(124, 58, 237, 0.3);
-      position: relative;
-      overflow: hidden;
-      backdrop-filter: blur(10px);
-    }
-
-    .property-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 30px 60px rgba(124, 58, 237, 0.3);
-      border-color: var(--accent-purple);
-    }
-
-    .property-card .icon {
-      color: var(--accent-purple);
-      font-size: 3rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .property-card h3 {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: white;
-      margin-bottom: 1rem;
-    }
-
-    .property-card p {
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
+    .section-padding { padding: 8rem 2rem; }
+    .section-heading { font-family: var(--font-heading); font-size: clamp(2.2rem, 6vw, 3.4rem); font-weight: 900; background: linear-gradient(45deg, #fff, var(--accent-purple), var(--light-purple)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; text-align: center; margin-bottom: 2.6rem; position: relative; }
+    .section-heading::after { content: ''; position: absolute; bottom: -18px; left: 50%; transform: translateX(-50%); width: 120px; height: 4px; background: linear-gradient(90deg, transparent, var(--accent-purple), var(--light-purple), transparent); border-radius: 2px; }
+    .property-card { background: linear-gradient(135deg, rgba(22, 33, 62, 0.85), rgba(26, 11, 46, 0.85)); border-radius: 20px; padding: 2rem; transition: 0.4s; border: 1px solid rgba(124, 58, 237, 0.3); position: relative; overflow: hidden; backdrop-filter: blur(10px); }
+    .property-card:hover { transform: translateY(-8px); box-shadow: 0 30px 60px rgba(124, 58, 237, 0.3); border-color: var(--accent-purple); }
+    .property-card .icon { color: var(--accent-purple); font-size: 3rem; margin-bottom: 1.5rem; }
+    .property-card h3 { font-size: 1.5rem; font-weight: bold; color: white; margin-bottom: 1rem; }
+    .property-card p { color: var(--text-muted); line-height: 1.6; }
+    
+    /* Footer */
+    footer { padding: 3rem 0; text-align: center; background: var(--primary-bg); border-top: 1px solid rgba(124, 58, 237, 0.2); }
 
     /* Floating Buttons */
-    .floating-buttons {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      z-index: 1000;
-    }
-
-    .floating-btn {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      text-decoration: none;
-      font-size: 1.5rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      transition: all 0.3s ease;
-      border: none;
-      cursor: pointer;
-    }
-
-    .floating-btn:hover {
-      transform: scale(1.1);
-    }
-
-    .whatsapp-btn {
-      background: #25d366;
-    }
-
-    .chatbot-btn {
-      background: var(--accent-purple);
-    }
-
-    .accessibility-btn {
-      background: var(--accent-yellow);
-      color: #1a0b2e;
-    }
+    .floating-buttons { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 1000; }
+    .floating-btn { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; font-size: 1.5rem; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); transition: all 0.3s ease; border: none; cursor: pointer; }
+    .floating-btn:hover { transform: scale(1.1); }
+    .whatsapp-btn { background: #4ade80; } /* Light Green as requested */
+    .chatbot-btn { background: var(--accent-purple); }
+    .accessibility-btn { background: var(--accent-yellow); color: #1a0b2e; }
 
     /* Accessibility Panel */
-    .accessibility-panel {
-      position: fixed;
-      top: 50%;
-      right: -300px;
-      transform: translateY(-50%);
-      width: 300px;
-      background: #fff;
-      border: 2px solid var(--accent-yellow);
-      border-radius: 15px;
-      padding: 20px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      transition: right 0.3s ease;
-      z-index: 1001;
-    }
+    .accessibility-panel { position: fixed; top: 50%; right: -300px; transform: translateY(-50%); width: 300px; background: #fff; border: 2px solid var(--accent-yellow); border-radius: 15px; padding: 20px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); transition: right 0.3s ease; z-index: 1001; }
+    .accessibility-panel.open { right: 20px; }
+    .accessibility-panel h3 { color: var(--accent-purple); margin-bottom: 15px; text-align: center; }
+    .accessibility-controls { display: flex; flex-direction: column; gap: 10px; }
+    .accessibility-btn-control { background: var(--accent-yellow); color: #1a0b2e; border: none; padding: 10px; border-radius: 8px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; }
+    .accessibility-btn-control:hover { background: var(--dark-yellow); }
+    .close-accessibility { background: var(--accent-purple); color: #fff; margin-top: 15px; }
 
-    .accessibility-panel.open {
-      right: 20px;
-    }
-
-    .accessibility-panel h3 {
-      color: var(--accent-purple);
-      margin-bottom: 15px;
-      text-align: center;
-    }
-
-    .accessibility-controls {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .accessibility-btn-control {
-      background: var(--accent-yellow);
-      color: #1a0b2e;
-      border: none;
-      padding: 10px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-
-    .accessibility-btn-control:hover {
-      background: var(--dark-yellow);
-    }
-
-    .close-accessibility {
-      background: var(--accent-purple);
-      color: #fff;
-      margin-top: 15px;
-    }
-
-    /* Mobile */
-    .mobile-menu-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 10px;
-    }
-
-    .hamburger-line {
-      width: 30px;
-      height: 3px;
-      background: #fff;
-      transition: 0.3s;
-      border-radius: 2px;
-    }
+    /* --- CHAT WIDGET & POPUP CSS --- */
+    #chat-widget-container { position: fixed; bottom: 20px; right: 20px; z-index: 1000; }
+    #chat-popup { width: 380px; height: 75vh; max-height: 700px; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.4); position: fixed; bottom: 100px; right: 20px; display: flex; flex-direction: column; background-color: #1A1230; border: 1px solid var(--accent-purple); transform: scale(0.5) translateY(100px); opacity: 0; transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); pointer-events: none; }
+    #chat-popup.visible { transform: scale(1) translateY(0); opacity: 1; pointer-events: auto; }
+    .chat-popup-header { background: #1A1230; color: white; padding: 15px; font-weight: 600; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(124, 58, 237, 0.2); }
+    #close-chat-btn { background: none; border: none; color: white; font-size: 24px; cursor: pointer; }
+    
+    #proactive-popup { position: fixed; bottom: 100px; right: 20px; width: 320px; background: linear-gradient(135deg, #2c1d52, #1a1230); color: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.4); border: 1px solid var(--accent-gold); z-index: 1001; opacity: 0; transform: translateY(20px); transition: all 0.5s ease-in-out; pointer-events: none; }
+    #proactive-popup.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .popup-header { font-weight: 700; font-size: 1.1rem; padding: 15px; background: rgba(0,0,0,0.2); border-bottom: 1px solid rgba(184, 134, 11, 0.2); }
+    .popup-body { padding: 20px; font-size: 0.95rem; line-height: 1.6; }
+    .popup-buttons { padding: 0 20px 20px 20px; display: flex; flex-direction: column; gap: 10px; }
+    .popup-buttons button { width: 100%; padding: 12px; border-radius: 25px; border: none; cursor: pointer; font-weight: 600; transition: all 0.2s ease; }
+    #accept-challenge { background: var(--accent-gold); color: black; }
+    #accept-challenge:hover { transform: scale(1.05); }
+    #decline-challenge { background: transparent; color: var(--text-muted); font-size: 0.8rem; }
+    #decline-challenge:hover { color: white; }
+    .hidden { display: none; }
+    /* --- END CHAT WIDGET & POPUP CSS --- */
 
     /* Responsive */
-    @media (max-width: 1024px) {
-      .grid-cols-4 {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .grid-cols-3 {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
     @media (max-width: 768px) {
-      .mobile-menu-toggle {
-        display: flex;
-      }
-
-      .nav-menu {
-        position: fixed;
-        right: -100%;
-        top: 80px;
-        flex-direction: column;
-        background: rgba(26, 11, 46, 0.98);
-        width: 100%;
-        padding: 20px;
-        transition: 0.3s;
-        border-top: 1px solid rgba(124, 58, 237, 0.3);
-      }
-
-      .nav-menu.active {
-        right: 0;
-      }
-
-      .nav-menu li {
-        padding: 14px 0;
-        border-bottom: 1px solid rgba(124, 58, 237, 0.2);
-        width: 100%;
-        text-align: center;
-      }
-
-      .section-padding {
-        padding: 4rem 1rem;
-      }
-
-      .floating-buttons {
-        right: 20px;
-        bottom: 20px;
-      }
-
-      .floating-btn {
-        width: 50px;
-        height: 50px;
-        font-size: 1.3rem;
-      }
-
-      .grid-cols-4,
-      .grid-cols-3,
-      .grid-cols-2 {
-        grid-template-columns: repeat(1, minmax(0, 1fr));
-      }
-
-      .flex-col-reverse {
-        flex-direction: column-reverse;
-      }
-    }
-
-    /* Font Size Classes for Accessibility */
-    .font-large {
-      font-size: 120% !important;
-    }
-
-    .font-extra-large {
-      font-size: 140% !important;
-    }
-
-    .high-contrast {
-      filter: contrast(200%) brightness(1.2);
+      .mobile-menu-toggle { display: flex; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 10px; }
+      .hamburger-line { width: 30px; height: 3px; background: #fff; transition: 0.3s; border-radius: 2px; }
+      .nav-menu { position: fixed; right: -100%; top: 80px; flex-direction: column; background: rgba(26, 11, 46, 0.98); width: 100%; padding: 20px; transition: 0.3s; border-top: 1px solid rgba(124, 58, 237, 0.3); }
+      .nav-menu.active { right: 0; }
+      .floating-buttons { right: 20px; bottom: 20px; }
+      .floating-btn { width: 50px; height: 50px; font-size: 1.3rem; }
+      .grid-cols-4, .grid-cols-3, .grid-cols-2 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+      #chat-popup { width: calc(100vw - 30px); height: calc(100vh - 90px); max-height: none; bottom: 80px; right: 15px; }
+      #proactive-popup { width: calc(100vw - 40px); left: 20px; bottom: 90px; }
     }
   </style>
 </head>
 
 <body>
-  <!-- Navigation -->
   <header class="header-nav">
-    <nav class="nav-content">
+     <nav class="nav-content">
       <div class="logo-container">
         <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="לוגו MULTIBRAWN" class="logo-img">
         <a href="index.html" class="logo">MULTIBRAWN</a>
@@ -638,7 +139,6 @@
     </nav>
   </header>
 
-  <!-- Hero -->
   <section class="hero">
     <div class="hero-content">
       <h1 class="hero-title">MULTIBRAWN</h1>
@@ -648,504 +148,135 @@
   </section>
 
   <main>
-    <!-- Properties Section -->
     <section id="properties" class="section-padding" style="background: linear-gradient(180deg, var(--primary-bg) 0%, var(--secondary-bg) 100%);">
       <div class="container">
         <h2 class="section-heading">מחברים בין לקוחות איכותיים למתחמים נבחרים</h2>
-        <p class="text-center mb-12" style="font-size: 1.25rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 3rem auto; line-height: 1.6;">
-          מלונות בוטיק, וילות יוקרה, צימרים רומנטיים ודירות נופש – בדיוק למה שאתם צריכים לחופשה או אירוע.
-        </p>
-        <div class="grid grid-cols-4 gap-8">
-          <div class="property-card text-center">
-            <div class="icon">🏨</div>
-            <h3>מלונות בוטיק</h3>
-            <p>אינטימיות, שירות עילית ועיצוב מוקפד.</p>
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+          <div class="property-card" style="text-align: center;">
+            <div class="icon">🏨</div> <h3>מלונות בוטיק</h3> <p>אינטימיות, שירות עילית ועיצוב מוקפד.</p>
           </div>
-          <div class="property-card text-center">
-            <div class="icon">🏡</div>
-            <h3>וילות יוקרה</h3>
-            <p>מתאים לאירועים ולמשפחות – עם פרטיות מלאה.</p>
+          <div class="property-card" style="text-align: center;">
+            <div class="icon">🏡</div> <h3>וילות יוקרה</h3> <p>מתאים לאירועים ולמשפחות – עם פרטיות מלאה.</p>
           </div>
-          <div class="property-card text-center">
-            <div class="icon">🌲</div>
-            <h3>צימרים רומנטיים</h3>
-            <p>בריחה לטבע עם אווירה קסומה.</p>
+          <div class="property-card" style="text-align: center;">
+            <div class="icon">🌲</div> <h3>צימרים רומנטיים</h3> <p>בריחה לטבע עם אווירה קסומה.</p>
           </div>
-          <div class="property-card text-center">
-            <div class="icon">🏢</div>
-            <h3>דירות נופש</h3>
-            <p>חוויית עיר עם כל הנוחות בבית.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Events Section -->
-    <section id="events" class="section-padding" style="background: var(--primary-bg);">
-      <div class="container">
-        <h2 class="section-heading">פתרונות ייחודיים לכל סוג אירוע</h2>
-        <div class="grid grid-cols-4 gap-8">
-          <div class="property-card text-center">
-            <div class="icon">✡️</div>
-            <h3>שבתות חתן ואירועים דתיים</h3>
-            <p>מתחמים מותאמים למשפחה מורחבת ודרישות כשרות.</p>
-          </div>
-          <div class="property-card text-center">
-            <div class="icon">👥</div>
-            <h3>כנסים וימי גיבוש</h3>
-            <p>פתרונות מושלמים לקבוצות עסקיות עם חדרי ישיבות.</p>
-          </div>
-          <div class="property-card text-center">
-            <div class="icon">🎉</div>
-            <h3>מסיבות וחגיגות</h3>
-            <p>וילות עם בריכה, סאונד ופינות ישיבה לאירוע מושלם.</p>
-          </div>
-          <div class="property-card text-center">
-            <div class="icon">💍</div>
-            <h3>חתונות ובר מצוות</h3>
-            <p>אירועי מחזור החיים הכי חשובים עם כל הפרטים המושלמים.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Digital Marketing Section -->
-    <section class="section-padding" style="background: linear-gradient(180deg, var(--primary-bg) 0%, var(--secondary-bg) 100%);">
-      <div class="container text-center">
-        <h2 class="section-heading">שירותי שיווק דיגיטלי מתקדמים</h2>
-        <p class="mb-8" style="font-size: 1.25rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 2rem auto; line-height: 1.6;">
-          לבעלי נכסים: אסטרטגיה, יצירת תוכן, קמפיינים, SEO ואוטומציות – הכול מותאם אישית.
-        </p>
-        <a href="marketing.html" class="cta-button">לפרטי שירותי השיווק</a>
-      </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="section-padding" style="background: var(--primary-bg);">
-      <div class="container">
-        <h2 class="section-heading">הסיפור שלנו</h2>
-        <div class="text-center" style="max-width: 800px; margin: 0 auto;">
-          <p class="mb-8" style="font-size: 1.25rem; color: var(--text-muted); line-height: 1.6;">
-            <strong style="color: var(--accent-purple);">MULTIBRAWN</strong> מציעה פתרון 360°: מצד אחד – נכסים נבחרים (וילות, צימרים, דירות, מלונות), ומצד שני – מערך שיווק דיגיטלי שמביא תוצאות.
-          </p>
-          <p class="mb-8" style="font-size: 1.125rem; color: var(--text-muted); line-height: 1.6;">
-            כל חופשה או אירוע הוא סיפור, ואנחנו כאן כדי לוודא שהוא קורה – עם שירות אישי ותשומת לב לכל פרט.
-          </p>
-          <div class="flex gap-4 justify-center">
-            <a class="cta-button" href="about.html">קראו עוד עלינו</a>
-            <a class="cta-button" href="gallery.html">לגלריה המלאה</a>
+          <div class="property-card" style="text-align: center;">
+            <div class="icon">🏢</div> <h3>דירות נופש</h3> <p>חוויית עיר עם כל הנוחות בבית.</p>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Footer -->
-  <footer class="py-12 text-center" style="background: var(--primary-bg); border-top: 1px solid rgba(124, 58, 237, 0.2);">
+  <footer style="padding: 3rem 0; text-align: center; background: var(--primary-bg); border-top: 1px solid rgba(124, 58, 237, 0.2);">
     <div class="container">
-      <div class="flex justify-between items-center mb-8" style="flex-direction: column; gap: 2rem;">
-        <div class="logo-container">
-          <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="לוגו MULTIBRAWN" class="logo-img">
-          <a href="index.html" class="logo">MULTIBRAWN</a>
-        </div>
-        <div class="flex gap-6" style="font-size: 2rem;">
-          <a href="#" style="color: var(--text-muted); transition: 0.3s;" title="פייסבוק">📘</a>
-          <a href="#" style="color: var(--text-muted); transition: 0.3s;" title="אינסטגרם">📷</a>
-          <a href="#" style="color: var(--text-muted); transition: 0.3s;" title="לינקדאין">💼</a>
-        </div>
-      </div>
-      <div style="border-top: 1px solid rgba(124, 58, 237, 0.2); padding-top: 1.5rem; color: var(--text-muted);">
-        <p class="mb-4">© 2025 MULTIBRAWN. כל הזכויות שמורות.</p>
-        <p class="mb-4" style="font-size: 0.875rem;">
-          <a href="privacy.html" class="hover:underline">מדיניות פרטיות</a> ·
-          <a href="accessibility.html" class="hover:underline">הצהרת נגישות</a> ·
-          <a href="faq.html" class="hover:underline">שאלות ותשובות</a>
+        <p>© 2025 MULTIBRAWN. כל הזכויות שמורות.</p>
+        <p style="font-size: 0.75rem; color: var(--accent-yellow); margin-top: 1rem;">
+          האתר נבנה ע"י Multi-Web מבית MULTIBRAWN
         </p>
-        <p style="font-size: 0.75rem; color: var(--accent-yellow);">
-          האתר נבנה ע"י Multi-Web מבית MULTIBRAWN - אתרים שבונים עסקים
-        </p>
-      </div>
     </div>
   </footer>
 
-  <!-- Floating Buttons -->
   <div class="floating-buttons">
     <button class="floating-btn accessibility-btn" id="accessibilityBtn" title="נגישות">♿</button>
-    <button class="floating-btn chatbot-btn" id="chatbotBtn" title="צ'אטבוט">💬</button>
+    <button class="floating-btn chatbot-btn" id="chatbotBtn" title="צ'אט עם יועץ חכם">💬</button>
     <a href="https://wa.me/972523983394?text=שלום! אשמח לשמוע עוד על השירותים של MULTIBRAWN" 
-       class="floating-btn whatsapp-btn" title="וואטסאפ">📱</a>
+       class="floating-btn whatsapp-btn" title="וואטסאפ" target="_blank">
+       <i class="fab fa-whatsapp" style="font-size: 1.8rem;"></i>
+    </a>
   </div>
 
-  <!-- Accessibility Panel -->
+  <div id="chat-widget-container">
+    <div id="chat-popup" class="hidden">
+      <div class="chat-popup-header">
+          <span>דבר עם היועץ החכם</span>
+          <button id="close-chat-btn">&times;</button>
+      </div>
+      <iframe src="chatbot.html" style="width:100%; height:100%; border:none;"></iframe>
+    </div>
+  </div>
+
+  <div id="proactive-popup" class="hidden">
+    <div class="popup-header">🤖 תנו לי לעבוד בשבילכם!</div>
+    <div class="popup-body">
+        מתכננים חופשה או אירוע בקרוב? <br>במקום לחפש, ענו על כמה שאלות ואכין לצוות שלנו בריף מדויק כדי שנחזור אליכם עם הצעה מנצחת.
+    </div>
+    <div class="popup-buttons">
+        <button id="accept-challenge">יאללה, מתחילים! 👍</button>
+        <button id="decline-challenge">לא תודה, רק גולש/ת</button>
+    </div>
+  </div>
+  
   <div class="accessibility-panel" id="accessibilityPanel">
     <h3>הגדרות נגישות</h3>
     <div class="accessibility-controls">
-      <button class="accessibility-btn-control" onclick="increaseFontSize()">הגדל גופן</button>
-      <button class="accessibility-btn-control" onclick="decreaseFontSize()">הקטן גופן</button>
-      <button class="accessibility-btn-control" onclick="toggleHighContrast()">ניגודיות גבוהה</button>
-      <button class="accessibility-btn-control" onclick="resetAccessibility()">איפוס הגדרות</button>
-      <button class="accessibility-btn-control close-accessibility" onclick="closeAccessibility()">סגור</button>
+      <button class="accessibility-btn-control" onclick="document.body.style.fontSize = '120%'">הגדל גופן</button>
+      <button class="accessibility-btn-control" onclick="document.body.style.fontSize = '100%'">הקטן גופן</button>
+      <button class="accessibility-btn-control" onclick="document.body.classList.toggle('high-contrast')">ניגודיות גבוהה</button>
+      <button class="accessibility-btn-control" onclick="document.body.style.fontSize = ''; document.body.classList.remove('high-contrast')">איפוס</button>
+      <button class="accessibility-btn-control close-accessibility" onclick="document.getElementById('accessibilityPanel').classList.remove('open')">סגור</button>
     </div>
   </div>
 
   <script>
-    // Global variables
-    let fontSize = 100;
-    let highContrast = false;
-
-    // Accessibility Functions
-    function increaseFontSize() {
-      fontSize += 20;
-      document.body.style.fontSize = fontSize + '%';
-    }
-
-    function decreaseFontSize() {
-      if (fontSize > 80) {
-        fontSize -= 20;
-        document.body.style.fontSize = fontSize + '%';
-      }
-    }
-
-    function toggleHighContrast() {
-      highContrast = !highContrast;
-      document.body.classList.toggle('high-contrast', highContrast);
-    }
-
-    function resetAccessibility() {
-      fontSize = 100;
-      highContrast = false;
-      document.body.style.fontSize = '';
-      document.body.classList.remove('high-contrast');
-    }
-
-    function openAccessibility() {
-      document.getElementById('accessibilityPanel').classList.add('open');
-    }
-
-    function closeAccessibility() {
-      document.getElementById('accessibilityPanel').classList.remove('open');
-    }
-
-    function openChatbot() {
-      const chatModal = document.createElement('div');
-      chatModal.innerHTML = `
-        <div id="chatModal" style="position: fixed; top: 50%; right: 50%; transform: translate(50%, -50%); width: 400px; height: 500px; background: var(--secondary-bg); border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.4); z-index: 1002; border: 2px solid var(--accent-purple); display: flex; flex-direction: column;">
-          <div style="background: linear-gradient(135deg, var(--accent-purple), var(--dark-purple)); padding: 20px; border-radius: 20px 20px 0 0; color: white; text-align: center; font-weight: 600;">
-            <h3>צ'אט עם מולטי</h3>
-            <p style="font-size: 0.9rem; opacity: 0.8;">איך נוכל לעזור היום?</p>
-            <button onclick="closeChatModal()" style="position: absolute; top: 15px; left: 15px; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer;">×</button>
-          </div>
-          <div id="chatMessages" style="flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px;">
-            <div style="max-width: 80%; padding: 12px 16px; border-radius: 18px; background: linear-gradient(135deg, rgba(124,58,237,0.2), rgba(168,85,247,0.2)); border: 1px solid rgba(124,58,237,0.3); color: white;">
-              שלום! אני מולטי, עוזר ה-AI של MULTIBRAWN 👋<br><br>איך אוכל לעזור לכם היום?<br><br>📋 בחרו אפשרות:<br><br>1️⃣ חיפוש נכס לחופשה<br>2️⃣ תכנון אירוע מיוחד<br>3️⃣ שירותי שיווק דיגיטלי<br>4️⃣ שאלות על מחירים<br>5️⃣ מידע כללי<br><br>רק הקלידו מספר או כתבו מה מעניין אתכם...
-            </div>
-          </div>
-          <div style="padding: 20px; border-top: 1px solid rgba(124,58,237,0.2);">
-            <input type="text" id="chatInput" placeholder="הקלידו הודעה..." style="width: 100%; padding: 12px 16px; border: 1px solid rgba(124,58,237,0.3); border-radius: 25px; background: rgba(124,58,237,0.1); color: white; outline: none; font-family: var(--font-body);">
-          </div>
-        </div>
-      `;
-      document.body.appendChild(chatModal);
-      
-      const chatInput = document.getElementById('chatInput');
-      const chatMessages = document.getElementById('chatMessages');
-      
-      // משתנה לשמירת מידע הלקוח
-      let customerInfo = {
-        name: '',
-        purpose: '', // חופשה/אירוע
-        eventType: '', // סוג אירוע
-        dates: '',
-        area: '',
-        guests: '',
-        kosher: '',
-        budget: '',
-        special: ''
-      };
-      
-      let conversationStage = 'greeting'; // greeting, purpose, details, summary
-      
-      function addBotMessage(message) {
-        setTimeout(() => {
-          const botMsgDiv = document.createElement('div');
-          botMsgDiv.style.cssText = 'max-width: 80%; padding: 12px 16px; border-radius: 18px; background: linear-gradient(135deg, rgba(124,58,237,0.2), rgba(168,85,247,0.2)); border: 1px solid rgba(124,58,237,0.3); color: white;';
-          botMsgDiv.innerHTML = message;
-          chatMessages.appendChild(botMsgDiv);
-          chatMessages.scrollTop = chatMessages.scrollHeight;
-        }, 500);
-      }
-      
-      function handleUserMessage(message) {
-        const lowerMessage = message.toLowerCase();
-        const messageNumber = message.trim();
-        
-        switch(conversationStage) {
-          case 'greeting':
-            if (messageNumber === '1' || lowerMessage.includes('חופשה') || lowerMessage.includes('נופש') || lowerMessage.includes('וילה') || lowerMessage.includes('צימר')) {
-              customerInfo.purpose = 'חופשה';
-              conversationStage = 'vacation_area';
-              addBotMessage('מעולה! בואו נמצא לכם את החופשה המושלמת 🏖️<br><br>באיזה אזור תרצו?<br><br>1️⃣ צפון (גליל, כנרת, גולן)<br>2️⃣ מרכז (תל אביב, שרון, השפלה)<br>3️⃣ דרום (נגב, אילת, ים המלח)<br>4️⃣ ירושלים והסביבה<br>5️⃣ יהודה ושומרון<br><br>הקלידו מספר או שם האזור...');
-            } else if (messageNumber === '2' || lowerMessage.includes('אירוע') || lowerMessage.includes('חתונה') || lowerMessage.includes('בר מצווה') || lowerMessage.includes('ברית') || lowerMessage.includes('שבת חתן')) {
-              customerInfo.purpose = 'אירוע';
-              conversationStage = 'event_type';
-              addBotMessage('איזה אירוע מיוחד מתוכנן! 🎉<br><br>איזה סוג אירוע?<br><br>1️⃣ חתונה<br>2️⃣ בר/בת מצווה<br>3️⃣ ברית מילה<br>4️⃣ שבת חתן<br>5️⃣ כנס או יום עיון<br>6️⃣ מסיבת יום הולדת<br>7️⃣ אירוע עסקי<br>8️⃣ אחר<br><br>הקלידו מספר או כתבו את סוג האירוע...');
-            } else if (messageNumber === '3' || lowerMessage.includes('שיווק') || lowerMessage.includes('פרסום') || lowerMessage.includes('דיגיטלי')) {
-              addBotMessage('נהדר! השירותים הדיגיטליים שלנו 💼<br><br>מה מעניין אתכם?<br><br>1️⃣ אסטרטגיה דיגיטלית מלאה<br>2️⃣ קמפיינים ממומנים (גוגל ופייסבוק)<br>3️⃣ ניהול רשתות חברתיות<br>4️⃣ יצירת תוכן ועיצוב<br>5️⃣ SEO ואופטימיזציה<br>6️⃣ אוטומציות שיווק<br>7️⃣ הכל ביחד - חבילה מלאה<br><br>הקלידו מספר או תחום עניין...');
-            } else if (messageNumber === '4' || lowerMessage.includes('מחיר') || lowerMessage.includes('עלות')) {
-              addBotMessage('המחירים שלנו תלויים בכמה גורמים:<br><br>🏠 סוג הנכס (וילה/צימר/דירת נופש)<br>📅 תאריכים (עונת שיא/רגילה)<br>👥 מספר אורחים<br>🌍 אזור גאוגרafi<br>⭐ רמת הנכס ושירותים נוספים<br><br>בואו נתחיל לאסוף פרטים:<br><br>איזה סוג נכס מחפשים?<br>1️⃣ וילה פרטית<br>2️⃣ צימר רומנטי<br>3️⃣ דירת נופש<br>4️⃣ מלון בוטיק<br><br>הקלידו מספר...');
-              conversationStage = 'pricing_details';
-            } else if (messageNumber === '5') {
-              addBotMessage('בשמח! אני יכול לעזור עם:<br><br>ℹ️ על MULTIBRAWN:<br>אנחנו מתמחים בחיבור בין לקוחות למתחמי נופש יוקרתיים ובתכנון אירועים מושלמים.<br><br>📞 יצירת קשר:<br>וואטסאפ: 052-398-3394<br>טלפון: 072-331-1083<br><br>🏠 סוגי נכסים:<br>וילות פרטיות, צימרים, דירות נופש, מלונות בוטיק<br><br>🎯 שירותי שיווק:<br>פתרונות דיגיטליים מלאים לבעלי עסקים<br><br>יש לכם שאלה ספציפית?');
-            } else {
-              addBotMessage('לא הבנתי בדיוק...<br><br>בואו ננסה שוב 😊<br><br>📋 בחרו אפשרות:<br><br>1️⃣ חיפוש נכס לחופשה<br>2️⃣ תכנון אירוע מיוחד<br>3️⃣ שירותי שיווק דיגיטלי<br>4️⃣ שאלות על מחירים<br>5️⃣ מידע כללי<br><br>הקלידו מספר בלבד (1-5)');
-            }
-            break;
-            
-          case 'vacation_area':
-            let areaName = message;
-            if (messageNumber === '1') areaName = 'צפון (גליל, כנרת, גולן)';
-            else if (messageNumber === '2') areaName = 'מרכז (תל אביב, שרון, השפלה)';
-            else if (messageNumber === '3') areaName = 'דרום (נגב, אילת, ים המלח)';
-            else if (messageNumber === '4') areaName = 'ירושלים והסביבה';
-            else if (messageNumber === '5') areaName = 'יהודה ושומרון';
-            
-            customerInfo.area = areaName;
-            conversationStage = 'vacation_guests';
-            addBotMessage(`${areaName} - בחירה נפלאה! 🌟<br><br>כמה אורחים יהיו בחופשה?<br><br>1️⃣ זוג (2 אנשים)<br>2️⃣ משפחה קטנה (3-4 אנשים)<br>3️⃣ משפחה גדולה (5-8 אנשים)<br>4️⃣ קבוצת חברים (8-15 אנשים)<br>5️⃣ קבוצה גדולה (15+ אנשים)<br><br>הקלידו מספר או כמות מדויקת...`);
-            break;
-            
-          case 'vacation_guests':
-            let guestsInfo = message;
-            if (messageNumber === '1') guestsInfo = 'זוג (2 אנשים)';
-            else if (messageNumber === '2') guestsInfo = 'משפחה קטנה (3-4 אנשים)';
-            else if (messageNumber === '3') guestsInfo = 'משפחה גדולה (5-8 אנשים)';
-            else if (messageNumber === '4') guestsInfo = 'קבוצת חברים (8-15 אנשים)';
-            else if (messageNumber === '5') guestsInfo = 'קבוצה גדולה (15+ אנשים)';
-            
-            customerInfo.guests = guestsInfo;
-            conversationStage = 'vacation_dates';
-            addBotMessage(`${guestsInfo} - מושלם! 👥<br><br>איזה תאריכים מתאימים לכם?<br><br>1️⃣ סוף השבוע הקרוב<br>2️⃣ בשבועיים הקרובים<br>3️⃣ בחודש הקרוב<br>4️⃣ עוד 2-3 חודשים<br>5️⃣ תאריכים ספציפיים<br><br>הקלידו מספר או תאריכים מדויקים...`);
-            break;
-            
-          case 'vacation_dates':
-            let datesInfo = message;
-            if (messageNumber === '1') datesInfo = 'סוף השבוע הקרוב';
-            else if (messageNumber === '2') datesInfo = 'בשבועיים הקרובים';
-            else if (messageNumber === '3') datesInfo = 'בחודש הקרוב';
-            else if (messageNumber === '4') datesInfo = 'עוד 2-3 חודשים';
-            else if (messageNumber === '5') datesInfo = message; // ישאר הטקסט המקורי
-            
-            customerInfo.dates = datesInfo;
-            conversationStage = 'vacation_kosher';
-            addBotMessage(`תאריכים: ${datesInfo} ✅<br><br>האם יש דרישות כשרות מיוחדות?<br><br>1️⃣ כן - שומרי שבת ומהדרין<br>2️⃣ כן - כשרות רגילה<br>3️⃣ לא - אין דרישות מיוחדות<br><br>הקלידו מספר...`);
-            break;
-            
-          case 'vacation_kosher':
-            let kosherInfo = message;
-            if (messageNumber === '1') kosherInfo = 'שומרי שבת ומהדרין';
-            else if (messageNumber === '2') kosherInfo = 'כשרות רגילה';
-            else if (messageNumber === '3') kosherInfo = 'אין דרישות מיוחדות';
-            
-            customerInfo.kosher = kosherInfo;
-            conversationStage = 'vacation_type';
-            addBotMessage(`נרשם: ${kosherInfo} ✡️<br><br>איזה סוג נכס תעדיפו?<br><br>1️⃣ וילה פרטית עם בריכה 🏊‍♀️<br>2️⃣ צימר רומנטי בטבע 🌲<br>3️⃣ דירת נופש בעיר 🏙️<br>4️⃣ מלון בוטיק עם שירות 🏨<br>5️⃣ מתחם משפחתי גדול 🏡<br><br>הקלידו מספר...`);
-            break;
-            
-          case 'vacation_type':
-            let propertyType = message;
-            if (messageNumber === '1') propertyType = 'וילה פרטית עם בריכה';
-            else if (messageNumber === '2') propertyType = 'צימר רומנטי בטבע';
-            else if (messageNumber === '3') propertyType = 'דירת נופש בעיר';
-            else if (messageNumber === '4') propertyType = 'מלון בוטיק עם שירות';
-            else if (messageNumber === '5') propertyType = 'מתחם משפחתי גדול';
-            
-            customerInfo.special = propertyType;
-            conversationStage = 'vacation_summary';
-            generateVacationSummary();
-            break;
-            
-          case 'event_type':
-            customerInfo.eventType = message;
-            conversationStage = 'event_details';
-            addBotMessage(`${customerInfo.eventType} - כמה מרגש!<br><br>כמה אורחים אתם מצפים?`);
-            break;
-            
-          case 'event_details':
-            if (!customerInfo.guests) {
-              customerInfo.guests = message;
-              addBotMessage(`${customerInfo.guests} אורחים<br><br>באיזה אזור תרצו לקיים את האירוע?`);
-            } else if (!customerInfo.area) {
-              customerInfo.area = message;
-              addBotMessage('איזה תאריך מתאים לכם? (או חודש משוער)');
-            } else if (!customerInfo.dates) {
-              customerInfo.dates = message;
-              addBotMessage('האם יש דרישות כשרות מיוחדות? (למהדרין, בד"צ, רגיל)');
-            } else if (!customerInfo.kosher) {
-              customerInfo.kosher = message;
-              addBotMessage('איזה תקציב בקירוב לאירוע? (או "גמיש" אם עדיין לא החלטתם)');
-            } else {
-              customerInfo.budget = message;
-              conversationStage = 'event_summary';
-              generateEventSummary();
-            }
-            break;
-            
-          default:
-            addBotMessage('תודה על המידע! מעביר אותכם לנציג המתמחה שלנו.');
-            setTimeout(() => {
-              const whatsappMessage = generateWhatsappMessage();
-              const whatsappUrl = `https://wa.me/972523983394?text=${encodeURIComponent(whatsappMessage)}`;
-              window.open(whatsappUrl, '_blank');
-              document.body.removeChild(chatModal);
-            }, 2000);
-        }
-      }
-      
-      function generateVacationSummary() {
-        const summary = `מושלם! הנה סיכום החיפוש שלכם:<br><br>
-        🏡 מטרה: ${customerInfo.purpose}<br>
-        📍 אזור: ${customerInfo.area}<br>
-        👥 מספר אורחים: ${customerInfo.guests}<br>
-        📅 תאריכים: ${customerInfo.dates}<br>
-        ✡️ כשרות: ${customerInfo.kosher}<br>
-        🏠 סוג נכס: ${customerInfo.special || 'בהתאם להמלצות'}<br><br>
-        אני מעביר אותכם לנציג שלנו עם כל הפרטים!`;
-        
-        addBotMessage(summary);
-        
-        setTimeout(() => {
-          const whatsappMessage = generateWhatsappMessage();
-          const whatsappUrl = `https://wa.me/972523983394?text=${encodeURIComponent(whatsappMessage)}`;
-          window.open(whatsappUrl, '_blank');
-          document.body.removeChild(chatModal);
-        }, 3000);
-      }
-      
-      function generateEventSummary() {
-        const summary = `מעולה! הנה סיכום האירוע שלכם:<br><br>
-        🎉 סוג אירוע: ${customerInfo.eventType}<br>
-        👥 מספר אורחים: ${customerInfo.guests}<br>
-        📍 אזור מועדף: ${customerInfo.area}<br>
-        📅 תאריך משוער: ${customerInfo.dates}<br>
-        ✡️ דרישות כשרות: ${customerInfo.kosher}<br>
-        💰 תקציב: ${customerInfo.budget}<br><br>
-        מעביר אותכם לנציג המתמחה באירועים!`;
-        
-        addBotMessage(summary);
-        
-        setTimeout(() => {
-          const whatsappMessage = generateWhatsappMessage();
-          const whatsappUrl = `https://wa.me/972523983394?text=${encodeURIComponent(whatsappMessage)}`;
-          window.open(whatsappUrl, '_blank');
-          document.body.removeChild(chatModal);
-        }, 3000);
-      }
-      
-      function generateWhatsappMessage() {
-        let message = "שלום! התייעצתי עם הצ'אטבוט שלכם. הנה הפרטים:\n\n";
-        
-        if (customerInfo.purpose === 'חופשה') {
-          message += `🏡 מחפש/ת נכס לחופשה\n`;
-          message += `📍 אזור: ${customerInfo.area}\n`;
-          message += `👥 מספר אורחים: ${customerInfo.guests}\n`;
-          message += `📅 תאריכים: ${customerInfo.dates}\n`;
-          message += `✡️ כשרות: ${customerInfo.kosher}\n`;
-          if (customerInfo.special) message += `🏠 סוג נכס: ${customerInfo.special}\n`;
-        } else if (customerInfo.purpose === 'אירוע') {
-          message += `🎉 מתכנן/ת אירוע: ${customerInfo.eventType}\n`;
-          message += `👥 מספר אורחים: ${customerInfo.guests}\n`;
-          message += `📍 אזור: ${customerInfo.area}\n`;
-          message += `📅 תאריך: ${customerInfo.dates}\n`;
-          message += `✡️ כשרות: ${customerInfo.kosher}\n`;
-          if (customerInfo.budget) message += `💰 תקציב: ${customerInfo.budget}\n`;
-        }
-        
-        message += "\nאשמח לקבל הצעה מותאמת 😊";
-        return message;
-      }
-      
-      window.closeChatModal = function() {
-        document.body.removeChild(chatModal);
-      };
-      
-      chatInput.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter' && chatInput.value.trim()) {
-          const userMessage = chatInput.value.trim();
-          
-          // הוספת הודעת המשתמש
-          const userMsgDiv = document.createElement('div');
-          userMsgDiv.style.cssText = 'max-width: 80%; padding: 12px 16px; border-radius: 18px; background: linear-gradient(135deg, var(--accent-purple), var(--light-purple)); color: white; align-self: flex-end; margin-right: auto;';
-          userMsgDiv.textContent = userMessage;
-          chatMessages.appendChild(userMsgDiv);
-          
-          handleUserMessage(userMessage);
-          
-          chatInput.value = '';
-          chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
-      });
-      
-      chatInput.focus();
-    }
-
-    // Initialize
     document.addEventListener('DOMContentLoaded', function() {
-      // Mobile Menu
+      // --- Mobile Menu ---
       const toggle = document.getElementById('mobileToggle');
       const menu = document.getElementById('primaryNav');
-      
       if (toggle && menu) {
-        toggle.addEventListener('click', function() {
-          menu.classList.toggle('active');
-        });
+        toggle.addEventListener('click', () => menu.classList.toggle('active'));
       }
 
-      // Event Listeners
+      // --- Accessibility Panel ---
       const accessibilityBtn = document.getElementById('accessibilityBtn');
+      const accessibilityPanel = document.getElementById('accessibilityPanel');
+      if (accessibilityBtn && accessibilityPanel) {
+          accessibilityBtn.addEventListener('click', () => accessibilityPanel.classList.toggle('open'));
+      }
+
+      // --- Chat Widget & Proactive Popup Logic ---
       const chatbotBtn = document.getElementById('chatbotBtn');
+      const chatPopup = document.getElementById('chat-popup');
+      const closeChatBtn = document.getElementById('close-chat-btn');
       
-      if (accessibilityBtn) {
-        accessibilityBtn.addEventListener('click', openAccessibility);
+      const proactivePopup = document.getElementById('proactive-popup');
+      const acceptChallengeBtn = document.getElementById('accept-challenge');
+      const declineChallengeBtn = document.getElementById('decline-challenge');
+
+      // Function to open the chat
+      function openChat() {
+          chatPopup.classList.add('visible');
+          proactivePopup.classList.remove('visible'); // Hide proactive popup if open
       }
       
-      if (chatbotBtn) {
-        chatbotBtn.addEventListener('click', openChatbot);
+      // Function to close the chat
+      function closeChat() {
+          chatPopup.classList.remove('visible');
       }
-      
-      // Smooth scrolling
-      document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-        anchor.addEventListener('click', function(e) {
-          const href = this.getAttribute('href');
-          if (href.length > 1) {
-            const target = document.querySelector(href);
-            if (target) {
-              e.preventDefault();
-              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
+
+      // Open chat when main bubble is clicked
+      chatbotBtn.addEventListener('click', openChat);
+      closeChatBtn.addEventListener('click', closeChat);
+
+      // Show the proactive popup after 5 seconds
+      setTimeout(() => {
+          // Only show if the main chat is not already open
+          if (!chatPopup.classList.contains('visible')) {
+              proactivePopup.classList.remove('hidden');
+              proactivePopup.classList.add('visible');
           }
-        });
+      }, 5000);
+
+      // When user accepts the challenge
+      acceptChallengeBtn.addEventListener('click', () => {
+          proactivePopup.classList.remove('visible');
+          openChat();
       });
 
-      // Header scroll effect
-      window.addEventListener('scroll', function() {
-        const header = document.querySelector('.header-nav');
-        if (header) {
-          if (window.scrollY > 100) {
-            header.style.background = 'rgba(26, 11, 46, 0.98)';
-          } else {
-            header.style.background = 'rgba(26, 11, 46, 0.95)';
-          }
-        }
-      });
-
-      // Close accessibility panel when clicking outside
-      document.addEventListener('click', function(e) {
-        const panel = document.getElementById('accessibilityPanel');
-        const btn = document.getElementById('accessibilityBtn');
-        
-        if (panel && btn && !panel.contains(e.target) && !btn.contains(e.target)) {
-          panel.classList.remove('open');
-        }
+      // When user declines
+      declineChallengeBtn.addEventListener('click', () => {
+          proactivePopup.classList.remove('visible');
       });
     });
   </script>
