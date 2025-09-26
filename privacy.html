@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מדיניות פרטיות - Multibrawn</title>
+    <meta name="description" content="מדיניות פרטיות Multibrawn - הגנה על המידע האישי שלכם היא בראש סדר העדיפויות שלנו">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-bg: #1a0b2e;
+            --secondary-bg: #16213e;
+            --accent-purple: #7c3aed;
+            --light-purple: #a855f7;
+            --dark-purple: #5b21b6;
+            --text-light: #f8fafc;
+            --text-muted: #cbd5e1;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Heebo', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--primary-bg);
+            color: var(--text-light);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(26, 11, 46, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(124, 58, 237, 0.2);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 40px;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 900;
+            color: transparent;
+            background: linear-gradient(45deg, #f8fafc, #7c3aed, #a855f7);
+            background-clip: text;
+            -webkit-background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--text-light);
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--accent-purple), var(--dark-purple));
+            color: white;
+            padding: 12px 28px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 100px;
+            padding: 4rem 2rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .page-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--text-light), var(--accent-purple), var(--light-purple));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .privacy-section {
+            background: linear-gradient(135deg, 
+                rgba(22, 33, 62, 0.8) 0%, 
+                rgba(26, 11, 46, 0.8) 100%);
+            padding: 3rem;
+            border-radius: 25px;
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--light-purple);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .privacy-section p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .privacy-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .privacy-list li {
+            margin-bottom: 1rem;
+            padding-right: 2rem;
+            position: relative;
+        }
+
+        .privacy-list li::before {
+            content: '•';
+            position: absolute;
+            right: 0;
+            color: var(--light-purple);
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, 
+                rgba(124, 58, 237, 0.3) 0%, 
+                rgba(168, 85, 247, 0.2) 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(124, 58, 237, 0.4);
+            margin: 2rem 0;
+        }
+
+        .contact-section {
+            text-align: center;
+            background: linear-gradient(135deg, 
+                rgba(124, 58, 237, 0.2) 0%, 
+                rgba(168, 85, 247, 0.1) 100%);
+            padding: 3rem;
+            border-radius: 25px;
+            margin-top: 3rem;
+        }
+
+        .last-updated {
+            text-align: center;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(124, 58, 237, 0.1);
+            border-radius: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-bg);
+            border-top: 1px solid rgba(124, 58, 237, 0.2);
+            padding: 4rem 2rem 2rem 2rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header-nav">
+        <nav class="nav-content">
+            <a href="index.html" class="logo">Multibrawn</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">דף הבית</a></li>
+                <li><a href="about.html">אודות</a></li>
+                <li><a href="gallery.html">גלריה</a></li>
+                <li><a href="marketing.html">שיווק דיגיטלי</a></li>
+                <li><a href="contact.html">צור קשר</a></li>
+                <li><a href="contact.html" class="cta-button">קבלו הצעה</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <h1 class="page-title">מדיניות פרטיות</h1>
+            
+            <div class="highlight-box">
+                <h2 style="color: var(--accent-purple); margin-bottom: 1rem; font-weight: bold;">הגנה על הפרטיות שלכם</h2>
+                <p style="margin-bottom: 0;">
+                    ב-Multibrawn אנו מחויבים להגנה מלאה על הפרטיות שלכם. מדיניות זו מסבירה כיצד אנו אוספים, 
+                    משתמשים ומגינים על המידע האישי שלכם.
+                </p>
+            </div>
+            
+            <div class="privacy-section">
+                <h2 class="section-title">איזה מידע אנו אוספים?</h2>
+                <p>אנו עשויים לאסוף את סוגי המידע הבאים:</p>
+                <ul class="privacy-list">
+                    <li><strong>מידע אישי:</strong> שם, כתובת אימייל, מספר טלפון כפי שמסרתם בטפסי יצירת קשר</li>
+                    <li><strong>מידע טכני:</strong> כתובת IP, סוג דפדפן, מערכת הפעלה ונתוני ביקור באתר</li>
+                    <li><strong>העדפות שירות:</strong> סוג הנכס המועדף עליכם, תאריכים רצויים ודרישות מיוחדות</li>
+                    <li><strong>תקשורת:</strong> תוכן ההודעות והשיחות איתנו לצורך מתן שירות מיטבי</li>
+                </ul>
+            </div>
+
+            <div class="privacy-section">
+                <h2 class="section-title">כיצד אנו משתמשים במידע?</h2>
+                <p>אנו משתמשים במידע שלכם למטרות הבאות:</p>
+                <ul class="privacy-list">
+                    <li>מתן שירותי הזמנה והתאמה אישית של נכסים</li>
+                    <li>שיפור השירות וחוויית המשתמש באתר</li>
+                    <li>יצירת קשר לצורך אישור הזמנות ומתן עדכונים</li>
+                    <li>שליחת מידע שיווקי רלוונטי (רק עם הסכמתכם)</li>
+                    <li>עמידה בדרישות חוקיות ורגולטוריות</li>
+                    <li>מניעת הונאות והבטחת אבטחת המידע</li>
+                </ul>
+            </div>
+
+            <div class="privacy-section">
+                <h2 class="section-title">שיתוף מידע עם גורמים חיצוניים</h2>
+                <p>אנו לא מוכרים, מחכירים או משתפים את המידע האישי שלכם עם גורמים חיצוניים, למעט במקרים הבאים:</p>
+                <ul class="privacy-list">
+                    <li>שותפי עסקיים (בעלי נכסים) לצורך ביצוע ההזמנה</li>
+                    <li>ספקי שירות טכנולוגיים המסייעים בהפעלת האתר</li>
+                    <li>חובה חוקית או צו בית משפט</li>
+                    <li>הגנה על הזכויות והבטיחות שלנו ושל לקוחותינו</li>
+                </ul>
+            </div>
+
+            <div class="privacy-section">
+                <h2 class="section-title">אבטחת המידע</h2>
+                <p>אנו נוקטים בצעדי אבטחה מתקדמים להגנה על המידע שלכם:</p>
+                <ul class="privacy-list">
+                    <li>הצפנת SSL לכל העברות המידע באתר</li>
+                    <li>אחסון מידע בשרתים מאובטחים בישראל</li>
+                    <li>גישה מוגבלת למידע רק לעובדים מורשים</li>
+                    <li>ביקורות אבטחה תקופתיות ועדכוני מערכות</li>
+                    <li>גיבוי מידע תקופתי ותוכניות התאוששות</li>
+                    <li>הדרכת עובדים בנושאי אבטחת מידע</li>
+                </ul>
+            </div>
+
+            <div class="privacy-section">
+                <h2 class="section-title">הזכויות שלכם</h2>
+                <p>בהתאם לחוק הגנת הפרטיות, הזכויות שלכם כוללות:</p>
+                <ul class="privacy-list">
+                    <li><strong>זכות עיון:</strong> לדעת איזה מידע אנו מחזיקים עליכם</li>
+                    <li><strong>זכות תיקון:</strong> לבקש תיקון מידע שגוי או לא מדויק</li>
+                    <li><strong>זכות מחיקה:</strong> לבקש מחיקת המידע האישי שלכם</li>
+                    <li><strong>זכות הגבלה:</strong> להגביל את השימוש במידע שלכם</li>
+                    <li><strong>זכות ניידות:</strong> לקבל את המידע שלכם בפורמט מובנה</li>
+                    <li><strong>זכות התנגדות:</strong> להתנגד לעיבוד מידע לצרכי שיווק</li>
+                </ul>
+            </div>
+
+            <div class="privacy-section">
+                <h2 class="section-title">עוגיות (Cookies)</h2>
+                <p>אתר זה משתמש בעוגיות לשיפור חוויית הגלישה:</p>
+                <ul class="privacy-list">
+                    <li><strong>עוגיות חיוניות:</strong> הכרחיות לתפקוד האתר</li>
+                    <li><strong>עוגיות אנליטיות:</strong> לניתוח שימוש באתר ושיפורו</li>
+                    <li><strong>עוגיות שיווק:</strong> להתאמה אישית של פרסומות</li>
+                </ul>
+                <p>ניתן לנהל את הגדרות העוגיות בדפדפן שלכם או לפנות אלינו להסרתן.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h2 class="section-title">שירותי צד שלישי</h2>
+                <p>האתר שלנו עשוי לכלול קישורים או שירותים של גורמים חיצוניים:</p>
+                <ul class="privacy-list">
+                    <li>Google Analytics לניתוח תנועה באתר</li>
+                    <li>Facebook Pixel למטרות שיווקיות</li>
+                    <li>WhatsApp Business לתקשורת מהירה</li>
+                    <li>שירותי תשלום מאובטחים</li>
+                </ul>
+                <p>לכל שירות יש מדיניות פרטיות משלו, ואנו ממליצים לעיין בה.</p>
+            </div>
+
+            <div class="privacy-section">
+                <h2 class="section-title">שמירת מידע</h2>
+                <p>
+                    אנו שומרים את המידע האישי שלכם כל עוד הדבר נחוץ למתן השירותים או כפי שנדרש על פי דין.
+                    מידע של לקוחות פעילים נשמר לתקופה של 7 שנים מהפעילות האחרונה.
+                    לאחר מכן, המידע יימחק או יועבר לארכיון מאובטח.
+                </p>
+            </div>
+
+            <div class="privacy-section">
+                <h2 class="section-title">עדכוני המדיניות</h2>
+                <p>
+                    אנו עשויים לעדכן מדיניות פרטיות זו מעת לעת. כל שינוי מהותי יפורסם באתר
+                    ויישלח הודעה למשתמשים רשומים. המשך השימוש באתר לאחר העדכון מהווה הסכמה לשינויים.
+                </p>
+            </div>
+
+            <div class="privacy-section">
+                <h2 class="section-title">שירותי שיווק</h2>
+                <p>אם בחרתם לקבל חומרי שיווק מאתנו:</p>
+                <ul class="privacy-list">
+                    <li>נשלח לכם הצעות מותאמות אישית</li>
+                    <li>עדכונים על נכסים חדשים ומבצעים מיוחדים</li>
+                    <li>ניוזלטר עם טיפים לחופשות ואירועים</li>
+                    <li>הזמנות לאירועים והרצאות</li>
+                </ul>
+                <p>תוכלו לבטל את המנוי בכל עת על ידי לחיצה על הקישור בתחתית כל אימייל.</p>
+            </div>
+
+            <div class="contact-section">
+                <h2 style="color: var(--text-light); margin-bottom: 1rem;">יש לכם שאלות על הפרטיות שלכם?</h2>
+                <p style="margin-bottom: 1rem;">אנו כאן כדי לעזור ולענות על כל שאלה:</p>
+                <div style="display: grid; gap: 1rem; margin-top: 2rem;">
+                    <div><strong>טלפון:</strong> 052-398-3394</div>
+                    <div><strong>אימייל:</strong> privacy@multibrawn.co.il</div>
+                    <div><strong>כתובת:</strong> ישראל</div>
+                </div>
+                <p style="margin-top: 2rem; font-size: 1rem; color: var(--text-muted);">
+                    נענה לפניותיכם תוך 72 שעות ונפעל למימוש זכויותיכם במהירות המרבית.
+                </p>
+            </div>
+
+            <div class="last-updated">
+                <p><strong>מדיניות זו עודכנה לאחרונה:</strong> ספטמבר 2024</p>
+                <p style="margin-top: 1rem;">גרסה 2.1 - כוללת עדכונים בהתאם לחוק הגנת הפרטיות התשפ"א-2021</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-12">
+                <a href="index.html" class="logo mb-6 md:mb-0">Multibrawn</a>
+                <div class="flex gap-8 text-4xl">
+                    <a href="#" class="text-gray-400 hover:text-purple-400 transition duration-300" title="פייסבוק">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-purple-400 transition duration-300" title="אינסטגרם">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-purple-400 transition duration-300" title="לינקדאין">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-purple-500/20 pt-8">
+                <p class="text-gray-400 mb-4">© 2024 Multibrawn. כל הזכויות שמורות.</p>
+                <div class="text-sm text-gray-500 space-x-4">
+                    <a href="privacy.html" class="hover:text-gray-300">מדיניות פרטיות</a>
+                    <span>|</span>
+                    <a href="accessibility.html" class="hover:text-gray-300">נגישות</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // הוספת skip link לנגישות
+        document.addEventListener('DOMContentLoaded', function() {
+            const skipLink = document.createElement('a');
+            skipLink.href = '#main-content';
+            skipLink.textContent = 'דלג לתוכן הראשי';
+            skipLink.style.cssText = `
+                position: absolute;
+                top: -40px;
+                left: 6px;
+                background: var(--accent-purple);
+                color: white;
+                padding: 8px;
+                text-decoration: none;
+                z-index: 9999;
+                border-radius: 4px;
+                transition: top 0.3s;
+            `;
+            skipLink.addEventListener('focus', function() {
+                this.style.top = '6px';
+            });
+            skipLink.addEventListener('blur', function() {
+                this.style.top = '-40px';
+            });
+            document.body.insertBefore(skipLink, document.body.firstChild);
+
+            // הוספת מזהה לתוכן הראשי
+            const mainContent = document.querySelector('.main-content');
+            if (mainContent) {
+                mainContent.id = 'main-content';
+            }
+        });
+
+        // גלילה חלקה לעוגנים
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
