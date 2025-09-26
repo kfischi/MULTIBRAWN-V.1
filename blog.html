@@ -1,0 +1,1505 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מדריכים וטיפים | Multibrawn - המדריך המלא לחופשות ואירועים מושלמים</title>
+    <meta name="description" content="טיפים מקצועיים לתכנון חופשות, בחירת לוקיישנים, אירועים מיוחדים ושיווק דיגיטלי. המדריך המקיף ביותר בישראל">
+    <meta name="keywords" content="חופשות, צימרים, וילות, אירועים, חתונות, שיווק דיגיטלי, לוקיישנים, נופש בישראל">
+    
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "Multibrawn מדריכים וטיפים",
+        "description": "מדריכים מקצועיים לתכנון חופשות ואירועים",
+        "url": "https://multibrawn.co.il/blog.html"
+    }
+    </script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-bg: linear-gradient(135deg, #1A1230 0%, #291a45 50%, #3a326a 100%);
+            --secondary-bg: linear-gradient(135deg, #2a2040 0%, #262c4a 50%, #204070 100%);
+            --accent-gold: #b8860b;
+            --accent-purple: #8e44ad;
+            --light-purple: #9b59b6;
+            --dark-purple: #663399;
+            --text-light: #ffffff;
+            --text-muted: #b3b3b3;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Heebo', sans-serif;
+            --glow-gold: 0 0 30px rgba(184, 134, 11, 0.6);
+            --glow-purple: 0 0 30px rgba(142, 68, 173, 0.6);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--primary-bg);
+            color: var(--text-light);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(142, 68, 173, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 60%, rgba(155, 89, 182, 0.05) 0%, transparent 50%);
+            z-index: -1;
+            animation: backgroundShift 15s ease-in-out infinite;
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(15, 12, 41, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--accent-gold);
+            box-shadow: var(--glow-gold);
+        }
+
+        .logo-text {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--accent-gold) 0%, #fff 50%, var(--accent-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--accent-gold);
+            text-shadow: var(--glow-gold);
+        }
+
+        .cta-btn {
+            background: linear-gradient(135deg, var(--accent-gold) 0%, #ffed4e 100%);
+            color: #000;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: var(--glow-gold);
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: var(--secondary-bg);
+            margin-top: 80px;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 4rem 2rem;
+        }
+
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--accent-gold) 0%, #fff 30%, var(--light-purple) 60%, var(--accent-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        /* Featured Articles */
+        .featured-section {
+            padding: 6rem 2rem;
+            background: var(--primary-bg);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--accent-gold) 0%, var(--light-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .article-card {
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.1) 0%, 
+                rgba(255, 215, 0, 0.05) 50%, 
+                rgba(142, 68, 173, 0.05) 100%);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .article-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-gold);
+            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.2);
+        }
+
+        .article-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .article-card:hover .article-image {
+            transform: scale(1.05);
+        }
+
+        .article-content {
+            padding: 2rem;
+        }
+
+        .article-category {
+            background: var(--accent-purple);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .article-title {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .article-excerpt {
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .read-time {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Categories Filter */
+        .filter-section {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .filter-tab {
+            background: rgba(142, 68, 173, 0.1);
+            color: var(--text-light);
+            padding: 10px 20px;
+            border-radius: 25px;
+            border: 2px solid rgba(142, 68, 173, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .filter-tab.active,
+        .filter-tab:hover {
+            background: linear-gradient(135deg, var(--accent-gold), var(--light-purple));
+            border-color: var(--accent-gold);
+            box-shadow: 0 5px 15px rgba(184, 134, 11, 0.4);
+        }
+
+        /* Article Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .modal.active {
+            display: block;
+        }
+
+        .modal-content {
+            max-width: 800px;
+            margin: 2rem auto;
+            background: var(--primary-bg);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            transform: scale(1.2);
+            color: var(--accent-gold);
+        }
+
+        .modal-header {
+            padding: 2rem 2rem 0 2rem;
+        }
+
+        .modal-title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--accent-gold) 0%, var(--light-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .modal-body p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .modal-body h3 {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--accent-gold);
+            margin: 2rem 0 1rem 0;
+        }
+
+        .modal-body ul {
+            margin-bottom: 1.5rem;
+            padding-right: 2rem;
+        }
+
+        .modal-body li {
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 2rem;
+            background: var(--secondary-bg);
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, 
+                rgba(255, 215, 0, 0.1) 0%, 
+                rgba(142, 68, 173, 0.1) 100%);
+            padding: 3rem;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .cta-title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-description {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn-primary {
+            background: linear-gradient(135deg, var(--accent-gold), #ffed4e);
+            color: #000;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: var(--glow-gold);
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn-secondary {
+            background: transparent;
+            color: var(--light-purple);
+            border: 2px solid rgba(155, 89, 182, 0.5);
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        /* WhatsApp Float */
+        .fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #00C853, #69F0AE);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .fab:hover {
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            background: #0A1628;
+            padding: 4rem 2rem 2rem 2rem;
+            text-align: center;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .articles-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .filter-tabs {
+                gap: 0.5rem;
+            }
+
+            .filter-tab {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+
+            .modal-content {
+                margin: 1rem;
+            }
+
+            .modal-title {
+                font-size: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(184, 134, 11, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--accent-gold);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="logo-section">
+                <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" 
+                     alt="MULTIBRAWN Logo" class="logo-img">
+                <a href="index.html" class="logo-text">MULTIBRAWN</a>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html">דף הבית</a></li>
+                <li><a href="about.html">אודות</a></li>
+                <li><a href="gallery.html">גלריה</a></li>
+                <li><a href="blog.html">מדריכים וטיפים</a></li>
+                <li><a href="contact.html">צור קשר</a></li>
+                <li><a href="contact.html" class="cta-btn">התחל עכשיו</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content" data-aos="fade-up">
+            <h1 class="hero-title">מדריכים וטיפים מקצועיים</h1>
+            <p class="hero-subtitle">
+                המדריך המקיף והמעודכן ביותר לתכנון חופשות מושלמות, בחירת לוקיישנים נכונים ויצירת אירועים בלתי נשכחים
+            </p>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-tabs">
+                <div class="filter-tab active" data-filter="all">הכל</div>
+                <div class="filter-tab" data-filter="vacation">טיפי נופש</div>
+                <div class="filter-tab" data-filter="events">אירועים</div>
+                <div class="filter-tab" data-filter="locations">בחירת לוקיישנים</div>
+                <div class="filter-tab" data-filter="marketing">שיווק דיגיטלי</div>
+                <div class="filter-tab" data-filter="planning">תכנון ארועים</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Articles -->
+    <section class="featured-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">מאמרים נבחרים</h2>
+            
+            <div class="articles-grid" id="articlesGrid">
+                
+                <!-- Article 1 -->
+                <article class="article-card" data-category="vacation" data-aos="fade-up" onclick="openArticle('article1')">
+                    <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villa1.jpg" 
+                         alt="וילה יוקרתית" class="article-image">
+                    <div class="article-content">
+                        <span class="article-category">טיפי נופש</span>
+                        <h3 class="article-title">איך לבחור את הוילה המושלמת לחופשה משפחתית</h3>
+                        <p class="article-excerpt">
+                            המדריך המלא לבחירת הוילה הנכונה: מיקום, גודל, שירותים ונקודות חיוניות שחייבים לבדוק לפני ההזמנה...
+                        </p>
+                        <div class="article-meta">
+                            <span>מאת: צוות Multibrawn</span>
+                            <div class="read-time">
+                                <i class="far fa-clock"></i>
+                                <span>5 דקות קריאה</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="article-card" data-category="events" data-aos="fade-up" data-aos-delay="100" onclick="openArticle('article2')">
+                    <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Event1.jpg" 
+                         alt="אירוע חתונה" class="article-image">
+                    <div class="article-content">
+                        <span class="article-category">אירועים</span>
+                        <h3 class="article-title">תכנון חתונה מושלמת: המדריך השלב אחר שלב</h3>
+                        <p class="article-excerpt">
+                            מהבחירה הראשונית של המקום ועד הפרטים הקטנים האחרונים - כל מה שצריך לדעת על תכנון חתונה חלומית...
+                        </p>
+                        <div class="article-meta">
+                            <span>מאת: ערדית בראון</span>
+                            <div class="read-time">
+                                <i class="far fa-clock"></i>
+                                <span>8 דקות קריאה</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="article-card" data-category="locations" data-aos="fade-up" data-aos-delay="200" onclick="openArticle('article3')">
+                    <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Zimmer1.jpg" 
+                         alt="צימר רומנטי" class="article-image">
+                    <div class="article-content">
+                        <span class="article-category">בחירת לוקיישנים</span>
+                        <h3 class="article-title">הצימרים הרומנטיים ביותר בישראל לסוף שבוע זוגי</h3>
+                        <p class="article-excerpt">
+                            רשימה מותאמת אישית של הצימרים הכי רומנטיים בארץ, עם המלצות על אזורים, מחירים וטיפים לבחירה נכונה...
+                        </p>
+                        <div class="article-meta">
+                            <span>מאת: צוות Multibrawn</span>
+                            <div class="read-time">
+                                <i class="far fa-clock"></i>
+                                <span>6 דקות קריאה</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 4 -->
+                <article class="article-card" data-category="marketing" data-aos="fade-up" data-aos-delay="300" onclick="openArticle('article4')">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=200&fit=crop" 
+                         alt="שיווק דיגיטלי" class="article-image">
+                    <div class="article-content">
+                        <span class="article-category">שיווק דיגיטלי</span>
+                        <h3 class="article-title">איך לשווק את הנכס שלכם ברשתות החברתיות בצורה יעילה</h3>
+                        <p class="article-excerpt">
+                            אסטרטגיות שיווק מוכחות לבעלי נכסים: תוכן שמוכר, פלטפורמות נכונות וטיפים לעלייה בהזמנות...
+                        </p>
+                        <div class="article-meta">
+                            <span>מאת: מומחי השיווק</span>
+                            <div class="read-time">
+                                <i class="far fa-clock"></i>
+                                <span>7 דקות קריאה</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 5 -->
+                <article class="article-card" data-category="planning" data-aos="fade-up" data-aos-delay="400" onclick="openArticle('article5')">
+                    <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=400&h=200&fit=crop" 
+                         alt="תכנון אירועים" class="article-image">
+                    <div class="article-content">
+                        <span class="article-category">תכנון אירועים</span>
+                        <h3 class="article-title">תקציב אירוע: איך לתכנן נכון ולא להפתע בעלויות</h3>
+                        <p class="article-excerpt">
+                            מדריך מקיף לתכנון תקציב אירוע חכם: פילוח עלויות, טיפים לחיסכון ופריטים שאסור לכם לשכוח...
+                        </p>
+                        <div class="article-meta">
+                            <span>מאת: יועצי האירועים</span>
+                            <div class="read-time">
+                                <i class="far fa-clock"></i>
+                                <span>9 דקות קריאה</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 6 -->
+                <article class="article-card" data-category="vacation" data-aos="fade-up" data-aos-delay="500" onclick="openArticle('article6')">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=200&fit=crop" 
+                         alt="חופשה משפחתית" class="article-image">
+                    <div class="article-content">
+                        <span class="article-category">טיפי נופש</span>
+                        <h3 class="article-title">חופשה עם ילדים: המדריך המלא להורים חכמים</h3>
+                        <p class="article-excerpt">
+                            איך לתכנן חופשה משפחתית מוצלחת עם ילדים: בחירת יעדים, פעילויות, ארוז וטיפים שיחסכו לכם עצבים...
+                        </p>
+                        <div class="article-meta">
+                            <span>מאת: מומחי הנופש</span>
+                            <div class="read-time">
+                                <i class="far fa-clock"></i>
+                                <span>6 דקות קריאה</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content" data-aos="zoom-in">
+            <h2 class="cta-title">מעוניינים ביעוץ אישי?</h2>
+            <p class="cta-description">
+                הצוות המקצועי שלנו כאן כדי לעזור לכם לתכנן את החופשה או האירוע המושלם. 
+                יעוץ חינם ללא התחייבות!
+            </p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="cta-btn-primary">בואו נתחיל לתכנן</a>
+                <a href="https://wa.me/972523983394?text=היי, קראתי את המדריכים ואני מעוניין ביעוץ אישי" 
+                   target="_blank" class="cta-btn-secondary">
+                    <i class="fab fa-whatsapp" style="margin-left: 8px;"></i>
+                    שלחו הודעה
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Modal -->
+    <div class="modal" id="articleModal">
+        <div class="modal-content">
+            <div class="modal-close" onclick="closeModal()">&times;</div>
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle"></h2>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Dynamic content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="max-w-7xl mx-auto px-4">
+            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 2rem; margin-bottom: 2rem;">
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; font-size: 0.9rem;">
+                    <a href="privacy.html" style="color: #b3b3b3; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#b3b3b3'">מדיניות פרטיות</a>
+                    <a href="accessibility.html" style="color: #b3b3b3; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#b3b3b3'">הצהרת נגישות</a>
+                </div>
+                <div style="display: flex; gap: 1.5rem; font-size: 1.5rem; margin-bottom: 1rem;">
+                    <a href="#" style="color: #b3b3b3; transition: color 0.3s;" onmouseover="this.style.color='#fff'"><i class="fab fa-facebook"></i></a>
+                    <a href="#" style="color: #b3b3b3; transition: color 0.3s;" onmouseover="this.style.color='#fff'"><i class="fab fa-instagram"></i></a>
+                    <a href="#" style="color: #b3b3b3; transition: color 0.3s;" onmouseover="this.style.color='#fff'"><i class="fab fa-youtube"></i></a>
+                    <a href="#" style="color: #b3b3b3; transition: color 0.3s;" onmouseover="this.style.color='#fff'"><i class="fab fa-tiktok"></i></a>
+                </div>
+                <p style="color: #777;">© 2024 Multibrawn. כל הזכויות שמורות.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/972523983394" class="fab" title="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Article content data
+        const articles = {
+            article1: {
+                title: "איך לבחור את הוילה המושלמת לחופשה משפחתית",
+                content: `
+                    <p>בחירת וילה לחופשה משפחתית היא אמנות שדורשת תכנון מדויק והבנה של הצרכים המשפחתיים. בואו נעבור על הנקודות החיוניות ביותר:</p>
+                    
+                    <h3>1. מיקום אסטרטגי</h3>
+                    <p>המיקום הוא הגורם החשוב ביותר בבחירת וילה. חפשו מקומות שמציעים:</p>
+                    <ul>
+                        <li>קרבה לאטרקציות משפחתיות - פארקים, חופים, מוזיאונים</li>
+                        <li>נגישות לחנויות ומסעדות</li>
+                        <li>סביבה שקטה ובטוחה לילדים</li>
+                        <li>נוף יפה שיעשיר את החוויה</li>
+                    </ul>
+
+                    <h3>2. גודל מתאים למשפחה</h3>
+                    <p>כלל האצבע הוא חדר שינה אחד לכל זוג או לכל שני ילדים. אל תשכחו:</p>
+                    <ul>
+                        <li>מקום מחיה משותף גדול מספיק</li>
+                        <li>מטבח מאובזר לכל המשפחה</li>
+                        <li>חדרי רחצה מספיקים</li>
+                        <li>מרחב חיצוני - גינה, מרפסת או חצר</li>
+                    </ul>
+
+                    <h3>3. שירותים וחיצוניים</h3>
+                    <p>הפרטים הקטנים יכולים לעשות את ההבדל:</p>
+                    <ul>
+                        <li>בריכה פרטית או נגישות לבריכה</li>
+                        <li>ג'קוזי לזוגות עם ילדים קטנים</li>
+                        <li>מתקני בילוי לילדים</li>
+                        <li>אינטרנט אמין לעבודה מרחוק</li>
+                        <li>מערכת קולנוע ביתי</li>
+                        <li>מתקני ספורט או משחקים</li>
+                    </ul>
+
+                    <h3>4. בדיקות חיוניות לפני הזמנה</h3>
+                    <p>כדי למנוע אכזבות, חיוני לוודא:</p>
+                    <ul>
+                        <li>תמונות עדכניות ומדויקות של הנכס</li>
+                        <li>ביקורות של משפחות אחרות</li>
+                        <li>מדיניות ביטול גמישה</li>
+                        <li>זמינות הבעלים לתמיכה במהלך השהות</li>
+                        <li>תנאי ניקיון וחיטוי</li>
+                    </ul>
+
+                    <h3>5. תכנון התקציב</h3>
+                    <p>זכרו לכלול בחשבון:</p>
+                    <ul>
+                        <li>עלות השכירות הבסיסית</li>
+                        <li>עלויות נוספות - ניקיון, חשמל, מים</li>
+                        <li>פיקדון ביטחון</li>
+                        <li>עלויות פעילויות ואוכל</li>
+                        <li>ביטוח נסיעות</li>
+                    </ul>
+
+                    <p><strong>טיפ מקצועי:</strong> תמיד שאלו לראות תמונות נוספות מזוויות שונות, ובקשו להתקשר לבעלים לשיחה קצרה כדי להכיר אותם ולוודא שהם אמינים ונגישים.</p>
+                `
+            },
+            article2: {
+                title: "תכנון חתונה מושלמת: המדריך השלב אחר שלב",
+                content: `
+                    <p>חתונה היא אחד מהאירועים החשובים ביותר בחיים, ולכן התכנון שלה דורש תשומת לב מיוחדת לכל פרט. הנה המדריך המלא שלנו:</p>
+                    
+                    <h3>שלב 1: קביעת התקציב (6-12 חודשים מראש)</h3>
+                    <p>לפני כל דבר אחר, חיוני לקבוע תקציב ריאלי:</p>
+                    <ul>
+                        <li>קבעו תקציב כולל ופרטו אותו לקטגוריות</li>
+                        <li>הקצו 10% נוספים לא"צים</li>
+                        <li>אולם וקייטרינג - 40-50% מהתקציב</li>
+                        <li>צילום וידאו - 10-15%</li>
+                        <li>שמלה וחליפה - 8-10%</li>
+                        <li>פרחים ועיצוב - 8-10%</li>
+                    </ul>
+
+                    <h3>שלב 2: בחירת התאריך והמקום (6-10 חודשים מראש)</h3>
+                    <ul>
+                        <li>בחירת עונה - קיץ יקר יותר אבל יש יותר אפשרויות</li>
+                        <li>הימנעו מחגים ואירועים לאומיים</li>
+                        <li>שמירת מספר תאריכים גמישים</li>
+                        <li>בדיקת זמינות האולם בתאריכים שונים</li>
+                    </ul>
+
+                    <h3>שלב 3: רשימת אורחים (5-6 חודשים מראש)</h3>
+                    <p>זהו אחד השלבים המאתגרים ביותר:</p>
+                    <ul>
+                        <li>התחילו עם רשימה רחבה וצמצמו</li>
+                        <li>הביאו בחשבון גודל האולם</li>
+                        <li>תיאמו עם ההורים לגבי חברים ומכרים</li>
+                        <li>שמרו על איזון בין משפחות</li>
+                    </ul>
+
+                    <h3>שלב 4: בחירת ספקים (4-6 חודשים מראש)</h3>
+                    <p>הזמינו את הספקים החיוניים:</p>
+                    <ul>
+                        <li><strong>צלם:</strong> ראו תיקי עבודות ופגשו אישית</li>
+                        <li><strong>DJ/להקה:</strong> שמעו דוגמיות והקשיבו להמלצות</li>
+                        <li><strong>פרחים:</strong> תיאמו עם עיצוב האולם</li>
+                        <li><strong>איפור ושיער:</strong> עשו ניסיון מראש</li>
+                    </ul>
+
+                    <h3>שלב 5: הזמנות ופרטים (2-3 חודשים מראש)</h3>
+                    <ul>
+                        <li>עיצוב והדפסת הזמנות</li>
+                        <li>משלוח הזמנות</li>
+                        <li>ניהול אישורי הגעה</li>
+                        <li>הזמנת תחבורה לזוג</li>
+                    </ul>
+
+                    <h3>שלב 6: הכנות אחרונות (חודש לפני)</h3>
+                    <ul>
+                        <li>אישור סופי עם כל הספקים</li>
+                        <li>הכנת לוח זמנים מפורט ליום החתונה</li>
+                        <li>בדיקה אחרונה של שמלה/חליפה</li>
+                        <li>הכנת רשימה למי שעוזר באירגון</li>
+                    </ul>
+
+                    <h3>טיפים זהב לחתונה מושלמת:</h3>
+                    <ul>
+                        <li><strong>גיבוי לכל דבר:</strong> תמיד יש תוכנית B</li>
+                        <li><strong>שמרו על פשטות:</strong> פחות זה לעיתים יותר</li>
+                        <li><strong>האנשים חשובים מהדברים:</strong> התמקדו בחוויה</li>
+                        <li><strong>תיהנו מהתהליך:</strong> זה חלק מהחוויה</li>
+                    </ul>
+
+                    <p><strong>הטיפ הכי חשוב:</strong> זכרו שבסוף, החתונה היא חגיגה של האהבה שלכם. כל הפרטים הטכניים חשובים, אבל הדבר החשוב ביותר הוא שתיהנו מהיום הזה עם האנשים שאתם הכי אוהבים.</p>
+                `
+            },
+            article3: {
+                title: "הצימרים הרומנטיים ביותר בישראל לסוף שבוע זוגי",
+                content: `
+                    <p>ישראל מלאה בפינות קסומות המושלמות לבריחה רומנטית. הכנו עבורכם מדריך מפורט לצימרים הכי רומנטיים בארץ:</p>
+                    
+                    <h3>הגליל העליון - חוויה רומנטית בלב הטבע</h3>
+                    <p><strong>צימרי הגליל המומלצים:</strong></p>
+                    <ul>
+                        <li><strong>רמות:</strong> נוף מדהים לכנרת, צימרים יוקרתיים עם ג'קוזי פרטי</li>
+                        <li><strong>אמירים:</strong> כפר אמנים קסום, צימרים אינטימיים עם סאונה</li>
+                        <li><strong>גליל עליון:</strong> בין הרים וערמונים, אווירה שקטה ורומנטית</li>
+                    </ul>
+                    <p><strong>מה מיוחד:</strong> נופים עוצרי נשימה, יקבים לסיורים, מסעדות איכותיות</p>
+
+                    <h3>רמת הגולן - רומנטיקה עם נוף</h3>
+                    <p><strong>אזורים מומלצים:</strong></p>
+                    <ul>
+                        <li><strong>אניעם:</strong> צימרים על מצוקי הגולן עם נוף לכנרת</li>
+                        <li><strong>חד נס:</strong> צימרים בוטיק עם בריכות מחוממות פרטיות</li>
+                        <li><strong>קצרין:</strong> קרוב לאטרקציות, מחירים נוחים יותר</li>
+                    </ul>
+                    <p><strong>פעילויות זוגיות:</strong> סיורי יקבים, רכיבת אופניים, ג'יפים ברמת הגולן</p>
+
+                    <h3>הכרמל והחוף - בין הר לים</h3>
+                    <p><strong>מקומות קסומים:</strong></p>
+                    <ul>
+                        <li><strong>דלית אל-כרמל:</strong> כפר דרוזי עם צימרים אותנטיים</li>
+                        <li><strong>זיכרון יעקב:</strong> צימרים יוקרתיים קרוב לים</li>
+                        <li><strong>עין הוד:</strong> כפר אמנים רומנטי בהרי הכרמל</li>
+                    </ul>
+
+                    <h3>יהודה והשומרון - הרים ויקבים</h3>
+                    <p><strong>איזורי יקבים רומנטיים:</strong></p>
+                    <ul>
+                        <li><strong>מטה יהודה:</strong> צימרים בין הכרמים</li>
+                        <li><strong>הרי הברכה:</strong> נופים מדהימים וצימרים יוקרתיים</li>
+                        <li><strong>גוש עציון:</strong> אווירה כפרית וטבע מדהים</li>
+                    </ul>
+
+                    <h3>הנגב - מדבר רומנטי</h3>
+                    <p><strong>חוויה מדברית ייחודית:</strong></p>
+                    <ul>
+                        <li><strong>מצפה רמון:</strong> צימרים מול המכתש</li>
+                        <li><strong>שדה בוקר:</strong> צימרים אקולוגיים בלב הנגב</li>
+                        <li><strong>ירוחם:</strong> טבע מדברי ושקט מוחלט</li>
+                    </ul>
+
+                    <h3>איך לבחור צימר רומנטי?</h3>
+                    <p><strong>אמצעי נוחות חיוניים:</strong></p>
+                    <ul>
+                        <li>ג'קוזי זוגי פרטי</li>
+                        <li>אח או קמין למחיה אינטימית</li>
+                        <li>מיטה זוגית גדולה ונוחה</li>
+                        <li>נוף יפה ופרטיות מלאה</li>
+                        <li>מטבחון מאובזר לבישול זוגי</li>
+                    </ul>
+
+                    <h3>מחירים ועונות</h3>
+                    <p><strong>עונות זולות יותר:</strong></p>
+                    <ul>
+                        <li>ימי ראשון עד חמישי</li>
+                        <li>חודשי החורף (למעט חגים)</li>
+                        <li>תחילת האביב וסוף הקיץ</li>
+                    </ul>
+
+                    <p><strong>טווח מחירים ללילה:</strong></p>
+                    <ul>
+                        <li>בסיסי: ₪300-500</li>
+                        <li>בינוני: ₪500-800</li>
+                        <li>יוקרה: ₪800-1500+</li>
+                    </ul>
+
+                    <h3>טיפים לחופשה רומנטית מושלמת</h3>
+                    <ul>
+                        <li><strong>תזמון:</strong> הגיעו לפני השקיעה ליהנות מהנוף</li>
+                        <li><strong>אוכל:</strong> הביאו מעדנים או הזמינו קייטרינג רומנטי</li>
+                        <li><strong>פעילויות:</strong> תכננו פעילות אחת ביום, לא יותר</li>
+                        <li><strong>טכנולוגיה:</strong> ממעטו בשימוש בטלפונים</li>
+                        <li><strong>הפתעות:</strong> הכינו הפתעה קטנה לבן/בת הזוג</li>
+                    </ul>
+
+                    <p><strong>המלצה אישית:</strong> הצימרים ברמות עם נוף לכנרת הם הבחירה המושלמת לזוגות המחפשים שילוב של נוף מדהים, צימרים יוקרתיים ופעילויות מגוונות באיזור.</p>
+                `
+            },
+            article4: {
+                title: "איך לשווק את הנכס שלכם ברשתות החברתיות בצורה יעילה",
+                content: `
+                    <p>שיווק נכסי נופש ברשתות החברתיות הוא אמנות שמשלבת יצירתיות עם אסטרטגיה מקצועית. הנה המדריך המלא שלנו:</p>
+                    
+                    <h3>הפלטפורמות הנכונות לכל סוג נכס</h3>
+                    <p><strong>אינסטגרם - המלך של שיווק נכסי נופש:</strong></p>
+                    <ul>
+                        <li>תמונות איכותיות של הנכס ממקורות זוויות</li>
+                        <li>סטוריז יומיומיות עם "מאחורי הקלעים"</li>
+                        <li>ריילס של הנכס עם מוזיקה מתאימה</li>
+                        <li>שימוש בהאשטגים רלוונטיים: #צימרים #נופש #וילותיוקרה</li>
+                    </ul>
+
+                    <p><strong>פייסבוק - בניית קהילה ועסקאות:</strong></p>
+                    <ul>
+                        <li>קבוצות טרגטיות: "נופש בצפון", "וילות לאירועים"</li>
+                        <li>פוסטים מפורטים עם תמונות מרובות</li>
+                        <li>שיתוף חוות דעת לקוחות</li>
+                        <li>קמפיינים ממומנים לקהל יעד מדויק</li>
+                    </ul>
+
+                    <p><strong>TikTok - הכוח החדש בשיווק:</strong></p>
+                    <ul>
+                        <li>סרטוני "room tour" של הנכס</li>
+                        <li>טרנדים ואתגרים קשורים לנופש</li>
+                        <li>תוכן קצר וקליל שמושך צפיות</li>
+                    </ul>
+
+                    <h3>יצירת תוכן שמוכר</h3>
+                    <p><strong>תמונות שמושכות הזמנות:</strong></p>
+                    <ul>
+                        <li>צילומי זריחה ושקיעה על רקע הנכס</li>
+                        <li>פינות אוכל מעוצבות עם אוכל צבעוני</li>
+                        <li>תמונות של הבריכה/ג'קוזי עם תאורה רומנטית</li>
+                        <li>חדר השינה עם הסידור מעוצב</li>
+                        <li>פינות ישיבה חיצוניות עם דקורציה</li>
+                    </ul>
+
+                    <p><strong>סרטונים יעילים:</strong></p>
+                    <ul>
+                        <li>סיורים בנכס של 60-90 שניות</li>
+                        <li>"יום בחיים" של אורחים בנכס</li>
+                        <li>הכנת ארוחת בוקר עם נוף מהנכס</li>
+                        <li>לפני ואחרי של הכנת הנכס לאורחים</li>
+                    </ul>
+
+                    <h3>טיימינג ותדירות פרסום</h3>
+                    <p><strong>מתי לפרסם?</strong></p>
+                    <ul>
+                        <li><strong>אינסטגרם:</strong> 18:00-21:00, יום ראשון ורביעי</li>
+                        <li><strong>פייסבוק:</strong> 12:00-15:00, יום שלישי וחמישי</li>
+                        <li><strong>TikTok:</strong> 19:00-22:00, יום שני וחמישי</li>
+                    </ul>
+
+                    <p><strong>תדירות מומלצת:</strong></p>
+                    <ul>
+                        <li>אינסטגרם פוסט: 4-5 פעמים בשבוע</li>
+                        <li>סטוריז: יומי</li>
+                        <li>פייסבוק פוסט: 3-4 פעמים בשבוע</li>
+                        <li>TikTok: 2-3 פעמים בשבוע</li>
+                    </ul>
+
+                    <h3>האשטגים שעובדים</h3>
+                    <p><strong>האשטגים כלליים:</strong></p>
+                    <ul>
+                        <li>#נופשבישראל #צימרים #וילותיוקרה</li>
+                        <li>#חופשהמשפחתית #סופישבועזוגי</li>
+                        <li>#בריכהפרטית #נופליםיפים</li>
+                    </ul>
+
+                    <p><strong>האשטגים לפי אזור:</strong></p>
+                    <ul>
+                        <li>צפון: #גליל #גולן #כנרת #רמות</li>
+                        <li>מרכז: #כרמל #זיכרוניעקב #בנימינה</li>
+                        <li>דרום: #נגב #מצפהרמון #אילת</li>
+                    </ul>
+
+                    <h3>עבודה עם אינפלואנסרים</h3>
+                    <p><strong>סוגי שיתופי פעולה:</strong></p>
+                    <ul>
+                        <li><strong>מיקרו אינפלואנסרים (1K-100K):</strong> אותנטיות גבוהה</li>
+                        <li><strong>בלוגרי טיולים:</strong> קהל ממוקד</li>
+                        <li><strong>משפחות ברשת:</strong> לוילות משפחתיות</li>
+                        <li><strong>זוגות ברשת:</strong> לצימרים רומנטיים</li>
+                    </ul>
+
+                    <h3>מדידה ואנליטיקה</h3>
+                    <p><strong>מטריקות חשובות לעקוב:</strong></p>
+                    <ul>
+                        <li><strong>העוםהר (Reach):</strong> כמה אנשים ראו את התוכן</li>
+                        <li><strong>מעורבות (Engagement):</strong> לייקים, תגובות, שיתופים</li>
+                        <li><strong>קליקים לאתר:</strong> כמה אנשים עברו לאתר</li>
+                        <li><strong>הזמנות מהרשתות:</strong> המטרה הסופית</li>
+                    </ul>
+
+                    <h3>טיפים מתקדמים להצלחה</h3>
+                    <ul>
+                        <li><strong>עקביות:</strong> פרסמו בקביעות, גם כשאין הזמנות</li>
+                        <li><strong>אינטראקציה:</strong> ענו על תגובות ותמצאו שיחות</li>
+                        <li><strong>סיפורים:</strong> כל תמונה צריכה לספר סיפור</li>
+                        <li><strong>קריאה לפעולה:</strong> תמיד הוסיפו CTA ברור</li>
+                    </ul>
+
+                    <h3>טעויות נפוצות להימנע מהן</h3>
+                    <ul>
+                        <li><strong>פרסום יותר מידי:</strong> עלול לגרום לאנשים להסיר לייק</li>
+                        <li><strong>תמונות לא איכותיות:</strong> פוגע במוניטין</li>
+                        <li><strong>העדר אינטראקציה:</strong> אל תתעלמו מתגובות</li>
+                        <li><strong>תוכן גנרי:</strong> הדגישו את הייחודיות שלכם</li>
+                        <li><strong>מחירים בפוסטים:</strong> עדיف בהודעה פרטית</li>
+                    </ul>
+
+                    <p><strong>הטיפ הזהב:</strong> הדבר הכי חשוב בשיווק ברשתות החברתיות הוא אמינות ויחס אישי. אנשים קונים מאנשים שהם אוהבים ובוטחים בהם. השקיעו בבניית קשר אישי עם העוקבים שלכם, וההזמנות יבואו מאליהן.</p>
+                `
+            },
+            article5: {
+                title: "תקציב אירוע: איך לתכנן נכון ולא להפתע בעלויות",
+                content: `
+                    <p>תכנון תקציב אירוע הוא אחד הצדדים הכי מאתגרים בארגון אירוע. המדריך הזה יעזור לכם להימנע מהפתעות יקרות ולתכנן בחכמה:</p>
+                    
+                    <h3>שלב 1: קביעת התקציב הכללי</h3>
+                    <p><strong>כללי זהב לקביעת תקציב:</strong></p>
+                    <ul>
+                        <li>התחילו עם הסכום שאתם באמת יכולים להרשות לעצמכם</li>
+                        <li>הוסיפו 15-20% כרזרבה לא"צים</li>
+                        <li>לא לקחת הלואות לאירוע אלא אם כן זה באמת הכרחי</li>
+                        <li>זכרו: האירוע נגמר, החובות נשארים</li>
+                    </ul>
+
+                    <h3>פילוח תקציב מומלץ לאירועים שונים</h3>
+                    <p><strong>חתונה (500 איש):</strong></p>
+                    <ul>
+                        <li>אולם וקייטרינג: 45-50%</li>
+                        <li>צילום וידאו: 10-12%</li>
+                        <li>שמלה וחליפה: 8-10%</li>
+                        <li>פרחים ועיצוב: 8-10%</li>
+                        <li>מוזיקה ובידור: 8-10%</li>
+                        <li>הזמנות והדפסה: 2-3%</li>
+                        <li>שונות: 5-8%</li>
+                    </ul>
+
+                    <p><strong>בר/בת מצווה (200 איש):</strong></p>
+                    <ul>
+                        <li>אולם וקייטרינג: 50-55%</li>
+                        <li>צילום: 8-10%</li>
+                        <li>עיצוב ופרחים: 10-12%</li>
+                        <li>בידור והפעלה: 12-15%</li>
+                        <li>הזמנות: 3-5%</li>
+                        <li>שונות: 5-7%</li>
+                    </ul>
+
+                    <p><strong>אירוע עסקי (100 איש):</strong></p>
+                    <ul>
+                        <li>מקום וקייטרינג: 40-45%</li>
+                        <li>טכנולוגיה וציוד: 15-20%</li>
+                        <li>רמקולים: 10-15%</li>
+                        <li>עיצוב ומיתוג: 8-10%</li>
+                        <li>צילום: 5-8%</li>
+                        <li>שיווק והזמנות: 5-8%</li>
+                        <li>שונות: 5-10%</li>
+                    </ul>
+
+                    <h3>עלויות נסתרות שחובה לזכור</h3>
+                    <p><strong>עלויות נוספות נפוצות:</strong></p>
+                    <ul>
+                        <li><strong>מע"מ:</strong> לא תמיד כלול במחיר מצוטט</li>
+                        <li><strong>שירות:</strong> 10-15% נוספים במקומות רבים</li>
+                        <li><strong>אחסון:</strong> לאוהל, כיסאות, שולחנות נוספים</li>
+                        <li><strong>ביטוח:</strong> לאירועים גדולים</li>
+                        <li><strong>אבטחה:</strong> נדרשת בחלק מהמקומות</li>
+                        <li><strong>ניקיון נוסף:</strong> אחרי אירועים גדולים</li>
+                        <li><strong>חניה:</strong> עלויות נוספות באזורים מרכזיים</li>
+                    </ul>
+
+                    <h3>איך לחסוך בפירטיים השונים</h3>
+                    <p><strong>חיסכון באולם:</strong></p>
+                    <ul>
+                        <li>בחרו ימי שבוע במקום סוף השבוע</li>
+                        <li>אירועי צהריים זולים מערב</li>
+                        <li>עונות פחות פופולריות</li>
+                        <li>אולמים מחוץ למרכז הארץ</li>
+                    </ul>
+
+                    <p><strong>חיסכון בקייטרינג:</strong></p>
+                    <ul>
+                        <li>תפריטים עונתיים</li>
+                        <li>פחות מנות בתפריט</li>
+                        <li>בופה במקום הגשה לשולחן</li>
+                        <li>שתייה מוגבלת בזמן</li>
+                    </ul>
+
+                    <p><strong>חיסכון בעיצוב:</strong></p>
+                    <ul>
+                        <li>פרחים עונתיים ומקומיים</li>
+                        <li>DIY לחלק מהדברים</li>
+                        <li>השכרה במקום קנייה</li>
+                        <li>שימוש חוזר בעיצוב החופה לאירוח</li>
+                    </ul>
+
+                    <h3>כלים לניהול תקציב</h3>
+                    <p><strong>טבלת Excel למעקב:</strong></p>
+                    <ul>
+                        <li>עמודות: פריט, ספק, הצעת מחיר, מחיר סופי, שולם</li>
+                        <li>חישוב אוטומטי של אחוזים מהתקציב הכולל</li>
+                        <li>עמודת "הפרש" לעקוב אחר חריגות</li>
+                        <li>גרף ויזואלי של ההוצאות</li>
+                    </ul>
+
+                    <p><strong>אפליקציות מומלצות:</strong></p>
+                    <ul>
+                        <li>WeddingWire (לחתונות)</li>
+                        <li>Eventbrite (לאירועים עסקיים)</li>
+                        <li>פשוט אקסל או Google Sheets</li>
+                    </ul>
+
+                    <h3>טיפים לעבודה עם ספקים</h3>
+                    <p><strong>משא ומתן יעיל:</strong></p>
+                    <ul>
+                        <li>קבלו לפחות 3 הצעות מחיר לכל פריט</li>
+                        <li>בקשו הנחות לתשלום מזומן</li>
+                        <li>חבילות משולבות לעיתים זולות יותר</li>
+                        <li>בדקו מה כלול ומה לא</li>
+                    </ul>
+
+                    <p><strong>חוזים וביטוח:</strong></p>
+                    <ul>
+                        <li>הכל בכתב - אין הסכמות בעל פה</li>
+                        <li>תאריכי תשלום ברורים</li>
+                        <li>תנאי ביטול</li>
+                        <li>מה קורה במזג אוויר לא טוב</li>
+                    </ul>
+
+                    <h3>לוח זמנים לתשלומים</h3>
+                    <p><strong>תזרים תשלומים מומלץ:</strong></p>
+                    <ul>
+                        <li><strong>6 חודשים לפני:</strong> דמי הזמנה (20-30%)</li>
+                        <li><strong>3 חודשים לפני:</strong> תשלום ביניים (30-40%)</li>
+                        <li><strong>שבוע לפני:</strong> יתרת התשלום</li>
+                        <li><strong>יום האירוע:</strong> רק טיפים ודברים קטנים</li>
+                    </ul>
+
+                    <h3>מה לעשות כשחורגים מהתקציב</h3>
+                    <p><strong>אפשרויות לשיכוב התקציב:</strong></p>
+                    <ul>
+                        <li>צמצום רשימת אורחים</li>
+                        <li>שינוי תפריט לפשוט יותר</li>
+                        <li>ויתור על פריטים לא חיוניים</li>
+                        <li>העברת חלק מהאירוע לבית</li>
+                        <li>חיפוש ספקים זולים יותר</li>
+                    </ul>
+
+                    <p><strong>הכלל החשוב ביותר:</strong> זכרו שהאירוע הוא אמצעי והמטרה היא לחגוג עם האנשים שאתם אוהבים. לא שווה להיכנס לחובות או ללחץ כלכלי בשביל יום אחד, גם אם הוא מאוד חשוב.</p>
+                `
+            },
+            article6: {
+                title: "חופשה עם ילדים: המדריך המלא להורים חכמים",
+                content: `
+                    <p>חופשה עם ילדים יכולה להיות חוויה מדהימה או אתגר גדול - הכל תלוי בתכנון. המדריך הזה יעזור לכם לתכנן חופשה משפחתית מוצלחת שכולם יזכרו בחיוך:</p>
+                    
+                    <h3>בחירת היעד המתאים</h3>
+                    <p><strong>גילאי הילדים קובעים את היעד:</strong></p>
+                    <ul>
+                        <li><strong>תינוקות (0-2):</strong> מקומות קרובים, עם מרפאות בסביבה</li>
+                        <li><strong>פעוטים (2-5):</strong> חופים רדודים, פארקי משחקים</li>
+                        <li><strong>ילדים (6-12):</strong> פעילויות הרפתקאות, מוזיאונים אינטראקטיביים</li>
+                        <li><strong>מתבגרים (13+):</strong> פעילויות אקסטרים, קניות, אטרקציות</li>
+                    </ul>
+
+                    <p><strong>יעדים מומלצים בישראל לפי גיל:</strong></p>
+                    <ul>
+                        <li><strong>משפחות עם תינוקות:</strong> אילת (מלונות all inclusive)</li>
+                        <li><strong>פעוטים:</strong> חוף גדור, אשקלון (חופים מוגנים)</li>
+                        <li><strong>ילדים:</strong> כנרת (פעילויות מים), הגליל (טבע ופארקים)</li>
+                        <li><strong>מתבגרים:</strong> ירושלים (היסטוריה), תל אביב (תרבות)</li>
+                    </ul>
+
+                    <h3>בחירת הלינה הנכונה</h3>
+                    <p><strong>סוגי לינה מומלצים למשפחות:</strong></p>
+                    <ul>
+                        <li><strong>וילות משפחתיות:</strong> פרטיות, מטבח מאובזר, חצר</li>
+                        <li><strong>מלונות משפחתיים:</strong> kids club, בריכות ילדים</li>
+                        <li><strong>דירות נופש:</strong> מרחב גדול, מטבח לבישול</li>
+                        <li><strong>צימרים משפחתיים:</strong> טבע, פעילויות חיצוניות</li>
+                    </ul>
+
+                    <p><strong>מה חיוני בלינה עם ילדים:</strong></p>
+                    <ul>
+                        <li>חדרי שינה נפרדים או מרחב לילדים</li>
+                        <li>מטבח או מטבחון מאובזר</li>
+                        <li>מרחב מחיה גדול</li>
+                        <li>בטיחות - מעקים, שערים, כיסויי שקעים</li>
+                        <li>פעילויות לילדים במקום או בסביבה</li>
+                    </ul>
+
+                    <h3>ארוז חכם לחופשה עם ילדים</h3>
+                    <p><strong>חיוניים לכל גיל:</strong></p>
+                    <ul>
+                        <li>ביגוד לפי מזג האוויר + בגדים נוספים</li>
+                        <li>נעליים נוחות למהלכים</li>
+                        <li>כובעים והגנה מהשמש</li>
+                        <li>תרופות בסיסיות וטיפות עיניים</li>
+                        <li>משחקים ובידור לדרך</li>
+                        <li>חטיפים בריאים</li>
+                    </ul>
+
+                    <p><strong>ציוד לילדים קטנים:</strong></p>
+                    <ul>
+                        <li>עגלה קלה ומתקפלת</li>
+                        <li>רתמת בטיחות</li>
+                        <li>כיסא אוכל נייד</li>
+                        <li>מגבות לילדים</li>
+                        <li>צעצועי אמבטיה</li>
+                        <li>מטען נייד לטלפון (להצגות/משחקים)</li>
+                    </ul>
+
+                    <h3>תכנון הפעילויות</h3>
+                    <p><strong>כלל הזהב:</strong> פעילות אחת מרכזית ביום, שאר הזמן חופשי</p>
+                    
+                    <p><strong>פעילויות מומלצות לפי גיל:</strong></p>
+                    <ul>
+                        <li><strong>פעוטים:</strong> חוף, גן חיות, פארק משחקים</li>
+                        <li><strong>ילדים:</strong> אקווריום, מוזיאון מדע, פארק לאומי</li>
+                        <li><strong>מתבגרים:</strong> רכיבה על אופניים, טיפוס, קרטינג</li>
+                    </ul>
+
+                    <p><strong>טיפים לביצוע פעילויות:</strong></p>
+                    <ul>
+                        <li>התחילו מוקדם בבוקר לפני החום</li>
+                        <li>תכננו הפסקות תכופות</li>
+                        <li>הביאו מים וחטיפים</li>
+                        <li>תמיד יש תוכנית B למזג אוויר רע</li>
+                    </ul>
+
+                    <h3>ניהול האוכל</h3>
+                    <p><strong>אסטרטגיות אוכל בחופשה:</strong></p>
+                    <ul>
+                        <li><strong>ארוחת בוקר:</strong> במקום הלינה (חיסכון ושליטה)</li>
+                        <li><strong>צהריים:</strong> פיקניק או מסעדה משפחתית</li>
+                        <li><strong>ערב:</strong> מסעדה או בישול במקום</li>
+                    </ul>
+
+                    <p><strong>מה להביא מהבית:</strong></p>
+                    <ul>
+                        <li>חטיפים בריאים שהילדים אוהבים</li>
+                        <li>משקאות (במיוחד אם הילדים בררנים)</li>
+                        <li>דברי בסיס כמו פסטה, אורז</li>
+                        <li>חטיפי חירום לרגעים קשים</li>
+                    </ul>
+
+                    <h3>התמודדות עם מצבים מאתגרים</h3>
+                    <p><strong>מה לעשות כש...</strong></p>
+                    <ul>
+                        <li><strong>ילד חולה:</strong> מצאו מרפאה, שאירו במקום, אל תלחצו</li>
+                        <li><strong>התקף כעס:</strong> הדיטו לבידוד, הרגיעו, אל תיכנעו</li>
+                        <li><strong>משתעמם:</strong> פעילות חלופית, לא רק מסכים</li>
+                        <li><strong>לא רוצה לעשות פעילות:</strong> אל תכפו, מצאו פשרה</li>
+                    </ul>
+
+                    <h3>תקציב וחיסכון</h3>
+                    <p><strong>טיפים לחיסכון:</strong></p>
+                    <ul>
+                        <li>לינה עם מטבח לחיסכון באוכל</li>
+                        <li>פעילויות חינמיות - חופים, פארקים, שבילים</li>
+                        <li>הנחות לתושבי ישראל במוזיאונים</li>
+                        <li>ארוזי משפחה במקום כרטיסים בודדים</li>
+                    </ul>
+
+                    <p><strong>תקציב משוער לחופשה של 4 ימים (משפחה עם שני ילדים):</strong></p>
+                    <ul>
+                        <li>לינה: ₪1,200-2,000</li>
+                        <li>אוכל: ₪800-1,200</li>
+                        <li>פעילויות: ₪400-800</li>
+                        <li>דלק וחנייה: ₪200-300</li>
+                        <li>שונות: ₪200-300</li>
+                        <li><strong>סה"כ: ₪2,800-4,600</strong></li>
+                    </ul>
+
+                    <h3>טיפים לדרך</h3>
+                    <p><strong>איך לשרוד נסיעות ארוכות:</strong></p>
+                    <ul>
+                        <li>צעצועים חדשים שמוציאים רק בדרך</li>
+                        <li>רשימת הצגה מוכנה בטלפון</li>
+                        <li>חטיפים ומשקאות</li>
+                        <li>עצירות כל שעה-שעתיים</li>
+                        <li>משחקים משפחתיים (20 שאלות, חיפוש דברים)</li>
+                    </ul>
+
+                    <h3>בטיחות שלא לשכוח</h3>
+                    <ul>
+                        <li>רצועת זיהוי עם שם ומספר טלפון</li>
+                        <li>תמונה עדכנית של הילד בטלפון</li>
+                        <li>הוראות ברורות למקרה של התפרדות</li>
+                        <li>מספרי חירום במקום החופשה</li>
+                        <li>ביטוח נסיעות</li>
+                    </ul>
+
+                    <p><strong>הטיפ הכי חשוב:</strong> זכרו שחופשה עם ילדים שונה מחופשה של מבוגרים. המטרה היא לבלות יחד ולרון זכרונות, לא להספיק לראות הכל. היו גמישים, תיהנו מהרגעים הקטנים, ואל תשכחו שלעיתים הדבר הכי כיפי לילדים הוא פשוט לשחק בבריכה או בחוף שעות שלמות.</p>
+                `
+            }
+        };
+
+        // Filter functionality
+        const filterTabs = document.querySelectorAll('.filter-tab');
+        const articleCards = document.querySelectorAll('.article-card');
+
+        filterTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                filterTabs.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                const filter = tab.getAttribute('data-filter');
+                
+                articleCards.forEach(card => {
+                    const category = card.getAttribute('data-category');
+                    
+                    if (filter === 'all' || category === filter) {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'scale(1)';
+                        }, 100);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'scale(0.8)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        // Modal functionality
+        function openArticle(articleId) {
+            const modal = document.getElementById('articleModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalBody = document.getElementById('modalBody');
+            
+            if (articles[articleId]) {
+                modalTitle.textContent = articles[articleId].title;
+                modalBody.innerHTML = articles[articleId].content;
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('articleModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('articleModal').addEventListener('click', (e) => {
+            if (e.target.id === 'articleModal') {
+                closeModal();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll effects
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.style.background = 'rgba(15, 12, 41, 0.98)';
+                header.style.borderBottom = '1px solid rgba(255, 215, 0, 0.4)';
+            } else {
+                header.style.background = 'rgba(15, 12, 41, 0.95)';
+                header.style.borderBottom = '1px solid rgba(255, 215, 0, 0.2)';
+            }
+        });
+
+        // Performance tracking
+        window.addEventListener('load', () => {
+            console.log('Blog page loaded successfully!');
+        });
+    </script>
+</body>
+</html>
