@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MULTIBRAWN - נופש, אירועים, לוקיישנים ומה שביניהם</title>
-  <meta name="description" content="MULTIBRAWN מציעה פתרון 360°: מחברים בין לקוחות איכותיים למתחמים נבחרים, ומציעים פתרונות שיווק דיגיטלי מתקדמים לבעלי נכסים.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
@@ -18,16 +17,15 @@
       --light-purple: #a855f7;
       --dark-purple: #5b21b6;
       --accent-yellow: #fbbf24;
+      --dark-yellow: #f59e0b;
       --text-light: #f8fafc;
       --text-muted: #cbd5e1;
       --font-heading: 'Playfair Display', serif;
       --font-body: 'Heebo', sans-serif;
     }
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: var(--font-body); background: var(--primary-bg); color: var(--text-light); overflow-x: hidden; line-height: 1.6; }
     .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-    
     .header-nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(26, 11, 46, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(124, 58, 237, 0.2); }
     .nav-content { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; padding: 20px 40px; }
     .logo-container { display: flex; align-items: center; gap: 15px; }
@@ -36,36 +34,26 @@
     .nav-menu { display: flex; list-style: none; gap: 28px; align-items: center; }
     .nav-menu a { color: var(--text-muted); text-decoration: none; font-weight: 600; transition: 0.3s; }
     .nav-menu a:hover { color: var(--text-light); }
-    .cta-button { background: linear-gradient(135deg, var(--accent-purple), var(--dark-purple)); color: #fff; padding: 10px 18px; border-radius: 999px; font-weight: 800; text-decoration: none; box-shadow: 0 4px 20px rgba(124, 58, 237, 0.3); }
-
+    .cta-button { background: linear-gradient(135deg, var(--accent-purple), var(--dark-purple)); color: #fff; padding: 10px 18px; border-radius: 999px; font-weight: 800; text-decoration: none; }
     .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(26, 11, 46, 0.80) 0%, rgba(124, 58, 237, 0.40) 100%), url('https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/yoga.png'); background-size: cover; background-position: center; text-align: center; }
     .hero-title { font-family: 'Arial Black', sans-serif; font-size: clamp(3.5rem, 8vw, 7rem); color: var(--accent-yellow); text-shadow: 3px 3px 0 #000; }
     .hero-sub { font-size: clamp(1.5rem, 3vw, 2.2rem); color: var(--accent-yellow); text-shadow: 2px 2px 0 #000; }
     .hero-description { font-size: clamp(1.1rem, 2.5vw, 1.6rem); color: #fff; text-shadow: 2px 2px 0 #000; }
-    
     .section-padding { padding: 6rem 2rem; }
     .section-heading { font-family: var(--font-heading); font-size: clamp(2.2rem, 6vw, 3.4rem); background: linear-gradient(45deg, #fff, var(--accent-purple)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; text-align: center; margin-bottom: 3rem; }
-    
-    .grid { display: grid; gap: 2rem; }
-    .grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+    .grid { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
     .property-card { background: linear-gradient(135deg, rgba(22, 33, 62, 0.85), rgba(26, 11, 46, 0.85)); border-radius: 20px; padding: 2rem; transition: 0.4s; border: 1px solid rgba(124, 58, 237, 0.3); text-align: center; }
-    .property-card:hover { transform: translateY(-8px); }
-    .property-card .icon { font-size: 3rem; margin-bottom: 1rem; }
-    .property-card h3 { font-size: 1.5rem; margin-bottom: 1rem; }
-
     footer { padding: 3rem 0; text-align: center; border-top: 1px solid rgba(124, 58, 237, 0.2); }
-    
     .floating-buttons { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 999; }
     .floating-btn { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; font-size: 1.5rem; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); transition: all 0.3s ease; border: none; cursor: pointer; }
     .floating-btn:hover { transform: scale(1.1); }
     .whatsapp-btn { background: #4ade80; }
     .chatbot-btn { background: var(--accent-purple); }
-    
+    .accessibility-btn { background: var(--accent-yellow); color: #1a0b2e; }
     #chat-popup { width: 380px; height: 75vh; max-height: 700px; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.4); position: fixed; bottom: 100px; right: 20px; display: flex; flex-direction: column; background-color: var(--primary-bg); border: 1px solid var(--accent-purple); transform: scale(0.5) translateY(100px); opacity: 0; transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); pointer-events: none; z-index: 1000; }
     #chat-popup.visible { transform: scale(1) translateY(0); opacity: 1; pointer-events: auto; }
     .chat-popup-header { padding: 15px; font-weight: 600; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(124, 58, 237, 0.2); }
     #close-chat-btn { background: none; border: none; color: white; font-size: 24px; cursor: pointer; }
-    
     #proactive-popup { position: fixed; bottom: 100px; right: 30px; width: 320px; background: linear-gradient(135deg, #2c1d52, #1a0b2e); color: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.4); border: 1px solid var(--accent-yellow); z-index: 1001; opacity: 0; transform: translateY(20px); transition: all 0.5s ease-in-out; pointer-events: none; }
     #proactive-popup.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
     .popup-header { font-weight: 700; padding: 15px; background: rgba(0,0,0,0.2); border-bottom: 1px solid rgba(184, 134, 11, 0.2); }
@@ -75,10 +63,14 @@
     #accept-challenge { background: var(--accent-yellow); color: var(--primary-bg); font-size: 1.1rem; font-weight: 800; }
     #decline-challenge { background: transparent; color: var(--text-muted); }
     .hidden { display: none; }
-
+    #accessibility-panel { position: fixed; top: 50%; right: -300px; transform: translateY(-50%); width: 300px; background: #fff; border: 2px solid var(--accent-yellow); border-radius: 15px; padding: 20px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); transition: right 0.3s ease; z-index: 1001; }
+    #accessibility-panel.open { right: 20px; }
+    #accessibility-panel h3 { color: var(--primary-bg); margin-bottom: 15px; text-align: center; }
+    .accessibility-controls { display: flex; flex-direction: column; gap: 10px; }
+    .accessibility-btn-control { background: var(--accent-yellow); color: var(--primary-bg); border: none; padding: 10px; border-radius: 8px; cursor: pointer; font-weight: 600; }
     .mobile-menu-toggle { display: none; }
     @media (max-width: 768px) {
-      .mobile-menu-toggle { display: flex; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 10px; }
+      .mobile-menu-toggle { display: flex; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; }
       .hamburger-line { width: 30px; height: 3px; background: #fff; }
       .nav-menu { position: fixed; right: -100%; top: 80px; flex-direction: column; background: rgba(26, 11, 46, 0.98); width: 100%; padding: 20px; transition: 0.3s; }
       .nav-menu.active { right: 0; }
@@ -91,68 +83,26 @@
 </head>
 <body>
     <header class="header-nav">
-        <nav class="nav-content">
-          <div class="logo-container">
-            <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="לוגו MULTIBRAWN" class="logo-img">
-            <a href="index.html" class="logo">MULTIBRAWN</a>
-          </div>
-          <ul class="nav-menu" id="primaryNav">
-            <li><a href="index.html">דף הבית</a></li>
-            <li><a href="about.html">אודות</a></li>
-            <li><a href="gallery.html">גלריה</a></li>
-            <li><a href="marketing.html">שיווק</a></li>
-            <li><a href="faq.html">שאלות ותשובות</a></li>
-            <li><a class="cta-button" href="contact.html">צור קשר</a></li>
-          </ul>
-          <button class="mobile-menu-toggle" id="mobileToggle">
-            <span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span>
-          </button>
-        </nav>
-    </header>
-
+        </header>
     <section class="hero">
-        <div class="hero-content">
-          <h1 class="hero-title">MULTIBRAWN</h1>
-          <h2 class="hero-sub">נופש, אירועים, לוקיישנים ומה שביניהם</h2>
-          <p class="hero-description">מחברים חלומות למציאות – לוקיישנים נבחרים + מעטפת שיווק 360°</p>
-        </div>
-    </section>
-    
+        </section>
     <main>
-        <section id="properties" class="section-padding">
-          <div class="container">
-            <h2 class="section-heading">מחברים בין לקוחות איכותיים למתחמים נבחרים</h2>
-            <div class="grid grid-cols-4">
-              <div class="property-card"><div class="icon">🏨</div><h3>מלונות בוטיק</h3><p>אינטימיות, שירות עילית ועיצוב מוקפד.</p></div>
-              <div class="property-card"><div class="icon">🏡</div><h3>וילות יוקרה</h3><p>מתאים לאירועים ולמשפחות – עם פרטיות מלאה.</p></div>
-              <div class="property-card"><div class="icon">🌲</div><h3>צימרים רומנטיים</h3><p>בריחה לטבע עם אווירה קסומה.</p></div>
-              <div class="property-card"><div class="icon">🏢</div><h3>דירות נופש</h3><p>חוויית עיר עם כל הנוחות בבית.</p></div>
-            </div>
-          </div>
-        </section>
-    
-        <section id="events" class="section-padding" style="background: var(--secondary-bg);">
-          <div class="container">
-            <h2 class="section-heading">פתרונות ייחודיים לכל סוג אירוע</h2>
-            <div class="grid grid-cols-4">
-              <div class="property-card"><div class="icon">✡️</div><h3>שבתות חתן</h3><p>מתחמים מותאמים למשפחה מורחבת ודרישות כשרות.</p></div>
-              <div class="property-card"><div class="icon">👥</div><h3>כנסים וימי גיבוש</h3><p>פתרונות לקבוצות עסקיות עם חדרי ישיבות.</p></div>
-              <div class="property-card"><div class="icon">🎉</div><h3>מסיבות וחגיגות</h3><p>וילות עם בריכה וסאונד לאירוע מושלם.</p></div>
-              <div class="property-card"><div class="icon">💍</div><h3>חתונות ואירועים</h3><p>אירועי החיים החשובים עם כל הפרטים המושלמים.</p></div>
-            </div>
-          </div>
-        </section>
-    </main>
-
+        </main>
     <footer>
-      <div class="container"><p>© 2025 MULTIBRAWN. כל הזכויות שמורות.</p></div>
-    </footer>
+        </footer>
 
     <div class="floating-buttons">
+        <button class="floating-btn accessibility-btn" id="accessibilityBtn" title="נגישות">♿</button>
         <button class="floating-btn chatbot-btn" id="chatbotBtn" title="צ'אט עם יועץ חכם">💬</button>
         <a href="https://wa.me/972523983394?text=שלום!" class="floating-btn whatsapp-btn" title="וואטסאפ" target="_blank">
            <i class="fab fa-whatsapp" style="font-size: 1.8rem;"></i>
         </a>
+    </div>
+
+    <div id="accessibility-panel" class="hidden">
+        <h3>הגדרות נגישות</h3>
+        <div class="accessibility-controls">
+             </div>
     </div>
 
     <div id="chat-popup" class="hidden">
@@ -176,52 +126,59 @@
 
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Mobile Menu
-      const toggle = document.getElementById('mobileToggle');
-      const menu = document.getElementById('primaryNav');
-      if (toggle && menu) {
-        toggle.addEventListener('click', () => menu.classList.toggle('active'));
-      }
+        // --- Mobile Menu ---
+        const toggle = document.getElementById('mobileToggle');
+        const menu = document.getElementById('primaryNav');
+        if (toggle && menu) {
+            toggle.addEventListener('click', () => menu.classList.toggle('active'));
+        }
+
+        // --- Accessibility Panel Logic ---
+        const accessibilityBtn = document.getElementById('accessibilityBtn');
+        const accessibilityPanel = document.getElementById('accessibility-panel');
+        if (accessibilityBtn && accessibilityPanel) {
+            accessibilityBtn.addEventListener('click', () => accessibilityPanel.classList.toggle('hidden'));
+        }
       
-      // Chat Widget & Proactive Popup Logic
-      const chatbotBtn = document.getElementById('chatbotBtn');
-      const chatPopup = document.getElementById('chat-popup');
-      const closeChatBtn = document.getElementById('close-chat-btn');
-      const proactivePopup = document.getElementById('proactive-popup');
-      const acceptChallengeBtn = document.getElementById('accept-challenge');
-      const declineChallengeBtn = document.getElementById('decline-challenge');
-      let proactiveTimeout;
-      let chatOpened = false; // Flag to check if chat has been opened once
+        // --- Chat Widget & Proactive Popup Logic ---
+        const chatbotBtn = document.getElementById('chatbotBtn');
+        const chatPopup = document.getElementById('chat-popup');
+        const closeChatBtn = document.getElementById('close-chat-btn');
+        const proactivePopup = document.getElementById('proactive-popup');
+        const acceptChallengeBtn = document.getElementById('accept-challenge');
+        const declineChallengeBtn = document.getElementById('decline-challenge');
+        let proactiveTimeout;
+        let chatOpened = false;
 
-      function openChat() {
-          chatPopup.classList.add('visible');
-          proactivePopup.classList.remove('visible');
-          clearTimeout(proactiveTimeout); // Stop the proactive popup from appearing if chat is opened manually
-          chatOpened = true;
-      }
-      
-      function closeChat() {
-          chatPopup.classList.remove('visible');
-      }
+        function openChat() {
+            chatPopup.classList.add('visible');
+            proactivePopup.classList.remove('visible');
+            clearTimeout(proactiveTimeout);
+            chatOpened = true;
+        }
+        
+        function closeChat() {
+            chatPopup.classList.remove('visible');
+        }
 
-      chatbotBtn.addEventListener('click', openChat);
-      closeChatBtn.addEventListener('click', closeChat);
+        chatbotBtn.addEventListener('click', openChat);
+        closeChatBtn.addEventListener('click', closeChat);
 
-      proactiveTimeout = setTimeout(() => {
-          if (!chatOpened) {
-              proactivePopup.classList.remove('hidden');
-              proactivePopup.classList.add('visible');
-          }
-      }, 5000);
+        proactiveTimeout = setTimeout(() => {
+            if (!chatOpened) {
+                proactivePopup.classList.remove('hidden');
+                proactivePopup.classList.add('visible');
+            }
+        }, 5000);
 
-      acceptChallengeBtn.addEventListener('click', () => {
-          proactivePopup.classList.remove('visible');
-          openChat();
-      });
+        acceptChallengeBtn.addEventListener('click', () => {
+            proactivePopup.classList.remove('visible');
+            openChat();
+        });
 
-      declineChallengeBtn.addEventListener('click', () => {
-          proactivePopup.classList.remove('visible');
-      });
+        declineChallengeBtn.addEventListener('click', () => {
+            proactivePopup.classList.remove('visible');
+        });
     });
     </script>
 </body>
