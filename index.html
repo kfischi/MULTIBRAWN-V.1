@@ -17,11 +17,10 @@
       --brand-purple: #8B5FBF;
       --silver-gray: #C0C0C0;
       --cta-turquoise: #40E0D0;
-      --powder-pink: #E6B7C8; /* Alternative CTA color */
       
       --accent-yellow: #fbbf24;
-      --text-light: var(--silver-gray); /* Changed from white to silver-gray */
-      --text-muted: #a0a0a0; /* Darker gray for muted text */
+      --text-light: var(--silver-gray);
+      --text-muted: #a9a9a9;
       --font-heading: 'Playfair Display', serif;
       --font-body: 'Heebo', sans-serif;
     }
@@ -36,12 +35,12 @@
     .logo-img { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; }
     .logo { font-family: var(--font-heading); font-size: 2rem; font-weight: 900; color: #fff; text-decoration: none; }
     .nav-menu { display: flex; list-style: none; gap: 28px; align-items: center; }
-    .nav-menu a { color: var(--text-muted); text-decoration: none; font-weight: 600; }
+    .nav-menu a { color: var(--text-muted); text-decoration: none; font-weight: 600; transition: color 0.3s; }
     .nav-menu a:hover { color: var(--text-light); }
     
     .cta-button {
         background: var(--cta-turquoise);
-        color: var(--primary-bg); /* Dark text for readability on turquoise */
+        color: var(--primary-bg);
         padding: 10px 18px;
         border: none;
         border-radius: 999px;
@@ -51,28 +50,18 @@
         text-decoration: none;
         box-shadow: 0 4px 20px rgba(64, 224, 208, 0.3);
     }
-    .cta-button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 30px rgba(64, 224, 208, 0.5);
-    }
+    .cta-button:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(64, 224, 208, 0.5); }
 
     .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(26, 11, 46, 0.80) 0%, rgba(139, 95, 191, 0.40) 100%), url('https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/yoga.png'); background-size: cover; background-position: center; text-align: center; }
     .hero-title { font-family: 'Arial Black', sans-serif; font-size: clamp(3.5rem, 8vw, 7rem); color: var(--accent-yellow); text-shadow: 3px 3px 0 #000; }
-    .hero-sub { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 700; color: var(--brand-purple); text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
+    .hero-sub { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 700; color: #fff; text-shadow: 1px 1px 2px #000; }
     .hero-description { font-size: clamp(1.1rem, 2.5vw, 1.6rem); color: #fff; text-shadow: 1px 1px 2px #000; }
     
     .section-padding { padding: 8rem 2rem; }
-    .section-heading {
-        font-family: var(--font-heading);
-        font-size: clamp(2.2rem, 6vw, 3.4rem);
-        font-weight: 900;
-        color: var(--brand-purple); /* Changed from gradient to solid color */
-        text-align: center;
-        margin-bottom: 3rem;
-    }
+    .section-heading { font-family: var(--font-heading); font-size: clamp(2.2rem, 6vw, 3.4rem); font-weight: 900; color: var(--brand-purple); text-align: center; margin-bottom: 3rem; }
     
     .grid { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
-    .property-card { background: linear-gradient(135deg, rgba(22, 33, 62, 0.85), rgba(26, 11, 46, 0.85)); border-radius: 20px; padding: 2rem; border: 1px solid rgba(192, 192, 192, 0.3); text-align: center; }
+    .property-card { background: linear-gradient(135deg, rgba(22, 33, 62, 0.85), rgba(26, 11, 46, 0.85)); border-radius: 20px; padding: 2rem; border: 1px solid rgba(192, 192, 192, 0.2); text-align: center; }
     .property-card .icon { font-size: 3rem; margin-bottom: 1rem; color: var(--brand-purple); }
     .property-card h3 { font-size: 1.5rem; margin-bottom: 1rem; color: #fff; }
 
@@ -87,27 +76,67 @@
     .floating-btn:hover { transform: scale(1.1); }
     .whatsapp-btn { background: #25d366; }
     .chatbot-btn { background: var(--brand-purple); }
+    .accessibility-btn { background: var(--accent-yellow); color: #1a0b2e; }
+
+    .accessibility-panel { position: fixed; bottom: 100px; right: 30px; width: 280px; background: #fff; color: #000; border-radius: 15px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: all 0.3s ease; z-index: 1001; opacity: 0; transform: translateY(20px); pointer-events: none; }
+    .accessibility-panel.open { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .accessibility-panel h3 { color: var(--primary-bg); text-align: center; margin-bottom: 15px; }
+    .accessibility-controls { display: flex; flex-direction: column; gap: 10px; }
+    .accessibility-btn-control { padding: 10px; border-radius: 8px; border: 1px solid #ccc; background-color: #f0f0f0; cursor: pointer; font-weight: 600; }
     
-    /* Responsive */
+    #chat-popup { display:none; } /* Hide initially to prevent flash */
+    #chat-popup.visible { display: flex; } /* Show when ready */
+    .hidden { display: none; }
+    .high-contrast { filter: contrast(1.5); }
+    
     .mobile-menu-toggle { display: none; }
     @media (max-width: 768px) {
       .mobile-menu-toggle { display: flex; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; }
       .hamburger-line { width: 30px; height: 3px; background: #fff; }
       .nav-menu { position: fixed; right: -100%; top: 80px; flex-direction: column; background: rgba(26, 11, 46, 0.98); width: 100%; padding: 20px; transition: 0.3s; }
       .nav-menu.active { right: 0; }
+      .grid-cols-4 { grid-template-columns: 1fr; }
     }
   </style>
 </head>
+
 <body>
-  <header class="header-nav">
-    </header>
-  <main>
-    </main>
-  <footer>
+    <header class="header-nav">
+        </header>
+    <main>
+        </main>
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="privacy.html">הצהרת פרטיות</a> ·
+                <a href="accessibility.html">הצהרת נגישות</a>
+            </div>
+            <p style="margin: 1rem 0;">© 2025 MULTIBRAWN. כל הזכויות שמורות.</p>
+            <p class="footer-credit">האתר נבנה ע"י Multi-Site - אתרים שבונים עסקים מבית Multibrawn</p>
+        </div>
     </footer>
 
-  <script>
-    // All of your JavaScript from the previous correct version
-  </script>
+    <div class="floating-buttons">
+        <button class="floating-btn accessibility-btn" id="accessibilityBtn" title="נגישות">♿</button>
+        <button class="floating-btn chatbot-btn" id="chatbotBtn" title="צ'אטבוט">💬</button>
+        <a href="https://wa.me/972523983394?text=שלום!" class="floating-btn whatsapp-btn" title="וואטסאפ" target="_blank">
+            <i class="fab fa-whatsapp" style="font-size: 1.8rem;"></i>
+        </a>
+    </div>
+
+    <div class="accessibility-panel" id="accessibilityPanel">
+        <h3>הגדרות נגישות</h3>
+        <div class="accessibility-controls">
+            <button class="accessibility-btn-control" id="increaseFontBtn">הגדל גופן</button>
+            <button class="accessibility-btn-control" id="decreaseFontBtn">הקטן גופן</button>
+            <button class="accessibility-btn-control" id="highContrastBtn">ניגודיות גבוהה</button>
+            <button class="accessibility-btn-control" id="resetAccessibilityBtn">אפס הגדרות</button>
+        </div>
+    </div>
+    
+    <script>
+        // This script is intentionally left simple and only contains logic for the main page.
+        // The chatbot logic is now self-contained in chatbot.html
+    </script>
 </body>
 </html>
