@@ -53,7 +53,6 @@
         .summary-card { background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(6, 182, 212, 0.2)); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 15px; padding: 1.5rem; margin: 0.5rem 0; }
         .summary-title { font-weight: 700; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
         .summary-content { line-height: 1.6; margin-bottom: 1.5rem; white-space: pre-wrap; font-size: 0.9rem; }
-        .whatsapp-button { background: #25d366; color: white; padding: 1rem; border: none; border-radius: 25px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem; width: 100%; font-size: 1rem; text-decoration: none; }
         .chat-input-area { padding: 1rem; border-top: 1px solid rgba(124, 58, 237, 0.2); }
         .input-container { display: flex; gap: 0.5rem; }
         .chat-input { flex: 1; background: rgba(0,0,0,0.2); border: 1px solid rgba(124, 58, 237, 0.3); border-radius: 25px; padding: 0.8rem 1rem; color: white; outline: none; }
@@ -77,9 +76,12 @@
     </div>
 
     <script>
-        let chatState = { currentStep: 0, userInfo: {}, };
+        let chatState = {};
         const chatInput = document.getElementById('chatInput');
         const sendButton = document.getElementById('sendButton');
+        const chatMessages = document.getElementById('chatMessages');
+        const progressBar = document.getElementById('progressBar');
+        const typingIndicator = document.getElementById('typingIndicator');
 
         const chatFlow = [
             { key: "vacationType", question: "שלום! אני מולטי! 🌟 בואו נתחיל לאסוף פרטים. מה סוג החופשה או האירוע?", options: ["חופשה משפחתית", "סופ\"ש רומנטי", "אירוע/מסיבה", "חתונה", "אירוע עסקי"] },
@@ -112,23 +114,17 @@
                 return;
             }
             let questionText = current.question.replace('{name}', chatState.userInfo.name || 'אורח');
-            if (current.options && current.options.length > 0) {
-                toggleInput(false);
-                addBotMessage(questionText, current.options);
-            } else {
-                toggleInput(true);
-                addBotMessage(questionText, []);
-            }
+            toggleInput(current.options && current.options.length === 0);
+            addBotMessage(questionText, current.options);
         }
         
         function handleOptionClick(option) {
             displayMessage('user', option);
-            document.querySelectorAll('.quick-reply').forEach(btn => { btn.onclick = null; btn.style.pointerEvents = 'none'; btn.style.opacity = '0.5'; });
             const current = chatFlow[chatState.currentStep];
             chatState.userInfo[current.key] = option;
             chatState.currentStep++;
             updateProgress();
-            setTimeout(askNextQuestion, 800);
+            setTimeout(askNextQuestion, 500);
         }
 
         function handleTextInput() {
@@ -140,7 +136,7 @@
             chatInput.value = '';
             chatState.currentStep++;
             updateProgress();
-            setTimeout(askNextQuestion, 800);
+            setTimeout(askNextQuestion, 500);
         }
 
         function finalizeAndPrepareSummary() {
@@ -149,14 +145,12 @@
             setTimeout(() => {
                 hideTypingIndicator();
                 addBotMessage("תודה רבה! 🥳\nהנה סיכום הבקשה שלך:", [], false);
-                setTimeout(generateSummary, 1500);
-            }, 1500);
-        }
-
-        function generateSummary() {
-            const summaryText = createDetailedSummary(true);
-            displaySummaryCard(summaryText);
-            addBotMessage("הסיכום שלך מוכן לשליחה! מה תרצה לעשות?", ["שלח את הסיכום לצוות", "אני רוצה לשנות פרטים (התחל מחדש)"]);
+                setTimeout(() => {
+                    const summaryText = createDetailedSummary(true);
+                    displaySummaryCard(summaryText);
+                    addBotMessage("הסיכום מוכן לשליחה!", ["שלח את הסיכום לצוות", "אני רוצה לשנות פרטים (התחל מחדש)"]);
+                }, 1000);
+            }, 1000);
         }
 
         function createDetailedSummary(isHtml = false) {
@@ -164,21 +158,17 @@
             const nl = isHtml ? '<br>' : '\n';
             const b_start = isHtml ? '<b>' : '*'; const b_end = isHtml ? '</b>' : '*';
             const i_start = isHtml ? '<i>' : '_'; const i_end = isHtml ? '</i>' : '_';
-            
-            let summary = `${b_start}סיכום בקשה ממולטי הבוט${b_end} 🤖${nl}`;
-            summary += `-----------------------------------${nl}${nl}`;
+            let summary = `${b_start}סיכום בקשה ממולטי הבוט${b_end} 🤖${nl}-----------------------------------${nl}${nl}`;
             summary += `${b_start}👤 פרטי לקוח:${b_end}${nl}`;
-            summary += `• ${b_start}שם:${b_end} ${userInfo.name || 'לא צוין'}${nl}`;
-            summary += `• ${b_start}טלפון:${b_end} ${userInfo.phone || 'לא צוין'}${nl}${nl}`;
+            summary += `• ${b_start}שם:${b_end} ${userInfo.name || ''}${nl}• ${b_start}טלפון:${b_end} ${userInfo.phone || ''}${nl}${nl}`;
             summary += `${b_start}📝 פרטי הבקשה:${b_end}${nl}`;
-            summary += `• ${b_start}סוג אירוע:${b_end} ${i_start}${userInfo.vacationType || 'לא צוין'}${i_end}${nl}`;
-            summary += `• ${b_start}כמות משתתפים:${b_end} ${i_start}${userInfo.groupSize || 'לא צוין'}${i_end}${nl}`;
-            summary += `• ${b_start}תאריכים כלליים:${b_end} ${i_start}${userInfo.timeframe || 'לא צוין'}${i_end}${nl}`;
+            summary += `• ${b_start}סוג אירוע:${b_end} ${i_start}${userInfo.vacationType || ''}${i_end}${nl}`;
+            summary += `• ${b_start}כמות משתתפים:${b_end} ${i_start}${userInfo.groupSize || ''}${i_end}${nl}`;
+            summary += `• ${b_start}תאריכים כלליים:${b_end} ${i_start}${userInfo.timeframe || ''}${i_end}${nl}`;
             if(userInfo.specificDates) summary += `• ${b_start}תאריכים מדויקים:${b_end} ${i_start}${userInfo.specificDates}${i_end}${nl}`;
             if(userInfo.amenities) summary += `• ${b_start}דרישת חובה:${b_end} ${i_start}${userInfo.amenities}${i_end}${nl}`;
             if(userInfo.otherAmenities) summary += `• ${b_start}בקשה מיוחדת:${b_end} ${i_start}${userInfo.otherAmenities}${i_end}${nl}`;
-            summary += `• ${b_start}תקציב:${b_end} ${i_start}${userInfo.budget || 'לא צוין'}${i_end}${nl}${nl}`;
-            summary += `-----------------------------------${nl}נשלח באמצעות Multibrawn Bot`;
+            summary += `• ${b_start}תקציב:${b_end} ${i_start}${userInfo.budget || ''}${i_end}${nl}${nl}`;
             return summary;
         }
 
@@ -198,15 +188,12 @@
             }
         }
         
-        function addBotMessage(text, options = [], showTyping = true) {
-             if (showTyping) {
-                showTypingIndicator();
-                setTimeout(() => { hideTypingIndicator(); displayMessage('bot', text, options); }, 1200);
-            } else { displayMessage('bot', text, options); }
+        function addBotMessage(text, options = []) {
+            showTypingIndicator();
+            setTimeout(() => { hideTypingIndicator(); displayMessage('bot', text, options); }, 800);
         }
         
         function displayMessage(type, text, options = []) {
-            const messagesContainer = document.getElementById('chatMessages');
             const msgDiv = document.createElement('div');
             msgDiv.className = `message ${type}`;
             msgDiv.innerHTML = `<div class="message-avatar">${type === 'bot' ? '🤖' : '👤'}</div><div class="message-content"><div class="message-text">${text.replace(/\n/g, '<br>')}</div></div>`;
@@ -226,7 +213,7 @@
                 });
                 msgDiv.querySelector('.message-content').appendChild(repliesDiv);
             }
-            messagesContainer.appendChild(msgDiv);
+            chatMessages.appendChild(msgDiv);
             scrollToBottom();
         }
 
@@ -240,16 +227,13 @@
 
         function updateProgress() {
             const progress = Math.min((chatState.currentStep / chatFlow.length) * 100, 100);
-            document.getElementById('progressBar').style.width = `${progress}%`;
+            progressBar.style.width = `${progress}%`;
         }
         
-        const toggleInput = (show) => {
-            const display = show ? 'flex' : 'none';
-            document.querySelector('.input-container').style.display = display;
-        };
-        const showTypingIndicator = () => { document.getElementById('typingIndicator').style.display = 'flex'; scrollToBottom(); };
-        const hideTypingIndicator = () => { document.getElementById('typingIndicator').style.display = 'none'; };
-        const scrollToBottom = () => { document.getElementById('chatMessages').scrollTo({ top: document.getElementById('chatMessages').scrollHeight, behavior: 'smooth' }); };
+        const toggleInput = (show) => document.querySelector('.input-container').style.display = show ? 'flex' : 'none';
+        const showTypingIndicator = () => { typingIndicator.style.display = 'flex'; scrollToBottom(); };
+        const hideTypingIndicator = () => { typingIndicator.style.display = 'none'; };
+        const scrollToBottom = () => { chatMessages.scrollTo({ top: chatMessages.scrollHeight, behavior: 'smooth' }); };
 
         sendButton.addEventListener('click', handleTextInput);
         chatInput.addEventListener('keypress', e => { if (e.key === 'Enter') handleTextInput(); });
