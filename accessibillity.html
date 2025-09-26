@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>נגישות - Multibrawn</title>
+    <meta name="description" content="מדיניות נגישות אתר Multibrawn - מחויבים לספק שירות נגיש לכל המשתמשים">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-bg: #1a0b2e;
+            --secondary-bg: #16213e;
+            --accent-purple: #7c3aed;
+            --light-purple: #a855f7;
+            --dark-purple: #5b21b6;
+            --text-light: #f8fafc;
+            --text-muted: #cbd5e1;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Heebo', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--primary-bg);
+            color: var(--text-light);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(26, 11, 46, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(124, 58, 237, 0.2);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 40px;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 900;
+            color: transparent;
+            background: linear-gradient(45deg, #f8fafc, #7c3aed, #a855f7);
+            background-clip: text;
+            -webkit-background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .nav-menu a:hover {
+            color: var(--text-light);
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--accent-purple), var(--dark-purple));
+            color: white;
+            padding: 12px 28px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(124, 58, 237, 0.3);
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 100px;
+            padding: 4rem 2rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .page-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--text-light), var(--accent-purple), var(--light-purple));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .accessibility-content {
+            background: linear-gradient(135deg, 
+                rgba(22, 33, 62, 0.8) 0%, 
+                rgba(26, 11, 46, 0.8) 100%);
+            padding: 3rem;
+            border-radius: 25px;
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--light-purple);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .accessibility-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .accessibility-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .accessibility-list li {
+            margin-bottom: 1rem;
+            padding-right: 2rem;
+            position: relative;
+        }
+
+        .accessibility-list li::before {
+            content: '✓';
+            position: absolute;
+            right: 0;
+            color: var(--light-purple);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .contact-section {
+            text-align: center;
+            background: linear-gradient(135deg, 
+                rgba(124, 58, 237, 0.2) 0%, 
+                rgba(168, 85, 247, 0.1) 100%);
+            padding: 3rem;
+            border-radius: 25px;
+            margin-top: 3rem;
+        }
+
+        .contact-title {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-bg);
+            border-top: 1px solid rgba(124, 58, 237, 0.2);
+            padding: 4rem 2rem 2rem 2rem;
+            text-align: center;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-content {
+                padding: 15px 20px;
+            }
+            
+            .accessibility-content {
+                padding: 2rem 1.5rem;
+            }
+            
+            .contact-section {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header-nav">
+        <nav class="nav-content">
+            <a href="index.html" class="logo">Multibrawn</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">דף הבית</a></li>
+                <li><a href="about.html">אודות</a></li>
+                <li><a href="gallery.html">גלריה</a></li>
+                <li><a href="marketing.html">שיווק דיגיטלי</a></li>
+                <li><a href="contact.html">צור קשר</a></li>
+                <li><a href="contact.html" class="cta-button">קבלו הצעה</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <h1 class="page-title">הצהרת נגישות</h1>
+            
+            <div class="accessibility-content">
+                <h2 class="section-title">מחויבותנו לנגישות</h2>
+                <p>
+                    אנו ב-Multibrawn מחויבים להנגשת השירותים שלנו לכלל האוכלוסייה, כולל אנשים עם מוגבלויות.
+                    אנו פועלים ליישום נגישות האתר בהתאם לתקן הישראלי (ת״י 5568) ולהנחיות WCAG 2.1 ברמה AA.
+                </p>
+                
+                <h2 class="section-title">מה עשינו כדי להנגיש את האתר?</h2>
+                <ul class="accessibility-list">
+                    <li>התאמת הניגוד הצבעוני לקריאות מירבית</li>
+                    <li>הוספת תגי alt לכל התמונות באתר</li>
+                    <li>מבנה כותרות היררכי וברור</li>
+                    <li>ניווט מקלדת מלא לכל חלקי האתר</li>
+                    <li>תמיכה בקוראי מסך</li>
+                    <li>טקסט בגודל מתאים וקריא</li>
+                    <li>לינקים ברורים ומתוארים</li>
+                    <li>טפסים נגישים עם תוויות מתאימות</li>
+                    <li>אפשרות להגדלת טקסט באמצעות דפדפן</li>
+                    <li>תמיכה בטכנולוגיות מסייעות</li>
+                </ul>
+                
+                <h2 class="section-title">שיפורים נוספים שאנו מתכננים</h2>
+                <p>
+                    אנו ממשיכים לעמל על שיפור נגישות האתר באופן מתמיד. בתוכניות שלנו לעתיד הקרוב:
+                    הוספת כפתור דילוג לתוכן העיקרי, שיפור הניגוד בחלקים נוספים, הוספת תמיכה בניווט קולי,
+                    ותמיכה מורחבת יותר בטכנולוגיות מסייעות.
+                </p>
+                
+                <h2 class="section-title">תקנים וחוקים</h2>
+                <p>
+                    האתר מיושם בהתאם לתקן הישראלי ת״י 5568 על בסיס הנחיות WCAG 2.1 ברמה AA,
+                    ובהתאם לחוק שוויון זכויות לאנשים עם מוגבלות, התשנ״ח-1998 ולתקנותיו.
+                </p>
+                
+                <h2 class="section-title">מידע נוסף על נגישות באתר</h2>
+                <p>
+                    חלקים נגישים באתר: כל דפי האתר והתוכן שבהם נגישים.
+                    חלקים שעדיין לא נגישים: אנו עובדים על שיפור מתמיד של כל חלקי האתר.
+                    טכנולוגיות מסייעות נתמכות: קוראי מסך, ניווט מקלדת, הגדלת טקסט.
+                </p>
+            </div>
+            
+            <div class="contact-section">
+                <h2 class="contact-title">יצירת קשר בנושא נגישות</h2>
+                <p class="contact-info">אם נתקלתם בבעיית נגישות באתר, אנא פנו אלינו:</p>
+                <p class="contact-info"><strong>טלפון:</strong> 052-398-3394</p>
+                <p class="contact-info"><strong>אימייל:</strong> info@multibrawn.co.il</p>
+                <p class="contact-info"><strong>כתובת:</strong> ישראל</p>
+                <p style="margin-top: 2rem; font-size: 1rem; color: var(--text-muted);">
+                    נענה לפניותיכם בהקדם האפשרי ונפעל לפתרון הבעיה.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-12">
+                <a href="index.html" class="logo mb-6 md:mb-0">Multibrawn</a>
+                <div class="flex gap-8 text-4xl">
+                    <a href="#" class="text-gray-400 hover:text-purple-400 transition duration-300" title="פייסבוק">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-purple-400 transition duration-300" title="אינסטגרם">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-purple-400 transition duration-300" title="לינקדאין">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-purple-500/20 pt-8">
+                <p class="text-gray-400 mb-4">© 2024 Multibrawn. כל הזכויות שמורות.</p>
+                <div class="text-sm text-gray-500 space-x-4">
+                    <a href="privacy.html" class="hover:text-gray-300">מדיניות פרטיות</a>
+                    <span>|</span>
+                    <a href="accessibility.html" class="hover:text-gray-300">נגישות</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // עיצוב נגישות נוסף
+        document.addEventListener('DOMContentLoaded', function() {
+            // הוספת skip link
+            const skipLink = document.createElement('a');
+            skipLink.href = '#main-content';
+            skipLink.textContent = 'דלג לתוכן הראשי';
+            skipLink.style.cssText = `
+                position: absolute;
+                top: -40px;
+                left: 6px;
+                background: var(--accent-purple);
+                color: white;
+                padding: 8px;
+                text-decoration: none;
+                z-index: 9999;
+                border-radius: 4px;
+                transition: top 0.3s;
+            `;
+            skipLink.addEventListener('focus', function() {
+                this.style.top = '6px';
+            });
+            skipLink.addEventListener('blur', function() {
+                this.style.top = '-40px';
+            });
+            document.body.insertBefore(skipLink, document.body.firstChild);
+            
+            // הגדלת פוקוס
+            const style = document.createElement('style');
+            style.textContent = `
+                *:focus {
+                    outline: 3px solid var(--light-purple);
+                    outline-offset: 2px;
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+</body>
+</html>
