@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>מולטי - יועץ חכם לאיסוף מידע</title>
+    <title>מולטי - יועץ חכם</title>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
@@ -11,7 +11,7 @@
         :root {
             --primary-bg: #1A1230;
             --secondary-bg: #291a45;
-            --accent-gold: #b8860b;
+            --accent-gold: #fbbf24;
             --accent-purple: #8e44ad;
             --light-purple: #9b59b6;
             --text-light: #ffffff;
@@ -77,6 +77,7 @@
     </div>
 
     <script>
+        // --- CHATBOT LOGIC ---
         let chatState = { currentStep: 0, userInfo: {}, };
         const chatInput = document.getElementById('chatInput');
         const sendButton = document.getElementById('sendButton');
@@ -86,45 +87,31 @@
             { key: "groupSize", question: "מעולה! כמה אנשים אתם?", options: ["זוג (2)", "3-5", "6-10", "11-25", "25-50", "50-100", "100+ (אירוע גדול)"] },
             { key: "preferredRegion", question: "באיזה אזור בארץ?", options: ["הצפון", "המרכז", "הדרום", "ירושלים והסביבה", "הכל פתוח"] },
             { key: "timeframe", question: "מתי בערך תרצו לצאת לחופשה?", options: ["הסופ\"ש הקרוב (דחוף!)", "החודש הקרוב", "בחודשיים הקרובים", "לקראת החגים", "גמיש / בודק אופציות"] },
-            { key: "specificDates", question: "הבנתי. האם יש תאריך ספציפי או טווח תאריכים מדויק שחשוב לכם?", options: [], isOptional: true },
+            { key: "specificDates", question: "הבנתי. האם יש תאריך ספציפי או טווח תאריכים מדויק שחשוב לכם? (אפשר לכתוב טקסט חופשי)", options: ["אין עדיין, להמשיך"] },
             { key: "amenities", question: "איזה מתקנים הכי חשובים לכם במקום?", options: ["בריכה פרטית (מחוממת)", "ג'קוזי ספא גדול", "מטבח מאובזר", "נוף פנורמי", "הכל מהכל, רוצים להתפנק!", "בקשה מיוחדת (לפירוט טקסט)"] },
-            { key: "otherAmenities", question: "בטח, מה הדבר הנוסף שחשוב לכם שיהיה במקום?", options: [], isConditional: true },
+            { key: "otherAmenities", question: "בטח, מה הדבר הנוסף שחשוב לכם שיהיה במקום?", options: [] },
             { key: "budget", question: "כדי שאוכל למקד את החיפוש ולמצוא לכם את ההצעה המשתלמת ביותר, מהו תקציבכם ללילה?", options: ["עד ₪1500", "₪1500 - ₪2500", "₪2500 - ₪4000", "₪4000 - ₪6000", "מעל ₪6000 (VIP)"] },
             { key: "name", question: "נהדר, אנחנו כמעט בסוף! 👍\n\nכדי שהצוות יוכל לפנות אליכם אישית, מה שמכם?", options: [] },
             { key: "phone", question: "תודה, {name}! 😊\n\nמה מספר הטלפון הטוב ביותר לחזור אליכם בו?", options: [] }
         ];
-
-        function initChat() {
-            askNextQuestion();
-        }
 
         function askNextQuestion() {
             if (chatState.currentStep >= chatFlow.length) {
                 finalizeAndPrepareSummary();
                 return;
             }
-            
             const current = chatFlow[chatState.currentStep];
-
-            // Skip conditional question if condition not met
-            if (current.isConditional && chatState.userInfo.amenities !== "בקשה מיוחדת (לפירוט טקסט)") {
+            if (current.key === "otherAmenities" && chatState.userInfo.amenities !== "בקשה מיוחדת (לפירוט טקסט)") {
                 chatState.currentStep++;
                 askNextQuestion();
                 return;
             }
-
-            let questionText = current.question;
-            if (questionText.includes('{name}')) {
-                questionText = questionText.replace('{name}', chatState.userInfo.name || 'אורח');
-            }
-            
-            if (current.options && current.options.length > 0) {
-                chatInput.style.display = 'none';
-                sendButton.style.display = 'none';
+            let questionText = current.question.replace('{name}', chatState.userInfo.name || 'אורח');
+            if (current.options.length > 0) {
+                chatInput.style.display = 'none'; sendButton.style.display = 'none';
                 addBotMessage(questionText, current.options);
             } else {
-                chatInput.style.display = 'block';
-                sendButton.style.display = 'block';
+                chatInput.style.display = 'block'; sendButton.style.display = 'block';
                 addBotMessage(questionText);
                 chatInput.focus();
             }
@@ -132,13 +119,13 @@
         
         function handleOptionClick(option) {
             displayMessage('user', option);
-            document.querySelectorAll('.quick-reply').forEach(btn => {
-                btn.onclick = null;
-                btn.style.cursor = 'default';
-                btn.style.backgroundColor = 'rgba(128, 128, 128, 0.2)';
-            });
+            document.querySelectorAll('.quick-reply').forEach(btn => { btn.onclick = null; btn.style.pointerEvents = 'none'; btn.style.opacity = '0.5'; });
             const current = chatFlow[chatState.currentStep];
-            chatState.userInfo[current.key] = option;
+            if (current.key === "specificDates" && option === "אין עדיין, להמשיך") {
+                chatState.userInfo[current.key] = "גמיש";
+            } else {
+                chatState.userInfo[current.key] = option;
+            }
             chatState.currentStep++;
             updateProgress();
             setTimeout(askNextQuestion, 800);
@@ -147,21 +134,17 @@
         function handleTextInput() {
             const message = chatInput.value.trim();
             if (!message) return;
-            
             displayMessage('user', message);
             const current = chatFlow[chatState.currentStep];
             chatState.userInfo[current.key] = message;
             chatInput.value = '';
-
-            // If the question was optional (like specific dates), add a skip button logic if needed or just proceed
             chatState.currentStep++;
             updateProgress();
             setTimeout(askNextQuestion, 800);
         }
 
         function finalizeAndPrepareSummary() {
-            chatInput.style.display = 'none';
-            sendButton.style.display = 'none';
+            chatInput.style.display = 'none'; sendButton.style.display = 'none';
             showTypingIndicator();
             setTimeout(() => {
                 hideTypingIndicator();
@@ -171,25 +154,92 @@
         }
 
         function generateSummary() {
-            const summaryText = createDetailedSummary(true); // true for HTML formatting
+            const summaryText = createDetailedSummary(true);
             displaySummaryCard(summaryText);
         }
 
         function createDetailedSummary(isHtml = false) {
             const { userInfo } = chatState;
             const nl = isHtml ? '<br>' : '\n';
+            const b_start = isHtml ? '<b>' : '*';
+            const b_end = isHtml ? '</b>' : '*';
+            const i_start = isHtml ? '<i>' : '_';
+            const i_end = isHtml ? '</i>' : '_';
             
-            let summary = `*סיכום בקשה ממולטי הבוט* 🤖${nl}`;
+            let summary = `${b_start}סיכום בקשה ממולטי הבוט* 🤖${nl}`;
             summary += `-----------------------------------${nl}${nl}`;
-            
-            summary += `*👤 פרטי לקוח:*${nl}`;
-            summary += `• *שם:* ${userInfo.name || 'לא צוין'}${nl}`;
-            summary += `• *טלפון:* ${userInfo.phone || 'לא צוין'}${nl}${nl}`;
-            
-            summary += `*📝 פרטי הבקשה:*${nl}`;
-            summary += `• *סוג האירוע:* _${userInfo.vacationType || 'לא צוין'}_${nl}`;
-            summary += `• *כמות משתתפים:* _${userInfo.groupSize || 'לא צוין'}_${nl}`;
-            summary += `• *אזור מועדף:* _${userInfo.preferredRegion || 'לא צוין'}_${nl}`;
-            summary += `• *תאריכים כלליים:* _${userInfo.timeframe || 'לא צוין'}_${nl}`;
-            if(userInfo.specificDates) summary += `• *תאריכים מדויקים:* _${userInfo.specificDates}_${nl}`;
-            if(userInfo.amenities)
+            summary += `${b_start}👤 פרטי לקוח:${b_end}${nl}`;
+            summary += `• ${b_start}שם:${b_end} ${userInfo.name || 'לא צוין'}${nl}`;
+            summary += `• ${b_start}טלפון:${b_end} ${userInfo.phone || 'לא צוין'}${nl}${nl}`;
+            summary += `${b_start}📝 פרטי הבקשה:${b_end}${nl}`;
+            summary += `• ${b_start}סוג אירוע:${b_end} ${i_start}${userInfo.vacationType || 'לא צוין'}${i_end}${nl}`;
+            summary += `• ${b_start}כמות משתתפים:${b_end} ${i_start}${userInfo.groupSize || 'לא צוין'}${i_end}${nl}`;
+            summary += `• ${b_start}אזור מועדף:${b_end} ${i_start}${userInfo.preferredRegion || 'לא צוין'}${i_end}${nl}`;
+            summary += `• ${b_start}תאריכים כלליים:${b_end} ${i_start}${userInfo.timeframe || 'לא צוין'}${i_end}${nl}`;
+            if(userInfo.specificDates && userInfo.specificDates !== "גמיש") summary += `• ${b_start}תאריכים מדויקים:${b_end} ${i_start}${userInfo.specificDates}${i_end}${nl}`;
+            if(userInfo.amenities) summary += `• ${b_start}דרישת חובה:${b_end} ${i_start}${userInfo.amenities}${i_end}${nl}`;
+            if(userInfo.otherAmenities) summary += `• ${b_start}בקשה מיוחדת:${b_end} ${i_start}${userInfo.otherAmenities}${i_end}${nl}`;
+            summary += `• ${b_start}תקציב ללילה:${b_end} ${i_start}${userInfo.budget || 'לא צוין'}${i_end}${nl}${nl}`;
+            summary += `-----------------------------------${nl}`;
+            summary += `נשלח באמצעות Multibrawn Bot`;
+            return summary;
+        }
+
+        function sendToWhatsApp() {
+            const summary = createDetailedSummary(false);
+            const encodedSummary = encodeURIComponent(summary);
+            const whatsappUrl = `https://wa.me/972523983394?text=${encodedSummary}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        function addBotMessage(text, options = [], showTyping = true) {
+             if (showTyping) {
+                showTypingIndicator();
+                setTimeout(() => { hideTypingIndicator(); displayMessage('bot', text, options); }, 1200);
+            } else { displayMessage('bot', text, options); }
+        }
+        
+        function displayMessage(type, text, options = []) {
+            const messagesContainer = document.getElementById('chatMessages');
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `message ${type}`;
+            msgDiv.innerHTML = `<div class="message-avatar">${type === 'bot' ? '🤖' : '👤'}</div><div class="message-content"><div class="message-text">${text.replace(/\n/g, '<br>')}</div></div>`;
+            if (options && options.length > 0) {
+                const repliesDiv = document.createElement('div');
+                repliesDiv.className = 'quick-replies';
+                options.forEach(option => {
+                    const reply = document.createElement('div');
+                    reply.className = 'quick-reply';
+                    reply.textContent = option;
+                    reply.onclick = () => handleOptionClick(option);
+                    repliesDiv.appendChild(reply);
+                });
+                msgDiv.querySelector('.message-content').appendChild(repliesDiv);
+            }
+            messagesContainer.appendChild(msgDiv);
+            scrollToBottom();
+        }
+
+        function displaySummaryCard(summaryText) {
+            const card = document.createElement('div');
+            card.className = 'summary-card';
+            card.innerHTML = `<div class="summary-title"><i class="fas fa-file-alt"></i> הסיכום שלך מוכן!</div><div class="summary-content">${summaryText}</div><a href="#" onclick="sendToWhatsApp(); return false;" class="whatsapp-button"><i class="fab fa-whatsapp"></i> שלח את הסיכום לצוות</a>`;
+            document.getElementById('chatMessages').appendChild(card);
+            scrollToBottom();
+        }
+
+        function updateProgress() {
+            const progress = Math.min((chatState.currentStep / chatFlow.length) * 100, 100);
+            document.getElementById('progressBar').style.width = `${progress}%`;
+        }
+        
+        const showTypingIndicator = () => { document.getElementById('typingIndicator').style.display = 'flex'; scrollToBottom(); };
+        const hideTypingIndicator = () => { document.getElementById('typingIndicator').style.display = 'none'; };
+        const scrollToBottom = () => { document.getElementById('chatMessages').scrollTo({ top: document.getElementById('chatMessages').scrollHeight, behavior: 'smooth' }); };
+
+        sendButton.addEventListener('click', handleTextInput);
+        chatInput.addEventListener('keypress', e => { if (e.key === 'Enter') handleTextInput(); });
+        document.addEventListener('DOMContentLoaded', initChat);
+    </script>
+</body>
+</html>
