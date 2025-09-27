@@ -455,7 +455,9 @@
 
         // WhatsApp functions
         function generateWhatsAppLink() {
-            const phone = '972XXXXXXXXX'; // Replace with actual MultiBrown team number
+            // MultiBrown team WhatsApp number
+            const phone = '972523983394'; 
+            
             const ageInfo = chatState.userInfo.ageGroup ? `🎂 גילאים: *${chatState.userInfo.ageGroup}*\n` : '';
             
             const message = `🏖️ *בקשה חדשה מאתר מולטיבראון - AI צ'אטבוט*
@@ -477,9 +479,12 @@ ${ageInfo}📅 זמן רצוי: *${chatState.userInfo.timeframe || 'לא צוי�
 ---
 ⏰ *זמן הגשה:* ${new Date().toLocaleString('he-IL')}
 🤖 *מקור:* מולטיבראון AI צ'אטבוט
-🔥 *סטטוס:* בקשה חמה - יש לטפל בדחיפות!
+🔥 *סטטוס:* בקשה חמה מהאתר!
 
-*אנא צרו קשר עם הלקוח בהקדם האפשרי*`;
+📞 *המלצה: צרו קשר טלפוני תוך שעתיים למקסימום*
+💬 *WhatsApp:* שלחו הודעה עם 2-3 אפשרויות מתאימות
+
+*לקוח השתמש בצ'אטבוט AI - כנראה tech savvy ויעריך מענה מהיר! ⚡*`;
             
             return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
         }
@@ -522,33 +527,24 @@ ${ageInfo}📅 זמן רצוי: *${chatState.userInfo.timeframe || 'לא צוי�
             return `https://wa.me/${customerPhone}?text=${encodeURIComponent(message)}`;
         }
 
-        // Function to automatically send messages - Fixed version
-        async function sendAutomaticMessages() {
+        // Function to send WhatsApp message to team only
+        function sendTeamMessage() {
             try {
-                // Create both links
                 const teamLink = generateWhatsAppLink();
-                const customerLink = generateCustomerWhatsAppLink();
+                console.log('Opening team WhatsApp:', teamLink);
                 
-                // Open team WhatsApp first
-                const teamWindow = window.open(teamLink, '_blank');
+                // Open WhatsApp for the team
+                const whatsappWindow = window.open(teamLink, '_blank');
                 
-                // Wait and then open customer WhatsApp
-                setTimeout(() => {
-                    const customerWindow = window.open(customerLink, '_blank');
-                    
-                    // Check if windows opened successfully
-                    if (teamWindow && customerWindow) {
-                        console.log('Both WhatsApp windows opened successfully');
-                        return true;
-                    } else {
-                        console.error('Failed to open WhatsApp windows');
-                        return false;
-                    }
-                }, 1500);
-                
-                return true;
+                if (whatsappWindow) {
+                    console.log('WhatsApp window opened successfully');
+                    return true;
+                } else {
+                    console.error('Failed to open WhatsApp window - popup blocked?');
+                    return false;
+                }
             } catch (error) {
-                console.error('Error sending messages:', error);
+                console.error('Error opening WhatsApp:', error);
                 return false;
             }
         }
@@ -793,22 +789,27 @@ ${ageInfo}📅 זמן רצוי: *${chatState.userInfo.timeframe || 'לא צוי�
             content.className = 'summary-content';
             content.textContent = `שלום ${chatState.userInfo.name}! 
 
-הפרטים שלך נשלחו לצוות מולטיבראון והם כבר מכינים עבורך הצעות מותאמות אישית ל${chatState.userInfo.vacationType} ב${chatState.userInfo.location}.
+הפרטים שלך נשלחו לצוות מולטיבראון והם יחזרו אליך בהקדם עם הצעות מותאמות אישית ל${chatState.userInfo.vacationType} ב${chatState.userInfo.location}.
+
+תקבל טלפון או הודעת WhatsApp עם כמה אפשרויות שנבחרו במיוחד עבורך!
 
 ${recommendations}`;
             
-            // Single send button that handles both messages
+            // Single send button that sends to team only
             const sendButton = document.createElement('button');
             sendButton.className = 'whatsapp-button';
-            sendButton.innerHTML = '<i class="fas fa-paper-plane"></i> שלח בקשה ואישור ללקוח';
+            sendButton.innerHTML = '<i class="fab fa-whatsapp"></i> שלח בקשה לצוות מולטיבראון';
             sendButton.onclick = async () => {
                 sendButton.disabled = true;
-                sendButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> שולח הודעות...';
+                sendButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> שולח הודעה...';
                 
-                const success = await sendAutomaticMessages();
+                // Wait a moment to show the loading state
+                await new Promise(resolve => setTimeout(resolve, 800));
+                
+                const success = sendTeamMessage();
                 
                 if (success) {
-                    sendButton.innerHTML = '<i class="fas fa-check"></i> ההודעות נשלחו בהצלחה!';
+                    sendButton.innerHTML = '<i class="fas fa-check"></i> ההודעה נשלחה בהצלחה לצוות!';
                     sendButton.style.background = '#10b981';
                     
                     // Show success message
@@ -824,10 +825,10 @@ ${recommendations}`;
                             text-align: center;
                         `;
                         successMsg.innerHTML = `
-                            ✅ <strong>ההודעות נשלחו בהצלחה!</strong><br>
-                            • הצוות קיבל את הפרטים<br>
-                            • הלקוח קיבל אישור<br>
-                            • המעקב יתחיל בהקדם
+                            ✅ <strong>הבקשה נשלחה בהצלחה!</strong><br>
+                            • הצוות קיבל את כל הפרטים<br>
+                            • יחזרו אליך בהקדם עם הצעות<br>
+                            • מחכים לעזור לך למצוא את המקום המושלם! 🏖️
                         `;
                         summaryDiv.appendChild(successMsg);
                     }, 500);
@@ -835,6 +836,24 @@ ${recommendations}`;
                     sendButton.innerHTML = '<i class="fas fa-exclamation-triangle"></i> נסה שוב';
                     sendButton.style.background = '#ef4444';
                     sendButton.disabled = false;
+                    
+                    // Show error message
+                    const errorMsg = document.createElement('div');
+                    errorMsg.style.cssText = `
+                        background: rgba(239, 68, 68, 0.2);
+                        border: 1px solid rgba(239, 68, 68, 0.3);
+                        color: #ef4444;
+                        padding: 1rem;
+                        border-radius: 10px;
+                        margin-top: 1rem;
+                        text-align: center;
+                    `;
+                    errorMsg.innerHTML = `
+                        ❌ <strong>שגיאה בשליחה</strong><br>
+                        ייתכן שהדפדפן חסם פתיחת WhatsApp<br>
+                        נסה שוב או פנה ישירות למולטיבראון
+                    `;
+                    summaryDiv.appendChild(errorMsg);
                 }
             };
             
