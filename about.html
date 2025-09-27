@@ -13,15 +13,16 @@
     
     <style>
         :root {
-            --primary-bg: #FFFFFF;
-            --secondary-bg: #f5f3ff;
-            --brand-purple: #8B5FBF;
-            --cta-turquoise: #40E0D0;
-            --text-dark: #2d3748;
-            --text-muted: #718096;
-            --accent-yellow: #f59e0b;
-            --font-heading: 'Playfair Display', serif;
-            --font-body: 'Heebo', sans-serif;
+          /* --- Light Theme Palette --- */
+          --primary-bg: #FFFFFF;
+          --secondary-bg: #f5f3ff;
+          --brand-purple: #8B5FBF;
+          --cta-turquoise: #40E0D0;
+          --text-dark: #2d3748;
+          --text-muted: #718096;
+          --accent-yellow: #f59e0b;
+          --font-heading: 'Playfair Display', serif;
+          --font-body: 'Heebo', sans-serif;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -31,12 +32,11 @@
         .nav-content { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; padding: 20px 40px; }
         .logo { font-family: var(--font-heading); font-size: 2rem; font-weight: 900; color: var(--text-dark); text-decoration: none; }
         .nav-menu { display: flex; list-style: none; gap: 40px; align-items: center; }
-        .nav-menu a { color: var(--text-muted); text-decoration: none; font-weight: 500; position: relative; padding: 8px 0; }
+        .nav-menu a { color: var(--text-muted); text-decoration: none; font-weight: 500; }
         .nav-menu a:hover { color: var(--brand-purple); }
         .cta-button {
             background: var(--cta-turquoise); color: var(--text-dark); padding: 12px 28px; border-radius: 50px;
-            font-weight: 600; text-decoration: none; box-shadow: 0 4px 20px rgba(64, 224, 208, 0.4);
-            transition: transform 0.3s;
+            font-weight: 600; text-decoration: none; box-shadow: 0 4px 20px rgba(64, 224, 208, 0.4); transition: transform 0.3s;
         }
         .cta-button:hover { transform: translateY(-2px); }
 
@@ -57,7 +57,6 @@
         .story-image img { width: 100%; height: 100%; object-fit: cover; }
         
         .timeline-section { padding: 8rem 2rem; background: var(--secondary-bg); }
-        /* Other specific styles can remain as they adapt well to the light theme */
         
         footer { padding: 3rem 0; text-align: center; border-top: 1px solid #e2e8f0; background: var(--secondary-bg); }
         .footer-links a { color: var(--text-muted); text-decoration: none; margin: 0 10px; }
@@ -91,7 +90,7 @@
         #decline-challenge { background: transparent; color: #aaa; border:none; cursor:pointer; }
         .hidden { display: none; }
         .high-contrast { filter: contrast(1.5); }
-        
+
         .mobile-menu-toggle { display: none; }
         @media (max-width: 768px) {
             .mobile-menu-toggle { display: flex; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; }
