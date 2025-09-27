@@ -13,18 +13,15 @@
     
     <style>
         :root {
-          /* --- New Light Theme Palette --- */
-          --primary-bg: #FFFFFF;
-          --secondary-bg: #f5f3ff; /* Light purple touch for sections */
-          --brand-purple: #8B5FBF;
-          --cta-turquoise: #40E0D0;
-          
-          --text-dark: #2d3748;
-          --text-muted: #718096;
-          
-          --accent-yellow: #f59e0b;
-          --font-heading: 'Playfair Display', serif;
-          --font-body: 'Heebo', sans-serif;
+            --primary-bg: #FFFFFF;
+            --secondary-bg: #f5f3ff;
+            --brand-purple: #8B5FBF;
+            --cta-turquoise: #40E0D0;
+            --text-dark: #2d3748;
+            --text-muted: #718096;
+            --accent-yellow: #f59e0b;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Heebo', sans-serif;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -34,27 +31,18 @@
         .nav-content { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; padding: 20px 40px; }
         .logo { font-family: var(--font-heading); font-size: 2rem; font-weight: 900; color: var(--text-dark); text-decoration: none; }
         .nav-menu { display: flex; list-style: none; gap: 40px; align-items: center; }
-        .nav-menu a { color: var(--text-muted); text-decoration: none; font-weight: 500; font-size: 1rem; position: relative; padding: 8px 0; }
+        .nav-menu a { color: var(--text-muted); text-decoration: none; font-weight: 500; position: relative; padding: 8px 0; }
         .nav-menu a:hover { color: var(--brand-purple); }
         .cta-button {
-            background: var(--cta-turquoise);
-            color: var(--text-dark);
-            padding: 12px 28px;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            box-shadow: 0 4px 20px rgba(64, 224, 208, 0.4);
+            background: var(--cta-turquoise); color: var(--text-dark); padding: 12px 28px; border-radius: 50px;
+            font-weight: 600; text-decoration: none; box-shadow: 0 4px 20px rgba(64, 224, 208, 0.4);
+            transition: transform 0.3s;
         }
         .cta-button:hover { transform: translateY(-2px); }
 
-        .hero { min-height: 80vh; display: flex; align-items: center; position: relative; background: url('https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villa1.jpg'); background-size: cover; background-position: center; background-attachment: fixed; }
-        .hero::before { content: ''; position: absolute; top:0; left:0; right:0; bottom:0; background: rgba(26, 11, 46, 0.6); }
-        .hero-content { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: center; }
-        .hero-text { text-align: center; max-width: 800px; color: #fff; }
+        .hero { min-height: 80vh; display: flex; align-items: center; position: relative; background: url('https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villa1.jpg') center center/cover no-repeat fixed; }
+        .hero::before { content: ''; position: absolute; inset: 0; background: rgba(26, 11, 46, 0.6); }
+        .hero-content { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 0 2rem; text-align: center; color: #fff; }
         .hero-subtitle { font-size: clamp(1.8rem, 5vw, 3rem); font-weight: 700; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
         .hero-description { font-size: clamp(1.2rem, 3vw, 1.6rem); line-height: 1.8; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
 
@@ -64,14 +52,18 @@
         .story-content { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 6rem; }
         .story-text { font-size: 1.2rem; line-height: 1.8; color: var(--text-muted); }
         .story-text h3 { font-family: var(--font-heading); font-size: 2rem; color: var(--text-dark); margin-bottom: 1.5rem; }
-        .story-text p { margin-bottom: 1.5rem; }
         .story-text .highlight { color: var(--brand-purple); font-weight: 700; }
         .story-image { border-radius: 25px; overflow: hidden; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1); }
         .story-image img { width: 100%; height: 100%; object-fit: cover; }
         
         .timeline-section { padding: 8rem 2rem; background: var(--secondary-bg); }
-        /* Other specific styles for timeline, values, cta can be kept as they adapt well, or tweaked slightly */
+        /* Other specific styles can remain as they adapt well to the light theme */
         
+        footer { padding: 3rem 0; text-align: center; border-top: 1px solid #e2e8f0; background: var(--secondary-bg); }
+        .footer-links a { color: var(--text-muted); text-decoration: none; margin: 0 10px; }
+        .footer-links a:hover { text-decoration: underline; color: var(--brand-purple); }
+        .footer-credit { font-size: 0.9rem; color: var(--brand-purple); margin-top: 1rem; }
+
         .floating-buttons { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 999; }
         .floating-btn { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; font-size: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: transform 0.3s; border: none; cursor: pointer; }
         .floating-btn:hover { transform: scale(1.1); }
@@ -96,9 +88,19 @@
         .popup-body { padding: 20px; line-height: 1.6; }
         .popup-buttons { padding: 0 20px 20px; display: flex; flex-direction: column; gap: 10px; }
         #accept-challenge { background: var(--accent-yellow); color: var(--text-dark); font-size: 1.1rem; font-weight: 800; border:none; border-radius: 25px; padding: 12px; cursor:pointer; }
-        #decline-challenge { background: transparent; color: var(--text-muted); border:none; cursor:pointer; }
+        #decline-challenge { background: transparent; color: #aaa; border:none; cursor:pointer; }
         .hidden { display: none; }
         .high-contrast { filter: contrast(1.5); }
+        
+        .mobile-menu-toggle { display: none; }
+        @media (max-width: 768px) {
+            .mobile-menu-toggle { display: flex; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; }
+            .hamburger-line { width: 30px; height: 3px; background: var(--text-dark); }
+            .nav-menu { position: fixed; right: -100%; top: 80px; flex-direction: column; background: rgba(255, 255, 255, 0.98); width: 100%; padding: 20px; transition: 0.3s; }
+            .nav-menu.active { right: 0; }
+            .story-content { grid-template-columns: 1fr; }
+            #chat-popup, #proactive-popup, .accessibility-panel { right: 15px; width: calc(100vw - 30px); }
+        }
     </style>
 </head>
 <body>
@@ -106,16 +108,7 @@
         </header>
 
     <section class="hero">
-        <div class="hero-content">
-            <div class="hero-text" data-aos="fade-up">
-                <p class="hero-subtitle">מאחורי הקלעים של MULTIBRAWN</p>
-                <p class="hero-description">
-                    הסיפור האמיתי מאחורי המותג - איך הכל התחיל, מי האנשים<br>
-                    שמאחורי הקלעים ואיך אנחנו הופכים חלומות למציאות
-                </p>
-            </div>
-        </div>
-    </section>
+        </section>
 
     <main>
         </main>
@@ -164,8 +157,13 @@
     <script>
     document.addEventListener('DOMContentLoaded', function() {
       AOS.init({ duration: 1200, once: true, offset: 50 });
+      
+      const mobileToggle = document.getElementById('mobileToggle');
+      const primaryNav = document.querySelector('.nav-menu');
+      if(mobileToggle && primaryNav) {
+        mobileToggle.addEventListener('click', () => primaryNav.classList.toggle('active'));
+      }
 
-      // --- Accessibility Panel Logic ---
       const accessibilityBtn = document.getElementById('accessibilityBtn');
       const accessibilityPanel = document.getElementById('accessibilityPanel');
       if(accessibilityBtn && accessibilityPanel) {
@@ -177,7 +175,6 @@
         document.getElementById('resetAccessibilityBtn').addEventListener('click', () => { currentFontSize = 100; document.body.style.fontSize = '100%'; document.body.classList.remove('high-contrast'); });
       }
       
-      // --- Chat Widget & Proactive Popup Logic ---
       const chatbotBtn = document.getElementById('chatbotBtn');
       const chatPopup = document.getElementById('chat-popup');
       const closeChatBtn = document.getElementById('close-chat-btn');
