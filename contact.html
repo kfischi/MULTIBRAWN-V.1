@@ -5,594 +5,221 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>הצטרפו לרשת MULTIBRAWN - בעלי מתחמים</title>
     <meta name="description" content="יש לכם צימר, וילה, דירת נופש או מקום לאירועים? הצטרפו לרשת MULTIBRAWN וקבלו יותר הזמנות!">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <style>
         :root {
-            --primary-bg: linear-gradient(135deg, #0f0c29 0%, #24243e 50%, #302b63 100%);
-            --brand-purple: #8B5FBF;
+            --primary-bg: #1a0b2e;
+            --secondary-bg: #16213e;
+            --accent-purple: #7c3aed;
             --light-purple: #a855f7;
-            --pink-purple: #e879f9;
-            --cta-turquoise: #40E0D0;
-            --text-dark: #2d3748;
-            --text-light: #ffffff;
+            --dark-purple: #5b21b6;
+            --text-light: #f8fafc;
             --text-muted: #cbd5e1;
-            --accent-gold: #ffd700;
+            --success: #10b981;
+            --warning: #f59e0b;
             --font-heading: 'Playfair Display', serif;
             --font-body: 'Heebo', sans-serif;
+            --cta-turquoise: #40E0D0;
+            --accent-gold: #ffd700;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            font-family: var(--font-body);
-            background: var(--primary-bg);
-            color: var(--text-light);
-            line-height: 1.7;
-            overflow-x: hidden;
-        }
+        body { font-family: var(--font-body); background: var(--primary-bg); color: var(--text-light); line-height: 1.7; overflow-x: hidden; }
 
-        /* Full Screen Chat Interface */
-        .chat-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: var(--primary-bg);
-            z-index: 2000;
-            display: flex;
-            flex-direction: column;
-        }
+        /* Navigation */
+        .header-nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(26, 11, 46, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(124, 58, 237, 0.2); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .nav-content { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; padding: 20px 40px; }
+        .logo { font-family: var(--font-heading); font-size: 2rem; font-weight: 900; color: transparent; background: linear-gradient(45deg, #f8fafc, #7c3aed, #a855f7); background-clip: text; -webkit-background-clip: text; text-decoration: none; transition: all 0.3s ease; }
+        .nav-menu { display: flex; list-style: none; gap: 40px; align-items: center; }
+        .nav-menu a { color: var(--text-muted); text-decoration: none; font-weight: 500; font-size: 1rem; transition: all 0.3s ease; position: relative; padding: 8px 0; }
+        .nav-menu a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--accent-purple); transition: width 0.3s ease; }
+        .nav-menu a:hover { color: var(--text-light); }
+        .nav-menu a:hover::after { width: 100%; }
+        .cta-button { background: linear-gradient(135deg, var(--accent-purple), var(--dark-purple)); color: white; padding: 12px 28px; border: none; border-radius: 50px; font-weight: 600; font-size: 1rem; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); text-decoration: none; box-shadow: 0 4px 20px rgba(124, 58, 237, 0.3); }
 
-        /* Header */
-        .chat-header {
-            background: rgba(15, 12, 41, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(139, 95, 191, 0.3);
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        /* Hero */
+        .hero { min-height: 100vh; display: flex; align-items: center; position: relative; background: url('https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villa1.jpg'); background-size: cover; background-position: center; background-attachment: fixed; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(26, 11, 46, 0.8) 0%, rgba(22, 33, 62, 0.6) 50%, rgba(91, 33, 182, 0.7) 100%); z-index: 1; }
+        .hero-content { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; min-height: 80vh; justify-content: center; z-index: 2; position: relative; }
+        .hero-text { text-align: center; max-width: 800px; }
+        .hero-title { font-family: var(--font-heading); font-size: clamp(3rem, 8vw, 6rem); font-weight: 900; background: linear-gradient(135deg, var(--accent-gold) 0%, #fff 30%, var(--light-purple) 60%, var(--accent-gold) 100%); background-size: 300% 300%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: shimmer 4s ease-in-out infinite; margin-bottom: 2rem; text-shadow: 0 0 50px rgba(255, 255, 255, 0.5); }
+        @keyframes shimmer { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        .hero-subtitle { font-size: clamp(1.5rem, 4vw, 2.5rem); color: var(--text-light); font-weight: 700; margin-bottom: 1.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.7); }
+        .hero-description { font-size: clamp(1.1rem, 2.5vw, 1.4rem); color: var(--text-light); line-height: 1.8; text-shadow: 1px 1px 2px rgba(0,0,0,0.7); margin-bottom: 3rem; }
+        .hero-cta { background: linear-gradient(135deg, var(--cta-turquoise), var(--light-purple)); color: white; padding: 18px 40px; border: none; border-radius: 50px; font-size: 1.2rem; font-weight: 700; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 8px 25px rgba(64, 224, 208, 0.4); text-decoration: none; display: inline-block; }
+        .hero-cta:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(64, 224, 208, 0.6); }
 
-        .chat-header-left {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .logo-img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .chat-title {
-            font-family: var(--font-heading);
-            font-size: 1.5rem;
-            font-weight: 900;
-            color: var(--text-light);
-        }
-
-        .chat-subtitle {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-top: 0.2rem;
-        }
-
-        .close-chat {
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 0.5rem;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-        }
-
-        .close-chat:hover {
-            background: rgba(139, 95, 191, 0.2);
-            color: var(--text-light);
-        }
-
-        /* Progress Bar */
-        .progress-container {
-            background: rgba(15, 12, 41, 0.8);
-            padding: 1rem 2rem;
-            border-bottom: 1px solid rgba(139, 95, 191, 0.2);
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 6px;
-            background: rgba(139, 95, 191, 0.2);
-            border-radius: 3px;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--cta-turquoise), var(--light-purple));
-            border-radius: 3px;
-            transition: width 0.5s ease;
-            width: 0%;
-        }
-
-        .progress-text {
-            margin-top: 0.5rem;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            text-align: center;
-        }
-
-        /* Chat Messages Area */
-        .chat-messages {
-            flex: 1;
-            overflow-y: auto;
-            padding: 2rem;
-            background: linear-gradient(135deg, #0f0c29 0%, #24243e 50%, #302b63 100%);
-            position: relative;
-        }
-
-        .chat-messages::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 20%, rgba(64, 224, 208, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(139, 95, 191, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 40% 60%, rgba(255, 215, 0, 0.03) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .messages-container {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Message Bubbles */
-        .message {
-            margin-bottom: 2rem;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: messageAppear 0.6s ease forwards;
-        }
-
-        @keyframes messageAppear {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .message.bot {
-            text-align: right;
-        }
-
-        .message.user {
-            text-align: left;
-        }
-
-        .message-bubble {
-            display: inline-block;
-            max-width: 70%;
-            padding: 1.5rem 2rem;
-            border-radius: 25px;
-            position: relative;
-            word-wrap: break-word;
-        }
-
-        .message.bot .message-bubble {
-            background: linear-gradient(135deg, rgba(139, 95, 191, 0.2), rgba(64, 224, 208, 0.1));
-            border: 1px solid rgba(139, 95, 191, 0.3);
-            color: var(--text-light);
-        }
-
-        .message.user .message-bubble {
-            background: linear-gradient(135deg, var(--cta-turquoise), var(--light-purple));
-            color: var(--text-light);
-            box-shadow: 0 8px 25px rgba(64, 224, 208, 0.3);
-        }
-
-        .message-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            margin: 0 1rem;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            vertical-align: top;
-        }
-
-        .message.bot .message-avatar {
-            background: linear-gradient(135deg, var(--brand-purple), var(--pink-purple));
-            order: 2;
-        }
-
-        .message.user .message-avatar {
-            background: linear-gradient(135deg, var(--accent-gold), #ffed4e);
-            color: var(--text-dark);
-        }
-
-        /* Typing Indicator */
-        .typing-indicator {
-            display: none;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            opacity: 0.7;
-        }
-
-        .typing-dots {
-            display: flex;
-            gap: 4px;
-        }
-
-        .typing-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--light-purple);
-            border-radius: 50%;
-            animation: typingPulse 1.4s infinite ease-in-out;
-        }
-
+        /* Chat Section */
+        .chat-section { padding: 4rem 2rem; background: linear-gradient(135deg, var(--secondary-bg) 0%, var(--primary-bg) 100%); }
+        .chat-container { max-width: 900px; margin: 0 auto; background: rgba(15, 12, 41, 0.8); border-radius: 25px; border: 1px solid rgba(124, 58, 237, 0.3); backdrop-filter: blur(20px); overflow: hidden; box-shadow: 0 20px 60px rgba(124, 58, 237, 0.2); }
+        .chat-header { background: rgba(26, 11, 46, 0.9); padding: 1.5rem 2rem; border-bottom: 1px solid rgba(139, 95, 191, 0.3); text-align: center; }
+        .chat-title { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 900; color: var(--text-light); margin-bottom: 0.5rem; }
+        .chat-subtitle { font-size: 1rem; color: var(--text-muted); }
+        .progress-container { background: rgba(15, 12, 41, 0.8); padding: 1rem 2rem; border-bottom: 1px solid rgba(139, 95, 191, 0.2); }
+        .progress-bar { width: 100%; height: 6px; background: rgba(139, 95, 191, 0.2); border-radius: 3px; overflow: hidden; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--cta-turquoise), var(--light-purple)); border-radius: 3px; transition: width 0.5s ease; width: 0%; }
+        .progress-text { margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-muted); text-align: center; }
+        .chat-messages { height: 500px; overflow-y: auto; padding: 2rem; background: linear-gradient(135deg, #0f0c29 0%, #24243e 50%, #302b63 100%); position: relative; }
+        .chat-messages::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 20% 20%, rgba(64, 224, 208, 0.05) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(139, 95, 191, 0.05) 0%, transparent 50%); pointer-events: none; z-index: 1; }
+        .messages-container { position: relative; z-index: 2; }
+        .message { margin-bottom: 2rem; opacity: 0; transform: translateY(20px); animation: messageAppear 0.6s ease forwards; }
+        @keyframes messageAppear { to { opacity: 1; transform: translateY(0); } }
+        .message.bot { text-align: right; }
+        .message.user { text-align: left; }
+        .message-bubble { display: inline-block; max-width: 70%; padding: 1.5rem 2rem; border-radius: 25px; position: relative; word-wrap: break-word; }
+        .message.bot .message-bubble { background: linear-gradient(135deg, rgba(139, 95, 191, 0.2), rgba(64, 224, 208, 0.1)); border: 1px solid rgba(139, 95, 191, 0.3); color: var(--text-light); }
+        .message.user .message-bubble { background: linear-gradient(135deg, var(--cta-turquoise), var(--light-purple)); color: var(--text-light); box-shadow: 0 8px 25px rgba(64, 224, 208, 0.3); }
+        .message-avatar { width: 40px; height: 40px; border-radius: 50%; margin: 0 1rem; display: inline-flex; align-items: center; justify-content: center; font-size: 1.2rem; vertical-align: top; }
+        .message.bot .message-avatar { background: linear-gradient(135deg, var(--accent-purple), var(--light-purple)); order: 2; }
+        .message.user .message-avatar { background: linear-gradient(135deg, var(--accent-gold), #ffed4e); color: var(--primary-bg); }
+        .typing-indicator { display: none; align-items: center; gap: 1rem; margin-bottom: 1rem; opacity: 0.7; }
+        .typing-dots { display: flex; gap: 4px; }
+        .typing-dot { width: 8px; height: 8px; background: var(--light-purple); border-radius: 50%; animation: typingPulse 1.4s infinite ease-in-out; }
         .typing-dot:nth-child(1) { animation-delay: -0.32s; }
         .typing-dot:nth-child(2) { animation-delay: -0.16s; }
-
-        @keyframes typingPulse {
-            0%, 80%, 100% {
-                transform: scale(0.8);
-                opacity: 0.5;
-            }
-            40% {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        /* Response Options */
-        .response-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .response-option {
-            background: rgba(15, 12, 41, 0.8);
-            border: 2px solid rgba(139, 95, 191, 0.3);
-            border-radius: 15px;
-            padding: 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .response-option::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(64, 224, 208, 0.1), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .response-option:hover::before {
-            left: 100%;
-        }
-
-        .response-option:hover {
-            border-color: var(--cta-turquoise);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(64, 224, 208, 0.2);
-        }
-
-        .option-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        .option-title {
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: var(--text-light);
-        }
-
-        .option-desc {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-        }
-
-        /* Input Fields */
-        .input-section {
-            margin-top: 1.5rem;
-        }
-
-        .input-group {
-            margin-bottom: 1rem;
-            position: relative;
-        }
-
-        .input-label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: var(--text-light);
-        }
-
-        .chat-input {
-            width: 100%;
-            padding: 12px 16px;
-            background: rgba(15, 12, 41, 0.8);
-            border: 2px solid rgba(139, 95, 191, 0.3);
-            border-radius: 12px;
-            color: var(--text-light);
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .chat-input:focus {
-            outline: none;
-            border-color: var(--cta-turquoise);
-            box-shadow: 0 0 0 3px rgba(64, 224, 208, 0.1);
-        }
-
-        .chat-input::placeholder {
-            color: var(--text-muted);
-        }
-
-        /* Multi-select checkboxes */
-        .checkbox-group {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .checkbox-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem;
-            background: rgba(15, 12, 41, 0.5);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .checkbox-item:hover {
-            background: rgba(139, 95, 191, 0.2);
-        }
-
-        .checkbox-item input[type="checkbox"] {
-            accent-color: var(--cta-turquoise);
-        }
-
-        /* Range Sliders */
-        .range-input {
-            width: 100%;
-            margin: 1rem 0;
-            -webkit-appearance: none;
-            height: 6px;
-            background: rgba(139, 95, 191, 0.3);
-            border-radius: 3px;
-            outline: none;
-        }
-
-        .range-input::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 20px;
-            height: 20px;
-            background: var(--cta-turquoise);
-            border-radius: 50%;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(64, 224, 208, 0.4);
-        }
-
-        .range-display {
-            text-align: center;
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--cta-turquoise);
-            margin: 0.5rem 0;
-        }
-
-        /* Continue Button */
-        .continue-btn {
-            background: linear-gradient(135deg, var(--cta-turquoise), var(--light-purple));
-            color: var(--text-light);
-            border: none;
-            padding: 12px 30px;
-            border-radius: 25px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(64, 224, 208, 0.3);
-            margin-top: 1rem;
-        }
-
-        .continue-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 35px rgba(64, 224, 208, 0.5);
-        }
-
-        .continue-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        /* Final WhatsApp Section */
-        .whatsapp-section {
-            text-align: center;
-            padding: 2rem;
-            background: linear-gradient(135deg, rgba(37, 211, 102, 0.1), rgba(139, 95, 191, 0.1));
-            border-radius: 20px;
-            margin-top: 2rem;
-        }
-
-        .whatsapp-icon {
-            font-size: 4rem;
-            color: #25d366;
-            margin-bottom: 1rem;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
-        }
-
-        .whatsapp-title {
-            font-family: var(--font-heading);
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: var(--text-light);
-        }
-
-        .whatsapp-preview {
-            background: rgba(15, 12, 41, 0.8);
-            border: 1px solid rgba(139, 95, 191, 0.3);
-            border-radius: 15px;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            text-align: right;
-            font-family: 'Courier New', monospace;
-            line-height: 1.8;
-            max-height: 300px;
-            overflow-y: auto;
-        }
-
-        .whatsapp-btn {
-            background: #25d366;
-            color: white;
-            padding: 18px 40px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-
-        .whatsapp-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.6);
-        }
-
-        /* Mobile Responsive */
+        @keyframes typingPulse { 0%, 80%, 100% { transform: scale(0.8); opacity: 0.5; } 40% { transform: scale(1); opacity: 1; } }
+        .response-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+        .response-option { background: rgba(15, 12, 41, 0.8); border: 2px solid rgba(139, 95, 191, 0.3); border-radius: 15px; padding: 1.5rem; cursor: pointer; transition: all 0.3s ease; text-align: center; position: relative; overflow: hidden; }
+        .response-option::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(64, 224, 208, 0.1), transparent); transition: left 0.5s ease; }
+        .response-option:hover::before { left: 100%; }
+        .response-option:hover { border-color: var(--cta-turquoise); transform: translateY(-3px); box-shadow: 0 8px 25px rgba(64, 224, 208, 0.2); }
+        .option-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+        .option-title { font-weight: 700; margin-bottom: 0.5rem; color: var(--text-light); }
+        .option-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; }
+        .input-section { margin-top: 1.5rem; }
+        .input-group { margin-bottom: 1rem; position: relative; }
+        .input-label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-light); }
+        .chat-input { width: 100%; padding: 12px 16px; background: rgba(15, 12, 41, 0.8); border: 2px solid rgba(139, 95, 191, 0.3); border-radius: 12px; color: var(--text-light); font-size: 1rem; transition: all 0.3s ease; }
+        .chat-input:focus { outline: none; border-color: var(--cta-turquoise); box-shadow: 0 0 0 3px rgba(64, 224, 208, 0.1); }
+        .chat-input::placeholder { color: var(--text-muted); }
+        .checkbox-group { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.5rem; margin-top: 1rem; }
+        .checkbox-item { display: flex; align-items: center; gap: 0.5rem; padding: 0.8rem; background: rgba(15, 12, 41, 0.5); border-radius: 8px; cursor: pointer; transition: all 0.3s ease; border: 1px solid rgba(139, 95, 191, 0.2); }
+        .checkbox-item:hover { background: rgba(139, 95, 191, 0.2); border-color: var(--cta-turquoise); }
+        .checkbox-item input[type="checkbox"] { accent-color: var(--cta-turquoise); }
+        .range-input { width: 100%; margin: 1rem 0; -webkit-appearance: none; height: 6px; background: rgba(139, 95, 191, 0.3); border-radius: 3px; outline: none; }
+        .range-input::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; background: var(--cta-turquoise); border-radius: 50%; cursor: pointer; box-shadow: 0 4px 12px rgba(64, 224, 208, 0.4); }
+        .range-display { text-align: center; font-size: 1.2rem; font-weight: 700; color: var(--cta-turquoise); margin: 0.5rem 0; }
+        .continue-btn { background: linear-gradient(135deg, var(--cta-turquoise), var(--light-purple)); color: var(--text-light); border: none; padding: 12px 30px; border-radius: 25px; font-weight: 700; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 8px 25px rgba(64, 224, 208, 0.3); margin-top: 1rem; }
+        .continue-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 35px rgba(64, 224, 208, 0.5); }
+        .continue-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+        .whatsapp-section { text-align: center; padding: 2rem; background: linear-gradient(135deg, rgba(37, 211, 102, 0.1), rgba(139, 95, 191, 0.1)); border-radius: 20px; margin-top: 2rem; }
+        .whatsapp-icon { font-size: 4rem; color: #25d366; margin-bottom: 1rem; animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-10px); } 60% { transform: translateY(-5px); } }
+        .whatsapp-title { font-family: var(--font-heading); font-size: 2rem; margin-bottom: 1rem; color: var(--text-light); }
+        .whatsapp-preview { background: rgba(15, 12, 41, 0.8); border: 1px solid rgba(139, 95, 191, 0.3); border-radius: 15px; padding: 1.5rem; margin: 1.5rem 0; text-align: right; font-family: 'Courier New', monospace; line-height: 1.8; max-height: 300px; overflow-y: auto; }
+        .whatsapp-btn { background: #25d366; color: white; padding: 18px 40px; border: none; border-radius: 50px; font-size: 1.2rem; font-weight: 700; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4); display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
+        .whatsapp-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(37, 211, 102, 0.6); }
+        .mobile-menu-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 10px; }
+        .hamburger-line { width: 30px; height: 3px; background: white; transition: 0.3s; border-radius: 2px; }
+        .footer { background: var(--primary-bg); border-top: 1px solid rgba(124, 58, 237, 0.2); padding: 4rem 2rem 2rem; text-align: center; }
+        .footer-content { max-width: 1200px; margin: 0 auto; }
+        .footer-social { display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem; }
+        .footer-social a { color: var(--text-muted); font-size: 1.5rem; transition: all 0.3s ease; }
+        .footer-social a:hover { color: var(--accent-purple); transform: translateY(-2px); }
+        .floating-whatsapp { position: fixed; bottom: 30px; right: 30px; width: 70px; height: 70px; background: linear-gradient(135deg, #25d366, #128c7e); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4); z-index: 1000; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); text-decoration: none; }
+        .floating-whatsapp:hover { transform: scale(1.15); box-shadow: 0 15px 40px rgba(37, 211, 102, 0.6); }
         @media (max-width: 768px) {
-            .chat-header {
-                padding: 1rem;
-            }
-
-            .chat-messages {
-                padding: 1rem;
-            }
-
-            .message-bubble {
-                max-width: 85%;
-                padding: 1rem 1.5rem;
-            }
-
-            .response-options {
-                grid-template-columns: 1fr;
-            }
-
-            .progress-container {
-                padding: 0.5rem 1rem;
-            }
-
-            .checkbox-group {
-                grid-template-columns: 1fr;
-            }
+            .mobile-menu-toggle { display: flex; }
+            .nav-menu { position: fixed; right: -100%; top: 80px; flex-direction: column; background: rgba(26, 11, 46, 0.98); width: 100%; padding: 20px; transition: 0.3s; border-top: 1px solid rgba(124, 58, 237, 0.3); }
+            .nav-menu.active { right: 0; }
+            .nav-menu li { padding: 15px 0; border-bottom: 1px solid rgba(124, 58, 237, 0.2); width: 100%; text-align: center; }
+            .chat-messages { height: 400px; }
+            .response-options { grid-template-columns: 1fr; }
+            .checkbox-group { grid-template-columns: 1fr; }
         }
-
-        /* Scroll Styling */
-        .chat-messages::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        .chat-messages::-webkit-scrollbar-track {
-            background: rgba(15, 12, 41, 0.5);
-        }
-
-        .chat-messages::-webkit-scrollbar-thumb {
-            background: rgba(139, 95, 191, 0.5);
-            border-radius: 4px;
-        }
-
-        .chat-messages::-webkit-scrollbar-thumb:hover {
-            background: rgba(139, 95, 191, 0.7);
-        }
+        .chat-messages::-webkit-scrollbar { width: 8px; }
+        .chat-messages::-webkit-scrollbar-track { background: rgba(15, 12, 41, 0.5); }
+        .chat-messages::-webkit-scrollbar-thumb { background: rgba(139, 95, 191, 0.5); border-radius: 4px; }
+        .chat-messages::-webkit-scrollbar-thumb:hover { background: rgba(139, 95, 191, 0.7); }
     </style>
 </head>
 <body>
-    <div class="chat-container" id="chatContainer">
-        <!-- Header -->
-        <div class="chat-header">
-            <div class="chat-header-left">
-                <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="MULTIBRAWN" class="logo-img">
-                <div>
-                    <div class="chat-title">הצטרפו לרשת MULTIBRAWN</div>
-                    <div class="chat-subtitle">ספרו לנו על המתחם שלכם ונתחיל לעבוד יחד</div>
-                </div>
-            </div>
-            <button class="close-chat" onclick="window.location.href='index.html'">
-                <i class="fas fa-times"></i>
+    <!-- Navigation -->
+    <header class="header-nav">
+        <nav class="nav-content">
+            <a href="index.html" class="logo">Multibrawn</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">דף הבית</a></li>
+                <li><a href="about.html">אודות</a></li>
+                <li><a href="gallery.html">גלריה</a></li>
+                <li><a href="marketing.html">שיווק דיגיטלי</a></li>
+                <li><a href="contact.html">צור קשר</a></li>
+                <li><a href="contact.html" class="cta-button">קבלו הצעה</a></li>
+            </ul>
+            <button class="mobile-menu-toggle" id="mobileToggle">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
             </button>
-        </div>
+        </nav>
+    </header>
 
-        <!-- Progress Bar -->
-        <div class="progress-container">
-            <div class="progress-bar">
-                <div class="progress-fill" id="progressFill"></div>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">בעלי מתחמים - בואו לעבוד איתנו</h1>
+                <h2 class="hero-subtitle">הצטרפו למשפחת MULTIBRAWN והתחילו להרוויח יותר!</h2>
+                <p class="hero-description">
+                    יש לכם צימר, וילה, דירת נופש או מקום לאירועים?<br>
+                    בואו נעזור לכם להגדיל את ההכנסות ולהגיע ליותר לקוחות איכותיים
+                </p>
+                <a href="#chat" class="hero-cta">התחילו עכשיו!</a>
             </div>
-            <div class="progress-text" id="progressText">שלב 1 מתוך 9</div>
         </div>
+    </section>
 
-        <!-- Messages Area -->
-        <div class="chat-messages" id="chatMessages">
-            <div class="messages-container" id="messagesContainer">
-                <!-- Typing Indicator -->
-                <div class="typing-indicator" id="typingIndicator">
-                    <div class="message-avatar">🏡</div>
-                    <div class="typing-dots">
-                        <div class="typing-dot"></div>
-                        <div class="typing-dot"></div>
-                        <div class="typing-dot"></div>
+    <!-- Chat -->
+    <section class="chat-section" id="chat">
+        <div class="chat-container">
+            <div class="chat-header">
+                <div class="chat-title">השאלון החכם שלנו</div>
+                <div class="chat-subtitle">ספרו לנו על המתחם שלכם ונתחיל לעבוד יחד</div>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-text" id="progressText">שלב 1 מתוך 10</div>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="messages-container" id="messagesContainer">
+                    <div class="typing-indicator" id="typingIndicator">
+                        <div class="message-avatar">🏡</div>
+                        <div class="typing-dots">
+                            <div class="typing-dot"></div>
+                            <div class="typing-dot"></div>
+                            <div class="typing-dot"></div>
+                        </div>
+                        <span>כותב...</span>
                     </div>
-                    <span>כותב...</span>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-social">
+                <a href="#" title="פייסבוק"><i class="fab fa-facebook"></i></a>
+                <a href="#" title="אינסטגרם"><i class="fab fa-instagram"></i></a>
+                <a href="#" title="לינקדאין"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <p style="color: var(--text-muted);">© 2024 Multibrawn. כל הזכויות שמורות.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/972523983394?text=שלום, אני מעוניין לשמוע על אפשרויות שיתוף פעולה" class="floating-whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <script>
         class PropertyOwnerChat {
@@ -603,148 +230,20 @@
                 this.typingIndicator = document.getElementById('typingIndicator');
                 this.progressFill = document.getElementById('progressFill');
                 this.progressText = document.getElementById('progressText');
-                
+
                 this.conversationFlow = [
-                    {
-                        id: 'welcome',
-                        botMessage: 'שלום וברכה! 🏡\n\nמעוניינים להצטרף למשפחת MULTIBRAWN ולפרסם את הנכס שלכם?\n\nיש לכם צימר, וילה, דירת נופש או מקום לאירועים? בואו נכיר ונראה איך אנחנו יכולים לעבוד ביחד ולעזור לכם להגדיל את ההכנסות!',
-                        responseType: 'options',
-                        options: [
-                            { text: 'כן, יש לנו מתחם!', value: 'yes', icon: '✅' },
-                            { text: 'אני רק מתעניין', value: 'curious', icon: '🤔' },
-                            { text: 'בתכנון להקים מתחם', value: 'planning', icon: '📋' }
-                        ]
-                    },
-                    {
-                        id: 'property_type',
-                        botMessage: 'מעולה! 🌟 \n\nבואו נתחיל להכיר את המתחם שלכם.\nאיזה סוג נכס יש לכם?',
-                        responseType: 'options',
-                        options: [
-                            { text: 'צימר רומנטי', value: 'zimmer', icon: '💕', desc: 'לזוגות ומשפחות קטנות' },
-                            { text: 'וילה פרטית', value: 'villa', icon: '🏡', desc: 'עם בריכה וגינה' },
-                            { text: 'דירת נופש', value: 'apartment', icon: '🏢', desc: 'במרכז העיר או ליד הים' },
-                            { text: 'מלון בוטיק', value: 'boutique_hotel', icon: '🏨', desc: 'מלון קטן ואינטימי' },
-                            { text: 'אולם אירועים', value: 'event_hall', icon: '🎉', desc: 'לחתונות ואירועים' },
-                            { text: 'גן אירועים', value: 'event_garden', icon: '🌳', desc: 'אירועים בטבע' },
-                            { text: 'משהו אחר', value: 'other', icon: '🏘️', desc: 'ספרו לנו בהמשך' }
-                        ]
-                    },
-                    {
-                        id: 'location',
-                        botMessage: 'נהדר! 📍\n\nבאיזה אזור בארץ נמצא המתחם שלכם?',
-                        responseType: 'options',
-                        options: [
-                            { text: 'צפון', value: 'north', icon: '🏔️', desc: 'גליל, גולן, חיפה והקריות' },
-                            { text: 'מרכז', value: 'center', icon: '🏙️', desc: 'תל אביב, רמת גן, הרצליה' },
-                            { text: 'ירושלים והסביבה', value: 'jerusalem', icon: '🕌', desc: 'ירושלים ויהודה ושומרון' },
-                            { text: 'דרום', value: 'south', icon: '🏜️', desc: 'באר שבע, אילת, הנגב' },
-                            { text: 'שרון', value: 'sharon', icon: '🌾', desc: 'נתניה, כפר סבא, רעננה' },
-                            { text: 'שפלה', value: 'shephelah', icon: '🌻', desc: 'רחובות, רמלה, בית שמש' }
-                        ]
-                    },
-                    {
-                        id: 'target_audience',
-                        botMessage: 'מצוין! 👥\n\nלמי המתחם שלכם הכי מתאים? (תוכלו לבחור כמה אפשרויות)',
-                        responseType: 'multi_select',
-                        options: [
-                            { text: 'זוגות רומנטיים', value: 'couples', icon: '💕' },
-                            { text: 'משפחות עם ילדים', value: 'families', icon: '👨‍👩‍👧‍👦' },
-                            { text: 'קבוצות חברים', value: 'friends', icon: '👥' },
-                            { text: 'קהל דתי', value: 'religious', icon: '✡️' },
-                            { text: 'אירועי חברה', value: 'corporate', icon: '💼' },
-                            { text: 'חתונות', value: 'weddings', icon: '💒' },
-                            { text: 'בר/בת מצווה', value: 'bar_mitzvah', icon: '🎭' },
-                            { text: 'אירועים פרטיים', value: 'private_events', icon: '🎉' }
-                        ]
-                    },
-                    {
-                        id: 'capacity',
-                        botMessage: 'עכשיו בואו נדבר על הקיבולת 📊\n\nכמה אנשים יכולים להתארח במתחם בו זמנית?',
-                        responseType: 'slider',
-                        sliderConfig: {
-                            min: 2,
-                            max: 500,
-                            default: 20,
-                            unit: 'אנשים',
-                            labels: {
-                                2: 'זוג',
-                                6: 'משפחה קטנה',
-                                12: 'קבוצה קטנה',
-                                30: 'אירוע קטן',
-                                80: 'אירוע בינוני',
-                                150: 'אירוע גדול',
-                                300: 'כנס גדול',
-                                500: 'אירוע ענק'
-                            }
-                        }
-                    },
-                    {
-                        id: 'amenities',
-                        botMessage: 'איזה כיף! ✨\n\nאיזה מתקנים ושירותים יש לכם? (סמנו הכל שחל)',
-                        responseType: 'multi_select',
-                        options: [
-                            { text: 'בריכה פרטית', value: 'pool', icon: '🏊‍♂️' },
-                            { text: 'ג\'קוזי', value: 'jacuzzi', icon: '🛁' },
-                            { text: 'גינה/מרפסת', value: 'garden', icon: '🌳' },
-                            { text: 'מטבח מאובזר', value: 'kitchen', icon: '🍳' },
-                            { text: 'מתקני ברביקיו', value: 'bbq', icon: '🔥' },
-                            { text: 'חניה פרטית', value: 'parking', icon: '🚗' },
-                            { text: 'מיזוג אוויר', value: 'ac', icon: '❄️' },
-                            { text: 'WiFi מהיר', value: 'wifi', icon: '📶' },
-                            { text: 'מערכת שמע', value: 'sound', icon: '🔊' },
-                            { text: 'חדר כושר', value: 'gym', icon: '💪' },
-                            { text: 'שולחן ביליארד', value: 'billiard', icon: '🎱' },
-                            { text: 'נגישות לנכים', value: 'accessible', icon: '♿' }
-                        ]
-                    },
-                    {
-                        id: 'age_groups',
-                        botMessage: 'כמעט סיימנו! 🎯\n\nלאיזה קבוצות גיל המקום הכי מתאים?',
-                        responseType: 'multi_select',
-                        options: [
-                            { text: 'זוגות צעירים (20-35)', value: 'young_couples', icon: '💕' },
-                            { text: 'משפחות עם ילדים קטנים', value: 'young_families', icon: '👶' },
-                            { text: 'משפחות עם בני נוער', value: 'teen_families', icon: '👨‍👩‍👧‍👦' },
-                            { text: 'דור הביניים (35-55)', value: 'middle_age', icon: '👫' },
-                            { text: 'גיל הזהב (55+)', value: 'seniors', icon: '👴👵' },
-                            { text: 'מתאים לכל הגילאים', value: 'all_ages', icon: '👥' }
-                        ]
-                    },
-                    {
-                        id: 'special_features',
-                        botMessage: 'מעולה! 🌟\n\nיש למתחם שלכם משהו מיוחד שמבדיל אותו מאחרים? (אופציונלי)',
-                        responseType: 'textarea',
-                        placeholder: 'למשל: נוף מיוחד, קרבה לאטרקציות, עיצוב ייחודי, היסטוריה מעניינת...'
-                    },
-                    {
-                        id: 'contact_info',
-                        botMessage: 'נפלא! עכשיו הפרטים שלכם 📞\n\nכדי שנוכל ליצור קשר ולספר לכם על האפשרויות לשיתוף פעולה:',
-                        responseType: 'form',
-                        fields: [
-                            { type: 'text', name: 'owner_name', label: 'השם שלכם', placeholder: 'איך קוראים לכם?', required: true },
-                            { type: 'text', name: 'property_name', label: 'שם המתחם', placeholder: 'איך קוראים למקום?', required: true },
-                            { type: 'tel', name: 'phone', label: 'טלפון', placeholder: '052-123-4567', required: true },
-                            { type: 'email', name: 'email', label: 'אימייל', placeholder: 'your@email.com', required: true },
-                            { type: 'url', name: 'website', label: 'אתר/פייסבוק (אופציונלי)', placeholder: 'https://...', required: false }
-                        ]
-                    },
-                    {
-                        id: 'partnership_interest',
-                        botMessage: 'כמעט גמרנו! 🤝\n\nמה הכי מעניין אתכם בשיתוף פעולה איתנו?',
-                        responseType: 'multi_select',
-                        options: [
-                            { text: 'קבלת יותר הזמנות', value: 'more_bookings', icon: '📈' },
-                            { text: 'חשיפה ברשתות החברתיות', value: 'social_exposure', icon: '📱' },
-                            { text: 'אתר אינטרנט מקצועי', value: 'website', icon: '💻' },
-                            { text: 'ניהול לוח שנה', value: 'calendar_management', icon: '📅' },
-                            { text: 'שיווק דיגיטלי מתקדם', value: 'digital_marketing', icon: '🎯' },
-                            { text: 'צילומים מקצועיים', value: 'photography', icon: '📸' },
-                            { text: 'ייעוץ עסקי', value: 'business_consulting', icon: '💡' },
-                            { text: 'רק רוצה לשמוע מה יש', value: 'just_curious', icon: '🤔' }
-                        ]
-                    }
+                    { id: 'welcome', botMessage: 'שלום וברכה! 🏡\n\nמעוניינים להצטרף למשפחת MULTIBRAWN ולפרסם את הנכס שלכם?\n\nיש לכם צימר, וילה, דירת נופש או מקום לאירועים? בואו נכיר ונראה איך אנחנו יכולים לעבוד ביחד ולעזור לכם להגדיל את ההכנסות!', responseType: 'options', options: [ { text: 'כן, יש לנו מתחם!', value: 'yes', icon: '✅' }, { text: 'אני רק מתעניין', value: 'curious', icon: '🤔' }, { text: 'בתכנון להקים מתחם', value: 'planning', icon: '📋' } ] },
+                    { id: 'property_type', botMessage: 'מעולה! 🌟 \n\nבואו נתחיל להכיר את המתחם שלכם.\nאיזה סוג נכס יש לכם?', responseType: 'options', options: [ { text: 'צימר רומנטי', value: 'zimmer', icon: '💕', desc: 'לזוגות ומשפחות קטנות' }, { text: 'וילה פרטית', value: 'villa', icon: '🏡', desc: 'עם בריכה וגינה' }, { text: 'דירת נופש', value: 'apartment', icon: '🏢', desc: 'במרכז העיר או ליד הים' }, { text: 'מלון בוטיק', value: 'boutique_hotel', icon: '🏨', desc: 'מלון קטן ואינטימי' }, { text: 'אולם אירועים', value: 'event_hall', icon: '🎉', desc: 'לחתונות ואירועים' }, { text: 'גן אירועים', value: 'event_garden', icon: '🌳', desc: 'אירועים בטבע' }, { text: 'משהו אחר', value: 'other', icon: '🏘️', desc: 'ספרו לנו בהמשך' } ] },
+                    { id: 'location', botMessage: 'נהדר! 📍\n\nבאיזה אזור בארץ נמצא המתחם שלכם?', responseType: 'options', options: [ { text: 'צפון', value: 'north', icon: '🏔️', desc: 'גליל, גולן, חיפה והקריות' }, { text: 'מרכז', value: 'center', icon: '🏙️', desc: 'תל אביב, רמת גן, הרצליה' }, { text: 'ירושלים והסביבה', value: 'jerusalem', icon: '🕌', desc: 'ירושלים ויהודה ושומרון' }, { text: 'דרום', value: 'south', icon: '🏜️', desc: 'באר שבע, אילת, הנגב' }, { text: 'שרון', value: 'sharon', icon: '🌾', desc: 'נתניה, כפר סבא, רעננה' }, { text: 'שפלה', value: 'shephelah', icon: '🌻', desc: 'רחובות, רמלה, בית שמש' } ] },
+                    { id: 'target_audience', botMessage: 'מצוין! 👥\n\nלמי המתחם שלכם הכי מתאים? (תוכלו לבחור כמה אפשרויות)', responseType: 'multi_select', options: [ { text: 'זוגות רומנטיים', value: 'couples', icon: '💕' }, { text: 'משפחות עם ילדים', value: 'families', icon: '👨‍👩‍👧‍👦' }, { text: 'קבוצות חברים', value: 'friends', icon: '👥' }, { text: 'קהל דתי', value: 'religious', icon: '✡️' }, { text: 'אירועי חברה', value: 'corporate', icon: '💼' }, { text: 'חתונות', value: 'weddings', icon: '💒' }, { text: 'בר/בת מצווה', value: 'bar_mitzvah', icon: '🎭' }, { text: 'אירועים פרטיים', value: 'private_events', icon: '🎉' } ] },
+                    { id: 'capacity', botMessage: 'עכשיו בואו נדבר על הקיבולת 📊\n\nכמה אנשים יכולים להתארח במתחם בו זמנית?', responseType: 'slider', sliderConfig: { min: 2, max: 500, default: 20, unit: 'אנשים', labels: { 2: 'זוג', 6: 'משפחה קטנה', 12: 'קבוצה קטנה', 30: 'אירוע קטן', 80: 'אירוע בינוני', 150: 'אירוע גדול', 300: 'כנס גדול', 500: 'אירוע ענק' } } },
+                    { id: 'amenities', botMessage: 'איזה כיף! ✨\n\nאיזה מתקנים ושירותים יש לכם? (סמנו הכל שחל)', responseType: 'multi_select', options: [ { text: 'בריכה פרטית', value: 'pool', icon: '🏊‍♂️' }, { text: 'ג\'קוזי', value: 'jacuzzi', icon: '🛁' }, { text: 'גינה/מרפסת', value: 'garden', icon: '🌳' }, { text: 'מטבח מאובזר', value: 'kitchen', icon: '🍳' }, { text: 'מתקני ברביקיו', value: 'bbq', icon: '🔥' }, { text: 'חניה פרטית', value: 'parking', icon: '🚗' }, { text: 'מיזוג אוויר', value: 'ac', icon: '❄️' }, { text: 'WiFi מהיר', value: 'wifi', icon: '📶' }, { text: 'מערכת שמע', value: 'sound', icon: '🔊' }, { text: 'חדר כושר', value: 'gym', icon: '💪' }, { text: 'שולחן ביליארד', value: 'billiard', icon: '🎱' }, { text: 'נגישות לנכים', value: 'accessible', icon: '♿' } ] },
+                    { id: 'age_groups', botMessage: 'כמעט סיימנו! 🎯\n\nלאיזה קבוצות גיל המקום הכי מתאים?', responseType: 'multi_select', options: [ { text: 'זוגות צעירים (20-35)', value: 'young_couples', icon: '💕' }, { text: 'משפחות עם ילדים קטנים', value: 'young_families', icon: '👶' }, { text: 'משפחות עם בני נוער', value: 'teen_families', icon: '👨‍👩‍👧‍👦' }, { text: 'דור הביניים (35-55)', value: 'middle_age', icon: '👫' }, { text: 'גיל הזהב (55+)', value: 'seniors', icon: '👴👵' }, { text: 'מתאים לכל הגילאים', value: 'all_ages', icon: '👥' } ] },
+                    { id: 'special_features', botMessage: 'מעולה! 🌟\n\nיש למתחם שלכם משהו מיוחד שמבדיל אותו מאחרים? (אופציונלי)', responseType: 'textarea', placeholder: 'למשל: נוף מיוחד, קרבה לאטרקציות, עיצוב ייחודי, היסטוריה מעניינת...' },
+                    { id: 'contact_info', botMessage: 'נפלא! עכשיו הפרטים שלכם 📞\n\nכדי שנוכל ליצור קשר ולספר לכם על האפשרויות לשיתוף פעולה:', responseType: 'form', fields: [ { type: 'text', name: 'owner_name', label: 'השם שלכם', placeholder: 'איך קוראים לכם?', required: true }, { type: 'text', name: 'property_name', label: 'שם המתחם', placeholder: 'איך קוראים למקום?', required: true }, { type: 'tel', name: 'phone', label: 'טלפון', placeholder: '052-123-4567', required: true }, { type: 'email', name: 'email', label: 'אימייל', placeholder: 'your@email.com', required: true }, { type: 'url', name: 'website', label: 'אתר/פייסבוק (אופציונלי)', placeholder: 'https://...', required: false } ] },
+                    { id: 'partnership_interest', botMessage: 'כמעט גמרנו! 🤝\n\nמה הכי מעניין אתכם בשיתוף פעולה איתנו?', responseType: 'multi_select', options: [ { text: 'קבלת יותר הזמנות', value: 'more_bookings', icon: '📈' }, { text: 'חשיפה ברשתות החברתיות', value: 'social_exposure', icon: '📱' }, { text: 'אתר אינטרנט מקצועי', value: 'website', icon: '💻' }, { text: 'ניהול לוח שנה', value: 'calendar_management', icon: '📅' }, { text: 'שיווק דיגיטלי מתקדם', value: 'digital_marketing', icon: '🎯' }, { text: 'צילומים מקצועיים', value: 'photography', icon: '📸' }, { text: 'ייעוץ עסקי', value: 'business_consulting', icon: '💡' }, { text: 'רק רוצה לשמוע מה יש', value: 'just_curious', icon: '🤔' } ] }
                 ];
-                
+
                 this.startConversation();
             }
 
@@ -784,14 +283,8 @@
                 this.scrollToBottom();
             }
 
-            showTyping() {
-                this.typingIndicator.style.display = 'flex';
-                this.scrollToBottom();
-            }
-
-            hideTyping() {
-                this.typingIndicator.style.display = 'none';
-            }
+            showTyping() { this.typingIndicator.style.display = 'flex'; this.scrollToBottom(); }
+            hideTyping() { this.typingIndicator.style.display = 'none'; }
 
             showResponseOptions(step) {
                 const optionsDiv = document.createElement('div');
@@ -807,13 +300,11 @@
                             <div class="option-title">${option.text}</div>
                             ${option.desc ? `<div class="option-desc">${option.desc}</div>` : ''}
                         `;
-                        optionDiv.addEventListener('click', () => {
-                            this.handleOptionClick(option.value, option.text);
-                        });
+                        optionDiv.addEventListener('click', () => { this.handleOptionClick(option.value, option.text); });
                         optionsDiv.appendChild(optionDiv);
                     });
                 } else if (step.responseType === 'multi_select') {
-                    const multiSelectHTML = `
+                    optionsDiv.innerHTML = `
                         <div class="input-section">
                             <div class="checkbox-group">
                                 ${step.options.map(option => `
@@ -826,105 +317,73 @@
                             <button class="continue-btn" id="continueMulti">המשך</button>
                         </div>
                     `;
-                    optionsDiv.innerHTML = multiSelectHTML;
-                    
                     setTimeout(() => {
                         const continueBtn = document.getElementById('continueMulti');
-                        continueBtn.addEventListener('click', () => {
-                            this.handleMultiSelect(step.options);
-                        });
+                        continueBtn.addEventListener('click', () => { this.handleMultiSelect(step.options); });
                     }, 100);
                 } else if (step.responseType === 'slider') {
-                    const sliderHTML = `
+                    optionsDiv.innerHTML = `
                         <div class="input-section">
                             <div class="input-group">
                                 <label class="input-label">${step.sliderConfig.unit}:</label>
-                                <input type="range" class="range-input" id="rangeSlider" 
-                                       min="${step.sliderConfig.min}" 
-                                       max="${step.sliderConfig.max}" 
-                                       value="${step.sliderConfig.default}">
+                                <input type="range" class="range-input" id="rangeSlider" min="${step.sliderConfig.min}" max="${step.sliderConfig.max}" value="${step.sliderConfig.default}">
                                 <div class="range-display" id="rangeDisplay">${step.sliderConfig.default} ${step.sliderConfig.unit}</div>
                             </div>
                             <button class="continue-btn" id="continueBtn">המשך</button>
                         </div>
                     `;
-                    optionsDiv.innerHTML = sliderHTML;
-                    
                     setTimeout(() => {
                         const slider = document.getElementById('rangeSlider');
                         const display = document.getElementById('rangeDisplay');
                         const continueBtn = document.getElementById('continueBtn');
-                        
                         slider.addEventListener('input', (e) => {
-                            const value = e.target.value;
+                            const value = Number(e.target.value);
                             display.textContent = `${value} ${step.sliderConfig.unit}`;
-                            
                             for (const [threshold, label] of Object.entries(step.sliderConfig.labels)) {
-                                if (value >= threshold) {
+                                if (value >= Number(threshold)) {
                                     display.textContent = `${value} ${step.sliderConfig.unit} (${label})`;
                                 }
                             }
                         });
-                        
-                        continueBtn.addEventListener('click', () => {
-                            this.handleOptionClick(slider.value, `${slider.value} ${step.sliderConfig.unit}`);
-                        });
+                        continueBtn.addEventListener('click', () => { this.handleOptionClick(slider.value, `${slider.value} ${step.sliderConfig.unit}`); });
                     }, 100);
                 } else if (step.responseType === 'textarea') {
-                    const textareaHTML = `
+                    optionsDiv.innerHTML = `
                         <div class="input-section">
                             <div class="input-group">
-                                <textarea class="chat-input" id="textareaInput" 
-                                        placeholder="${step.placeholder}" rows="4"></textarea>
+                                <textarea class="chat-input" id="textareaInput" placeholder="${step.placeholder}" rows="4"></textarea>
                             </div>
                             <button class="continue-btn" id="continueTextarea">המשך</button>
                         </div>
                     `;
-                    optionsDiv.innerHTML = textareaHTML;
-                    
                     setTimeout(() => {
                         const textarea = document.getElementById('textareaInput');
                         const continueBtn = document.getElementById('continueTextarea');
-                        
                         continueBtn.addEventListener('click', () => {
                             const value = textarea.value.trim();
                             this.handleOptionClick(value || 'לא צוין', value || 'לא צוין');
                         });
                     }, 100);
                 } else if (step.responseType === 'form') {
-                    const formHTML = `
+                    optionsDiv.innerHTML = `
                         <div class="input-section">
-                            ${step.fields.map(field => {
-                                if (field.type === 'textarea') {
-                                    return `
-                                        <div class="input-group">
-                                            <label class="input-label">${field.label}</label>
-                                            <textarea class="chat-input" name="${field.name}" 
-                                                    placeholder="${field.placeholder}" 
-                                                    ${field.required ? 'required' : ''} rows="3"></textarea>
-                                        </div>
-                                    `;
-                                } else {
-                                    return `
-                                        <div class="input-group">
-                                            <label class="input-label">${field.label}</label>
-                                            <input type="${field.type}" class="chat-input" name="${field.name}" 
-                                                   placeholder="${field.placeholder}" 
-                                                   ${field.required ? 'required' : ''}>
-                                        </div>
-                                    `;
-                                }
-                            }).join('')}
+                            ${step.fields.map(field => field.type === 'textarea' ? `
+                                <div class="input-group">
+                                    <label class="input-label">${field.label}</label>
+                                    <textarea class="chat-input" name="${field.name}" placeholder="${field.placeholder}" ${field.required ? 'required' : ''} rows="3"></textarea>
+                                </div>
+                            ` : `
+                                <div class="input-group">
+                                    <label class="input-label">${field.label}</label>
+                                    <input type="${field.type}" class="chat-input" name="${field.name}" placeholder="${field.placeholder}" ${field.required ? 'required' : ''}>
+                                </div>
+                            `).join('')}
                             <button class="continue-btn" id="submitForm">שלח פרטים</button>
                         </div>
                     `;
-                    optionsDiv.innerHTML = formHTML;
-                    
                     setTimeout(() => {
                         const submitBtn = document.getElementById('submitForm');
-                        submitBtn.addEventListener('click', () => {
-                            this.handleFormSubmit(step.fields);
-                        });
+                        submitBtn.addEventListener('click', () => { this.handleFormSubmit(step.fields); });
                     }, 100);
                 }
 
@@ -935,37 +394,27 @@
             handleOptionClick(value, displayText) {
                 this.userResponses[this.conversationFlow[this.currentStep].id] = value;
                 this.addUserMessage(displayText);
-                
                 const currentOptions = document.getElementById('currentOptions');
-                if (currentOptions) {
-                    currentOptions.remove();
-                }
-                
+                if (currentOptions) currentOptions.remove();
                 this.currentStep++;
                 this.proceedToNextStep();
             }
 
             handleMultiSelect(options) {
-                const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+                const currentOptions = document.getElementById('currentOptions');
+                const checkboxes = currentOptions ? currentOptions.querySelectorAll('input[type="checkbox"]:checked') : [];
                 const selectedValues = Array.from(checkboxes).map(cb => cb.value);
                 const selectedTexts = selectedValues.map(value => {
                     const option = options.find(opt => opt.value === value);
                     return option ? `${option.icon} ${option.text}` : value;
                 });
-                
                 if (selectedValues.length === 0) {
                     this.addBotMessage('אנא בחרו לפחות אפשרות אחת 😊');
                     return;
                 }
-                
                 this.userResponses[this.conversationFlow[this.currentStep].id] = selectedValues;
                 this.addUserMessage(selectedTexts.join('<br>'));
-                
-                const currentOptions = document.getElementById('currentOptions');
-                if (currentOptions) {
-                    currentOptions.remove();
-                }
-                
+                if (currentOptions) currentOptions.remove();
                 this.currentStep++;
                 this.proceedToNextStep();
             }
@@ -973,38 +422,68 @@
             handleFormSubmit(fields) {
                 const formData = {};
                 let isValid = true;
-                
+                const errorMessages = [];
+
                 fields.forEach(field => {
                     const input = document.querySelector(`[name="${field.name}"]`);
-                    const value = input.value.trim();
-                    
+                    const value = (input.value || '').trim();
+                    input.style.borderColor = 'rgba(139, 95, 191, 0.3)';
+
                     if (field.required && !value) {
                         isValid = false;
                         input.style.borderColor = '#ef4444';
+                        errorMessages.push(`השדה "${field.label}" הוא חובה`);
                         return;
                     }
-                    
+
+                    if (field.name === 'phone' && value) {
+                        let clean = value.replace(/[^\d+]/g, '');
+                        if (clean.startsWith('+972')) { clean = '0' + clean.slice(4); }
+                        clean = clean.replace(/\D/g, '');
+                        if (clean.length < 9 || clean.length > 10) {
+                            isValid = false;
+                            input.style.borderColor = '#ef4444';
+                            errorMessages.push('מספר הטלפון לא תקין (ישראל)');
+                        } else {
+                            formData[field.name] = clean;
+                            return;
+                        }
+                    }
+
+                    if (field.name === 'email' && value) {
+                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        if (!emailRegex.test(value)) {
+                            isValid = false;
+                            input.style.borderColor = '#ef4444';
+                            errorMessages.push('כתובת האימייל לא תקינה');
+                        }
+                    }
+
+                    if (field.name === 'website' && value) {
+                        const urlRegex = /^(https?:\/\/)?([a-z0-9-]+\.)+[a-z]{2,}(\/\S*)?$/i;
+                        if (!urlRegex.test(value)) {
+                            isValid = false;
+                            input.style.borderColor = '#ef4444';
+                            errorMessages.push('כתובת האתר לא תקינה');
+                        }
+                    }
+
                     formData[field.name] = value;
-                    input.style.borderColor = 'rgba(139, 95, 191, 0.3)';
                 });
-                
+
                 if (!isValid) {
-                    this.addBotMessage('אופס! יש כמה שדות חובה שצריך למלא 😅');
+                    this.addBotMessage(`אופס! יש כמה בעיות בפרטים: 😅\n\n• ${errorMessages.join('\n• ')}\n\nאנא תקנו ונסו שוב.`);
                     return;
                 }
-                
+
                 this.userResponses.contactInfo = formData;
-                
+
                 let displayText = `שם: ${formData.owner_name}\nשם המתחם: ${formData.property_name}\nטלפון: ${formData.phone}\nאימייל: ${formData.email}`;
                 if (formData.website) displayText += `\nאתר: ${formData.website}`;
-                
                 this.addUserMessage(displayText);
-                
+
                 const currentOptions = document.getElementById('currentOptions');
-                if (currentOptions) {
-                    currentOptions.remove();
-                }
-                
+                if (currentOptions) currentOptions.remove();
                 this.currentStep++;
                 this.proceedToNextStep();
             }
@@ -1015,18 +494,58 @@
                     this.updateProgress();
                     setTimeout(() => {
                         this.addBotMessage(nextStep.botMessage);
-                        setTimeout(() => {
-                            this.showResponseOptions(nextStep);
-                        }, 1500);
+                        setTimeout(() => { this.showResponseOptions(nextStep); }, 1500);
                     }, 500);
                 } else {
                     this.generateFinalMessage();
                 }
             }
 
+            createWhatsAppMessage() {
+                const responses = this.userResponses;
+                const contact = responses.contactInfo || {};
+                let message = `🏡 בקשה להצטרפות לרשת MULTIBRAWN\n\n`;
+                message += `👤 פרטי הבעלים:\n`;
+                message += `• שם: ${contact.owner_name}\n`;
+                message += `• טלפון: ${contact.phone}\n`;
+                message += `• אימייל: ${contact.email}\n`;
+                if (contact.website) message += `• אתר: ${contact.website}\n`;
+                message += `\n🏡 פרטי המתחם:\n`;
+                message += `• שם המתחם: ${contact.property_name}\n`;
+                const propertyTypes = { 'zimmer': 'צימר רומנטי', 'villa': 'וילה פרטית', 'apartment': 'דירת נופש', 'boutique_hotel': 'מלון בוטיק', 'event_hall': 'אולם אירועים', 'event_garden': 'גן אירועים', 'other': 'אחר' };
+                message += `• סוג נכס: ${propertyTypes[responses.property_type] || responses.property_type}\n`;
+                const locations = { 'north': 'צפון (גליל, גולן, חיפה)', 'center': 'מרכז (תל אביב, רמת גן)', 'jerusalem': 'ירושלים והסביבה', 'south': 'דרום (באר שבע, אילת, נגב)', 'sharon': 'שרון (נתניה, כפר סבא)', 'shephelah': 'שפלה (רחובות, רמלה)' };
+                message += `• מיקום: ${locations[responses.location] || responses.location}\n`;
+                if (responses.capacity) { message += `• קיבולת: ${responses.capacity} אנשים\n`; }
+                if (responses.target_audience && responses.target_audience.length > 0) {
+                    const audienceMap = { 'couples': 'זוגות רומנטיים', 'families': 'משפחות עם ילדים', 'friends': 'קבוצות חברים', 'religious': 'קהל דתי', 'corporate': 'אירועי חברה', 'weddings': 'חתונות', 'bar_mitzvah': 'בר/בת מצווה', 'private_events': 'אירועים פרטיים' };
+                    const audiences = responses.target_audience.map(aud => audienceMap[aud] || aud);
+                    message += `• קהל יעד: ${audiences.join(', ')}\n`;
+                }
+                if (responses.age_groups && responses.age_groups.length > 0) {
+                    const ageMap = { 'young_couples': 'זוגות צעירים (20-35)', 'young_families': 'משפחות עם ילדים קטנים', 'teen_families': 'משפחות עם בני נוער', 'middle_age': 'דור הביניים (35-55)', 'seniors': 'גיל הזהב (55+)', 'all_ages': 'מתאים לכל הגילאים' };
+                    const ages = responses.age_groups.map(age => ageMap[age] || age);
+                    message += `• קבוצות גיל: ${ages.join(', ')}\n`;
+                }
+                if (responses.amenities && responses.amenities.length > 0) {
+                    const amenityMap = { 'pool': 'בריכה פרטית', 'jacuzzi': 'ג\'קוזי', 'garden': 'גינה/מרפסת', 'kitchen': 'מטבח מאובזר', 'bbq': 'מתקני ברביקיו', 'parking': 'חניה פרטית', 'ac': 'מיזוג אוויר', 'wifi': 'WiFi מהיר', 'sound': 'מערכת שמע', 'gym': 'חדר כושר', 'billiard': 'שולחן ביליארד', 'accessible': 'נגישות לנכים' };
+                    const amenities = responses.amenities.map(am => amenityMap[am] || am);
+                    message += `• מתקנים: ${amenities.join(', ')}\n`;
+                }
+                if (responses.special_features && responses.special_features !== 'לא צוין') {
+                    message += `• מה מיוחד במתחם: ${responses.special_features}\n`;
+                }
+                if (responses.partnership_interest && responses.partnership_interest.length > 0) {
+                    const interestMap = { 'more_bookings': 'קבלת יותר הזמנות', 'social_exposure': 'חשיפה ברשתות החברתיות', 'website': 'אתר אינטרנט מקצועי', 'calendar_management': 'ניהול לוח שנה', 'digital_marketing': 'שיווק דיגיטלי מתקדם', 'photography': 'צילומים מקצועיים', 'business_consulting': 'ייעוץ עסקי', 'just_curious': 'רק רוצה לשמוע מה יש' };
+                    const interests = responses.partnership_interest.map(int => interestMap[int] || int);
+                    message += `\n💼 מעוניין ב: ${interests.join(', ')}\n`;
+                }
+                message += `\n🤝 מחכה לשמוע מכם לגבי אפשרויות שיתוף הפעולה!`;
+                return message;
+            }
+
             generateFinalMessage() {
                 this.addBotMessage('מושלם! תנו לי רגע לכתוב עבורכם סיכום מפורט... ✨');
-                
                 setTimeout(() => {
                     const message = this.createWhatsAppMessage();
                     const finalSection = document.createElement('div');
@@ -1034,12 +553,9 @@
                     finalSection.innerHTML = `
                         <div class="whatsapp-icon">💬</div>
                         <h3 class="whatsapp-title">הבקשה שלכם מוכנה!</h3>
-                        <p style="color: var(--text-muted); margin-bottom: 1rem;">
-                            הנה סיכום המידע על המתחם שלכם - נשלח ישירות לצוות MULTIBRAWN
-                        </p>
+                        <p style="color: var(--text-muted); margin-bottom: 1rem;">הנה סיכום המידע על המתחם שלכם - נשלח ישירות לצוות MULTIBRAWN</p>
                         <div class="whatsapp-preview">${message.replace(/\n/g, '<br>')}</div>
-                        <a href="https://wa.me/972523983394?text=${encodeURIComponent(message)}" 
-                           class="whatsapp-btn" target="_blank">
+                        <a href="https://wa.me/972523983394?text=${encodeURIComponent(message)}" class="whatsapp-btn" target="_blank">
                             <i class="fab fa-whatsapp"></i>
                             שלח ב-WhatsApp
                         </a>
@@ -1049,141 +565,44 @@
                 }, 2000);
             }
 
-            createWhatsAppMessage() {
-                const responses = this.userResponses;
-                const contact = responses.contactInfo || {};
-                
-                let message = `🏡 בקשה להצטרפות לרשת MULTIBRAWN\n\n`;
-                message += `👤 פרטי הבעלים:\n`;
-                message += `• שם: ${contact.owner_name}\n`;
-                message += `• טלפון: ${contact.phone}\n`;
-                message += `• אימייל: ${contact.email}\n`;
-                if (contact.website) message += `• אתר: ${contact.website}\n`;
-                
-                message += `\n🏡 פרטי המתחם:\n`;
-                message += `• שם המתחם: ${contact.property_name}\n`;
-
-                // Property type
-                const propertyTypes = {
-                    'zimmer': 'צימר רומנטי',
-                    'villa': 'וילה פרטית',
-                    'apartment': 'דירת נופש',
-                    'boutique_hotel': 'מלון בוטיק',
-                    'event_hall': 'אולם אירועים',
-                    'event_garden': 'גן אירועים',
-                    'other': 'אחר'
-                };
-                message += `• סוג נכס: ${propertyTypes[responses.property_type] || responses.property_type}\n`;
-
-                // Location
-                const locations = {
-                    'north': 'צפון (גליל, גולן, חיפה)',
-                    'center': 'מרכז (תל אביב, רמת גן)',
-                    'jerusalem': 'ירושלים והסביבה',
-                    'south': 'דרום (באר שבע, אילת, נגב)',
-                    'sharon': 'שרון (נתניה, כפר סבא)',
-                    'shephelah': 'שפלה (רחובות, רמלה)'
-                };
-                message += `• מיקום: ${locations[responses.location] || responses.location}\n`;
-
-                // Capacity
-                if (responses.capacity) {
-                    message += `• קיבולת: ${responses.capacity} אנשים\n`;
-                }
-
-                // Target audience
-                if (responses.target_audience && responses.target_audience.length > 0) {
-                    const audienceMap = {
-                        'couples': 'זוגות רומנטיים',
-                        'families': 'משפחות עם ילדים',
-                        'friends': 'קבוצות חברים',
-                        'religious': 'קהל דתי',
-                        'corporate': 'אירועי חברה',
-                        'weddings': 'חתונות',
-                        'bar_mitzvah': 'בר/בת מצווה',
-                        'private_events': 'אירועים פרטיים'
-                    };
-                    const audiences = responses.target_audience.map(aud => audienceMap[aud] || aud);
-                    message += `• קהל יעד: ${audiences.join(', ')}\n`;
-                }
-
-                // Age groups
-                if (responses.age_groups && responses.age_groups.length > 0) {
-                    const ageMap = {
-                        'young_couples': 'זוגות צעירים (20-35)',
-                        'young_families': 'משפחות עם ילדים קטנים',
-                        'teen_families': 'משפחות עם בני נוער',
-                        'middle_age': 'דור הביניים (35-55)',
-                        'seniors': 'גיל הזהב (55+)',
-                        'all_ages': 'מתאים לכל הגילאים'
-                    };
-                    const ages = responses.age_groups.map(age => ageMap[age] || age);
-                    message += `• קבוצות גיל: ${ages.join(', ')}\n`;
-                }
-
-                // Amenities
-                if (responses.amenities && responses.amenities.length > 0) {
-                    const amenityMap = {
-                        'pool': 'בריכה פרטית',
-                        'jacuzzi': 'ג\'קוזי',
-                        'garden': 'גינה/מרפסת',
-                        'kitchen': 'מטבח מאובזר',
-                        'bbq': 'מתקני ברביקיו',
-                        'parking': 'חניה פרטית',
-                        'ac': 'מיזוג אוויר',
-                        'wifi': 'WiFi מהיר',
-                        'sound': 'מערכת שמע',
-                        'gym': 'חדר כושר',
-                        'billiard': 'שולחן ביליארד',
-                        'accessible': 'נגישות לנכים'
-                    };
-                    const amenities = responses.amenities.map(am => amenityMap[am] || am);
-                    message += `• מתקנים: ${amenities.join(', ')}\n`;
-                }
-
-                // Special features
-                if (responses.special_features && responses.special_features !== 'לא צוין') {
-                    message += `• מה מיוחד במתחם: ${responses.special_features}\n`;
-                }
-
-                // Partnership interests
-                if (responses.partnership_interest && responses.partnership_interest.length > 0) {
-                    const interestMap = {
-                        'more_bookings': 'קבלת יותר הזמנות',
-                        'social_exposure': 'חשיפה ברשתות החברתיות',
-                        'website': 'אתר אינטרנט מקצועי',
-                        'calendar_management': 'ניהול לוח שנה',
-                        'digital_marketing': 'שיווק דיגיטלי מתקדם',
-                        'photography': 'צילומים מקצועיים',
-                        'business_consulting': 'ייעוץ עסקי',
-                        'just_curious': 'רק רוצה לשמוע מה יש'
-                    };
-                    const interests = responses.partnership_interest.map(int => interestMap[int] || int);
-                    message += `\n💼 מעוניין ב: ${interests.join(', ')}\n`;
-                }
-
-                message += `\n🤝 מחכה לשמוע מכם לגבי אפשרויות שיתוף הפעולה!`;
-
-                return message;
-            }
-
             updateProgress() {
-                const totalSteps = 9;
+                const totalSteps = this.conversationFlow.length;
                 const progress = (this.currentStep / totalSteps) * 100;
                 this.progressFill.style.width = progress + '%';
                 this.progressText.textContent = `שלב ${this.currentStep + 1} מתוך ${totalSteps}`;
             }
 
-            scrollToBottom() {
-                setTimeout(() => {
-                    const chatMessages = document.getElementById('chatMessages');
-                    chatMessages.scrollTop = chatMessages.scrollHeight;
-                }, 100);
-            }
+            scrollToBottom() { setTimeout(() => { const chatMessages = document.getElementById('chatMessages'); chatMessages.scrollTop = chatMessages.scrollHeight; }, 100); }
+        }
+
+        function setupMobileMenu() {
+            const toggle = document.getElementById('mobileToggle');
+            const menu = document.querySelector('.nav-menu');
+            if (toggle && menu) { toggle.addEventListener('click', () => { menu.classList.toggle('active'); }); }
+        }
+
+        function setupSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+                });
+            });
+        }
+
+        function setupScrollEffects() {
+            window.addEventListener('scroll', () => {
+                const nav = document.querySelector('.header-nav');
+                nav.style.background = (window.scrollY > 100) ? 'rgba(26, 11, 46, 0.98)' : 'rgba(26, 11, 46, 0.95)';
+            });
         }
 
         document.addEventListener('DOMContentLoaded', function() {
             new PropertyOwnerChat();
+            setupMobileMenu();
+            setupSmoothScrolling();
+            setupScrollEffects();
         });
     </script>
 </body>
