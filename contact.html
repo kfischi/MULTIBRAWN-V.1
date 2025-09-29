@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>הצטרפו לרשת MULTIBRAWN - בעלי מתחמים</title>
-  <meta name="description" content="יש לכם צימר, וילה, דירת נופש או מקום לאירועים? הצטרפו לרשת MULTIBRAWN וקבלו יותר הזמנות!" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-  <style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הצטרפו לרשת MULTIBRAWN - בעלי מתחמים</title>
+    <meta name="description" content="יש לכם צימר, וילה, דירת נופש או מקום לאירועים? הצטרפו לרשת MULTIBRAWN וקבלו יותר הזמנות!">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
         :root {
             --primary-bg: #1a0b2e;
             --secondary-bg: #16213e;
@@ -98,383 +99,555 @@
         .chat-input:focus { outline: none; border-color: var(--cta-turquoise); box-shadow: 0 0 0 3px rgba(64, 224, 208, 0.1); }
         .chat-input::placeholder { color: var(--text-muted); }
         .checkbox-group { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.5rem; margin-top: 1rem; }
-        .checkbox-item { display: flex; align-items: center; gap: 0.5rem; padding: 0.8rem; background: rgba(15, 12, 41, 0.5);
+        .checkbox-item { display: flex; align-items: center; gap: 0.5rem; padding: 0.8rem; background: rgba(15, 12, 41, 0.5); border-radius: 8px; cursor: pointer; transition: all 0.3s ease; border: 1px solid rgba(139, 95, 191, 0.2); }
+        .checkbox-item:hover { background: rgba(139, 95, 191, 0.2); border-color: var(--cta-turquoise); }
+        .checkbox-item input[type="checkbox"] { accent-color: var(--cta-turquoise); }
+        .range-input { width: 100%; margin: 1rem 0; -webkit-appearance: none; height: 6px; background: rgba(139, 95, 191, 0.3); border-radius: 3px; outline: none; }
+        .range-input::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; background: var(--cta-turquoise); border-radius: 50%; cursor: pointer; box-shadow: 0 4px 12px rgba(64, 224, 208, 0.4); }
+        .range-display { text-align: center; font-size: 1.2rem; font-weight: 700; color: var(--cta-turquoise); margin: 0.5rem 0; }
+        .continue-btn { background: linear-gradient(135deg, var(--cta-turquoise), var(--light-purple)); color: var(--text-light); border: none; padding: 12px 30px; border-radius: 25px; font-weight: 700; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 8px 25px rgba(64, 224, 208, 0.3); margin-top: 1rem; }
+        .continue-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 35px rgba(64, 224, 208, 0.5); }
+        .continue-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+        .whatsapp-section { text-align: center; padding: 2rem; background: linear-gradient(135deg, rgba(37, 211, 102, 0.1), rgba(139, 95, 191, 0.1)); border-radius: 20px; margin-top: 2rem; }
+        .whatsapp-icon { font-size: 4rem; color: #25d366; margin-bottom: 1rem; animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-10px); } 60% { transform: translateY(-5px); } }
+        .whatsapp-title { font-family: var(--font-heading); font-size: 2rem; margin-bottom: 1rem; color: var(--text-light); }
+        .whatsapp-preview { background: rgba(15, 12, 41, 0.8); border: 1px solid rgba(139, 95, 191, 0.3); border-radius: 15px; padding: 1.5rem; margin: 1.5rem 0; text-align: right; font-family: 'Courier New', monospace; line-height: 1.8; max-height: 300px; overflow-y: auto; }
+        .whatsapp-btn { background: #25d366; color: white; padding: 18px 40px; border: none; border-radius: 50px; font-size: 1.2rem; font-weight: 700; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4); display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
+        .whatsapp-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(37, 211, 102, 0.6); }
+        .mobile-menu-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 10px; }
+        .hamburger-line { width: 30px; height: 3px; background: white; transition: 0.3s; border-radius: 2px; }
+        .footer { background: var(--primary-bg); border-top: 1px solid rgba(124, 58, 237, 0.2); padding: 4rem 2rem 2rem; text-align: center; }
+        .footer-content { max-width: 1200px; margin: 0 auto; }
+        .footer-social { display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem; }
+        .footer-social a { color: var(--text-muted); font-size: 1.5rem; transition: all 0.3s ease; }
+        .footer-social a:hover { color: var(--accent-purple); transform: translateY(-2px); }
+        .floating-whatsapp { position: fixed; bottom: 30px; right: 30px; width: 70px; height: 70px; background: linear-gradient(135deg, #25d366, #128c7e); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4); z-index: 1000; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); text-decoration: none; }
+        .floating-whatsapp:hover { transform: scale(1.15); box-shadow: 0 15px 40px rgba(37, 211, 102, 0.6); }
+        @media (max-width: 768px) {
+            .mobile-menu-toggle { display: flex; }
+            .nav-menu { position: fixed; right: -100%; top: 80px; flex-direction: column; background: rgba(26, 11, 46, 0.98); width: 100%; padding: 20px; transition: 0.3s; border-top: 1px solid rgba(124, 58, 237, 0.3); }
+            .nav-menu.active { right: 0; }
+            .nav-menu li { padding: 15px 0; border-bottom: 1px solid rgba(124, 58, 237, 0.2); width: 100%; text-align: center; }
+            .chat-messages { height: 400px; }
+            .response-options { grid-template-columns: 1fr; }
+            .checkbox-group { grid-template-columns: 1fr; }
+        }
+        .chat-messages::-webkit-scrollbar { width: 8px; }
+        .chat-messages::-webkit-scrollbar-track { background: rgba(15, 12, 41, 0.5); }
+        .chat-messages::-webkit-scrollbar-thumb { background: rgba(139, 95, 191, 0.5); border-radius: 4px; }
+        .chat-messages::-webkit-scrollbar-thumb:hover { background: rgba(139, 95, 191, 0.7); }
+    </style>
 </head>
 <body>
-  <header class="header-nav">
-    <nav class="nav-content">
-      <a href="index.html" class="logo">Multibrawn</a>
-      <ul class="nav-menu" id="navMenu">
-        <li><a href="index.html">דף הבית</a></li>
-        <li><a href="about.html">אודות</a></li>
-        <li><a href="gallery.html">גלריה</a></li>
-        <li><a href="marketing.html">שיווק דיגיטלי</a></li>
-        <li><a href="contact.html">צור קשר</a></li>
-        <li><a href="contact.html" class="cta-button">קבלו הצעה</a></li>
-      </ul>
-      <button class="mobile-menu-toggle" id="mobileToggle">
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-      </button>
-    </nav>
-  </header>
+    <!-- Navigation -->
+    <header class="header-nav">
+        <nav class="nav-content">
+            <a href="index.html" class="logo">Multibrawn</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">דף הבית</a></li>
+                <li><a href="about.html">אודות</a></li>
+                <li><a href="gallery.html">גלריה</a></li>
+                <li><a href="marketing.html">שיווק דיגיטלי</a></li>
+                <li><a href="contact.html">צור קשר</a></li>
+                <li><a href="contact.html" class="cta-button">קבלו הצעה</a></li>
+            </ul>
+            <button class="mobile-menu-toggle" id="mobileToggle">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </nav>
+    </header>
 
-  <section class="hero">
-    <div class="hero-content">
-      <div class="hero-text">
-        <h1 class="hero-title">בעלי מתחמים - בואו לעבוד איתנו</h1>
-        <h2 class="hero-subtitle">הצטרפו למשפחת MULTIBRAWN והתחילו להרוויח יותר!</h2>
-        <p class="hero-description">יש לכם צימר, וילה, דירת נופש או מקום לאירועים?<br />בואו נעזור לכם להגדיל את ההכנסות ולהגיע ליותר לקוחות איכותיים</p>
-        <a href="#chat" class="hero-cta">התחילו עכשיו!</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="chat-section" id="chat">
-    <div class="chat-container">
-      <div class="chat-header">
-        <div class="chat-title">השאלון החכם שלנו</div>
-        <div class="chat-subtitle">ספרו לנו על המתחם שלכם ונתחיל לעבוד יחד</div>
-        <button id="restartBtn" style="background: var(--accent-purple); color: white; border: none; padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; cursor: pointer; margin-top: 10px;">התחל מחדש</button>
-      </div>
-      <div class="progress-container">
-        <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-        <div class="progress-text" id="progressText">שלב 1 מתוך 10</div>
-      </div>
-      <div class="chat-messages" id="chatMessages">
-        <div class="messages-container" id="messagesContainer">
-          <div class="typing-indicator" id="typingIndicator">
-            <div class="message-avatar">🏡</div>
-            <div class="typing-dots">
-              <div class="typing-dot"></div>
-              <div class="typing-dot"></div>
-              <div class="typing-dot"></div>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">בעלי מתחמים - בואו לעבוד איתנו</h1>
+                <h2 class="hero-subtitle">הצטרפו למשפחת MULTIBRAWN והתחילו להרוויח יותר!</h2>
+                <p class="hero-description">
+                    יש לכם צימר, וילה, דירת נופש או מקום לאירועים?<br>
+                    בואו נעזור לכם להגדיל את ההכנסות ולהגיע ליותר לקוחות איכותיים
+                </p>
+                <a href="#chat" class="hero-cta">התחילו עכשיו!</a>
             </div>
-            <span>כותב...</span>
-          </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <footer class="footer">
-    <div class="footer-content">
-      <div class="footer-social">
-        <a href="#" title="פייסבוק"><i class="fab fa-facebook"></i></a>
-        <a href="#" title="אינסטגרם"><i class="fab fa-instagram"></i></a>
-        <a href="#" title="לינקדאין"><i class="fab fa-linkedin"></i></a>
-      </div>
-      <p style="color: var(--text-muted);">© 2024 Multibrawn. כל הזכויות שמורות.</p>
-    </div>
-  </footer>
-
-  <a href="https://wa.me/972523983394?text=שלום, אני מעוניין לשמוע על אפשרויות שיתוף פעולה" class="floating-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
-
-  <script>
-    class PropertyOwnerChat {
-      constructor() {
-        this.currentStep = 0;
-        this.userResponses = {};
-        this.messagesContainer = document.getElementById('messagesContainer');
-        this.typingIndicator = document.getElementById('typingIndicator');
-        this.progressFill = document.getElementById('progressFill');
-        this.progressText = document.getElementById('progressText');
-
-        this.conversationFlow = [
-          { id: 'welcome', botMessage: 'שלום וברכה! 🏡\n\nמעוניינים להצטרף למשפחת MULTIBRAWN ולפרסם את הנכס שלכם?\n\nיש לכם צימר, וילה, דירת נופש או מקום לאירועים? בואו נכיר ונראה איך אנחנו יכולים לעבוד ביחד ולעזור לכם להגדיל את ההכנסות!', responseType: 'options', options: [ { text: 'כן, יש לנו מתחם!', value: 'yes', icon: '✅' }, { text: 'אני רק מתעניין', value: 'curious', icon: '🤔' }, { text: 'בתכנון להקים מתחם', value: 'planning', icon: '📋' } ] },
-          { id: 'property_type', botMessage: 'מעולה! 🌟 \n\nבואו נתחיל להכיר את המתחם שלכם.\nאיזה סוג נכס יש לכם?', responseType: 'options', options: [ { text: 'צימר רומנטי', value: 'zimmer', icon: '💕', desc: 'לזוגות ומשפחות קטנות' }, { text: 'וילה פרטית', value: 'villa', icon: '🏡', desc: 'עם בריכה וגינה' }, { text: 'דירת נופש', value: 'apartment', icon: '🏢', desc: 'במרכז העיר או ליד הים' }, { text: 'מלון בוטיק', value: 'boutique_hotel', icon: '🏨', desc: 'מלון קטן ואינטימי' }, { text: 'אולם אירועים', value: 'event_hall', icon: '🎉', desc: 'לחתונות ואירועים' }, { text: 'גן אירועים', value: 'event_garden', icon: '🌳', desc: 'אירועים בטבע' }, { text: 'משהו אחר', value: 'other', icon: '🏘️', desc: 'ספרו לנו בהמשך' } ] },
-          { id: 'location', botMessage: 'נהדר! 📍\n\nבאיזה אזור בארץ נמצא המתחם שלכם?', responseType: 'options', options: [ { text: 'צפון', value: 'north', icon: '🏔️', desc: 'גליל, גולן, חיפה והקריות' }, { text: 'מרכז', value: 'center', icon: '🏙️', desc: 'תל אביב, רמת גן, הרצליה' }, { text: 'ירושלים והסביבה', value: 'jerusalem', icon: '🕌', desc: 'ירושלים ויהודה ושומרון' }, { text: 'דרום', value: 'south', icon: '🏜️', desc: 'באר שבע, אילת, הנגב' }, { text: 'שרון', value: 'sharon', icon: '🌾', desc: 'נתניה, כפר סבא, רעננה' }, { text: 'שפלה', value: 'shephelah', icon: '🌻', desc: 'רחובות, רמלה, בית שמש' } ] },
-          { id: 'target_audience', botMessage: 'מצוין! 👥\n\nלמי המתחם שלכם הכי מתאים? (תוכלו לבחור כמה אפשרויות)', responseType: 'multi_select', options: [ { text: 'זוגות רומנטיים', value: 'couples', icon: '💕' }, { text: 'משפחות עם ילדים', value: 'families', icon: '👨‍👩‍👧‍👦' }, { text: 'קבוצות חברים', value: 'friends', icon: '👥' }, { text: 'קהל דתי', value: 'religious', icon: '✡️' }, { text: 'אירועי חברה', value: 'corporate', icon: '💼' }, { text: 'חתונות', value: 'weddings', icon: '💒' }, { text: 'בר/בת מצווה', value: 'bar_mitzvah', icon: '🎭' }, { text: 'אירועים פרטיים', value: 'private_events', icon: '🎉' } ] },
-          { id: 'capacity', botMessage: 'עכשיו בואו נדבר על הקיבולת 📊\n\nכמה אנשים יכולים להתארח במתחם בו זמנית?', responseType: 'slider', sliderConfig: { min: 2, max: 500, default: 20, unit: 'אנשים', labels: { 2: 'זוג', 6: 'משפחה קטנה', 12: 'קבוצה קטנה', 30: 'אירוע קטן', 80: 'אירוע בינוני', 150: 'אירוע גדול', 300: 'כנס גדול', 500: 'אירוע ענק' } } },
-          { id: 'amenities', botMessage: 'איזה כיף! ✨\n\nאיזה מתקנים ושירותים יש לכם? (סמנו את כל מה שחל)', responseType: 'multi_select', options: [ { text: 'בריכה פרטית', value: 'pool', icon: '🏊‍♂️' }, { text: 'ג\'קוזי', value: 'jacuzzi', icon: '🛁' }, { text: 'גינה/מרפסת', value: 'garden', icon: '🌳' }, { text: 'מטבח מאובזר', value: 'kitchen', icon: '🍳' }, { text: 'מתקני ברביקיו', value: 'bbq', icon: '🔥' }, { text: 'חניה פרטית', value: 'parking', icon: '🚗' }, { text: 'מיזוג אוויר', value: 'ac', icon: '❄️' }, { text: 'WiFi מהיר', value: 'wifi', icon: '📶' }, { text: 'מערכת שמע', value: 'sound', icon: '🔊' }, { text: 'חדר כושר', value: 'gym', icon: '💪' }, { text: 'שולחן ביליארד', value: 'billiard', icon: '🎱' }, { text: 'נגישות לנכים', value: 'accessible', icon: '♿' } ] },
-          { id: 'age_groups', botMessage: 'כמעט סיימנו! 🎯\n\nלאיזה קבוצות גיל המקום הכי מתאים?', responseType: 'multi_select', options: [ { text: 'זוגות צעירים (20-35)', value: 'young_couples', icon: '💕' }, { text: 'משפחות עם ילדים קטנים', value: 'young_families', icon: '👶' }, { text: 'משפחות עם בני נוער', value: 'teen_families', icon: '👨‍👩‍👧‍👦' }, { text: 'דור הביניים (35-55)', value: 'middle_age', icon: '👫' }, { text: 'גיל הזהב (55+)', value: 'seniors', icon: '👴👵' }, { text: 'מתאים לכל הגילאים', value: 'all_ages', icon: '👥' } ] },
-          { id: 'special_features', botMessage: 'מעולה! 🌟\n\nיש למתחם שלכם משהו מיוחד שמבדיל אותו מאחרים? (אופציונלי)', responseType: 'textarea', placeholder: 'למשל: נוף מיוחד, קרבה לאטרקציות, עיצוב ייחודי, היסטוריה מעניינת...' },
-          { id: 'contact_info', botMessage: 'נפלא! עכשיו הפרטים שלכם 📞\n\nכדי שנוכל ליצור קשר ולספר לכם על האפשרויות לשיתוף פעולה:', responseType: 'form', fields: [ { type: 'text', name: 'owner_name', label: 'השם שלכם', placeholder: 'איך קוראים לכם?', required: true }, { type: 'text', name: 'property_name', label: 'שם המתחם', placeholder: 'איך קוראים למקום?', required: true }, { type: 'tel', name: 'phone', label: 'טלפון', placeholder: '052-123-4567', required: true }, { type: 'email', name: 'email', label: 'אימייל', placeholder: 'your@email.com', required: true }, { type: 'url', name: 'website', label: 'אתר/פייסבוק (אופציונלי)', placeholder: 'https://...', required: false } ] },
-          { id: 'partnership_interest', botMessage: 'כמעט גמרנו! 🤝\n\nמה הכי מעניין אתכם בשיתוף פעולה איתנו?', responseType: 'multi_select', options: [ { text: 'קבלת יותר הזמנות', value: 'more_bookings', icon: '📈' }, { text: 'חשיפה ברשתות החברתיות', value: 'social_exposure', icon: '📱' }, { text: 'אתר אינטרנט מקצועי', value: 'website', icon: '💻' }, { text: 'ניהול לוח שנה', value: 'calendar_management', icon: '📅' }, { text: 'שיווק דיגיטלי מתקדם', value: 'digital_marketing', icon: '🎯' }, { text: 'צילומים מקצועיים', value: 'photography', icon: '📸' }, { text: 'ייעוץ עסקי', value: 'business_consulting', icon: '💡' }, { text: 'רק רוצה לשמוע מה יש', value: 'just_curious', icon: '🤔' } ] }
-        ];
-        this.startConversation();
-      }
-
-      startConversation() {
-        setTimeout(() => {
-          this.addBotMessage(this.conversationFlow[0].botMessage);
-          this.showResponseOptions(this.conversationFlow[0]);
-        }, 800);
-        this.updateProgress();
-      }
-
-      addBotMessage(message, delay = 0) {
-        setTimeout(() => {
-          this.showTyping();
-          setTimeout(() => {
-            this.hideTyping();
-            const messageDiv = document.createElement('div');
-            messageDiv.className = 'message bot';
-            messageDiv.innerHTML = `
-              <div class="message-avatar">🏡</div>
-              <div class="message-bubble">${message.replace(/\n/g, '<br>')}</div>
-            `;
-            this.messagesContainer.appendChild(messageDiv);
-            this.scrollToBottom();
-          }, Math.random() * 1200 + 600);
-        }, delay);
-      }
-
-      addUserMessage(message) {
-        const messageDiv = document.createElement('div');
-        messageDiv.className = 'message user';
-        messageDiv.innerHTML = `
-          <div class="message-bubble">${message}</div>
-          <div class="message-avatar">👤</div>
-        `;
-        this.messagesContainer.appendChild(messageDiv);
-        this.scrollToBottom();
-      }
-
-      showTyping(){ this.typingIndicator.style.display = 'flex'; this.scrollToBottom(); }
-      hideTyping(){ this.typingIndicator.style.display = 'none'; }
-
-      showResponseOptions(step){
-        const optionsDiv = document.createElement('div');
-        optionsDiv.className = 'response-options';
-        optionsDiv.id = 'currentOptions';
-
-        // --- Welcome step: only a "start" button ---
-        if (step.id === 'welcome') {
-          optionsDiv.innerHTML = `
-            <div class="input-section" style="text-align:center">
-              <button class="continue-btn" id="startQuiz">התחל בשאלון</button>
+    <!-- Chat -->
+    <section class="chat-section" id="chat">
+        <div class="chat-container">
+            <div class="chat-header">
+                <div class="chat-title">השאלון החכם שלנו</div>
+                $1
+                <button onclick="location.reload()" style="background: var(--accent-purple); color: white; border: none; padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; cursor: pointer; margin-top: 10px;">התחל מחדש<\/button>
             </div>
-          `;
-          this.messagesContainer.appendChild(optionsDiv);
-          this.scrollToBottom();
-          setTimeout(() => {
-            const startBtn = document.getElementById('startQuiz');
-            if (startBtn) {
-              startBtn.addEventListener('click', () => {
-                this.addUserMessage('יאללה, מתחילים!');
-                const co = document.getElementById('currentOptions');
-                if (co) co.remove();
-                this.currentStep++; // move to property_type
-                this.proceedToNextStep();
-              });
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-text" id="progressText">שלב 1 מתוך 10</div>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="messages-container" id="messagesContainer">
+                    <div class="typing-indicator" id="typingIndicator">
+                        <div class="message-avatar">🏡</div>
+                        <div class="typing-dots">
+                            <div class="typing-dot"></div>
+                            <div class="typing-dot"></div>
+                            <div class="typing-dot"></div>
+                        </div>
+                        <span>כותב...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links" style="margin-bottom:1rem;">
+                <a href="privacy.html">מדיניות פרטיות</a>
+                <span style="opacity:.4; margin: 0 .35rem;">·</span>
+                <a href="accessibility.html">הצהרת נגישות</a>
+            </div>
+            <div class="footer-social">
+                <a href="#" title="פייסבוק"><i class="fab fa-facebook"></i></a>
+                <a href="#" title="אינסטגרם"><i class="fab fa-instagram"></i></a>
+                <a href="#" title="לינקדאין"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <p style="color: var(--text-muted); margin-bottom:.4rem;">© 2025 Multibrawn. כל הזכויות שמורות.</p>
+            <p class="footer-credit">האתר נבנה ע"י Multi‑Site – אתרים שבונים עסקים מבית Multibrawn</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/972523983394?text=שלום, אני מעוניין לשמוע על אפשרויות שיתוף פעולה" class="floating-whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        class PropertyOwnerChat {
+            constructor() {
+                this.currentStep = 0;
+                this.userResponses = {};
+                this.messagesContainer = document.getElementById('messagesContainer');
+                this.typingIndicator = document.getElementById('typingIndicator');
+                this.progressFill = document.getElementById('progressFill');
+                this.progressText = document.getElementById('progressText');
+
+                this.conversationFlow = [
+                    { id: 'welcome', botMessage: 'שלום וברכה! 🏡\n\nמעוניינים להצטרף למשפחת MULTIBRAWN ולפרסם את הנכס שלכם?\n\nיש לכם צימר, וילה, דירת נופש או מקום לאירועים? בואו נכיר ונראה איך אנחנו יכולים לעבוד ביחד ולעזור לכם להגדיל את ההכנסות!', responseType: 'options', options: [ { text: 'כן, יש לנו מתחם!', value: 'yes', icon: '✅' }, { text: 'אני רק מתעניין', value: 'curious', icon: '🤔' }, { text: 'בתכנון להקים מתחם', value: 'planning', icon: '📋' } ] },
+                    { id: 'property_type', botMessage: 'מעולה! 🌟 \n\nבואו נתחיל להכיר את המתחם שלכם.\nאיזה סוג נכס יש לכם?', responseType: 'options', options: [ { text: 'צימר רומנטי', value: 'zimmer', icon: '💕', desc: 'לזוגות ומשפחות קטנות' }, { text: 'וילה פרטית', value: 'villa', icon: '🏡', desc: 'עם בריכה וגינה' }, { text: 'דירת נופש', value: 'apartment', icon: '🏢', desc: 'במרכז העיר או ליד הים' }, { text: 'מלון בוטיק', value: 'boutique_hotel', icon: '🏨', desc: 'מלון קטן ואינטימי' }, { text: 'אולם אירועים', value: 'event_hall', icon: '🎉', desc: 'לחתונות ואירועים' }, { text: 'גן אירועים', value: 'event_garden', icon: '🌳', desc: 'אירועים בטבע' }, { text: 'משהו אחר', value: 'other', icon: '🏘️', desc: 'ספרו לנו בהמשך' } ] },
+                    { id: 'location', botMessage: 'נהדר! 📍\n\nבאיזה אזור בארץ נמצא המתחם שלכם?', responseType: 'options', options: [ { text: 'צפון', value: 'north', icon: '🏔️', desc: 'גליל, גולן, חיפה והקריות' }, { text: 'מרכז', value: 'center', icon: '🏙️', desc: 'תל אביב, רמת גן, הרצליה' }, { text: 'ירושלים והסביבה', value: 'jerusalem', icon: '🕌', desc: 'ירושלים ויהודה ושומרון' }, { text: 'דרום', value: 'south', icon: '🏜️', desc: 'באר שבע, אילת, הנגב' }, { text: 'שרון', value: 'sharon', icon: '🌾', desc: 'נתניה, כפר סבא, רעננה' }, { text: 'שפלה', value: 'shephelah', icon: '🌻', desc: 'רחובות, רמלה, בית שמש' } ] },
+                    { id: 'target_audience', botMessage: 'מצוין! 👥\n\nלמי המתחם שלכם הכי מתאים? (תוכלו לבחור כמה אפשרויות)', responseType: 'multi_select', options: [ { text: 'זוגות רומנטיים', value: 'couples', icon: '💕' }, { text: 'משפחות עם ילדים', value: 'families', icon: '👨‍👩‍👧‍👦' }, { text: 'קבוצות חברים', value: 'friends', icon: '👥' }, { text: 'קהל דתי', value: 'religious', icon: '✡️' }, { text: 'אירועי חברה', value: 'corporate', icon: '💼' }, { text: 'חתונות', value: 'weddings', icon: '💒' }, { text: 'בר/בת מצווה', value: 'bar_mitzvah', icon: '🎭' }, { text: 'אירועים פרטיים', value: 'private_events', icon: '🎉' } ] },
+                    { id: 'capacity', botMessage: 'עכשיו בואו נדבר על הקיבולת 📊\n\nכמה אנשים יכולים להתארח במתחם בו זמנית?', responseType: 'slider', sliderConfig: { min: 2, max: 500, default: 20, unit: 'אנשים', labels: { 2: 'זוג', 6: 'משפחה קטנה', 12: 'קבוצה קטנה', 30: 'אירוע קטן', 80: 'אירוע בינוני', 150: 'אירוע גדול', 300: 'כנס גדול', 500: 'אירוע ענק' } } },
+                    { id: 'amenities', botMessage: 'איזה כיף! ✨\n\nאיזה מתקנים ושירותים יש לכם? (סמנו את כל מה שחל)', responseType: 'multi_select', options: [ { text: 'בריכה פרטית', value: 'pool', icon: '🏊‍♂️' }, { text: 'ג\'קוזי', value: 'jacuzzi', icon: '🛁' }, { text: 'גינה/מרפסת', value: 'garden', icon: '🌳' }, { text: 'מטבח מאובזר', value: 'kitchen', icon: '🍳' }, { text: 'מתקני ברביקיו', value: 'bbq', icon: '🔥' }, { text: 'חניה פרטית', value: 'parking', icon: '🚗' }, { text: 'מיזוג אוויר', value: 'ac', icon: '❄️' }, { text: 'WiFi מהיר', value: 'wifi', icon: '📶' }, { text: 'מערכת שמע', value: 'sound', icon: '🔊' }, { text: 'חדר כושר', value: 'gym', icon: '💪' }, { text: 'שולחן ביליארד', value: 'billiard', icon: '🎱' }, { text: 'נגישות לנכים', value: 'accessible', icon: '♿' } ] },
+                    { id: 'age_groups', botMessage: 'כמעט סיימנו! 🎯\n\nלאיזה קבוצות גיל המקום הכי מתאים?', responseType: 'multi_select', options: [ { text: 'זוגות צעירים (20-35)', value: 'young_couples', icon: '💕' }, { text: 'משפחות עם ילדים קטנים', value: 'young_families', icon: '👶' }, { text: 'משפחות עם בני נוער', value: 'teen_families', icon: '👨‍👩‍👧‍👦' }, { text: 'דור הביניים (35-55)', value: 'middle_age', icon: '👫' }, { text: 'גיל הזהב (55+)', value: 'seniors', icon: '👴👵' }, { text: 'מתאים לכל הגילאים', value: 'all_ages', icon: '👥' } ] },
+                    { id: 'special_features', botMessage: 'מעולה! 🌟\n\nיש למתחם שלכם משהו מיוחד שמבדיל אותו מאחרים? (אופציונלי)', responseType: 'textarea', placeholder: 'למשל: נוף מיוחד, קרבה לאטרקציות, עיצוב ייחודי, היסטוריה מעניינת...' },
+                    { id: 'contact_info', botMessage: 'נפלא! עכשיו הפרטים שלכם 📞\n\nכדי שנוכל ליצור קשר ולספר לכם על האפשרויות לשיתוף פעולה:', responseType: 'form', fields: [ { type: 'text', name: 'owner_name', label: 'השם שלכם', placeholder: 'איך קוראים לכם?', required: true }, { type: 'text', name: 'property_name', label: 'שם המתחם', placeholder: 'איך קוראים למקום?', required: true }, { type: 'tel', name: 'phone', label: 'טלפון', placeholder: '052-123-4567', required: true }, { type: 'email', name: 'email', label: 'אימייל', placeholder: 'your@email.com', required: true }, { type: 'url', name: 'website', label: 'אתר/פייסבוק (אופציונלי)', placeholder: 'https://...', required: false } ] },
+                    { id: 'partnership_interest', botMessage: 'כמעט גמרנו! 🤝\n\nמה הכי מעניין אתכם בשיתוף פעולה איתנו?', responseType: 'multi_select', options: [ { text: 'קבלת יותר הזמנות', value: 'more_bookings', icon: '📈' }, { text: 'חשיפה ברשתות החברתיות', value: 'social_exposure', icon: '📱' }, { text: 'אתר אינטרנט מקצועי', value: 'website', icon: '💻' }, { text: 'ניהול לוח שנה', value: 'calendar_management', icon: '📅' }, { text: 'שיווק דיגיטלי מתקדם', value: 'digital_marketing', icon: '🎯' }, { text: 'צילומים מקצועיים', value: 'photography', icon: '📸' }, { text: 'ייעוץ עסקי', value: 'business_consulting', icon: '💡' }, { text: 'רק רוצה לשמוע מה יש', value: 'just_curious', icon: '🤔' } ] }
+                ];
+
+                this.startConversation();
             }
-          }, 50);
-          return; // don't render the original options
+
+            startConversation() {
+                setTimeout(() => {
+                    this.addBotMessage(this.conversationFlow[0].botMessage);
+                    this.showResponseOptions(this.conversationFlow[0]);
+                }, 1000);
+                this.updateProgress();
+            }
+
+            addBotMessage(message, delay = 0) {
+                setTimeout(() => {
+                    this.showTyping();
+                    setTimeout(() => {
+                        this.hideTyping();
+                        const messageDiv = document.createElement('div');
+                        messageDiv.className = 'message bot';
+                        messageDiv.innerHTML = `
+                            <div class="message-avatar">🏡</div>
+                            <div class="message-bubble">${message.replace(/\n/g, '<br>')}</div>
+                        `;
+                        this.messagesContainer.appendChild(messageDiv);
+                        this.scrollToBottom();
+                    }, Math.random() * 2000 + 1000);
+                }, delay);
+            }
+
+            addUserMessage(message) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'message user';
+                messageDiv.innerHTML = `
+                    <div class="message-bubble">${message}</div>
+                    <div class="message-avatar">👤</div>
+                `;
+                this.messagesContainer.appendChild(messageDiv);
+                this.scrollToBottom();
+            }
+
+            showTyping() { this.typingIndicator.style.display = 'flex'; this.scrollToBottom(); }
+            hideTyping() { this.typingIndicator.style.display = 'none'; }
+
+            showResponseOptions(step) {
+                const optionsDiv = document.createElement('div');
+                optionsDiv.className = 'response-options';
+                optionsDiv.id = 'currentOptions';
+
+                if (step.responseType === 'options') {
+                    step.options.forEach(option => {
+                        const optionDiv = document.createElement('div');
+                        optionDiv.className = 'response-option';
+                        optionDiv.innerHTML = `
+                            <span class="option-icon">${option.icon}</span>
+                            <div class="option-title">${option.text}</div>
+                            ${option.desc ? `<div class="option-desc">${option.desc}</div>` : ''}
+                        `;
+                        optionDiv.addEventListener('click', () => { this.handleOptionClick(option.value, option.text); });
+                        optionsDiv.appendChild(optionDiv);
+                    });
+                } else if (step.responseType === 'multi_select') {
+                    optionsDiv.innerHTML = `
+                        <div class="input-section">
+                            <div class="checkbox-group">
+                                ${step.options.map(option => `
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" value="${option.value}">
+                                        <span>${option.icon} ${option.text}</span>
+                                    </label>
+                                `).join('')}
+                            </div>
+                            <button class="continue-btn" id="continueMulti">המשך</button>
+                        </div>
+                    `;
+                    setTimeout(() => {
+                        const continueBtn = document.getElementById('continueMulti');
+                        continueBtn.addEventListener('click', () => { this.handleMultiSelect(step.options); });
+                    }, 100);
+                } else if (step.responseType === 'slider') {
+                    optionsDiv.innerHTML = `
+                        <div class="input-section">
+                            <div class="input-group">
+                                <label class="input-label">${step.sliderConfig.unit}:</label>
+                                <input type="range" class="range-input" id="rangeSlider" min="${step.sliderConfig.min}" max="${step.sliderConfig.max}" value="${step.sliderConfig.default}">
+                                <div class="range-display" id="rangeDisplay">${step.sliderConfig.default} ${step.sliderConfig.unit}</div>
+                            </div>
+                            <button class="continue-btn" id="continueBtn">המשך</button>
+                        </div>
+                    `;
+                    setTimeout(() => {
+                        const slider = document.getElementById('rangeSlider');
+                        const display = document.getElementById('rangeDisplay');
+                        const continueBtn = document.getElementById('continueBtn');
+                        slider.addEventListener('input', (e) => {
+                            const value = Number(e.target.value);
+                            display.textContent = `${value} ${step.sliderConfig.unit}`;
+                            for (const [threshold, label] of Object.entries(step.sliderConfig.labels)) {
+                                if (value >= Number(threshold)) {
+                                    display.textContent = `${value} ${step.sliderConfig.unit} (${label})`;
+                                }
+                            }
+                        });
+                        continueBtn.addEventListener('click', () => { this.handleOptionClick(slider.value, `${slider.value} ${step.sliderConfig.unit}`); });
+                    }, 100);
+                } else if (step.responseType === 'textarea') {
+                    optionsDiv.innerHTML = `
+                        <div class="input-section">
+                            <div class="input-group">
+                                <textarea class="chat-input" id="textareaInput" placeholder="${step.placeholder}" rows="4"></textarea>
+                            </div>
+                            <button class="continue-btn" id="continueTextarea">המשך</button>
+                        </div>
+                    `;
+                    setTimeout(() => {
+                        const textarea = document.getElementById('textareaInput');
+                        const continueBtn = document.getElementById('continueTextarea');
+                        continueBtn.addEventListener('click', () => {
+                            const value = textarea.value.trim();
+                            this.handleOptionClick(value || 'לא צוין', value || 'לא צוין');
+                        });
+                    }, 100);
+                } else if (step.responseType === 'form') {
+                    optionsDiv.innerHTML = `
+                        <div class="input-section">
+                            ${step.fields.map(field => field.type === 'textarea' ? `
+                                <div class="input-group">
+                                    <label class="input-label">${field.label}</label>
+                                    <textarea class="chat-input" name="${field.name}" placeholder="${field.placeholder}" ${field.required ? 'required' : ''} rows="3"></textarea>
+                                </div>
+                            ` : `
+                                <div class="input-group">
+                                    <label class="input-label">${field.label}</label>
+                                    <input type="${field.type}" class="chat-input" name="${field.name}" placeholder="${field.placeholder}" ${field.required ? 'required' : ''}>
+                                </div>
+                            `).join('')}
+                            <button class="continue-btn" id="submitForm">שלח פרטים</button>
+                        </div>
+                    `;
+                    setTimeout(() => {
+                        const submitBtn = document.getElementById('submitForm');
+                        submitBtn.addEventListener('click', () => { this.handleFormSubmit(step.fields); });
+                    }, 100);
+                }
+
+                this.messagesContainer.appendChild(optionsDiv);
+                this.scrollToBottom();
+            }
+
+            handleOptionClick(value, displayText) {
+                this.userResponses[this.conversationFlow[this.currentStep].id] = value;
+                this.addUserMessage(displayText);
+                const currentOptions = document.getElementById('currentOptions');
+                if (currentOptions) currentOptions.remove();
+                this.currentStep++;
+                this.proceedToNextStep();
+            }
+
+            handleMultiSelect(options) {
+                const currentOptions = document.getElementById('currentOptions');
+                const checkboxes = currentOptions ? currentOptions.querySelectorAll('input[type="checkbox"]:checked') : [];
+                const selectedValues = Array.from(checkboxes).map(cb => cb.value);
+                const selectedTexts = selectedValues.map(value => {
+                    const option = options.find(opt => opt.value === value);
+                    return option ? `${option.icon} ${option.text}` : value;
+                });
+                if (selectedValues.length === 0) {
+                    this.addBotMessage('אנא בחרו לפחות אפשרות אחת 😊');
+                    return;
+                }
+                this.userResponses[this.conversationFlow[this.currentStep].id] = selectedValues;
+                this.addUserMessage(selectedTexts.join('<br>'));
+                if (currentOptions) currentOptions.remove();
+                this.currentStep++;
+                this.proceedToNextStep();
+            }
+
+            handleFormSubmit(fields) {
+                const formData = {};
+                let isValid = true;
+                const errorMessages = [];
+
+                fields.forEach(field => {
+                    const input = document.querySelector(`[name="${field.name}"]`);
+                    const value = (input.value || '').trim();
+                    input.style.borderColor = 'rgba(139, 95, 191, 0.3)';
+
+                    if (field.required && !value) {
+                        isValid = false;
+                        input.style.borderColor = '#ef4444';
+                        errorMessages.push(`השדה "${field.label}" הוא חובה`);
+                        return;
+                    }
+
+                    if (field.name === 'phone' && value) {
+                        let clean = value.replace(/[^\d+]/g, '');
+                        if (clean.startsWith('+972')) { clean = '0' + clean.slice(4); }
+                        clean = clean.replace(/\D/g, '');
+                        if (clean.length < 9 || clean.length > 10) {
+                            isValid = false;
+                            input.style.borderColor = '#ef4444';
+                            errorMessages.push('מספר הטלפון לא תקין (ישראל)');
+                        } else {
+                            formData[field.name] = clean;
+                            return;
+                        }
+                    }
+
+                    if (field.name === 'email' && value) {
+                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        if (!emailRegex.test(value)) {
+                            isValid = false;
+                            input.style.borderColor = '#ef4444';
+                            errorMessages.push('כתובת האימייל לא תקינה');
+                        }
+                    }
+
+                    if (field.name === 'website' && value) {
+                        const urlRegex = /^(https?:\/\/)?([a-z0-9-]+\.)+[a-z]{2,}(\/\S*)?$/i;
+                        if (!urlRegex.test(value)) {
+                            isValid = false;
+                            input.style.borderColor = '#ef4444';
+                            errorMessages.push('כתובת האתר לא תקינה');
+                        }
+                    }
+
+                    formData[field.name] = value;
+                });
+
+                if (!isValid) {
+                    this.addBotMessage(`אופס! יש כמה בעיות בפרטים: 😅\n\n• ${errorMessages.join('\n• ')}\n\nאנא תקנו ונסו שוב.`);
+                    return;
+                }
+
+                this.userResponses.contactInfo = formData;
+
+                let displayText = `שם: ${formData.owner_name}\nשם המתחם: ${formData.property_name}\nטלפון: ${formData.phone}\nאימייל: ${formData.email}`;
+                if (formData.website) displayText += `\nאתר: ${formData.website}`;
+                this.addUserMessage(displayText);
+
+                const currentOptions = document.getElementById('currentOptions');
+                if (currentOptions) currentOptions.remove();
+                this.currentStep++;
+                this.proceedToNextStep();
+            }
+
+            proceedToNextStep() {
+                if (this.currentStep < this.conversationFlow.length) {
+                    const nextStep = this.conversationFlow[this.currentStep];
+                    this.updateProgress();
+                    setTimeout(() => {
+                        this.addBotMessage(nextStep.botMessage);
+                        setTimeout(() => { this.showResponseOptions(nextStep); }, 1500);
+                    }, 500);
+                } else {
+                    this.generateFinalMessage();
+                }
+            }
+
+            createWhatsAppMessage() {
+                const responses = this.userResponses;
+                const contact = responses.contactInfo || {};
+                let message = `🏡 בקשה להצטרפות לרשת MULTIBRAWN\n\n`;
+                message += `👤 פרטי הבעלים:\n`;
+                message += `• שם: ${contact.owner_name}\n`;
+                message += `• טלפון: ${contact.phone}\n`;
+                message += `• אימייל: ${contact.email}\n`;
+                if (contact.website) message += `• אתר: ${contact.website}\n`;
+                message += `\n🏡 פרטי המתחם:\n`;
+                message += `• שם המתחם: ${contact.property_name}\n`;
+                const propertyTypes = { 'zimmer': 'צימר רומנטי', 'villa': 'וילה פרטית', 'apartment': 'דירת נופש', 'boutique_hotel': 'מלון בוטיק', 'event_hall': 'אולם אירועים', 'event_garden': 'גן אירועים', 'other': 'אחר' };
+                message += `• סוג נכס: ${propertyTypes[responses.property_type] || responses.property_type}\n`;
+                const locations = { 'north': 'צפון (גליל, גולן, חיפה)', 'center': 'מרכז (תל אביב, רמת גן)', 'jerusalem': 'ירושלים והסביבה', 'south': 'דרום (באר שבע, אילת, נגב)', 'sharon': 'שרון (נתניה, כפר סבא)', 'shephelah': 'שפלה (רחובות, רמלה)' };
+                message += `• מיקום: ${locations[responses.location] || responses.location}\n`;
+                if (responses.capacity) { message += `• קיבולת: ${responses.capacity} אנשים\n`; }
+                if (responses.target_audience && responses.target_audience.length > 0) {
+                    const audienceMap = { 'couples': 'זוגות רומנטיים', 'families': 'משפחות עם ילדים', 'friends': 'קבוצות חברים', 'religious': 'קהל דתי', 'corporate': 'אירועי חברה', 'weddings': 'חתונות', 'bar_mitzvah': 'בר/בת מצווה', 'private_events': 'אירועים פרטיים' };
+                    const audiences = responses.target_audience.map(aud => audienceMap[aud] || aud);
+                    message += `• קהל יעד: ${audiences.join(', ')}\n`;
+                }
+                if (responses.age_groups && responses.age_groups.length > 0) {
+                    const ageMap = { 'young_couples': 'זוגות צעירים (20-35)', 'young_families': 'משפחות עם ילדים קטנים', 'teen_families': 'משפחות עם בני נוער', 'middle_age': 'דור הביניים (35-55)', 'seniors': 'גיל הזהב (55+)', 'all_ages': 'מתאים לכל הגילאים' };
+                    const ages = responses.age_groups.map(age => ageMap[age] || age);
+                    message += `• קבוצות גיל: ${ages.join(', ')}\n`;
+                }
+                if (responses.amenities && responses.amenities.length > 0) {
+                    const amenityMap = { 'pool': 'בריכה פרטית', 'jacuzzi': 'ג\'קוזי', 'garden': 'גינה/מרפסת', 'kitchen': 'מטבח מאובזר', 'bbq': 'מתקני ברביקיו', 'parking': 'חניה פרטית', 'ac': 'מיזוג אוויר', 'wifi': 'WiFi מהיר', 'sound': 'מערכת שמע', 'gym': 'חדר כושר', 'billiard': 'שולחן ביליארד', 'accessible': 'נגישות לנכים' };
+                    const amenities = responses.amenities.map(am => amenityMap[am] || am);
+                    message += `• מתקנים: ${amenities.join(', ')}\n`;
+                }
+                if (responses.special_features && responses.special_features !== 'לא צוין') {
+                    message += `• מה מיוחד במתחם: ${responses.special_features}\n`;
+                }
+                if (responses.partnership_interest && responses.partnership_interest.length > 0) {
+                    const interestMap = { 'more_bookings': 'קבלת יותר הזמנות', 'social_exposure': 'חשיפה ברשתות החברתיות', 'website': 'אתר אינטרנט מקצועי', 'calendar_management': 'ניהול לוח שנה', 'digital_marketing': 'שיווק דיגיטלי מתקדם', 'photography': 'צילומים מקצועיים', 'business_consulting': 'ייעוץ עסקי', 'just_curious': 'רק רוצה לשמוע מה יש' };
+                    const interests = responses.partnership_interest.map(int => interestMap[int] || int);
+                    message += `\n💼 מעוניין ב: ${interests.join(', ')}\n`;
+                }
+                message += `\n🤝 מחכה לשמוע מכם לגבי אפשרויות שיתוף הפעולה!`;
+                return message;
+            }
+
+            generateFinalMessage() {
+                this.addBotMessage('מושלם! תנו לי רגע לכתוב עבורכם סיכום מפורט... ✨');
+                setTimeout(() => {
+                    const message = this.createWhatsAppMessage();
+                    const finalSection = document.createElement('div');
+                    finalSection.className = 'whatsapp-section';
+                    finalSection.innerHTML = `
+                        <div class="whatsapp-icon">💬</div>
+                        <h3 class="whatsapp-title">הבקשה שלכם מוכנה!</h3>
+                        <p style="color: var(--text-muted); margin-bottom: 1rem;">הנה סיכום המידע על המתחם שלכם - נשלח ישירות לצוות MULTIBRAWN</p>
+                        <div class="whatsapp-preview">${message.replace(/\n/g, '<br>')}</div>
+                        <a href="https://wa.me/972523983394?text=${encodeURIComponent(message)}" class="whatsapp-btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                            שלח ב-WhatsApp
+                        </a>
+                    `;
+                    this.messagesContainer.appendChild(finalSection);
+                    this.scrollToBottom();
+                }, 2000);
+            }
+
+            updateProgress() {
+                const totalSteps = this.conversationFlow.length;
+                const progress = (this.currentStep / totalSteps) * 100;
+                this.progressFill.style.width = progress + '%';
+                this.progressText.textContent = `שלב ${this.currentStep + 1} מתוך ${totalSteps}`;
+            }
+
+            scrollToBottom() { setTimeout(() => { const chatMessages = document.getElementById('chatMessages'); chatMessages.scrollTop = chatMessages.scrollHeight; }, 100); }
         }
 
-        if (step.responseType === 'options') {
-          step.options.forEach(option => {
-            const optionDiv = document.createElement('div');
-            optionDiv.className = 'response-option';
-            optionDiv.innerHTML = `
-              <span class="option-icon">${option.icon}</span>
-              <div class="option-title">${option.text}</div>
-              ${option.desc ? `<div class="option-desc">${option.desc}</div>` : ''}
-            `;
-            optionDiv.addEventListener('click', () => this.handleOptionClick(option.value, option.text));
-            optionsDiv.appendChild(optionDiv);
-          });
-        } else if (step.responseType === 'multi_select') {
-          optionsDiv.innerHTML = `
-            <div class="input-section">
-              <div class="checkbox-group">
-                ${step.options.map(o => `
-                  <label class="checkbox-item">
-                    <input type="checkbox" value="${o.value}">
-                    <span>${o.icon} ${o.text}</span>
-                  </label>
-                `).join('')}
-              </div>
-              <button class="continue-btn" id="continueMulti">המשך</button>
-            </div>`;
-          setTimeout(() => {
-            const btn = document.getElementById('continueMulti');
-            btn.addEventListener('click', () => this.handleMultiSelect(step.options));
-          }, 50);
-        } else if (step.responseType === 'slider') {
-          optionsDiv.innerHTML = `
-            <div class="input-section">
-              <div class="input-group">
-                <label class="input-label">${step.sliderConfig.unit}:</label>
-                <input type="range" class="range-input" id="rangeSlider" min="${step.sliderConfig.min}" max="${step.sliderConfig.max}" value="${step.sliderConfig.default}">
-                <div class="range-display" id="rangeDisplay">${step.sliderConfig.default} ${step.sliderConfig.unit}</div>
-              </div>
-              <button class="continue-btn" id="continueBtn">המשך</button>
-            </div>`;
-          setTimeout(() => {
-            const slider = document.getElementById('rangeSlider');
-            const display = document.getElementById('rangeDisplay');
-            const btn = document.getElementById('continueBtn');
-            slider.addEventListener('input', (e) => {
-              const v = Number(e.target.value);
-              display.textContent = `${v} ${step.sliderConfig.unit}`;
-              for (const [t, label] of Object.entries(step.sliderConfig.labels)) {
-                if (v >= Number(t)) display.textContent = `${v} ${step.sliderConfig.unit} (${label})`;
-              }
-            });
-            btn.addEventListener('click', () => this.handleOptionClick(slider.value, `${slider.value} ${step.sliderConfig.unit}`));
-          }, 50);
-        } else if (step.responseType === 'textarea') {
-          optionsDiv.innerHTML = `
-            <div class="input-section">
-              <div class="input-group">
-                <textarea class="chat-input" id="textareaInput" placeholder="${step.placeholder}" rows="4"></textarea>
-              </div>
-              <button class="continue-btn" id="continueTextarea">המשך</button>
-            </div>`;
-          setTimeout(() => {
-            const ta = document.getElementById('textareaInput');
-            const btn = document.getElementById('continueTextarea');
-            btn.addEventListener('click', () => {
-              const v = (ta.value || '').trim();
-              this.handleOptionClick(v || 'לא צוין', v || 'לא צוין');
-            });
-          }, 50);
-        } else if (step.responseType === 'form') {
-          optionsDiv.innerHTML = `
-            <div class="input-section">
-              ${step.fields.map(f => f.type === 'textarea' ? `
-                <div class="input-group">
-                  <label class="input-label">${f.label}</label>
-                  <textarea class="chat-input" name="${f.name}" placeholder="${f.placeholder}" ${f.required ? 'required' : ''} rows="3"></textarea>
-                </div>` : `
-                <div class="input-group">
-                  <label class="input-label">${f.label}</label>
-                  <input type="${f.type}" class="chat-input" name="${f.name}" placeholder="${f.placeholder}" ${f.required ? 'required' : ''}>
-                </div>`).join('')}
-              <button class="continue-btn" id="submitForm">שלח פרטים</button>
-            </div>`;
-          setTimeout(() => {
-            const btn = document.getElementById('submitForm');
-            btn.addEventListener('click', () => this.handleFormSubmit(step.fields));
-          }, 50);
+        function setupMobileMenu() {
+            const toggle = document.getElementById('mobileToggle');
+            const menu = document.querySelector('.nav-menu');
+            if (toggle && menu) { toggle.addEventListener('click', () => { menu.classList.toggle('active'); }); }
         }
 
-        this.messagesContainer.appendChild(optionsDiv);
-        this.scrollToBottom();
-      }
+        function setupSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+                });
+            });
+        }
 
-      handleOptionClick(value, displayText){
-        this.userResponses[this.conversationFlow[this.currentStep].id] = value;
-        this.addUserMessage(displayText);
-        const co = document.getElementById('currentOptions');
-        if (co) co.remove();
-        this.currentStep++;
-        this.proceedToNextStep();
-      }
+        function setupScrollEffects() {
+            window.addEventListener('scroll', () => {
+                const nav = document.querySelector('.header-nav');
+                nav.style.background = (window.scrollY > 100) ? 'rgba(26, 11, 46, 0.98)' : 'rgba(26, 11, 46, 0.95)';
+            });
+        }
 
-      handleMultiSelect(options){
-        const co = document.getElementById('currentOptions');
-        const checked = co ? co.querySelectorAll('input[type="checkbox"]:checked') : [];
-        const values = Array.from(checked).map(cb => cb.value);
-        if (!values.length) { this.addBotMessage('אנא בחרו לפחות אפשרות אחת 😊'); return; }
-        const texts = values.map(v => { const o = options.find(x => x.value === v); return o ? `${o.icon} ${o.text}` : v; });
-        this.userResponses[this.conversationFlow[this.currentStep].id] = values;
-        this.addUserMessage(texts.join('<br>'));
-        if (co) co.remove();
-        this.currentStep++;
-        this.proceedToNextStep();
-      }
-
-      handleFormSubmit(fields){
-        const formData = {}; let isValid = true; const errors = [];
-        fields.forEach(f => {
-          const input = document.querySelector(`[name="${f.name}"]`);
-          const val = (input.value || '').trim();
-          input.style.borderColor = 'rgba(139, 95, 191, 0.3)';
-          if (f.required && !val){ isValid = false; input.style.borderColor = '#ef4444'; errors.push(`השדה "${f.label}" הוא חובה`); return; }
-          if (f.name === 'phone' && val){
-            let clean = val.replace(/[^\d+]/g, '');
-            if (clean.startsWith('+972')) clean = '0' + clean.slice(4);
-            clean = clean.replace(/\D/g, '');
-            if (clean.length < 9 || clean.length > 10){ isValid = false; input.style.borderColor = '#ef4444'; errors.push('מספר הטלפון לא תקין (ישראל)'); } else { formData[f.name] = clean; return; }
-          }
-          if (f.name === 'email' && val){ const re=/^[^\s@]+@[^\s@]+\.[^\s@]+$/; if (!re.test(val)){ isValid=false; input.style.borderColor='#ef4444'; errors.push('כתובת האימייל לא תקינה'); } }
-          if (f.name === 'website' && val){ const urlRe=/^(https?:\/\/)?([a-z0-9-]+\.)+[a-z]{2,}(\/\S*)?$/i; if (!urlRe.test(val)){ isValid=false; input.style.borderColor='#ef4444'; errors.push('כתובת האתר לא תקינה'); } }
-          formData[f.name] = val;
+        document.addEventListener('DOMContentLoaded', function() {
+            new PropertyOwnerChat();
+            setupMobileMenu();
+            setupSmoothScrolling();
+            setupScrollEffects();
         });
-        if (!isValid){ this.addBotMessage(`אופס! יש כמה בעיות בפרטים: 😅\n\n• ${errors.join('\n• ')}\n\nאנא תקנו ונסו שוב.`); return; }
-        this.userResponses.contactInfo = formData;
-        let disp = `שם: ${formData.owner_name}\nשם המתחם: ${formData.property_name}\nטלפון: ${formData.phone}\nאימייל: ${formData.email}`;
-        if (formData.website) disp += `\nאתר: ${formData.website}`;
-        this.addUserMessage(disp);
-        const co = document.getElementById('currentOptions'); if (co) co.remove();
-        this.currentStep++; this.proceedToNextStep();
-      }
-
-      proceedToNextStep(){
-        if (this.currentStep < this.conversationFlow.length){
-          const next = this.conversationFlow[this.currentStep];
-          this.updateProgress();
-          setTimeout(() => { this.addBotMessage(next.botMessage); setTimeout(() => this.showResponseOptions(next), 1000); }, 400);
-        } else { this.generateFinalMessage(); }
-      }
-
-      createWhatsAppMessage(){
-        const r = this.userResponses; const c = r.contactInfo || {};
-        let msg = `🏡 בקשה להצטרפות לרשת MULTIBRAWN\n\n`;
-        msg += `👤 פרטי הבעלים:\n`;
-        msg += `• שם: ${c.owner_name}\n`;
-        msg += `• טלפון: ${c.phone}\n`;
-        msg += `• אימייל: ${c.email}\n`;
-        if (c.website) msg += `• אתר: ${c.website}\n`;
-        msg += `\n🏡 פרטי המתחם:\n`;
-        msg += `• שם המתחם: ${c.property_name}\n`;
-        const types={zimmer:'צימר רומנטי',villa:'וילה פרטית',apartment:'דירת נופש',boutique_hotel:'מלון בוטיק',event_hall:'אולם אירועים',event_garden:'גן אירועים',other:'אחר'};
-        msg += `• סוג נכס: ${types[r.property_type] || r.property_type}\n`;
-        const locs={north:'צפון (גליל, גולן, חיפה)',center:'מרכז (תל אביב, רמת גן)',jerusalem:'ירושלים והסביבה',south:'דרום (באר שבע, אילת, נגב)',sharon:'שרון (נתניה, כפר סבא)',shephelah:'שפלה (רחובות, רמלה)'};
-        msg += `• מיקום: ${locs[r.location] || r.location}\n`;
-        if (r.capacity) msg += `• קיבולת: ${r.capacity} אנשים\n`;
-        if (r.target_audience?.length){ const map={couples:'זוגות רומנטיים',families:'משפחות עם ילדים',friends:'קבוצות חברים',religious:'קהל דתי',corporate:'אירועי חברה',weddings:'חתונות',bar_mitzvah:'בר/בת מצווה',private_events:'אירועים פרטיים'}; msg += `• קהל יעד: ${r.target_audience.map(a=>map[a]||a).join(', ')}\n`; }
-        if (r.age_groups?.length){ const map={young_couples:'זוגות צעירים (20-35)',young_families:'משפחות עם ילדים קטנים',teen_families:'משפחות עם בני נוער',middle_age:'דור הביניים (35-55)',seniors:'גיל הזהב (55+)',all_ages:'מתאים לכל הגילאים'}; msg += `• קבוצות גיל: ${r.age_groups.map(a=>map[a]||a).join(', ')}\n`; }
-        if (r.amenities?.length){ const map={pool:'בריכה פרטית',jacuzzi:'ג\'קוזי',garden:'גינה/מרפסת',kitchen:'מטבח מאובזר',bbq:'מתקני ברביקיו',parking:'חניה פרטית',ac:'מיזוג אוויר',wifi:'WiFi מהיר',sound:'מערכת שמע',gym:'חדר כושר',billiard:'שולחן ביליארד',accessible:'נגישות לנכים'}; msg += `• מתקנים: ${r.amenities.map(x=>map[x]||x).join(', ')}\n`; }
-        if (r.special_features && r.special_features !== 'לא צוין') msg += `• מה מיוחד במתחם: ${r.special_features}\n`;
-        if (r.partnership_interest?.length){ const map={more_bookings:'קבלת יותר הזמנות',social_exposure:'חשיפה ברשתות החברתיות',website:'אתר אינטרנט מקצועי',calendar_management:'ניהול לוח שנה',digital_marketing:'שיווק דיגיטלי מתקדם',photography:'צילומים מקצועיים',business_consulting:'ייעוץ עסקי',just_curious:'רק רוצה לשמוע מה יש'}; msg += `\n💼 מעוניין ב: ${r.partnership_interest.map(i=>map[i]||i).join(', ')}\n`; }
-        msg += `\n🤝 מחכה לשמוע מכם לגבי אפשרויות שיתוף הפעולה!`;
-        return msg;
-      }
-
-      generateFinalMessage(){
-        this.addBotMessage('מושלם! תנו לי רגע לכתוב עבורכם סיכום מפורט... ✨');
-        setTimeout(()=>{
-          const message=this.createWhatsAppMessage();
-          const final=document.createElement('div');
-          final.className='whatsapp-section';
-          final.innerHTML=`
-            <div class="whatsapp-icon">💬</div>
-            <h3 class="whatsapp-title">הבקשה שלכם מוכנה!</h3>
-            <p style="color: var(--text-muted); margin-bottom: 1rem;">הנה סיכום המידע על המתחם שלכם - נשלח ישירות לצוות MULTIBRAWN</p>
-            <div class="whatsapp-preview">${message.replace(/\n/g,'<br>')}</div>
-            <a href="https://wa.me/972523983394?text=${encodeURIComponent(message)}" class="whatsapp-btn" target="_blank"><i class="fab fa-whatsapp"></i>שלח ב-WhatsApp</a>`;
-          this.messagesContainer.appendChild(final);
-          this.scrollToBottom();
-        },1500);
-      }
-
-      updateProgress(){
-        const total=this.conversationFlow.length;
-        const progress=(this.currentStep/total)*100;
-        this.progressFill.style.width=progress+'%';
-        this.progressText.textContent=`שלב ${this.currentStep+1} מתוך ${total}`;
-      }
-
-      scrollToBottom(){ setTimeout(()=>{ const el=document.getElementById('chatMessages'); el.scrollTop=el.scrollHeight; },100); }
-    }
-
-    function setupMobileMenu(){ const t=document.getElementById('mobileToggle'); const m=document.querySelector('.nav-menu'); if(t&&m){ t.addEventListener('click',()=>m.classList.toggle('active')); } }
-    function setupSmoothScrolling(){ document.querySelectorAll('a[href^="#"]').forEach(a=>{ a.addEventListener('click',e=>{ e.preventDefault(); const target=document.querySelector(a.getAttribute('href')); if(target) target.scrollIntoView({behavior:'smooth',block:'start'}); }); }); }
-    function setupScrollEffects(){ window.addEventListener('scroll',()=>{ const nav=document.querySelector('.header-nav'); nav.style.background=(window.scrollY>100)?'rgba(26, 11, 46, 0.98)':'rgba(26, 11, 46, 0.95)'; }); }
-
-    document.addEventListener('DOMContentLoaded',()=>{
-      new PropertyOwnerChat();
-      setupMobileMenu();
-      setupSmoothScrolling();
-      setupScrollEffects();
-      const rb=document.getElementById('restartBtn');
-      if(rb) rb.addEventListener('click',()=>location.reload());
-    });
-  </script>
+            do    <!-- Accessibility Floating Button + Panel -->
+    <button class="floating-accessibility" id="accessibilityBtn" aria-label="פתח תפריט נגישות">♿</button>
+    <div class="accessibility-panel" id="accessibilityPanel" role="dialog" aria-label="הגדרות נגישות">
+        <h3>הגדרות נגישות</h3>
+        <div class="accessibility-controls">
+            <button class="accessibility-btn-control" id="increaseFontBtn">הגדלת גופן</button>
+            <button class="accessibility-btn-control" id="decreaseFontBtn">הקטנת גופן</button>
+            <button class="accessibility-btn-control" id="highContrastBtn">ניגודיות גבוהה</button>
+            <button class="accessibility-btn-control" id="resetAccessibilityBtn">איפוס הגדרות</button>
+        </div>
+    </div>
+</body>addEventListener('DOMContentLoaded', function () {
+            // Accessibility controls
+            const aBtn = document.getElementById('accessibilityBtn');
+            const aPanel = document.getElementById('accessibilityPanel');
+            if (aBtn && aPanel) {
+                aBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    aPanel.classList.toggle('open');
+                });
+                document.addEventListener('click', (e) => {
+                    if (!aPanel.contains(e.target) && !aBtn.contains(e.target)) {
+                        aPanel.classList.remove('open');
+                    }
+                });
+                let fontSize = 100;
+                const clamp = (n, min, max) => Math.min(Math.max(n, min), max);
+                const inc = document.getElementById('increaseFontBtn');
+                const dec = document.getElementById('decreaseFontBtn');
+                const hc  = document.getElementById('highContrastBtn');
+                const rst = document.getElementById('resetAccessibilityBtn');
+                if (inc) inc.addEventListener('click', () => { fontSize = clamp(fontSize + 10, 80, 160); document.documentElement.style.fontSize = fontSize + '%'; });
+                if (dec) dec.addEventListener('click', () => { fontSize = clamp(fontSize - 10, 80, 160); document.documentElement.style.fontSize = fontSize + '%'; });
+                if (hc)  hc.addEventListener('click', () => document.body.classList.toggle('high-contrast'));
+                if (rst) rst.addEventListener('click', () => { fontSize = 100; document.documentElement.style.fontSize = '100%'; document.body.classList.remove('high-contrast'); });
+            }
+        });
+    </script>
 </body>
 </html>
