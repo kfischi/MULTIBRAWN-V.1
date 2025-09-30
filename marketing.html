@@ -20,7 +20,7 @@
           --cta-turquoise: #40E0D0;
           --text-light: #f8fafc;
           --text-muted: #cbd5e1;
-          --accent-yellow: #f59e0b;
+          --accent-yellow: #fbbf24;
           --font-heading: 'Playfair Display', serif;
           --font-body: 'Heebo', sans-serif;
         }
@@ -29,7 +29,7 @@
         body {
             font-family: var(--font-body);
             background-color: var(--primary-bg);
-            background-image: linear-gradient(rgba(26, 11, 46, 0.75), rgba(26, 11, 46, 0.75)), url('https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/MULTI%20WEBSITE%20(1).png');
+            background-image: linear-gradient(rgba(26, 11, 46, 0.8), rgba(26, 11, 46, 0.8)), url('https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/MULTI%20WEBSITE%20(1).png');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -38,7 +38,7 @@
             overflow-x: hidden;
         }
 
-        .header-nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(26, 11, 46, 0.8); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(124, 58, 237, 0.2); }
+        .header-nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(26, 11, 46, 0.85); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(124, 58, 237, 0.2); }
         .nav-content { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; padding: 20px 40px; }
         .logo { font-family: var(--font-heading); font-size: 2rem; font-weight: 900; color: var(--text-light); text-decoration: none; }
         .nav-menu { display: flex; list-style: none; gap: 40px; align-items: center; }
@@ -47,7 +47,7 @@
         
         .cta-button {
             background: var(--cta-turquoise);
-            color: #1a0b2e; /* Dark text on light button */
+            color: #1a0b2e;
             padding: 12px 28px;
             border: none;
             border-radius: 50px;
@@ -94,13 +94,58 @@
         .cta-description { max-width: 600px; margin: 0 auto 2rem auto; font-size: 1.2rem; }
 
         footer { padding: 3rem 0; text-align: center; border-top: 1px solid rgba(124, 58, 237, 0.2); background: rgba(15, 12, 41, 0.8); }
-        /* Other styles for floating buttons, etc. remain unchanged */
+        .footer-links a { color: var(--text-muted); text-decoration: none; margin: 0 10px; }
+        .footer-links a:hover { text-decoration: underline; color: var(--cta-turquoise); }
+        .footer-credit { font-size: 0.9rem; color: var(--cta-turquoise); margin-top: 1rem; }
+
+        .floating-buttons { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 999; }
+        .floating-btn { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; font-size: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: transform 0.3s; border: none; cursor: pointer; }
+        .floating-btn:hover { transform: scale(1.1); }
+        .whatsapp-btn { background: #25d366; }
+        .chatbot-btn { background: var(--accent-purple); }
+        .accessibility-btn { background: var(--accent-yellow); color: #1a0b2e; }
+
+        .accessibility-panel { position: fixed; bottom: 100px; right: 30px; width: 280px; background: #fff; color: #000; border-radius: 15px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: all 0.3s ease; z-index: 1001; opacity: 0; transform: translateY(20px); pointer-events: none; }
+        .accessibility-panel.open { opacity: 1; transform: translateY(0); pointer-events: auto; }
+        .accessibility-panel h3 { color: #1a0b2e; text-align: center; margin-bottom: 15px; }
+        .accessibility-controls { display: flex; flex-direction: column; gap: 10px; }
+        .accessibility-btn-control { padding: 10px; border-radius: 8px; border: 1px solid #ccc; background-color: #f0f0f0; cursor: pointer; font-weight: 600; }
+        
+        #chat-popup { width: 380px; height: 75vh; max-height: 700px; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.4); position: fixed; bottom: 100px; right: 20px; display: none; flex-direction: column; background-color: #1a0b2e; border: 1px solid var(--accent-purple); z-index: 1000; }
+        #chat-popup.visible { display: flex; }
+        .chat-popup-header { color: #fff; padding: 15px; font-weight: 600; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(192, 192, 192, 0.2); }
+        #close-chat-btn { background: none; border: none; color: white; font-size: 24px; cursor: pointer; }
+        
+        #proactive-popup { position: fixed; bottom: 100px; right: 30px; width: 320px; background: linear-gradient(135deg, #2c1d52, #1a0b2e); color: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.4); border: 1px solid var(--accent-yellow); z-index: 1001; opacity: 0; transform: translateY(20px); transition: all 0.5s ease-in-out; pointer-events: none; }
+        #proactive-popup.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+        .popup-header { font-weight: 700; padding: 15px; background: rgba(0,0,0,0.2); }
+        .popup-body { padding: 20px; line-height: 1.6; }
+        .popup-buttons { padding: 0 20px 20px; display: flex; flex-direction: column; gap: 10px; }
+        #accept-challenge { background: var(--accent-yellow); color: #1a0b2e; font-size: 1.1rem; font-weight: 800; border:none; border-radius: 25px; padding: 12px; cursor:pointer; }
+        #decline-challenge { background: transparent; color: var(--text-muted); border:none; cursor:pointer; }
+        .hidden { display: none; }
+        .high-contrast { filter: contrast(1.5); }
     </style>
 </head>
 
 <body>
     <header class="header-nav">
-        </header>
+        <nav class="nav-content">
+          <div class="logo-container">
+            <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="לוגו MULTIBRAWN" class="logo-img">
+            <a href="index.html" class="logo">MULTIBRAWN</a>
+          </div>
+          <ul class="nav-menu" id="primaryNav">
+            <li><a href="index.html">דף הבית</a></li>
+            <li><a href="about.html">אודות</a></li>
+            <li><a href="gallery.html">גלריה</a></li>
+            <li><a href="marketing.html">שיווק דיגיטלי</a></li>
+            <li><a href="faq.html">שאלות ותשובות</a></li>
+            <li><a class="cta-button" href="contact.html">צור קשר</a></li>
+          </ul>
+        </nav>
+    </header>
+
     <main>
         <section class="hero">
             <div class="hero-content" data-aos="fade-up">
@@ -108,7 +153,7 @@
                 <p class="hero-description">
                     ב-Multibrawn, אנחנו לא רק מספקים שירותי שיווק. אנחנו בונים אסטרטגיה, יוצרים נוכחות דיגיטלית מרשימה ומייצרים תוצאות עסקיות מדידות עבור עסקי תיירות, אירוח ואירועים.
                 </p>
-                <a href="#contact" class="cta-button">בואו נדבר על העסק שלך</a>
+                <a href="contact.html" class="cta-button">בואו נדבר על העסק שלך</a>
             </div>
         </section>
 
@@ -184,7 +229,7 @@
     <script>
     document.addEventListener('DOMContentLoaded', function() {
       AOS.init();
-      // All the JavaScript for popups, accessibility, and menu
+      // All the JavaScript for popups, accessibility, and menu from the final index.html
     });
     </script>
 </body>
