@@ -4,9 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>צור קשר - MULTIBRAWN</title>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
+        :root {
+            --primary-bg: #FFFFFF;
+            --secondary-bg: #f5f3ff;
+            --brand-purple: #8B5FBF;
+            --cta-turquoise: #40E0D0;
+            --text-dark: #2d3748;
+            --text-muted: #718096;
+            --border-color: #e2e8f0;
+        }
+        
         * {
             margin: 0;
             padding: 0;
@@ -15,58 +25,10 @@
         
         body {
             font-family: 'Heebo', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            background-attachment: fixed;
-            color: #fff;
+            background: var(--primary-bg);
+            color: var(--text-dark);
             line-height: 1.6;
             overflow-x: hidden;
-            position: relative;
-            min-height: 100vh;
-        }
-        
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(102, 126, 234, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(240, 147, 251, 0.3) 0%, transparent 50%);
-            animation: bgMove 20s ease-in-out infinite;
-            z-index: -1;
-        }
-        
-        @keyframes bgMove {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.1); }
-        }
-        
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-        }
-        
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.6);
-            border-radius: 50%;
-            animation: float 15s infinite linear;
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(100vh) translateX(0); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-10vh) translateX(100px); opacity: 0; }
         }
         
         .header-nav {
@@ -74,7 +36,10 @@
             top: 0;
             width: 100%;
             z-index: 1000;
-            padding: 1rem 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
         
         .nav-content {
@@ -83,111 +48,107 @@
             align-items: center;
             max-width: 1400px;
             margin: 0 auto;
-            padding: 1rem 2rem;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            padding: 20px 40px;
         }
         
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 15px;
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: transform 0.3s;
         }
         
         .logo-container:hover {
-            transform: translateY(-3px);
+            transform: translateY(-2px);
         }
         
         .logo-img {
             width: 70px;
             height: 70px;
             border-radius: 50%;
-            border: 3px solid rgba(255, 255, 255, 0.4);
-            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
-            transition: all 0.3s ease;
             object-fit: cover;
-        }
-        
-        .logo-container:hover .logo-img {
-            transform: scale(1.1) rotate(5deg);
+            border: 2px solid var(--brand-purple);
+            box-shadow: 0 4px 15px rgba(139, 95, 191, 0.2);
         }
         
         .logo-text {
             font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
             font-weight: 900;
-            color: #fff;
-            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            color: var(--text-dark);
         }
         
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 28px;
             align-items: center;
         }
         
         .nav-menu a {
-            color: rgba(255, 255, 255, 0.9);
+            color: var(--text-muted);
             text-decoration: none;
             font-weight: 600;
             padding: 0.5rem 1rem;
             border-radius: 10px;
-            transition: all 0.3s ease;
+            transition: all 0.3s;
         }
         
-        .nav-menu a:hover,
-        .nav-menu a.active {
-            color: #fff;
-            background: rgba(255, 255, 255, 0.15);
+        .nav-menu a:hover {
+            color: var(--brand-purple);
+            background: var(--secondary-bg);
+        }
+        
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .hamburger-line {
+            width: 30px;
+            height: 3px;
+            background: var(--text-dark);
+            border-radius: 2px;
         }
         
         .hero {
-            min-height: 100vh;
+            min-height: 70vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                        url('https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/yoga.png');
+            background-size: cover;
+            background-position: center;
             text-align: center;
-            padding: 8rem 2rem 4rem;
-            position: relative;
-            z-index: 1;
+            padding-top: 100px;
+            color: #fff;
         }
         
         .hero-title {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Arial Black', sans-serif;
             font-size: clamp(3rem, 8vw, 6rem);
             font-weight: 900;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #fff 0%, #ffd89b 50%, #fff 100%);
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shimmer 3s ease-in-out infinite;
-            filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
-        }
-        
-        @keyframes shimmer {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+            margin-bottom: 1rem;
+            color: var(--brand-purple);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
         }
         
         .hero-subtitle {
-            font-size: clamp(1.2rem, 3vw, 1.8rem);
-            line-height: 1.8;
-            margin-bottom: 3rem;
-            color: rgba(255, 255, 255, 0.95);
-            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
         }
         
         .user-type-selection {
-            padding: 4rem 2rem;
-            position: relative;
-            z-index: 1;
+            padding: 6rem 2rem;
+            background: var(--primary-bg);
         }
         
         .type-container {
@@ -201,8 +162,7 @@
             text-align: center;
             margin-bottom: 4rem;
             font-weight: 900;
-            color: #fff;
-            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            color: var(--brand-purple);
         }
         
         .type-options {
@@ -212,15 +172,14 @@
         }
         
         .type-card {
-            background: rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(30px);
-            border-radius: 30px;
-            padding: 3.5rem 2.5rem;
+            background: #fff;
+            border-radius: 20px;
+            padding: 3rem 2rem;
             text-align: center;
             cursor: pointer;
-            transition: all 0.5s ease;
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s;
+            border: 2px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             position: relative;
             overflow: hidden;
         }
@@ -232,8 +191,8 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
-            transition: left 0.6s ease;
+            background: linear-gradient(90deg, transparent, rgba(139, 95, 191, 0.1), transparent);
+            transition: left 0.6s;
         }
         
         .type-card:hover::before {
@@ -241,18 +200,16 @@
         }
         
         .type-card:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.3);
-            border-color: rgba(255, 255, 255, 0.5);
-            background: rgba(255, 255, 255, 0.18);
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(139, 95, 191, 0.2);
+            border-color: var(--brand-purple);
         }
         
         .type-icon {
             font-size: 5rem;
             margin-bottom: 1.5rem;
             display: inline-block;
-            transition: all 0.4s ease;
-            filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.3));
+            transition: all 0.4s;
         }
         
         .type-card:hover .type-icon {
@@ -263,31 +220,30 @@
             font-size: 2rem;
             margin-bottom: 1rem;
             font-weight: 800;
-            color: #fff;
+            color: var(--text-dark);
         }
         
         .type-card p {
-            color: rgba(255, 255, 255, 0.85);
+            color: var(--text-muted);
             font-size: 1.1rem;
             line-height: 1.7;
             margin-bottom: 2rem;
         }
         
         .card-btn {
-            background: rgba(255, 255, 255, 0.2);
-            color: #fff;
+            background: var(--cta-turquoise);
+            color: var(--text-dark);
             padding: 1rem 2.5rem;
             border-radius: 50px;
             font-weight: 700;
             display: inline-block;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 15px rgba(64, 224, 208, 0.3);
         }
         
         .chat-section {
             padding: 4rem 2rem;
             display: none;
-            position: relative;
-            z-index: 1;
+            background: var(--secondary-bg);
         }
         
         .chat-section.active {
@@ -297,20 +253,18 @@
         .chat-container {
             max-width: 900px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(40px);
-            border-radius: 35px;
+            background: #fff;
+            border-radius: 25px;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border: 2px solid var(--border-color);
+            box-shadow: 0 20px 60px rgba(139, 95, 191, 0.15);
         }
         
         .chat-header {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.08));
+            background: var(--brand-purple);
             padding: 2.5rem 2rem;
             color: #fff;
             position: relative;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         .back-btn {
@@ -338,7 +292,7 @@
         .chat-subtitle {
             text-align: center;
             font-size: 1.1rem;
-            opacity: 0.9;
+            opacity: 0.95;
         }
         
         .chat-messages {
@@ -346,7 +300,7 @@
             max-height: 650px;
             overflow-y: auto;
             padding: 2.5rem;
-            background: rgba(255, 255, 255, 0.03);
+            background: #fafafa;
         }
         
         .chat-messages::-webkit-scrollbar {
@@ -354,13 +308,13 @@
         }
         
         .chat-messages::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.3);
+            background: var(--brand-purple);
             border-radius: 10px;
         }
         
         .message {
             margin-bottom: 2rem;
-            animation: fadeIn 0.5s ease;
+            animation: fadeIn 0.5s;
             opacity: 0;
             animation-fill-mode: forwards;
         }
@@ -385,17 +339,17 @@
         }
         
         .message.bot .message-bubble {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            color: #fff;
+            background: #fff;
+            border: 2px solid var(--border-color);
+            color: var(--text-dark);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
         }
         
         .message.user .message-bubble {
-            background: linear-gradient(135deg, rgba(79, 172, 254, 0.3), rgba(102, 126, 234, 0.3));
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: #fff;
+            background: var(--cta-turquoise);
+            color: var(--text-dark);
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(64, 224, 208, 0.3);
         }
         
         .response-options {
@@ -406,18 +360,19 @@
         }
         
         .response-option {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: #fff;
+            border: 2px solid var(--border-color);
             border-radius: 20px;
             padding: 2rem 1.5rem;
             cursor: pointer;
-            transition: all 0.4s ease;
+            transition: all 0.4s;
             text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
         }
         
         .response-option:hover {
-            background: rgba(255, 255, 255, 0.18);
+            background: var(--secondary-bg);
+            border-color: var(--brand-purple);
             transform: translateY(-8px);
         }
         
@@ -429,12 +384,12 @@
         .option-title {
             font-weight: 800;
             font-size: 1.15rem;
-            color: #fff;
+            color: var(--text-dark);
             margin-bottom: 0.5rem;
         }
         
         .option-desc {
-            color: rgba(255, 255, 255, 0.75);
+            color: var(--text-muted);
             font-size: 0.95rem;
         }
         
@@ -445,22 +400,21 @@
         .chat-input {
             width: 100%;
             padding: 1rem 1.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.25);
+            border: 2px solid var(--border-color);
             border-radius: 15px;
             font-size: 1rem;
             font-family: 'Heebo', sans-serif;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(20px);
-            color: #fff;
+            background: #fff;
+            color: var(--text-dark);
         }
         
         .chat-input::placeholder {
-            color: rgba(255, 255, 255, 0.6);
+            color: var(--text-muted);
         }
         
         .chat-input:focus {
             outline: none;
-            border-color: rgba(255, 255, 255, 0.5);
+            border-color: var(--brand-purple);
         }
         
         .chat-textarea {
@@ -469,16 +423,16 @@
         }
         
         .continue-btn {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.15));
-            backdrop-filter: blur(20px);
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: var(--cta-turquoise);
+            color: var(--text-dark);
+            border: none;
             padding: 1rem 2.5rem;
             border-radius: 30px;
             font-weight: 700;
             cursor: pointer;
             margin-top: 1rem;
             font-size: 1.05rem;
+            box-shadow: 0 4px 15px rgba(64, 224, 208, 0.3);
         }
         
         .checkbox-group {
@@ -493,25 +447,28 @@
             align-items: center;
             gap: 0.7rem;
             padding: 1rem;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
+            background: #fff;
             border-radius: 12px;
             cursor: pointer;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 2px solid var(--border-color);
+            transition: all 0.3s;
+        }
+        
+        .checkbox-item:hover,
+        .checkbox-item.checked {
+            background: var(--secondary-bg);
+            border-color: var(--brand-purple);
         }
         
         .checkbox-item input {
             width: 20px;
             height: 20px;
             cursor: pointer;
-        }
-        
-        .checkbox-item.checked {
-            background: rgba(79, 172, 254, 0.25);
+            accent-color: var(--cta-turquoise);
         }
         
         .checkbox-item label {
-            color: #fff;
+            color: var(--text-dark);
             cursor: pointer;
             flex: 1;
         }
@@ -520,7 +477,7 @@
             text-align: center;
             font-size: 2rem;
             font-weight: 700;
-            color: #fff;
+            color: var(--brand-purple);
             margin: 1.5rem 0;
         }
         
@@ -528,7 +485,7 @@
             width: 100%;
             height: 10px;
             border-radius: 5px;
-            background: rgba(255, 255, 255, 0.2);
+            background: var(--border-color);
             outline: none;
             margin-top: 1rem;
         }
@@ -538,16 +495,18 @@
             width: 28px;
             height: 28px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            background: var(--cta-turquoise);
             cursor: pointer;
+            box-shadow: 0 4px 15px rgba(64, 224, 208, 0.5);
         }
         
         .whatsapp-section {
             text-align: center;
             padding: 3rem 2rem;
-            background: rgba(37, 211, 102, 0.15);
+            background: rgba(37, 211, 102, 0.08);
             border-radius: 25px;
             margin-top: 2rem;
+            border: 2px solid rgba(37, 211, 102, 0.2);
         }
         
         .whatsapp-title {
@@ -555,20 +514,23 @@
             font-size: 2rem;
             font-weight: 900;
             margin-bottom: 1.5rem;
+            color: var(--text-dark);
         }
         
         .whatsapp-preview {
-            background: rgba(255, 255, 255, 0.12);
+            background: #fff;
+            border: 2px solid rgba(37, 211, 102, 0.2);
             border-radius: 20px;
             padding: 2rem;
             margin: 2rem auto;
             text-align: right;
             line-height: 2;
             max-width: 600px;
+            color: var(--text-dark);
         }
         
         .whatsapp-preview strong {
-            color: #4ade80;
+            color: #25d366;
         }
         
         .whatsapp-btn {
@@ -584,12 +546,12 @@
             gap: 12px;
             text-decoration: none;
             cursor: pointer;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
         }
         
         .contact-info {
             padding: 6rem 2rem;
-            position: relative;
-            z-index: 1;
+            background: var(--secondary-bg);
         }
         
         .section-title {
@@ -598,6 +560,7 @@
             text-align: center;
             margin-bottom: 4rem;
             font-weight: 900;
+            color: var(--brand-purple);
         }
         
         .contact-grid {
@@ -609,24 +572,26 @@
         }
         
         .contact-card {
-            background: rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(30px);
-            border-radius: 25px;
+            background: #fff;
+            border-radius: 20px;
             padding: 3rem 2rem;
             text-align: center;
-            transition: all 0.4s ease;
-            border: 1px solid rgba(255, 255, 255, 0.25);
+            transition: all 0.4s;
+            border: 2px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
         }
         
         .contact-card:hover {
             transform: translateY(-12px);
+            box-shadow: 0 20px 50px rgba(139, 95, 191, 0.2);
+            border-color: var(--brand-purple);
         }
         
         .contact-icon {
             width: 90px;
             height: 90px;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.15));
-            border-radius: 25px;
+            background: var(--brand-purple);
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -639,21 +604,22 @@
             font-size: 1.6rem;
             margin-bottom: 0.8rem;
             font-weight: 800;
+            color: var(--text-dark);
         }
         
         .contact-card p {
-            color: rgba(255, 255, 255, 0.8);
+            color: var(--text-muted);
             margin-bottom: 1rem;
         }
         
         .contact-card a {
-            color: #fff;
+            color: var(--brand-purple);
             text-decoration: none;
             font-weight: 700;
             font-size: 1.15rem;
             padding: 0.5rem 1rem;
             border-radius: 10px;
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--secondary-bg);
             display: inline-block;
         }
         
@@ -666,7 +632,7 @@
         .typing-indicator span {
             width: 10px;
             height: 10px;
-            background: rgba(255, 255, 255, 0.6);
+            background: var(--brand-purple);
             border-radius: 50%;
             animation: typing 1.4s infinite;
         }
@@ -680,8 +646,14 @@
         }
         
         @keyframes typing {
-            0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
-            30% { transform: translateY(-12px); opacity: 1; }
+            0%, 60%, 100% {
+                transform: translateY(0);
+                opacity: 0.5;
+            }
+            30% {
+                transform: translateY(-12px);
+                opacity: 1;
+            }
         }
         
         @media (max-width: 768px) {
@@ -689,13 +661,17 @@
                 display: none;
             }
             
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
             .logo-img {
-                width: 60px;
-                height: 60px;
+                width: 50px;
+                height: 50px;
             }
             
             .logo-text {
-                font-size: 2rem;
+                font-size: 1.6rem;
             }
             
             .hero {
@@ -729,31 +705,10 @@
             .type-icon {
                 font-size: 4rem;
             }
-            
-            .logo-img {
-                width: 50px;
-                height: 50px;
-            }
-            
-            .logo-text {
-                font-size: 1.6rem;
-            }
         }
     </style>
 </head>
 <body>
-    <div class="particles">
-        <div class="particle" style="left:10%;animation-delay:0s"></div>
-        <div class="particle" style="left:20%;animation-delay:2s"></div>
-        <div class="particle" style="left:30%;animation-delay:4s"></div>
-        <div class="particle" style="left:40%;animation-delay:1s"></div>
-        <div class="particle" style="left:50%;animation-delay:3s"></div>
-        <div class="particle" style="left:60%;animation-delay:5s"></div>
-        <div class="particle" style="left:70%;animation-delay:2.5s"></div>
-        <div class="particle" style="left:80%;animation-delay:4.5s"></div>
-        <div class="particle" style="left:90%;animation-delay:1.5s"></div>
-    </div>
-
     <header class="header-nav">
         <nav class="nav-content">
             <a href="index.html" class="logo-container">
@@ -764,18 +719,21 @@
                 <li><a href="index.html">דף הבית</a></li>
                 <li><a href="about.html">אודות</a></li>
                 <li><a href="gallery.html">גלריה</a></li>
-                <li><a href="contact.html" class="active">צור קשר</a></li>
+                <li><a href="marketing.html">שיווק</a></li>
+                <li><a href="faq.html">שאלות ותשובות</a></li>
             </ul>
+            <button class="mobile-menu-toggle" id="mobileToggle">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
         </nav>
     </header>
 
     <section class="hero">
         <div class="hero-content">
             <h1 class="hero-title">בואו נדבר</h1>
-            <p class="hero-subtitle">
-                מחפשים נופש מושלם? יש לכם נכס ורוצים לשווק אותו?<br>
-                בחרו את האפשרות המתאימה ונתחיל את המסע המשותף
-            </p>
+            <p class="hero-subtitle">מחפשים נופש מושלם? יש לכם נכס ורוצים לשווק אותו?<br>בחרו את האפשרות המתאימה ונתחיל</p>
         </div>
     </section>
 
@@ -789,7 +747,6 @@
                     <p>רוצים למצוא את הלוקיישן המושלם? ספרו לנו מה אתם מחפשים!</p>
                     <span class="card-btn">מלאו שאלון קצר ←</span>
                 </div>
-
                 <div class="type-card" onclick="startChat('owner')">
                     <div class="type-icon">🏢</div>
                     <h3>בעלי נכסים</h3>
@@ -829,7 +786,7 @@
                 <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
                 <h3>WhatsApp</h3>
                 <p>התכתבו איתנו ישירות</p>
-                <a href="https://wa.me/972523983394" target="_blank">שלחו הודעה</a>
+                <a href="https://wa.me/972523983394">שלחו הודעה</a>
             </div>
             <div class="contact-card">
                 <div class="contact-icon"><i class="fas fa-phone"></i></div>
@@ -847,311 +804,35 @@
                 <div class="contact-icon"><i class="fab fa-instagram"></i></div>
                 <h3>אינסטגרם</h3>
                 <p>עקבו אחרינו</p>
-                <a href="https://instagram.com/multibrawn" target="_blank">@multibrawn</a>
+                <a href="https://instagram.com/multibrawn">@multibrawn</a>
             </div>
         </div>
     </section>
 
     <script>
         const clientQuestions = [
-            {id: 'occasionType', bot: 'שלום! 👋 נשמח לעזור לכם למצוא את המקום המושלם. למה אתם מחפשים?', type: 'options', options: [
-                {icon: '🏖️', title: 'חופשה משפחתית', desc: 'בילוי עם המשפחה', value: 'family'},
-                {icon: '💑', title: 'חופשה זוגית', desc: 'רומנטי ואינטימי', value: 'couple'},
-                {icon: '🎉', title: 'אירוע', desc: 'יום הולדת, חתונה', value: 'event'},
-                {icon: '👥', title: 'בילוי חברים', desc: 'קבוצת חברים', value: 'friends'},
-                {icon: '🕍', title: 'אירוע דתי', desc: 'בר מצווה, שבת חתן', value: 'religious'}
-            ]},
-            {id: 'dates', bot: 'מעולה! באיזה תאריכים? 📅', type: 'text', placeholder: 'לדוגמה: 15-17 באפריל'},
-            {id: 'guests', bot: 'כמה אנשים יהיו? 👥', type: 'range', min: 2, max: 200, unit: 'אנשים'},
-            {id: 'location', bot: 'איזה אזור? 📍', type: 'text', placeholder: 'גליל, ירושלים, מרכז...'},
-            {id: 'propertyType', bot: 'איזה סוג נכס? 🏡', type: 'options', options: [
-                {icon: '🏨', title: 'מלון', desc: 'מלון או בוטיק', value: 'hotel'},
-                {icon: '🏡', title: 'וילה', desc: 'וילה פרטית', value: 'villa'},
-                {icon: '🏕️', title: 'צימר', desc: 'צימר רומנטי', value: 'zimmer'},
-                {icon: '🏢', title: 'מתחם', desc: 'מתחם אירועים', value: 'venue'},
-                {icon: '🤷', title: 'לא בטוח', desc: 'תייעצו לי', value: 'flexible'}
-            ]},
-            {id: 'amenities', bot: 'מה חשוב לכם? ✨', type: 'checkbox', options: [
-                {label: '🏊‍♂️ בריכה', value: 'pool'},
-                {label: '🧖‍♀️ ג\'קוזי', value: 'jacuzzi'},
-                {label: '🏔️ נוף', value: 'view'},
-                {label: '🌳 גינה', value: 'garden'},
-                {label: '🍖 ברביקיו', value: 'bbq'},
-                {label: '👶 ידידותי לילדים', value: 'kids'}
-            ]},
-            {id: 'budget', bot: 'מה התקציב? 💰', type: 'options', options: [
-                {icon: '💵', title: 'עד 2,000 ₪', desc: 'חסכוני', value: 'low'},
-                {icon: '💴', title: '2,000-5,000 ₪', desc: 'בינוני', value: 'medium'},
-                {icon: '💶', title: '5,000-10,000 ₪', desc: 'גבוה', value: 'high'},
-                {icon: '💎', title: 'מעל 10,000 ₪', desc: 'פרימיום', value: 'premium'},
-                {icon: '🤝', title: 'גמיש', desc: 'תלוי במקום', value: 'flexible'}
-            ]},
-            {id: 'contactName', bot: 'איך קוראים לכם? 😊', type: 'text', placeholder: 'השם שלך...'},
-            {id: 'phone', bot: 'מספר טלפון? 📱', type: 'text', placeholder: '050-1234567', inputType: 'tel'},
-            {id: 'notes', bot: 'עוד משהו? (אופציונלי) 💭', type: 'textarea', placeholder: 'הערות...', optional: true}
-        ];
-
-        const ownerQuestions = [
-            {id: 'propertyType', bot: 'שלום! 🙏 איזה סוג נכס יש לכם?', type: 'options', options: [
-                {icon: '🏨', title: 'מלון בוטיק', desc: 'מלון ייחודי', value: 'hotel'},
-                {icon: '🏡', title: 'וילה', desc: 'וילה להשכרה', value: 'villa'},
-                {icon: '🏕️', title: 'צימר', desc: 'צימר/צימרים', value: 'zimmer'},
-                {icon: '🏢', title: 'מתחם אירועים', desc: 'אולם או גן', value: 'venue'},
-                {icon: '🏖️', title: 'אחר', desc: 'סוג אחר', value: 'other'}
-            ]},
-            {id: 'propertyName', bot: 'שם הנכס? 🏷️', type: 'text', placeholder: 'שם הנכס...'},
-            {id: 'location', bot: 'איפה נמצא? 📍', type: 'text', placeholder: 'עיר או אזור...'},
-            {id: 'capacity', bot: 'כמה אנשים? 👥', type: 'range', min: 2, max: 300, unit: 'אנשים'},
-            {id: 'rooms', bot: 'כמה חדרי שינה? 🛏️', type: 'range', min: 1, max: 20, unit: 'חדרים'},
-            {id: 'amenities', bot: 'מה יש במקום? ✨', type: 'checkbox', options: [
-                {label: '🏊‍♂️ בריכה', value: 'pool'},
-                {label: '🧖‍♀️ ג\'קוזי', value: 'jacuzzi'},
-                {label: '🍖 ברביקיו', value: 'bbq'},
-                {label: '🌳 גינה', value: 'garden'},
-                {label: '🎮 חדר משחקים', value: 'gameroom'},
-                {label: '🍽️ מטבח', value: 'kitchen'},
-                {label: '🚗 חניה', value: 'parking'},
-                {label: '🕍 כשרות', value: 'kosher'}
-            ]},
-            {id: 'contactName', bot: 'איך קוראים לכם? 😊', type: 'text', placeholder: 'השם המלא...'},
-            {id: 'phone', bot: 'מספר טלפון? 📱', type: 'text', placeholder: '050-1234567', inputType: 'tel'},
-            {id: 'email', bot: 'אימייל? 📧', type: 'text', placeholder: 'example@domain.com', inputType: 'email'},
-            {id: 'notes', bot: 'עוד משהו? (אופציונלי) 💭', type: 'textarea', placeholder: 'ספרו לנו...', optional: true}
-        ];
-
-        let currentChatType = null;
-        let chatData = {userAnswers: {}, currentStep: 0};
-
-        function startChat(type) {
-            currentChatType = type;
-            chatData = {userAnswers: {}, currentStep: 0};
-            document.getElementById('userTypeSection').style.display = 'none';
-            if (type === 'client') {
-                document.getElementById('clientChat').classList.add('active');
-                setTimeout(() => showQuestion(0, 'client'), 500);
-            } else {
-                document.getElementById('ownerChat').classList.add('active');
-                setTimeout(() => showQuestion(0, 'owner'), 500);
-            }
-        }
-
-        function resetChat() {
-            document.getElementById('clientChat').classList.remove('active');
-            document.getElementById('ownerChat').classList.remove('active');
-            document.getElementById('clientMessages').innerHTML = '';
-            document.getElementById('ownerMessages').innerHTML = '';
-            document.getElementById('userTypeSection').style.display = 'block';
-            currentChatType = null;
-            chatData = {userAnswers: {}, currentStep: 0};
-        }
-
-        function showQuestion(questionIndex, chatType) {
-            const questions = chatType === 'client' ? clientQuestions : ownerQuestions;
-            const container = chatType === 'client' ? document.getElementById('clientMessages') : document.getElementById('ownerMessages');
-            
-            if (questionIndex >= questions.length) {
-                showSummary(chatType, container);
-                return;
-            }
-
-            const question = questions[questionIndex];
-            showTyping(container);
-            
-            setTimeout(() => {
-                hideTyping(container);
-                addMessage(question.bot, true, container);
-                
-                setTimeout(() => {
-                    if (question.type === 'options') showOptions(question, chatType, container);
-                    else if (question.type === 'checkbox') showCheckboxes(question, chatType, container);
-                    else if (question.type === 'range') showRange(question, chatType, container);
-                    else if (question.type === 'text' || question.type === 'textarea') showTextInput(question, chatType, container);
-                }, 500);
-            }, 1000);
-        }
-
-        function addMessage(text, isBot, container) {
-            const msg = document.createElement('div');
-            msg.className = `message ${isBot ? 'bot' : 'user'}`;
-            msg.innerHTML = `<div class="message-bubble">${text}</div>`;
-            container.appendChild(msg);
-            container.scrollTop = container.scrollHeight;
-        }
-
-        function showTyping(container) {
-            const typing = document.createElement('div');
-            typing.className = 'message bot';
-            typing.id = 'typing';
-            typing.innerHTML = '<div class="message-bubble typing-indicator"><span></span><span></span><span></span></div>';
-            container.appendChild(typing);
-            container.scrollTop = container.scrollHeight;
-        }
-
-        function hideTyping(container) {
-            const typing = container.querySelector('#typing');
-            if (typing) typing.remove();
-        }
-
-        function showOptions(question, chatType, container) {
-            const div = document.createElement('div');
-            div.className = 'message bot';
-            const optionsContainer = document.createElement('div');
-            optionsContainer.className = 'response-options';
-            
-            question.options.forEach(opt => {
-                const optEl = document.createElement('div');
-                optEl.className = 'response-option';
-                optEl.innerHTML = `<div class="option-icon">${opt.icon}</div><div class="option-title">${opt.title}</div><div class="option-desc">${opt.desc}</div>`;
-                optEl.onclick = () => {
-                    chatData.userAnswers[question.id] = opt.value;
-                    addMessage(`${opt.icon} ${opt.title}`, false, container);
-                    div.remove();
-                    chatData.currentStep++;
-                    showQuestion(chatData.currentStep, chatType);
-                };
-                optionsContainer.appendChild(optEl);
-            });
-            
-            div.appendChild(optionsContainer);
-            container.appendChild(div);
-            container.scrollTop = container.scrollHeight;
-        }
-
-        function showCheckboxes(question, chatType, container) {
-            const div = document.createElement('div');
-            div.className = 'message bot';
-            const group = document.createElement('div');
-            group.className = 'checkbox-group';
-            const selected = [];
-            
-            question.options.forEach((opt, i) => {
-                const item = document.createElement('div');
-                item.className = 'checkbox-item';
-                item.innerHTML = `<input type="checkbox" id="cb${chatType}${i}" value="${opt.value}"><label for="cb${chatType}${i}">${opt.label}</label>`;
-                const checkbox = item.querySelector('input');
-                checkbox.onchange = () => {
-                    if (checkbox.checked) {
-                        selected.push(opt.value);
-                        item.classList.add('checked');
-                    } else {
-                        const idx = selected.indexOf(opt.value);
-                        if (idx > -1) selected.splice(idx, 1);
-                        item.classList.remove('checked');
-                    }
-                };
-                group.appendChild(item);
-            });
-            
-            const btnDiv = document.createElement('div');
-            btnDiv.className = 'input-section';
-            btnDiv.innerHTML = '<button class="continue-btn">המשך ←</button>';
-            const btn = btnDiv.querySelector('.continue-btn');
-            btn.onclick = () => {
-                if (selected.length > 0) {
-                    chatData.userAnswers[question.id] = selected;
-                    const labels = question.options.filter(opt => selected.includes(opt.value)).map(opt => opt.label).join(', ');
-                    addMessage(labels, false, container);
-                    div.remove();
-                    chatData.currentStep++;
-                    showQuestion(chatData.currentStep, chatType);
-                }
-            };
-            
-            div.appendChild(group);
-            div.appendChild(btnDiv);
-            container.appendChild(div);
-            container.scrollTop = container.scrollHeight;
-        }
-
-        function showRange(question, chatType, container) {
-            const div = document.createElement('div');
-            div.className = 'message bot';
-            div.innerHTML = `<div class="range-display">${question.min} ${question.unit}</div><input type="range" min="${question.min}" max="${question.max}" value="${question.min}"><div class="input-section"><button class="continue-btn">המשך ←</button></div>`;
-            const display = div.querySelector('.range-display');
-            const slider = div.querySelector('input[type="range"]');
-            const btn = div.querySelector('.continue-btn');
-            slider.oninput = () => display.textContent = `${slider.value} ${question.unit}`;
-            btn.onclick = () => {
-                chatData.userAnswers[question.id] = slider.value;
-                addMessage(`${slider.value} ${question.unit}`, false, container);
-                div.remove();
-                chatData.currentStep++;
-                showQuestion(chatData.currentStep, chatType);
-            };
-            container.appendChild(div);
-            container.scrollTop = container.scrollHeight;
-        }
-
-        function showTextInput(question, chatType, container) {
-            const div = document.createElement('div');
-            div.className = 'message bot';
-            const inputTag = question.type === 'textarea' ? 
-                `<textarea class="chat-input chat-textarea" placeholder="${question.placeholder}"></textarea>` :
-                `<input type="${question.inputType || 'text'}" class="chat-input" placeholder="${question.placeholder}">`;
-            div.innerHTML = `<div class="input-section">${inputTag}<button class="continue-btn">המשך ←</button></div>`;
-            const input = div.querySelector(question.type === 'textarea' ? 'textarea' : 'input');
-            const btn = div.querySelector('.continue-btn');
-            btn.onclick = () => {
-                const val = input.value.trim();
-                if (val || question.optional) {
-                    chatData.userAnswers[question.id] = val;
-                    addMessage(val || '(דילגתי)', false, container);
-                    div.remove();
-                    chatData.currentStep++;
-                    showQuestion(chatData.currentStep, chatType);
-                }
-            };
-            container.appendChild(div);
-            container.scrollTop = container.scrollHeight;
-            setTimeout(() => input.focus(), 100);
-        }
-
-        function showSummary(chatType, container) {
-            showTyping(container);
-            setTimeout(() => {
-                hideTyping(container);
-                addMessage('תודה רבה! 🙏 קיבלתי את כל הפרטים.', true, container);
-                setTimeout(() => {
-                    const div = document.createElement('div');
-                    div.className = 'message bot';
-                    const msg = generateWhatsAppMessage(chatType);
-                    div.innerHTML = `<div class="whatsapp-section"><h3 class="whatsapp-title">כל הפרטים מוכנים! 🎉</h3><p style="margin-bottom:2rem">לחצו על הכפתור למטה</p><div class="whatsapp-preview">${msg.replace(/\n/g, '<br>')}</div><a href="https://wa.me/972523983394?text=${encodeURIComponent(msg)}" target="_blank" class="whatsapp-btn"><i class="fab fa-whatsapp"></i>שלחו ב-WhatsApp</a></div>`;
-                    container.appendChild(div);
-                    container.scrollTop = container.scrollHeight;
-                }, 1500);
-            }, 1000);
-        }
-
-        function generateWhatsAppMessage(chatType) {
-            const ans = chatData.userAnswers;
-            let msg = chatType === 'client' ? '🏖️ *מחפש נופש - MULTIBRAWN*\n\n' : '🏢 *בעל נכס - MULTIBRAWN*\n\n';
-            if (ans.occasionType) msg += `*סוג:* ${ans.occasionType}\n`;
-            if (ans.dates) msg += `*תאריכים:* ${ans.dates}\n`;
-            if (ans.guests) msg += `*אורחים:* ${ans.guests}\n`;
-            if (ans.location) msg += `*מיקום:* ${ans.location}\n`;
-            if (ans.propertyType) msg += `*נכס:* ${ans.propertyType}\n`;
-            if (ans.propertyName) msg += `*שם:* ${ans.propertyName}\n`;
-            if (ans.capacity) msg += `*קיבולת:* ${ans.capacity}\n`;
-            if (ans.rooms) msg += `*חדרים:* ${ans.rooms}\n`;
-            msg += '\n👤 *פרטי קשר:*\n';
-            if (ans.contactName) msg += `*שם:* ${ans.contactName}\n`;
-            if (ans.phone) msg += `*טלפון:* ${ans.phone}\n`;
-            if (ans.email) msg += `*אימייל:* ${ans.email}\n`;
-            if (ans.notes) msg += `\n📝 *הערות:* ${ans.notes}\n`;
-            msg += '\n✨ מחכה לשמוע מכם!';
-            return msg;
-        }
-
-        function createParticle() {
-            const p = document.createElement('div');
-            p.className = 'particle';
-            p.style.left = Math.random() * 100 + '%';
-            p.style.animationDelay = Math.random() * 5 + 's';
-            document.querySelector('.particles').appendChild(p);
-            setTimeout(() => p.remove(), 20000);
-        }
-
-        setInterval(createParticle, 3000);
-    </script>
-</body>
-</html>
+            {
+                id: 'occasionType',
+                bot: 'שלום! 👋 נשמח לעזור לכם למצוא את המקום המושלם. למה אתם מחפשים?',
+                type: 'options',
+                options: [
+                    { icon: '🏖️', title: 'חופשה משפחתית', desc: 'בילוי עם המשפחה', value: 'family' },
+                    { icon: '💑', title: 'חופשה זוגית', desc: 'רומנטי ואינטימי', value: 'couple' },
+                    { icon: '🎉', title: 'אירוע', desc: 'יום הולדת, חתונה', value: 'event' },
+                    { icon: '👥', title: 'בילוי חברים', desc: 'קבוצת חברים', value: 'friends' },
+                    { icon: '🕍', title: 'אירוע דתי', desc: 'בר מצווה, שבת חתן', value: 'religious' }
+                ]
+            },
+            {
+                id: 'dates',
+                bot: 'מעולה! באיזה תאריכים? 📅',
+                type: 'text',
+                placeholder: 'לדוגמה: 15-17 באפריל'
+            },
+            {
+                id: 'guests',
+                bot: 'כמה אנשים יהיו? 👥',
+                type: 'range',
+                min: 2,
+                max: 200,
+                unit:
