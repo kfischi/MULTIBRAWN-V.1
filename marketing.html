@@ -4,12 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>שיווק דיגיטלי - Multibrawn</title>
-    <meta name="description" content="שירותי שיווק דיגיטלי 360° לעסקי תיירות ואירוח. בניית אתרים, קידום ברשתות חברתיות, אוטומציות ועוד, מבית Multibrawn.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <meta name="description" content="שירותי שיווק דיגיטלי 360° לעסקי תיירות ואירוח. בניית אתרים, קידום ברשתות חברתיות, אוטומציות ועוד.">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
         :root {
@@ -38,11 +35,13 @@
             overflow-x: hidden;
         }
 
-        .header-nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(26, 11, 46, 0.85); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(124, 58, 237, 0.2); }
+        .header-nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(26, 11, 46, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(124, 58, 237, 0.2); }
         .nav-content { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; padding: 20px 40px; }
+        .logo-container { display: flex; align-items: center; gap: 15px; text-decoration: none; }
+        .logo-img { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-purple); }
         .logo { font-family: var(--font-heading); font-size: 2rem; font-weight: 900; color: var(--text-light); text-decoration: none; }
         .nav-menu { display: flex; list-style: none; gap: 40px; align-items: center; }
-        .nav-menu a { color: var(--text-muted); text-decoration: none; font-weight: 500; }
+        .nav-menu a { color: var(--text-muted); text-decoration: none; font-weight: 500; transition: color 0.3s; }
         .nav-menu a:hover { color: var(--text-light); }
         
         .cta-button {
@@ -93,54 +92,70 @@
         .cta-title { font-size: 2.5rem; margin-bottom: 1rem; }
         .cta-description { max-width: 600px; margin: 0 auto 2rem auto; font-size: 1.2rem; }
 
-        footer { padding: 3rem 0; text-align: center; border-top: 1px solid rgba(124, 58, 237, 0.2); background: rgba(15, 12, 41, 0.8); }
-        .footer-links a { color: var(--text-muted); text-decoration: none; margin: 0 10px; }
-        .footer-links a:hover { text-decoration: underline; color: var(--cta-turquoise); }
-        .footer-credit { font-size: 0.9rem; color: var(--cta-turquoise); margin-top: 1rem; }
+        footer { padding: 3rem 2rem; text-align: center; border-top: 1px solid rgba(124, 58, 237, 0.2); background: rgba(15, 12, 41, 0.9); }
+        .footer-logo-section { margin-bottom: 2rem; }
+        .footer-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; align-items: center; }
+        .footer-links a { color: var(--text-muted); text-decoration: none; font-weight: 600; transition: color 0.3s; }
+        .footer-links a:hover { color: var(--cta-turquoise); }
+        .footer-links .separator { color: var(--text-muted); }
+        .social-links { display: flex; justify-content: center; gap: 1.5rem; margin: 2rem 0; }
+        .social-links a { color: var(--text-muted); font-size: 1.8rem; transition: all 0.3s; }
+        .social-links a:hover { color: var(--cta-turquoise); transform: translateY(-3px); }
+        .footer-copyright { color: var(--text-muted); margin-bottom: 1rem; }
+        .footer-credit { color: var(--cta-turquoise); font-size: 0.9rem; font-weight: 600; }
 
-        .floating-buttons { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 999; }
-        .floating-btn { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; font-size: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: transform 0.3s; border: none; cursor: pointer; }
-        .floating-btn:hover { transform: scale(1.1); }
-        .whatsapp-btn { background: #25d366; }
-        .chatbot-btn { background: var(--accent-purple); }
-        .accessibility-btn { background: var(--accent-yellow); color: #1a0b2e; }
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #25d366, #20ba5a);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            text-decoration: none;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            transition: all 0.3s ease;
+        }
+        .floating-whatsapp:hover { transform: scale(1.1); box-shadow: 0 12px 35px rgba(37, 211, 102, 0.6); }
 
-        .accessibility-panel { position: fixed; bottom: 100px; right: 30px; width: 280px; background: #fff; color: #000; border-radius: 15px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: all 0.3s ease; z-index: 1001; opacity: 0; transform: translateY(20px); pointer-events: none; }
-        .accessibility-panel.open { opacity: 1; transform: translateY(0); pointer-events: auto; }
-        .accessibility-panel h3 { color: #1a0b2e; text-align: center; margin-bottom: 15px; }
-        .accessibility-controls { display: flex; flex-direction: column; gap: 10px; }
-        .accessibility-btn-control { padding: 10px; border-radius: 8px; border: 1px solid #ccc; background-color: #f0f0f0; cursor: pointer; font-weight: 600; }
+        /* Simple Fade In Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
         
-        #chat-popup { width: 380px; height: 75vh; max-height: 700px; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.4); position: fixed; bottom: 100px; right: 20px; display: none; flex-direction: column; background-color: #1a0b2e; border: 1px solid var(--accent-purple); z-index: 1000; }
-        #chat-popup.visible { display: flex; }
-        .chat-popup-header { color: #fff; padding: 15px; font-weight: 600; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(192, 192, 192, 0.2); }
-        #close-chat-btn { background: none; border: none; color: white; font-size: 24px; cursor: pointer; }
-        
-        #proactive-popup { position: fixed; bottom: 100px; right: 30px; width: 320px; background: linear-gradient(135deg, #2c1d52, #1a0b2e); color: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.4); border: 1px solid var(--accent-yellow); z-index: 1001; opacity: 0; transform: translateY(20px); transition: all 0.5s ease-in-out; pointer-events: none; }
-        #proactive-popup.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
-        .popup-header { font-weight: 700; padding: 15px; background: rgba(0,0,0,0.2); }
-        .popup-body { padding: 20px; line-height: 1.6; }
-        .popup-buttons { padding: 0 20px 20px; display: flex; flex-direction: column; gap: 10px; }
-        #accept-challenge { background: var(--accent-yellow); color: #1a0b2e; font-size: 1.1rem; font-weight: 800; border:none; border-radius: 25px; padding: 12px; cursor:pointer; }
-        #decline-challenge { background: transparent; color: var(--text-muted); border:none; cursor:pointer; }
-        .hidden { display: none; }
-        .high-contrast { filter: contrast(1.5); }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .services-grid { grid-template-columns: 1fr; }
+            .process-steps { flex-direction: column; align-items: center; }
+            .nav-menu { display: none; }
+        }
     </style>
 </head>
 
 <body>
     <header class="header-nav">
         <nav class="nav-content">
-          <div class="logo-container">
-            <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="לוגו MULTIBRAWN" class="logo-img">
-            <a href="index.html" class="logo">MULTIBRAWN</a>
-          </div>
-          <ul class="nav-menu" id="primaryNav">
+          <a href="index.html" class="logo-container">
+            <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="MULTIBRAWN" class="logo-img">
+            <span class="logo">MULTIBRAWN</span>
+          </a>
+          <ul class="nav-menu">
             <li><a href="index.html">דף הבית</a></li>
             <li><a href="about.html">אודות</a></li>
             <li><a href="gallery.html">גלריה</a></li>
             <li><a href="marketing.html">שיווק דיגיטלי</a></li>
-            <li><a href="faq.html">שאלות ותשובות</a></li>
             <li><a class="cta-button" href="contact.html">צור קשר</a></li>
           </ul>
         </nav>
@@ -148,7 +163,7 @@
 
     <main>
         <section class="hero">
-            <div class="hero-content" data-aos="fade-up">
+            <div class="hero-content fade-in">
                 <h1 class="hero-title">השותף הדיגיטלי שלך לצמיחה</h1>
                 <p class="hero-description">
                     ב-Multibrawn, אנחנו לא רק מספקים שירותי שיווק. אנחנו בונים אסטרטגיה, יוצרים נוכחות דיגיטלית מרשימה ומייצרים תוצאות עסקיות מדידות עבור עסקי תיירות, אירוח ואירועים.
@@ -158,34 +173,34 @@
         </section>
 
         <section class="services-section">
-            <h2 class="section-title" data-aos="fade-up">השירותים שלנו</h2>
+            <h2 class="section-title fade-in">השירותים שלנו</h2>
             <div class="services-grid">
-                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-card fade-in">
                     <div class="service-icon"><i class="fas fa-palette"></i></div>
                     <h3 class="service-title">בניית אתרים</h3>
                     <p class="service-description">אנחנו לא בונים סתם אתרים, אנחנו בונים מכונות שיווק. אתרים יפהפיים, מהירים ומותאמים למובייל שממירים גולשים ללקוחות משלמים.</p>
                 </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-card fade-in">
                     <div class="service-icon"><i class="fas fa-bullhorn"></i></div>
                     <h3 class="service-title">שיווק ברשתות חברתיות</h3>
                     <p class="service-description">ניהול מלא של עמודי פייסבוק, אינסטגרם וטיקטוק. יצירת תוכן ויראלי, ניהול קהילות וקמפיינים ממומנים שמגיעים בדיוק לקהל הנכון.</p>
                 </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="service-card fade-in">
                     <div class="service-icon"><i class="fas fa-cogs"></i></div>
                     <h3 class="service-title">אוטומציות חכמות</h3>
                     <p class="service-description">חסוך זמן וכסף עם מערכות אוטומטיות. ניהול לידים, מענה אוטומטי, שליחת הצעות מחיר וניהול לקוחות - הכל קורה מאחורי הקלעים.</p>
                 </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-card fade-in">
                     <div class="service-icon"><i class="fas fa-chart-line"></i></div>
                     <h3 class="service-title">קידום אורגני (SEO)</h3>
                     <p class="service-description">רוצה להופיע ראשון בגוגל? אנחנו מבצעים אופטימיזציה למבנה האתר, חוקרים מילות מפתח ומייצרים תוכן איכותי שיביא אותך לפסגה.</p>
                 </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-card fade-in">
                     <div class="service-icon"><i class="fas fa-mouse-pointer"></i></div>
                     <h3 class="service-title">קמפיינים ממומנים (PPC)</h3>
                     <p class="service-description">ניהול קמפיינים בגוגל, פייסבוק ואינסטגרם עם מקסימום תוצאות במינימום תקציב. אנחנו מנתחים, מודדים ומייעלים כל קליק.</p>
                 </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="service-card fade-in">
                     <div class="service-icon"><i class="fas fa-pen-fancy"></i></div>
                     <h3 class="service-title">יצירת תוכן ומיתוג</h3>
                     <p class="service-description">מהסיפור של המותג ועד צילום וידאו ותמונות מקצועיות. אנחנו יוצרים תוכן שמספר את הסיפור שלך וגורם ללקוחות להתחבר.</p>
@@ -194,43 +209,84 @@
         </section>
 
         <section class="process-section">
-            <h2 class="section-title" data-aos="fade-up">תהליך העבודה שלנו</h2>
+            <h2 class="section-title fade-in">איך אנחנו עובדים</h2>
             <div class="process-steps">
-                <div class="step-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="step-card fade-in">
                     <div class="step-number">1</div>
-                    <h3 class="step-title">אבחון ואסטרטגיה</h3>
-                    <p class="step-description">לומדים את העסק שלך לעומק, מנתחים את המתחרים ומגבשים תוכנית עבודה מותאמת אישית.</p>
+                    <h3 class="step-title">הכרת העסק שלך</h3>
+                    <p class="step-description">לומדים את המוצר או השירות שלך, את קהל היעד ואת החזון. כל עסק הוא ייחודי ומקבל טיפול אישי מותאם.</p>
                 </div>
-                <div class="step-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="step-card fade-in">
                     <div class="step-number">2</div>
-                    <h3 class="step-title">ביצוע ויצירה</h3>
-                    <p class="step-description">בונים את האתר, יוצרים את התוכן, ומשיקים את הקמפיינים הראשונים כדי להתחיל לייצר תנועה.</p>
+                    <h3 class="step-title">בניית נוכחות דיגיטלית</h3>
+                    <p class="step-description">יוצרים אתר, תוכן איכותי, ועיצוב שמדבר בשפה של הלקוחות שלך. בונים את הבסיס לצמיחה.</p>
                 </div>
-                <div class="step-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="step-card fade-in">
                     <div class="step-number">3</div>
-                    <h3 class="step-title">מדידה ואופטימיזציה</h3>
-                    <p class="step-description">עוקבים אחרי כל נתון, מנתחים את התוצאות ומשפרים את הביצועים באופן שוטף להשגת היעדים.</p>
+                    <h3 class="step-title">קידום והגעה ללקוחות</h3>
+                    <p class="step-description">מפרסמים את העסק ברשתות החברתיות, בגוגל ובכל מקום שבו הלקוחות שלך נמצאים. מביאים לך יותר פניות ויותר עסקאות.</p>
                 </div>
             </div>
         </section>
         
-        <section id="contact" class="cta-section">
-            <h2 class="section-title cta-title" data-aos="fade-up">מוכנים לקחת את העסק שלכם לשלב הבא?</h2>
-            <p class="cta-description" data-aos="fade-up" data-aos-delay="100">
+        <section class="cta-section">
+            <h2 class="section-title cta-title fade-in">מוכנים לקחת את העסק שלכם לשלב הבא?</h2>
+            <p class="cta-description fade-in">
                 הגיע הזמן להפסיק לנחש ולהתחיל לצמוח. קבעו איתנו שיחת ייעוץ ללא התחייבות ונראה איך אנחנו יכולים לעזור גם לכם.
             </p>
-            <a href="contact.html" class="cta-button" data-aos="fade-up" data-aos-delay="200">לקביעת שיחת ייעוץ</a>
+            <a href="contact.html" class="cta-button fade-in">לקביעת שיחת ייעוץ</a>
         </section>
     </main>
-    <footer>
-        </footer>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <footer>
+        <div style="max-width:1200px;margin:0 auto">
+            <div class="footer-logo-section">
+                <a href="index.html" class="logo-container" style="display:inline-flex;margin-bottom:1.5rem">
+                    <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="MULTIBRAWN" class="logo-img">
+                    <span class="logo">MULTIBRAWN</span>
+                </a>
+            </div>
+            <div class="footer-links">
+                <a href="privacy.html">מדיניות פרטיות</a>
+                <span class="separator">·</span>
+                <a href="accessibility.html">הצהרת נגישות</a>
+            </div>
+            <div class="social-links">
+                <a href="https://facebook.com/multibrawn" target="_blank" title="פייסבוק"><i class="fab fa-facebook"></i></a>
+                <a href="https://instagram.com/multibrawn" target="_blank" title="אינסטגרם"><i class="fab fa-instagram"></i></a>
+                <a href="https://linkedin.com/company/multibrawn" target="_blank" title="לינקדאין"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <p class="footer-copyright">© 2025 MULTIBRAWN. כל הזכויות שמורות.</p>
+            <p class="footer-credit">האתר נבנה ע"י Multi-Site - אתרים שבונים עסקים מבית Multibrawn</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/972523983394?text=שלום! מעוניין בשירותי שיווק דיגיטלי" target="_blank" class="floating-whatsapp" title="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      AOS.init();
-      // All the JavaScript for popups, accessibility, and menu from the final index.html
-    });
+        // Intersection Observer for fade-in animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+            
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
     </script>
 </body>
 </html>
