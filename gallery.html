@@ -251,6 +251,7 @@
       display: flex;
       gap: 0.5rem;
       margin-bottom: 1rem;
+      flex-wrap: wrap;
     }
 
     .badge {
@@ -484,7 +485,7 @@
   <header class="header-nav">
     <nav class="nav-content">
       <a href="index.html" class="logo-container">
-        <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="MULTIBRAWN" class="logo-img">
+        <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/לוגו2.png" alt="MULTIBRAWN" class="logo-img">
         <span class="logo-text">MULTIBRAWN</span>
       </a>
       <ul class="nav-menu" id="navMenu">
@@ -517,21 +518,127 @@
       <div class="filter-tab" data-filter="villas">וילות יוקרה</div>
       <div class="filter-tab" data-filter="zimmer">צימרים</div>
       <div class="filter-tab" data-filter="hotels">מלונות</div>
-      <div class="filter-tab" data-filter="events">אולמות</div>
+      <div class="filter-tab" data-filter="apartments">דירות</div>
     </div>
   </section>
 
   <section class="gallery-section">
     <div class="gallery-grid" id="galleryGrid">
+      <!-- VILLAS -->
       <div class="gallery-item" data-category="villas">
-        <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villa1.jpg" alt="וילה">
+        <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villas/1.jpg" alt="וילה">
         <div class="gallery-overlay">
           <div class="gallery-badges">
             <span class="badge premium">פרמיום</span>
             <span class="badge">בריכה</span>
           </div>
+          <h3 class="gallery-title">וילה יוקרתית</h3>
+          <p class="gallery-description">וילה מרהיבה עם בריכה פרטית ועיצוב מודרני</p>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="villas">
+        <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villas/2.jpg" alt="וילה">
+        <div class="gallery-overlay">
+          <div class="gallery-badges">
+            <span class="badge premium">פרמיום</span>
+          </div>
+          <h3 class="gallery-title">וילת גן</h3>
+          <p class="gallery-description">וילה מעוצבת עם גינה מטופחת ומרפסות רחבות</p>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="villas">
+        <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villas/3.jpg" alt="וילה">
+        <div class="gallery-overlay">
+          <div class="gallery-badges">
+            <span class="badge">נוף מדהים</span>
+          </div>
+          <h3 class="gallery-title">וילה נוף פנורמי</h3>
+          <p class="gallery-description">וילה עם נוף עוצר נשימה לים או להרים</p>
+        </div>
+      </div>
+
+      <!-- HOTELS -->
+      <div class="gallery-item" data-category="hotels">
+        <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Hotels/1.jpg" alt="מלון">
+        <div class="gallery-overlay">
+          <div class="gallery-badges">
+            <span class="badge premium">בוטיק</span>
+            <span class="badge">ספא</span>
+          </div>
+          <h3 class="gallery-title">מלון בוטיק</h3>
+          <p class="gallery-description">מלון יוקרתי עם שירות אישי וספא מלא</p>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="hotels">
+        <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Hotels/2.jpg" alt="מלון">
+        <div class="gallery-overlay">
+          <div class="gallery-badges">
+            <span class="badge premium">יוקרה</span>
+          </div>
+          <h3 class="gallery-title">חדר מלון יוקרתי</h3>
+          <p class="gallery-description">חדרים מעוצבים עם כל הנוחות והפינוק</p>
+        </div>
+      </div>
+
+      <!-- ZIMMER -->
+      <div class="gallery-item" data-category="zimmer">
+        <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Zimmer/1.jpg" alt="צימר">
+        <div class="gallery-overlay">
+          <div class="gallery-badges">
+            <span class="badge">רומנטי</span>
+            <span class="badge">ג'קוזי</span>
+          </div>
+          <h3 class="gallery-title">צימר רומנטי</h3>
+          <p class="gallery-description">צימר אינטימי עם ג'קוזי ואח רומנטית</p>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="zimmer">
+        <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Zimmer/2.jpg" alt="צימר">
+        <div class="gallery-overlay">
+          <div class="gallery-badges">
+            <span class="badge">בריכה מחוממת</span>
+          </div>
+          <h3 class="gallery-title">צימר עם בריכה</h3>
+          <p class="gallery-description">צימר מודרני עם בריכה פרטית מחוממת</p>
+        </div>
+      </div>
+
+      <!-- APARTMENTS -->
+      <div class="gallery-item" data-category="apartments">
+        <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Apartment-Jerusalem/11.jpg" alt="דירה">
+        <div class="gallery-overlay">
+          <div class="gallery-badges">
+            <span class="badge">ירושלים</span>
+          </div>
+          <h3 class="gallery-title">דירת נופש ירושלים</h3>
+          <p class="gallery-description">דירה מרווחת במרכז ירושלים</p>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="apartments">
+        <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Apartment-Jerusalem/12.jpg" alt="דירה">
+        <div class="gallery-overlay">
+          <div class="gallery-badges">
+            <span class="badge">מרכזי</span>
+          </div>
+          <h3 class="gallery-title">דירת נופש מעוצבת</h3>
+          <p class="gallery-description">דירה חדישה עם כל הציוד</p>
+        </div>
+      </div>
+
+      <!-- MORE GENERAL -->
+      <div class="gallery-item" data-category="villas">
+        <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villa1.jpg" alt="וילה">
+        <div class="gallery-overlay">
+          <div class="gallery-badges">
+            <span class="badge premium">פרמיום</span>
+          </div>
           <h3 class="gallery-title">וילת דקל</h3>
-          <p class="gallery-description">וילה מרהיבה עם נוף לים ובריכה אינפיניטי</p>
+          <p class="gallery-description">וילה מפוארת לאירועים ומשפחות</p>
         </div>
       </div>
 
@@ -539,45 +646,10 @@
         <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villa2.jpg" alt="וילה">
         <div class="gallery-overlay">
           <div class="gallery-badges">
-            <span class="badge premium">פרמיום</span>
+            <span class="badge">גינה</span>
           </div>
-          <h3 class="gallery-title">וילת אירוס</h3>
-          <p class="gallery-description">וילה מעוצבת בסגנון טוסקני עם גינה מטופחת</p>
-        </div>
-      </div>
-
-      <div class="gallery-item" data-category="zimmer">
-        <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Zimmer1.jpg" alt="צימר">
-        <div class="gallery-overlay">
-          <div class="gallery-badges">
-            <span class="badge">רומנטי</span>
-            <span class="badge">ג'קוזי</span>
-          </div>
-          <h3 class="gallery-title">צימר ורד</h3>
-          <p class="gallery-description">צימר אינטימי עם ג'קוזי ונוף מדהים</p>
-        </div>
-      </div>
-
-      <div class="gallery-item" data-category="hotels">
-        <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Hotel1.jpg" alt="מלון">
-        <div class="gallery-overlay">
-          <div class="gallery-badges">
-            <span class="badge premium">בוטיק</span>
-            <span class="badge">ספא</span>
-          </div>
-          <h3 class="gallery-title">מלון דיאנה</h3>
-          <p class="gallery-description">מלון בוטיק יוקרתי עם ספא מלא</p>
-        </div>
-      </div>
-
-      <div class="gallery-item" data-category="events">
-        <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Event1.jpg" alt="אולם">
-        <div class="gallery-overlay">
-          <div class="gallery-badges">
-            <span class="badge">500 אורחים</span>
-          </div>
-          <h3 class="gallery-title">אולמי גרנד</h3>
-          <p class="gallery-description">אולם אירועים מפואר עם תקרות גבוהות</p>
+          <h3 class="gallery-title">וילה בסגנון טוסקני</h3>
+          <p class="gallery-description">עיצוב קלאסי עם נופים ירוקים</p>
         </div>
       </div>
 
@@ -588,7 +660,62 @@
             <span class="badge">נוף הרים</span>
           </div>
           <h3 class="gallery-title">וילת שקד</h3>
-          <p class="gallery-description">וילה משפחתית עם נוף פנורמי</p>
+          <p class="gallery-description">נוף פנורמי להרים וחצר משחקים</p>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="zimmer">
+        <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Zimmer1.jpg" alt="צימר">
+        <div class="gallery-overlay">
+          <div class="gallery-badges">
+            <span class="badge">רומנטי</span>
+          </div>
+          <h3 class="gallery-title">צימר ורד</h3>
+          <p class="gallery-description">צימר חמים ואינטימי בגליל</p>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="zimmer">
+        <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Zimmer2.jpg" alt="צימר">
+        <div class="gallery-overlay">
+          <div class="gallery-badges">
+            <span class="badge">בריכה</span>
+          </div>
+          <h3 class="gallery-title">צימר לוטוס</h3>
+          <p class="gallery-description">צימר מודרני עם בריכה מחוממת</p>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="hotels">
+        <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Hotel1.jpg" alt="מלון">
+        <div class="gallery-overlay">
+          <div class="gallery-badges">
+            <span class="badge premium">בוטיק</span>
+          </div>
+          <h3 class="gallery-title">מלון דיאנה</h3>
+          <p class="gallery-description">מלון בוטיק בלב תל אביב</p>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="hotels">
+        <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Hotel2.jpg" alt="מלון">
+        <div class="gallery-overlay">
+          <div class="gallery-badges">
+            <span class="badge">חוף פרטי</span>
+          </div>
+          <h3 class="gallery-title">מלון על חוף הים</h3>
+          <p class="gallery-description">מלון יוקרה עם גישה ישירה לחוף</p>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="villas">
+        <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/24.jpg" alt="וילה">
+        <div class="gallery-overlay">
+          <div class="gallery-badges">
+            <span class="badge premium">פרמיום</span>
+          </div>
+          <h3 class="gallery-title">נכס יוקרה</h3>
+          <p class="gallery-description">וילה מפוארת לאירועים מיוחדים</p>
         </div>
       </div>
     </div>
@@ -611,110 +738,4 @@
       </div>
       <div class="stat-item">
         <div class="stat-number">98%</div>
-        <div class="stat-label">שביעות רצון</div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div style="max-width: 1200px; margin: 0 auto;">
-      <div style="margin-bottom: 2rem;">
-        <a href="index.html" class="logo-container" style="display: inline-flex;">
-          <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="MULTIBRAWN" class="logo-img">
-          <span class="logo-text">MULTIBRAWN</span>
-        </a>
-      </div>
-      <div class="footer-links">
-        <a href="https://github.com/kfischi/MULTIBRAWN-V.1/blob/main/privacy.html" target="_blank">מדיניות פרטיות</a>
-        <span>·</span>
-        <a href="https://github.com/kfischi/MULTIBRAWN-V.1/blob/main/accessibillity.html" target="_blank">הצהרת נגישות</a>
-      </div>
-      <div class="social-links">
-        <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-linkedin"></i></a>
-      </div>
-      <p class="footer-copyright">© 2025 MULTIBRAWN. כל הזכויות שמורות.</p>
-      <p class="footer-credit">האתר נבנה על ידי Multi-Site - אתרים שבונים עסקים מבית Multibrawn</p>
-    </div>
-  </footer>
-
-  <div class="floating-buttons">
-    <button class="floating-btn accessibility-btn" id="accessibilityBtn">
-      <i class="fas fa-universal-access"></i>
-    </button>
-    <a href="https://wa.me/972523983394" class="floating-btn whatsapp-btn" target="_blank">
-      <i class="fab fa-whatsapp"></i>
-    </a>
-  </div>
-
-  <div class="accessibility-panel" id="accessibilityPanel">
-    <button class="close-panel" id="closePanel">&times;</button>
-    <h3>הגדרות נגישות</h3>
-    <div class="accessibility-controls">
-      <button class="accessibility-btn-control" id="increaseFontBtn">הגדל גופן</button>
-      <button class="accessibility-btn-control" id="decreaseFontBtn">הקטן גופן</button>
-      <button class="accessibility-btn-control" id="highContrastBtn">ניגודיות גבוהה</button>
-      <button class="accessibility-btn-control" id="resetAccessibilityBtn">אפס הגדרות</button>
-    </div>
-  </div>
-
-  <script>
-    const mobileToggle = document.getElementById('mobileToggle');
-    const navMenu = document.getElementById('navMenu');
-    mobileToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
-
-    const accessibilityBtn = document.getElementById('accessibilityBtn');
-    const accessibilityPanel = document.getElementById('accessibilityPanel');
-    const closePanel = document.getElementById('closePanel');
-    
-    accessibilityBtn.addEventListener('click', () => accessibilityPanel.classList.toggle('open'));
-    closePanel.addEventListener('click', () => accessibilityPanel.classList.remove('open'));
-    document.addEventListener('click', (e) => {
-      if (!accessibilityPanel.contains(e.target) && !accessibilityBtn.contains(e.target)) {
-        accessibilityPanel.classList.remove('open');
-      }
-    });
-
-    let currentFontSize = 100;
-    document.getElementById('increaseFontBtn').addEventListener('click', () => {
-      currentFontSize = Math.min(150, currentFontSize + 10);
-      document.body.style.fontSize = `${currentFontSize}%`;
-    });
-    document.getElementById('decreaseFontBtn').addEventListener('click', () => {
-      currentFontSize = Math.max(80, currentFontSize - 10);
-      document.body.style.fontSize = `${currentFontSize}%`;
-    });
-    document.getElementById('highContrastBtn').addEventListener('click', () => {
-      document.body.style.filter = document.body.style.filter === 'contrast(1.5)' ? 'none' : 'contrast(1.5)';
-    });
-    document.getElementById('resetAccessibilityBtn').addEventListener('click', () => {
-      currentFontSize = 100;
-      document.body.style.fontSize = '100%';
-      document.body.style.filter = 'none';
-    });
-
-    // Filter functionality
-    const filterTabs = document.querySelectorAll('.filter-tab');
-    const galleryItems = document.querySelectorAll('.gallery-item');
-
-    filterTabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        filterTabs.forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-        
-        const filter = tab.getAttribute('data-filter');
-        
-        galleryItems.forEach(item => {
-          const category = item.getAttribute('data-category');
-          if (filter === 'all' || category === filter) {
-            item.style.display = 'block';
-          } else {
-            item.style.display = 'none';
-          }
-        });
-      });
-    });
-  </script>
-</body>
-</html>
+        <div class="stat-label">שביעות רצון</div
