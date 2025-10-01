@@ -3,363 +3,671 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MULTIBRAWN - נופש, אירועים, לוקיישנים ומה שביניהם</title>
-  <meta name="description" content="MULTIBRAWN מציעה פתרון 360°: מחברים בין לקוחות איכותיים למתחמים נבחרים, ומציעים פתרונות שיווק דיגיטלי מתקדמים לבעלי נכסים.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <title>MULTIBRAWN - נופש, אירועים ולוקיישנים</title>
+  <meta name="description" content="MULTIBRAWN - מחברים בין לקוחות איכותיים למתחמים נבחרים, ומציעים פתרונות שיווק דיגיטלי מתקדמים">
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
     :root {
-      /* --- New Light Theme Palette --- */
-      --primary-bg: #FFFFFF;
-      --secondary-bg: #f5f3ff; /* Light purple touch for sections */
+      --primary-bg: #0f0c29;
+      --secondary-bg: #1a1a2e;
       --brand-purple: #8B5FBF;
-      --silver-gray: #C0C0C0;
+      --light-purple: #a855f7;
       --cta-turquoise: #40E0D0;
-      
-      --text-dark: #2d3748;
-      --text-muted: #718096;
-      
-      --accent-yellow: #f59e0b;
+      --text-light: #ffffff;
+      --text-muted: #b3b3b3;
       --font-heading: 'Playfair Display', serif;
       --font-body: 'Heebo', sans-serif;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: var(--font-body); background: var(--primary-bg); color: var(--text-dark); overflow-x: hidden; line-height: 1.6; }
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
     
-    .header-nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); border-bottom: 1px solid #e2e8f0; }
-    .nav-content { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; padding: 20px 40px; }
-    .logo-container { display: flex; align-items: center; gap: 15px; }
-    .logo-img { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; }
-    .logo { font-family: var(--font-heading); font-size: 2rem; font-weight: 900; color: var(--text-dark); text-decoration: none; }
-    .nav-menu { display: flex; list-style: none; gap: 28px; align-items: center; }
-    .nav-menu a { color: var(--text-muted); text-decoration: none; font-weight: 600; }
-    .nav-menu a:hover { color: var(--brand-purple); }
-    
-    .cta-button {
-        background: var(--cta-turquoise);
-        color: var(--text-dark);
-        padding: 10px 18px;
-        border: none;
-        border-radius: 999px;
-        font-weight: 800;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        text-decoration: none;
-        box-shadow: 0 4px 20px rgba(64, 224, 208, 0.4);
+    body {
+      font-family: var(--font-body);
+      background: var(--primary-bg);
+      color: var(--text-light);
+      line-height: 1.6;
+      overflow-x: hidden;
     }
-    .cta-button:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(64, 224, 208, 0.6); }
 
+    /* Header */
+    .header-nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(15, 12, 41, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(139, 95, 191, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .nav-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px 40px;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      text-decoration: none;
+      transition: transform 0.3s;
+    }
+
+    .logo-container:hover {
+      transform: translateY(-2px);
+    }
+
+    .logo-img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--brand-purple);
+      box-shadow: 0 0 20px rgba(139, 95, 191, 0.3);
+    }
+
+    .logo-text {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--text-light);
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .nav-menu a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+      transition: all 0.3s;
+    }
+
+    .nav-menu a:hover {
+      color: var(--text-light);
+      background: rgba(139, 95, 191, 0.1);
+    }
+
+    .cta-button {
+      background: var(--cta-turquoise);
+      color: #000;
+      padding: 12px 28px;
+      border: none;
+      border-radius: 50px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(64, 224, 208, 0.4);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(64, 224, 208, 0.6);
+    }
+
+    /* Mobile Menu */
+    .mobile-menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    .hamburger-line {
+      width: 30px;
+      height: 3px;
+      background: var(--text-light);
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    /* Hero Section */
     .hero {
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/yoga.png'); /* Added overlay for text readability */
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                  url('https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/yoga.png');
       background-size: cover;
       background-position: center;
+      background-attachment: fixed;
       text-align: center;
-      color: #fff; /* Ensure text is visible on dark background */
+      padding: 0 2rem;
     }
-    .hero-title { font-family: 'Arial Black', sans-serif; font-size: clamp(3.5rem, 8vw, 7rem); color: var(--brand-purple); text-shadow: 2px 2px 4px rgba(0,0,0,0.7); }
-    .hero-sub { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 700; color: #fff; margin-bottom: 1rem; text-shadow: 1px 1px 3px rgba(0,0,0,0.7); }
-    .hero-description { font-size: clamp(1.1rem, 2.5vw, 1.6rem); color: #e0e0e0; max-width: 800px; margin: 0 auto; text-shadow: 1px 1px 2px rgba(0,0,0,0.7); }
-    
-    .section-padding { padding: 8rem 2rem; }
-    .section-heading { font-family: var(--font-heading); font-size: clamp(2.2rem, 6vw, 3.4rem); font-weight: 900; color: var(--brand-purple); text-align: center; margin-bottom: 3rem; }
-    
-    .grid { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-    .property-card {
-        background: #fff;
-        border-radius: 20px;
-        border: 1px solid #e2e8f0;
-        text-align: center;
-        overflow: hidden;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-        transition: transform 0.4s ease, box-shadow 0.4s ease;
-    }
-    .property-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(139, 95, 191, 0.2);
-    }
-    .property-card-image {
-        width: 100%;
-        height: 220px;
-        object-fit: cover;
-        display: block;
-    }
-    .property-card-content {
-        padding: 2rem;
-    }
-    .property-card h3 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-dark); }
-    .property-card p { color: var(--text-muted); }
 
-    footer { padding: 3rem 0; text-align: center; border-top: 1px solid #e2e8f0; background: var(--secondary-bg); }
-    .footer-links a { color: var(--text-muted); text-decoration: none; margin: 0 10px; }
-    .footer-links a:hover { text-decoration: underline; color: var(--brand-purple); }
-    .footer-credit { font-size: 0.9rem; color: var(--brand-purple); margin-top: 1rem; }
+    .hero-content {
+      max-width: 900px;
+    }
 
-    .floating-buttons { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 999; }
-    .floating-btn { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; font-size: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: transform 0.3s; border: none; cursor: pointer; }
-    .floating-btn:hover { transform: scale(1.1); }
-    .whatsapp-btn { background: #25d366; }
-    .chatbot-btn { background: var(--brand-purple); }
-    .accessibility-btn { background: var(--accent-yellow); color: #1a0b2e; }
+    .hero-title {
+      font-family: var(--font-heading);
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      font-weight: 900;
+      color: var(--brand-purple);
+      text-shadow: 
+        0 0 40px rgba(139, 95, 191, 0.8),
+        0 0 80px rgba(139, 95, 191, 0.4);
+      margin-bottom: 1.5rem;
+      letter-spacing: 2px;
+    }
 
-    .accessibility-panel { position: fixed; bottom: 100px; right: 30px; width: 280px; background: #fff; color: #000; border-radius: 15px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: all 0.3s ease; z-index: 1001; opacity: 0; transform: translateY(20px); pointer-events: none; }
-    .accessibility-panel.open { opacity: 1; transform: translateY(0); pointer-events: auto; }
-    .accessibility-panel h3 { color: var(--text-dark); text-align: center; margin-bottom: 15px; }
-    .accessibility-controls { display: flex; flex-direction: column; gap: 10px; }
-    .accessibility-btn-control { padding: 10px; border-radius: 8px; border: 1px solid #ccc; background-color: #f0f0f0; cursor: pointer; font-weight: 600; }
-    
-    #chat-popup { width: 380px; height: 75vh; max-height: 700px; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.4); position: fixed; bottom: 100px; right: 20px; display: flex; flex-direction: column; background-color: #1a0b2e; border: 1px solid var(--brand-purple); transform: scale(0.5) translateY(100px); opacity: 0; transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); pointer-events: none; z-index: 1000; }
-    #chat-popup.visible { transform: scale(1) translateY(0); opacity: 1; pointer-events: auto; }
-    .chat-popup-header { color: #fff; padding: 15px; font-weight: 600; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(192, 192, 192, 0.2); }
-    #close-chat-btn { background: none; border: none; color: white; font-size: 24px; cursor: pointer; }
-    
-    #proactive-popup { position: fixed; bottom: 100px; right: 30px; width: 320px; background: linear-gradient(135deg, #2c1d52, #1a0b2e); color: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.4); border: 1px solid var(--accent-yellow); z-index: 1001; opacity: 0; transform: translateY(20px); transition: all 0.5s ease-in-out; pointer-events: none; }
-    #proactive-popup.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
-    .popup-header { font-weight: 700; padding: 15px; background: rgba(0,0,0,0.2); }
-    .popup-body { padding: 20px; line-height: 1.6; }
-    .popup-buttons { padding: 0 20px 20px; display: flex; flex-direction: column; gap: 10px; }
-    .popup-buttons button { width: 100%; padding: 12px; border-radius: 25px; border: none; cursor: pointer; transition: transform 0.2s ease; }
-    #accept-challenge { background: var(--accent-yellow); color: var(--text-dark); font-size: 1.1rem; font-weight: 800; }
-    #decline-challenge { background: transparent; color: var(--text-muted); }
-    .hidden { display: none; }
-    .high-contrast { filter: contrast(1.5); }
-    
-    .mobile-menu-toggle { display: none; }
+    .hero-subtitle {
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-weight: 700;
+      color: var(--text-light);
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+    }
+
+    .hero-description {
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      text-shadow: 0 1px 5px rgba(0,0,0,0.8);
+    }
+
+    /* Sections */
+    .section {
+      padding: 6rem 2rem;
+    }
+
+    .section:nth-child(even) {
+      background: var(--secondary-bg);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 900;
+      text-align: center;
+      margin-bottom: 4rem;
+      background: linear-gradient(135deg, var(--brand-purple), var(--light-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Cards Grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: rgba(26, 26, 46, 0.6);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(139, 95, 191, 0.2);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      border-color: var(--brand-purple);
+      box-shadow: 0 20px 50px rgba(139, 95, 191, 0.4);
+    }
+
+    .card-image {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 2rem;
+    }
+
+    .card-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-light);
+      margin-bottom: 1rem;
+    }
+
+    .card-description {
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* Footer */
+    footer {
+      padding: 4rem 2rem;
+      text-align: center;
+      border-top: 1px solid rgba(139, 95, 191, 0.2);
+      background: var(--primary-bg);
+    }
+
+    .footer-logo-section {
+      margin-bottom: 2rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 2rem 0;
+      align-items: center;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: var(--cta-turquoise);
+    }
+
+    .footer-links .separator {
+      color: var(--text-muted);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .social-links a {
+      color: var(--text-muted);
+      font-size: 1.8rem;
+      transition: all 0.3s;
+    }
+
+    .social-links a:hover {
+      color: var(--cta-turquoise);
+      transform: translateY(-3px);
+    }
+
+    .footer-copyright {
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .footer-credit {
+      color: var(--brand-purple);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    /* Floating Buttons */
+    .floating-buttons {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      z-index: 999;
+    }
+
+    .floating-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.5rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .floating-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .whatsapp-btn {
+      background: linear-gradient(135deg, #25d366, #20ba5a);
+    }
+
+    .accessibility-btn {
+      background: var(--brand-purple);
+    }
+
+    /* Accessibility Panel */
+    .accessibility-panel {
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      width: 280px;
+      background: var(--secondary-bg);
+      border: 1px solid rgba(139, 95, 191, 0.3);
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+      opacity: 0;
+      transform: translateY(20px);
+      pointer-events: none;
+      transition: all 0.3s ease;
+      z-index: 1001;
+    }
+
+    .accessibility-panel.open {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .accessibility-panel h3 {
+      color: var(--text-light);
+      text-align: center;
+      margin-bottom: 15px;
+      font-size: 1.2rem;
+    }
+
+    .close-panel {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .close-panel:hover {
+      color: var(--text-light);
+    }
+
+    .accessibility-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .accessibility-btn-control {
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(139, 95, 191, 0.3);
+      background: rgba(139, 95, 191, 0.1);
+      color: var(--text-light);
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+
+    .accessibility-btn-control:hover {
+      background: var(--brand-purple);
+      border-color: var(--brand-purple);
+    }
+
+    /* Responsive */
     @media (max-width: 768px) {
-      .mobile-menu-toggle { display: flex; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; }
-      .hamburger-line { width: 30px; height: 3px; background: var(--text-dark); }
-      .nav-menu { position: fixed; right: -100%; top: 80px; flex-direction: column; background: rgba(255, 255, 255, 0.98); width: 100%; padding: 20px; transition: 0.3s; }
-      .nav-menu.active { right: 0; }
-      #chat-popup, #proactive-popup, .accessibility-panel { right: 15px; width: calc(100vw - 30px); }
+      .mobile-menu-toggle {
+        display: flex;
+      }
+
+      .nav-menu {
+        position: fixed;
+        right: -100%;
+        top: 80px;
+        flex-direction: column;
+        background: rgba(15, 12, 41, 0.98);
+        width: 100%;
+        padding: 20px;
+        transition: 0.3s;
+        border-top: 1px solid rgba(139, 95, 191, 0.2);
+      }
+
+      .nav-menu.active {
+        right: 0;
+      }
+
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .floating-buttons {
+        right: 15px;
+        bottom: 15px;
+      }
+
+      .accessibility-panel {
+        right: 15px;
+        width: calc(100vw - 30px);
+        max-width: 280px;
+      }
     }
   </style>
 </head>
-
 <body>
-    <header class="header-nav">
-        <nav class="nav-content">
-          <div class="logo-container">
-            <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="לוגו MULTIBRAWN" class="logo-img">
-            <a href="index.html" class="logo">MULTIBRAWN</a>
-          </div>
-          <ul class="nav-menu" id="primaryNav">
-            <li><a href="index.html">דף הבית</a></li>
-            <li><a href="about.html">אודות</a></li>
-            <li><a href="gallery.html">גלריה</a></li>
-            <li><a href="marketing.html">שיווק</a></li>
-            <li><a href="faq.html">שאלות ותשובות</a></li>
-            <li><a class="cta-button" href="contact.html">צור קשר</a></li>
-          </ul>
-          <button class="mobile-menu-toggle" id="mobileToggle">
-            <span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span>
-          </button>
-        </nav>
-    </header>
+  <!-- Header -->
+  <header class="header-nav">
+    <nav class="nav-content">
+      <a href="index.html" class="logo-container">
+        <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="MULTIBRAWN Logo" class="logo-img">
+        <span class="logo-text">MULTIBRAWN</span>
+      </a>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html">דף הבית</a></li>
+        <li><a href="about.html">אודות</a></li>
+        <li><a href="gallery.html">גלריה</a></li>
+        <li><a href="marketing.html">שיווק דיגיטלי</a></li>
+        <li><a href="contact.html" class="cta-button">צור קשר</a></li>
+      </ul>
+      <button class="mobile-menu-toggle" id="mobileToggle">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </nav>
+  </header>
 
-    <section class="hero">
-        <div class="hero-content">
-          <h1 class="hero-title">MULTIBRAWN</h1>
-          <h2 class="hero-sub">נופש, אירועים, לוקיישנים ומה שביניהם</h2>
-          <p class="hero-description">מחברים חלומות למציאות – לוקיישנים נבחרים + מעטפת שיווק 360°</p>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">MULTIBRAWN</h1>
+      <h2 class="hero-subtitle">נופש, אירועים ולוקיישנים</h2>
+      <p class="hero-description">
+        מחברים חלומות למציאות – לוקיישנים נבחרים + מעטפת שיווק 360°
+      </p>
+    </div>
+  </section>
+
+  <!-- Properties Section -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">מחברים בין לקוחות איכותיים למתחמים נבחרים</h2>
+      <div class="cards-grid">
+        <div class="card">
+          <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Hotels/1.jpg" alt="מלון בוטיק" class="card-image">
+          <div class="card-content">
+            <h3 class="card-title">מלונות בוטיק</h3>
+            <p class="card-description">אינטימיות, שירות מכל הלב ועיצוב מוקפד</p>
+          </div>
         </div>
-    </section>
-    
-    <main>
-        <section id="properties" class="section-padding">
-          <div class="container">
-            <h2 class="section-heading">מחברים בין לקוחות איכותיים למתחמים נבחרים</h2>
-            <div class="grid">
-              <div class="property-card">
-                <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Hotels/1.jpg" alt="מלון בוטיק" class="property-card-image">
-                <div class="property-card-content">
-                    <h3>מלונות בוטיק</h3>
-                    <p>אינטימיות, שירות מכל הלב ועיצוב מוקפד.</p>
-                </div>
-              </div>
-              <div class="property-card">
-                <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villas/1.jpg" alt="וילה יוקרה" class="property-card-image">
-                <div class="property-card-content">
-                    <h3>וילות יוקרה</h3>
-                    <p>מתאים לאירועים ולמשפחות – עם פרטיות מלאה.</p>
-                </div>
-              </div>
-              <div class="property-card">
-                <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Zimmer/1.jpg" alt="צימר רומנטי" class="property-card-image">
-                <div class="property-card-content">
-                    <h3>צימרים רומנטיים</h3>
-                    <p>בריחה לטבע עם אווירה קסומה.</p>
-                </div>
-              </div>
-              <div class="property-card">
-                <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Apartment-Jerusalem/11.jpg" alt="דירת נופש" class="property-card-image">
-                <div class="property-card-content">
-                    <h3>דירות נופש</h3>
-                    <p>חוויית עיר עם כל הנוחות בבית.</p>
-                </div>
-              </div>
-              <div class="property-card">
-                <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?w=800&q=80" alt="מתחם אירועים" class="property-card-image">
-                <div class="property-card-content">
-                    <h3>מתחמי אירועים</h3>
-                    <p>לוקיישנים מרהיבים לחתונות, כנסים וכל אירוע חשוב.</p>
-                </div>
-              </div>
-            </div>
+        <div class="card">
+          <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villas/1.jpg" alt="וילה יוקרה" class="card-image">
+          <div class="card-content">
+            <h3 class="card-title">וילות יוקרה</h3>
+            <p class="card-description">מתאים לאירועים ולמשפחות – עם פרטיות מלאה</p>
           </div>
-        </section>
-    
-        <section id="events" class="section-padding" style="background: var(--secondary-bg);">
-          <div class="container">
-            <h2 class="section-heading">פתרונות ייחודיים לכל סוג אירוע</h2>
-            <div class="grid">
-              <div class="property-card"><div class="icon">✡️</div><h3>שבתות חתן</h3><p>מתחמים מותאמים למשפחה מורחבת ודרישות כשרות.</p></div>
-              <div class="property-card"><div class="icon">👥</div><h3>כנסים וימי גיבוש</h3><p>פתרונות לקבוצות עסקיות עם חדרי ישיבות.</p></div>
-              <div class="property-card"><div class="icon">🎉</div><h3>מסיבות וחגיגות</h3><p>וילות עם בריכה וסאונד לאירוע מושלם.</p></div>
-              <div class="property-card"><div class="icon">💍</div><h3>חתונות ואירועים</h3><p>אירועי החיים החשובים עם כל הפרטים המושלמים.</p></div>
-            </div>
-          </div>
-        </section>
-
-        <section class="section-padding">
-            <div class="container" style="text-align: center;">
-                <h2 class="section-heading">שירותי שיווק דיגיטלי מתקדמים</h2>
-                <p style="font-size: 1.25rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 2rem auto;">
-                לבעלי נכסים: אסטרטגיה, יצירת תוכן, קמפיינים, SEO ואוטומציות – הכול מותאם אישית.
-                </p>
-                <a href="marketing.html" class="cta-button">לפרטי שירותי השיווק</a>
-            </div>
-        </section>
-
-        <section id="about" class="section-padding" style="background: var(--secondary-bg);">
-            <div class="container">
-                <h2 class="section-heading">הסיפור שלנו</h2>
-                <div style="text-align: center; max-width: 800px; margin: 0 auto;">
-                <p style="font-size: 1.25rem; color: var(--text-muted); margin-bottom: 2rem;">
-                    <strong style="color: var(--brand-purple);">MULTIBRAWN</strong> מציעה פתרון 360°: נכסים נבחרים ומערך שיווק דיגיטלי שמביא תוצאות.
-                </p>
-                <a class="cta-button" href="about.html">קראו עוד עלינו</a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <div class="footer-links">
-                <a href="privacy.html">הצהרת פרטיות</a> ·
-                <a href="accessibility.html">הצהרת נגישות</a>
-            </div>
-            <p style="margin: 1rem 0;">© 2025 MULTIBRAWN. כל הזכויות שמורות.</p>
-            <p class="footer-credit">האתר נבנה ע"י Multi-Site - אתרים שבונים עסקים מבית Multibrawn</p>
         </div>
-    </footer>
+        <div class="card">
+          <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Zimmer/1.jpg" alt="צימר רומנטי" class="card-image">
+          <div class="card-content">
+            <h3 class="card-title">צימרים רומנטיים</h3>
+            <p class="card-description">בריחה לטבע עם אווירה קסומה</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <div class="floating-buttons">
-        <button class="floating-btn accessibility-btn" id="accessibilityBtn" title="נגישות">♿</button>
-        <button class="floating-btn chatbot-btn" id="chatbotBtn" title="צ'אטבוט">💬</button>
-        <a href="https://wa.me/972523983394?text=שלום!" class="floating-btn whatsapp-btn" title="וואטסאפ" target="_blank">
-            <i class="fab fa-whatsapp" style="font-size: 1.8rem;"></i>
+  <!-- Events Section -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">פתרונות ייחודיים לכל סוג אירוע</h2>
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-content">
+            <div style="font-size: 3rem; text-align: center; margin-bottom: 1rem;">✡️</div>
+            <h3 class="card-title">שבתות חתן ואירועים דתיים</h3>
+            <p class="card-description">מתחמים מותאמים למשפחה מורחבת ודרישות כשרות</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-content">
+            <div style="font-size: 3rem; text-align: center; margin-bottom: 1rem;">👥</div>
+            <h3 class="card-title">כנסים וימי גיבוש</h3>
+            <p class="card-description">פתרונות לקבוצות עסקיות עם חדרי ישיבות</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-content">
+            <div style="font-size: 3rem; text-align: center; margin-bottom: 1rem;">💍</div>
+            <h3 class="card-title">חתונות ואירועים</h3>
+            <p class="card-description">אירועי החיים החשובים עם כל הפרטים המושלמים</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Marketing CTA -->
+  <section class="section" style="text-align: center;">
+    <div class="container">
+      <h2 class="section-title">שירותי שיווק דיגיטלי מתקדמים</h2>
+      <p style="font-size: 1.25rem; color: var(--text-muted); max-width: 700px; margin: 0 auto 2.5rem;">
+        לבעלי נכסים: אסטרטגיה, יצירת תוכן, קמפיינים, SEO ואוטומציות – הכול מותאם אישית
+      </p>
+      <a href="marketing.html" class="cta-button">לפרטי שירותי השיווק</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <div class="footer-logo-section">
+        <a href="index.html" class="logo-container" style="display: inline-flex; margin-bottom: 1.5rem;">
+          <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="MULTIBRAWN" class="logo-img">
+          <span class="logo-text">MULTIBRAWN</span>
         </a>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/kfischi/MULTIBRAWN-V.1/blob/main/privacy.html" target="_blank">מדיניות פרטיות</a>
+        <span class="separator">·</span>
+        <a href="https://github.com/kfischi/MULTIBRAWN-V.1/blob/main/accessibillity.html" target="_blank">הצהרת נגישות</a>
+      </div>
+      <div class="social-links">
+        <a href="#" title="פייסבוק"><i class="fab fa-facebook"></i></a>
+        <a href="#" title="אינסטגרם"><i class="fab fa-instagram"></i></a>
+        <a href="#" title="לינקדאין"><i class="fab fa-linkedin"></i></a>
+      </div>
+      <p class="footer-copyright">© 2025 MULTIBRAWN. כל הזכויות שמורות.</p>
+      <p class="footer-credit">האתר נבנה על ידי Multi-Site - אתרים שבונים עסקים מבית Multibrawn</p>
     </div>
+  </footer>
 
-    <div class="accessibility-panel" id="accessibilityPanel">
-        <h3>הגדרות נגישות</h3>
-        <div class="accessibility-controls">
-            <button class="accessibility-btn-control" id="increaseFontBtn">הגדל גופן</button>
-            <button class="accessibility-btn-control" id="decreaseFontBtn">הקטן גופן</button>
-            <button class="accessibility-btn-control" id="highContrastBtn">ניגודיות גבוהה</button>
-            <button class="accessibility-btn-control" id="resetAccessibilityBtn">אפס הגדרות</button>
-        </div>
+  <!-- Floating Buttons -->
+  <div class="floating-buttons">
+    <button class="floating-btn accessibility-btn" id="accessibilityBtn" title="נגישות">
+      <i class="fas fa-universal-access"></i>
+    </button>
+    <a href="https://wa.me/972523983394" class="floating-btn whatsapp-btn" title="WhatsApp" target="_blank">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+  </div>
+
+  <!-- Accessibility Panel -->
+  <div class="accessibility-panel" id="accessibilityPanel">
+    <button class="close-panel" id="closePanel">&times;</button>
+    <h3>הגדרות נגישות</h3>
+    <div class="accessibility-controls">
+      <button class="accessibility-btn-control" id="increaseFontBtn">הגדל גופן</button>
+      <button class="accessibility-btn-control" id="decreaseFontBtn">הקטן גופן</button>
+      <button class="accessibility-btn-control" id="highContrastBtn">ניגודיות גבוהה</button>
+      <button class="accessibility-btn-control" id="resetAccessibilityBtn">אפס הגדרות</button>
     </div>
+  </div>
+
+  <script>
+    // Mobile Menu
+    const mobileToggle = document.getElementById('mobileToggle');
+    const navMenu = document.getElementById('navMenu');
     
-    <div id="chat-popup" class="hidden">
-        <div class="chat-popup-header">
-            <span>דבר עם היועץ החכם</span>
-            <button id="close-chat-btn">&times;</button>
-        </div>
-        <iframe src="https://raw.githack.com/kfischi/MULTIBRAWN-V.1/main/multi-ai-chatbot.html" style="width:100%; height:100%; border:none;"></iframe>
-    </div>
-
-    <div id="proactive-popup" class="hidden">
-        <div class="popup-header">🤖 תנו לי לעבוד בשבילכם!</div>
-        <div class="popup-body">
-            מתכננים חופשה או אירוע בקרוב? <br>ענו על כמה שאלות ואכין לצוות שלנו בריף מדויק.
-        </div>
-        <div class="popup-buttons">
-            <button id="accept-challenge">יאללה, מתחילים! 👍</button>
-            <button id="decline-challenge">לא תודה, רק גולש/ת</button>
-        </div>
-    </div>
-
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const mobileToggle = document.getElementById('mobileToggle');
-      const primaryNav = document.getElementById('primaryNav');
-      if(mobileToggle && primaryNav) {
-        mobileToggle.addEventListener('click', () => primaryNav.classList.toggle('active'));
-      }
-
-      const accessibilityBtn = document.getElementById('accessibilityBtn');
-      const accessibilityPanel = document.getElementById('accessibilityPanel');
-      if(accessibilityBtn && accessibilityPanel) {
-        accessibilityBtn.addEventListener('click', () => accessibilityPanel.classList.toggle('open'));
-        document.addEventListener('click', (event) => {
-          if (!accessibilityPanel.contains(event.target) && !accessibilityBtn.contains(event.target)) {
-            accessibilityPanel.classList.remove('open');
-          }
-        });
-        let currentFontSize = 100;
-        document.getElementById('increaseFontBtn').addEventListener('click', () => { currentFontSize = Math.min(150, currentFontSize + 10); document.body.style.fontSize = `${currentFontSize}%`; });
-        document.getElementById('decreaseFontBtn').addEventListener('click', () => { currentFontSize = Math.max(80, currentFontSize - 10); document.body.style.fontSize = `${currentFontSize}%`; });
-        document.getElementById('highContrastBtn').addEventListener('click', () => document.body.classList.toggle('high-contrast'));
-        document.getElementById('resetAccessibilityBtn').addEventListener('click', () => { currentFontSize = 100; document.body.style.fontSize = '100%'; document.body.classList.remove('high-contrast'); });
-      }
-      
-      const chatbotBtn = document.getElementById('chatbotBtn');
-      const chatPopup = document.getElementById('chat-popup');
-      const closeChatBtn = document.getElementById('close-chat-btn');
-      const proactivePopup = document.getElementById('proactive-popup');
-      const acceptChallengeBtn = document.getElementById('accept-challenge');
-      const declineChallengeBtn = document.getElementById('decline-challenge');
-      let proactiveTimeout;
-      let chatOpened = false;
-
-      function openChat() {
-          chatPopup.classList.add('visible');
-          proactivePopup.classList.remove('visible');
-          clearTimeout(proactiveTimeout);
-          chatOpened = true;
-      }
-      
-      function closeChat() {
-          chatPopup.classList.remove('visible');
-      }
-
-      chatbotBtn.addEventListener('click', openChat);
-      closeChatBtn.addEventListener('click', closeChat);
-
-      proactiveTimeout = setTimeout(() => {
-          if (!chatOpened) {
-              proactivePopup.classList.remove('hidden');
-              proactivePopup.classList.add('visible');
-          }
-      }, 5000);
-
-      acceptChallengeBtn.addEventListener('click', () => {
-          proactivePopup.classList.remove('visible');
-          openChat();
-      });
-      declineChallengeBtn.addEventListener('click', () => {
-          proactivePopup.classList.remove('visible');
-      });
+    mobileToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
     });
-    </script>
+
+    // Accessibility Panel
+    const accessibilityBtn = document.getElementById('accessibilityBtn');
+    const accessibilityPanel = document.getElementById('accessibilityPanel');
+    const closePanel = document.getElementById('closePanel');
+    
+    accessibilityBtn.addEventListener('click', () => {
+      accessibilityPanel.classList.toggle('open');
+    });
+    
+    closePanel.addEventListener('click', () => {
+      accessibilityPanel.classList.remove('open');
+    });
+
+    // Close panel when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!accessibilityPanel.contains(e.target) && !accessibilityBtn.contains(e.target)) {
+        accessibilityPanel.classList.remove('open');
+      }
+    });
+
+    // Accessibility Controls
+    let currentFontSize = 100;
+    
+    document.getElementById('increaseFontBtn').addEventListener('click', () => {
+      currentFontSize = Math.min(150, currentFontSize + 10);
+      document.body.style.fontSize = `${currentFontSize}%`;
+    });
+    
+    document.getElementById('decreaseFontBtn').addEventListener('click', () => {
+      currentFontSize = Math.max(80, currentFontSize - 10);
+      document.body.style.fontSize = `${currentFontSize}%`;
+    });
+    
+    document.getElementById('highContrastBtn').addEventListener('click', () => {
+      document.body.style.filter = document.body.style.filter === 'contrast(1.5)' ? 'none' : 'contrast(1.5)';
+    });
+    
+    document.getElementById('resetAccessibilityBtn').addEventListener('click', () => {
+      currentFontSize = 100;
+      document.body.style.fontSize = '100%';
+      document.body.style.filter = 'none';
+    });
+  </script>
 </body>
 </html>
