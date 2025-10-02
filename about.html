@@ -528,7 +528,7 @@
   <header class="header-nav">
     <nav class="nav-content">
       <a href="index.html" class="logo-container">
-        <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="MULTIBRAWN" class="logo-img">
+        <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/לוגו2.png" alt="MULTIBRAWN" class="logo-img">
         <span class="logo-text">MULTIBRAWN</span>
       </a>
       <ul class="nav-menu" id="navMenu">
@@ -701,7 +701,7 @@
     <div style="max-width: 1200px; margin: 0 auto;">
       <div style="margin-bottom: 2rem;">
         <a href="index.html" class="logo-container" style="display: inline-flex;">
-          <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="MULTIBRAWN" class="logo-img">
+          <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/לוגו2.png" alt="MULTIBRAWN" class="logo-img">
           <span class="logo-text">MULTIBRAWN</span>
         </a>
       </div>
@@ -751,6 +751,31 @@
     
     accessibilityBtn.addEventListener('click', () => accessibilityPanel.classList.toggle('open'));
     closePanel.addEventListener('click', () => accessibilityPanel.classList.remove('open'));
-    
     document.addEventListener('click', (e) => {
       if (!accessibilityPanel.contains(e.target) && !accessibilityBtn.contains(e.target)) {
+        accessibilityPanel.classList.remove('open');
+      }
+    });
+
+    let currentFontSize = 100;
+    document.getElementById('increaseFontBtn').addEventListener('click', () => {
+      currentFontSize = Math.min(150, currentFontSize + 10);
+      document.body.style.fontSize = `${currentFontSize}%`;
+    });
+    document.getElementById('decreaseFontBtn
+        });
+    document.getElementById('decreaseFontBtn').addEventListener('click', () => {
+      currentFontSize = Math.max(80, currentFontSize - 10);
+      document.body.style.fontSize = `${currentFontSize}%`;
+    });
+    document.getElementById('highContrastBtn').addEventListener('click', () => {
+      document.body.style.filter = document.body.style.filter === 'contrast(1.5)' ? 'none' : 'contrast(1.5)';
+    });
+    document.getElementById('resetAccessibilityBtn').addEventListener('click', () => {
+      currentFontSize = 100;
+      document.body.style.fontSize = '100%';
+      document.body.style.filter = 'none';
+    });
+  </script>
+</body>
+</html>                    
