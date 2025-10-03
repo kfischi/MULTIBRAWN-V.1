@@ -33,12 +33,7 @@
         .cta-button { background: var(--cta-turquoise); color: #000; padding: 12px 28px; border-radius: 50px; font-weight: 700; text-decoration: none; box-shadow: 0 4px 20px rgba(64, 224, 208, 0.4); }
         .mobile-menu-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; }
         .hamburger-line { width: 30px; height: 3px; background: var(--text-dark); border-radius: 2px; }
-        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villa1.jpg'); background-size: cover; background-position: center; background-attachment: fixed; text-align: center; color: #fff; position: relative; }
-        .hero-content { max-width: 800px; padding: 0 2rem; }
-        .hero-title { font-family: var(--font-heading); font-size: clamp(3rem, 8vw, 6rem); font-weight: 900; background: linear-gradient(135deg, var(--brand-purple), #e879f9, var(--accent-yellow)); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 2rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
-        .hero-subtitle { font-size: clamp(1.5rem, 4vw, 2.5rem); font-weight: 700; color: white; margin-bottom: 1.5rem; text-shadow: 2px 2px 8px rgba(0,0,0,0.9); }
-        .hero-description { font-size: clamp(1.2rem, 3vw, 1.8rem); color: white; line-height: 1.8; text-shadow: 2px 2px 8px rgba(0,0,0,0.9); }
-        .section { padding: 6rem 2rem; }
+        .section { padding: 6rem 2rem; margin-top: 80px; }
         .section:nth-child(even) { background: linear-gradient(135deg, #fce7f3 0%, #f3e8ff 100%); }
         .section-title { font-family: var(--font-heading); font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 900; text-align: center; margin-bottom: 4rem; color: var(--brand-purple); position: relative; }
         .section-title::after { content: ''; position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); width: 120px; height: 4px; background: linear-gradient(90deg, transparent, var(--brand-purple), var(--accent-yellow), transparent); border-radius: 2px; }
@@ -131,14 +126,6 @@
             </button>
         </nav>
     </header>
-
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">MULTIBRAWN</h1>
-            <p class="hero-subtitle">מגשרת בין חלומות למציאות</p>
-            <p class="hero-description">מחברת בין לקוחות איכותיים ללוקיישנים מושלמים<br>ובין עסקים ללקוחות בעזרת שיווק מתקדם</p>
-        </div>
-    </section>
 
     <section class="section">
         <div class="container">
@@ -249,8 +236,7 @@
         </div>
     </section>
 
-    <section
-       class="cta-section">
+    <section class="cta-section">
         <div class="container">
             <div class="cta-content">
                 <h2 class="cta-title">מוכנים להצטרף אלינו?</h2>
@@ -364,4 +350,4 @@
         });
     </script>
 </body>
-</html> 
+</html>
