@@ -28,7 +28,6 @@
         html { scroll-behavior: smooth; }
         body { font-family: var(--font-body); background: var(--primary-bg); color: var(--text-light); overflow-x: hidden; }
 
-        /* --- Header (Standard) --- */
         .header-nav { position: fixed; top: 0; width: 100%; z-index: 1001; background: rgba(26, 11, 46, 0.85); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(139, 95, 191, 0.2); transition: all 0.3s ease; }
         .nav-content { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; padding: 20px 40px; }
         .logo { font-family: var(--font-heading); font-size: 2rem; font-weight: 900; color: transparent; background: linear-gradient(45deg, #f8fafc, var(--accent-purple), #fbbf24); background-clip: text; -webkit-background-clip: text; text-decoration: none; }
@@ -37,9 +36,7 @@
         .nav-menu a:hover { color: var(--text-light); }
         .cta-button { background: linear-gradient(135deg, var(--accent-purple), var(--accent-yellow)); color: white; padding: 12px 28px; border-radius: 50px; font-weight: 600; text-decoration: none; box-shadow: 0 4px 20px rgba(139, 95, 191, 0.3); transition: transform 0.3s, box-shadow 0.3s; }
         .cta-button:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(139, 95, 191, 0.5); }
-        .mobile-menu-toggle { display: none; } /* Add mobile styles if needed */
-
-        /* --- Hero Slider --- */
+        
         .hero-slider { position: relative; width: 100%; height: 100vh; overflow: hidden; }
         .slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 2s ease-in-out; }
         .slide.active { opacity: 1; z-index: 1; }
@@ -59,14 +56,9 @@
         .scroll-indicator { position: absolute; bottom: 100px; left: 50%; transform: translateX(-50%); z-index: 10; animation: bounce 2s infinite; color: rgba(255, 255, 255, 0.7); font-size: 2rem; text-decoration: none;}
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); } 40% { transform: translate(-50%, -15px); } 60% { transform: translate(-50%, -7px); } }
 
-        /* --- Gallery Section --- */
         .gallery-section { padding: 8rem 4rem; }
         .section-title { font-family: var(--font-heading); font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 900; text-align: center; margin-bottom: 1rem; background: linear-gradient(45deg, var(--text-light), var(--accent-purple), var(--accent-yellow)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .section-subtitle { text-align: center; color: var(--text-muted); max-width: 800px; margin: 0 auto 4rem auto; font-size: 1.2rem; }
-        .filter-buttons { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 4rem; }
-        .filter-btn { background: rgba(139, 95, 191, 0.15); border: 1px solid rgba(139, 95, 191, 0.3); color: var(--text-muted); padding: 0.75rem 1.5rem; border-radius: 50px; cursor: pointer; transition: all 0.3s ease; font-weight: 600; }
-        .filter-btn:hover { background: rgba(139, 95, 191, 0.3); color: var(--text-light); }
-        .filter-btn.active { background: var(--accent-purple); color: white; border-color: var(--accent-purple); box-shadow: 0 5px 20px rgba(139, 95, 191, 0.4); }
         
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); grid-auto-rows: 250px; gap: 1.5rem; }
         .gallery-item { position: relative; overflow: hidden; border-radius: 15px; cursor: pointer; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: all 0.3s ease; display: block;}
@@ -81,7 +73,8 @@
         .item-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.8); font-size: 4rem; color: rgba(255,255,255,0.8); opacity: 0; transition: all 0.4s ease; text-shadow: 0 0 20px black; }
         .gallery-item:hover .item-icon { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 
-        /* --- Video Lightbox --- */
+        .video-section { background: var(--secondary-bg); }
+
         .lightbox { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); display: flex; align-items: center; justify-content: center; z-index: 9999; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
         .lightbox.active { opacity: 1; pointer-events: all; }
         .lightbox-content { position: relative; width: 90%; max-width: 1200px; transform: scale(0.9); transition: transform 0.3s ease; }
@@ -89,7 +82,6 @@
         .lightbox-video { width: 100%; aspect-ratio: 16 / 9; }
         .lightbox-close { position: absolute; top: -40px; right: 0; color: white; font-size: 2.5rem; cursor: pointer; }
         
-        /* --- Footer --- */
         .site-footer { padding: 4rem 2rem; text-align: center; background: var(--primary-bg); border-top: 1px solid rgba(139, 95, 191, 0.2); }
         .footer-content { max-width: 1200px; margin: 0 auto; }
         .footer-socials { display: flex; justify-content: center; gap: 2rem; margin: 2rem 0; }
@@ -101,7 +93,7 @@
         .footer-credit { font-size: 0.8rem; color: var(--accent-yellow); margin-top: 2rem; border-top: 1px solid rgba(139, 95, 191, 0.2); padding-top: 2rem; }
 
         @media (max-width: 768px) {
-            .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); grid-auto-rows: 350px; }
+            .gallery-grid { grid-template-columns: 1fr; grid-auto-rows: 350px; }
             .gallery-item.tall { grid-row: span 1; }
         }
     </style>
@@ -134,27 +126,37 @@
             <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Zimmer/1.jpg" alt="צימר רומנטי">
             <div class="slide-content"><h1 class="slide-title">צימרים רומנטיים</h1><p class="slide-subtitle">בריחה מושלמת לזוגות ולמשפחות</p></div>
         </div>
+        <div class="slide">
+            <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/24.jpg" alt="מתחם אירועים">
+            <div class="slide-content"><h1 class="slide-title">אירועים בלתי נשכחים</h1><p class="slide-subtitle">הלוקיישן המושלם לרגעים החשובים בחיים</p></div>
+        </div>
+        <div class="slide">
+            <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villas/1.jpg" alt="נוף מהפנט">
+            <div class="slide-content"><h1 class="slide-title">נופים מהפנטים</h1><p class="slide-subtitle">לפתוח את הבוקר מול היופי של הטבע</p></div>
+        </div>
         <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
         <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
         <div class="slider-dots"></div>
-        <a href="#gallery" class="scroll-indicator"><i class="fas fa-chevron-down"></i></a>
+        <a href="#gallery-intro" class="scroll-indicator"><i class="fas fa-chevron-down"></i></a>
     </div>
 
-    <main id="gallery">
+    <main id="gallery-intro">
         <section class="gallery-section">
-            <h2 class="section-title" data-aos="fade-up">העולם שלנו בתמונות</h2>
-            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
-                אנו מאמינים שכל חופשה, אירוע או רגע מיוחד מתחילים בסביבה המושלמת. בגלריה שלנו תוכלו לחוות את היופי, היוקרה והקסם של המקומות שאנו בוחרים בקפידה.
-            </p>
-            <div class="filter-buttons" data-aos="fade-up" data-aos-delay="200">
-                <button class="filter-btn active" data-filter="all">הכל</button>
-                <button class="filter-btn" data-filter="villas">וילות יוקרה</button>
-                <button class="filter-btn" data-filter="hotels">מלונות בוטיק</button>
-                <button class="filter-btn" data-filter="penthouses">פנטהאוזים</button>
-                <button class="filter-btn" data-filter="events">אירועים</button>
-                <button class="filter-btn" data-filter="zimmers">צימרים</button>
-            </div>
-            <div class="gallery-grid" id="galleryGrid"></div>
+            <h2 class="section-title" data-aos="fade-up">וילות יוקרה</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">מרחבים מפוארים, בריכות פרטיות ועיצוב עוצר נשימה. הוילות שלנו הן המקום המושלם לחופשה משפחתית, אירוע פרטי או נופש חברים שלא תשכחו.</p>
+            <div class="gallery-grid" id="villasGrid"></div>
+        </section>
+
+        <section class="gallery-section">
+            <h2 class="section-title" data-aos="fade-up">מלונות בוטיק</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">חווית אירוח אינטימית ויוקרתית. מלונות הבוטיק שלנו מציעים עיצוב ייחודי, שירות אישי ופינוקים בכל פינה.</p>
+            <div class="gallery-grid" id="hotelsGrid"></div>
+        </section>
+
+        <section class="gallery-section video-section">
+            <h2 class="section-title" data-aos="fade-up">הצצה לחוויה</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">תמונה שווה אלף מילים, אבל סרטון שווה מיליון. צפו בקסם קורה.</p>
+            <div class="gallery-grid" id="videosGrid"></div>
         </section>
     </main>
 
@@ -186,6 +188,70 @@
     <div class="chatbot-window" id="chatbotWindow"><div class="chatbot-header"><div class="chatbot-header-content"><div class="chatbot-avatar">🤖</div><div class="chatbot-title"><h3>מולטיבראון AI</h3><div class="chatbot-status"><span class="status-dot"></span><span>זמין עכשיו</span></div></div></div><button class="chatbot-close" id="chatbotClose">&times;</button></div><div class="chatbot-messages" id="chatbotMessages"><div class="chat-message bot"><div class="message-avatar">🤖</div><div><div class="message-bubble">שלום! 👋 אני העוזר הדיגיטלי של מולטיבראון. איך אוכל לעזור לך היום?</div><div class="quick-replies"><button class="quick-reply-btn" onclick="handleQuickReply('מחפש מתחם לחופשה')">🏖️ מחפש מתחם לחופשה</button><button class="quick-reply-btn" onclick="handleQuickReply('בעל נכס מעוניין בשיתוף פעולה')">🏢 בעל נכס</button><button class="quick-reply-btn" onclick="handleQuickReply('שירותי שיווק דיגיטלי')">📱 שיווק דיגיטלי</button><button class="quick-reply-btn" onclick="handleQuickReply('שאלה כללית')">💬 שאלה כללית</button></div></div></div><div class="chat-message bot typing-indicator" id="typingIndicator"><div class="message-avatar">🤖</div><div class="message-bubble"><div class="typing-dots"><span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></div></div></div></div><div class="chatbot-input-area"><div class="input-wrapper"><input type="text" class="chatbot-input" id="chatbotInput" placeholder="הקלד את ההודעה שלך..." onkeypress="handleKeyPress(event)"><button class="send-btn" id="sendBtn" onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button></div></div></div>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
+        // --- DATA ---
+        const galleryData = {
+            villas: [
+                { type: 'image', src: 'https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villas/Villa_Wow.jpg', title: 'וילה וואו', tall: true },
+                { type: 'image', src: 'https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villa1.jpg', title: 'וילת יוקרה' },
+                { type: 'image', src: 'https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villas/1.jpg', title: 'נוף עוצר נשימה', tall: true },
+                { type: 'image', src: 'https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villas/2.jpeg', title: 'עיצוב מודרני' },
+                { type: 'image', src: 'https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villas/3.jpeg', title: 'בריכה פרטית' },
+            ],
+            hotels: [
+                { type: 'image', src: 'https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Hotels/1.jpg', title: 'מלון בוטיק', tall: true },
+                { type: 'image', src: 'https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Hotels/2.jpeg', title: 'סוויטה נשיאותית' },
+                { type: 'image', src: 'https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Hotels/3.jpeg', title: 'נוף לים' },
+            ],
+            videos: [
+                { videoSrc: 'https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/Apartments/Penthouse.mp4', poster: 'https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villas/1.jpg', title: 'פנטהאוז יוקרתי' },
+                { videoSrc: 'https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/Events/Emek%20Hefer.mp4', poster: 'https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/24.jpg', title: 'מתחם אירועים' },
+                { videoSrc: 'https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/Zimmer/1.mp4', poster: 'https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Zimmer/1.jpg', title: 'צימר מפנק' },
+            ]
+        };
+
+        // --- DYNAMIC GALLERY CREATION ---
+        function populateGrid(gridId, items) {
+            const grid = document.getElementById(gridId);
+            if (!grid) return;
+            items.forEach(item => {
+                const itemEl = document.createElement('div');
+                itemEl.className = 'gallery-item';
+                if (item.tall) itemEl.classList.add('tall');
+                itemEl.setAttribute('data-aos', 'fade-up');
+                
+                let content = '';
+                if (item.type === 'image') {
+                    content = `<img src="${item.src}" alt="${item.title}" loading="lazy"><div class="item-overlay"><i class="fas fa-search-plus item-icon"></i><h3 class="item-title">${item.title}</h3></div>`;
+                } else { // Video
+                    itemEl.dataset.videoSrc = item.videoSrc;
+                    content = `<div class="video-poster" style="background-image: url(${item.poster});"></div><div class="item-overlay"><i class="fas fa-play item-icon"></i><h3 class="item-title">${item.title}</h3></div>`;
+                }
+                itemEl.innerHTML = content;
+                grid.appendChild(itemEl);
+            });
+        }
+        populateGrid('villasGrid', galleryData.villas);
+        populateGrid('hotelsGrid', galleryData.hotels);
+        populateGrid('videosGrid', galleryData.videos);
+
+        // --- LIGHTBOX LOGIC ---
+        const videoLightbox = document.getElementById('videoLightbox');
+        const lightboxVideo = videoLightbox.querySelector('video');
+        const lightboxClose = document.getElementById('lightboxClose');
+        document.querySelectorAll('.gallery-item[data-video-src]').forEach(item => {
+            item.addEventListener('click', () => {
+                lightboxVideo.src = item.dataset.videoSrc;
+                videoLightbox.classList.add('active');
+            });
+        });
+        const closeLightbox = () => {
+            videoLightbox.classList.remove('active');
+            lightboxVideo.pause();
+            lightboxVideo.src = '';
+        };
+        lightboxClose.addEventListener('click', closeLightbox);
+        videoLightbox.addEventListener('click', e => { if (e.target === videoLightbox) closeLightbox(); });
+
         // --- SLIDER LOGIC ---
         let currentSlide = 0;
         let autoplayInterval;
@@ -207,109 +273,31 @@
                 dots.forEach(dot => dot.classList.remove('active'));
                 slides[index].classList.add('active');
                 dots[index].classList.add('active');
-                const img = slides[index].querySelector('img');
-                img.style.animation = 'none';
-                setTimeout(() => { img.style.animation = ''; }, 10);
             };
 
-            const nextSlide = () => {
-                currentSlide = (currentSlide + 1) % totalSlides;
-                showSlide(currentSlide);
-            };
-
+            const nextSlide = () => { currentSlide = (currentSlide + 1) % totalSlides; showSlide(currentSlide); };
             const startAutoplay = () => { autoplayInterval = setInterval(nextSlide, 5000); };
             const stopAutoplay = () => clearInterval(autoplayInterval);
+            const resetAutoplay = () => { stopAutoplay(); startAutoplay(); };
+            const goToSlide = (index) => { currentSlide = index; showSlide(currentSlide); resetAutoplay(); };
             
-            const resetAutoplay = () => {
-                stopAutoplay();
-                startAutoplay();
-            };
-
-            const goToSlide = (index) => {
-                currentSlide = index;
-                showSlide(currentSlide);
-                resetAutoplay();
-            };
-            
-            document.querySelector('.slider-arrow.next').addEventListener('click', () => {
-                nextSlide();
-                resetAutoplay();
-            });
-            document.querySelector('.slider-arrow.prev').addEventListener('click', () => {
-                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-                showSlide(currentSlide);
-                resetAutoplay();
-            });
+            document.querySelector('.slider-arrow.next').addEventListener('click', () => { nextSlide(); resetAutoplay(); });
+            document.querySelector('.slider-arrow.prev').addEventListener('click', () => { currentSlide = (currentSlide - 1 + totalSlides) % totalSlides; showSlide(currentSlide); resetAutoplay(); });
 
             showSlide(0);
             startAutoplay();
         }
-
-        // --- GALLERY LOGIC ---
-        const galleryItemsData = [
-            { type: 'image', category: 'villas', src: 'https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villas/Villa_Wow.jpg', title: 'וילה וואו', tall: true },
-            { type: 'video', category: 'penthouses', videoSrc: 'https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/Apartments/Penthouse.mp4', poster: 'https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villas/1.jpg', title: 'פנטהאוז יוקרתי' },
-            { type: 'image', category: 'hotels', src: 'https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Hotels/1.jpg', title: 'מלון בוטיק' },
-            { type: 'image', category: 'villas', src: 'https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villa1.jpg', title: 'וילת יוקרה' },
-            { type: 'video', category: 'events', videoSrc: 'https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/Events/Emek%20Hefer.mp4', poster: 'https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/24.jpg', title: 'מתחם אירועים', tall: true },
-            { type: 'image', category: 'hotels', src: 'https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Hotels/2.jpeg', title: 'סוויטה נשיאותית', tall: true },
-            { type: 'image', category: 'villas', src: 'https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villas/2.jpeg', title: 'עיצוב מודרני' },
-            { type: 'video', category: 'zimmers', videoSrc: 'https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/Zimmer/1.mp4', poster: 'https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Zimmer/1.jpg', title: 'צימר מפנק' },
-            { type: 'image', category: 'villas', src: 'https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villas/3.jpeg', title: 'בריכה פרטית' },
-            { type: 'image', category: 'hotels', src: 'https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Hotels/3.jpeg', title: 'נוף לים' },
-        ];
-
-        const galleryGrid = document.getElementById('galleryGrid');
-        galleryItemsData.forEach(item => {
-            const itemEl = document.createElement('div');
-            itemEl.className = 'gallery-item';
-            if (item.tall) itemEl.classList.add('tall');
-            itemEl.dataset.category = item.category;
-            itemEl.setAttribute('data-aos', 'fade-up');
-            
-            let content = (item.type === 'image')
-                ? `<img src="${item.src}" alt="${item.title}"><div class="item-overlay"><i class="fas fa-search-plus item-icon"></i><h3 class="item-title">${item.title}</h3></div>`
-                : `<div class="video-poster" style="background-image: url(${item.poster});"></div><div class="item-overlay"><i class="fas fa-play item-icon"></i><h3 class="item-title">${item.title}</h3></div>`;
-            
-            if (item.type === 'video') itemEl.dataset.videoSrc = item.videoSrc;
-            itemEl.innerHTML = content;
-            galleryGrid.appendChild(itemEl);
-        });
         
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const galleryEls = document.querySelectorAll('.gallery-item');
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                const filter = btn.dataset.filter;
-                galleryEls.forEach(item => item.style.display = (filter === 'all' || item.dataset.category === filter) ? 'block' : 'none');
-            });
-        });
-
-        const videoLightbox = document.getElementById('videoLightbox');
-        const lightboxVideo = videoLightbox.querySelector('video');
-        const lightboxClose = document.getElementById('lightboxClose');
-        galleryGrid.addEventListener('click', e => {
-            const item = e.target.closest('.gallery-item[data-video-src]');
-            if (item) {
-                lightboxVideo.src = item.dataset.videoSrc;
-                videoLightbox.classList.add('active');
-            }
-        });
-        const closeLightbox = () => {
-            videoLightbox.classList.remove('active');
-            lightboxVideo.pause();
-            lightboxVideo.src = '';
-        };
-        lightboxClose.addEventListener('click', closeLightbox);
-        videoLightbox.addEventListener('click', e => { if (e.target === videoLightbox) closeLightbox(); });
-        
-        AOS.init({ duration: 1000, once: true, offset: 50 });
-
         // --- CHATBOT LOGIC ---
-        // [הסקריפט המלא של הצ'אטבוט מודבק כאן]
-        let chatState={isOpen:false,messageCount:0,userType:null};const chatbotBtn=document.getElementById('chatbotBtn'),chatbotWindow=document.getElementById('chatbotWindow'),chatbotClose=document.getElementById('chatbotClose'),chatbotMessages=document.getElementById('chatbotMessages'),chatbotInput=document.getElementById('chatbotInput'),typingIndicator=document.getElementById('typingIndicator'),notification=document.querySelector('.chatbot-notification');chatbotBtn.addEventListener('click',toggleChatbot);chatbotClose.addEventListener('click',toggleChatbot);function toggleChatbot(){chatState.isOpen=!chatState.isOpen;chatbotWindow.classList.toggle('active');if(chatState.isOpen){notification.style.display='none';chatbotInput.focus()}}function handleQuickReply(text){addUserMessage(text);setTimeout(()=>{showTyping();setTimeout(()=>{hideTyping();handleBotResponse(text)},1500)},300)}function handleBotResponse(userMessage){let response='',quickReplies=[];if(userMessage.includes('מחפש מתחם')){response='מעולה! 🏖️ אנחנו מתמחים במציאת המתחם המושלם עבורך. איזה סוג מתחם אתה מחפש?';quickReplies=['וילה','מלון בוטיק','צימר רומנטי','מקום לאירוע'];chatState.userType='client'}else if(userMessage.includes('בעל נכס')){response='נהדר! 🏢 אנחנו עוזרים לבעלי נכסים להגדיל תפוסה ולהגיע ללקוחות איכותיים. איזה סוג נכס יש לך?';quickReplies=['וילה','מלון','צימר','מקום אירועים'];chatState.userType='owner'}else if(userMessage.includes('שיווק דיגיטלי')){response='מצוין! 📱 אנחנו מציעים פתרונות שיווק דיגיטלי מלאים. מה מעניין אותך?';quickReplies=['בניית אתר','ניהול רשתות','קמפיינים ממומנים','SEO']}else if(quickReplies.length===0){response='תודה על השאלה! 😊 אשמח לעזור לך. תוכל לפנות אלינו ישירות דרך WhatsApp או לבקש לתאם שיחת ייעוץ.';quickReplies=['WhatsApp','תאום שיחה','דף צור קשר']}if(['וילה','מלון בוטיק','צימר רומנטי','מקום לאירוע'].includes(userMessage)&&chatState.userType==='client'){response=`נהדר! ${userMessage} זה בחירה מעולה. 🌟 אשמח לעזור לך למצוא את ${userMessage} המושלם. בואו ניצור קשר:`;quickReplies=['שלח הודעה ב-WhatsApp','תאום שיחה']}if(['וילה','מלון','צימר','מקום אירועים'].includes(userMessage)&&chatState.userType==='owner'){response=`מצוין! ${userMessage} - יש לנו ניסיון רב בקידום ${userMessage}. נשמח לשמוע עוד פרטים ולהציע לך תוכנית מותאמת:`;quickReplies=['שלח פרטים ב-WhatsApp','קבע פגישת ייעוץ']}if(userMessage==='WhatsApp'||userMessage==='שלח הודעה ב-WhatsApp'||userMessage==='שלח פרטים ב-WhatsApp'){const message=chatState.userType==='client'?'היי, אני מחפש מתחם לחופשה':'היי, אני בעל נכס ומעוניין בשיתוף פעולה';window.open(`https://wa.me/972523983394?text=${encodeURIComponent(message)}`,'_blank');response='נפלא! 🎉 פתחתי עבורך את WhatsApp. נשמח לשוחח איתך!';quickReplies=[]}if(userMessage.includes('תאום')||userMessage.includes('קבע פגישה')){window.location.href='contact.html';return}if(userMessage==='דף צור קשר'){window.location.href='contact.html';return}addBotMessage(response,quickReplies)}function addUserMessage(text){const messageDiv=document.createElement('div');messageDiv.className='chat-message user';messageDiv.innerHTML=`<div class="message-avatar">👤</div><div class="message-bubble">${text}</div>`;const typing=document.getElementById('typingIndicator');chatbotMessages.insertBefore(messageDiv,typing);scrollToBottom()}function addBotMessage(text,quickReplies=[]){const messageDiv=document.createElement('div');messageDiv.className='chat-message bot';let quickRepliesHtml='';if(quickReplies.length>0){quickRepliesHtml='<div class="quick-replies">';quickReplies.forEach(reply=>{quickRepliesHtml+=`<button class="quick-reply-btn" onclick="handleQuickReply('${reply}')">${reply}</button>`});quickRepliesHtml+='</div>'}messageDiv.innerHTML=`<div class="message-avatar">🤖</div><div><div class="message-bubble">${text}</div>${quickRepliesHtml}</div>`;const typing=document.getElementById('typingIndicator');chatbotMessages.insertBefore(messageDiv,typing);scrollToBottom()}function sendMessage(){const input=chatbotInput.value.trim();if(!input)return;addUserMessage(input);chatbotInput.value='';setTimeout(()=>{showTyping();setTimeout(()=>{hideTyping();let response='תודה על הפנייה! 😊 אשמח לעזור לך. האם תרצה לדבר איתנו ישירות?';let quickReplies=['WhatsApp','תאום שיחה','דף צור קשר'];addBotMessage(response,quickReplies)},1500)},300)}function handleKeyPress(event){if(event.key==='Enter'){sendMessage()}}function showTyping(){typingIndicator.classList.add('active');scrollToBottom()}function hideTyping(){typingIndicator.classList.remove('active')}function scrollToBottom(){setTimeout(()=>{chatbotMessages.scrollTop=chatbotMessages.scrollHeight},100)}setTimeout(()=>{if(!chatState.isOpen){notification.style.display='flex'}},3000);
+        const chatbotBtn = document.getElementById('chatbotBtn');
+        const chatbotWindow = document.getElementById('chatbotWindow');
+        const chatbotClose = document.getElementById('chatbotClose');
+        const toggleChatbot = () => chatbotWindow.classList.toggle('active');
+        chatbotBtn.addEventListener('click', toggleChatbot);
+        chatbotClose.addEventListener('click', toggleChatbot);
+        
+        // --- AOS INIT ---
+        AOS.init({ duration: 800, once: true, offset: 50 });
     });
     </script>
 </body>
