@@ -41,4 +41,276 @@
 
         /* --- Hero Slider --- */
         .hero-slider { position: relative; width: 100%; height: 100vh; overflow: hidden; }
-        .slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 2s ease-in-out;
+        .slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 2s ease-in-out; }
+        .slide.active { opacity: 1; z-index: 1; }
+        .slide img { width: 100%; height: 100%; object-fit: cover; animation: kenBurns 12s ease-in-out infinite alternate; }
+        @keyframes kenBurns { from { transform: scale(1.1) translate(0, 0); } to { transform: scale(1.25) translate(-2%, 2%); } }
+        .slide::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(26, 11, 46, 0.7), rgba(139, 95, 191, 0.4)); z-index: 1; }
+        .slide-content { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; z-index: 2; width: 90%; max-width: 1000px; }
+        .slide-title { font-family: var(--font-heading); font-size: clamp(3rem, 8vw, 6rem); font-weight: 900; color: #fff; text-shadow: 0 4px 30px rgba(0, 0, 0, 0.8); margin-bottom: 1.5rem; }
+        .slide-subtitle { font-size: clamp(1.2rem, 3vw, 2rem); color: rgba(255, 255, 255, 0.9); text-shadow: 0 2px 15px rgba(0, 0, 0, 0.7); }
+        .slider-dots { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); display: flex; gap: 15px; z-index: 10; }
+        .dot { width: 12px; height: 12px; border-radius: 50%; background: rgba(255, 255, 255, 0.4); cursor: pointer; transition: all 0.4s ease; border: 2px solid transparent; }
+        .dot.active { background: var(--accent-yellow); transform: scale(1.3); box-shadow: 0 0 20px rgba(251, 191, 36, 0.6); }
+        .slider-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(139, 95, 191, 0.3); backdrop-filter: blur(10px); border: 2px solid rgba(255, 255, 255, 0.2); color: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; cursor: pointer; z-index: 10; transition: all 0.3s ease; }
+        .slider-arrow:hover { background: var(--accent-purple); transform: translateY(-50%) scale(1.1); }
+        .slider-arrow.prev { left: 30px; }
+        .slider-arrow.next { right: 30px; }
+        .scroll-indicator { position: absolute; bottom: 100px; left: 50%; transform: translateX(-50%); z-index: 10; animation: bounce 2s infinite; color: rgba(255, 255, 255, 0.7); font-size: 2rem; text-decoration: none;}
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); } 40% { transform: translate(-50%, -15px); } 60% { transform: translate(-50%, -7px); } }
+
+        /* --- Gallery Section --- */
+        .gallery-section { padding: 8rem 4rem; }
+        .section-title { font-family: var(--font-heading); font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 900; text-align: center; margin-bottom: 1rem; background: linear-gradient(45deg, var(--text-light), var(--accent-purple), var(--accent-yellow)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .section-subtitle { text-align: center; color: var(--text-muted); max-width: 800px; margin: 0 auto 4rem auto; font-size: 1.2rem; }
+        .filter-buttons { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 4rem; }
+        .filter-btn { background: rgba(139, 95, 191, 0.15); border: 1px solid rgba(139, 95, 191, 0.3); color: var(--text-muted); padding: 0.75rem 1.5rem; border-radius: 50px; cursor: pointer; transition: all 0.3s ease; font-weight: 600; }
+        .filter-btn:hover { background: rgba(139, 95, 191, 0.3); color: var(--text-light); }
+        .filter-btn.active { background: var(--accent-purple); color: white; border-color: var(--accent-purple); box-shadow: 0 5px 20px rgba(139, 95, 191, 0.4); }
+        
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); grid-auto-rows: 250px; gap: 1.5rem; }
+        .gallery-item { position: relative; overflow: hidden; border-radius: 15px; cursor: pointer; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: all 0.3s ease; display: block;}
+        .gallery-item.tall { grid-row: span 2; }
+        .gallery-item img, .gallery-item .video-poster { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+        .gallery-item:hover img, .gallery-item:hover .video-poster { transform: scale(1.05); }
+        
+        .item-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent 60%); opacity: 0; transition: opacity 0.4s ease; display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem; }
+        .gallery-item:hover .item-overlay { opacity: 1; }
+        .item-title { font-family: var(--font-heading); font-size: 1.5rem; color: white; transform: translateY(20px); transition: transform 0.4s ease; }
+        .gallery-item:hover .item-title { transform: translateY(0); }
+        .item-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.8); font-size: 4rem; color: rgba(255,255,255,0.8); opacity: 0; transition: all 0.4s ease; text-shadow: 0 0 20px black; }
+        .gallery-item:hover .item-icon { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+
+        /* --- Video Lightbox --- */
+        .lightbox { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); display: flex; align-items: center; justify-content: center; z-index: 9999; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+        .lightbox.active { opacity: 1; pointer-events: all; }
+        .lightbox-content { position: relative; width: 90%; max-width: 1200px; transform: scale(0.9); transition: transform 0.3s ease; }
+        .lightbox.active .lightbox-content { transform: scale(1); }
+        .lightbox-video { width: 100%; aspect-ratio: 16 / 9; }
+        .lightbox-close { position: absolute; top: -40px; right: 0; color: white; font-size: 2.5rem; cursor: pointer; }
+        
+        /* --- Footer --- */
+        .site-footer { padding: 4rem 2rem; text-align: center; background: var(--primary-bg); border-top: 1px solid rgba(139, 95, 191, 0.2); }
+        .footer-content { max-width: 1200px; margin: 0 auto; }
+        .footer-socials { display: flex; justify-content: center; gap: 2rem; margin: 2rem 0; }
+        .footer-socials a { color: var(--text-muted); font-size: 1.5rem; transition: color 0.3s, transform 0.3s; }
+        .footer-socials a:hover { color: var(--accent-purple); transform: translateY(-3px); }
+        .footer-links { margin-bottom: 1rem; }
+        .footer-links a { color: var(--text-muted); margin: 0 0.75rem; text-decoration: none; transition: color 0.3s; }
+        .footer-links a:hover { color: var(--text-light); }
+        .footer-credit { font-size: 0.8rem; color: var(--accent-yellow); margin-top: 2rem; border-top: 1px solid rgba(139, 95, 191, 0.2); padding-top: 2rem; }
+
+        @media (max-width: 768px) {
+            .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); grid-auto-rows: 350px; }
+            .gallery-item.tall { grid-row: span 1; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header-nav">
+        <nav class="nav-content">
+            <a href="index.html" class="logo">MULTIBRAWN</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">דף הבית</a></li>
+                <li><a href="about.html">אודות</a></li>
+                <li><a href="gallery.html">גלריה</a></li>
+                <li><a href="marketing.html">שיווק דיגיטלי</a></li>
+                <li><a href="contact.html">צור קשר</a></li>
+                <li><a href="contact.html" class="cta-button">קבלו הצעה</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero-slider" id="heroSlider">
+        <div class="slide active">
+            <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villas/Villa_Wow.jpg" alt="וילה יוקרתית">
+            <div class="slide-content"><h1 class="slide-title">גלריית החלומות</h1><p class="slide-subtitle">חוויות בלתי נשכחות במקומות הכי יפים בארץ</p></div>
+        </div>
+        <div class="slide">
+            <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Hotels/1.jpg" alt="מלון בוטיק">
+            <div class="slide-content"><h1 class="slide-title">מלונות בוטיק</h1><p class="slide-subtitle">חוויית אירוח יוקרתית ואינטימית</p></div>
+        </div>
+        <div class="slide">
+            <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Zimmer/1.jpg" alt="צימר רומנטי">
+            <div class="slide-content"><h1 class="slide-title">צימרים רומנטיים</h1><p class="slide-subtitle">בריחה מושלמת לזוגות ולמשפחות</p></div>
+        </div>
+        <div class="slider-arrow prev"><i class="fas fa-chevron-left"></i></div>
+        <div class="slider-arrow next"><i class="fas fa-chevron-right"></i></div>
+        <div class="slider-dots"></div>
+        <a href="#gallery" class="scroll-indicator"><i class="fas fa-chevron-down"></i></a>
+    </div>
+
+    <main id="gallery">
+        <section class="gallery-section">
+            <h2 class="section-title" data-aos="fade-up">העולם שלנו בתמונות</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                אנו מאמינים שכל חופשה, אירוע או רגע מיוחד מתחילים בסביבה המושלמת. בגלריה שלנו תוכלו לחוות את היופי, היוקרה והקסם של המקומות שאנו בוחרים בקפידה.
+            </p>
+            <div class="filter-buttons" data-aos="fade-up" data-aos-delay="200">
+                <button class="filter-btn active" data-filter="all">הכל</button>
+                <button class="filter-btn" data-filter="villas">וילות יוקרה</button>
+                <button class="filter-btn" data-filter="hotels">מלונות בוטיק</button>
+                <button class="filter-btn" data-filter="penthouses">פנטהאוזים</button>
+                <button class="filter-btn" data-filter="events">אירועים</button>
+                <button class="filter-btn" data-filter="zimmers">צימרים</button>
+            </div>
+            <div class="gallery-grid" id="galleryGrid"></div>
+        </section>
+    </main>
+
+    <div class="lightbox" id="videoLightbox">
+        <span class="lightbox-close" id="lightboxClose">&times;</span>
+        <div class="lightbox-content">
+            <video class="lightbox-video" controls autoplay muted playsinline></video>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <a href="index.html" class="logo">MULTIBRAWN</a>
+            <div class="footer-socials">
+                <a href="https://www.facebook.com/vilotzhmarimdirotnofesh2021" target="_blank" rel="noopener noreferrer" title="פייסבוק"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/multibrawn.israel?igsh=cnM4Z2JvdHl3Mmdp" target="_blank" rel="noopener noreferrer" title="אינסטגרם"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/share/g/17L6egWV59/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" title="קבוצת פייסבוק"><i class="fas fa-users"></i></a>
+            </div>
+            <div class="footer-links">
+                <a href="privacy.html">מדיניות פרטיות</a><span> · </span><a href="accessibility.html">הצהרת נגישות</a>
+            </div>
+            <p class="text-muted text-sm">© 2025 Multibrawn. כל הזכויות שמורות.</p>
+            <p class="footer-credit">האתר נבנה ע"י Multi-Web מבית Multibrawn - אתרים שבונים עסקים</p>
+        </div>
+    </footer>
+
+    <style>.chatbot-floating-btn{position:fixed;bottom:110px;right:30px;width:60px;height:60px;background:linear-gradient(135deg, #8B5FBF, #6A4C93);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:1.5rem;box-shadow:0 4px 20px rgba(139, 95, 191, 0.4);cursor:pointer;z-index:1000;transition:all .3s ease;border:none}.chatbot-floating-btn:hover{transform:scale(1.1);box-shadow:0 6px 25px rgba(139, 95, 191, .6)}.chatbot-notification{position:absolute;top:-5px;left:-5px;width:20px;height:20px;background:#ef4444;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;animation:pulse 2s infinite}@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.2);opacity:.8}}.chatbot-window{position:fixed;bottom:180px;right:30px;width:400px;max-width:calc(100vw - 60px);height:600px;max-height:calc(100vh - 220px);background:linear-gradient(135deg, #16213E 0%, #1A0B2E 100%);border-radius:20px;box-shadow:0 10px 50px rgba(0,0,0,.5);border:1px solid rgba(139,95,191,.3);display:none;flex-direction:column;overflow:hidden;z-index:999;animation:slideUp .3s ease-out}.chatbot-window.active{display:flex}@keyframes slideUp{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}.chatbot-header{background:linear-gradient(135deg, #8B5FBF, #6A4C93);padding:1rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.1)}.chatbot-header-content{display:flex;align-items:center;gap:.75rem}.chatbot-avatar{width:40px;height:40px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem}.chatbot-title h3{margin:0;color:white;font-size:1rem;font-weight:700}.chatbot-status{font-size:.75rem;color:rgba(255,255,255,.8);display:flex;align-items:center;gap:.3rem}.status-dot{width:6px;height:6px;background:#10b981;border-radius:50%;animation:blink 2s infinite}@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}.chatbot-close{background:none;border:none;color:white;font-size:1.5rem;cursor:pointer;width:30px;height:30px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:all .3s}.chatbot-close:hover{background:rgba(255,255,255,.1)}.chatbot-messages{flex:1;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:1rem}.chatbot-messages::-webkit-scrollbar{width:6px}.chatbot-messages::-webkit-scrollbar-track{background:rgba(0,0,0,.2)}.chatbot-messages::-webkit-scrollbar-thumb{background:rgba(139,95,191,.5);border-radius:3px}.chat-message{display:flex;gap:.75rem;animation:messageSlide .3s ease-out}@keyframes messageSlide{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}.chat-message.user{flex-direction:row-reverse;align-self:flex-end}.message-avatar{width:35px;height:35px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}.chat-message.bot .message-avatar{background:linear-gradient(135deg, #fbbf24, #8B5FBF);color:#000}.chat-message.user .message-avatar{background:linear-gradient(135deg, #8B5FBF, #6A4C93);color:white}.message-bubble{max-width:75%;padding:.75rem 1rem;border-radius:15px;line-height:1.5;font-size:.95rem}.chat-message.bot .message-bubble{background:rgba(139,95,191,.2);border:1px solid rgba(139,95,191,.3);color:white}.chat-message.user .message-bubble{background:linear-gradient(135deg, #8B5FBF, #6A4C93);color:white}.quick-replies{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.5rem}.quick-reply-btn{background:rgba(251,191,36,.2);border:1px solid rgba(251,191,36,.4);color:#fbbf24;padding:.5rem 1rem;border-radius:20px;font-size:.85rem;cursor:pointer;transition:all .3s}.quick-reply-btn:hover{background:#fbbf24;color:#000;transform:translateY(-2px)}.chatbot-input-area{padding:1rem;background:rgba(0,0,0,.3);border-top:1px solid rgba(139,95,191,.2)}.input-wrapper{display:flex;gap:.5rem;align-items:center}.chatbot-input{flex:1;background:rgba(255,255,255,.1);border:1px solid rgba(139,95,191,.3);border-radius:25px;padding:.75rem 1rem;color:white;outline:none;transition:all .3s}.chatbot-input::placeholder{color:rgba(255,255,255,.5)}.chatbot-input:focus{border-color:#fbbf24;background:rgba(255,255,255,.15)}.send-btn{width:40px;height:40px;background:linear-gradient(135deg, #8B5FBF, #6A4C93);border:none;border-radius:50%;color:white;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s}.send-btn:hover{background:linear-gradient(135deg, #6A4C93, #8B5FBF);transform:scale(1.1)}.typing-indicator{display:none;align-items:center;gap:.75rem}.typing-indicator.active{display:flex}.typing-dots{display:flex;gap:4px}.typing-dot{width:8px;height:8px;background:rgba(139,95,191,.6);border-radius:50%;animation:typing 1.4s infinite}.typing-dot:nth-child(2){animation-delay:.2s}.typing-dot:nth-child(3){animation-delay:.4s}@keyframes typing{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-10px)}}@media (max-width:768px){.chatbot-window{width:calc(100vw - 30px);height:calc(100vh - 150px);right:15px;bottom:90px}.chatbot-floating-btn{right:15px;bottom:80px}}</style>
+    <button class="chatbot-floating-btn" id="chatbotBtn" title="פתח צ'אט"><i class="fas fa-comments"></i><span class="chatbot-notification">1</span></button>
+    <div class="chatbot-window" id="chatbotWindow"><div class="chatbot-header"><div class="chatbot-header-content"><div class="chatbot-avatar">🤖</div><div class="chatbot-title"><h3>מולטיבראון AI</h3><div class="chatbot-status"><span class="status-dot"></span><span>זמין עכשיו</span></div></div></div><button class="chatbot-close" id="chatbotClose">&times;</button></div><div class="chatbot-messages" id="chatbotMessages"><div class="chat-message bot"><div class="message-avatar">🤖</div><div><div class="message-bubble">שלום! 👋 אני העוזר הדיגיטלי של מולטיבראון. איך אוכל לעזור לך היום?</div><div class="quick-replies"><button class="quick-reply-btn" onclick="handleQuickReply('מחפש מתחם לחופשה')">🏖️ מחפש מתחם לחופשה</button><button class="quick-reply-btn" onclick="handleQuickReply('בעל נכס מעוניין בשיתוף פעולה')">🏢 בעל נכס</button><button class="quick-reply-btn" onclick="handleQuickReply('שירותי שיווק דיגיטלי')">📱 שיווק דיגיטלי</button><button class="quick-reply-btn" onclick="handleQuickReply('שאלה כללית')">💬 שאלה כללית</button></div></div></div><div class="chat-message bot typing-indicator" id="typingIndicator"><div class="message-avatar">🤖</div><div class="message-bubble"><div class="typing-dots"><span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></div></div></div></div><div class="chatbot-input-area"><div class="input-wrapper"><input type="text" class="chatbot-input" id="chatbotInput" placeholder="הקלד את ההודעה שלך..." onkeypress="handleKeyPress(event)"><button class="send-btn" id="sendBtn" onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button></div></div></div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // --- SLIDER LOGIC ---
+        let currentSlide = 0;
+        let autoplayInterval;
+        const slides = document.querySelectorAll('.slide');
+        const dotsContainer = document.querySelector('.slider-dots');
+        const totalSlides = slides.length;
+
+        if (slides.length > 0) {
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'dot';
+                dot.onclick = () => goToSlide(i);
+                dotsContainer.appendChild(dot);
+            }
+            const dots = document.querySelectorAll('.dot');
+            
+            const showSlide = (index) => {
+                slides.forEach(slide => slide.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                slides[index].classList.add('active');
+                dots[index].classList.add('active');
+                const img = slides[index].querySelector('img');
+                img.style.animation = 'none';
+                setTimeout(() => { img.style.animation = ''; }, 10);
+            };
+
+            const nextSlide = () => {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                showSlide(currentSlide);
+            };
+
+            const startAutoplay = () => { autoplayInterval = setInterval(nextSlide, 5000); };
+            const stopAutoplay = () => clearInterval(autoplayInterval);
+            
+            const resetAutoplay = () => {
+                stopAutoplay();
+                startAutoplay();
+            };
+
+            const goToSlide = (index) => {
+                currentSlide = index;
+                showSlide(currentSlide);
+                resetAutoplay();
+            };
+            
+            document.querySelector('.slider-arrow.next').addEventListener('click', () => {
+                nextSlide();
+                resetAutoplay();
+            });
+            document.querySelector('.slider-arrow.prev').addEventListener('click', () => {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                showSlide(currentSlide);
+                resetAutoplay();
+            });
+
+            showSlide(0);
+            startAutoplay();
+        }
+
+        // --- GALLERY LOGIC ---
+        const galleryItemsData = [
+            { type: 'image', category: 'villas', src: 'https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villas/Villa_Wow.jpg', title: 'וילה וואו', tall: true },
+            { type: 'video', category: 'penthouses', videoSrc: 'https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/Apartments/Penthouse.mp4', poster: 'https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villas/1.jpg', title: 'פנטהאוז יוקרתי' },
+            { type: 'image', category: 'hotels', src: 'https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Hotels/1.jpg', title: 'מלון בוטיק' },
+            { type: 'image', category: 'villas', src: 'https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villa1.jpg', title: 'וילת יוקרה' },
+            { type: 'video', category: 'events', videoSrc: 'https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/Events/Emek%20Hefer.mp4', poster: 'https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/24.jpg', title: 'מתחם אירועים', tall: true },
+            { type: 'image', category: 'hotels', src: 'https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Hotels/2.jpeg', title: 'סוויטה נשיאותית', tall: true },
+            { type: 'image', category: 'villas', src: 'https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villas/2.jpeg', title: 'עיצוב מודרני' },
+            { type: 'video', category: 'zimmers', videoSrc: 'https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/Zimmer/1.mp4', poster: 'https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Zimmer/1.jpg', title: 'צימר מפנק' },
+            { type: 'image', category: 'villas', src: 'https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villas/3.jpeg', title: 'בריכה פרטית' },
+            { type: 'image', category: 'hotels', src: 'https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Hotels/3.jpeg', title: 'נוף לים' },
+        ];
+
+        const galleryGrid = document.getElementById('galleryGrid');
+        galleryItemsData.forEach(item => {
+            const itemEl = document.createElement('div');
+            itemEl.className = 'gallery-item';
+            if (item.tall) itemEl.classList.add('tall');
+            itemEl.dataset.category = item.category;
+            itemEl.setAttribute('data-aos', 'fade-up');
+            
+            let content = (item.type === 'image')
+                ? `<img src="${item.src}" alt="${item.title}"><div class="item-overlay"><i class="fas fa-search-plus item-icon"></i><h3 class="item-title">${item.title}</h3></div>`
+                : `<div class="video-poster" style="background-image: url(${item.poster});"></div><div class="item-overlay"><i class="fas fa-play item-icon"></i><h3 class="item-title">${item.title}</h3></div>`;
+            
+            if (item.type === 'video') itemEl.dataset.videoSrc = item.videoSrc;
+            itemEl.innerHTML = content;
+            galleryGrid.appendChild(itemEl);
+        });
+        
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryEls = document.querySelectorAll('.gallery-item');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.dataset.filter;
+                galleryEls.forEach(item => item.style.display = (filter === 'all' || item.dataset.category === filter) ? 'block' : 'none');
+            });
+        });
+
+        const videoLightbox = document.getElementById('videoLightbox');
+        const lightboxVideo = videoLightbox.querySelector('video');
+        const lightboxClose = document.getElementById('lightboxClose');
+        galleryGrid.addEventListener('click', e => {
+            const item = e.target.closest('.gallery-item[data-video-src]');
+            if (item) {
+                lightboxVideo.src = item.dataset.videoSrc;
+                videoLightbox.classList.add('active');
+            }
+        });
+        const closeLightbox = () => {
+            videoLightbox.classList.remove('active');
+            lightboxVideo.pause();
+            lightboxVideo.src = '';
+        };
+        lightboxClose.addEventListener('click', closeLightbox);
+        videoLightbox.addEventListener('click', e => { if (e.target === videoLightbox) closeLightbox(); });
+        
+        AOS.init({ duration: 1000, once: true, offset: 50 });
+
+        // --- CHATBOT LOGIC ---
+        // [הסקריפט המלא של הצ'אטבוט מודבק כאן]
+        let chatState={isOpen:false,messageCount:0,userType:null};const chatbotBtn=document.getElementById('chatbotBtn'),chatbotWindow=document.getElementById('chatbotWindow'),chatbotClose=document.getElementById('chatbotClose'),chatbotMessages=document.getElementById('chatbotMessages'),chatbotInput=document.getElementById('chatbotInput'),typingIndicator=document.getElementById('typingIndicator'),notification=document.querySelector('.chatbot-notification');chatbotBtn.addEventListener('click',toggleChatbot);chatbotClose.addEventListener('click',toggleChatbot);function toggleChatbot(){chatState.isOpen=!chatState.isOpen;chatbotWindow.classList.toggle('active');if(chatState.isOpen){notification.style.display='none';chatbotInput.focus()}}function handleQuickReply(text){addUserMessage(text);setTimeout(()=>{showTyping();setTimeout(()=>{hideTyping();handleBotResponse(text)},1500)},300)}function handleBotResponse(userMessage){let response='',quickReplies=[];if(userMessage.includes('מחפש מתחם')){response='מעולה! 🏖️ אנחנו מתמחים במציאת המתחם המושלם עבורך. איזה סוג מתחם אתה מחפש?';quickReplies=['וילה','מלון בוטיק','צימר רומנטי','מקום לאירוע'];chatState.userType='client'}else if(userMessage.includes('בעל נכס')){response='נהדר! 🏢 אנחנו עוזרים לבעלי נכסים להגדיל תפוסה ולהגיע ללקוחות איכותיים. איזה סוג נכס יש לך?';quickReplies=['וילה','מלון','צימר','מקום אירועים'];chatState.userType='owner'}else if(userMessage.includes('שיווק דיגיטלי')){response='מצוין! 📱 אנחנו מציעים פתרונות שיווק דיגיטלי מלאים. מה מעניין אותך?';quickReplies=['בניית אתר','ניהול רשתות','קמפיינים ממומנים','SEO']}else if(quickReplies.length===0){response='תודה על השאלה! 😊 אשמח לעזור לך. תוכל לפנות אלינו ישירות דרך WhatsApp או לבקש לתאם שיחת ייעוץ.';quickReplies=['WhatsApp','תאום שיחה','דף צור קשר']}if(['וילה','מלון בוטיק','צימר רומנטי','מקום לאירוע'].includes(userMessage)&&chatState.userType==='client'){response=`נהדר! ${userMessage} זה בחירה מעולה. 🌟 אשמח לעזור לך למצוא את ${userMessage} המושלם. בואו ניצור קשר:`;quickReplies=['שלח הודעה ב-WhatsApp','תאום שיחה']}if(['וילה','מלון','צימר','מקום אירועים'].includes(userMessage)&&chatState.userType==='owner'){response=`מצוין! ${userMessage} - יש לנו ניסיון רב בקידום ${userMessage}. נשמח לשמוע עוד פרטים ולהציע לך תוכנית מותאמת:`;quickReplies=['שלח פרטים ב-WhatsApp','קבע פגישת ייעוץ']}if(userMessage==='WhatsApp'||userMessage==='שלח הודעה ב-WhatsApp'||userMessage==='שלח פרטים ב-WhatsApp'){const message=chatState.userType==='client'?'היי, אני מחפש מתחם לחופשה':'היי, אני בעל נכס ומעוניין בשיתוף פעולה';window.open(`https://wa.me/972523983394?text=${encodeURIComponent(message)}`,'_blank');response='נפלא! 🎉 פתחתי עבורך את WhatsApp. נשמח לשוחח איתך!';quickReplies=[]}if(userMessage.includes('תאום')||userMessage.includes('קבע פגישה')){window.location.href='contact.html';return}if(userMessage==='דף צור קשר'){window.location.href='contact.html';return}addBotMessage(response,quickReplies)}function addUserMessage(text){const messageDiv=document.createElement('div');messageDiv.className='chat-message user';messageDiv.innerHTML=`<div class="message-avatar">👤</div><div class="message-bubble">${text}</div>`;const typing=document.getElementById('typingIndicator');chatbotMessages.insertBefore(messageDiv,typing);scrollToBottom()}function addBotMessage(text,quickReplies=[]){const messageDiv=document.createElement('div');messageDiv.className='chat-message bot';let quickRepliesHtml='';if(quickReplies.length>0){quickRepliesHtml='<div class="quick-replies">';quickReplies.forEach(reply=>{quickRepliesHtml+=`<button class="quick-reply-btn" onclick="handleQuickReply('${reply}')">${reply}</button>`});quickRepliesHtml+='</div>'}messageDiv.innerHTML=`<div class="message-avatar">🤖</div><div><div class="message-bubble">${text}</div>${quickRepliesHtml}</div>`;const typing=document.getElementById('typingIndicator');chatbotMessages.insertBefore(messageDiv,typing);scrollToBottom()}function sendMessage(){const input=chatbotInput.value.trim();if(!input)return;addUserMessage(input);chatbotInput.value='';setTimeout(()=>{showTyping();setTimeout(()=>{hideTyping();let response='תודה על הפנייה! 😊 אשמח לעזור לך. האם תרצה לדבר איתנו ישירות?';let quickReplies=['WhatsApp','תאום שיחה','דף צור קשר'];addBotMessage(response,quickReplies)},1500)},300)}function handleKeyPress(event){if(event.key==='Enter'){sendMessage()}}function showTyping(){typingIndicator.classList.add('active');scrollToBottom()}function hideTyping(){typingIndicator.classList.remove('active')}function scrollToBottom(){setTimeout(()=>{chatbotMessages.scrollTop=chatbotMessages.scrollHeight},100)}setTimeout(()=>{if(!chatState.isOpen){notification.style.display='flex'}},3000);
+    });
+    </script>
+</body>
+</html>
