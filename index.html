@@ -285,12 +285,28 @@
     .video-wrapper {
       position: relative;
       width: 100%;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      padding-bottom: 56.25%; /* 16:9 aspect ratio for desktop */
       border-radius: 20px;
       overflow: hidden;
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
       border: 2px solid rgba(139, 95, 191, 0.3);
       transition: all 0.4s ease;
+    }
+
+    /* Mobile: 9:16 vertical video */
+    @media (max-width: 768px) {
+      .video-wrapper {
+        padding-bottom: 177.78%; /* 9:16 aspect ratio for mobile */
+        max-width: 600px;
+        margin: 0 auto;
+      }
+    }
+
+    /* Tablet: 4:3 aspect ratio */
+    @media (min-width: 769px) and (max-width: 1023px) {
+      .video-wrapper {
+        padding-bottom: 75%; /* 4:3 aspect ratio for tablets */
+      }
     }
 
     .video-wrapper:hover {
@@ -699,18 +715,15 @@
   <section class="video-section">
     <div class="video-container">
       <div class="video-header">
-        <span class="video-tag">חוויה ויזואלית</span>
         <h2 class="video-title">גלו את העולם שלנו</h2>
-        <p class="video-subtitle">
-          צפו בסרטון ותתרשמו מהמקומות המדהימים, האירועים הבלתי נשכחים והחוויות הייחודיות שאנחנו מציעים
-        </p>
       </div>
       <div class="video-wrapper">
         <iframe 
           id="youtubeVideo"
-          src="https://www.youtube.com/embed/mZb4GlpkkgU?autoplay=1&mute=0&rel=0&modestbranding=1&showinfo=0&fs=1&iv_load_policy=3&controls=1&disablekb=0&enablejsapi=1"
+          src="https://www.youtube.com/embed/EihK8Py6EdE?autoplay=1&mute=0&loop=1&playlist=EihK8Py6EdE&rel=0&modestbranding=1&showinfo=0&controls=0&fs=0&iv_load_policy=3&disablekb=1&playsinline=1"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen>
+          allowfullscreen
+          frameborder="0">
         </iframe>
       </div>
     </div>
