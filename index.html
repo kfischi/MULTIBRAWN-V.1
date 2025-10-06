@@ -1030,46 +1030,6 @@
         }
       });
     });
-
-    // YouTube Video Setup - completely hide YouTube branding
-    window.addEventListener('load', () => {
-      const iframe = document.getElementById('youtubeVideo');
-      
-      if (iframe) {
-        setTimeout(() => {
-          const videoId = 'EihK8Py6EdE';
-          
-          // Maximum privacy and no YouTube branding
-          const params = new URLSearchParams({
-            autoplay: '1',
-            mute: '1',
-            loop: '1',
-            playlist: videoId,
-            controls: '0',           // NO controls
-            modestbranding: '1',     // Minimal branding
-            rel: '0',                // No related videos
-            showinfo: '0',           // No video info
-            fs: '0',                 // No fullscreen button
-            iv_load_policy: '3',     // No annotations
-            disablekb: '1',          // No keyboard controls
-            playsinline: '1',
-            enablejsapi: '0',        // No JS API
-            origin: window.location.origin,
-            widget_referrer: window.location.href
-          });
-          
-          iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?${params.toString()}`;
-          
-          console.log('🎬 Video loaded in privacy mode - No YouTube branding');
-        }, 500);
-        
-        // Block right-click on video
-        iframe.addEventListener('contextmenu', (e) => {
-          e.preventDefault();
-          return false;
-        });
-      }
-    });
   </script>
 </body>
 </html>
