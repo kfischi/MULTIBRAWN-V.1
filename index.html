@@ -322,6 +322,40 @@
       width: 100%;
       height: 100%;
       border: none;
+      pointer-events: auto;
+    }
+
+    /* Hide YouTube branding and controls completely */
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio for desktop */
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: 
+        0 0 0 1px rgba(139, 95, 191, 0.2),
+        0 20px 60px rgba(0, 0, 0, 0.4),
+        0 0 100px rgba(139, 95, 191, 0.15);
+      border: 3px solid;
+      border-image: linear-gradient(135deg, 
+        rgba(139, 95, 191, 0.6), 
+        rgba(64, 224, 208, 0.4),
+        rgba(139, 95, 191, 0.6)
+      ) 1;
+      transition: all 0.5s ease;
+      background: #000;
+    }
+
+    /* Block all YouTube UI overlays */
+    .video-wrapper::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      z-index: 10;
     }
 
     /* Sections */
@@ -720,11 +754,16 @@
       <div class="video-wrapper">
         <iframe 
           id="youtubeVideo"
-          src="https://www.youtube.com/embed/EihK8Py6EdE?autoplay=1&mute=1&loop=1&playlist=EihK8Py6EdE&rel=0&modestbranding=1&showinfo=0&controls=1&iv_load_policy=3&playsinline=1&enablejsapi=1"
+          src="https://www.youtube.com/embed/EihK8Py6EdE"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
           frameborder="0">
         </iframe>
+      </div>
+      
+      <!-- Fallback message if video doesn't load -->
+      <div id="videoError" style="display: none; text-align: center; padding: 2rem; color: var(--text-muted);">
+        <p>הסרטון נטען...</p>
       </div>
     </div>
   </section>
@@ -990,6 +1029,46 @@
           target.scrollIntoView({ behavior: 'smooth' });
         }
       });
+    });
+
+    // YouTube Video Setup - completely hide YouTube branding
+    window.addEventListener('load', () => {
+      const iframe = document.getElementById('youtubeVideo');
+      
+      if (iframe) {
+        setTimeout(() => {
+          const videoId = 'EihK8Py6EdE';
+          
+          // Maximum privacy and no YouTube branding
+          const params = new URLSearchParams({
+            autoplay: '1',
+            mute: '1',
+            loop: '1',
+            playlist: videoId,
+            controls: '0',           // NO controls
+            modestbranding: '1',     // Minimal branding
+            rel: '0',                // No related videos
+            showinfo: '0',           // No video info
+            fs: '0',                 // No fullscreen button
+            iv_load_policy: '3',     // No annotations
+            disablekb: '1',          // No keyboard controls
+            playsinline: '1',
+            enablejsapi: '0',        // No JS API
+            origin: window.location.origin,
+            widget_referrer: window.location.href
+          });
+          
+          iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?${params.toString()}`;
+          
+          console.log('🎬 Video loaded in privacy mode - No YouTube branding');
+        }, 500);
+        
+        // Block right-click on video
+        iframe.addEventListener('contextmenu', (e) => {
+          e.preventDefault();
+          return false;
+        });
+      }
     });
   </script>
 </body>
