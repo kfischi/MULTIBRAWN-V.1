@@ -322,6 +322,95 @@
       font-weight: 600;
     }
 
+    .chatbot-popup {
+      position: fixed;
+      bottom: 110px;
+      right: 100px;
+      background: linear-gradient(135deg, var(--accent-gold), var(--brand-purple));
+      color: #000;
+      padding: 1rem 1.5rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(251, 191, 36, 0.5);
+      z-index: 1003;
+      display: none;
+      animation: bounceIn 0.6s ease-out;
+      max-width: 280px;
+      cursor: pointer;
+    }
+
+    .chatbot-popup.show {
+      display: block;
+    }
+
+    .chatbot-popup-content {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .chatbot-popup-icon {
+      font-size: 2rem;
+      animation: wave 1s ease-in-out infinite;
+    }
+
+    @keyframes wave {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(20deg); }
+      75% { transform: rotate(-20deg); }
+    }
+
+    .chatbot-popup-text {
+      flex: 1;
+    }
+
+    .chatbot-popup-title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .chatbot-popup-subtitle {
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+
+    .chatbot-popup-close {
+      background: none;
+      border: none;
+      color: #000;
+      font-size: 1.2rem;
+      cursor: pointer;
+      padding: 0;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: background 0.3s;
+    }
+
+    .chatbot-popup-close:hover {
+      background: rgba(0, 0, 0, 0.1);
+    }
+
+    @keyframes bounceIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.3) translateY(20px);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.05);
+      }
+      70% {
+        transform: scale(0.95);
+      }
+      100% {
+        transform: scale(1) translateY(0);
+      }
+    }
+
     /* Floating Buttons */
     .floating-buttons {
       position: fixed;
@@ -879,21 +968,21 @@
           <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villas/Villa_Wow.jpg" alt="וילה יוקרה" class="card-image">
           <div class="card-content">
             <h3 class="card-title">וילות יוקרה</h3>
-            <p class="card-description">וילות מפוארות עם עיצוב ייחודי, בריכות פרטיות מחוממות, מטבחים מאובזרים ברמה הגבוהה ביותר, גינות מעוצבות ונוף עוצר נשימה. מושלם לאירועים משפחתיים, חתונות ואירועי חברה עם פרטיות מלאה ומרחבים נדיבים המאפשרים אירוח של עד 100 אורחים</p>
+            <p class="card-description">וילות מפוארות ויוקרתיות עם בריכות פרטיות, מטבחים מאובזרים ברמה הגבוהה ביותר וגינות מעוצבות. מושלם לאירועים משפחתיים, חתונות ואירועי חברה עם פרטיות מלאה ומרחבים נדיבים</p>
           </div>
         </div>
         <div class="card">
           <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Zimmer/1.jpg" alt="צימר רומנטי" class="card-image">
           <div class="card-content">
             <h3 class="card-title">צימרים רומנטיים</h3>
-            <p class="card-description">בריחה מושלמת לטבע עם אווירה קסומה ורומנטית, צימרים מעוצבים בסגנון כפרי-שיק עם ג'קוזי פרטי, אח בוערת וחצר מבודדת. כולל ארוחות בוקר עשירות, פינות ישיבה נעימות ונוף פסטורלי. אידיאלי לזוגות המחפשים אינטימיות, שקט ופינוק ברמה הגבוהה ביותר</p>
+            <p class="card-description">בריחה מושלמת לטבע עם אווירה קסומה ורומנטית, צימרים מעוצבים ומפנקים. אידיאלי לזוגות ומשפחות המחפשים אינטימיות, שקט ופינוק ברמה הגבוהה ביותר</p>
           </div>
         </div>
         <div class="card">
           <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Apartments/17.jpg" alt="דירות נופש ופנטהאוזים" class="card-image">
           <div class="card-content">
             <h3 class="card-title">דירות נופש ופנטהאוזים</h3>
-            <p class="card-description">חיים בפסגה עם דירות יוקרה ופנטהאוזים מרהיבים, נופים פנורמיים של העיר והים, מרפסות שמש מעוצבות, מתקנים משותפים ברמה בינלאומית כולל בריכה, חדר כושר ומועדון דיירים. מושלם למשפחות ולנופש עירוני יוקרתי עם קרבה למרכזי בילוי ותרבות</p>
+            <p class="card-description">חיים בפסגה עם דירות יוקרה ופנטהאוזים מרהיבים, נופים פנורמיים של העיר והים, מרפסות שמש, מתקנים משותפים, בריכה, חדר כושר ומועדון דיירים. מושלם למשפחות ולנופש עירוני יוקרתי</p>
           </div>
         </div>
       </div>
@@ -965,6 +1054,18 @@
     </div>
   </footer>
 
+  <!-- Chatbot Popup -->
+  <div class="chatbot-popup" id="chatbotPopup">
+    <div class="chatbot-popup-content">
+      <div class="chatbot-popup-icon">🤖</div>
+      <div class="chatbot-popup-text">
+        <div class="chatbot-popup-title">שלום! 👋</div>
+        <div class="chatbot-popup-subtitle">רוצים עזרה למצוא את המקום המושלם?</div>
+      </div>
+      <button class="chatbot-popup-close" id="closePopup">×</button>
+    </div>
+  </div>
+
   <!-- Floating Buttons -->
   <div class="floating-buttons">
     <button class="floating-btn chatbot-btn" id="chatbotBtn" title="צ'אט עם מולטי AI">
@@ -1027,6 +1128,35 @@
   </div>
 
   <script>
+    // Chatbot Popup - Show after 5 seconds
+    setTimeout(() => {
+      const popup = document.getElementById('chatbotPopup');
+      const hasSeenPopup = sessionStorage.getItem('chatbotPopupSeen');
+      
+      if (!hasSeenPopup) {
+        popup.classList.add('show');
+      }
+    }, 5000);
+
+    // Close popup
+    document.getElementById('closePopup').addEventListener('click', (e) => {
+      e.stopPropagation();
+      const popup = document.getElementById('chatbotPopup');
+      popup.classList.remove('show');
+      sessionStorage.setItem('chatbotPopupSeen', 'true');
+    });
+
+    // Open chatbot from popup
+    document.getElementById('chatbotPopup').addEventListener('click', () => {
+      const popup = document.getElementById('chatbotPopup');
+      popup.classList.remove('show');
+      sessionStorage.setItem('chatbotPopupSeen', 'true');
+      chatbotModal.classList.add('open');
+      if (chatState.currentStep === undefined) {
+        initChat();
+      }
+    });
+
     // Mobile Menu
     const mobileToggle = document.getElementById('mobileToggle');
     const navMenu = document.getElementById('navMenu');
@@ -1103,6 +1233,11 @@
     // Open/Close Chatbot
     chatbotBtn.addEventListener('click', () => {
       chatbotModal.classList.add('open');
+      // Hide popup if open
+      const popup = document.getElementById('chatbotPopup');
+      popup.classList.remove('show');
+      sessionStorage.setItem('chatbotPopupSeen', 'true');
+      
       if (chatState.currentStep === undefined) {
         initChat();
       }
@@ -1320,12 +1455,11 @@
       
       summaryDiv.innerHTML = `
         <div class="summary-title">
-          <i class="fas fa-check-circle"></i> תודה! הבקשה נשלחה
+          <i class="fas fa-check-circle"></i> תודה!
         </div>
         <div class="summary-content">שלום ${chatState.userInfo.name}!
 
-הפרטים נשלחו לצוות מולטיבראון.
-נחזור אליך בהקדם עם הצעות מותאמות!
+הצוות המקצועי שלנו יחזור אליך בהקדם עם הצעות מותאמות אישית.
 
 📋 ${chatState.userInfo.vacationType}
 👥 ${chatState.userInfo.groupSize}
@@ -1338,7 +1472,7 @@
       btn.className = 'whatsapp-button';
       btn.href = whatsappLink;
       btn.target = '_blank';
-      btn.innerHTML = '<i class="fab fa-whatsapp"></i> שלח לווטסאפ';
+      btn.innerHTML = '<i class="fab fa-whatsapp"></i> לשליחה לחצו כאן';
       
       summaryDiv.appendChild(btn);
       chatMessages.appendChild(summaryDiv);
