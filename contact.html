@@ -154,7 +154,7 @@
       background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
                   url('https://res.cloudinary.com/dptyfvwyo/image/upload/v1760905946/Add_a_heading_bkkks3.png');
       background-size: cover;
-      background-position: center;
+      background-position: center top 20%; /* Adjusted to show more of the top part */
       background-attachment: fixed;
       text-align: center;
       padding: 8rem 2rem 4rem;
@@ -1340,6 +1340,7 @@
 👥 ${chatState.userInfo.groupSize}
 📅 ${chatState.userInfo.timeframe}
 📍 ${chatState.userInfo.location}
+🏊 ${chatState.userInfo.amenities}
 💰 ${chatState.userInfo.budget}</div>
       `;
       
