@@ -145,7 +145,7 @@
         right: 0 !important;
     }
 
-    /* Hero Section - Updated with new image */
+    /* Hero Section - Updated with new image and positioning */
     .hero {
       min-height: 60vh;
       display: flex;
@@ -153,8 +153,9 @@
       justify-content: center;
       background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
                   url('https://res.cloudinary.com/dptyfvwyo/image/upload/v1760905946/Add_a_heading_bkkks3.png');
-      background-size: cover;
-      background-position: center top 20%; /* Adjusted to show more of the top part */
+      background-size: 70%; /* הקטנת גודל התמונה */
+      background-position: center bottom 10%; /* הרמה מעט כלפי מעלה */
+      background-repeat: no-repeat;
       background-attachment: fixed;
       text-align: center;
       padding: 8rem 2rem 4rem;
@@ -914,6 +915,11 @@
       .floating-buttons { right: 15px; bottom: 15px; }
       .chatbot-modal { right: 0; bottom: 0; width: 100%; height: 100%; border-radius: 0; }
       .accessibility-panel { right: 15px; width: calc(100vw - 30px); max-width: 280px; }
+      
+      .hero {
+        background-size: 100%; /* התאמה לגודל מסך קטן יותר */
+        background-position: center top 10%;
+      }
     }
     
     /* Chatbot Popup */
@@ -1340,7 +1346,6 @@
 👥 ${chatState.userInfo.groupSize}
 📅 ${chatState.userInfo.timeframe}
 📍 ${chatState.userInfo.location}
-🏊 ${chatState.userInfo.amenities}
 💰 ${chatState.userInfo.budget}</div>
       `;
       
