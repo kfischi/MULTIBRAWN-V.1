@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>גלריה - MULTIBRAWN</title>
-  <meta name="description" content="גלריה של MULTIBRAWN - חוויות נופש ומתחמים מובחרים">
+  <title>הסיפור שלנו - MULTIBRAWN</title>
+  <meta name="description" content="הכירו את עדית בראון ואת הסיפור של Multibrawn - מחברים בין חלומות למציאות בעולם הנופש והשיווק הדיגיטלי">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
@@ -34,7 +36,7 @@
       overflow-x: hidden;
     }
 
-    /* Header & Navigation */
+    /* Header */
     .header-nav {
       position: fixed;
       top: 0;
@@ -140,72 +142,36 @@
       border-radius: 2px;
       transition: 0.3s;
     }
+    
+    .nav-menu.active {
+        right: 0 !important;
+    }
 
-    /* Hero Section - Full Page Video */
+    /* Hero Section - Adapted for About page */
     .hero {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      background: var(--primary-bg);
-      overflow: hidden;
+      min-height: 50vh; /* קצר יותר מדף הבית */
       display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                  url('https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villas/1.jpg'); /* רקע שונה מהמקור */
+      background-size: cover;
+      background-position: center 40%;
+      background-attachment: fixed;
       text-align: center;
-      padding: 0 2rem;
-    }
-
-    /* Video Embed and Overlay */
-    .video-wrapper {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-    }
-
-    .video-wrapper iframe {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 100vw;
-      height: 56.25vw; /* 16:9 aspect ratio */
-      min-height: 100vh;
-      min-width: 177.77vh; /* 16:9 aspect ratio */
-      border: none;
-    }
-
-    .video-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(
-        to bottom,
-        rgba(15, 12, 41, 0.3) 0%,
-        rgba(15, 12, 41, 0.5) 50%,
-        rgba(15, 12, 41, 0.8) 100%
-      );
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 2rem;
-      z-index: 1;
-      pointer-events: none;
+      padding: 8rem 2rem 4rem;
     }
 
     .hero-title {
       font-family: var(--font-heading);
-      font-size: clamp(3.5rem, 8vw, 7rem);
+      font-size: clamp(3rem, 8vw, 5rem);
       font-weight: 900;
-      color: var(--cta-turquoise); /* שינוי: שימוש ב-CTA Turquoise */
-      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      color: var(--brand-purple);
+      text-shadow: 
+        0 0 40px rgba(139, 95, 191, 0.8),
+        0 0 80px rgba(139, 95, 191, 0.4);
       margin-bottom: 1.5rem;
       letter-spacing: 2px;
-      animation: fadeInUp 1s ease;
-      pointer-events: auto;
     }
 
     .hero-subtitle {
@@ -214,47 +180,15 @@
       color: var(--text-light);
       margin-bottom: 1rem;
       text-shadow: 0 2px 10px rgba(0,0,0,0.8);
-      animation: fadeInUp 1s ease 0.3s both;
-      pointer-events: auto;
     }
-
+    
     .hero-description {
       font-size: clamp(1.1rem, 2.5vw, 1.5rem);
       color: var(--text-muted);
       margin-bottom: 2.5rem;
       text-shadow: 0 1px 5px rgba(0,0,0,0.8);
-      animation: fadeInUp 1s ease 0.5s both;
-      pointer-events: auto;
     }
 
-    /* Scroll Indicator */
-    .scroll-down {
-      position: absolute;
-      bottom: 40px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 2;
-      animation: bounce 2s infinite;
-      pointer-events: auto;
-      cursor: pointer;
-    }
-
-    .scroll-down i {
-      font-size: 2.5rem;
-      color: var(--cta-turquoise);
-      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-      40% { transform: translateX(-50%) translateY(-15px); }
-      60% { transform: translateX(-50%) translateY(-7px); }
-    }
 
     /* Sections */
     .section {
@@ -281,276 +215,314 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-
-    /* Features Grid (לשעבר Features Section) */
-    .features-section {
-      background: var(--secondary-bg);
-      padding: 6rem 2rem;
+    
+    /* Story Content CSS (מותאם לעיצוב הכהה החדש) */
+    .story-section {
+        background: var(--primary-bg);
     }
     
-    .features-header {
-      text-align: center;
-      margin-bottom: 5rem;
+    .story-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+        margin-bottom: 6rem;
     }
 
-    .features-tag {
-      display: inline-block;
-      background: rgba(139, 95, 191, 0.2);
-      color: var(--light-purple);
-      padding: 0.5rem 1.5rem;
-      border-radius: 30px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
-      border: 1px solid rgba(139, 95, 191, 0.3);
+    .story-text {
+        font-size: 1.2rem;
+        line-height: 1.8;
+        color: var(--text-muted);
+    }
+
+    .story-text h3 {
+        font-family: var(--font-heading);
+        font-size: 2rem;
+        color: var(--text-light);
+        margin-bottom: 1.5rem;
+        font-weight: 700;
     }
     
-    .features-title {
-      font-family: var(--font-heading);
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 900;
-      background: linear-gradient(135deg, var(--brand-purple), var(--light-purple));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 1.5rem;
-    }
-
-    .features-subtitle {
-      font-size: clamp(1.1rem, 2vw, 1.4rem);
-      color: var(--text-muted);
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 3rem;
-      margin-top: 4rem;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-
-    .feature-card {
-      background: rgba(26, 26, 46, 0.6);
-      border: 1px solid rgba(139, 95, 191, 0.2);
-      border-radius: 20px;
-      padding: 3rem 2rem;
-      text-align: center;
-      transition: all 0.4s ease;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-      backdrop-filter: blur(10px);
-    }
-
-    .feature-card:hover {
-      transform: translateY(-10px);
-      border-color: var(--brand-purple);
-      box-shadow: 0 20px 60px rgba(139, 95, 191, 0.4);
-      background: rgba(139, 95, 191, 0.1);
-    }
-
-    .feature-icon {
-      width: 80px;
-      height: 80px;
-      background: linear-gradient(135deg, var(--brand-purple), var(--light-purple));
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 2rem;
-      transition: all 0.4s ease;
-    }
-
-    .feature-card:hover .feature-icon {
-      transform: scale(1.1) rotate(5deg);
-      box-shadow: 0 10px 30px rgba(139, 95, 191, 0.5);
-    }
-
-    .feature-icon i {
-      font-size: 2.5rem;
-      color: white;
-    }
-
-    .feature-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: white;
-      margin-bottom: 1rem;
-    }
-
-    .feature-description {
-      font-size: 1rem;
-      color: var(--text-muted);
-      line-height: 1.8;
+    .story-text .highlight {
+        color: var(--cta-turquoise); /* שימוש בצבע CTA בולט */
+        font-weight: 700;
     }
     
-    /* Gallery Grid */
-    .gallery-section {
-      background: var(--primary-bg);
-      padding: 6rem 2rem;
+    .story-image {
+        position: relative;
+        border-radius: 25px;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(139, 95, 191, 0.3);
+        transition: all 0.5s ease;
+    }
+
+    .story-image:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 30px 80px rgba(139, 95, 191, 0.5);
+    }
+
+    .story-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
     }
     
-    .gallery-title {
-      font-family: var(--font-heading);
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 900;
-      background: linear-gradient(135deg, var(--brand-purple), var(--cta-turquoise));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 1.5rem;
-      text-align: center;
+    /* Timeline Section (מותאם לעיצוב הכהה החדש) */
+    .timeline-section {
+        padding: 6rem 2rem;
+        background: var(--secondary-bg);
     }
     
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 2rem;
-      max-width: 1400px;
-      margin: 0 auto;
+    .timeline {
+        max-width: 800px;
+        margin: 0 auto;
+        position: relative;
     }
 
-    .gallery-item {
-      position: relative;
-      overflow: hidden;
-      border-radius: 20px;
-      aspect-ratio: 16/10;
-      cursor: pointer;
-      transition: all 0.5s ease;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    .timeline::before {
+        content: '';
+        position: absolute;
+        right: 50%;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: linear-gradient(to bottom, var(--brand-purple), var(--accent-gold));
+        border-radius: 2px;
+        transform: translateX(50%);
     }
 
-    .gallery-item:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 60px rgba(139, 95, 191, 0.5);
+    .timeline-item {
+        margin-bottom: 4rem;
+        position: relative;
+        width: 45%;
     }
 
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s ease;
+    .timeline-item:nth-child(even) {
+        margin-right: auto;
+        padding-left: 3rem;
     }
 
-    .gallery-item:hover img {
-      transform: scale(1.15);
+    .timeline-item:nth-child(odd) {
+        margin-left: auto;
+        padding-right: 3rem;
+        text-align: left;
     }
 
-    /* CTA Section */
+    .timeline-item::before {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: var(--accent-gold);
+        border-radius: 50%;
+        top: 0;
+        box-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
+    }
+
+    .timeline-item:nth-child(even)::before {
+        left: -13px;
+    }
+
+    .timeline-item:nth-child(odd)::before {
+        right: -13px;
+    }
+
+    .timeline-content {
+        background: rgba(44, 62, 80, 0.2); /* רקע כהה עדין */
+        padding: 2rem;
+        border-radius: 20px;
+        border: 1px solid rgba(139, 95, 191, 0.2);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        transition: all 0.3s ease;
+    }
+
+    .timeline-content:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(139, 95, 191, 0.5);
+        border-color: var(--brand-purple);
+    }
+
+    .timeline-date {
+        color: var(--cta-turquoise); /* שינוי צבע לתואם את ה-CTA */
+        font-weight: 700;
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+
+    .timeline-title {
+        font-family: var(--font-heading);
+        font-size: 1.5rem;
+        color: var(--text-light);
+        margin-bottom: 1rem;
+        font-weight: 700;
+    }
+
+    .timeline-description {
+        color: var(--text-muted);
+        line-height: 1.6;
+    }
+    
+    /* Numbers Section (מותאם לעיצוב הכהה החדש) */
+    .numbers-section {
+        padding: 6rem 2rem;
+        background: var(--primary-bg);
+    }
+
+    .numbers-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        margin-top: 4rem;
+    }
+
+    .number-card {
+        text-align: center;
+        padding: 3rem 2rem;
+        background: linear-gradient(135deg, var(--brand-purple), var(--light-purple));
+        border-radius: 25px;
+        color: white;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(139, 95, 191, 0.4);
+    }
+
+    /* Testimonials Section (מותאם לעיצוב הכהה החדש) */
+    .testimonials-section {
+        padding: 6rem 2rem;
+        background: var(--secondary-bg);
+    }
+
+    .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 4rem;
+    }
+
+    .testimonial-card {
+        background: rgba(44, 62, 80, 0.2);
+        padding: 3rem 2rem;
+        border-radius: 25px;
+        border: 1px solid rgba(139, 95, 191, 0.2);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+    .testimonial-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(139, 95, 191, 0.5);
+        border-color: var(--brand-purple);
+    }
+
+    .testimonial-icon {
+        color: var(--light-purple);
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        opacity: 0.7;
+    }
+
+    .testimonial-content p {
+        font-size: 1.3rem;
+        font-style: italic;
+        color: var(--text-light);
+        line-height: 1.6;
+    }
+    
+    .testimonial-author {
+        border-top: 1px solid rgba(139, 95, 191, 0.2);
+    }
+
+    .testimonial-author strong {
+        color: var(--cta-turquoise);
+    }
+    
+    /* Vision Section (מותאם לעיצוב הכהה החדש) */
+    .vision-section {
+        padding: 6rem 2rem;
+        background: var(--primary-bg);
+    }
+
+    .vision-text h3 {
+        color: var(--text-light);
+    }
+
+    .vision-feature {
+        padding: 2rem;
+        background: rgba(44, 62, 80, 0.2); /* רקע כהה עדין */
+        border: 1px solid rgba(139, 95, 191, 0.2);
+    }
+
+    .vision-feature:hover {
+        box-shadow: 0 10px 25px rgba(139, 95, 191, 0.3);
+    }
+    
+    .vision-feature h4 {
+        color: var(--text-light);
+    }
+
+    .vision-feature-icon {
+        background: linear-gradient(135deg, var(--brand-purple), var(--light-purple));
+    }
+    
+    /* Values Section (מותאם לעיצוב הכהה החדש) */
+    .values-section {
+        padding: 6rem 2rem;
+        background: var(--secondary-bg);
+    }
+    
+    .value-card {
+        background: rgba(44, 62, 80, 0.2);
+        border: 1px solid rgba(139, 95, 191, 0.2);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+    
+    .value-card:hover {
+        box-shadow: 0 25px 50px rgba(139, 95, 191, 0.5);
+    }
+
+    .value-title {
+        color: var(--text-light);
+    }
+
+    /* CTA Section (מותאם לעיצוב הכהה החדש) */
     .cta-section {
-      background: var(--secondary-bg);
-      padding: 6rem 2rem;
-      text-align: center;
+        padding: 6rem 2rem;
+        background: var(--primary-bg);
+        text-align: center;
+        border-top: 1px solid rgba(139, 95, 191, 0.2);
     }
 
     .cta-content {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .cta-title {
-      font-family: var(--font-heading);
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 900;
-      color: white;
-      margin-bottom: 1.5rem;
-    }
-
-    .cta-text {
-      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
-      color: var(--text-muted);
-      margin-bottom: 3rem;
-    }
-
-    .cta-button-main {
-      background: var(--cta-turquoise);
-      color: #000;
-      border: none;
-      padding: 1.5rem 4rem;
-      border-radius: 50px;
-      font-size: 1.3rem;
-      font-weight: 700;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 15px;
-      text-decoration: none;
-      transition: all 0.4s ease;
-      box-shadow: 0 10px 40px rgba(64, 224, 208, 0.4);
-    }
-
-    .cta-button-main:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 50px rgba(64, 224, 208, 0.6);
-      background: white;
-      color: var(--brand-purple);
+        background: rgba(44, 62, 80, 0.4);
+        border: 1px solid rgba(139, 95, 191, 0.2);
+        box-shadow: 0 20px 60px rgba(139, 95, 191, 0.4);
     }
     
-    /* Footer */
+    .cta-btn-secondary {
+        background: transparent;
+        color: var(--cta-turquoise);
+        border: 2px solid var(--cta-turquoise);
+    }
+
+    .cta-btn-secondary:hover {
+        background: var(--cta-turquoise);
+        color: #000;
+    }
+
+    /* Footer - (מותאם לעיצוב הכהה החדש) */
     footer {
-      padding: 4rem 2rem;
-      text-align: center;
-      border-top: 1px solid rgba(139, 95, 191, 0.2);
-      background: var(--primary-bg);
-    }
-
-    .footer-logo-section {
-      margin-bottom: 2rem;
-    }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin: 2rem 0;
-      align-items: center;
-    }
-
-    .footer-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s;
-    }
-
-    .footer-links a:hover {
-      color: var(--cta-turquoise);
-    }
-
-    .footer-links .separator {
-      color: var(--text-muted);
-    }
-
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin: 2rem 0;
-    }
-
-    .social-links a {
-      color: var(--text-muted);
-      font-size: 1.8rem;
-      transition: all 0.3s;
-    }
-
-    .social-links a:hover {
-      color: var(--cta-turquoise);
-      transform: translateY(-3px);
-    }
-
-    .footer-copyright {
-      color: var(--text-muted);
-      margin-bottom: 1rem;
+        padding: 4rem 2rem;
+        text-align: center;
+        border-top: 1px solid rgba(139, 95, 191, 0.2);
+        background: var(--primary-bg);
     }
 
     .footer-credit {
-      color: var(--brand-purple);
-      font-size: 0.9rem;
-      font-weight: 600;
+        color: var(--cta-turquoise);
     }
-
-    /* Chatbot, Accessibility & Floating Buttons CSS (מתוך index.html) */
+    
+    /* צ'אטבוט ונגישות - נלקח מ-index.html */
     .chatbot-popup {
       position: fixed;
       bottom: 110px;
@@ -1072,6 +1044,7 @@
     /* Responsive */
     @media (max-width: 768px) {
       .mobile-menu-toggle { display: flex; }
+
       .nav-menu {
         position: fixed;
         right: -100%;
@@ -1083,439 +1056,688 @@
         transition: 0.3s;
         border-top: 1px solid rgba(139, 95, 191, 0.2);
       }
+
       .nav-menu.active { right: 0; }
-      .features-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .gallery-grid { grid-template-columns: 1fr; }
-      .video-wrapper iframe { height: 100vh; width: 177.77vh; }
+      
+      .story-content { grid-template-columns: 1fr; gap: 2rem; }
+      .timeline::before { right: 20px; transform: none; }
+      .timeline-item { width: 100%; margin-left: 0; margin-right: 0; padding-left: 3rem; padding-right: 0; text-align: right; }
+      .timeline-item:nth-child(even)::before { right: 13px; left: auto; }
+      .timeline-item:nth-child(odd)::before { right: 13px; }
+      .values-grid { grid-template-columns: 1fr; }
+      .vision-content { grid-template-columns: 1fr; gap: 2rem; }
+      .vision-feature { flex-direction: column; text-align: center; }
+      .floating-buttons { right: 15px; bottom: 15px; }
       .chatbot-modal { right: 0; bottom: 0; width: 100%; height: 100%; border-radius: 0; }
       .accessibility-panel { right: 15px; width: calc(100vw - 30px); max-width: 280px; }
     }
   </style>
 </head>
 <body>
-  <header class="header-nav">
-    <nav class="nav-content">
-      <a href="index.html" class="logo-container">
-        <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="MULTIBRAWN Logo" class="logo-img">
-        <span class="logo-text">MULTIBRAWN</span>
-      </a>
-      <ul class="nav-menu" id="navMenu">
-        <li><a href="index.html">דף הבית</a></li>
-        <li><a href="about.html">אודות</a></li>
-        <li><a href="gallery.html">גלריה</a></li>
-        <li><a href="marketing.html">שיווק דיגיטלי</a></li>
-        <li><a href="contact.html" class="cta-button">צור קשר</a></li>
-      </ul>
-      <button class="mobile-menu-toggle" id="mobileToggle">
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-      </button>
-    </nav>
-  </header>
+    <header class="header-nav">
+        <nav class="nav-content">
+            <a href="index.html" class="logo-container">
+                <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="MULTIBRAWN Logo" class="logo-img">
+                <span class="logo-text">MULTIBRAWN</span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">דף הבית</a></li>
+                <li><a href="about.html">אודות</a></li>
+                <li><a href="gallery.html">גלריה</a></li>
+                <li><a href="marketing.html">שיווק דיגיטלי</a></li>
+                <li><a href="contact.html" class="cta-button">צור קשר</a></li>
+            </ul>
+            <button class="mobile-menu-toggle" id="mobileToggle">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </nav>
+    </header>
 
-  <section class="hero">
-    <div class="video-wrapper">
-      <iframe 
-        src="https://www.youtube.com/embed/mZb4GlpkkgU?autoplay=1&mute=1&loop=1&playlist=mZb4GlpkkgU&controls=0&showinfo=0&rel=0&modestbranding=1"
-        allow="autoplay; encrypted-media"
-        allowfullscreen>
-      </iframe>
-    </div>
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">מאחורי הקלעים של MULTIBRAWN</h1>
+            <h2 class="hero-subtitle">הסיפור שלנו: חיבור בין חלום למציאות</h2>
+            <p class="hero-description">
+                איך הכל התחיל ואיך אנחנו הופכים חלומות לנופש, אירועים והצלחה עסקית.
+            </p>
+        </div>
+    </section>
+
+    <section class="section story-section">
+        <div class="container">
+            <h2 class="section-title">הסיפור מתחיל</h2>
+            
+            <div class="story-content">
+                <div class="story-text">
+                    <h3>ערדית בראון - מייסדת והלב הפועם מאחורי MULTIBRAWN</h3>
+                    <p>
+                        יזמית עם מעל 10 שנות ניסיון בחיבור בין אנשים לחלומות שלהם - 
+                        בין אם מדובר על החופשה המושלמת, האירוע הבלתי נשכח, או הצלחה עסקית בעולם השיווק.
+                    </p>
+                    <p>
+                        הדרך שלי החלה מרצון עמוק לעזור לאנשים להגשים רעיונות וחלומות. אני מאמינה ש<span class="highlight">לכל אדם מגיע שירות אישי ופתרון מדויק</span> 
+                        שמתאים בדיוק לצרכים ולשאיפות שלו.
+                    </p>
+                    <p>
+                        היום אני גאה להוביל צוות מקצועי שמשרת מאות לקוחות ועובד עם עשרות נכסים איכותיים. 
+                        מה שהתחיל כחלום אישי הופך לעסק משגשג שמשנה חיים.
+                    </p>
+                </div>
+                <div class="story-image">
+                    <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Ardit.jpg" alt="עדית בראון, מייסדת Multibrawn">
+                </div>
+            </div>
+
+            <div class="story-content" style="direction: ltr;">
+                <div class="story-image" style="order: 2;">
+                    <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/24.jpg" alt="נכסי יוקרה של Multibrawn">
+                </div>
+                <div class="story-text" style="order: 1; text-align: right;">
+                    <h3>מהקורונה לחזון חדש</h3>
+                    <p>
+                        במהלך הקורונה, כשהאולמות נסגרו ואנשים חיפשו פתרונות – החלטתי להישאר בבית ולבנות דרך חדשה. 
+                        במקום לחכות שהמצב ישתפר, ראיתי הזדמנות: <span class="highlight">נופש ואירועים במתחמים אינטימיים</span>.
+                    </p>
+                    <p>
+                        למדתי לעומק את תחום הווילות, הצימרים והמלונות. התחלתי לחבר בין לקוחות איכותיים לבעלי מתחמים, 
+                        גם מהעולם הדתי והחרדי. כל לקוח קיבל יחס אישי ופתרון שמתאים בדיוק לצרכים שלו.
+                    </p>
+                    <p>
+                        עם הזמן נפתחו בפניי שיתופי פעולה גדולים שחיברו אותי לכל יעד אפשרי: 
+                        <span class="highlight">וילות, מלונות, בתי אירועים, מרכזי כנסים ועוד</span>.
+                    </p>
+                </div>
+            </div>
+
+            <div class="story-content">
+                <div class="story-text">
+                    <h3>הולדת המותג MULTIBRAWN</h3>
+                    <p>
+                        את השם <span class="highlight">MULTI BRAWN</span> קיבלתי מחברה טובה – 
+                        אבל הבחירה לקחת את השם, לפתח אותו ולהפוך אותו למותג חזק הייתה שלי לחלוטין.
+                    </p>
+                    <p>
+                        מכאן נולד מותג שמבוסס על יוזמה, יצירתיות וחשיבה מחוץ לקופסה. 
+                        מותג שמציע <span class="highlight">שירות אישי ברמה הגבוהה ביותר</span>, 
+                        עם הבנה עמוקה של צרכי הלקוח ומתן פתרונות מדויקים.
+                    </p>
+                    <p>
+                        היום, Multibrawn הוא הרבה יותר מסתם שירותי נופש. אנחנו מציעים פתרון 360 מעלות 
+                        שמשלב <span class="highlight">נופש איכותי עם שיווק מתקדם</span>, 
+                        ומלווים עסקים בדרכם להצלחה.
+                    </p>
+                </div>
+                <div class="story-image">
+                    <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/לוגו.jpg" alt="לוגו Multibrawn">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="timeline-section section">
+        <div class="container">
+            <h2 class="section-title">המסע שלנו לאורך השנים</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2020-2021</div>
+                        <h3 class="timeline-title">התחלות בקורונה</h3>
+                        <p class="timeline-description">
+                            כשהעולם נעצר, ראיתי הזדמנות. התחלתי לחקור את עולם הווילות והצימרים, 
+                            ולהבין איך אפשר לחבר בין אנשים למתחמים מושלמים.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2021-2022</div>
+                        <h3 class="timeline-title">שיתופי פעולה ראשוניים</h3>
+                        <p class="timeline-description">
+                            השיתוף עם "מקומות לאירועים" פתח בפניי דלתות חדשות. 
+                            התחלתי לעבוד עם מגוון רחב של נכסים ולבנות מוניטין של מקצועיות ואמינות.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2022-2023</div>
+                        <h3 class="timeline-title">הרחבה לשיווק דיגיטלי</h3>
+                        <p class="timeline-description">
+                            ההבנה שעסקים צריכים נוכחות דיגיטלית חזקה הוביל אותי להתמחות בשיווק. 
+                            התחלתי לעזור לבעלי עסקים לבנות נוכחות מקוונת מנצחת.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2023-2024</div>
+                        <h3 class="timeline-title">מיתוג השם MULTIBRAWN</h3>
+                        <p class="timeline-description">
+                            פיתוח המותג המלא עם זהות ויזואלית, אתר מתקדם, ומערכות CRM. 
+                            היום אנחנו מציעים חוויה דיגיטלית מושלמת ללקוחותינו.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2024 ואילך</div>
+                        <h3 class="timeline-title">המשך הצמיחה</h3>
+                        <p class="timeline-description">
+                            עם למעלה מ-500 לקוחות מרוצים ויותר מ-100 נכסים איכותיים ברשת, 
+                            אנחנו ממשיכים לצמוח ולחדש. המטרה: להיות המותג המוביל בתחום.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section numbers-section">
+        <div class="container">
+            <h2 class="section-title">הישגים במספרים</h2>
+            <div class="numbers-grid">
+                <div class="number-card">
+                    <div class="number">500+</div>
+                    <div class="number-label">לקוחות מרוצים</div>
+                </div>
+                <div class="number-card">
+                    <div class="number">100+</div>
+                    <div class="number-label">נכסים איכותיים</div>
+                </div>
+                <div class="number-card">
+                    <div class="number">10+</div>
+                    <div class="number-label">שנות ניסיון</div>
+                </div>
+                <div class="number-card">
+                    <div class="number">98%</div>
+                    <div class="number-label">שביעות רצון לקוחות</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section testimonials-section">
+        <div class="container">
+            <h2 class="section-title">מה הלקוחות שלנו אומרים</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <i class="fas fa-quote-right testimonial-icon"></i>
+                        <p>"ערדית הפכה לנו את החתונה לחלום"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <strong>רחל ודוד כהן</strong>
+                        <span>חתונה ביוני 2024</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <i class="fas fa-quote-right testimonial-icon"></i>
+                        <p>"השיווק שלהם הכפיל את כמות הלקוחות"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <strong>אבי לוי</strong>
+                        <span>בעל צימר בגליל</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <i class="fas fa-quote-right testimonial-icon"></i>
+                        <p>"שירות מקצועי ואישי מעבר למה שהתרגלתי לקבל"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <strong>שרה גולדברג</strong>
+                        <span>אירוע חברה</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section vision-section">
+        <div class="container">
+            <h2 class="section-title">חזון העתיד</h2>
+            <div class="vision-content">
+                <div class="vision-text">
+                    <h3>לאן אנחנו מתפתחים</h3>
+                    <p>
+                        אנחנו נמצאים בתהליך של הגדלת שיתופי פעולה עם מלונות בוטיק, צימרים, וילות יוקרה ומתחמי אירועים ברחבי הארץ. 
+                        המטרה שלנו היא ליצור רשת חזקה ומקיפה של נכסים איכותיים שיענו על כל צורך.
+                    </p>
+                    <p>
+                        בתחום הדיגיטל, אנחנו מרחיבים את שירותי השיווק והדיגיטל עם בניית אתרים עסקיים מתקדמים ואוטומציות מבוססות AI 
+                        שיעזרו לבעלי עסקים להגיע לתוצאות מרשימות יותר.
+                    </p>
+                    <p>
+                        החזון שלנו הוא להיות הגשר הטכנולוגי המוביל בין חלומות לקוחות למציאות עסקית, 
+                        תוך שימוש בכלים הכי מתקדמים שקיימים היום.
+                    </p>
+                </div>
+                <div class="vision-features">
+                    <div class="vision-feature">
+                        <div class="vision-feature-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div>
+                            <h4>רשת נכסים מורחבת</h4>
+                            <p>שיתופי פעולה עם מלונות בוטיק ווילות יוקרה</p>
+                        </div>
+                    </div>
+                    <div class="vision-feature">
+                        <div class="vision-feature-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div>
+                            <h4>אתרים עסקיים מתקדמים</h4>
+                            <p>בניית פלטפורמות דיגיטליות חדשניות</p>
+                        </div>
+                    </div>
+                    <div class="vision-feature">
+                        <div class="vision-feature-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div>
+                            <h4>אוטומציות AI</h4>
+                            <p>שימוש בבינה מלאכותית לשיפור התוצאות</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     
-    <div class="video-overlay">
-      <div class="video-text">
-        <h1 class="hero-title">גלריה מדהימה</h1>
-        <p class="hero-subtitle">חוויות בלתי נשכחות במקומות הכי יפים בארץ</p>
-        <p class="hero-description">
-          גלו את הוילות, הפנטהאוזים והצימרים המפוארים ביותר<br>
-          מתחמי אירועים קסומים וחוויות אירוח שלא תשכחו
-        </p>
-        <a href="#features" class="cta-button">
-          <span>גלה עוד</span>
-          <i class="fas fa-arrow-down"></i>
-        </a>
-      </div>
-      
-      <div class="scroll-down" onclick="document.querySelector('#features').scrollIntoView({behavior: 'smooth'})">
-        <i class="fas fa-chevron-down"></i>
-      </div>
-    </div>
-  </section>
+    <section class="section values-section">
+        <div class="container">
+            <h2 class="section-title">הערכים שלנו</h2>
+            
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="value-title">שירות אישי</h3>
+                    <p class="value-description">
+                        כל לקוח מקבל יחס אישי ופתרון מותאם במדויק לצרכים שלו. 
+                        אנחנו לא מאמינים בפתרונות גנריים - כל אחד מיוחד ומגיע לו יחס מיוחד.
+                    </p>
+                </div>
 
-  <div class="features-section" id="features">
-    <div class="container">
-      <div class="features-header">
-        <span class="features-tag">למה לבחור בנו</span>
-        <h2 class="features-title">חוויות יוקרה ללא פשרות</h2>
-        <p class="features-subtitle">אנחנו מציעים את המיטב - מוילות מפוארות ועד מתחמי אירועים קסומים</p>
-      </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3 class="value-title">איכות ללא פשרות</h3>
+                    <p class="value-description">
+                        כל נכס ושירות שאנחנו מציעים עובר בדיקה קפדנית. 
+                        אנחנו עובדים רק עם השותפים הטובים ביותר כדי להבטיח חוויה מושלמת.
+                    </p>
+                </div>
 
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon"><i class="fas fa-home"></i></div>
-          <h3 class="feature-title">וילות יוקרה</h3>
-          <p class="feature-description">מרחבים מפוארים עם עיצוב ייחודי, בריכות פרטיות ונוף עוצר נשימה</p>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="value-title">חדשנות וחשיבה יצירתית</h3>
+                    <p class="value-description">
+                        אנחנו תמיד מחפשים דרכים חדשות ויצירתיות לפתור בעיות. 
+                        חשיבה מחוץ לקופסה היא המנוע שלנו לחדשנות ושיפור מתמיד.
+                    </p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="value-title">שותפות ואמינות</h3>
+                    <p class="value-description">
+                        אנחנו רואים בכל לקוח שותף לטווח ארוך. 
+                        הצלחתכם היא הצלחתנו, ואנחנו כאן ללוות מלא בכל שלב.
+                    </p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="value-title">מצוינות דיגיטלית</h3>
+                    <p class="value-description">
+                        עולם הדיגיטל מתפתח מהר, ואנחנו תמיד בחזית הטכנולוגיה. 
+                        אנחנו משתמשים בכלים המתקדמים ביותר כדי לספק תוצאות מיטביות.
+                    </p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="value-title">קהילה וחיבוריות</h3>
+                    <p class="value-description">
+                        אנחנו בונים לא רק עסקים, אלא קהילות. 
+                        מחברים בין אנשים, יוצרים חיבורים משמעותיים ובונים רשת של אמון הדדי.
+                    </p>
+                </div>
+            </div>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon"><i class="fas fa-building"></i></div>
-          <h3 class="feature-title">פנטהאוזים</h3>
-          <p class="feature-description">חיים בפסגה - דירות יוקרה עם נופים מרהיבים ואבזור ברמה הגבוהה ביותר</p>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">מוכנים להצטרף אלינו?</h2>
+                <p class="cta-description">
+                    אם אתם מחפשים מקום מושלם לחופשה או אירוע, או אם יש לכם עסק בתחום החופשות והאירועים ורוצים לקפוץ מדרגה בשיווק - 
+                    בואו נכיר ונראה איך נוכל לעזור לכם להגשים את החלום.
+                </p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="cta-button">בואו נתחיל לעבוד</a>
+                    <a href="https://wa.me/972523983394?text=שלום, קראתי על הסיפור שלכם ואני מעוניין לשמוע עוד" 
+                       target="_blank" class="cta-btn cta-btn-secondary">
+                        <i class="fab fa-whatsapp" style="margin-left: 8px;"></i>
+                        שלחו הודעה ב-WhatsApp
+                    </a>
+                </div>
+            </div>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon"><i class="fas fa-ring"></i></div>
-          <h3 class="feature-title">אירועים</h3>
-          <p class="feature-description">מקומות קסומים לחתונות, אירועי חברה ואירועים פרטיים שישארו בזיכרון</p>
+    </section>
+
+    <footer>
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div class="footer-logo-section">
+                <a href="index.html" class="logo-container" style="display: inline-flex; margin-bottom: 1.5rem;">
+                    <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="MULTIBRAWN" class="logo-img">
+                    <span class="logo-text">MULTIBRAWN</span>
+                </a>
+            </div>
+            <div class="footer-links">
+                <a href="privacy.html">מדיניות פרטיות</a>
+                <span class="separator">·</span>
+                <a href="accessibility.html">הצהרת נגישות</a>
+            </div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/vilotzhmarimdirotnofesh2021" target="_blank" title="עמוד הפייסבוק שלנו"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/multibrawn.israel?igsh=cnM4Z2JvdHl3Mmdp" target="_blank" title="עקבו אחרינו באינסטגרם"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/share/g/17L6egWV59/?mibextid=wwXIfr" target="_blank" title="הצטרפו לקבוצת הפייסבוק שלנו"><i class="fab fa-users"></i></a>
+            </div>
+            <p class="footer-copyright">© 2025 MULTIBRAWN. כל הזכויות שמורות.</p>
+            <p class="footer-credit">האתר נבנה על ידי Multi-Site - אתרים שבונים עסקים מבית Multibrawn</p>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon"><i class="fas fa-heart"></i></div>
-          <h3 class="feature-title">צימרים רומנטיים</h3>
-          <p class="feature-description">בריחה מושלמת לזוגות - אינטימיות, פינוק ורגעים בלתי נשכחים</p>
+    </footer>
+    
+    <div class="chatbot-popup" id="chatbotPopup">
+      <div class="chatbot-popup-content">
+        <div class="chatbot-popup-icon">🤖</div>
+        <div class="chatbot-popup-text">
+          <div class="chatbot-popup-title">שלום! 👋</div>
+          <div class="chatbot-popup-subtitle">רוצים עזרה למצוא את המקום המושלם?</div>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon"><i class="fas fa-hotel"></i></div>
-          <h3 class="feature-title">מלונות בוטיק</h3>
-          <p class="feature-description">חוויית אירוח יוקרתית עם אופי ייחודי ושירות ברמה בינלאומית</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon"><i class="fas fa-star"></i></div>
-          <h3 class="feature-title">שירות VIP</h3>
-          <p class="feature-description">ליווי אישי, תשומת לב לכל פרט והתאמה מושלמת לצרכים שלכם</p>
-        </div>
+        <button class="chatbot-popup-close" id="closePopup">×</button>
       </div>
     </div>
-  </div>
 
-  <div class="gallery-section" id="gallery">
-    <div class="container">
-      <h2 class="gallery-title">הנכסים המדהימים שלנו</h2>
-      <p class="features-subtitle" style="text-align: center;">מבחר מהתמונות והסרטונים מהמקומות המיוחדים ביותר שלנו</p>
-    </div>
-
-    <div class="gallery-grid">
-      <div class="gallery-item">
-        <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villas/Villa_Wow.jpg" alt="וילה יוקרתית">
-      </div>
-      <div class="gallery-item">
-        <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villas/1.jpg" alt="וילה">
-      </div>
-      <div class="gallery-item">
-        <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Hotels/1.jpg" alt="מלון">
-      </div>
-      <div class="gallery-item">
-        <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Zimmer/1.jpg" alt="צימר">
-      </div>
-      <div class="gallery-item">
-        <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villas/2.jpg" alt="וילה">
-      </div>
-      <div class="gallery-item">
-        <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Hotels/2.jpg" alt="מלון">
-      </div>
-    </div>
-  </div>
-
-  <div class="cta-section">
-    <div class="cta-content">
-      <h2 class="cta-title">מוכנים לחוויה בלתי נשכחת?</h2>
-      <p class="cta-text">צרו קשר עכשיו והתחילו לתכנן את החופשה המושלמת שלכם</p>
-      <a href="contact.html" class="cta-button-main">
-        <span>צור קשר</span>
-        <i class="fas fa-arrow-left"></i>
-      </a>
-    </div>
-  </div>
-
-  <footer>
-    <div style="max-width: 1200px; margin: 0 auto;">
-      <div class="footer-logo-section">
-        <a href="index.html" class="logo-container" style="display: inline-flex; margin-bottom: 1.5rem;">
-          <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="MULTIBRAWN" class="logo-img">
-          <span class="logo-text">MULTIBRAWN</span>
-        </a>
-      </div>
-      <div class="footer-links">
-        <a href="privacy.html">מדיניות פרטיות</a>
-        <span class="separator">·</span>
-        <a href="accessibility.html">הצהרת נגישות</a>
-      </div>
-      <div class="social-links">
-        <a href="https://www.facebook.com/vilotzhmarimdirotnofesh2021" target="_blank" title="עמוד הפייסבוק שלנו"><i class="fab fa-facebook"></i></a>
-        <a href="https://www.instagram.com/multibrawn.israel?igsh=cnM4Z2JvdHl3Mmdp" target="_blank" title="עקבו אחרינו באינסטגרם"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.facebook.com/share/g/17L6egWV59/?mibextid=wwXIfr" target="_blank" title="הצטרפו לקבוצת הפייסבוק שלנו"><i class="fab fa-users"></i></a>
-      </div>
-      <p class="footer-copyright">© 2025 MULTIBRAWN. כל הזכויות שמורות.</p>
-      <p class="footer-credit">האתר נבנה על ידי Multi-Site - אתרים שבונים עסקים מבית Multibrawn</p>
-    </div>
-  </footer>
-  
-  <div class="chatbot-popup" id="chatbotPopup">
-    <div class="chatbot-popup-content">
-      <div class="chatbot-popup-icon">🤖</div>
-      <div class="chatbot-popup-text">
-        <div class="chatbot-popup-title">שלום! 👋</div>
-        <div class="chatbot-popup-subtitle">רוצים עזרה למצוא את המקום המושלם?</div>
-      </div>
-      <button class="chatbot-popup-close" id="closePopup">×</button>
-    </div>
-  </div>
-
-  <div class="floating-buttons">
-    <button class="floating-btn chatbot-btn" id="chatbotBtn" title="צ'אט עם מולטי AI">
-      <i class="fas fa-robot"></i>
-    </button>
-    <button class="floating-btn accessibility-btn" id="accessibilityBtn" title="נגישות">
-      <i class="fas fa-universal-access"></i>
-    </button>
-    <a href="https://wa.me/972523983394" class="floating-btn whatsapp-btn" title="WhatsApp" target="_blank">
-      <i class="fab fa-whatsapp"></i>
-    </a>
-  </div>
-
-  <div class="chatbot-modal" id="chatbotModal">
-    <div class="chatbot-header">
-      <div class="chatbot-title">
+    <div class="floating-buttons">
+      <button class="floating-btn chatbot-btn" id="chatbotBtn" title="צ'אט עם מולטי AI">
         <i class="fas fa-robot"></i>
-        <span>מולטי - יועץ חכם AI</span>
-      </div>
-      <button class="close-chatbot" id="closeChatbot">
-        <i class="fas fa-times"></i>
       </button>
+      <button class="floating-btn accessibility-btn" id="accessibilityBtn" title="נגישות">
+        <i class="fas fa-universal-access"></i>
+      </button>
+      <a href="https://wa.me/972523983394" class="floating-btn whatsapp-btn" title="WhatsApp" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+      </a>
     </div>
-    <div class="chat-area">
-      <div class="progress-container">
-        <div class="progress-text" id="progressText">0/10 שאלות</div>
-        <div class="progress-bar" id="progressBar"></div>
+
+    <div class="chatbot-modal" id="chatbotModal">
+      <div class="chatbot-header">
+        <div class="chatbot-title">
+          <i class="fas fa-robot"></i>
+          <span>מולטי - יועץ חכם AI</span>
+        </div>
+        <button class="close-chatbot" id="closeChatbot">
+          <i class="fas fa-times"></i>
+        </button>
       </div>
-      <div class="chat-messages" id="chatMessages"></div>
-      <div class="typing-indicator" id="typingIndicator">
-        <span>מולטי AI חושב...</span>
-        <div class="typing-dots">
-          <div class="typing-dot"></div>
-          <div class="typing-dot"></div>
-          <div class="typing-dot"></div>
+      <div class="chat-area">
+        <div class="progress-container">
+          <div class="progress-text" id="progressText">0/10 שאלות</div>
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <div class="chat-messages" id="chatMessages"></div>
+        <div class="typing-indicator" id="typingIndicator">
+          <span>מולטי AI חושב...</span>
+          <div class="typing-dots">
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+          </div>
+        </div>
+        <div class="chat-input-area">
+          <div class="input-container">
+            <input type="text" class="chat-input" id="chatInput" placeholder="הקלד את תשובתך כאן...">
+            <button class="send-button" id="sendButton">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </div>
         </div>
       </div>
-      <div class="chat-input-area">
-        <div class="input-container">
-          <input type="text" class="chat-input" id="chatInput" placeholder="הקלד את תשובתך כאן...">
-          <button class="send-button" id="sendButton">
-            <i class="fas fa-paper-plane"></i>
-          </button>
-        </div>
+    </div>
+
+    <div class="accessibility-panel" id="accessibilityPanel">
+      <button class="close-panel" id="closePanel">&times;</button>
+      <h3>הגדרות נגישות</h3>
+      <div class="accessibility-controls">
+        <button class="accessibility-btn-control" id="increaseFontBtn">הגדל גופן</button>
+        <button class="accessibility-btn-control" id="decreaseFontBtn">הקטן גופן</button>
+        <button class="accessibility-btn-control" id="highContrastBtn">ניגודיות גבוהה</button>
+        <button class="accessibility-btn-control" id="resetAccessibilityBtn">אפס הגדרות</button>
       </div>
     </div>
-  </div>
-
-  <div class="accessibility-panel" id="accessibilityPanel">
-    <button class="close-panel" id="closePanel">&times;</button>
-    <h3>הגדרות נגישות</h3>
-    <div class="accessibility-controls">
-      <button class="accessibility-btn-control" id="increaseFontBtn">הגדל גופן</button>
-      <button class="accessibility-btn-control" id="decreaseFontBtn">הקטן גופן</button>
-      <button class="accessibility-btn-control" id="highContrastBtn">ניגודיות גבוהה</button>
-      <button class="accessibility-btn-control" id="resetAccessibilityBtn">אפס הגדרות</button>
-    </div>
-  </div>
-
-  <script>
-    // Chatbot Logic and Initialization (Taken from index.html)
-    let chatState = {};
-    const chatInput = document.getElementById('chatInput');
-    const sendButton = document.getElementById('sendButton');
-    const chatMessages = document.getElementById('chatMessages');
-    const progressBar = document.getElementById('progressBar');
-    const progressText = document.getElementById('progressText');
-    const typingIndicator = document.getElementById('typingIndicator');
-    const chatbotModal = document.getElementById('chatbotModal');
-    const chatbotBtn = document.getElementById('chatbotBtn');
-    const closeChatbot = document.getElementById('closeChatbot');
-    const accessibilityBtn = document.getElementById('accessibilityBtn');
-    const accessibilityPanel = document.getElementById('accessibilityPanel');
-    const closePanel = document.getElementById('closePanel');
-    const navMenu = document.getElementById('navMenu');
-    const mobileToggle = document.getElementById('mobileToggle');
-    const popup = document.getElementById('chatbotPopup');
     
-    // --- Data Flow (Copied from index.html) ---
-    const chatFlow = [
-      { key: "vacationType", question: "שלום! אני מולטי עם בינה מלאכותית! 🤖✨\n\nבואו נמצא לכם את המקום המושלם. מה סוג החופשה או האירוע?", options: ["חופשה משפחתית", "סופ\"ש רומנטי", "אירוע/מסיבה", "חתונה", "אירוע עסקי"] },
-      { key: "groupSize", question: "מעולה! כמה אנשים אתם?", options: ["זוג (2)", "3-5", "6-10", "11-25", "25-50", "50-100", "100+"] },
-      { key: "timeframe", question: "מתי בערך תרצו לצאת לחופשה?", options: ["הסופ\"ש הקרוב", "החודש הקרוב", "בחודשיים הקרובים", "לקראת החגים", "גמיש"] },
-      { key: "specificDates", question: "אם יש תאריך ספציפי, כתבו אותו כאן.\nאם לא, הקלידו 'גמיש'.", options: [] },
-      { key: "location", question: "איזה אזור בארץ מעניין אתכם?", options: ["הצפון", "המרכז", "הדרום", "ירושלים", "אין העדפה"] },
-      { key: "amenities", question: "איזה מתקנים חשובים לכם?", options: ["בריכה פרטית", "ג'קוזי ספא", "מטבח מאובזר", "נוף פנורמי", "הכל!", "בקשה מיוחדת"] },
-      { key: "otherAmenities", question: "מה עוד חשוב לכם?", options: [] },
-      { key: "budget", question: "מה התקציב שלכם?", options: ["עד ₪2,500", "₪2,500-5,000", "₪5,000-10,000", "₪10,000-20,000", "מעל ₪20,000"] },
-      { key: "name", question: "מה שמכם?", options: [] },
-      { key: "phone", question: "תודה {name}! מה מספר הטלפון שלכם?", options: [] }
-    ];
-
-    // --- Core Functions (Copied from index.html) ---
-    function initChat() {
-      chatMessages.innerHTML = '';
-      chatState = { currentStep: 0, userInfo: {} };
-      updateProgress();
-      askNextQuestion();
-    }
-    
-    function updateProgress() {
-      const progress = (chatState.currentStep / chatFlow.length) * 100;
-      progressBar.style.width = `${progress}%`;
-      progressText.textContent = `${chatState.currentStep}/${chatFlow.length} שאלות`;
-    }
-
-    async function askNextQuestion() {
-      if (chatState.currentStep >= chatFlow.length) {
-        await finalizeSummary();
-        return;
-      }
+    <script>
+      // Chatbot Logic and Initialization (Copied from index.html)
+      let chatState = {};
+      const chatInput = document.getElementById('chatInput');
+      const sendButton = document.getElementById('sendButton');
+      const chatMessages = document.getElementById('chatMessages');
+      const progressBar = document.getElementById('progressBar');
+      const progressText = document.getElementById('progressText');
+      const typingIndicator = document.getElementById('typingIndicator');
+      const chatbotModal = document.getElementById('chatbotModal');
+      const chatbotBtn = document.getElementById('chatbotBtn');
+      const closeChatbot = document.getElementById('closeChatbot');
+      const accessibilityBtn = document.getElementById('accessibilityBtn');
+      const accessibilityPanel = document.getElementById('accessibilityPanel');
+      const closePanel = document.getElementById('closePanel');
+      const navMenu = document.getElementById('navMenu');
+      const mobileToggle = document.getElementById('mobileToggle');
+      const popup = document.getElementById('chatbotPopup');
       
-      const current = chatFlow[chatState.currentStep];
-      
-      if (current.key === "otherAmenities" && chatState.userInfo.amenities !== "בקשה מיוחדת") {
-        chatState.currentStep++;
+      // --- Data Flow (Copied from index.html) ---
+      const chatFlow = [
+        { key: "vacationType", question: "שלום! אני מולטי עם בינה מלאכותית! 🤖✨\n\nבואו נמצא לכם את המקום המושלם. מה סוג החופשה או האירוע?", options: ["חופשה משפחתית", "סופ\"ש רומנטי", "אירוע/מסיבה", "חתונה", "אירוע עסקי"] },
+        { key: "groupSize", question: "מעולה! כמה אנשים אתם?", options: ["זוג (2)", "3-5", "6-10", "11-25", "25-50", "50-100", "100+"] },
+        { key: "timeframe", question: "מתי בערך תרצו לצאת לחופשה?", options: ["הסופ\"ש הקרוב", "החודש הקרוב", "בחודשיים הקרובים", "לקראת החגים", "גמיש"] },
+        { key: "specificDates", question: "אם יש תאריך ספציפי, כתבו אותו כאן.\nאם לא, הקלידו 'גמיש'.", options: [] },
+        { key: "location", question: "איזה אזור בארץ מעניין אתכם?", options: ["הצפון", "המרכז", "הדרום", "ירושלים", "אין העדפה"] },
+        { key: "amenities", question: "איזה מתקנים חשובים לכם?", options: ["בריכה פרטית", "ג'קוזי ספא", "מטבח מאובזר", "נוף פנורמי", "הכל!", "בקשה מיוחדת"] },
+        { key: "otherAmenities", question: "מה עוד חשוב לכם?", options: [] },
+        { key: "budget", question: "מה התקציב שלכם?", options: ["עד ₪2,500", "₪2,500-5,000", "₪5,000-10,000", "₪10,000-20,000", "מעל ₪20,000"] },
+        { key: "name", question: "מה שמכם?", options: [] },
+        { key: "phone", question: "תודה {name}! מה מספר הטלפון שלכם?", options: [] }
+      ];
+
+      // --- Core Functions (Copied from index.html) ---
+      function initChat() {
+        chatMessages.innerHTML = '';
+        chatState = { currentStep: 0, userInfo: {} };
+        updateProgress();
         askNextQuestion();
-        return;
       }
       
-      let questionText = current.question.replace('{name}', chatState.userInfo.name || 'אורח');
-      toggleInput(current.options && current.options.length === 0);
-      
-      await addBotMessage(questionText, current.options);
-    }
+      function updateProgress() {
+        const progress = (chatState.currentStep / chatFlow.length) * 100;
+        progressBar.style.width = `${progress}%`;
+        progressText.textContent = `${chatState.currentStep}/${chatFlow.length} שאלות`;
+      }
 
-    async function handleOptionClick(option) {
-      await displayMessage('user', option);
-      const current = chatFlow[chatState.currentStep];
-      chatState.userInfo[current.key] = option;
-      chatState.currentStep++;
-      updateProgress();
-      setTimeout(() => askNextQuestion(), 500);
-    }
-
-    async function handleTextInput() {
-      const input = chatInput.value.trim();
-      if (!input) return;
-      
-      const current = chatFlow[chatState.currentStep];
-      
-      if (current && current.key === 'phone') {
-        const validation = validatePhone(input);
-        if (!validation.valid) {
-          showError(validation.message);
+      async function askNextQuestion() {
+        if (chatState.currentStep >= chatFlow.length) {
+          await finalizeSummary();
           return;
         }
-        chatState.userInfo.phone = validation.formatted;
-        chatState.userInfo.phoneType = validation.type;
-      } else {
-        chatState.userInfo[current.key] = input;
-      }
-      
-      await displayMessage('user', input);
-      chatInput.value = '';
-      chatState.currentStep++;
-      updateProgress();
-      setTimeout(() => askNextQuestion(), 500);
-    }
-
-    function validatePhone(phone) {
-      const clean = phone.replace(/[^\d]/g, '');
-      
-      if (clean.length < 9 || clean.length > 12) {
-        return { valid: false, message: 'מספר לא תקין. הכנס 9-10 ספרות' };
-      }
-      
-      const patterns = {
-        mobile: /^05[0-9]{8}$/,
-        landline: /^0[2-4,8-9][0-9]{7}$/
-      };
-      
-      const isValid = Object.values(patterns).some(p => p.test(clean));
-      
-      if (!isValid) {
-        return { valid: false, message: 'מספר לא תקין. דוגמה: 0501234567' };
-      }
-      
-      let formatted = clean;
-      if (clean.length === 10 && clean.startsWith('05')) {
-        formatted = `${clean.slice(0,3)}-${clean.slice(3,6)}-${clean.slice(6)}`;
-      }
-      
-      return { 
-        valid: true, 
-        formatted,
-        type: clean.startsWith('05') ? 'נייד' : 'בית'
-      };
-    }
-
-    function showError(message) {
-      const errorDiv = document.createElement('div');
-      errorDiv.className = 'error-message';
-      errorDiv.textContent = `❌ ${message}`;
-      chatMessages.appendChild(errorDiv);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-      setTimeout(() => errorDiv.remove(), 3000);
-    }
-
-    async function displayMessage(sender, text, options = []) {
-      const msgDiv = document.createElement('div');
-      msgDiv.className = `message ${sender}`;
-      
-      const avatar = document.createElement('div');
-      avatar.className = 'message-avatar';
-      avatar.innerHTML = sender === 'bot' ? '🤖' : '👤';
-      
-      const content = document.createElement('div');
-      content.className = 'message-content';
-      
-      const textDiv = document.createElement('div');
-      textDiv.className = 'message-text';
-      textDiv.textContent = text;
-      content.appendChild(textDiv);
-      
-      if (options && options.length > 0) {
-        const replies = document.createElement('div');
-        replies.className = 'quick-replies';
         
-        options.forEach(opt => {
-          const btn = document.createElement('button');
-          btn.className = 'quick-reply';
-          btn.textContent = opt;
-          btn.onclick = () => handleOptionClick(opt);
-          replies.appendChild(btn);
-        });
+        const current = chatFlow[chatState.currentStep];
         
-        content.appendChild(replies);
+        if (current.key === "otherAmenities" && chatState.userInfo.amenities !== "בקשה מיוחדת") {
+          chatState.currentStep++;
+          askNextQuestion();
+          return;
+        }
+        
+        let questionText = current.question.replace('{name}', chatState.userInfo.name || 'אורח');
+        toggleInput(current.options && current.options.length === 0);
+        
+        await addBotMessage(questionText, current.options);
       }
-      
-      msgDiv.appendChild(avatar);
-      msgDiv.appendChild(content);
-      chatMessages.appendChild(msgDiv);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-      
-      return new Promise(resolve => setTimeout(resolve, 300));
-    }
 
-    async function addBotMessage(text, options = []) {
-      typingIndicator.style.display = 'flex';
-      await new Promise(resolve => setTimeout(resolve, 800));
-      typingIndicator.style.display = 'none';
-      return displayMessage('bot', text, options);
-    }
+      async function handleOptionClick(option) {
+        await displayMessage('user', option);
+        const current = chatFlow[chatState.currentStep];
+        chatState.userInfo[current.key] = option;
+        chatState.currentStep++;
+        updateProgress();
+        setTimeout(() => askNextQuestion(), 500);
+      }
 
-    async function finalizeSummary() {
-      typingIndicator.style.display = 'flex';
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      typingIndicator.style.display = 'none';
-      
-      const summaryDiv = document.createElement('div');
-      summaryDiv.className = 'summary-card';
-      
-      summaryDiv.innerHTML = `
-        <div class="summary-title">
-          <i class="fas fa-check-circle"></i> תודה!
-        </div>
-        <div class="summary-content">שלום ${chatState.userInfo.name}!
+      async function handleTextInput() {
+        const input = chatInput.value.trim();
+        if (!input) return;
+        
+        const current = chatFlow[chatState.currentStep];
+        
+        if (current && current.key === 'phone') {
+          const validation = validatePhone(input);
+          if (!validation.valid) {
+            showError(validation.message);
+            return;
+          }
+          chatState.userInfo.phone = validation.formatted;
+          chatState.userInfo.phoneType = validation.type;
+        } else {
+          chatState.userInfo[current.key] = input;
+        }
+        
+        await displayMessage('user', input);
+        chatInput.value = '';
+        chatState.currentStep++;
+        updateProgress();
+        setTimeout(() => askNextQuestion(), 500);
+      }
+
+      function validatePhone(phone) {
+        const clean = phone.replace(/[^\d]/g, '');
+        
+        if (clean.length < 9 || clean.length > 12) {
+          return { valid: false, message: 'מספר לא תקין. הכנס 9-10 ספרות' };
+        }
+        
+        const patterns = {
+          mobile: /^05[0-9]{8}$/,
+          landline: /^0[2-4,8-9][0-9]{7}$/
+        };
+        
+        const isValid = Object.values(patterns).some(p => p.test(clean));
+        
+        if (!isValid) {
+          return { valid: false, message: 'מספר לא תקין. דוגמה: 0501234567' };
+        }
+        
+        let formatted = clean;
+        if (clean.length === 10 && clean.startsWith('05')) {
+          formatted = `${clean.slice(0,3)}-${clean.slice(3,6)}-${clean.slice(6)}`;
+        }
+        
+        return { 
+          valid: true, 
+          formatted,
+          type: clean.startsWith('05') ? 'נייד' : 'בית'
+        };
+      }
+
+      function showError(message) {
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'error-message';
+        errorDiv.textContent = `❌ ${message}`;
+        chatMessages.appendChild(errorDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        setTimeout(() => errorDiv.remove(), 3000);
+      }
+
+      async function displayMessage(sender, text, options = []) {
+        const msgDiv = document.createElement('div');
+        msgDiv.className = `message ${sender}`;
+        
+        const avatar = document.createElement('div');
+        avatar.className = 'message-avatar';
+        avatar.innerHTML = sender === 'bot' ? '🤖' : '👤';
+        
+        const content = document.createElement('div');
+        content.className = 'message-content';
+        
+        const textDiv = document.createElement('div');
+        textDiv.className = 'message-text';
+        textDiv.textContent = text;
+        content.appendChild(textDiv);
+        
+        if (options && options.length > 0) {
+          const replies = document.createElement('div');
+          replies.className = 'quick-replies';
+          
+          options.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'quick-reply';
+            btn.textContent = opt;
+            btn.onclick = () => handleOptionClick(opt);
+            replies.appendChild(btn);
+          });
+          
+          content.appendChild(replies);
+        }
+        
+        msgDiv.appendChild(avatar);
+        msgDiv.appendChild(content);
+        chatMessages.appendChild(msgDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        
+        return new Promise(resolve => setTimeout(resolve, 300));
+      }
+
+      async function addBotMessage(text, options = []) {
+        typingIndicator.style.display = 'flex';
+        await new Promise(resolve => setTimeout(resolve, 800));
+        typingIndicator.style.display = 'none';
+        return displayMessage('bot', text, options);
+      }
+
+      async function finalizeSummary() {
+        typingIndicator.style.display = 'flex';
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        typingIndicator.style.display = 'none';
+        
+        const summaryDiv = document.createElement('div');
+        summaryDiv.className = 'summary-card';
+        
+        summaryDiv.innerHTML = `
+          <div class="summary-title">
+            <i class="fas fa-check-circle"></i> תודה!
+          </div>
+          <div class="summary-content">שלום ${chatState.userInfo.name}!
 
 הצוות המקצועי שלנו יחזור אליך בהקדם עם הצעות מותאמות אישית.
 
@@ -1524,24 +1746,24 @@
 📅 ${chatState.userInfo.timeframe}
 📍 ${chatState.userInfo.location}
 💰 ${chatState.userInfo.budget}</div>
-      `;
-      
-      const whatsappLink = generateWhatsAppLink();
-      const btn = document.createElement('a');
-      btn.className = 'whatsapp-button';
-      btn.href = whatsappLink;
-      btn.target = '_blank';
-      btn.innerHTML = '<i class="fab fa-whatsapp"></i> לשליחה לחצו כאן';
-      
-      summaryDiv.appendChild(btn);
-      chatMessages.appendChild(summaryDiv);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-      toggleInput(false, true);
-    }
+        `;
+        
+        const whatsappLink = generateWhatsAppLink();
+        const btn = document.createElement('a');
+        btn.className = 'whatsapp-button';
+        btn.href = whatsappLink;
+        btn.target = '_blank';
+        btn.innerHTML = '<i class="fab fa-whatsapp"></i> לשליחה לחצו כאן';
+        
+        summaryDiv.appendChild(btn);
+        chatMessages.appendChild(summaryDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        toggleInput(false, true);
+      }
 
-    function generateWhatsAppLink() {
-      const phone = '972523983394';
-      const msg = `🏖️ בקשה מאתר MULTIBRAWN
+      function generateWhatsAppLink() {
+        const phone = '972523983394';
+        const msg = `🏖️ בקשה מאתר MULTIBRAWN
 
 👤 ${chatState.userInfo.name}
 📱 ${chatState.userInfo.phone}
@@ -1554,119 +1776,119 @@
 💰 ${chatState.userInfo.budget}
 
 ⏰ ${new Date().toLocaleString('he-IL')}`;
+        
+        return `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+      }
+
+      function toggleInput(enable, hide = false) {
+        const inputArea = document.querySelector('.chat-input-area');
+        inputArea.style.display = hide ? 'none' : 'block';
+        chatInput.disabled = !enable;
+        sendButton.disabled = !enable;
+        if (enable) chatInput.focus();
+      }
       
-      return `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
-    }
-
-    function toggleInput(enable, hide = false) {
-      const inputArea = document.querySelector('.chat-input-area');
-      inputArea.style.display = hide ? 'none' : 'block';
-      chatInput.disabled = !enable;
-      sendButton.disabled = !enable;
-      if (enable) chatInput.focus();
-    }
-    
-    // --- Event Listeners and Initial Load ---
-    
-    document.addEventListener('DOMContentLoaded', () => {
-      // Mobile menu
-      mobileToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
-
-      // Chatbot Open/Close
-      chatbotBtn.addEventListener('click', () => {
-        chatbotModal.classList.add('open');
-        popup.classList.remove('show');
-        sessionStorage.setItem('chatbotPopupSeen', 'true');
-        if (chatState.currentStep === undefined || chatState.currentStep >= chatFlow.length) {
-          initChat();
-        }
-      });
-
-      closeChatbot.addEventListener('click', () => {
-        chatbotModal.classList.remove('open');
-      });
-
-      // Chat Input
-      sendButton.addEventListener('click', handleTextInput);
-      chatInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') handleTextInput();
-      });
-
-      // Accessibility Panel
-      let currentFontSize = 100;
+      // --- Event Listeners and Initial Load ---
       
-      accessibilityBtn.addEventListener('click', () => {
-        accessibilityPanel.classList.toggle('open');
-        if (chatbotModal.classList.contains('open')) {
-          chatbotModal.classList.remove('open');
-        }
-      });
-      
-      closePanel.addEventListener('click', () => {
-        accessibilityPanel.classList.remove('open');
-      });
+      document.addEventListener('DOMContentLoaded', () => {
+        // Mobile menu
+        mobileToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
 
-      document.addEventListener('click', (e) => {
-        if (!accessibilityPanel.contains(e.target) && !accessibilityBtn.contains(e.target)) {
-          accessibilityPanel.classList.remove('open');
-        }
-      });
-      
-      document.getElementById('increaseFontBtn').addEventListener('click', () => {
-        currentFontSize = Math.min(150, currentFontSize + 10);
-        document.body.style.fontSize = `${currentFontSize}%`;
-      });
-      
-      document.getElementById('decreaseFontBtn').addEventListener('click', () => {
-        currentFontSize = Math.max(80, currentFontSize - 10);
-        document.body.style.fontSize = `${currentFontSize}%`;
-      });
-      
-      document.getElementById('highContrastBtn').addEventListener('click', () => {
-        document.body.style.filter = document.body.style.filter === 'contrast(1.5)' ? 'none' : 'contrast(1.5)';
-      });
-      
-      document.getElementById('resetAccessibilityBtn').addEventListener('click', () => {
-        currentFontSize = 100;
-        document.body.style.fontSize = '100%';
-        document.body.style.filter = 'none';
-      });
-
-      // Chatbot Popup - Show after 5 seconds
-      setTimeout(() => {
-        const hasSeenPopup = sessionStorage.getItem('chatbotPopupSeen');
-        if (!hasSeenPopup && !chatbotModal.classList.contains('open')) {
-          popup.classList.add('show');
-        }
-      }, 5000);
-
-      document.getElementById('closePopup').addEventListener('click', (e) => {
-        e.stopPropagation();
-        popup.classList.remove('show');
-        sessionStorage.setItem('chatbotPopupSeen', 'true');
-      });
-
-      popup.addEventListener('click', () => {
-        popup.classList.remove('show');
-        sessionStorage.setItem('chatbotPopupSeen', 'true');
-        chatbotModal.classList.add('open');
-        if (chatState.currentStep === undefined) {
-          initChat();
-        }
-      });
-      
-      // Smooth scroll for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute('href'));
-          if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
+        // Chatbot Open/Close
+        chatbotBtn.addEventListener('click', () => {
+          chatbotModal.classList.add('open');
+          popup.classList.remove('show');
+          sessionStorage.setItem('chatbotPopupSeen', 'true');
+          if (chatState.currentStep === undefined || chatState.currentStep >= chatFlow.length) {
+            initChat();
           }
         });
-      });
-    });
 
-  </script>
+        closeChatbot.addEventListener('click', () => {
+          chatbotModal.classList.remove('open');
+        });
+
+        // Chat Input
+        sendButton.addEventListener('click', handleTextInput);
+        chatInput.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') handleTextInput();
+        });
+
+        // Accessibility Panel
+        let currentFontSize = 100;
+        
+        accessibilityBtn.addEventListener('click', () => {
+          accessibilityPanel.classList.toggle('open');
+          if (chatbotModal.classList.contains('open')) {
+            chatbotModal.classList.remove('open');
+          }
+        });
+        
+        closePanel.addEventListener('click', () => {
+          accessibilityPanel.classList.remove('open');
+        });
+
+        document.addEventListener('click', (e) => {
+          if (!accessibilityPanel.contains(e.target) && !accessibilityBtn.contains(e.target)) {
+            accessibilityPanel.classList.remove('open');
+          }
+        });
+        
+        document.getElementById('increaseFontBtn').addEventListener('click', () => {
+          currentFontSize = Math.min(150, currentFontSize + 10);
+          document.body.style.fontSize = `${currentFontSize}%`;
+        });
+        
+        document.getElementById('decreaseFontBtn').addEventListener('click', () => {
+          currentFontSize = Math.max(80, currentFontSize - 10);
+          document.body.style.fontSize = `${currentFontSize}%`;
+        });
+        
+        document.getElementById('highContrastBtn').addEventListener('click', () => {
+          document.body.style.filter = document.body.style.filter === 'contrast(1.5)' ? 'none' : 'contrast(1.5)';
+        });
+        
+        document.getElementById('resetAccessibilityBtn').addEventListener('click', () => {
+          currentFontSize = 100;
+          document.body.style.fontSize = '100%';
+          document.body.style.filter = 'none';
+        });
+
+        // Chatbot Popup - Show after 5 seconds
+        setTimeout(() => {
+          const hasSeenPopup = sessionStorage.getItem('chatbotPopupSeen');
+          if (!hasSeenPopup && !chatbotModal.classList.contains('open')) {
+            popup.classList.add('show');
+          }
+        }, 5000);
+
+        document.getElementById('closePopup').addEventListener('click', (e) => {
+          e.stopPropagation();
+          popup.classList.remove('show');
+          sessionStorage.setItem('chatbotPopupSeen', 'true');
+        });
+
+        popup.addEventListener('click', () => {
+          popup.classList.remove('show');
+          sessionStorage.setItem('chatbotPopupSeen', 'true');
+          chatbotModal.classList.add('open');
+          if (chatState.currentStep === undefined) {
+            initChat();
+          }
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+              target.scrollIntoView({ behavior: 'smooth' });
+            }
+          });
+        });
+      });
+
+    </script>
 </body>
 </html>
