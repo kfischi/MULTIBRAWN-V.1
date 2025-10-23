@@ -147,28 +147,29 @@
 
     /* Hero Section - Updated with new image and positioning */
     .hero {
-      min-height: 60vh;
+      min-height: 70vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+      background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
                   url('https://res.cloudinary.com/dptyfvwyo/image/upload/v1760905946/Add_a_heading_bkkks3.png');
-      background-size: 70%; /* הקטנת גודל התמונה */
-      background-position: center bottom 10%; /* הרמה מעט כלפי מעלה */
+      background-size: cover;
+      background-position: center;
       background-repeat: no-repeat;
       background-attachment: fixed;
       text-align: center;
-      padding: 8rem 2rem 4rem;
+      padding: 6rem 2rem;
     }
 
     .hero-title {
       font-family: var(--font-heading);
       font-size: clamp(3rem, 7vw, 5rem);
       font-weight: 900;
-      color: var(--brand-purple);
+      color: #6B2D9E;
       text-shadow: 
-        0 0 40px rgba(139, 95, 191, 0.8),
-        0 0 80px rgba(139, 95, 191, 0.4);
+        0 0 60px rgba(107, 45, 158, 0.95),
+        0 0 120px rgba(107, 45, 158, 0.6),
+        0 2px 20px rgba(0,0,0,0.8);
       margin-bottom: 1rem;
     }
 
@@ -371,7 +372,7 @@
     }
 
     .footer-credit {
-      color: var(--brand-purple);
+      color: #6B2D9E;
       font-size: 0.9rem;
       font-weight: 600;
     }
