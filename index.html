@@ -1,1528 +1,698 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MULTIBRAWN - נופש, אירועים ולוקיישנים</title>
-  <meta name="description" content="MULTIBRAWN - מחברים בין לקוחות איכותיים למתחמים נבחרים, ומציעים פתרונות שיווק דיגיטלי מתקדמים">
-  <!-- Open Graph Meta Tags for WhatsApp Preview -->
-<meta property="og:title" content="MULTIBRAWN">
-<meta property="og:description" content="מחברים חלומות למציאות - לוקיישנים נבחרים ומעטפת שיווק 360">
-<meta property="og:image" content="https://res.cloudinary.com/dptyfvwyo/image/upload/v1761157681/yoga_gy6ieg.png">
-<meta property="og:url" content="https://multibrawn.co.il">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="MULTIBRAWN">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="MULTIBRAWN">
-<meta name="twitter:description" content="מחברים חלומות למציאות - לוקיישנים נבחרים ומעטפת שיווק 360">
-<meta name="twitter:image" content="https://res.cloudinary.com/dptyfvwyo/image/upload/v1761157681/yoga_gy6ieg.png">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <style>
-    :root {
-      --primary-bg: #0f0c29;
-      --secondary-bg: #1a1a2e;
-      --brand-purple: #8B5FBF;
-      --light-purple: #a855f7;
-      --cta-turquoise: #40E0D0;
-      --text-light: #ffffff;
-      --text-muted: #b3b3b3;
-      --font-heading: 'Playfair Display', serif;
-      --font-body: 'Montserrat', sans-serif;
-      --accent-gold: #fbbf24;
-      --success: #10b981;
-      --error: #ef4444;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    body {
-      font-family: var(--font-body);
-      background: var(--primary-bg);
-      color: var(--text-light);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    /* Header */
-    .header-nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-      background: rgba(15, 12, 41, 0.95);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(139, 95, 191, 0.2);
-      transition: all 0.3s ease;
-    }
-
-    .nav-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 20px 40px;
-    }
-
-    .logo-container {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      text-decoration: none;
-      transition: transform 0.3s;
-    }
-
-    .logo-container:hover {
-      transform: translateY(-2px);
-    }
-
-    .logo-img {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid var(--brand-purple);
-      box-shadow: 0 0 20px rgba(139, 95, 191, 0.3);
-    }
-
-    .logo-text {
-      font-family: var(--font-heading);
-      font-size: 2rem;
-      font-weight: 900;
-      color: var(--text-light);
-    }
-
-    .nav-menu {
-      display: flex;
-      list-style: none;
-      gap: 28px;
-      align-items: center;
-    }
-
-    .nav-menu a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-weight: 600;
-      padding: 0.5rem 1rem;
-      border-radius: 10px;
-      transition: all 0.3s;
-    }
-
-    .nav-menu a:hover {
-      color: var(--text-light);
-      background: rgba(139, 95, 191, 0.1);
-    }
-
-    .cta-button {
-      background: var(--cta-turquoise);
-      color: #000;
-      padding: 12px 28px;
-      border: none;
-      border-radius: 50px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-decoration: none;
-      box-shadow: 0 4px 20px rgba(64, 224, 208, 0.4);
-    }
-
-    .cta-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(64, 224, 208, 0.6);
-    }
-
-    /* Mobile Menu */
-    .mobile-menu-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 10px;
-    }
-
-    .hamburger-line {
-      width: 30px;
-      height: 3px;
-      background: var(--text-light);
-      border-radius: 2px;
-      transition: 0.3s;
-    }
-
-    /* Hero Section */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                  url('https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/yoga.png');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      text-align: center;
-      padding: 0 2rem;
-    }
-
-    .hero-content {
-      max-width: 900px;
-    }
-
-    .hero-title {
-      font-family: var(--font-heading);
-      font-size: clamp(3.5rem, 8vw, 7rem);
-      font-weight: 900;
-      color: #6B2D9E;
-      text-shadow: 
-        0 0 60px rgba(107, 45, 158, 0.95),
-        0 0 120px rgba(107, 45, 158, 0.6),
-        0 2px 20px rgba(0,0,0,0.8);
-      margin-bottom: 1.5rem;
-      letter-spacing: 2px;
-    }
-
-    .hero-subtitle {
-      font-size: clamp(1.5rem, 4vw, 2.5rem);
-      font-weight: 700;
-      color: var(--text-light);
-      margin-bottom: 1rem;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
-    }
-
-    .hero-description {
-      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-      color: var(--text-muted);
-      margin-bottom: 2.5rem;
-      text-shadow: 0 1px 5px rgba(0,0,0,0.8);
-    }
-
-    /* Sections */
-    .section {
-      padding: 6rem 2rem;
-    }
-
-    .section:nth-child(even) {
-      background: var(--secondary-bg);
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .section-title {
-      font-family: var(--font-heading);
-      font-size: clamp(2.5rem, 6vw, 4rem);
-      font-weight: 900;
-      text-align: center;
-      margin-bottom: 4rem;
-      background: linear-gradient(135deg, var(--brand-purple), var(--light-purple));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    /* Cards Grid */
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-
-    .card {
-      background: rgba(26, 26, 46, 0.6);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(139, 95, 191, 0.2);
-      border-radius: 20px;
-      overflow: hidden;
-      transition: all 0.4s ease;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    }
-
-    .card:hover {
-      transform: translateY(-10px);
-      border-color: var(--brand-purple);
-      box-shadow: 0 20px 50px rgba(139, 95, 191, 0.4);
-    }
-
-    .card-image {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-    }
-
-    .card-content {
-      padding: 2rem;
-    }
-
-    .card-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--text-light);
-      margin-bottom: 1rem;
-    }
-
-    .card-description {
-      color: var(--text-muted);
-      line-height: 1.7;
-    }
-
-    /* Footer */
-    footer {
-      padding: 4rem 2rem;
-      text-align: center;
-      border-top: 1px solid rgba(139, 95, 191, 0.2);
-      background: var(--primary-bg);
-    }
-
-    .footer-logo-section {
-      margin-bottom: 2rem;
-    }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin: 2rem 0;
-      align-items: center;
-    }
-
-    .footer-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s;
-    }
-
-    .footer-links a:hover {
-      color: var(--cta-turquoise);
-    }
-
-    .footer-links .separator {
-      color: var(--text-muted);
-    }
-
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin: 2rem 0;
-    }
-
-    .social-links a {
-      color: var(--text-muted);
-      font-size: 1.8rem;
-      transition: all 0.3s;
-    }
-
-    .social-links a:hover {
-      color: var(--cta-turquoise);
-      transform: translateY(-3px);
-    }
-
-    .footer-copyright {
-      color: var(--text-muted);
-      margin-bottom: 1rem;
-    }
-
-    .footer-credit {
-      color: #6B2D9E;
-      font-size: 0.9rem;
-      font-weight: 600;
-    }
-
-    .chatbot-popup {
-      position: fixed;
-      bottom: 110px;
-      right: 100px;
-      background: linear-gradient(135deg, var(--accent-gold), var(--brand-purple));
-      color: #000;
-      padding: 1rem 1.5rem;
-      border-radius: 20px;
-      box-shadow: 0 10px 40px rgba(251, 191, 36, 0.5);
-      z-index: 1003;
-      display: none;
-      animation: bounceIn 0.6s ease-out;
-      max-width: 280px;
-      cursor: pointer;
-    }
-
-    .chatbot-popup.show {
-      display: block;
-    }
-
-    .chatbot-popup-content {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .chatbot-popup-icon {
-      font-size: 2rem;
-      animation: wave 1s ease-in-out infinite;
-    }
-
-    @keyframes wave {
-      0%, 100% { transform: rotate(0deg); }
-      25% { transform: rotate(20deg); }
-      75% { transform: rotate(-20deg); }
-    }
-
-    .chatbot-popup-text {
-      flex: 1;
-    }
-
-    .chatbot-popup-title {
-      font-weight: 700;
-      font-size: 1.1rem;
-      margin-bottom: 0.25rem;
-    }
-
-    .chatbot-popup-subtitle {
-      font-size: 0.85rem;
-      opacity: 0.9;
-    }
-
-    .chatbot-popup-close {
-      background: none;
-      border: none;
-      color: #000;
-      font-size: 1.2rem;
-      cursor: pointer;
-      padding: 0;
-      width: 24px;
-      height: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      transition: background 0.3s;
-    }
-
-    .chatbot-popup-close:hover {
-      background: rgba(0, 0, 0, 0.1);
-    }
-
-    @keyframes bounceIn {
-      0% {
-        opacity: 0;
-        transform: scale(0.3) translateY(20px);
-      }
-      50% {
-        opacity: 1;
-        transform: scale(1.05);
-      }
-      70% {
-        transform: scale(0.95);
-      }
-      100% {
-        transform: scale(1) translateY(0);
-      }
-    }
-
-    /* Floating Buttons */
-    .floating-buttons {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      z-index: 999;
-    }
-
-    .floating-btn {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      text-decoration: none;
-      font-size: 1.5rem;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-      transition: all 0.3s;
-      border: none;
-      cursor: pointer;
-    }
-
-    .floating-btn:hover {
-      transform: scale(1.1);
-    }
-
-    .chatbot-btn {
-      background: linear-gradient(135deg, var(--accent-gold), var(--brand-purple));
-      animation: pulse-glow 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse-glow {
-      0%, 100% {
-        box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3);
-      }
-      50% {
-        box-shadow: 0 4px 25px rgba(251, 191, 36, 0.6);
-      }
-    }
-
-    .whatsapp-btn {
-      background: linear-gradient(135deg, #25d366, #20ba5a);
-    }
-
-    .accessibility-btn {
-      background: var(--brand-purple);
-    }
-
-    /* Chatbot Modal */
-    .chatbot-modal {
-      display: none;
-      position: fixed;
-      bottom: 100px;
-      right: 30px;
-      width: 400px;
-      height: 600px;
-      background: var(--primary-bg);
-      border: 1px solid rgba(139, 95, 191, 0.3);
-      border-radius: 20px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-      z-index: 1002;
-      flex-direction: column;
-      overflow: hidden;
-      animation: slideUp 0.3s ease-out;
-    }
-
-    @keyframes slideUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .chatbot-modal.open {
-      display: flex;
-    }
-
-    .chatbot-header {
-      background: linear-gradient(135deg, rgba(251, 191, 36, 0.2), rgba(142, 68, 173, 0.2));
-      padding: 1rem;
-      border-bottom: 1px solid rgba(251, 191, 36, 0.3);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .chatbot-title {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-weight: 700;
-      font-size: 1.1rem;
-    }
-
-    .close-chatbot {
-      background: none;
-      border: none;
-      color: var(--text-light);
-      font-size: 1.5rem;
-      cursor: pointer;
-      transition: color 0.3s;
-      width: 32px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-    }
-
-    .close-chatbot:hover {
-      background: rgba(255, 255, 255, 0.1);
-      color: var(--cta-turquoise);
-    }
-
-    .chat-area {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-    }
-
-    .progress-container {
-      background: rgba(0,0,0,0.2);
-      height: 4px;
-      position: relative;
-    }
-
-    .progress-bar {
-      height: 100%;
-      background: linear-gradient(90deg, var(--accent-gold), var(--light-purple));
-      width: 0%;
-      transition: width 0.3s ease;
-    }
-
-    .progress-text {
-      position: absolute;
-      top: -25px;
-      right: 10px;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-
-    .chat-messages {
-      flex: 1;
-      overflow-y: auto;
-      padding: 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .chat-messages::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    .chat-messages::-webkit-scrollbar-track {
-      background: rgba(0,0,0,0.2);
-    }
-
-    .chat-messages::-webkit-scrollbar-thumb {
-      background: var(--brand-purple);
-      border-radius: 3px;
-    }
-
-    .message {
-      display: flex;
-      gap: 0.75rem;
-      max-width: 85%;
-      animation: slideIn 0.3s ease-out;
-    }
-
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateY(15px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .message.user {
-      align-self: flex-end;
-      flex-direction: row-reverse;
-    }
-
-    .message-avatar {
-      width: 35px;
-      height: 35px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      flex-shrink: 0;
-    }
-
-    .message.bot .message-avatar {
-      background: linear-gradient(135deg, var(--accent-gold), var(--light-purple));
-      color: #000;
-    }
-
-    .message.user .message-avatar {
-      background: linear-gradient(135deg, var(--light-purple), var(--brand-purple));
-      color: #fff;
-    }
-
-    .message-content {
-      background: var(--secondary-bg);
-      padding: 0.8rem 1.2rem;
-      border-radius: 18px;
-      border: 1px solid rgba(184, 134, 11, 0.2);
-    }
-
-    .message.user .message-content {
-      background: rgba(142, 68, 173, 0.3);
-      border-color: rgba(142, 68, 173, 0.5);
-    }
-
-    .message-text {
-      line-height: 1.6;
-      white-space: pre-wrap;
-      font-size: 0.9rem;
-    }
-
-    .quick-replies {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 1rem;
-    }
-
-    .quick-reply {
-      background: rgba(184, 134, 11, 0.2);
-      color: var(--text-light);
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      border: 1px solid rgba(184, 134, 11, 0.3);
-      cursor: pointer;
-      font-size: 0.85rem;
-      transition: all 0.2s ease;
-    }
-
-    .quick-reply:hover {
-      background: var(--accent-gold);
-      color: #000;
-      transform: translateY(-2px);
-    }
-
-    .typing-indicator {
-      display: none;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--text-muted);
-      padding: 0 1rem 0.5rem;
-      font-size: 0.85rem;
-    }
-
-    .typing-dots {
-      display: flex;
-      gap: 2px;
-    }
-
-    .typing-dot {
-      width: 6px;
-      height: 6px;
-      background: var(--accent-gold);
-      border-radius: 50%;
-      animation: typing 1.4s ease-in-out infinite;
-    }
-
-    .typing-dot:nth-child(2) { animation-delay: 0.2s; }
-    .typing-dot:nth-child(3) { animation-delay: 0.4s; }
-
-    @keyframes typing {
-      0%, 60%, 100% { transform: translateY(0); }
-      30% { transform: translateY(-8px); }
-    }
-
-    .chat-input-area {
-      padding: 1rem;
-      border-top: 1px solid rgba(124, 58, 237, 0.2);
-      background: rgba(26, 18, 48, 0.8);
-    }
-
-    .input-container {
-      display: flex;
-      gap: 0.5rem;
-      align-items: center;
-    }
-
-    .chat-input {
-      flex: 1;
-      background: rgba(0,0,0,0.2);
-      border: 1px solid rgba(124, 58, 237, 0.3);
-      border-radius: 25px;
-      padding: 0.8rem 1rem;
-      color: white;
-      outline: none;
-      transition: all 0.3s ease;
-      font-size: 0.9rem;
-    }
-
-    .chat-input:focus {
-      border-color: var(--accent-gold);
-      box-shadow: 0 0 0 2px rgba(251, 191, 36, 0.2);
-    }
-
-    .send-button {
-      width: 40px;
-      height: 40px;
-      background: var(--brand-purple);
-      border: none;
-      border-radius: 50%;
-      color: white;
-      font-size: 0.9rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .send-button:hover {
-      background: var(--light-purple);
-      transform: scale(1.05);
-    }
-
-    .summary-card {
-      background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(6, 182, 212, 0.2));
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      border-radius: 15px;
-      padding: 1rem;
-      margin: 0.5rem 0;
-    }
-
-    .summary-title {
-      font-weight: 700;
-      margin-bottom: 0.75rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.95rem;
-    }
-
-    .summary-content {
-      line-height: 1.6;
-      margin-bottom: 1rem;
-      white-space: pre-wrap;
-      font-size: 0.85rem;
-    }
-
-    .whatsapp-button {
-      background: #25d366;
-      color: white;
-      padding: 0.8rem;
-      border: none;
-      border-radius: 20px;
-      font-weight: 700;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      width: 100%;
-      font-size: 0.9rem;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      font-family: var(--font-body);
-    }
-
-    .whatsapp-button:hover {
-      background: #128c7e;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
-    }
-
-    .error-message {
-      background: rgba(239, 68, 68, 0.2);
-      border: 1px solid rgba(239, 68, 68, 0.3);
-      color: var(--error);
-      padding: 0.8rem;
-      border-radius: 10px;
-      margin: 0.5rem 0;
-      font-size: 0.85rem;
-    }
-
-    /* Accessibility Panel */
-    .accessibility-panel {
-      position: fixed;
-      bottom: 100px;
-      right: 30px;
-      width: 280px;
-      background: var(--secondary-bg);
-      border: 1px solid rgba(139, 95, 191, 0.3);
-      border-radius: 15px;
-      padding: 20px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-      opacity: 0;
-      transform: translateY(20px);
-      pointer-events: none;
-      transition: all 0.3s ease;
-      z-index: 1001;
-    }
-
-    .accessibility-panel.open {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
-
-    .accessibility-panel h3 {
-      color: var(--text-light);
-      text-align: center;
-      margin-bottom: 15px;
-      font-size: 1.2rem;
-    }
-
-    .close-panel {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      background: none;
-      border: none;
-      color: var(--text-muted);
-      font-size: 1.5rem;
-      cursor: pointer;
-      transition: color 0.3s;
-    }
-
-    .close-panel:hover {
-      color: var(--text-light);
-    }
-
-    .accessibility-controls {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .accessibility-btn-control {
-      padding: 12px;
-      border-radius: 10px;
-      border: 1px solid rgba(139, 95, 191, 0.3);
-      background: rgba(139, 95, 191, 0.1);
-      color: var(--text-light);
-      cursor: pointer;
-      font-weight: 600;
-      transition: all 0.3s;
-    }
-
-    .accessibility-btn-control:hover {
-      background: var(--brand-purple);
-      border-color: var(--brand-purple);
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .mobile-menu-toggle {
-        display: flex;
-      }
-
-      .nav-menu {
-        position: fixed;
-        right: -100%;
-        top: 80px;
-        flex-direction: column;
-        background: rgba(15, 12, 41, 0.98);
-        width: 100%;
-        padding: 20px;
-        transition: 0.3s;
-        border-top: 1px solid rgba(139, 95, 191, 0.2);
-      }
-
-      .nav-menu.active {
-        right: 0;
-      }
-
-      .cards-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .floating-buttons {
-        right: 15px;
-        bottom: 15px;
-      }
-
-      .chatbot-modal {
-        right: 0;
-        bottom: 0;
-        width: 100%;
-        height: 100%;
-        border-radius: 0;
-      }
-
-      .accessibility-panel {
-        right: 15px;
-        width: calc(100vw - 30px);
-        max-width: 280px;
-      }
-    }
-  </style>
+    <title>MULTIBRAWN | לוקיישנים נבחרים בהתאמה אישית</title>
+    <meta name="description" content="מולטיבראון - משנים את עולם החיפוש: יותר אישי, יותר ממוקד, פחות כאבי ראש. אנו מאתרים עבורכם וילות, צימרים ומתחמי אירועים.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-bg: #1a0b2e;
+            --secondary-bg: #16213e;
+            --dark-grey: #1A1A1A;
+            --accent-purple: #8B5FBF;
+            --light-purple: #a855f7;
+            --accent-gold: #fbbf24;
+            --white: #FAFAFA;
+            --light-grey: #cbd5e1;
+            --font-main: 'Heebo', sans-serif;
+        }
+        
+        body {
+            font-family: var(--font-main);
+            background: var(--primary-bg);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* === תיקון פונט לכותרות === */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-main);
+            font-weight: 700; /* שימוש במשקל כבד ומודרני */
+            letter-spacing: -0.5px;
+        }
+        
+        /* HEADER */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(26, 11, 46, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(139, 95, 191, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            background: rgba(26, 11, 46, 0.98);
+            box-shadow: 0 4px 20px rgba(139, 95, 191, 0.3);
+        }
+        
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        .logo:hover {
+            opacity: 0.7;
+        }
+        
+        .logo img {
+            width: 45px;
+            height: 45px;
+        }
+        
+        .logo span {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: var(--white);
+            font-family: var(--font-main); /* וידוא שימוש בפונט הנכון */
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 400;
+            transition: opacity 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            opacity: 0.6;
+        }
+        
+        .nav-cta {
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-gold));
+            color: var(--white) !important;
+            padding: 0.7rem 1.8rem;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-cta:hover {
+            opacity: 0.85;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(139, 95, 191, 0.4);
+        }
+        
+        /* HERO */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: var(--primary-bg);
+            overflow: hidden;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .hero-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+        
+        .hero-slide.active {
+            opacity: 1;
+        }
+        
+        .hero-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.4);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            padding: 0 2rem;
+            animation: fadeInUp 1s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* === H1 & H2 Updated === */
+        .hero h1 {
+            font-size: clamp(3rem, 7vw, 6rem);
+            font-weight: 800; /* משקל כבד יותר למראה "מגניב" */
+            color: var(--white);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1.5px;
+        }
+        
+        .hero h2 {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            font-weight: 400;
+            line-height: 1.7;
+        }
+        /* === End Update === */
+
+        .hero-cta {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-gold));
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(139, 95, 191, 0.4);
+        }
+        
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(139, 95, 191, 0.6);
+        }
+        
+        /* SECTION STYLES */
+        section {
+            padding: 6rem 3rem;
+        }
+        
+        .section-header {
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            text-align: center;
+        }
+        
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .section-header p {
+            font-size: 1.15rem;
+            color: var(--light-grey);
+            line-height: 1.7;
+        }
+        
+        /* LOCATIONS */
+        .locations {
+            background: var(--secondary-bg);
+        }
+        
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .location-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            aspect-ratio: 4/5;
+            cursor: pointer;
+            transition: transform 0.4s ease;
+        }
+        
+        .location-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .location-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        
+        .location-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .location-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, transparent 100%);
+            color: white;
+        }
+        
+        .location-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .location-card p {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 300;
+        }
+        
+        /* FEATURES */
+        .features {
+            background: var(--primary-bg);
+            color: var(--white);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .feature {
+            text-align: center;
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-gold);
+        }
+        
+        .feature h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .feature p {
+            color: var(--light-grey);
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+        
+        /* SPECIALTY */
+        .specialty {
+            background: var(--secondary-bg);
+        }
+        
+        .specialty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .specialty-card {
+            padding: 2.5rem 2rem;
+            background: rgba(26, 11, 46, 0.5);
+            border: 1px solid rgba(139, 95, 191, 0.2);
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .specialty-card:hover {
+            border-color: var(--accent-purple);
+            transform: translateY(-5px);
+            background: rgba(139, 95, 191, 0.1);
+        }
+        
+        .specialty-emoji {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .specialty-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+        
+        .specialty-card p {
+            color: var(--light-grey);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        /* CTA SECTION */
+        .cta-section {
+            background: var(--primary-bg);
+            color: var(--white);
+            text-align: center;
+            padding: 6rem 2rem;
+        }
+        
+        .cta-section h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-section p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            line-height: 1.7;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-gold));
+            color: var(--white);
+            padding: 1.1rem 3rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(139, 95, 191, 0.4);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(139, 95, 191, 0.6);
+        }
+        
+        /* FOOTER */
+        footer {
+            background: var(--primary-bg);
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(139, 95, 191, 0.2);
+            text-align: center;
+        }
+        
+        .footer-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            text-decoration: none;
+        }
+        
+        .footer-logo img {
+            width: 40px;
+            height: 40px;
+        }
+        
+        .footer-logo span {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--white);
+            font-family: var(--font-main);
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: var(--light-grey);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--white);
+        }
+        
+        .footer-copy {
+            color: var(--light-grey);
+            font-size: 0.85rem;
+        }
+        
+        /* MOBILE */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            section {
+                padding: 4rem 1.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .locations-grid,
+            .features-grid,
+            .specialty-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- Header -->
-  <header class="header-nav">
-    <nav class="nav-content">
-      <a href="index.html" class="logo-container">
-        <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="MULTIBRAWN Logo" class="logo-img">
-        <span class="logo-text">MULTIBRAWN</span>
-      </a>
-      <ul class="nav-menu" id="navMenu">
-        <li><a href="index.html">דף הבית</a></li>
-        <li><a href="about.html">אודות</a></li>
-        <li><a href="gallery.html">גלריה</a></li>
-        <li><a href="marketing.html">שיווק דיגיטלי</a></li>
-        <li><a href="contact.html" class="cta-button">צור קשר</a></li>
-      </ul>
-      <button class="mobile-menu-toggle" id="mobileToggle">
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-      </button>
-    </nav>
-  </header>
+    <header id="header">
+        <nav>
+            <a href="/" class="logo">
+                <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="MULTIBRAWN">
+                <span>MULTIBRAWN</span>
+            </a>
+            <div class="nav-links">
+                <a href="/">דף הבית</a>
+                <a href="/about">אודות</a>
+                <a href="/gallery">גלריה</a>
+                <a href="/contact" class="nav-cta">צור קשר</a>
+            </div>
+        </nav>
+    </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1 class="hero-title">MULTIBRAWN</h1>
-      <h2 class="hero-subtitle">נופש, אירועים ולוקיישנים</h2>
-      <p class="hero-description">
-        מחברים חלומות למציאות – לוקיישנים נבחרים + מעטפת שיווק 360°
-      </p>
-    </div>
-  </section>
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="hero-slide active">
+                <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1762004983/HERO_zb7pwc.jpg" alt="נוף יוקרתי">
+            </div>
+            <div class="hero-slide">
+                <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villa1.jpg" alt="Villa">
+            </div>
+            <div class="hero-slide">
+                <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villas/Villa_Wow.jpg" alt="Location">
+            </div>
+        </div>
+        <div class="hero-content">
+            <h1>לוקיישנים נבחרים<br>בהתאמה אישית</h1>
+            <h2>
+                מולטיבראון - משנים את עולם החיפוש: 
+                <br class="block sm:hidden">
+                יותר אישי, יותר ממוקד, פחות כאבי ראש.
+            </h2>
+            <a href="/contact" class="hero-cta">בואו נתחיל</a>
+        </div>
+    </section>
 
-  <!-- Properties Section -->
-  <section class="section">
-    <div class="container">
-      <h2 class="section-title">מחברים בין לקוחות איכותיים למתחמים נבחרים</h2>
-      <div class="cards-grid">
-        <div class="card">
-          <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Hotels/1.jpg" alt="מלון בוטיק" class="card-image">
-          <div class="card-content">
-            <h3 class="card-title">מלונות בוטיק</h3>
-            <p class="card-description">מלונות פסטורליים ואינטימיים עם אווירה ייחודית ואופי מיוחד, שירות אישי ומסור מכל הלב, חדרים מעוצבים בקפידה עם תשומת לב לכל פרט, ארוחות בוקר משובחות ומתקנים יוקרתיים. מושלם לנופש רומנטי, חופשה משפחתית או אירועים עסקיים באווירה חמה ומזמינה</p>
-          </div>
+    <section class="locations">
+        <div class="section-header">
+            <h2>סוגי לוקיישנים</h2>
+            <p>כל מקום נבחר בקפידה ונבדק אישית על ידינו</p>
         </div>
-        <div class="card">
-          <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villas/Villa_Wow.jpg" alt="וילה יוקרה" class="card-image">
-          <div class="card-content">
-            <h3 class="card-title">וילות יוקרה</h3>
-            <p class="card-description">וילות מפוארות ויוקרתיות עם בריכות פרטיות, מטבחים מאובזרים ברמה הגבוהה ביותר וגינות מעוצבות. מושלם לאירועים משפחתיים, חתונות ואירועי חברה עם פרטיות מלאה ומרחבים נדיבים</p>
-          </div>
+        <div class="locations-grid">
+            <div class="location-card">
+                <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818995/Hotel1_ihkey7.jpg" alt="מלון בוטיק">
+                <div class="location-overlay">
+                    <h3>מלונות בוטיק</h3>
+                    <p>מקומות עם אישיות ושירות אישי</p>
+                </div>
+            </div>
+            <div class="location-card">
+                <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818934/22_tt9jvz.jpg" alt="וילה">
+                <div class="location-overlay">
+                    <h3>וילות פרטיות</h3>
+                    <p>מרחב, פרטיות ונוחות מלאה</p>
+                </div>
+            </div>
+            <div class="location-card">
+                <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818996/Zimmer2_ge7g6h.jpg" alt="צימר">
+                <div class="location-overlay">
+                    <h3>צימרים רומנטיים</h3>
+                    <p>בריחה לטבע עם כל הפינוקים</p>
+                </div>
+            </div>
+            <div class="location-card">
+                <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818934/20_t6yw8m.jpg" alt="פנטהאוז">
+                <div class="location-overlay">
+                    <h3>דירות נופש ופנטהאוזים</h3>
+                    <p>חיים עירוניים ברמה אחרת</p>
+                </div>
+            </div>
+            <div class="location-card">
+                <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1762003191/1_tsc6xx.jpg" alt="מתחם אירועים">
+                <div class="location-overlay">
+                    <h3>מתחמי אירועים</h3>
+                    <p>מקומות מושלמים לכל אירוע</p>
+                </div>
+            </div>
         </div>
-        <div class="card">
-          <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Zimmer/1.jpg" alt="צימר רומנטי" class="card-image">
-          <div class="card-content">
-            <h3 class="card-title">צימרים רומנטיים</h3>
-            <p class="card-description">בריחה מושלמת לטבע עם אווירה קסומה ורומנטית, צימרים מעוצבים ומפנקים. אידיאלי לזוגות ומשפחות המחפשים אינטימיות, שקט ופינוק ברמה הגבוהה ביותר</p>
-          </div>
-        </div>
-        <div class="card">
-          <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Apartments/17.jpg" alt="דירות נופש ופנטהאוזים" class="card-image">
-          <div class="card-content">
-            <h3 class="card-title">דירות נופש ופנטהאוזים</h3>
-            <p class="card-description">חיים בפסגה עם דירות יוקרה ופנטהאוזים מרהיבים, נופים פנורמיים של העיר והים, מרפסות שמש, מתקנים משותפים, בריכה, חדר כושר ומועדון דיירים. מושלם למשפחות ולנופש עירוני יוקרתי</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Events Section -->
-  <section class="section">
-    <div class="container">
-      <h2 class="section-title">פתרונות ייחודיים לכל סוג אירוע</h2>
-      <div class="cards-grid">
-        <div class="card">
-          <div class="card-content">
-            <div style="font-size: 3rem; text-align: center; margin-bottom: 1rem;">✡️</div>
-            <h3 class="card-title">שבתות חתן ואירועים דתיים</h3>
-            <p class="card-description">מתחמים מותאמים למשפחה מורחבת ודרישות כשרות</p>
-          </div>
+    <section class="features">
+        <div class="section-header">
+            <h2>השירות הייחודי שלנו: הסוכן האישי שלכם</h2>
+            <p>חיפוש לוקיישן לא צריך להיות מסובך. תנו לנו לעשות את העבודה עבורכם.</p>
         </div>
-        <div class="card">
-          <div class="card-content">
-            <div style="font-size: 3rem; text-align: center; margin-bottom: 1rem;">👥</div>
-            <h3 class="card-title">כנסים וימי גיבוש</h3>
-            <p class="card-description">פתרונות לקבוצות עסקיות עם חדרי ישיבות</p>
-          </div>
+        <div class="features-grid">
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3>חוסכים לכם זמן</h3>
+                <p>
+                    תגידו לנו מה אתם מחפשים, ואנחנו נמצא את המקומות המתאימים. לא עוד שעות של גלילה באתרים.
+                </p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h3>נבדקים אישית</h3>
+                <p>
+                    כל מקום שאנחנו ממליצים עליו, אנחנו מכירים באופן אישי. אין הפתעות לא נעימות.
+                </p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-key"></i>
+                </div>
+                <h3>מאגר ייחודי</h3>
+                <p>
+                    יש לנו גישה למקומות שלא תמצאו בחיפוש רגיל. לוקיישנים שזמינים רק דרכנו.
+                </p>
+            </div>
         </div>
-        <div class="card">
-          <div class="card-content">
-            <div style="font-size: 3rem; text-align: center; margin-bottom: 1rem;">💍</div>
-            <h3 class="card-title">חתונות ואירועים</h3>
-            <p class="card-description">אירועי החיים החשובים עם כל הפרטים המושלמים</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Marketing CTA -->
-  <section class="section" style="text-align: center;">
-    <div class="container">
-      <h2 class="section-title">שירותי שיווק דיגיטלי מתקדמים</h2>
-      <p style="font-size: 1.25rem; color: var(--text-muted); max-width: 700px; margin: 0 auto 2.5rem;">
-        לבעלי נכסים: אסטרטגיה, יצירת תוכן, קמפיינים, SEO ואוטומציות – הכול מותאם אישית
-      </p>
-      <a href="marketing.html" class="cta-button">לפרטי שירותי השיווק</a>
-    </div>
-  </section>
+    <section class="specialty">
+        <div class="section-header">
+            <h2>מתמחים באירועים</h2>
+            <p>לכל סוג אירוע יש את המקום המושלם</p>
+        </div>
+        <div class="specialty-grid">
+            <div class="specialty-card">
+                <div class="specialty-emoji">✡️</div>
+                <h3>שבתות חתן ואירועים דתיים</h3>
+                <p>מתחמים מותאמים למשפחות, קרבה לבתי כנסת ודרישות כשרות</p>
+            </div>
+            <div class="specialty-card">
+                <div class="specialty-emoji">👥</div>
+                <h3>כנסים וימי גיבוש</h3>
+                <p>מקומות לקבוצות עם כל הציוד הנדרש לאירועים עסקיים</p>
+            </div>
+            <div class="specialty-card">
+                <div class="specialty-emoji">💍</div>
+                <h3>חתונות ואירועים פרטיים</h3>
+                <p>לוקיישנים מושלמים לאירועי החיים החשובים</p>
+            </div>
+        </div>
+    </section>
 
-  <!-- Footer -->
-  <footer>
-    <div style="max-width: 1200px; margin: 0 auto;">
-      <div class="footer-logo-section">
-        <a href="index.html" class="logo-container" style="display: inline-flex; margin-bottom: 1.5rem;">
-          <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="MULTIBRAWN" class="logo-img">
-          <span class="logo-text">MULTIBRAWN</span>
+    <section class="cta-section">
+        <h2>מוכנים למצוא את המקום המושלם?</h2>
+        <p>ספרו לנו מה אתם מחפשים, ואנחנו נדאג לשאר</p>
+        <a href="/contact" class="cta-button">בואו נדבר</a>
+    </section>
+
+    <footer>
+        <a href="/" class="footer-logo">
+            <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="MULTIBRAWN">
+            <span>MULTIBRAWN</span>
         </a>
-      </div>
-      <div class="footer-links">
-        <a href="privacy.html">מדיניות פרטיות</a>
-        <span class="separator">·</span>
-        <a href="accessibility.html">הצהרת נגישות</a>
-      </div>
-      <div class="social-links">
-        <a href="https://www.facebook.com/vilotzhmarimdirotnofesh2021" target="_blank" title="עמוד הפייסבוק שלנו"><i class="fab fa-facebook"></i></a>
-        <a href="https://www.instagram.com/multibrawn.israel?igsh=cnM4Z2JvdHl3Mmdp" target="_blank" title="עקבו אחרינו באינסטגרם"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.facebook.com/share/g/17L6egWV59/?mibextid=wwXIfr" target="_blank" title="הצטרפו לקבוצת הפייסבוק שלנו"><i class="fab fa-users"></i></a>
-      </div>
-      <p class="footer-copyright">© 2025 MULTIBRAWN. כל הזכויות שמורות.</p>
-      <p class="footer-credit">האתר נבנה על ידי Multi-Site - אתרים שבונים עסקים מבית Multibrawn</p>
-    </div>
-  </footer>
-
-  <!-- Chatbot Popup -->
-  <div class="chatbot-popup" id="chatbotPopup">
-    <div class="chatbot-popup-content">
-      <div class="chatbot-popup-icon">🤖</div>
-      <div class="chatbot-popup-text">
-        <div class="chatbot-popup-title">שלום! 👋</div>
-        <div class="chatbot-popup-subtitle">רוצים עזרה למצוא את המקום המושלם?</div>
-      </div>
-      <button class="chatbot-popup-close" id="closePopup">×</button>
-    </div>
-  </div>
-
-  <!-- Floating Buttons -->
-  <div class="floating-buttons">
-    <button class="floating-btn chatbot-btn" id="chatbotBtn" title="צ'אט עם מולטי AI">
-      <i class="fas fa-robot"></i>
-    </button>
-    <button class="floating-btn accessibility-btn" id="accessibilityBtn" title="נגישות">
-      <i class="fas fa-universal-access"></i>
-    </button>
-    <a href="https://wa.me/972523983394" class="floating-btn whatsapp-btn" title="WhatsApp" target="_blank">
-      <i class="fab fa-whatsapp"></i>
-    </a>
-  </div>
-
-  <!-- Chatbot Modal -->
-  <div class="chatbot-modal" id="chatbotModal">
-    <div class="chatbot-header">
-      <div class="chatbot-title">
-        <i class="fas fa-robot"></i>
-        <span>מולטי - יועץ חכם AI</span>
-      </div>
-      <button class="close-chatbot" id="closeChatbot">
-        <i class="fas fa-times"></i>
-      </button>
-    </div>
-    <div class="chat-area">
-      <div class="progress-container">
-        <div class="progress-text" id="progressText">0/10 שאלות</div>
-        <div class="progress-bar" id="progressBar"></div>
-      </div>
-      <div class="chat-messages" id="chatMessages"></div>
-      <div class="typing-indicator" id="typingIndicator">
-        <span>מולטי AI חושב...</span>
-        <div class="typing-dots">
-          <div class="typing-dot"></div>
-          <div class="typing-dot"></div>
-          <div class="typing-dot"></div>
+        <div class="footer-links">
+            <a href="/privacy">מדיניות פרטיות</a>
+            <a href="/accessibility">הצהרת נגישות</a>
+            <a href="/about">אודות</a>
+            <a href="/contact">צור קשר</a>
         </div>
-      </div>
-      <div class="chat-input-area">
-        <div class="input-container">
-          <input type="text" class="chat-input" id="chatInput" placeholder="הקלד את תשובתך כאן...">
-          <button class="send-button" id="sendButton">
-            <i class="fas fa-paper-plane"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
+        <p class="footer-copy">© 2025 MULTIBRAWN. כל הזכויות שמורות.</p>
+    </footer>
 
-  <!-- Accessibility Panel -->
-  <div class="accessibility-panel" id="accessibilityPanel">
-    <button class="close-panel" id="closePanel">&times;</button>
-    <h3>הגדרות נגישות</h3>
-    <div class="accessibility-controls">
-      <button class="accessibility-btn-control" id="increaseFontBtn">הגדל גופן</button>
-      <button class="accessibility-btn-control" id="decreaseFontBtn">הקטן גופן</button>
-      <button class="accessibility-btn-control" id="highContrastBtn">ניגודיות גבוהה</button>
-      <button class="accessibility-btn-control" id="resetAccessibilityBtn">אפס הגדרות</button>
-    </div>
-  </div>
-
-  <script>
-    // Chatbot Popup - Show after 5 seconds
-    setTimeout(() => {
-      const popup = document.getElementById('chatbotPopup');
-      const hasSeenPopup = sessionStorage.getItem('chatbotPopupSeen');
-      
-      if (!hasSeenPopup) {
-        popup.classList.add('show');
-      }
-    }, 5000);
-
-    // Close popup
-    document.getElementById('closePopup').addEventListener('click', (e) => {
-      e.stopPropagation();
-      const popup = document.getElementById('chatbotPopup');
-      popup.classList.remove('show');
-      sessionStorage.setItem('chatbotPopupSeen', 'true');
-    });
-
-    // Open chatbot from popup
-    document.getElementById('chatbotPopup').addEventListener('click', () => {
-      const popup = document.getElementById('chatbotPopup');
-      popup.classList.remove('show');
-      sessionStorage.setItem('chatbotPopupSeen', 'true');
-      chatbotModal.classList.add('open');
-      if (chatState.currentStep === undefined) {
-        initChat();
-      }
-    });
-
-    // Mobile Menu
-    const mobileToggle = document.getElementById('mobileToggle');
-    const navMenu = document.getElementById('navMenu');
-    
-    mobileToggle.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
-    });
-
-    // Chatbot functionality
-    let chatState = {};
-    const chatInput = document.getElementById('chatInput');
-    const sendButton = document.getElementById('sendButton');
-    const chatMessages = document.getElementById('chatMessages');
-    const progressBar = document.getElementById('progressBar');
-    const progressText = document.getElementById('progressText');
-    const typingIndicator = document.getElementById('typingIndicator');
-    const chatbotModal = document.getElementById('chatbotModal');
-    const chatbotBtn = document.getElementById('chatbotBtn');
-    const closeChatbot = document.getElementById('closeChatbot');
-
-    const chatFlow = [
-      { 
-        key: "vacationType", 
-        question: "שלום! אני מולטי עם בינה מלאכותית! 🤖✨\n\nבואו נמצא לכם את המקום המושלם. מה סוג החופשה או האירוע?", 
-        options: ["חופשה משפחתית", "סופ\"ש רומנטי", "אירוע/מסיבה", "חתונה", "אירוע עסקי"]
-      },
-      { 
-        key: "groupSize", 
-        question: "מעולה! כמה אנשים אתם?", 
-        options: ["זוג (2)", "3-5", "6-10", "11-25", "25-50", "50-100", "100+"]
-      },
-      { 
-        key: "timeframe", 
-        question: "מתי בערך תרצו לצאת לחופשה?",
-        options: ["הסופ\"ש הקרוב", "החודש הקרוב", "בחודשיים הקרובים", "לקראת החגים", "גמיש"]
-      },
-      { 
-        key: "specificDates", 
-        question: "אם יש תאריך ספציפי, כתבו אותו כאן.\nאם לא, הקלידו 'גמיש'.", 
-        options: []
-      },
-      { 
-        key: "location", 
-        question: "איזה אזור בארץ מעניין אתכם?",
-        options: ["הצפון", "המרכז", "הדרום", "ירושלים", "אין העדפה"]
-      },
-      { 
-        key: "amenities", 
-        question: "איזה מתקנים חשובים לכם?", 
-        options: ["בריכה פרטית", "ג'קוזי ספא", "מטבח מאובזר", "נוף פנורמי", "הכל!", "בקשה מיוחדת"]
-      },
-      { 
-        key: "otherAmenities", 
-        question: "מה עוד חשוב לכם?", 
-        options: []
-      },
-      { 
-        key: "budget", 
-        question: "מה התקציב שלכם?", 
-        options: ["עד ₪2,500", "₪2,500-5,000", "₪5,000-10,000", "₪10,000-20,000", "מעל ₪20,000"]
-      },
-      { 
-        key: "name", 
-        question: "מה שמכם?", 
-        options: []
-      },
-      { 
-        key: "phone", 
-        question: "תודה {name}! מה מספר הטלפון שלכם?", 
-        options: []
-      }
-    ];
-
-    // Open/Close Chatbot
-    chatbotBtn.addEventListener('click', () => {
-      chatbotModal.classList.add('open');
-      // Hide popup if open
-      const popup = document.getElementById('chatbotPopup');
-      popup.classList.remove('show');
-      sessionStorage.setItem('chatbotPopupSeen', 'true');
-      
-      if (chatState.currentStep === undefined) {
-        initChat();
-      }
-    });
-
-    closeChatbot.addEventListener('click', () => {
-      chatbotModal.classList.remove('open');
-    });
-
-    // Accessibility Panel
-    const accessibilityBtn = document.getElementById('accessibilityBtn');
-    const accessibilityPanel = document.getElementById('accessibilityPanel');
-    const closePanel = document.getElementById('closePanel');
-    
-    accessibilityBtn.addEventListener('click', () => {
-      accessibilityPanel.classList.toggle('open');
-      if (chatbotModal.classList.contains('open')) {
-        chatbotModal.classList.remove('open');
-      }
-    });
-    
-    closePanel.addEventListener('click', () => {
-      accessibilityPanel.classList.remove('open');
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!accessibilityPanel.contains(e.target) && !accessibilityBtn.contains(e.target)) {
-        accessibilityPanel.classList.remove('open');
-      }
-    });
-
-    // Accessibility Controls
-    let currentFontSize = 100;
-    
-    document.getElementById('increaseFontBtn').addEventListener('click', () => {
-      currentFontSize = Math.min(150, currentFontSize + 10);
-      document.body.style.fontSize = `${currentFontSize}%`;
-    });
-    
-    document.getElementById('decreaseFontBtn').addEventListener('click', () => {
-      currentFontSize = Math.max(80, currentFontSize - 10);
-      document.body.style.fontSize = `${currentFontSize}%`;
-    });
-    
-    document.getElementById('highContrastBtn').addEventListener('click', () => {
-      document.body.style.filter = document.body.style.filter === 'contrast(1.5)' ? 'none' : 'contrast(1.5)';
-    });
-    
-    document.getElementById('resetAccessibilityBtn').addEventListener('click', () => {
-      currentFontSize = 100;
-      document.body.style.fontSize = '100%';
-      document.body.style.filter = 'none';
-    });
-
-    // Chatbot Logic
-    function initChat() {
-      chatMessages.innerHTML = '';
-      chatState = { currentStep: 0, userInfo: {} };
-      updateProgress();
-      askNextQuestion();
-    }
-
-    function updateProgress() {
-      const progress = (chatState.currentStep / chatFlow.length) * 100;
-      progressBar.style.width = `${progress}%`;
-      progressText.textContent = `${chatState.currentStep}/${chatFlow.length} שאלות`;
-    }
-
-    async function askNextQuestion() {
-      if (chatState.currentStep >= chatFlow.length) {
-        await finalizeSummary();
-        return;
-      }
-      
-      const current = chatFlow[chatState.currentStep];
-      
-      if (current.key === "otherAmenities" && chatState.userInfo.amenities !== "בקשה מיוחדת") {
-        chatState.currentStep++;
-        askNextQuestion();
-        return;
-      }
-      
-      let questionText = current.question.replace('{name}', chatState.userInfo.name || 'אורח');
-      toggleInput(current.options && current.options.length === 0);
-      
-      await addBotMessage(questionText, current.options);
-    }
-
-    async function handleOptionClick(option) {
-      await displayMessage('user', option);
-      const current = chatFlow[chatState.currentStep];
-      chatState.userInfo[current.key] = option;
-      chatState.currentStep++;
-      updateProgress();
-      setTimeout(() => askNextQuestion(), 500);
-    }
-
-    async function handleTextInput() {
-      const input = chatInput.value.trim();
-      if (!input) return;
-      
-      const current = chatFlow[chatState.currentStep];
-      
-      if (current && current.key === 'phone') {
-        const validation = validatePhone(input);
-        if (!validation.valid) {
-          showError(validation.message);
-          return;
-        }
-        chatState.userInfo.phone = validation.formatted;
-        chatState.userInfo.phoneType = validation.type;
-      } else {
-        chatState.userInfo[current.key] = input;
-      }
-      
-      await displayMessage('user', input);
-      chatInput.value = '';
-      chatState.currentStep++;
-      updateProgress();
-      setTimeout(() => askNextQuestion(), 500);
-    }
-
-    function validatePhone(phone) {
-      const clean = phone.replace(/[^\d]/g, '');
-      
-      if (clean.length < 9 || clean.length > 12) {
-        return { valid: false, message: 'מספר לא תקין. הכנס 9-10 ספרות' };
-      }
-      
-      const patterns = {
-        mobile: /^05[0-9]{8}$/,
-        landline: /^0[2-4,8-9][0-9]{7}$/
-      };
-      
-      const isValid = Object.values(patterns).some(p => p.test(clean));
-      
-      if (!isValid) {
-        return { valid: false, message: 'מספר לא תקין. דוגמה: 0501234567' };
-      }
-      
-      let formatted = clean;
-      if (clean.length === 10 && clean.startsWith('05')) {
-        formatted = `${clean.slice(0,3)}-${clean.slice(3,6)}-${clean.slice(6)}`;
-      }
-      
-      return { 
-        valid: true, 
-        formatted,
-        type: clean.startsWith('05') ? 'נייד' : 'בית'
-      };
-    }
-
-    function showError(message) {
-      const errorDiv = document.createElement('div');
-      errorDiv.className = 'error-message';
-      errorDiv.textContent = `❌ ${message}`;
-      chatMessages.appendChild(errorDiv);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-      setTimeout(() => errorDiv.remove(), 3000);
-    }
-
-    async function displayMessage(sender, text, options = []) {
-      const msgDiv = document.createElement('div');
-      msgDiv.className = `message ${sender}`;
-      
-      const avatar = document.createElement('div');
-      avatar.className = 'message-avatar';
-      avatar.innerHTML = sender === 'bot' ? '🤖' : '👤';
-      
-      const content = document.createElement('div');
-      content.className = 'message-content';
-      
-      const textDiv = document.createElement('div');
-      textDiv.className = 'message-text';
-      textDiv.textContent = text;
-      content.appendChild(textDiv);
-      
-      if (options && options.length > 0) {
-        const replies = document.createElement('div');
-        replies.className = 'quick-replies';
-        
-        options.forEach(opt => {
-          const btn = document.createElement('button');
-          btn.className = 'quick-reply';
-          btn.textContent = opt;
-          btn.onclick = () => handleOptionClick(opt);
-          replies.appendChild(btn);
+    <script>
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled'); // Changed from 'dark' to 'scrolled' to match CSS
+            } else {
+                header.classList.remove('scrolled');
+            }
         });
+
+        // Hero slider
+        const slides = document.querySelectorAll('.hero-slide');
+        let currentSlide = 0;
         
-        content.appendChild(replies);
-      }
-      
-      msgDiv.appendChild(avatar);
-      msgDiv.appendChild(content);
-      chatMessages.appendChild(msgDiv);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-      
-      return new Promise(resolve => setTimeout(resolve, 300));
-    }
-
-    async function addBotMessage(text, options = []) {
-      typingIndicator.style.display = 'flex';
-      await new Promise(resolve => setTimeout(resolve, 800));
-      typingIndicator.style.display = 'none';
-      return displayMessage('bot', text, options);
-    }
-
-    async function finalizeSummary() {
-      typingIndicator.style.display = 'flex';
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      typingIndicator.style.display = 'none';
-      
-      const summaryDiv = document.createElement('div');
-      summaryDiv.className = 'summary-card';
-      
-      summaryDiv.innerHTML = `
-        <div class="summary-title">
-          <i class="fas fa-check-circle"></i> תודה!
-        </div>
-        <div class="summary-content">שלום ${chatState.userInfo.name}!
-
-הצוות המקצועי שלנו יחזור אליך בהקדם עם הצעות מותאמות אישית.
-
-📋 ${chatState.userInfo.vacationType}
-👥 ${chatState.userInfo.groupSize}
-📍 ${chatState.userInfo.location}
-💰 ${chatState.userInfo.budget}</div>
-      `;
-      
-      const whatsappLink = generateWhatsAppLink();
-      const btn = document.createElement('a');
-      btn.className = 'whatsapp-button';
-      btn.href = whatsappLink;
-      btn.target = '_blank';
-      btn.innerHTML = '<i class="fab fa-whatsapp"></i> לשליחה לחצו כאן';
-      
-      summaryDiv.appendChild(btn);
-      chatMessages.appendChild(summaryDiv);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-      toggleInput(false, true);
-    }
-
-    function generateWhatsAppLink() {
-      const phone = '972523983394';
-      const msg = `🏖️ בקשה מאתר MULTIBRAWN
-
-👤 ${chatState.userInfo.name}
-📱 ${chatState.userInfo.phone}
-
-🎯 ${chatState.userInfo.vacationType}
-👥 ${chatState.userInfo.groupSize}
-📅 ${chatState.userInfo.timeframe}
-📍 ${chatState.userInfo.location}
-🏊 ${chatState.userInfo.amenities}
-💰 ${chatState.userInfo.budget}
-
-⏰ ${new Date().toLocaleString('he-IL')}`;
-      
-      return `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
-    }
-
-    function toggleInput(enable, hide = false) {
-      const inputArea = document.querySelector('.chat-input-area');
-      inputArea.style.display = hide ? 'none' : 'block';
-      chatInput.disabled = !enable;
-      sendButton.disabled = !enable;
-      if (enable) chatInput.focus();
-    }
-
-    sendButton.addEventListener('click', handleTextInput);
-    chatInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') handleTextInput();
-    });
-  </script>
+        if (slides.length > 0) {
+            slides[0].classList.add('active'); // Ensure first slide is active
+            setInterval(() => {
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
+            }, 5000);
+        }
+    </script>
 </body>
 </html>
