@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>מולטי - יועץ חכם עם AI</title>
+    <title>מולטי AI</title>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
@@ -22,16 +22,15 @@
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { height: 100%; }
         
-        body {
+        html, body {
             font-family: var(--font-body);
-            background: linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%);
+            background: var(--primary-bg); 
             color: var(--text-light);
+            height: 100%;
+            overflow: hidden; 
             display: flex;
             flex-direction: column;
-            height: 100%;
-            overflow: hidden;
         }
 
         .ai-header {
@@ -41,6 +40,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            flex-shrink: 0;
         }
 
         .ai-status {
@@ -57,10 +57,7 @@
             border-radius: 50%;
             animation: pulse 2s infinite;
         }
-
-        .ai-indicator.error {
-            background: var(--error);
-        }
+        .ai-indicator.error { background: var(--error); }
 
         @keyframes pulse {
             0%, 100% { opacity: 1; }
@@ -76,147 +73,51 @@
             cursor: pointer;
             font-size: 0.9rem;
             transition: all 0.3s ease;
-            margin-left: 0.5rem;
         }
-
-        .control-btn:hover {
-            background: var(--accent-gold);
-            color: #000;
-        }
+        .control-btn:hover { background: var(--accent-gold); color: #000; }
 
         .chat-area { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+        .progress-container { background: rgba(0,0,0,0.2); height: 4px; position: relative; flex-shrink: 0; }
+        .progress-bar { height: 100%; background: linear-gradient(90deg, var(--accent-gold), var(--light-purple)); width: 0%; transition: width 0.3s ease; }
+        .progress-text { position: absolute; top: -25px; right: 10px; font-size: 0.8rem; color: var(--text-muted); }
+        
         .chat-messages { flex: 1; overflow-y: auto; padding: 1rem; display: flex; flex-direction: column; gap: 1rem; }
         .message { display: flex; gap: 0.75rem; max-width: 85%; animation: slideIn 0.3s ease-out; }
-        
-        @keyframes slideIn { 
-            from { opacity: 0; transform: translateY(15px); } 
-            to { opacity: 1; transform: translateY(0); } 
-        }
-        
+        @keyframes slideIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
         .message.user { align-self: flex-end; flex-direction: row-reverse; }
         .message-avatar { width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
         .message.bot .message-avatar { background: linear-gradient(135deg, var(--accent-gold), var(--light-purple)); color: #000; }
         .message.user .message-avatar { background: linear-gradient(135deg, var(--light-purple), var(--accent-purple)); color: #fff; }
-        
-        .message-content { 
-            background: var(--secondary-bg); 
-            padding: 0.8rem 1.2rem; 
-            border-radius: 18px; 
-            border: 1px solid rgba(184, 134, 11, 0.2); 
-            position: relative;
-        }
-
-        .message.user .message-content {
-            background: rgba(142, 68, 173, 0.3);
-            border-color: rgba(142, 68, 173, 0.5);
-        }
-        
+        .message-content { background: var(--secondary-bg); padding: 0.8rem 1.2rem; border-radius: 18px; border: 1px solid rgba(184, 134, 11, 0.2); position: relative; }
+        .message.user .message-content { background: rgba(142, 68, 173, 0.3); border-color: rgba(142, 68, 173, 0.5); }
         .message-text { line-height: 1.6; white-space: pre-wrap; }
         
         .quick-replies { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
-        .quick-reply { 
-            background: rgba(184, 134, 11, 0.2); 
-            color: var(--text-light); 
-            padding: 0.5rem 1rem; 
-            border-radius: 20px; 
-            border: 1px solid rgba(184, 134, 11, 0.3); 
-            cursor: pointer; 
-            font-size: 0.9rem; 
-            transition: all 0.2s ease; 
-        }
+        .quick-reply { background: rgba(184, 134, 11, 0.2); color: var(--text-light); padding: 0.5rem 1rem; border-radius: 20px; border: 1px solid rgba(184, 134, 11, 0.3); cursor: pointer; font-size: 0.9rem; transition: all 0.2s ease; }
         .quick-reply:hover { background: var(--accent-gold); color: #000; transform: translateY(-2px); }
+        
+        .ai-suggestion { background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 15px; padding: 1rem; margin: 0.5rem 0; font-style: italic; }
+        .ai-suggestion::before { content: "💡 תובנת AI: "; font-weight: 700; color: var(--success); }
         
         .typing-indicator { display: none; align-items: center; gap: 0.5rem; color: var(--text-muted); padding: 0 1rem 0.5rem; }
         .typing-dots { display: flex; gap: 2px; }
         .typing-dot { width: 6px; height: 6px; background: var(--accent-gold); border-radius: 50%; animation: typing 1.4s ease-in-out infinite; }
         .typing-dot:nth-child(2) { animation-delay: 0.2s; }
         .typing-dot:nth-child(3) { animation-delay: 0.4s; }
-        
         @keyframes typing { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-8px); } }
         
-        .progress-container { background: rgba(0,0,0,0.2); height: 4px; position: relative; }
-        .progress-bar { height: 100%; background: linear-gradient(90deg, var(--accent-gold), var(--light-purple)); width: 0%; transition: width 0.3s ease; }
-        .progress-text { position: absolute; top: -25px; right: 10px; font-size: 0.8rem; color: var(--text-muted); }
-        
-        .summary-card { 
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(6, 182, 212, 0.2)); 
-            border: 1px solid rgba(16, 185, 129, 0.3); 
-            border-radius: 15px; 
-            padding: 1.5rem; 
-            margin: 0.5rem 0; 
-        }
+        .summary-card { background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(6, 182, 212, 0.2)); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 15px; padding: 1.5rem; margin: 0.5rem 0; }
         .summary-title { font-weight: 700; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
         .summary-content { line-height: 1.6; margin-bottom: 1.5rem; white-space: pre-wrap; font-size: 0.9rem; }
+        .whatsapp-button { background: #25d366; color: white; padding: 1rem; border: none; border-radius: 25px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem; width: 100%; font-size: 1rem; text-decoration: none; transition: all 0.3s ease; }
+        .whatsapp-button:hover { background: #128c7e; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4); }
         
-        .whatsapp-button { 
-            background: #25d366; 
-            color: white; 
-            padding: 1rem; 
-            border: none; 
-            border-radius: 25px; 
-            font-weight: 700; 
-            cursor: pointer; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            gap: 0.5rem; 
-            width: 100%; 
-            font-size: 1rem; 
-            text-decoration: none; 
-            transition: all 0.3s ease;
-            margin-bottom: 10px;
-            font-family: var(--font-body);
-        }
-
-        .whatsapp-button:hover {
-            background: #128c7e;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
-        }
-
-        .whatsapp-button:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .whatsapp-button:disabled:hover {
-            background: #25d366;
-            transform: none;
-            box-shadow: none;
-        }
-        
-        .chat-input-area { padding: 1rem; border-top: 1px solid rgba(124, 58, 237, 0.2); background: rgba(26, 18, 48, 0.8); }
+        .chat-input-area { padding: 1rem; border-top: 1px solid rgba(124, 58, 237, 0.2); background: rgba(26, 18, 48, 0.8); flex-shrink: 0; }
         .input-container { display: flex; gap: 0.5rem; align-items: center; }
-        .chat-input { 
-            flex: 1; 
-            background: rgba(0,0,0,0.2); 
-            border: 1px solid rgba(124, 58, 237, 0.3); 
-            border-radius: 25px; 
-            padding: 0.8rem 1rem; 
-            color: white; 
-            outline: none; 
-            transition: all 0.3s ease;
-        }
+        .chat-input { flex: 1; background: rgba(0,0,0,0.2); border: 1px solid rgba(124, 58, 237, 0.3); border-radius: 25px; padding: 0.8rem 1rem; color: white; outline: none; transition: all 0.3s ease; }
         .chat-input:focus { border-color: var(--accent-gold); box-shadow: 0 0 0 2px rgba(251, 191, 36, 0.2); }
         .send-button { width: 45px; height: 45px; background: var(--accent-purple); border: none; border-radius: 50%; color: white; font-size: 1rem; cursor: pointer; transition: all 0.3s ease; }
         .send-button:hover { background: var(--light-purple); transform: scale(1.05); }
-
-        .error-message {
-            background: rgba(239, 68, 68, 0.2);
-            border: 1px solid rgba(239, 68, 68, 0.3);
-            color: var(--error);
-            padding: 1rem;
-            border-radius: 10px;
-            margin: 0.5rem 0;
-            animation: shake 0.5s ease-in-out;
-        }
-
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            75% { transform: translateX(5px); }
-        }
 
         @media (max-width: 768px) {
             .ai-header { flex-direction: column; gap: 0.5rem; text-align: center; }
@@ -230,11 +131,9 @@
             <div class="ai-indicator" id="aiIndicator"></div>
             <span id="aiStatus">מולטי AI מתחבר...</span>
         </div>
-        <div>
-            <button class="control-btn" onclick="resetConversation()">
-                <i class="fas fa-redo"></i> התחל מחדש
-            </button>
-        </div>
+        <button class="control-btn" onclick="resetConversation()">
+            <i class="fas fa-redo"></i> התחל מחדש
+        </button>
     </div>
 
     <div class="chat-area">
@@ -262,7 +161,6 @@
     <script>
         let chatState = {};
         let aiMemory = [];
-        let currentProvider = 'claude';
         
         const chatInput = document.getElementById('chatInput');
         const sendButton = document.getElementById('sendButton');
@@ -274,300 +172,50 @@
         const aiStatus = document.getElementById('aiStatus');
 
         const chatFlow = [
-            { 
-                key: "vacationType", 
-                question: "שלום! אני מולטי עם בינה מלאכותית מתקדמת! 🤖✨\n\nבואו נתחיל לאסוף פרטים ונמצא לכם את המקום המושלם. מה סוג החופשה או האירוע?", 
-                options: ["חופשה משפחתית", "סופ\"ש רומנטי", "אירוע/מסיבה", "חתונה", "אירוע עסקי", "נסיעת עבודה"]
-            },
-            { 
-                key: "groupSize", 
-                question: "מעולה! כמה אנשים אתם? זה יעזור לי למצוא את הגודל המושלם.", 
-                options: ["זוג (2)", "3-5", "6-10", "11-25", "25-50", "50-100", "100+ (אירוע גדול)"]
-            },
-            { 
-                key: "timeframe", 
-                question: "מתי בערך תרצו לצאת לחופשה? זה יעזור לי לבדוק זמינות ומחירים.",
-                options: ["הסופ\"ש הקרוב (דחוף!)", "החודש הקרוב", "בחודשיים הקרובים", "לקראת החגים", "גמיש / בודק אופציות"]
-            },
-            { 
-                key: "specificDates", 
-                question: "הבנתי. אם יש תאריך ספציפי, כתבו אותו כאן (למשל: 15-17 במרץ).\nאם לא, פשוט הקלידו 'גמיש'.", 
-                options: []
-            },
-            { 
-                key: "location", 
-                question: "איזה אזור בארץ מעניין אתכם?",
-                options: ["הצפון (גליל, גולן)", "המרכז (תל אביב, השרון)", "הדרום (אילת, מדבר)", "ירושלים והסביבה", "אין העדפה - תפתיעו אותי!"]
-            },
-            { 
-                key: "ageGroup", 
-                question: "מה הטווח גילאים של האנשים?",
-                options: ["20-30", "30-40", "40-50", "50-60", "60+", "מעורב - גילאים שונים"]
-            },
-            { 
-                key: "amenities", 
-                question: "איזה מתקנים הכי חשובים לכם במקום?", 
-                options: ["בריכה פרטית", "ג'קוזי ספא", "מטבח מאובזר", "נוף פנורמי", "פרטיות מלאה", "הכל מהכל!", "בקשה מיוחדת"]
-            },
-            { 
-                key: "otherAmenities", 
-                question: "מה עוד חשוב לכם? (כשרות, נגישות, חניה וכו')", 
-                options: []
-            },
-            { 
-                key: "budget", 
-                question: "מה התקציב שלכם? זה יעזור למצוא את ההצעה הכי משתלמת.", 
-                options: ["עד ₪2,500", "₪2,500-5,000", "₪5,000-10,000", "₪10,000-20,000", "מעל ₪20,000", "גמיש"]
-            },
-            { 
-                key: "name", 
-                question: "כמעט סיימנו! מה שמכם כדי שהצוות יוכל לפנות אליכם אישית?", 
-                options: []
-            },
-            { 
-                key: "phone", 
-                question: "תודה {name}! מה מספר הטלפון הטוב ביותר לחזור אליכם?", 
-                options: []
-            }
+             { key: "vacationType", question: "שלום! אני מולטי עם בינה מלאכותית מתקדמת! 🤖✨\n\nבואו נתחיל לאסוף פרטים ונמצא לכם את המקום המושלם. מה סוג החופשה או האירוע?", options: ["חופשה משפחתית", "סופ\"ש רומנטי", "אירוע/מסיבה", "חתונה", "אירוע עסקי", "נסיעת עבודה"], aiPrompt: "המשתמש בחר סוג חופשה. נתח את הבחירה והמלץ תובנה קצרה ורלוונטית על הבחירה." },
+             { key: "groupSize", question: "מעולה! כמה אנשים אתם? זה יעזור לי למצוא את הגודל המושלם.", options: ["זוג (2)", "3-5", "6-10", "11-25", "25-50", "50-100", "100+ (אירוע גדול)"], aiPrompt: "על בסיס סוג החופשה וגודל הקבוצה, תן תובנה חכמה על סוג הנכס המתאים." },
+             { key: "timeframe", question: "מתי בערך תרצו לצאת לחופשה? זה יעזור לי לבדוק זמינות ומחירים.", options: ["הסופ\"ש הקרוב (דחוף!)", "החודש הקרוב", "בחודשיים הקרובים", "לקראת החגים", "גמיש / בודק אופציות"], aiPrompt: "נתח את דחיפות הבקשה ותן טיפ חכם על תמחור או תכנון." },
+             { key: "specificDates", question: "הבנתי. אם יש תאריך ספציפי, כתבו אותו כאן (למשל: 15-17 במרץ).\nאם לא, פשוט הקלידו 'גמיש'.", options: [], aiPrompt: "תגיב לתאריכים שהמשתמש נתן ותן טיפ על איך זה משפיע על האפשרויות." },
+             { key: "location", question: "איזה אזור בארץ מעניין אתכם?", options: ["הצפון (גליל, גולן)", "המרכז (תל אביב, הכרמל)", "הדרום (אילת, מדבר)", "ירושלים והסביבה", "אין העדפה - תפתיעו אותי!"], aiPrompt: "על בסיס בחירת המיקום, תן המלצה חכמה על פעילויות או מאפיינים של האזור." },
+             { key: "amenities", question: "איזה מתקנים הכי חשובים לכם במקום?", options: ["בריכה פרטית", "ג'קוזי ספא", "מטבח מאובזר", "נוף פנורמי", "פרטיות מלאה", "הכל מהכל!", "בקשה מיוחדת"], aiPrompt: "נתח את דרישות המשתמש ותן תובנה על איך זה משפיע על סוג הנכס המתאים." },
+             { key: "otherAmenities", question: "מה עוד חשוב לכם? (כשרות, נגישות, חניה וכו')", options: [], aiPrompt: "תגיב לדרישות המיוחדות ותן טיפ איך למצוא בדיוק מה שמחפשים." },
+             { key: "budget", question: "מה התקציב שלכם? זה יעזור למצוא את ההצעה הכי משתלמת.", options: ["עד ₪2,500", "₪2,500-5,000", "₪5,000-10,000", "₪10,000-20,000", "מעל ₪20,000", "גמיש"], aiPrompt: "על בסיס התקציב, תן טיפ חכם על איך לקבל את המקסימום תמורת הכסף." },
+             { key: "name", question: "כמעט סיימנו! מה שמכם כדי שהצוות יוכל לפנות אליכם אישית?", options: [], aiPrompt: "תכין הערה אישית וחמה על הקרב לסיום התהליך." },
+             { key: "phone", question: "תודה {name}! מה מספר הטלפון הטוב ביותר לחזור אליכם?", options: [], aiPrompt: "תכין הודעת סיום חמה ומקצועית עם ציפיות ברורות לזמני מעקב." }
         ];
 
-        // Enhanced phone validation function
-        function validatePhoneNumber(phone) {
-            // Remove all non-digits first
-            const cleanPhone = phone.replace(/[^\d]/g, '');
-            
-            // Check basic length
-            if (cleanPhone.length < 7) {
-                return { valid: false, message: 'מספר קצר מדי. הכנס לפחות 7 ספרות' };
-            }
-            
-            if (cleanPhone.length > 15) {
-                return { valid: false, message: 'מספר ארוך מדי. הכנס עד 15 ספרות' };
-            }
-            
-            // Israeli phone patterns
-            const patterns = {
-                // Mobile phones (10 digits starting with 05)
-                mobile: /^05[0-9]{8}$/,
-                // Mobile with 972 prefix (12 digits)
-                mobileInternational: /^9725[0-9]{8}$/,
-                // Landline Jerusalem (9 digits starting with 02)
-                landlineJerusalem: /^02[0-9]{7}$/,
-                // Landline Tel Aviv (9 digits starting with 03)
-                landlineTelAviv: /^03[0-9]{7}$/,
-                // Landline Haifa (9 digits starting with 04)
-                landlineHaifa: /^04[0-9]{7}$/,
-                // Landline South (9 digits starting with 08)
-                landlineSouth: /^08[0-9]{7}$/,
-                // Landline North (9 digits starting with 09)
-                landlineNorth: /^09[0-9]{7}$/,
-                // Special services (077, 078)
-                special: /^07[78][0-9]{7}$/,
-                // International landline format
-                landlineInternational: /^972[2-4,8-9][0-9]{7}$/
-            };
-            
-            // Check if matches any Israeli pattern
-            const isValidIsraeli = Object.values(patterns).some(pattern => pattern.test(cleanPhone));
-            
-            if (!isValidIsraeli) {
-                return { 
-                    valid: false, 
-                    message: 'מספר לא תקין. דוגמאות:\n• נייד: 0501234567\n• בית (ירושלים): 026123456\n• בית (תל אביב): 036123456' 
-                };
-            }
-            
-            // Format the number nicely
-            let formatted = cleanPhone;
-            if (cleanPhone.length === 10 && cleanPhone.startsWith('05')) {
-                // Format mobile: 050-123-4567
-                formatted = `${cleanPhone.slice(0,3)}-${cleanPhone.slice(3,6)}-${cleanPhone.slice(6)}`;
-            } else if (cleanPhone.length === 9 && /^0[2-4,8-9]/.test(cleanPhone)) {
-                // Format landline: 02-612-3456
-                formatted = `${cleanPhone.slice(0,2)}-${cleanPhone.slice(2,5)}-${cleanPhone.slice(5)}`;
-            }
-            
-            return { 
-                valid: true, 
-                formatted: formatted,
-                clean: cleanPhone,
-                type: getPhoneType(cleanPhone)
-            };
-        }
-        
-        function getPhoneType(cleanPhone) {
-            if (/^05[0-9]{8}$/.test(cleanPhone) || /^9725[0-9]{8}$/.test(cleanPhone)) {
-                return 'נייד';
-            } else if (/^0[2-4,8-9][0-9]{7}$/.test(cleanPhone) || /^972[2-4,8-9][0-9]{7}$/.test(cleanPhone)) {
-                return 'בית';
-            } else if (/^07[78][0-9]{7}$/.test(cleanPhone)) {
-                return 'שירות מיוחד';
-            }
-            return 'לא מזוהה';
-        }
-        
-        // Real-time phone input validation
-        function addPhoneInputValidation() {
-            const phoneInput = chatInput;
-            
-            phoneInput.addEventListener('input', (e) => {
-                if (chatFlow[chatState.currentStep]?.key === 'phone') {
-                    const value = e.target.value;
-                    const validation = validatePhoneNumber(value);
-                    
-                    // Remove existing validation messages
-                    const existingMsg = document.querySelector('.phone-validation-msg');
-                    if (existingMsg) existingMsg.remove();
-                    
-                    if (value.length > 3) { // Only show after typing a few digits
-                        const msgDiv = document.createElement('div');
-                        msgDiv.className = 'phone-validation-msg';
-                        msgDiv.style.cssText = `
-                            position: absolute;
-                            bottom: 60px;
-                            left: 1rem;
-                            right: 1rem;
-                            padding: 0.5rem;
-                            border-radius: 8px;
-                            font-size: 0.8rem;
-                            z-index: 100;
-                        `;
-                        
-                        if (validation.valid) {
-                            msgDiv.style.background = 'rgba(16, 185, 129, 0.2)';
-                            msgDiv.style.border = '1px solid rgba(16, 185, 129, 0.5)';
-                            msgDiv.style.color = '#10b981';
-                            msgDiv.innerHTML = `✅ ${validation.type}: ${validation.formatted}`;
-                        } else {
-                            msgDiv.style.background = 'rgba(239, 68, 68, 0.2)';
-                            msgDiv.style.border = '1px solid rgba(239, 68, 68, 0.5)';
-                            msgDiv.style.color = '#ef4444';
-                            msgDiv.innerHTML = `❌ ${validation.message}`;
-                        }
-                        
-                        const inputArea = document.querySelector('.chat-input-area');
-                        inputArea.style.position = 'relative';
-                        inputArea.appendChild(msgDiv);
-                    }
-                }
-            });
-        }
-
-        // WhatsApp functions
-        function generateWhatsAppLink() {
-            // MultiBrown team WhatsApp number
-            const phone = '972523983394'; 
-            
-            const ageInfo = chatState.userInfo.ageGroup ? `🎂 גילאים: *${chatState.userInfo.ageGroup}*\n` : '';
-            
-            const message = `🏖️ *בקשה חדשה מאתר מולטיבראון - AI צ'אטבוט*
-
-👤 *פרטי הלקוח:*
-📧 שם: *${chatState.userInfo.name || 'לא צוין'}*
-📱 טלפון: *${chatState.userInfo.phoneFormatted || chatState.userInfo.phone || 'לא צוין'}* (${chatState.userInfo.phoneType || ''})
-
-🏨 *פרטי הבקשה:*
-🎯 סוג חופשה: *${chatState.userInfo.vacationType || 'לא צוין'}*
-👥 גודל קבוצה: *${chatState.userInfo.groupSize || 'לא צוין'}*
-${ageInfo}📅 זמן רצוי: *${chatState.userInfo.timeframe || 'לא צוין'}*
-🗓️ תאריכים ספציפיים: *${chatState.userInfo.specificDates || 'גמיש'}*
-📍 אזור מועדף: *${chatState.userInfo.location || 'לא צוין'}*
-🏊‍♂️ מתקנים חשובים: *${chatState.userInfo.amenities || 'לא צוין'}*
-➕ דרישות נוספות: *${chatState.userInfo.otherAmenities || 'אין'}*
-💰 תקציב: *${chatState.userInfo.budget || 'לא צוין'}*
-
----
-⏰ *זמן הגשה:* ${new Date().toLocaleString('he-IL')}
-🤖 *מקור:* מולטיבראון AI צ'אטבוט
-🔥 *סטטוס:* בקשה חמה מהאתר!
-
-📞 *המלצה: צרו קשר טלפוני תוך שעתיים למקסימום*
-💬 *WhatsApp:* שלחו הודעה עם 2-3 אפשרויות מתאימות
-
-*לקוח השתמש בצ'אטבוט AI - כנראה tech savvy ויעריך מענה מהיר! ⚡*`;
-            
-            return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-        }
-
-        function generateCustomerWhatsAppLink() {
-            const customerPhone = chatState.userInfo.phone.replace(/[^\d]/g, '');
-            
-            // Smart text based on vacation type
-            let eventType = 'החופשה המושלמת';
-            const vacationType = chatState.userInfo.vacationType || '';
-            
-            if (vacationType.includes('אירוע') || vacationType.includes('מסיבה') || vacationType.includes('חתונה') || vacationType.includes('עסקי')) {
-                eventType = 'האירוע המושלם';
-            } else if (vacationType.includes('חופשה') || vacationType.includes('רומנטי') || vacationType.includes('נסיעת עבודה')) {
-                eventType = 'החופשה המושלמת';
-            }
-            
-            // Add age info if available
-            const ageInfo = chatState.userInfo.ageGroup ? `\n🎂 גילאים: ${chatState.userInfo.ageGroup}` : '';
-            
-            const message = `שלום ${chatState.userInfo.name}! 👋
-
-🎉 *הבקשה שלך התקבלה בהצלחה אצל מולטיבראון!*
-
-📋 *סיכום הבקשה שלך:*
-🎯 ${chatState.userInfo.vacationType}
-👥 ${chatState.userInfo.groupSize} אנשים${ageInfo}
-📅 ${chatState.userInfo.timeframe}
-📍 ${chatState.userInfo.location}
-💰 תקציב: ${chatState.userInfo.budget}
-
-⏰ *מה קורה עכשיו?*
-• הצוות המקצועי שלנו כבר קיבל את הפרטים
-• נחזור אליך בהקדם עם כמה אפשרויות מותאמות אישית
-• תקבל מספר הצעות בדיוק לפי מה שחיפשת
-
-🌟 *תודה שבחרת במולטיבראון!*
-מתרגשים למצוא לך את ${eventType} 🏖️`;
-
-            return `https://wa.me/${customerPhone}?text=${encodeURIComponent(message)}`;
-        }
-
-        // Function to send WhatsApp message to team only
-        function sendTeamMessage() {
-            try {
-                const teamLink = generateWhatsAppLink();
-                console.log('Opening team WhatsApp:', teamLink);
-                
-                // Open WhatsApp for the team
-                const whatsappWindow = window.open(teamLink, '_blank');
-                
-                if (whatsappWindow) {
-                    console.log('WhatsApp window opened successfully');
-                    return true;
-                } else {
-                    console.error('Failed to open WhatsApp window - popup blocked?');
-                    return false;
-                }
-            } catch (error) {
-                console.error('Error opening WhatsApp:', error);
-                return false;
-            }
-        }
-
-        // AI Functions (simplified)
+        // --- Simulated AI Functions ---
         async function getAIResponse(userMessage, context) {
-            await new Promise(resolve => setTimeout(resolve, 1000 + Math.random() * 2000));
+            await new Promise(resolve => setTimeout(resolve, 1000 + Math.random() * 1000));
+            // הדמיה של קריאה ל-API
             const responses = [
-                "מעולה! זה בדיוק מה שאנחנו מחפשים.",
-                "בחירה נהדרת! זה יעזור לנו למצוא לכם משהו מושלם.",
-                "הבנתי בדיוק את הצרכים שלכם."
+                "בחירה מעולה! זה בדיוק הכיוון הנכון למצוא משהו מושלם.",
+                "נהדר! יש לי כמה רעיונות מצוינים בכיוון הזה.",
+                "זה נותן לי תמונה ברורה של מה שאתם מחפשים.",
+                "מעניין! זה פותח הרבה אפשרויות טובות.",
+                "הבנתי בדיוק - זה יעזור לי למקד את החיפוש."
             ];
             return responses[Math.floor(Math.random() * responses.length)];
         }
 
         async function generateAIRecommendations() {
             await new Promise(resolve => setTimeout(resolve, 2000));
-            return `על בסיס הבקשה שלכם, הכנתי כמה המלצות מותאמות עבור ${chatState.userInfo.vacationType || 'החופשה שלכם'} ב${chatState.userInfo.location || 'מיקום שבחרתם'}.
+            // הדמיה של קריאה ל-API
+            return `על בסיס הבקשה שלכם, הכנתי כמה המלצות מותאמות:
+            
+🏡 **צימרי בוטיק בגליל העליון**
+מושלם עבור ${chatState.userInfo.vacationType || 'החופשה שלכם'} עם נוף פנורמי וכל המתקנים שביקשתם.
+
+🌊 **וילה על הכרמל**
+מקום מדהים עם פרטיות מלאה, מתאים בדיוק לגודל הקבוצה שלכם.
+
+🏖️ **נופש יוקרה באילת**
+חוויה מלאה עם ספא וכל השירותים, בהתאם לתקציב שהגדרתם.
 
 הצוות המקצועי יחזור אליכם עם פרטים מלאים ומחירים מעודכנים!`;
         }
 
-        // UI Status Functions
+        // --- UI Status Functions ---
         function updateAIStatus(status) {
             switch(status) {
                 case 'online':
@@ -575,7 +223,7 @@ ${ageInfo}📅 זמן רצוי: *${chatState.userInfo.timeframe || 'לא צוי�
                     aiStatus.textContent = 'מולטי AI מקוון';
                     break;
                 case 'thinking':
-                    aiIndicator.className = 'ai-indicator';
+                    aiIndicator.className = 'ai-indicator'; 
                     aiStatus.textContent = 'מולטי AI חושב...';
                     break;
                 case 'error':
@@ -584,33 +232,15 @@ ${ageInfo}📅 זמן רצוי: *${chatState.userInfo.timeframe || 'לא צוי�
                     break;
             }
         }
-
-        function showTyping() {
-            typingIndicator.style.display = 'flex';
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
-
-        function hideTyping() {
-            typingIndicator.style.display = 'none';
-        }
-
+        function showTyping() { typingIndicator.style.display = 'flex'; chatMessages.scrollTop = chatMessages.scrollHeight; }
+        function hideTyping() { typingIndicator.style.display = 'none'; }
         function updateProgress() {
-            const progress = (chatState.currentStep / (chatFlow.length - 1)) * 100;
+            const progress = (chatState.currentStep / chatFlow.length) * 100;
             progressBar.style.width = `${progress}%`;
-            progressText.textContent = `${chatState.currentStep}/${chatFlow.length - 1} שאלות`;
+            progressText.textContent = `${chatState.currentStep}/${chatFlow.length} שאלות`;
         }
 
-        function switchProvider() {
-            currentProvider = currentProvider === 'claude' ? 'openai' : 'claude';
-            updateAIStatus('online');
-            
-            const providerName = document.getElementById('providerName');
-            if (providerName) {
-                providerName.textContent = currentProvider === 'claude' ? 'Claude' : 'OpenAI';
-            }
-        }
-
-        // Chat Functions
+        // --- Chat Functions ---
         function initChat() {
             chatMessages.innerHTML = '';
             chatState = { currentStep: 0, userInfo: {} };
@@ -628,22 +258,10 @@ ${ageInfo}📅 זמן רצוי: *${chatState.userInfo.timeframe || 'לא צוי�
             
             const current = chatFlow[chatState.currentStep];
             
-            // Skip amenities question if no special request was selected
             if (current.key === "otherAmenities" && chatState.userInfo.amenities !== "בקשה מיוחדת") {
                 chatState.currentStep++;
                 askNextQuestion();
                 return;
-            }
-            
-            // Skip age group question for events/weddings
-            if (current.key === "ageGroup") {
-                const vacationType = chatState.userInfo.vacationType || '';
-                if (vacationType.includes('אירוע') || vacationType.includes('מסיבה') || 
-                    vacationType.includes('חתונה') || vacationType.includes('עסקי')) {
-                    chatState.currentStep++;
-                    askNextQuestion();
-                    return;
-                }
             }
             
             let questionText = current.question.replace('{name}', chatState.userInfo.name || 'אורח');
@@ -656,7 +274,6 @@ ${ageInfo}📅 זמן רצוי: *${chatState.userInfo.timeframe || 'לא צוי�
             await displayMessage('user', option);
             const current = chatFlow[chatState.currentStep];
             chatState.userInfo[current.key] = option;
-            
             await processUserResponse(option);
         }
 
@@ -664,73 +281,76 @@ ${ageInfo}📅 זמן רצוי: *${chatState.userInfo.timeframe || 'לא צוי�
             const input = chatInput.value.trim();
             if (!input) return;
             
-            const current = chatFlow[chatState.currentStep];
-            
-            if (current && current.key === 'phone') {
-                const validation = validatePhoneNumber(input);
-                if (!validation.valid) {
-                    // Show error message in chat
-                    const errorDiv = document.createElement('div');
-                    errorDiv.className = 'error-message';
-                    errorDiv.innerHTML = `❌ ${validation.message}`;
-                    chatMessages.appendChild(errorDiv);
-                    chatMessages.scrollTop = chatMessages.scrollHeight;
-                    
-                    chatInput.value = '';
-                    chatInput.focus();
-                    return;
-                }
-                
-                // Store both formatted and clean versions
-                chatState.userInfo[current.key] = validation.clean;
-                chatState.userInfo.phoneFormatted = validation.formatted;
-                chatState.userInfo.phoneType = validation.type;
-                
-                // Remove validation message
-                const existingMsg = document.querySelector('.phone-validation-msg');
-                if (existingMsg) existingMsg.remove();
-                
-                // Show success message
-                await displayMessage('user', validation.formatted);
-                await displayMessage('bot', `מעולה! קלטתי מספר ${validation.type}: ${validation.formatted} ✅`);
-                
-            } else {
-                chatState.userInfo[current.key] = input;
-                await displayMessage('user', input);
-            }
-            
             chatInput.value = '';
+            await displayMessage('user', input);
+            
+            const current = chatFlow[chatState.currentStep];
+            chatState.userInfo[current.key] = input;
+            
             await processUserResponse(input);
         }
 
         async function processUserResponse(response) {
-            chatState.currentStep++;
-            updateProgress();
+            showTyping();
+            updateAIStatus('thinking');
             
-            setTimeout(() => {
+            try {
+                const aiResponse = await getAIResponse(response, chatState.userInfo);
+                hideTyping();
+                
+                if (aiResponse && chatState.currentStep < chatFlow.length - 2) { 
+                    await addAISuggestion(aiResponse);
+                }
+                
+                chatState.currentStep++;
+                updateProgress();
+                updateAIStatus('online');
+                
+                setTimeout(() => {
+                    askNextQuestion();
+                }, 1000);
+                
+            } catch (error) {
+                hideTyping();
+                updateAIStatus('error');
+                console.error('Error processing response:', error);
+                
+                chatState.currentStep++;
+                updateProgress();
                 askNextQuestion();
-            }, 500);
+            }
         }
 
+        // === START: Updated Function ===
+        // This function now ONLY generates the summary and WhatsApp link
+        // It does NOT try to fetch or call a server/CRM
         async function finalizeAndPrepareSummary() {
             showTyping();
             updateAIStatus('thinking');
             
             try {
+                // 1. Get simulated recommendations
                 const recommendations = await generateAIRecommendations();
                 hideTyping();
                 updateAIStatus('online');
                 
+                // 2. Display the summary card (which includes the WhatsApp link)
                 await displaySummary(recommendations);
                 
             } catch (error) {
+                // Handle errors
                 hideTyping();
                 updateAIStatus('error');
                 console.error('Error generating recommendations:', error);
                 
-                await displayMessage('bot', 'תודה על המידע! הצוות יחזור אליכם בהקדם עם המלצות מותאמות אישית.');
+                // Fallback: Show summary anyway so user can use WhatsApp
+                const recommendations = await generateAIRecommendations(); // Try again just in case
+                await displaySummary(recommendations);
+                await addBotMessage("נראה שיש תקלה רגעית במערכת. אל דאגה, סיכמתי הכל. אנא שלח את הבקשה ידנית בוואטסאפ.", []);
             }
         }
+        // === END: Updated Function ===
+
 
         async function displayMessage(sender, text, options = []) {
             const messageDiv = document.createElement('div');
@@ -777,94 +397,81 @@ ${ageInfo}📅 זמן רצוי: *${chatState.userInfo.timeframe || 'לא צוי�
             return displayMessage('bot', text, options);
         }
 
+        async function addAISuggestion(text) {
+            const suggestionDiv = document.createElement('div');
+            suggestionDiv.className = 'ai-suggestion';
+            suggestionDiv.textContent = text;
+            
+            chatMessages.appendChild(suggestionDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            
+            return new Promise(resolve => setTimeout(resolve, 300));
+        }
+
         async function displaySummary(recommendations) {
             const summaryDiv = document.createElement('div');
             summaryDiv.className = 'summary-card';
             
             const title = document.createElement('div');
             title.className = 'summary-title';
-            title.innerHTML = '<i class="fas fa-check-circle"></i> תודה רבה! הבקשה שלך נשלחה בהצלחה';
+            title.innerHTML = '<i class="fas fa-star" style="color: var(--accent-gold);"></i> סיכום והמלצות מותאמות אישית';
             
             const content = document.createElement('div');
             content.className = 'summary-content';
-            content.textContent = `שלום ${chatState.userInfo.name}! 
-
-הפרטים שלך נשלחו לצוות מולטיבראון והם יחזרו אליך בהקדם עם הצעות מותאמות אישית ל${chatState.userInfo.vacationType} ב${chatState.userInfo.location}.
-
-תקבל טלפון או הודעת WhatsApp עם כמה אפשרויות שנבחרו במיוחד עבורך!
-
-${recommendations}`;
+            content.textContent = recommendations;
             
-            // Single send button that sends to team only
-            const sendButton = document.createElement('button');
-            sendButton.className = 'whatsapp-button';
-            sendButton.innerHTML = '<i class="fab fa-whatsapp"></i> שלח בקשה לצוות מולטיבראון';
-            sendButton.onclick = async () => {
-                sendButton.disabled = true;
-                sendButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> שולח הודעה...';
-                
-                // Wait a moment to show the loading state
-                await new Promise(resolve => setTimeout(resolve, 800));
-                
-                const success = sendTeamMessage();
-                
-                if (success) {
-                    sendButton.innerHTML = '<i class="fas fa-check"></i> ההודעה נשלחה בהצלחה לצוות!';
-                    sendButton.style.background = '#10b981';
-                    
-                    // Show success message
-                    setTimeout(() => {
-                        const successMsg = document.createElement('div');
-                        successMsg.style.cssText = `
-                            background: rgba(16, 185, 129, 0.2);
-                            border: 1px solid rgba(16, 185, 129, 0.3);
-                            color: #10b981;
-                            padding: 1rem;
-                            border-radius: 10px;
-                            margin-top: 1rem;
-                            text-align: center;
-                        `;
-                        successMsg.innerHTML = `
-                            ✅ <strong>הבקשה נשלחה בהצלחה!</strong><br>
-                            • הצוות קיבל את כל הפרטים<br>
-                            • יחזרו אליך בהקדם עם הצעות<br>
-                            • מחכים לעזור לך למצוא את המקום המושלם! 🏖️
-                        `;
-                        summaryDiv.appendChild(successMsg);
-                    }, 500);
-                } else {
-                    sendButton.innerHTML = '<i class="fas fa-exclamation-triangle"></i> נסה שוב';
-                    sendButton.style.background = '#ef4444';
-                    sendButton.disabled = false;
-                    
-                    // Show error message
-                    const errorMsg = document.createElement('div');
-                    errorMsg.style.cssText = `
-                        background: rgba(239, 68, 68, 0.2);
-                        border: 1px solid rgba(239, 68, 68, 0.3);
-                        color: #ef4444;
-                        padding: 1rem;
-                        border-radius: 10px;
-                        margin-top: 1rem;
-                        text-align: center;
-                    `;
-                    errorMsg.innerHTML = `
-                        ❌ <strong>שגיאה בשליחה</strong><br>
-                        ייתכן שהדפדפן חסם פתיחת WhatsApp<br>
-                        נסה שוב או פנה ישירות למולטיבראון
-                    `;
-                    summaryDiv.appendChild(errorMsg);
-                }
-            };
+            const whatsappLink = document.createElement('a');
+            whatsappLink.className = 'whatsapp-button';
+            whatsappLink.href = generateWhatsAppLink();
+            whatsappLink.target = '_blank';
+            whatsappLink.innerHTML = '<i class="fab fa-whatsapp"></i> שלח לווטסאפ לקבלת הצעות';
             
             summaryDiv.appendChild(title);
             summaryDiv.appendChild(content);
-            summaryDiv.appendChild(sendButton);
+            summaryDiv.appendChild(whatsappLink);
             
             chatMessages.appendChild(summaryDiv);
             chatMessages.scrollTop = chatMessages.scrollHeight;
             
-            toggleInput(true, true);
+            toggleInput(false, true); // (disable, hideCompletely)
+        }
+
+        function generateWhatsAppLink() {
+            const phone = '972523983394'; // המספר שלך
+            
+            // === "כרטיס הלקוח" המעוצב לווטסאפ ===
+            const message = `
+*⚡ פנייה חדשה מ-MULTIBRAWN AI ⚡*
+-----------------------------------
+*כרטיס לקוח:* ${chatState.userInfo.name || 'לא צוין'}
+*טלפון:* ${chatState.userInfo.phone || 'לא צוין'}
+-----------------------------------
+
+*📝 סיכום הבקשה:*
+
+*סוג החוויה:*
+${chatState.userInfo.vacationType || 'לא צוין'}
+
+*כמות אנשים:*
+${chatState.userInfo.groupSize || 'לא צוין'}
+
+*טווח זמן:*
+${chatState.userInfo.timeframe || 'לא צוין'} (${chatState.userInfo.specificDates || 'גמיש'})
+
+*אזור מועדף:*
+${chatState.userInfo.location || 'לא צוין'}
+
+*תקציב:*
+${chatState.userInfo.budget || 'לא צוין'}
+
+*דגשים ובקשות:*
+• *מתקנים:* ${chatState.userInfo.amenities || 'לא צוין'}
+• *נוספות:* ${chatState.userInfo.otherAmenities || 'אין'}
+
+*--- אנא טפלו בפנייה בהקדם ---*
+`;
+            
+            return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
         }
 
         function toggleInput(enable, hideCompletely = false) {
@@ -872,7 +479,7 @@ ${recommendations}`;
             if (hideCompletely) {
                 inputArea.style.display = 'none';
             } else {
-                inputArea.style.display = 'block';
+                inputArea.style.display = 'block'; 
                 chatInput.disabled = !enable;
                 sendButton.disabled = !enable;
                 if (enable) {
@@ -881,12 +488,13 @@ ${recommendations}`;
             }
         }
 
-        // Global functions (need to be accessible from HTML onclick)
+        // Global function for reset button
         window.resetConversation = function() {
-            if (confirm('האם אתה בטוח שברצונך להתחיל מחדש?')) {
+            // החלפנו את ה-confirm בחלון פשוט יותר
+            if (window.confirm('האם אתה בטוח שברצונך להתחיל מחדש?')) {
                 initChat();
             }
-        };
+        }
 
         // Event Listeners
         sendButton.addEventListener('click', handleTextInput);
@@ -897,12 +505,11 @@ ${recommendations}`;
         });
 
         // Initialize chat when page loads
-        document.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
-                addPhoneInputValidation(); // Add real-time validation
-                initChat();
-            }, 500);
-        });
+        setTimeout(() => {
+            initChat();
+        }, 500);
+        
     </script>
 </body>
 </html>
+
