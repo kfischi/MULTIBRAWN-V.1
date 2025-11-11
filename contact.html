@@ -1,1496 +1,471 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>צור קשר - MULTIBRAWN</title>
-  <meta name="description" content="צרו קשר עם MULTIBRAWN - נשמח לעזור לכם למצוא את הנכס המושלם או לפתח את העסק שלכם">
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <style>
-    /* CSS נלקח מקובץ INDEX.HTML כדי להבטיח אחידות */
-    :root {
-      --primary-bg: #0f0c29;
-      --secondary-bg: #1a1a2e;
-      --brand-purple: #8B5FBF;
-      --light-purple: #a855f7;
-      --cta-turquoise: #40E0D0;
-      --text-light: #ffffff;
-      --text-muted: #b3b3b3;
-      --font-heading: 'Playfair Display', serif;
-      --font-body: 'Heebo', sans-serif;
-      --accent-gold: #fbbf24;
-      --success: #10b981;
-      --error: #ef4444;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הסוכן האישי שלך | Multibrawn</title>
+    <meta name="description" content="מצא את ה-Vibe המושלם שלך. הסוכן האישי של Multibrawn מוצא לך את הלוקיישן המושלם בדרך כיפית ואינטראקטיבית.">
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
-    body {
-      font-family: var(--font-body);
-      background: var(--primary-bg);
-      color: var(--text-light);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    /* Header */
-    .header-nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-      background: rgba(15, 12, 41, 0.95);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(139, 95, 191, 0.2);
-      transition: all 0.3s ease;
-    }
-
-    .nav-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 20px 40px;
-    }
-
-    .logo-container {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      text-decoration: none;
-      transition: transform 0.3s;
-    }
-
-    .logo-container:hover {
-      transform: translateY(-2px);
-    }
-
-    .logo-img {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid var(--brand-purple);
-      box-shadow: 0 0 20px rgba(139, 95, 191, 0.3);
-    }
-
-    .logo-text {
-      font-family: var(--font-heading);
-      font-size: 2rem;
-      font-weight: 900;
-      color: var(--text-light);
-    }
-
-    .nav-menu {
-      display: flex;
-      list-style: none;
-      gap: 28px;
-      align-items: center;
-    }
-
-    .nav-menu a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-weight: 600;
-      padding: 0.5rem 1rem;
-      border-radius: 10px;
-      transition: all 0.3s;
-    }
-
-    .nav-menu a:hover {
-      color: var(--text-light);
-      background: rgba(139, 95, 191, 0.1);
-    }
-
-    .cta-button {
-      background: var(--cta-turquoise);
-      color: #000;
-      padding: 12px 28px;
-      border: none;
-      border-radius: 50px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-decoration: none;
-      box-shadow: 0 4px 20px rgba(64, 224, 208, 0.4);
-    }
-
-    .cta-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(64, 224, 208, 0.6);
-    }
-
-    /* Mobile Menu */
-    .mobile-menu-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 10px;
-    }
-
-    .hamburger-line {
-      width: 30px;
-      height: 3px;
-      background: var(--text-light);
-      border-radius: 2px;
-      transition: 0.3s;
-    }
-    
-    .nav-menu.active {
-        right: 0 !important;
-    }
-
-    /* Hero Section - Updated with new image and positioning */
-    .hero {
-      min-height: 70vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
-                  url('https://res.cloudinary.com/dptyfvwyo/image/upload/v1760905946/Add_a_heading_bkkks3.png');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      text-align: center;
-      padding: 6rem 2rem;
-    }
-
-    .hero-title {
-      font-family: var(--font-heading);
-      font-size: clamp(3rem, 7vw, 5rem);
-      font-weight: 900;
-      color: #6B2D9E;
-      text-shadow: 
-        0 0 60px rgba(107, 45, 158, 0.95),
-        0 0 120px rgba(107, 45, 158, 0.6),
-        0 2px 20px rgba(0,0,0,0.8);
-      margin-bottom: 1rem;
-    }
-
-    .hero-subtitle {
-      font-size: clamp(1.2rem, 3vw, 1.8rem);
-      color: var(--text-muted);
-      text-shadow: 0 1px 5px rgba(0,0,0,0.8);
-    }
-
-    /* Sections */
-    .section {
-      padding: 6rem 2rem;
-    }
-
-    .section:nth-child(even) {
-      background: var(--secondary-bg);
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .section-title {
-      font-family: var(--font-heading);
-      font-size: clamp(2.5rem, 6vw, 4rem);
-      font-weight: 900;
-      text-align: center;
-      margin-bottom: 4rem;
-      background: linear-gradient(135deg, var(--brand-purple), var(--light-purple));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-bottom: 6rem;
-    }
-
-    .contact-card {
-      background: rgba(26, 26, 46, 0.6);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(139, 95, 191, 0.2);
-      border-radius: 20px;
-      padding: 3rem 2rem;
-      text-align: center;
-      transition: all 0.4s ease;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    }
-
-    .contact-card:hover {
-      transform: translateY(-10px);
-      border-color: var(--brand-purple);
-      box-shadow: 0 20px 50px rgba(139, 95, 191, 0.4);
-    }
-
-    .contact-icon {
-      width: 90px;
-      height: 90px;
-      background: linear-gradient(135deg, var(--brand-purple), var(--light-purple));
-      border-radius: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 2.5rem;
-      margin: 0 auto 2rem;
-    }
-
-    .contact-card h3 {
-      font-size: 1.6rem;
-      margin-bottom: 1rem;
-      font-weight: 800;
-      color: var(--text-light);
-    }
-
-    .contact-card p {
-      color: var(--text-muted);
-      margin-bottom: 1.5rem;
-    }
-
-    .contact-card a {
-      color: var(--cta-turquoise);
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 1.15rem;
-      padding: 0.7rem 1.5rem;
-      border-radius: 10px;
-      background: rgba(64, 224, 208, 0.1);
-      display: inline-block;
-      transition: all 0.3s;
-    }
-
-    .contact-card a:hover {
-      background: var(--cta-turquoise);
-      color: #000;
-    }
-
-    .type-selection {
-      padding: 6rem 2rem;
-      background: var(--secondary-bg);
-    }
-
-    .type-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .type-card {
-      background: rgba(26, 26, 46, 0.6);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(139, 95, 191, 0.2);
-      border-radius: 20px;
-      padding: 3rem 2rem;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.4s ease;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    }
-
-    .type-card:hover {
-      transform: translateY(-10px);
-      border-color: var(--brand-purple);
-      box-shadow: 0 20px 50px rgba(139, 95, 191, 0.4);
-    }
-
-    .type-icon {
-      font-size: 4rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .type-card h3 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      font-weight: 800;
-      color: var(--text-light);
-    }
-
-    .type-card p {
-      color: var(--text-muted);
-      font-size: 1.1rem;
-      line-height: 1.7;
-      margin-bottom: 2rem;
-    }
-
-    /* Footer */
-    footer {
-      padding: 4rem 2rem;
-      text-align: center;
-      border-top: 1px solid rgba(139, 95, 191, 0.2);
-      background: var(--primary-bg);
-    }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin: 2rem 0;
-      align-items: center;
-    }
-
-    .footer-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .footer-links a:hover {
-      color: var(--cta-turquoise);
-    }
-
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin: 2rem 0;
-    }
-
-    .social-links a {
-      color: var(--text-muted);
-      font-size: 1.8rem;
-      transition: all 0.3s;
-    }
-
-    .social-links a:hover {
-      color: var(--cta-turquoise);
-      transform: translateY(-3px);
-    }
-
-    .footer-copyright {
-      color: var(--text-muted);
-      margin-bottom: 1rem;
-    }
-
-    .footer-credit {
-      color: #6B2D9E;
-      font-size: 0.9rem;
-      font-weight: 600;
-    }
-    
-    /* Chatbot, Accessibility & Floating Buttons CSS (מתוך index.html) */
-    .chatbot-popup {
-      position: fixed;
-      bottom: 110px;
-      right: 100px;
-      background: linear-gradient(135deg, var(--accent-gold), var(--brand-purple));
-      color: #000;
-      padding: 1rem 1.5rem;
-      border-radius: 20px;
-      box-shadow: 0 10px 40px rgba(251, 191, 36, 0.5);
-      z-index: 1003;
-      display: none;
-      animation: bounceIn 0.6s ease-out;
-      max-width: 280px;
-      cursor: pointer;
-    }
-
-    .chatbot-popup.show {
-      display: block;
-    }
-
-    .chatbot-popup-content {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .chatbot-popup-icon {
-      font-size: 2rem;
-      animation: wave 1s ease-in-out infinite;
-    }
-
-    @keyframes wave {
-      0%, 100% { transform: rotate(0deg); }
-      25% { transform: rotate(20deg); }
-      75% { transform: rotate(-20deg); }
-    }
-
-    .chatbot-popup-text {
-      flex: 1;
-    }
-
-    .chatbot-popup-title {
-      font-weight: 700;
-      font-size: 1.1rem;
-      margin-bottom: 0.25rem;
-    }
-
-    .chatbot-popup-subtitle {
-      font-size: 0.85rem;
-      opacity: 0.9;
-    }
-
-    .chatbot-popup-close {
-      background: none;
-      border: none;
-      color: #000;
-      font-size: 1.2rem;
-      cursor: pointer;
-      padding: 0;
-      width: 24px;
-      height: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      transition: background 0.3s;
-    }
-
-    .chatbot-popup-close:hover {
-      background: rgba(0, 0, 0, 0.1);
-    }
-
-    @keyframes bounceIn {
-      0% { opacity: 0; transform: scale(0.3) translateY(20px); }
-      50% { opacity: 1; transform: scale(1.05); }
-      70% { transform: scale(0.95); }
-      100% { transform: scale(1) translateY(0); }
-    }
-
-    .floating-buttons {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      z-index: 999;
-    }
-
-    .floating-btn {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      text-decoration: none;
-      font-size: 1.5rem;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-      transition: all 0.3s;
-      border: none;
-      cursor: pointer;
-    }
-
-    .floating-btn:hover {
-      transform: scale(1.1);
-    }
-
-    .chatbot-btn {
-      background: linear-gradient(135deg, var(--accent-gold), var(--brand-purple));
-      animation: pulse-glow 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse-glow {
-      0%, 100% { box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3); }
-      50% { box-shadow: 0 4px 25px rgba(251, 191, 36, 0.6); }
-    }
-
-    .whatsapp-btn {
-      background: linear-gradient(135deg, #25d366, #20ba5a);
-    }
-
-    .accessibility-btn {
-      background: var(--brand-purple);
-    }
-
-    /* Chatbot Modal */
-    .chatbot-modal {
-      display: none;
-      position: fixed;
-      bottom: 100px;
-      right: 30px;
-      width: 400px;
-      height: 600px;
-      background: var(--primary-bg);
-      border: 1px solid rgba(139, 95, 191, 0.3);
-      border-radius: 20px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-      z-index: 1002;
-      flex-direction: column;
-      overflow: hidden;
-      animation: slideUp 0.3s ease-out;
-    }
-
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .chatbot-modal.open {
-      display: flex;
-    }
-
-    .chatbot-header {
-      background: linear-gradient(135deg, rgba(251, 191, 36, 0.2), rgba(142, 68, 173, 0.2));
-      padding: 1rem;
-      border-bottom: 1px solid rgba(251, 191, 36, 0.3);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .chatbot-title {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-weight: 700;
-      font-size: 1.1rem;
-    }
-
-    .close-chatbot {
-      background: none;
-      border: none;
-      color: var(--text-light);
-      font-size: 1.5rem;
-      cursor: pointer;
-      transition: color 0.3s;
-      width: 32px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-    }
-
-    .close-chatbot:hover {
-      background: rgba(255, 255, 255, 0.1);
-      color: var(--cta-turquoise);
-    }
-
-    .chat-area {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-    }
-
-    .progress-container {
-      background: rgba(0,0,0,0.2);
-      height: 4px;
-      position: relative;
-    }
-
-    .progress-bar {
-      height: 100%;
-      background: linear-gradient(90deg, var(--accent-gold), var(--light-purple));
-      width: 0%;
-      transition: width 0.3s ease;
-    }
-
-    .progress-text {
-      position: absolute;
-      top: -25px;
-      right: 10px;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-
-    .chat-messages {
-      flex: 1;
-      overflow-y: auto;
-      padding: 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .chat-messages::-webkit-scrollbar { width: 6px; }
-    .chat-messages::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); }
-    .chat-messages::-webkit-scrollbar-thumb { background: var(--brand-purple); border-radius: 3px; }
-
-    .message {
-      display: flex;
-      gap: 0.75rem;
-      max-width: 85%;
-      animation: slideIn 0.3s ease-out;
-    }
-
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateY(15px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .message.user {
-      align-self: flex-end;
-      flex-direction: row-reverse;
-    }
-
-    .message-avatar {
-      width: 35px;
-      height: 35px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      flex-shrink: 0;
-    }
-
-    .message.bot .message-avatar {
-      background: linear-gradient(135deg, var(--accent-gold), var(--light-purple));
-      color: #000;
-    }
-
-    .message.user .message-avatar {
-      background: linear-gradient(135deg, var(--light-purple), var(--brand-purple));
-      color: #fff;
-    }
-
-    .message-content {
-      background: var(--secondary-bg);
-      padding: 0.8rem 1.2rem;
-      border-radius: 18px;
-      border: 1px solid rgba(184, 134, 11, 0.2);
-    }
-
-    .message.user .message-content {
-      background: rgba(142, 68, 173, 0.3);
-      border-color: rgba(142, 68, 173, 0.5);
-    }
-
-    .message-text {
-      line-height: 1.6;
-      white-space: pre-wrap;
-      font-size: 0.9rem;
-    }
-
-    .quick-replies {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 1rem;
-    }
-
-    .quick-reply {
-      background: rgba(184, 134, 11, 0.2);
-      color: var(--text-light);
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      border: 1px solid rgba(184, 134, 11, 0.3);
-      cursor: pointer;
-      font-size: 0.85rem;
-      transition: all 0.2s ease;
-    }
-
-    .quick-reply:hover {
-      background: var(--accent-gold);
-      color: #000;
-      transform: translateY(-2px);
-    }
-
-    .typing-indicator {
-      display: none;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--text-muted);
-      padding: 0 1rem 0.5rem;
-      font-size: 0.85rem;
-    }
-
-    .typing-dots {
-      display: flex;
-      gap: 2px;
-    }
-
-    .typing-dot {
-      width: 6px;
-      height: 6px;
-      background: var(--accent-gold);
-      border-radius: 50%;
-      animation: typing 1.4s ease-in-out infinite;
-    }
-
-    .typing-dot:nth-child(2) { animation-delay: 0.2s; }
-    .typing-dot:nth-child(3) { animation-delay: 0.4s; }
-
-    @keyframes typing {
-      0%, 60%, 100% { transform: translateY(0); }
-      30% { transform: translateY(-8px); }
-    }
-
-    .chat-input-area {
-      padding: 1rem;
-      border-top: 1px solid rgba(124, 58, 237, 0.2);
-      background: rgba(26, 18, 48, 0.8);
-    }
-
-    .input-container {
-      display: flex;
-      gap: 0.5rem;
-      align-items: center;
-    }
-
-    .chat-input {
-      flex: 1;
-      background: rgba(0,0,0,0.2);
-      border: 1px solid rgba(124, 58, 237, 0.3);
-      border-radius: 25px;
-      padding: 0.8rem 1rem;
-      color: white;
-      outline: none;
-      transition: all 0.3s ease;
-      font-size: 0.9rem;
-    }
-
-    .chat-input:focus {
-      border-color: var(--accent-gold);
-      box-shadow: 0 0 0 2px rgba(251, 191, 36, 0.2);
-    }
-
-    .send-button {
-      width: 40px;
-      height: 40px;
-      background: var(--brand-purple);
-      border: none;
-      border-radius: 50%;
-      color: white;
-      font-size: 0.9rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .send-button:hover {
-      background: var(--light-purple);
-      transform: scale(1.05);
-    }
-
-    .summary-card {
-      background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(6, 182, 212, 0.2));
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      border-radius: 15px;
-      padding: 1rem;
-      margin: 0.5rem 0;
-    }
-
-    .summary-title {
-      font-weight: 700;
-      margin-bottom: 0.75rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.95rem;
-    }
-
-    .summary-content {
-      line-height: 1.6;
-      margin-bottom: 1rem;
-      white-space: pre-wrap;
-      font-size: 0.85rem;
-    }
-
-    .whatsapp-button {
-      background: #25d366;
-      color: white;
-      padding: 0.8rem;
-      border: none;
-      border-radius: 20px;
-      font-weight: 700;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      width: 100%;
-      font-size: 0.9rem;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      font-family: var(--font-body);
-    }
-
-    .whatsapp-button:hover {
-      background: #128c7e;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
-    }
-
-    .error-message {
-      background: rgba(239, 68, 68, 0.2);
-      border: 1px solid rgba(239, 68, 68, 0.3);
-      color: var(--error);
-      padding: 0.8rem;
-      border-radius: 10px;
-      margin: 0.5rem 0;
-      font-size: 0.85rem;
-    }
-
-    .accessibility-panel {
-      position: fixed;
-      bottom: 100px;
-      right: 30px;
-      width: 280px;
-      background: var(--secondary-bg);
-      border: 1px solid rgba(139, 95, 191, 0.3);
-      border-radius: 15px;
-      padding: 20px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-      opacity: 0;
-      transform: translateY(20px);
-      pointer-events: none;
-      transition: all 0.3s ease;
-      z-index: 1001;
-    }
-
-    .accessibility-panel.open {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
-
-    .accessibility-panel h3 {
-      color: var(--text-light);
-      text-align: center;
-      margin-bottom: 15px;
-      font-size: 1.2rem;
-    }
-
-    .close-panel {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      background: none;
-      border: none;
-      color: var(--text-muted);
-      font-size: 1.5rem;
-      cursor: pointer;
-      transition: color 0.3s;
-    }
-
-    .close-panel:hover {
-      color: var(--text-light);
-    }
-
-    .accessibility-controls {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .accessibility-btn-control {
-      padding: 12px;
-      border-radius: 10px;
-      border: 1px solid rgba(139, 95, 191, 0.3);
-      background: rgba(139, 95, 191, 0.1);
-      color: var(--text-light);
-      cursor: pointer;
-      font-weight: 600;
-      transition: all 0.3s;
-    }
-
-    .accessibility-btn-control:hover {
-      background: var(--brand-purple);
-      border-color: var(--brand-purple);
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .mobile-menu-toggle { display: flex; }
-      .nav-menu {
-        position: fixed;
-        right: -100%;
-        top: 80px;
-        flex-direction: column;
-        background: rgba(15, 12, 41, 0.98);
-        width: 100%;
-        padding: 20px;
-        transition: 0.3s;
-        border-top: 1px solid rgba(139, 95, 191, 0.2);
-      }
-      .nav-menu.active { right: 0; }
-      .contact-grid { grid-template-columns: 1fr; }
-      .type-grid { grid-template-columns: 1fr; }
-      .floating-buttons { right: 15px; bottom: 15px; }
-      .chatbot-modal { right: 0; bottom: 0; width: 100%; height: 100%; border-radius: 0; }
-      .accessibility-panel { right: 15px; width: calc(100vw - 30px); max-width: 280px; }
-      
-      .hero {
-        background-size: 100%; /* התאמה לגודל מסך קטן יותר */
-        background-position: center top 10%;
-      }
-    }
-    
-    /* Chatbot Popup */
-    .chatbot-popup {
-      position: fixed;
-      bottom: 110px;
-      right: 100px;
-      background: linear-gradient(135deg, var(--accent-gold), var(--brand-purple));
-      color: #000;
-      padding: 1rem 1.5rem;
-      border-radius: 20px;
-      box-shadow: 0 10px 40px rgba(251, 191, 36, 0.5);
-      z-index: 1003;
-      display: none;
-      animation: bounceIn 0.6s ease-out;
-      max-width: 280px;
-      cursor: pointer;
-    }
-
-    .chatbot-popup.show {
-      display: block;
-    }
-    
-    /* Chatbot Modal */
-    .chatbot-modal {
-      display: none;
-      position: fixed;
-      bottom: 100px;
-      right: 30px;
-      width: 400px;
-      height: 600px;
-      background: var(--primary-bg);
-      border: 1px solid rgba(139, 95, 191, 0.3);
-      border-radius: 20px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-      z-index: 1002;
-      flex-direction: column;
-      overflow: hidden;
-      animation: slideUp 0.3s ease-out;
-    }
-    .chatbot-modal.open { display: flex; }
-    /* (CSS נוסף לצ'אטבוט נמצא בקובץ ה-JavaScript להלן) */
-  </style>
+    <style>
+        :root {
+            --primary-bg: linear-gradient(135deg, #00E0FF, #2D7FFF, #A06BFF);
+            --secondary-bg-glass: rgba(255, 255, 255, 0.15);
+            --accent-primary: #FF5EA1; /* ורוד-קוראל */
+            --accent-secondary: #00E0FF; /* טורקיז */
+            --white: #FAFAFA;
+            --text-dark: #1a0b2e;
+            --text-light-on-dark: #FAFAFA;
+            --light-grey: #444;
+            --font-display: 'Heebo', sans-serif;
+            --font-body: 'Heebo', sans-serif;
+            --header-height: 80px;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            background: var(--primary-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow: hidden; /* מונע גלילה בזמן המשחק */
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-display);
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        /* --- Header (Standard) --- */
+        header {
+            position: relative; /* לא קבוע, חלק מהדף */
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.1); 
+            backdrop-filter: blur(20px); 
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2); 
+        }
+        nav {
+            max-width: 1400px; margin: 0 auto; padding: 1.5rem 3rem;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo { display: flex; align-items: center; gap: 1rem; text-decoration: none; }
+        .logo img { width: 45px; height: 45px; }
+        .logo span { font-size: 1.5rem; font-weight: 700; color: var(--text-dark); font-family: var(--font-display); }
+        .nav-links { display: flex; gap: 2.5rem; align-items: center; }
+        .nav-links a { color: var(--text-dark); text-decoration: none; font-size: 0.95rem; transition: opacity 0.3s; font-weight: 500; }
+        .nav-links a:hover { opacity: 0.6; }
+        .nav-cta {
+            background: var(--accent-primary);
+            color: var(--white) !important; padding: 0.7rem 1.8rem; border-radius: 6px;
+            font-weight: 600; text-decoration: none;
+            box-shadow: 0 4px 15px rgba(255, 94, 161, 0.4);
+            transition: all 0.3s ease;
+        }
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255, 94, 161, 0.6); }
+
+        /* --- Vibe Bot Wrapper --- */
+        .vibe-bot-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            overflow: hidden;
+        }
+
+        .bot-header {
+            margin-bottom: 2rem;
+        }
+        .bot-header h1 {
+            font-size: clamp(2rem, 5vw, 2.5rem);
+            font-weight: 800;
+            color: var(--text-dark);
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+        .bot-header p {
+            font-size: clamp(1rem, 2vw, 1.1rem);
+            color: var(--light-grey);
+            font-weight: 400;
+        }
+
+        /* --- Card Stack --- */
+        .card-stack {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            height: 500px;
+            perspective: 1000px;
+        }
+        
+        .vibe-card {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: var(--secondary-bg-glass);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-origin: center bottom;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transform: translateY(20px) scale(0.9);
+            opacity: 0;
+            z-index: 1;
+        }
+
+        /* Stacking effect - controlled by JS */
+        
+        /* Animation classes */
+        .vibe-card.go-no {
+            transform: translateX(-150%) rotate(-30deg) !important;
+            opacity: 0 !important;
+        }
+        .vibe-card.go-yes {
+            transform: translateX(150%) rotate(30deg) !important;
+            opacity: 0 !important;
+        }
+
+        .vibe-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.7);
+        }
+
+        .card-text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            text-align: center;
+        }
+        .card-text h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--white);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.7);
+        }
+
+        /* --- Controls --- */
+        .vibe-controls {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .control-btn {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            font-size: 2rem;
+        }
+        .control-btn:hover {
+            transform: scale(1.1) translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+        #no-btn {
+            background: var(--white);
+            color: #e11d48; /* Red */
+        }
+        #yes-btn {
+            background: var(--accent-primary);
+            color: var(--white);
+        }
+
+        /* --- Progress Bar --- */
+        .progress-bar-container {
+            width: 100%;
+            max-width: 400px;
+            height: 8px;
+            background: rgba(0,0,0,0.1);
+            border-radius: 4px;
+            margin-top: 2rem;
+            overflow: hidden;
+        }
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background: var(--accent-primary);
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
+        /* --- Summary Screen --- */
+        .summary-screen {
+            display: none; /* Hidden by default */
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .summary-screen h2 {
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+        .summary-screen p {
+            font-size: 1.2rem;
+            color: var(--light-grey);
+            max-width: 500px;
+            margin-bottom: 2rem;
+        }
+        .summary-list {
+            list-style: none;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            text-align: right;
+        }
+        .summary-list li {
+            margin-bottom: 0.5rem;
+        }
+        .summary-list i {
+            color: var(--accent-primary);
+            margin-left: 0.5rem;
+        }
+        .whatsapp-cta {
+            background: #25D366; /* WhatsApp Green */
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+        }
+        .whatsapp-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.6);
+        }
+
+        @media (max-width: 768px) {
+            nav { padding: 1rem 1.5rem; }
+            .nav-links { display: none; }
+            .card-stack { height: 450px; }
+            .vibe-controls { margin-top: 1.5rem; }
+            .control-btn { width: 65px; height: 65px; font-size: 1.5rem; }
+            .progress-bar-container { margin-top: 1.5rem; }
+        }
+    </style>
 </head>
 <body>
-  <header class="header-nav">
-    <nav class="nav-content">
-      <a href="index.html" class="logo-container">
-        <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="MULTIBRAWN" class="logo-img">
-        <span class="logo-text">MULTIBRAWN</span>
-      </a>
-      <ul class="nav-menu" id="navMenu">
-        <li><a href="index.html">דף הבית</a></li>
-        <li><a href="about.html">אודות</a></li>
-        <li><a href="gallery.html">גלריה</a></li>
-        <li><a href="marketing.html">שיווק דיגיטלי</a></li>
-        <li><a href="contact.html" class="cta-button">צור קשר</a></li>
-      </ul>
-      <button class="mobile-menu-toggle" id="mobileToggle">
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-      </button>
-    </nav>
-  </header>
+    <header id="header">
+        <nav>
+            <a href="/" class="logo">
+                <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="MULTIBRAWN">
+                <span>MULTIBRAWN</span>
+            </a>
+            <div class="nav-links">
+                <a href="/">דף הבית</a>
+                <a href="about.html">אודות</a>
+                <a href="gallery.html">גלריה</a>
+                <a href="contact.html" class="nav-cta">צור קשר</a>
+            </div>
+        </nav>
+    </header>
 
-  <section class="hero">
-    <div>
-      <h1 class="hero-title">בואו נדבר</h1>
-      <p class="hero-subtitle">נשמח לעזור לכם למצוא את המקום המושלם או לפתח את העסק שלכם</p>
-    </div>
-  </section>
+    <main class="vibe-bot-container">
 
-  <section class="type-selection">
-    <div class="container">
-      <h2 class="section-title">איך נוכל לעזור לכם?</h2>
-      <div class="type-grid">
-        <div class="type-card">
-          <div class="type-icon">🏖️</div>
-          <h3>מחפשים נופש</h3>
-          <p>רוצים למצוא את הלוקיישן המושלם? ספרו לנו מה אתם מחפשים</p>
-          <a href="https://wa.me/972523983394?text=היי, אני מחפש נכס לנופש" class="cta-button">שלחו הודעה</a>
-        </div>
-        <div class="type-card">
-          <div class="type-icon">🏢</div>
-          <h3>בעלי נכסים</h3>
-          <p>יש לכם נכס? רוצים להגדיל תפוסה? בואו נשתף פעולה</p>
-          <a href="https://wa.me/972523983394?text=היי, אני בעל נכס ומעוניין בשיתוף פעולה" class="cta-button">הצטרפו אלינו</a>
-        </div>
-      </div>
-    </div>
-  </section>
+        <!-- This is shown during the game -->
+        <div id="game-container">
+            <div class="bot-header">
+                <h1>ברוכים הבאים לסוכן ה-Vibe</h1>
+                <p>במקום טפסים, בואו נשחק. החליקו ימינה (❤️) על ה-Vibe שמתאים לכם, או שמאלה (❌) על מה שלא. בואו נתחיל!</p>
+            </div>
 
-  <section class="section">
-    <div class="container">
-      <h2 class="section-title">דרכים ליצור קשר</h2>
-      <div class="contact-grid">
-        <div class="contact-card">
-          <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
-          <h3>WhatsApp</h3>
-          <p>התכתבו איתנו ישירות</p>
-          <a href="https://wa.me/972523983394">שלחו הודעה</a>
+            <div class="card-stack" id="card-stack">
+                <!-- Cards will be injected here by JS -->
+            </div>
+
+            <div class="vibe-controls">
+                <button class="control-btn" id="no-btn"><i class="fas fa-times"></i></button>
+                <button class="control-btn" id="yes-btn"><i class="fas fa-heart"></i></button>
+            </div>
+
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
         </div>
 
-        <div class="contact-card">
-          <div class="contact-icon"><i class="fas fa-phone"></i></div>
-          <h3>טלפון</h3>
-          <p>התקשרו אלינו</p>
-          <a href="tel:+972523983394">052-398-3394</a>
+        <!-- This is shown at the end -->
+        <div class="summary-screen" id="summary-screen">
+            <h2>מצאנו התאמה!</h2>
+            <p>סיננתי את המאגר האקסקלוסיבי שלנו ומצאתי מספר מקומות שעונים בדיוק על ה-Vibe שלכם:</p>
+            <ul class="summary-list" id="summary-list">
+                <!-- Summary will be injected here -->
+            </ul>
+            <a href="#" id="whatsapp-link" class="whatsapp-cta" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+                קבלו את ההצעות מהסוכן האישי שלי
+            </a>
         </div>
 
-        <div class="contact-card">
-          <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-          <h3>דואר אלקטרוני</h3>
-          <p>שלחו לנו מייל</p>
-          <a href="mailto:info@multibrawn.com">info@multibrawn.com</a>
-        </div>
+    </main>
 
-        <div class="contact-card">
-          <div class="contact-icon"><i class="fab fa-instagram"></i></div>
-          <h3>אינסטגרם</h3>
-          <p>עקבו אחרינו</p>
-          <a href="https://instagram.com/multibrawn">@multibrawn</a>
-        </div>
-      </div>
-    </div>
-  </section>
+    <script>
+        // --- The Brain: All Questions ---
+        const vibeQuestions = [
+            // Phase 1: Vibe
+            { id: 'vibe_party', text: 'אנרגיות ומסיבה 🥳', type: 'vibe', img: 'https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818934/22_tt9jvz.jpg' },
+            { id: 'vibe_romance', text: 'שקט ורומנטיקה 🥂', type: 'vibe', img: 'https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818996/Zimmer2_ge7g6h.jpg' },
+            { id: 'vibe_family', text: 'זמן איכות משפחתי 👨‍👩‍👧‍👦', type: 'vibe', img: 'https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villas/3.jpeg' },
+            { id: 'vibe_event', text: 'אירוע יוקרתי 💍', type: 'vibe', img: 'https://res.cloudinary.com/dptyfvwyo/image/upload/v1762003191/1_tsc6xx.jpg' },
+            
+            // Phase 2: Must-Haves
+            { id: 'feature_pool', text: 'חייב בריכה מחוממת? 🏊', type: 'feature', img: 'https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villas/Villa_Wow.jpg' },
+            { id: 'feature_view', text: 'הנוף הוא העיקר? 🌄', type: 'feature', img: 'https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villas/1.jpg' },
+            { id: 'feature_noise', text: 'צריך אישור לרעש? 🎶', type: 'feature', img: 'https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818934/20_t6yw8m.jpg' },
+            { id: 'feature_hotel', text: 'בא לכם פינוק של מלון? 🛎️', type: 'feature', img: 'https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818995/Hotel1_ihkey7.jpg' }
+        ];
 
-  <footer>
-    <div style="max-width: 1200px; margin: 0 auto;">
-      <div style="margin-bottom: 2rem;">
-        <a href="index.html" class="logo-container" style="display: inline-flex;">
-          <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="MULTIBRAWN" class="logo-img">
-          <span class="logo-text">MULTIBRAWN</span>
-        </a>
-      </div>
-      <div class="footer-links">
-        <a href="privacy.html" target="_blank">מדיניות פרטיות</a>
-        <span>·</span>
-        <a href="accessibility.html" target="_blank">הצהרת נגישות</a>
-      </div>
-      <div class="social-links">
-        <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-linkedin"></i></a>
-      </div>
-      <p class="footer-copyright">© 2025 MULTIBRAWN. כל הזכויות שמורות.</p>
-      <p class="footer-credit">האתר נבנה על ידי Multi-Site - אתרים שבונים עסקים מבית Multibrawn</p>
-    </div>
-  </footer>
-  
-  <div class="chatbot-popup" id="chatbotPopup">
-    <div class="chatbot-popup-content">
-      <div class="chatbot-popup-icon">🤖</div>
-      <div class="chatbot-popup-text">
-        <div class="chatbot-popup-title">שלום! 👋</div>
-        <div class="chatbot-popup-subtitle">רוצים עזרה למצוא את המקום המושלם?</div>
-      </div>
-      <button class="chatbot-popup-close" id="closePopup">×</button>
-    </div>
-  </div>
+        const stack = document.getElementById('card-stack');
+        const yesBtn = document.getElementById('yes-btn');
+        const noBtn = document.getElementById('no-btn');
+        const progressBar = document.getElementById('progress-bar');
+        const gameContainer = document.getElementById('game-container');
+        const summaryContainer = document.getElementById('summary-screen');
+        const summaryList = document.getElementById('summary-list');
+        const whatsappLink = document.getElementById('whatsapp-link');
 
-  <div class="floating-buttons">
-    <button class="floating-btn chatbot-btn" id="chatbotBtn" title="צ'אט עם מולטי AI">
-      <i class="fas fa-robot"></i>
-    </button>
-    <button class="floating-btn accessibility-btn" id="accessibilityBtn" title="נגישות">
-      <i class="fas fa-universal-access"></i>
-    </button>
-    <a href="https://wa.me/972523983394" class="floating-btn whatsapp-btn" title="WhatsApp" target="_blank">
-      <i class="fab fa-whatsapp"></i>
-    </a>
-  </div>
+        let currentCardIndex = 0;
+        let userChoices = { vibes: [], features: [] };
+        let allCards = []; // Store all card elements
 
-  <div class="chatbot-modal" id="chatbotModal">
-    <div class="chatbot-header">
-      <div class="chatbot-title">
-        <i class="fas fa-robot"></i>
-        <span>מולטי - יועץ חכם AI</span>
-      </div>
-      <button class="close-chatbot" id="closeChatbot">
-        <i class="fas fa-times"></i>
-      </button>
-    </div>
-    <div class="chat-area">
-      <div class="progress-container">
-        <div class="progress-text" id="progressText">0/10 שאלות</div>
-        <div class="progress-bar" id="progressBar"></div>
-      </div>
-      <div class="chat-messages" id="chatMessages"></div>
-      <div class="typing-indicator" id="typingIndicator">
-        <span>מולטי AI חושב...</span>
-        <div class="typing-dots">
-          <div class="typing-dot"></div>
-          <div class="typing-dot"></div>
-          <div class="typing-dot"></div>
-        </div>
-      </div>
-      <div class="chat-input-area">
-        <div class="input-container">
-          <input type="text" class="chat-input" id="chatInput" placeholder="הקלד את תשובתך כאן...">
-          <button class="send-button" id="sendButton">
-            <i class="fas fa-paper-plane"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="accessibility-panel" id="accessibilityPanel">
-    <button class="close-panel" id="closePanel">&times;</button>
-    <h3>הגדרות נגישות</h3>
-    <div class="accessibility-controls">
-      <button class="accessibility-btn-control" id="increaseFontBtn">הגדל גופן</button>
-      <button class="accessibility-btn-control" id="decreaseFontBtn">הקטן גופן</button>
-      <button class="accessibility-btn-control" id="highContrastBtn">ניגודיות גבוהה</button>
-      <button class="accessibility-btn-control" id="resetAccessibilityBtn">אפס הגדרות</button>
-    </div>
-  </div>
-
-  <script>
-    // Chatbot Logic and Initialization (Copied from index.html)
-    let chatState = {};
-    const chatInput = document.getElementById('chatInput');
-    const sendButton = document.getElementById('sendButton');
-    const chatMessages = document.getElementById('chatMessages');
-    const progressBar = document.getElementById('progressBar');
-    const progressText = document.getElementById('progressText');
-    const typingIndicator = document.getElementById('typingIndicator');
-    const chatbotModal = document.getElementById('chatbotModal');
-    const chatbotBtn = document.getElementById('chatbotBtn');
-    const closeChatbot = document.getElementById('closeChatbot');
-    const accessibilityBtn = document.getElementById('accessibilityBtn');
-    const accessibilityPanel = document.getElementById('accessibilityPanel');
-    const closePanel = document.getElementById('closePanel');
-    const navMenu = document.getElementById('navMenu');
-    const mobileToggle = document.getElementById('mobileToggle');
-    const popup = document.getElementById('chatbotPopup');
-    
-    // --- Data Flow (Copied from index.html) ---
-    const chatFlow = [
-      { key: "vacationType", question: "שלום! אני מולטי עם בינה מלאכותית! 🤖✨\n\nבואו נמצא לכם את המקום המושלם. מה סוג החופשה או האירוע?", options: ["חופשה משפחתית", "סופ\"ש רומנטי", "אירוע/מסיבה", "חתונה", "אירוע עסקי"] },
-      { key: "groupSize", question: "מעולה! כמה אנשים אתם?", options: ["זוג (2)", "3-5", "6-10", "11-25", "25-50", "50-100", "100+"] },
-      { key: "timeframe", question: "מתי בערך תרצו לצאת לחופשה?", options: ["הסופ\"ש הקרוב", "החודש הקרוב", "בחודשיים הקרובים", "לקראת החגים", "גמיש"] },
-      { key: "specificDates", question: "אם יש תאריך ספציפי, כתבו אותו כאן.\nאם לא, הקלידו 'גמיש'.", options: [] },
-      { key: "location", question: "איזה אזור בארץ מעניין אתכם?", options: ["הצפון", "המרכז", "הדרום", "ירושלים", "אין העדפה"] },
-      { key: "amenities", question: "איזה מתקנים חשובים לכם?", options: ["בריכה פרטית", "ג'קוזי ספא", "מטבח מאובזר", "נוף פנורמי", "הכל!", "בקשה מיוחדת"] },
-      { key: "otherAmenities", question: "מה עוד חשוב לכם?", options: [] },
-      { key: "budget", question: "מה התקציב שלכם?", options: ["עד ₪2,500", "₪2,500-5,000", "₪5,000-10,000", "₪10,000-20,000", "מעל ₪20,000"] },
-      { key: "name", question: "מה שמכם?", options: [] },
-      { key: "phone", question: "תודה {name}! מה מספר הטלפון שלכם?", options: [] }
-    ];
-
-    // --- Core Functions (Copied from index.html) ---
-    function initChat() {
-      chatMessages.innerHTML = '';
-      chatState = { currentStep: 0, userInfo: {} };
-      updateProgress();
-      askNextQuestion();
-    }
-    
-    function updateProgress() {
-      const progress = (chatState.currentStep / chatFlow.length) * 100;
-      progressBar.style.width = `${progress}%`;
-      progressText.textContent = `${chatState.currentStep}/${chatFlow.length} שאלות`;
-    }
-
-    async function askNextQuestion() {
-      if (chatState.currentStep >= chatFlow.length) {
-        await finalizeSummary();
-        return;
-      }
-      
-      const current = chatFlow[chatState.currentStep];
-      
-      if (current.key === "otherAmenities" && chatState.userInfo.amenities !== "בקשה מיוחדת") {
-        chatState.currentStep++;
-        askNextQuestion();
-        return;
-      }
-      
-      let questionText = current.question.replace('{name}', chatState.userInfo.name || 'אורח');
-      toggleInput(current.options && current.options.length === 0);
-      
-      await addBotMessage(questionText, current.options);
-    }
-
-    async function handleOptionClick(option) {
-      await displayMessage('user', option);
-      const current = chatFlow[chatState.currentStep];
-      chatState.userInfo[current.key] = option;
-      chatState.currentStep++;
-      updateProgress();
-      setTimeout(() => askNextQuestion(), 500);
-    }
-
-    async function handleTextInput() {
-      const input = chatInput.value.trim();
-      if (!input) return;
-      
-      const current = chatFlow[chatState.currentStep];
-      
-      if (current && current.key === 'phone') {
-        const validation = validatePhone(input);
-        if (!validation.valid) {
-          showError(validation.message);
-          return;
+        // --- Initialize Cards ---
+        function initCards() {
+            stack.innerHTML = '';
+            // Create cards in FORWARDS order (0, 1, 2...)
+            for (let i = 0; i < vibeQuestions.length; i++) {
+                const card = vibeQuestions[i];
+                const cardEl = document.createElement('div');
+                cardEl.className = 'vibe-card';
+                cardEl.innerHTML = `
+                    <img src="${card.img}" alt="${card.text}">
+                    <div class="card-text">
+                        <h3>${card.text}</h3>
+                    </div>
+                `;
+                stack.appendChild(cardEl);
+            }
+            
+            // Store all card elements in reverse order for stacking logic
+            allCards = Array.from(stack.querySelectorAll('.vibe-card')).reverse();
+            updateCardStack();
         }
-        chatState.userInfo.phone = validation.formatted;
-        chatState.userInfo.phoneType = validation.type;
-      } else {
-        chatState.userInfo[current.key] = input;
-      }
-      
-      await displayMessage('user', input);
-      chatInput.value = '';
-      chatState.currentStep++;
-      updateProgress();
-      setTimeout(() => askNextQuestion(), 500);
-    }
 
-    function validatePhone(phone) {
-      const clean = phone.replace(/[^\d]/g, '');
-      
-      if (clean.length < 9 || clean.length > 12) {
-        return { valid: false, message: 'מספר לא תקין. הכנס 9-10 ספרות' };
-      }
-      
-      const patterns = {
-        mobile: /^05[0-9]{8}$/,
-        landline: /^0[2-4,8-9][0-9]{7}$/
-      };
-      
-      const isValid = Object.values(patterns).some(p => p.test(clean));
-      
-      if (!isValid) {
-        return { valid: false, message: 'מספר לא תקין. דוגמה: 0501234567' };
-      }
-      
-      let formatted = clean;
-      if (clean.length === 10 && clean.startsWith('05')) {
-        formatted = `${clean.slice(0,3)}-${clean.slice(3,6)}-${clean.slice(6)}`;
-      }
-      
-      return { 
-        valid: true, 
-        formatted,
-        type: clean.startsWith('05') ? 'נייד' : 'בית'
-      };
-    }
+        // --- Update Card Visual Stack ---
+        function updateCardStack() {
+            allCards.forEach((card, index) => {
+                const relativeIndex = index - (allCards.length - 1 - currentCardIndex);
+                
+                if (relativeIndex === 0) {
+                    card.style.transform = 'translateY(0) scale(1)';
+                    card.style.opacity = '1';
+                    card.style.zIndex = '3';
+                } else if (relativeIndex === 1) {
+                    card.style.transform = 'translateY(10px) scale(0.95)';
+                    card.style.opacity = '1';
+                    card.style.zIndex = '2';
+                } else if (relativeIndex === 2) {
+                    card.style.transform = 'translateY(20px) scale(0.9)';
+                    card.style.opacity = '1';
+                    card.style.zIndex = '1';
+                } else {
+                    card.style.transform = `translateY(20px) scale(0.9)`;
+                    card.style.opacity = '0';
+                    card.style.zIndex = '0';
+                }
+            });
+        }
 
-    function showError(message) {
-      const errorDiv = document.createElement('div');
-      errorDiv.className = 'error-message';
-      errorDiv.textContent = `❌ ${message}`;
-      chatMessages.appendChild(errorDiv);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-      setTimeout(() => errorDiv.remove(), 3000);
-    }
+        // --- Handle User Choice ---
+        function handleChoice(choice) {
+            const currentCardData = vibeQuestions[currentCardIndex];
+            const cardEl = stack.children[currentCardIndex];
 
-    async function displayMessage(sender, text, options = []) {
-      const msgDiv = document.createElement('div');
-      msgDiv.className = `message ${sender}`;
-      
-      const avatar = document.createElement('div');
-      avatar.className = 'message-avatar';
-      avatar.innerHTML = sender === 'bot' ? '🤖' : '👤';
-      
-      const content = document.createElement('div');
-      content.className = 'message-content';
-      
-      const textDiv = document.createElement('div');
-      textDiv.className = 'message-text';
-      textDiv.textContent = text;
-      content.appendChild(textDiv);
-      
-      if (options && options.length > 0) {
-        const replies = document.createElement('div');
-        replies.className = 'quick-replies';
+            if (!cardEl) return;
+
+            // 1. Save choice
+            if (choice) {
+                if (currentCardData.type === 'vibe') {
+                    userChoices.vibes.push(currentCardData.text);
+                } else {
+                    userChoices.features.push(currentCardData.text);
+                }
+            }
+
+            // 2. Animate card out
+            cardEl.classList.add(choice ? 'go-yes' : 'go-no');
+
+            // 3. Update index and progress
+            currentCardIndex++;
+            progressBar.style.width = `${(currentCardIndex / vibeQuestions.length) * 100}%`;
+
+            // 4. Update next cards
+            setTimeout(updateCardStack, 100); // Give a slight delay for animation
+
+            // 5. Check if done
+            if (currentCardIndex === vibeQuestions.length) {
+                setTimeout(showSummary, 600);
+            }
+        }
+
+        // --- Show Summary Screen ---
+        function showSummary() {
+            gameContainer.style.display = 'none';
+            summaryContainer.style.display = 'flex';
+
+            let summaryText = "";
+            if (userChoices.vibes.length > 0) {
+                summaryText += `<li><i class="fas fa-check"></i> <strong>ה-Vibe שלי:</strong> ${userChoices.vibes.join(', ')}</li>`;
+            } else {
+                summaryText += `<li><i class="fas fa-check"></i> <strong>ה-Vibe שלי:</strong> פתוח להכל</li>`;
+            }
+
+            if (userChoices.features.length > 0) {
+                summaryText += `<li><i class="fas fa-check"></i> <strong>דגשים:</strong> ${userChoices.features.join(', ')}</li>`;
+            }
+            
+            summaryList.innerHTML = summaryText;
+
+            // Build WhatsApp message
+            let waMessage = "היי! סיימתי לסנן את ה-Vibe שלי בבוט:\n";
+            waMessage += `*ה-Vibe שלי:* ${userChoices.vibes.length > 0 ? userChoices.vibes.join(', ') : 'פתוח להכל'}\n`;
+            waMessage += `*דגשים:* ${userChoices.features.length > 0 ? userChoices.features.join(', ') : 'אין'}\n`;
+            waMessage += "אשמח לקבל הצעות מהסוכן האישי שלכם!";
+            
+            whatsappLink.href = `https://wa.me/972523983394?text=${encodeURIComponent(waMessage)}`;
+        }
         
-        options.forEach(opt => {
-          const btn = document.createElement('button');
-          btn.className = 'quick-reply';
-          btn.textContent = opt;
-          btn.onclick = () => handleOptionClick(opt);
-          replies.appendChild(btn);
-        });
+        // --- Event Listeners ---
+        yesBtn.addEventListener('click', () => handleChoice(true));
+        noBtn.addEventListener('click', () => handleChoice(false));
         
-        content.appendChild(replies);
-      }
-      
-      msgDiv.appendChild(avatar);
-      msgDiv.appendChild(content);
-      chatMessages.appendChild(msgDiv);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-      
-      return new Promise(resolve => setTimeout(resolve, 300));
-    }
-
-    async function addBotMessage(text, options = []) {
-      typingIndicator.style.display = 'flex';
-      await new Promise(resolve => setTimeout(resolve, 800));
-      typingIndicator.style.display = 'none';
-      return displayMessage('bot', text, options);
-    }
-
-    async function finalizeSummary() {
-      typingIndicator.style.display = 'flex';
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      typingIndicator.style.display = 'none';
-      
-      const summaryDiv = document.createElement('div');
-      summaryDiv.className = 'summary-card';
-      
-      summaryDiv.innerHTML = `
-        <div class="summary-title">
-          <i class="fas fa-check-circle"></i> תודה!
-        </div>
-        <div class="summary-content">שלום ${chatState.userInfo.name}!
-
-הצוות המקצועי שלנו יחזור אליך בהקדם עם הצעות מותאמות אישית.
-
-📋 ${chatState.userInfo.vacationType}
-👥 ${chatState.userInfo.groupSize}
-📅 ${chatState.userInfo.timeframe}
-📍 ${chatState.userInfo.location}
-💰 ${chatState.userInfo.budget}</div>
-      `;
-      
-      const whatsappLink = generateWhatsAppLink();
-      const btn = document.createElement('a');
-      btn.className = 'whatsapp-button';
-      btn.href = whatsappLink;
-      btn.target = '_blank';
-      btn.innerHTML = '<i class="fab fa-whatsapp"></i> לשליחה לחצו כאן';
-      
-      summaryDiv.appendChild(btn);
-      chatMessages.appendChild(summaryDiv);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-      toggleInput(false, true);
-    }
-
-    function generateWhatsAppLink() {
-      const phone = '972523983394';
-      const msg = `🏖️ בקשה מאתר MULTIBRAWN
-
-👤 ${chatState.userInfo.name}
-📱 ${chatState.userInfo.phone}
-
-🎯 ${chatState.userInfo.vacationType}
-👥 ${chatState.userInfo.groupSize}
-📅 ${chatState.userInfo.timeframe}
-📍 ${chatState.userInfo.location}
-🏊 ${chatState.userInfo.amenities}
-💰 ${chatState.userInfo.budget}
-
-⏰ ${new Date().toLocaleString('he-IL')}`;
-      
-      return `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
-    }
-
-    function toggleInput(enable, hide = false) {
-      const inputArea = document.querySelector('.chat-input-area');
-      inputArea.style.display = hide ? 'none' : 'block';
-      chatInput.disabled = !enable;
-      sendButton.disabled = !enable;
-      if (enable) chatInput.focus();
-    }
-    
-    // --- Event Listeners and Initial Load ---
-    
-    document.addEventListener('DOMContentLoaded', () => {
-      // Mobile menu
-      mobileToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
-
-      // Chatbot Open/Close
-      chatbotBtn.addEventListener('click', () => {
-        chatbotModal.classList.add('open');
-        popup.classList.remove('show');
-        sessionStorage.setItem('chatbotPopupSeen', 'true');
-        if (chatState.currentStep === undefined || chatState.currentStep >= chatFlow.length) {
-          initChat();
-        }
-      });
-
-      closeChatbot.addEventListener('click', () => {
-        chatbotModal.classList.remove('open');
-      });
-
-      // Chat Input
-      sendButton.addEventListener('click', handleTextInput);
-      chatInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') handleTextInput();
-      });
-
-      // Accessibility Panel
-      let currentFontSize = 100;
-      
-      accessibilityBtn.addEventListener('click', () => {
-        accessibilityPanel.classList.toggle('open');
-        if (chatbotModal.classList.contains('open')) {
-          chatbotModal.classList.remove('open');
-        }
-      });
-      
-      closePanel.addEventListener('click', () => {
-        accessibilityPanel.classList.remove('open');
-      });
-
-      document.addEventListener('click', (e) => {
-        if (!accessibilityPanel.contains(e.target) && !accessibilityBtn.contains(e.target)) {
-          accessibilityPanel.classList.remove('open');
-        }
-      });
-      
-      document.getElementById('increaseFontBtn').addEventListener('click', () => {
-        currentFontSize = Math.min(150, currentFontSize + 10);
-        document.body.style.fontSize = `${currentFontSize}%`;
-      });
-      
-      document.getElementById('decreaseFontBtn').addEventListener('click', () => {
-        currentFontSize = Math.max(80, currentFontSize - 10);
-        document.body.style.fontSize = `${currentFontSize}%`;
-      });
-      
-      document.getElementById('highContrastBtn').addEventListener('click', () => {
-        document.body.style.filter = document.body.style.filter === 'contrast(1.5)' ? 'none' : 'contrast(1.5)';
-      });
-      
-      document.getElementById('resetAccessibilityBtn').addEventListener('click', () => {
-        currentFontSize = 100;
-        document.body.style.fontSize = '100%';
-        document.body.style.filter = 'none';
-      });
-
-      // Chatbot Popup - Show after 5 seconds
-      setTimeout(() => {
-        const hasSeenPopup = sessionStorage.getItem('chatbotPopupSeen');
-        if (!hasSeenPopup && !chatbotModal.classList.contains('open')) {
-          popup.classList.add('show');
-        }
-      }, 5000);
-
-      document.getElementById('closePopup').addEventListener('click', (e) => {
-        e.stopPropagation();
-        popup.classList.remove('show');
-        sessionStorage.setItem('chatbotPopupSeen', 'true');
-      });
-
-      popup.addEventListener('click', () => {
-        popup.classList.remove('show');
-        sessionStorage.setItem('chatbotPopupSeen', 'true');
-        chatbotModal.classList.add('open');
-        if (chatState.currentStep === undefined) {
-          initChat();
-        }
-      });
-      
-      // Smooth scroll for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute('href'));
-          if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
-          }
-        });
-      });
-    });
-
-  </script>
+        // --- Start ---
+        initCards();
+        
+    </script>
 </body>
 </html>
