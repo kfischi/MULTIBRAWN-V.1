@@ -16,6 +16,7 @@
             --primary-bg: linear-gradient(135deg, #00E0FF, #2D7FFF, #A06BFF);
             --secondary-bg-glass: rgba(255, 255, 255, 0.15);
             --accent-primary: #FF5EA1;
+            --accent-secondary: #00E0FF; /* טורקיז */
             --accent-gold: #FF5EA1; /* Replaced yellow with pink */
             --white: #FAFAFA;
             --text-dark: #1a0b2e;
@@ -290,6 +291,82 @@
         .footer-links a:hover { color: var(--text-dark); }
         .footer-copy { color: var(--light-grey); font-size: 0.85rem; }
 
+        /* === START: Floating Buttons CSS (Chat + Access) === */
+        .chatbot-launcher-button {
+            position: fixed; bottom: 2rem; right: 2rem;
+            width: 70px; height: 70px; border-radius: 50%;
+            background: var(--accent-primary);
+            border: none; cursor: pointer;
+            box-shadow: 0 8px 25px rgba(255, 94, 161, 0.4);
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s ease; z-index: 1000;
+        }
+        .chatbot-launcher-button:hover { transform: scale(1.1); }
+        .chatbot-launcher-button i { font-size: 1.8rem; color: var(--white); position: absolute; transition: transform 0.3s, opacity 0.3s; }
+        .chatbot-launcher-button .close-icon { display: block; opacity: 0; transform: rotate(-180deg); }
+        .chatbot-launcher-button.active .chat-icon { transform: rotate(180deg); opacity: 0; }
+        .chatbot-launcher-button.active .close-icon { opacity: 1; transform: rotate(0); }
+        .chatbot-pulse {
+            position: absolute; width: 100%; height: 100%; border-radius: 50%;
+            background: var(--accent-primary); opacity: 0.5;
+            animation: pulse 2s infinite; z-index: -1;
+        }
+        @keyframes pulse { 
+            0%, 100% { transform: scale(1); opacity: 0.5; } 
+            50% { transform: scale(1.3); opacity: 0; } 
+        }
+        .chatbot-iframe-container {
+            position: fixed; bottom: 110px; right: 2rem;
+            width: 400px; max-width: calc(100vw - 4rem);
+            height: 600px; max-height: calc(100vh - 150px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border-radius: 20px; overflow: hidden;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            z-index: 999;
+            transform: translateY(20px) scale(0.95);
+            opacity: 0; pointer-events: none;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .chatbot-iframe-container.active { opacity: 1; transform: translateY(0) scale(1); pointer-events: all; }
+        .chatbot-iframe { width: 100%; height: 100%; border: none; }
+
+        .accessibility-button {
+            position: fixed; bottom: 2rem; left: 2rem;
+            width: 70px; height: 70px; border-radius: 50%;
+            background: var(--accent-secondary); /* Turquoise */
+            border: none; cursor: pointer;
+            box-shadow: 0 8px 25px rgba(0, 224, 255, 0.4);
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s ease; z-index: 998;
+        }
+        .accessibility-button:hover { transform: scale(1.1); }
+        .accessibility-button i { font-size: 1.8rem; color: var(--text-dark); }
+        .accessibility-panel {
+            position: fixed; bottom: 110px; left: 2rem;
+            width: 280px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            z-index: 997; opacity: 0; transform: translateY(20px);
+            pointer-events: none; transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .accessibility-panel.active { opacity: 1; transform: translateY(0); pointer-events: auto; }
+        .accessibility-panel h3 { font-size: 1.2rem; font-weight: 700; color: var(--text-dark); text-align: center; padding: 1rem; border-bottom: 1px solid rgba(0,0,0,0.1); }
+        .accessibility-controls { padding: 1rem; display: flex; flex-direction: column; gap: 0.75rem; }
+        .access-btn {
+            padding: 0.75rem; border-radius: 8px;
+            border: 1px solid rgba(0,0,0,0.1);
+            background: rgba(0,0,0,0.05);
+            color: var(--text-dark); font-weight: 600; cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .access-btn:hover { background: var(--accent-secondary); border-color: var(--accent-secondary); }
+        /* === END: Floating Buttons CSS === */
+
+
         @media (max-width: 768px) {
             nav { padding: 1rem 1.5rem; }
             .nav-links { display: none; }
@@ -299,6 +376,11 @@
             .timeline-item:nth-child(odd) { right: 0; padding-left: 3rem; }
             .timeline-item::after { left: auto; right: 4px; }
             .timeline-item:nth-child(odd)::after { left: auto; right: 4px; }
+            
+            .chatbot-iframe-container { bottom: 90px; right: 1rem; width: calc(100vw - 2rem); height: calc(100vh - 120px); }
+            .chatbot-launcher-button { width: 60px; height: 60px; bottom: 1rem; right: 1rem; }
+            .accessibility-button { width: 60px; height: 60px; bottom: 1rem; left: 1rem; }
+            .accessibility-panel { bottom: 90px; left: 1rem; width: calc(100vw - 2rem); }
         }
     </style>
 </head>
@@ -437,7 +519,31 @@
         <p class="footer-copy">© 2025 MULTIBRAWN. כל הזכויות שמורות.</p>
     </footer>
     
-    <!-- Chatbot script will be loaded via index.html's iframe -->
+    <!-- === START: Floating Buttons HTML === -->
+    <!-- Chatbot (Right) -->
+    <div class="chatbot-iframe-container" id="chatbotWindow">
+        <iframe src="chatbot.html" class="chatbot-iframe" title="מולטי AI"></iframe>
+    </div>
+    <button class="chatbot-launcher-button" id="chatbotButton">
+        <div class="chatbot-pulse"></div>
+        <i class="fas fa-comment-dots chat-icon"></i>
+        <i class="fas fa-times close-icon"></i>
+    </button>
+
+    <!-- Accessibility (Left) -->
+    <button class="accessibility-button" id="accessibilityBtn" title="נגישות">
+        <i class="fas fa-universal-access"></i>
+    </button>
+    <div class="accessibility-panel" id="accessibilityPanel">
+        <h3>הגדרות נגישות</h3>
+        <div class="accessibility-controls">
+            <button class="access-btn" id="increaseFontBtn">הגדל גופן</button>
+            <button class="access-btn" id="decreaseFontBtn">הקטן גופן</button>
+            <button class="access-btn" id="highContrastBtn">ניגודיות גבוהה</button>
+            <button class="access-btn" id="resetAccessibilityBtn">אפס הגדרות</button>
+        </div>
+    </div>
+    <!-- === END: Floating Buttons HTML === -->
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
@@ -458,6 +564,65 @@
                 }
             });
         }
+
+        // --- Chatbot Iframe Launcher JS ---
+        const chatbotButton = document.getElementById('chatbotButton');
+        const chatbotWindow = document.getElementById('chatbotWindow');
+
+        function toggleChatbot() {
+            chatbotWindow.classList.toggle('active');
+            chatbotButton.classList.toggle('active');
+        }
+        chatbotButton.addEventListener('click', toggleChatbot);
+
+        // === START: New Accessibility JS ===
+        const accessibilityBtn = document.getElementById('accessibilityBtn');
+        const accessibilityPanel = document.getElementById('accessibilityPanel');
+
+        if (accessibilityBtn && accessibilityPanel) {
+            accessibilityBtn.addEventListener('click', () => {
+                accessibilityPanel.classList.toggle('active');
+            });
+
+            // Close panel if clicking outside
+            document.addEventListener('click', (e) => {
+                if (!accessibilityPanel.contains(e.target) && !accessibilityBtn.contains(e.target)) {
+                    accessibilityPanel.classList.remove('active');
+                }
+            });
+
+            // Accessibility Controls
+            const increaseFontBtn = document.getElementById('increaseFontBtn');
+            const decreaseFontBtn = document.getElementById('decreaseFontBtn');
+            const highContrastBtn = document.getElementById('highContrastBtn');
+            const resetAccessibilityBtn = document.getElementById('resetAccessibilityBtn');
+
+            let currentFontSize = 100;
+            increaseFontBtn.addEventListener('click', () => {
+                currentFontSize = Math.min(150, currentFontSize + 10);
+                document.body.style.fontSize = `${currentFontSize}%`;
+            });
+
+            decreaseFontBtn.addEventListener('click', () => {
+                currentFontSize = Math.max(80, currentFontSize - 10);
+                document.body.style.fontSize = `${currentFontSize}%`;
+            });
+
+            highContrastBtn.addEventListener('click', () => {
+                if (document.body.style.filter === 'contrast(1.5)') {
+                    document.body.style.filter = 'none';
+                } else {
+                    document.body.style.filter = 'contrast(1.5)';
+                }
+            });
+
+            resetAccessibilityBtn.addEventListener('click', () => {
+                currentFontSize = 100;
+                document.body.style.fontSize = '100%';
+                document.body.style.filter = 'none';
+            });
+        }
+        // === END: New Accessibility JS ===
     </script>
 </body>
 </html>
