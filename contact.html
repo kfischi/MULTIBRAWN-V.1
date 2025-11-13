@@ -8,20 +8,21 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- טוען את שני הפונטים שהגדרנו -->
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
         :root {
-            --primary-bg: linear-gradient(135deg, #00E0FF, #2D7FFF, #A06BFF);
-            --secondary-bg-glass: rgba(255, 255, 255, 0.15);
-            --accent-primary: #FF5EA1; /* ורוד-קוראל */
-            --accent-secondary: #00E0FF; /* טורקיז */
+            /* === פלטת הצבעים הכהה והיוקרתית === */
+            --primary-bg: #1a0b2e;
+            --secondary-bg: #16213e;
+            --accent-purple: #8B5FBF;
+            --accent-gold: #fbbf24;
             --white: #FAFAFA;
-            --text-dark: #1a0b2e;
-            --text-light-on-dark: #FAFAFA;
-            --light-grey: #444;
-            --font-display: 'Heebo', sans-serif;
+            --text-light: #FAFAFA;
+            --text-muted: #cbd5e1;
+            --font-display: 'Playfair Display', serif;
             --font-body: 'Heebo', sans-serif;
             --header-height: 80px;
         }
@@ -30,28 +31,28 @@
         html { scroll-behavior: smooth; }
         body {
             font-family: var(--font-body);
-            background: var(--primary-bg);
-            color: var(--text-dark);
+            background: var(--primary-bg); /* רקע כהה */
+            color: var(--text-light); /* טקסט בהיר */
             line-height: 1.6;
-            overflow: hidden; /* מונע גלילה בזמן המשחק */
+            overflow: hidden;
             height: 100vh;
             display: flex;
             flex-direction: column;
         }
 
         h1, h2, h3, h4, h5, h6 {
-            font-family: var(--font-display);
+            font-family: var(--font-display); /* פונט יוקרתי לכותרות */
             font-weight: 700;
             letter-spacing: -0.5px;
         }
 
-        /* --- Header (Standard) --- */
+        /* --- Header --- */
         header {
-            position: relative; /* לא קבוע, חלק מהדף */
+            position: relative;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.1); 
-            backdrop-filter: blur(20px); 
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2); 
+            background: rgba(26, 11, 46, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(139, 95, 191, 0.2);
         }
         nav {
             max-width: 1400px; margin: 0 auto; padding: 1.5rem 3rem;
@@ -59,18 +60,18 @@
         }
         .logo { display: flex; align-items: center; gap: 1rem; text-decoration: none; }
         .logo img { width: 45px; height: 45px; }
-        .logo span { font-size: 1.5rem; font-weight: 700; color: var(--text-dark); font-family: var(--font-display); }
+        .logo span { font-size: 1.5rem; font-weight: 700; color: var(--text-light); font-family: var(--font-display); }
         .nav-links { display: flex; gap: 2.5rem; align-items: center; }
-        .nav-links a { color: var(--text-dark); text-decoration: none; font-size: 0.95rem; transition: opacity 0.3s; font-weight: 500; }
+        .nav-links a { color: var(--text-light); text-decoration: none; font-size: 0.95rem; transition: opacity 0.3s; font-weight: 500; }
         .nav-links a:hover { opacity: 0.6; }
         .nav-cta {
-            background: var(--accent-primary);
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-gold));
             color: var(--white) !important; padding: 0.7rem 1.8rem; border-radius: 6px;
             font-weight: 600; text-decoration: none;
-            box-shadow: 0 4px 15px rgba(255, 94, 161, 0.4);
+            box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3);
             transition: all 0.3s ease;
         }
-        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255, 94, 161, 0.6); }
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(251, 191, 36, 0.5); }
 
         /* --- Vibe Bot Wrapper --- */
         .vibe-bot-container {
@@ -82,6 +83,7 @@
             text-align: center;
             padding: 2rem;
             overflow: hidden;
+            background: linear-gradient(180deg, var(--secondary-bg) 0%, var(--primary-bg) 100%);
         }
 
         .bot-header {
@@ -90,13 +92,13 @@
         .bot-header h1 {
             font-size: clamp(2rem, 5vw, 2.5rem);
             font-weight: 800;
-            color: var(--text-dark);
+            color: var(--text-light);
             line-height: 1.2;
             margin-bottom: 0.5rem;
         }
         .bot-header p {
             font-size: clamp(1rem, 2vw, 1.1rem);
-            color: var(--light-grey);
+            color: var(--text-muted);
             font-weight: 400;
         }
 
@@ -113,19 +115,17 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            background: var(--secondary-bg-glass);
+            background: var(--secondary-bg);
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             transform-origin: center bottom;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(139, 95, 191, 0.3);
             transform: translateY(20px) scale(0.9);
             opacity: 0;
             z-index: 1;
         }
-
-        /* Stacking effect - controlled by JS */
         
         /* Animation classes */
         .vibe-card.go-no {
@@ -186,8 +186,8 @@
             color: #e11d48; /* Red */
         }
         #yes-btn {
-            background: var(--accent-primary);
-            color: var(--white);
+            background: var(--accent-gold);
+            color: var(--text-dark);
         }
 
         /* --- Progress Bar --- */
@@ -195,7 +195,7 @@
             width: 100%;
             max-width: 400px;
             height: 8px;
-            background: rgba(0,0,0,0.1);
+            background: rgba(0,0,0,0.3);
             border-radius: 4px;
             margin-top: 2rem;
             overflow: hidden;
@@ -203,7 +203,7 @@
         .progress-bar {
             width: 0%;
             height: 100%;
-            background: var(--accent-primary);
+            background: var(--accent-gold);
             border-radius: 4px;
             transition: width 0.5s ease;
         }
@@ -218,18 +218,18 @@
         }
         .summary-screen h2 {
             font-size: 2.5rem;
-            color: var(--text-dark);
+            color: var(--accent-gold);
             margin-bottom: 1rem;
         }
         .summary-screen p {
             font-size: 1.2rem;
-            color: var(--light-grey);
+            color: var(--text-muted);
             max-width: 500px;
             margin-bottom: 2rem;
         }
         .summary-list {
             list-style: none;
-            color: var(--text-dark);
+            color: var(--text-light);
             font-size: 1.1rem;
             margin-bottom: 2.5rem;
             text-align: right;
@@ -238,7 +238,7 @@
             margin-bottom: 0.5rem;
         }
         .summary-list i {
-            color: var(--accent-primary);
+            color: var(--accent-gold);
             margin-left: 0.5rem;
         }
         .whatsapp-cta {
