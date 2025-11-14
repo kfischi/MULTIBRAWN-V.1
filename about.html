@@ -16,7 +16,6 @@
             --primary-bg: linear-gradient(135deg, #00E0FF, #2D7FFF, #A06BFF);
             --secondary-bg-glass: rgba(255, 255, 255, 0.15);
             --accent-primary: #FF5EA1;
-            --accent-secondary: #00E0FF; /* טורקיז */
             --accent-gold: #FF5EA1; /* Replaced yellow with pink */
             --white: #FAFAFA;
             --text-dark: #1a0b2e;
@@ -569,11 +568,13 @@
         const chatbotButton = document.getElementById('chatbotButton');
         const chatbotWindow = document.getElementById('chatbotWindow');
 
-        function toggleChatbot() {
-            chatbotWindow.classList.toggle('active');
-            chatbotButton.classList.toggle('active');
+        if (chatbotButton && chatbotWindow) {
+            function toggleChatbot() {
+                chatbotWindow.classList.toggle('active');
+                chatbotButton.classList.toggle('active');
+            }
+            chatbotButton.addEventListener('click', toggleChatbot);
         }
-        chatbotButton.addEventListener('click', toggleChatbot);
 
         // === START: New Accessibility JS ===
         const accessibilityBtn = document.getElementById('accessibilityBtn');
@@ -597,30 +598,32 @@
             const highContrastBtn = document.getElementById('highContrastBtn');
             const resetAccessibilityBtn = document.getElementById('resetAccessibilityBtn');
 
-            let currentFontSize = 100;
-            increaseFontBtn.addEventListener('click', () => {
-                currentFontSize = Math.min(150, currentFontSize + 10);
-                document.body.style.fontSize = `${currentFontSize}%`;
-            });
+            if (increaseFontBtn && decreaseFontBtn && highContrastBtn && resetAccessibilityBtn) {
+                let currentFontSize = 100;
+                increaseFontBtn.addEventListener('click', () => {
+                    currentFontSize = Math.min(150, currentFontSize + 10);
+                    document.body.style.fontSize = `${currentFontSize}%`;
+                });
 
-            decreaseFontBtn.addEventListener('click', () => {
-                currentFontSize = Math.max(80, currentFontSize - 10);
-                document.body.style.fontSize = `${currentFontSize}%`;
-            });
+                decreaseFontBtn.addEventListener('click', () => {
+                    currentFontSize = Math.max(80, currentFontSize - 10);
+                    document.body.style.fontSize = `${currentFontSize}%`;
+                });
 
-            highContrastBtn.addEventListener('click', () => {
-                if (document.body.style.filter === 'contrast(1.5)') {
+                highContrastBtn.addEventListener('click', () => {
+                    if (document.body.style.filter === 'contrast(1.5)') {
+                        document.body.style.filter = 'none';
+                    } else {
+                        document.body.style.filter = 'contrast(1.5)';
+                    }
+                });
+
+                resetAccessibilityBtn.addEventListener('click', () => {
+                    currentFontSize = 100;
+                    document.body.style.fontSize = '100%';
                     document.body.style.filter = 'none';
-                } else {
-                    document.body.style.filter = 'contrast(1.5)';
-                }
-            });
-
-            resetAccessibilityBtn.addEventListener('click', () => {
-                currentFontSize = 100;
-                document.body.style.fontSize = '100%';
-                document.body.style.filter = 'none';
-            });
+                });
+            }
         }
         // === END: New Accessibility JS ===
     </script>
