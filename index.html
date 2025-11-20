@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>MULTIBRAWN - סוכן אישי לאיתור לוקיישנים | וילות, צימרים ומתחמי אירועים בישראל</title>
+    <meta name="title" content="MULTIBRAWN - סוכן אישי לאיתור לוקיישנים | וילות, צימרים ומתחמי אירועים">
+    <meta name="description" content="מולטיבראון - הסוכן האישי שלכם לאיתור הלוקיישן המושלם. מאגר בלעדי של וילות יוקרה, צימרים רומנטיים ומתחמי אירועים בישראל. חוסכים לכם זמן עם שירות VIP.">
+    <meta name="keywords" content="וילות להשכרה, צימרים בישראל, מתחמי אירועים, לוקיישנים לחתונות, נופש משפחתי, סופ״ש רומנטי">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://multibrawn.co.il/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://multibrawn.co.il/">
+    <meta property="og:title" content="MULTIBRAWN - סוכן אישי לאיתור לוקיישנים">
+    <meta property="og:description" content="מאגר בלעדי של וילות יוקרה, צימרים רומנטיים ומתחמי אירועים.">
+    <meta property="og:image" content="https://res.cloudinary.com/dptyfvwyo/image/upload/v1762004983/HERO_zb7pwc.jpg">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png">
+    <link rel="apple-touch-icon" href="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png">
+    
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://res.cloudinary.com">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "MULTIBRAWN - מולטיבראון",
+      "description": "סוכן אישי לאיתור לוקיישנים - וילות, צימרים ומתחמי אירועים בישראל",
+      "url": "https://multibrawn.co.il",
+      "telephone": "+972-52-398-3394",
+      "email": "info@multibrawn.co.il",
+      "priceRange": "₪₪₪",
+      "areaServed": { "@type": "Country", "name": "Israel" }
+    }
+    </script>
+    
+    <style>
+        /* === Critical CSS - Loaded immediately === */
+        :root {
+            --primary-bg: linear-gradient(135deg, #00E0FF 0%, #2D7FFF 50%, #A06BFF 100%);
+            --secondary-bg-glass: rgba(255, 255, 255, 0.15);
+            --accent-primary: #FF5EA1;
+            --accent-secondary: #00E0FF;
+            --white: #FAFAFA;
+            --text-dark: #1a0b2e;
+            --text-muted: #444;
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Heebo', sans-serif;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { 
+            font-family: var(--font-body); 
+            background: var(--primary-bg);
+            background-attachment: fixed;
+            color: var(--text-dark);
+            line-height: 1.6; 
+            overflow-x: hidden; 
+        }
+        h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 700; }
+        
+        /* === Header === */
+        header { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            right: 0; 
+            z-index: 1000; 
+            background: rgba(255, 255, 255, 0.1); 
+            backdrop-filter: blur(20px); 
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2); 
+            transition: all 0.3s ease; 
+        }
+        header.scrolled { 
+            background: rgba(255, 255, 255, 0.2); 
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
+        }
+        nav { 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            padding: 1.5rem 3rem; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        .logo { 
+            display: flex; 
+            align-items: center; 
+            gap: 1rem; 
+            text-decoration: none; 
+        }
+        .logo img { width: 45px; height: 45px; }
+        .logo span { 
+            font-size: 1.5rem; 
+            font-weight: 700; 
+            color: var(--text-dark); 
+            font-family: var(--font-display); 
+        }
+        .nav-links { 
+            display: flex; 
+            gap: 2.5rem; 
+            align-items: center; 
+        }
+        .nav-links a { 
+            color: var(--text-dark); 
+            text-decoration: none; 
+            font-size: 0.95rem; 
+            transition: opacity 0.3s; 
+            font-weight: 500;
+        }
+        .nav-links a:hover { opacity: 0.6; }
+        .nav-cta { 
+            background: var(--accent-primary); 
+            color: var(--white) !important; 
+            padding: 0.7rem 1.8rem; 
+            border-radius: 6px;
+            box-shadow: 0 4px 20px rgba(255, 94, 161, 0.4);
+        }
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 94, 161, 0.6);
+        }
+        
+        /* === Hero Video Section === */
+        .hero-video {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100vw;
+            height: 56.25vw;
+            min-height: 100vh;
+            min-width: 177.77vh;
+            border: none;
+            pointer-events: none;
+        }
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                rgba(26, 11, 46, 0.3) 0%,
+                rgba(26, 11, 46, 0.5) 50%,
+                rgba(26, 11, 46, 0.8) 100%
+            );
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            z-index: 1;
+        }
+        .hero-content {
+            text-align: center;
+            max-width: 1200px;
+            animation: fadeInUp 1s ease;
+        }
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            line-height: 1.1;
+        }
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 2.5rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+        .hero-cta-group {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+        .hero-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1.2rem 2.5rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        .hero-btn-primary {
+            background: var(--accent-primary);
+            color: var(--white);
+        }
+        .hero-btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 94, 161, 0.5);
+        }
+        .hero-btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        .hero-btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: var(--white);
+        }
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            cursor: pointer;
+        }
+        .scroll-indicator i {
+            font-size: 2.5rem;
+            color: var(--white);
+            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-15px); }
+            60% { transform: translateX(-50%) translateY(-7px); }
+        }
+        
+        /* === Sections === */
+        section { padding: 6rem 3rem; }
+        .section-header { 
+            max-width: 800px; 
+            margin: 0 auto 4rem; 
+            text-align: center; 
+        }
+        .section-header h2 { 
+            font-size: clamp(2rem, 4vw, 3rem); 
+            font-weight: 700; 
+            margin-bottom: 1rem; 
+            color: var(--text-dark);
+        }
+        .section-header p { 
+            font-size: 1.15rem; 
+            color: var(--text-muted); 
+        }
+        
+        /* === Locations Grid === */
+        .locations { background: rgba(255, 255, 255, 0.1); }
+        .locations-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            gap: 2rem; 
+            max-width: 1400px; 
+            margin: 0 auto; 
+        }
+        .location-card-link {
+            text-decoration: none;
+            color: var(--text-dark);
+            display: block;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.4s, box-shadow 0.4s;
+            background: var(--secondary-bg-glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .location-card-link:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+        .location-card { 
+            position: relative; 
+            overflow: hidden; 
+            aspect-ratio: 4/5; 
+        }
+        .location-card img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            transition: transform 0.6s; 
+            filter: brightness(0.9); 
+        }
+        .location-card-link:hover .location-card img { 
+            transform: scale(1.08); 
+        }
+        .location-overlay { 
+            position: absolute; 
+            bottom: 0; 
+            left: 0; 
+            right: 0; 
+            padding: 2rem; 
+            background: linear-gradient(0deg, rgba(0,0,0,0.75), transparent); 
+        }
+        .location-card h3 { 
+            font-size: 1.5rem; 
+            font-weight: 600; 
+            margin-bottom: 0.5rem; 
+            color: var(--white); 
+        }
+        .location-card p { 
+            font-size: 0.95rem; 
+            opacity: 0.9; 
+            color: var(--white); 
+            margin: 0;
+        }
+        
+        /* === Features Section === */
+        .features { background: transparent; }
+        .features-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 3rem; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
+        .feature { 
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        .feature:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        .feature-icon { 
+            font-size: 3rem; 
+            margin-bottom: 1.5rem; 
+            color: var(--accent-primary);
+        }
+        .feature h3 { 
+            font-size: 1.3rem; 
+            font-weight: 600; 
+            margin-bottom: 1rem; 
+            color: var(--text-dark); 
+        }
+        .feature p { 
+            color: var(--text-muted);
+            margin: 0;
+        }
+        
+        /* === Process Section === */
+        .process { background: rgba(255, 255, 255, 0.1); }
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+        .step-number {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 1.5rem;
+            background: var(--accent-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--white);
+            box-shadow: 0 8px 20px rgba(255, 94, 161, 0.4);
+        }
+        .process-step h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+        .process-step p {
+            color: var(--text-muted);
+            margin: 0;
+        }
+        
+        /* === CTA Section === */
+        .cta-section { 
+            background: transparent; 
+            text-align: center; 
+        }
+        .cta-section h2 { 
+            font-size: clamp(2rem, 5vw, 3.5rem); 
+            font-weight: 700; 
+            margin-bottom: 1.5rem; 
+            color: var(--text-dark); 
+        }
+        .cta-section p { 
+            font-size: 1.2rem; 
+            color: var(--text-muted); 
+            max-width: 600px; 
+            margin: 0 auto 3rem; 
+        }
+        .cta-button { 
+            display: inline-block; 
+            background: var(--accent-primary); 
+            color: var(--white); 
+            padding: 1.1rem 3rem; 
+            border-radius: 6px; 
+            text-decoration: none; 
+            font-weight: 600; 
+            transition: all 0.3s; 
+            box-shadow: 0 4px 20px rgba(255, 94, 161, 0.4); 
+        }
+        .cta-button:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 10px 30px rgba(255, 94, 161, 0.6); 
+        }
+        
+        /* === Footer === */
+        footer { 
+            background: rgba(255, 255, 255, 0.1); 
+            backdrop-filter: blur(10px);
+            padding: 3rem 2rem; 
+            border-top: 1px solid rgba(255, 255, 255, 0.2); 
+            text-align: center; 
+        }
+        .footer-logo { 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 1rem; 
+            margin-bottom: 2rem; 
+            text-decoration: none; 
+        }
+        .footer-logo img { width: 40px; height: 40px; }
+        .footer-logo span { 
+            font-size: 1.3rem; 
+            font-weight: 600; 
+            color: var(--text-dark); 
+            font-family: var(--font-display); 
+        }
+        .footer-links { 
+            display: flex; 
+            justify-content: center; 
+            gap: 2rem; 
+            margin-bottom: 2rem; 
+            flex-wrap: wrap; 
+        }
+        .footer-links a { 
+            color: var(--text-muted); 
+            text-decoration: none; 
+            transition: color 0.3s; 
+        }
+        .footer-links a:hover { color: var(--text-dark); }
+        .footer-copy { 
+            color: var(--text-muted); 
+            font-size: 0.85rem; 
+        }
+        
+        /* === Floating Chatbot === */
+        .chatbot-launcher {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: var(--accent-primary);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(255, 94, 161, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        .chatbot-launcher:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 35px rgba(255, 94, 161, 0.6);
+        }
+        .chatbot-launcher i {
+            font-size: 1.8rem;
+            color: var(--white);
+        }
+        
+        /* === Responsive === */
+        @media (max-width: 768px) {
+            nav { padding: 1rem 1.5rem; }
+            .nav-links { display: none; }
+            section { padding: 4rem 1.5rem; }
+            .hero-title { font-size: 2.5rem; }
+            .hero-cta-group { flex-direction: column; }
+            .locations-grid, 
+            .features-grid,
+            .process-steps { 
+                grid-template-columns: 1fr; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-main">דלג לתוכן הראשי</a>
+    
+    <header id="header">
+        <nav>
+            <a href="/" class="logo">
+                <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="MULTIBRAWN לוגו" width="45" height="45">
+                <span>MULTIBRAWN</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">דף הבית</a>
+                <a href="about.html">אודות</a>
+                <a href="gallery.html">גלריה</a>
+                <a href="tips.html">טיפים</a>
+                <a href="contact.html" class="nav-cta">צור קשר</a>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <!-- Hero Video Section -->
+        <section class="hero-video">
+            <div class="video-wrapper">
+                <iframe 
+                    src="https://www.youtube.com/embed/mZb4GlpkkgU?autoplay=1&mute=1&loop=1&playlist=mZb4GlpkkgU&controls=0&showinfo=0&rel=0&modestbranding=1"
+                    allow="autoplay; encrypted-media"
+                    allowfullscreen
+                    title="MULTIBRAWN - וידאו פתיחה">
+                </iframe>
+            </div>
+            <div class="video-overlay">
+                <div class="hero-content">
+                    <h1 class="hero-title">הלוקיישן המושלם<br>מחכה לכם</h1>
+                    <p class="hero-subtitle">סוכנות בוטיק לאיתור וילות יוקרה, צימרים רומנטיים ומתחמי אירועים בלעדיים</p>
+                    <div class="hero-cta-group">
+                        <a href="contact.html" class="hero-btn hero-btn-primary">
+                            <span>בואו נמצא את המקום שלכם</span>
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                        <a href="#locations" class="hero-btn hero-btn-secondary">
+                            <span>צפו בנכסים</span>
+                            <i class="fas fa-images"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="scroll-indicator" onclick="document.querySelector('#locations').scrollIntoView({behavior: 'smooth'})">
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- Locations Section -->
+        <section class="locations" id="locations">
+            <div class="section-header">
+                <h2>הקטגוריות שלנו</h2>
+                <p>בחרו את סוג הנכס המתאים למה שאתם מחפשים</p>
+            </div>
+            <div class="locations-grid">
+                <a href="villas.html" class="location-card-link" aria-label="וילות פרטיות">
+                    <article class="location-card">
+                        <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/w_600,q_auto,f_auto/v1762004983/HERO_zb7pwc.jpg" 
+                             alt="וילה פרטית עם בריכה" 
+                             width="600" 
+                             height="750"
+                             loading="lazy">
+                        <div class="location-overlay">
+                            <h3>וילות פרטיות</h3>
+                            <p>יוקרה, פרטיות והרבה מקום</p>
+                        </div>
+                    </article>
+                </a>
+                <a href="zimmers.html" class="location-card-link" aria-label="צימרים רומנטיים">
+                    <article class="location-card">
+                        <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/w_600,q_auto,f_auto/v1760818996/Zimmer2_ge7g6h.jpg" 
+                             alt="צימר רומנטי עם ג'קוזי" 
+                             width="600" 
+                             height="750"
+                             loading="lazy">
+                        <div class="location-overlay">
+                            <h3>צימרים רומנטיים</h3>
+                            <p>בריחה לטבע עם כל הפינוקים</p>
+                        </div>
+                    </article>
+                </a>
+                <a href="hotels.html" class="location-card-link" aria-label="מלונות בוטיק">
+                    <article class="location-card">
+                        <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/w_600,q_auto,f_auto/v1760818995/Hotel1_ihkey7.jpg" 
+                             alt="מלון בוטיק יוקרתי" 
+                             width="600" 
+                             height="750"
+                             loading="lazy">
+                        <div class="location-overlay">
+                            <h3>מלונות בוטיק</h3>
+                            <p>מקומות עם אישיות ושירות אישי</p>
+                        </div>
+                    </article>
+                </a>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <div class="section-header">
+                <h2>השירות הייחודי שלנו</h2>
+                <p>חיפוש לוקיישן לא צריך להיות מסובך. תנו לנו לעשות את העבודה</p>
+            </div>
+            <div class="features-grid">
+                <article class="feature">
+                    <div class="feature-icon"><i class="fas fa-clock"></i></div>
+                    <h3>חוסכים זמן</h3>
+                    <p>תגידו לנו מה אתם מחפשים, ואנחנו נמצא את המקומות המתאימים. לא עוד שעות של גלילה</p>
+                </article>
+                <article class="feature">
+                    <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
+                    <h3>נבדקים אישית</h3>
+                    <p>כל מקום שאנחנו ממליצים עליו, אנחנו מכירים באופן אישי. אין הפתעות</p>
+                </article>
+                <article class="feature">
+                    <div class="feature-icon"><i class="fas fa-key"></i></div>
+                    <h3>מאגר ייחודי</h3>
+                    <p>יש לנו גישה למקומות שלא תמצאו בחיפוש רגיל. לוקיישנים בלעדיים</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section class="process">
+            <div class="section-header">
+                <h2>איך זה עובד?</h2>
+                <p>תהליך פשוט ומהיר למציאת הלוקיישן המושלם</p>
+            </div>
+            <div class="process-steps">
+                <article class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>ספרו לנו מה אתם מחפשים</h3>
+                    <p>תאריכים, תקציב, מספר אנשים - כל הפרטים החשובים</p>
+                </article>
+                <article class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>אנחנו מוצאים את האופציות</h3>
+                    <p>חיפוש במאגר הבלעדי שלנו ובדיקה אישית של כל מקום</p>
+                </article>
+                <article class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>אתם מקבלים רק את המתאים</h3>
+                    <p>בחרו, הזמינו ותהנו - אנחנו נדאג לכל השאר</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="cta-section">
+            <h2>מוכנים למצוא את המקום המושלם?</h2>
+            <p>ספרו לנו מה אתם מחפשים, ואנחנו נדאג לשאר</p>
+            <a href="contact.html" class="cta-button">בואו נדבר</a>
+        </section>
+    </main>
+
+    <footer>
+        <a href="/" class="footer-logo">
+            <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="MULTIBRAWN לוגו" width="40" height="40" loading="lazy">
+            <span>MULTIBRAWN</span>
+        </a>
+        <nav class="footer-links">
+            <a href="privacy.html">מדיניות פרטיות</a>
+            <a href="accessibility.html">הצהרת נגישות</a>
+            <a href="about.html">אודות</a>
+            <a href="contact.html">צור קשר</a>
+        </nav>
+        <p class="footer-copy">© 2025 MULTIBRAWN. כל הזכויות שמורות.</p>
+    </footer>
+
+    <!-- Chatbot Launcher -->
+    <button class="chatbot-launcher" aria-label="פתח צ'אט">
+        <i class="fas fa-comment-dots"></i>
+    </button>
+
+    <script>
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        }, { passive: true });
+    </script>
+</body>
+</html>
