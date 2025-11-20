@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>טיפים ומדריכים - MULTIBRAWN</title>
+    <meta name="description" content="טיפים מקצועיים לבחירת לוקיישן מושלם, הכנת אירועים ונופש. מדריכים בווידאו מערדית - מומחית הלוקיישנים שלנו.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-bg: linear-gradient(135deg, #00E0FF 0%, #2D7FFF 50%, #A06BFF 100%);
+            --secondary-bg-glass: rgba(255, 255, 255, 0.15);
+            --accent-primary: #FF5EA1;
+            --accent-secondary: #00E0FF;
+            --white: #FAFAFA;
+            --text-dark: #1a0b2e;
+            --text-muted: #444;
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Heebo', sans-serif;
+            --netflix-black: #141414;
+            --netflix-red: #E50914;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { 
+            font-family: var(--font-body); 
+            background: var(--primary-bg);
+            background-attachment: fixed;
+            color: var(--text-dark);
+            line-height: 1.6; 
+            overflow-x: hidden; 
+        }
+        h1, h2, h3 { font-family: var(--font-display); font-weight: 700; }
+        
+        /* === Header === */
+        header { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            right: 0; 
+            z-index: 1000; 
+            background: rgba(255, 255, 255, 0.1); 
+            backdrop-filter: blur(20px); 
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2); 
+            transition: all 0.3s ease; 
+        }
+        header.scrolled { 
+            background: rgba(255, 255, 255, 0.2); 
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
+        }
+        nav { 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            padding: 1.5rem 3rem; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        .logo { 
+            display: flex; 
+            align-items: center; 
+            gap: 1rem; 
+            text-decoration: none; 
+        }
+        .logo img { width: 45px; height: 45px; }
+        .logo span { 
+            font-size: 1.5rem; 
+            font-weight: 700; 
+            color: var(--text-dark); 
+            font-family: var(--font-display); 
+        }
+        .nav-links { 
+            display: flex; 
+            gap: 2.5rem; 
+            align-items: center; 
+        }
+        .nav-links a { 
+            color: var(--text-dark); 
+            text-decoration: none; 
+            font-size: 0.95rem; 
+            transition: opacity 0.3s; 
+            font-weight: 500;
+        }
+        .nav-links a:hover { opacity: 0.6; }
+        .nav-cta { 
+            background: var(--accent-primary); 
+            color: var(--white) !important; 
+            padding: 0.7rem 1.8rem; 
+            border-radius: 6px;
+            box-shadow: 0 4px 20px rgba(255, 94, 161, 0.4);
+        }
+        
+        /* === Hero Section === */
+        .tips-hero {
+            padding: 120px 3rem 6rem;
+            text-align: center;
+        }
+        .tips-hero h1 {
+            font-size: clamp(3rem, 6vw, 5rem);
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+        .tips-hero p {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        .tips-hero .host-intro {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .host-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid var(--accent-primary);
+            object-fit: cover;
+        }
+        .host-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+        .host-info p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+        
+        /* === Filter Tabs === */
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            padding: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .filter-tab {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-dark);
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+        .filter-tab:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        .filter-tab.active {
+            background: var(--accent-primary);
+            color: var(--white);
+            border-color: var(--accent-primary);
+            box-shadow: 0 5px 20px rgba(255, 94, 161, 0.3);
+        }
+        
+        /* === Netflix-Style Video Grid === */
+        .videos-section {
+            padding: 2rem 3rem 6rem;
+        }
+        .section-title {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            margin-bottom: 2rem;
+            padding-right: 2rem;
+            color: var(--text-dark);
+        }
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        /* === Video Card (Netflix Style) === */
+        .video-card {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: rgba(20, 20, 20, 0.3);
+            aspect-ratio: 16/9;
+        }
+        .video-card.hidden {
+            display: none;
+        }
+        .video-card:hover {
+            transform: scale(1.05);
+            z-index: 10;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+        .video-thumbnail {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s ease;
+        }
+        .video-card:hover .video-thumbnail {
+            opacity: 0.7;
+        }
+        .video-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .video-card:hover .video-overlay {
+            opacity: 1;
+        }
+        .video-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+        .video-duration {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .video-play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 94, 161, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        .video-card:hover .video-play-btn {
+            opacity: 1;
+        }
+        .video-play-btn i {
+            font-size: 1.8rem;
+            color: var(--white);
+            margin-right: -3px;
+        }
+        .video-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--accent-primary);
+            color: var(--white);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        /* === Video Modal (Lightbox) === */
+        .video-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .video-modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .video-modal-content {
+            position: relative;
+            width: 90%;
+            max-width: 1200px;
+            aspect-ratio: 16/9;
+        }
+        .video-modal iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 8px;
+        }
+        .video-modal-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .video-modal-close:hover {
+            transform: scale(1.2);
+        }
+        
+        /* === Footer === */
+        footer { 
+            background: rgba(255, 255, 255, 0.1); 
+            backdrop-filter: blur(10px);
+            padding: 3rem 2rem; 
+            border-top: 1px solid rgba(255, 255, 255, 0.2); 
+            text-align: center; 
+        }
+        .footer-logo { 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 1rem; 
+            margin-bottom: 2rem; 
+            text-decoration: none; 
+        }
+        .footer-logo img { width: 40px; height: 40px; }
+        .footer-logo span { 
+            font-size: 1.3rem; 
+            font-weight: 600; 
+            color: var(--text-dark); 
+        }
+        .footer-links { 
+            display: flex; 
+            justify-content: center; 
+            gap: 2rem; 
+            margin-bottom: 2rem; 
+            flex-wrap: wrap; 
+        }
+        .footer-links a { 
+            color: var(--text-muted); 
+            text-decoration: none; 
+        }
+        .footer-copy { 
+            color: var(--text-muted); 
+            font-size: 0.85rem; 
+        }
+        
+        /* === Responsive === */
+        @media (max-width: 768px) {
+            nav { padding: 1rem 1.5rem; }
+            .nav-links { display: none; }
+            .tips-hero { padding: 100px 1.5rem 3rem; }
+            .tips-hero h1 { font-size: 2.5rem; }
+            .host-intro { flex-direction: column; text-align: center; }
+            .filter-tabs { padding: 2rem 1.5rem; }
+            .videos-section { padding: 1rem 1.5rem 4rem; }
+            .videos-grid { 
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .section-title {
+                padding-right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <nav>
+            <a href="/" class="logo">
+                <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="MULTIBRAWN לוגו">
+                <span>MULTIBRAWN</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">דף הבית</a>
+                <a href="about.html">אודות</a>
+                <a href="gallery.html">גלריה</a>
+                <a href="tips.html">טיפים</a>
+                <a href="contact.html" class="nav-cta">צור קשר</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="tips-hero">
+            <h1>הטיפים המקצועיים שלנו</h1>
+            <p>מדריכים, טיפים וכל מה שצריך לדעת כדי לבחור את הלוקיישן המושלם לאירוע או לנופש שלכם</p>
+            
+            <div class="host-intro">
+                <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="ערדית - מומחית הלוקיישנים" class="host-avatar">
+                <div class="host-info">
+                    <h3>ערדית מלכה</h3>
+                    <p>מומחית לוקיישנים עם +10 שנות ניסיון<br>מנהלת MULTIBRAWN</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filter Tabs -->
+        <div class="filter-tabs">
+            <button class="filter-tab active" data-category="all">הכל</button>
+            <button class="filter-tab" data-category="wedding">חתונות</button>
+            <button class="filter-tab" data-category="vacation">נופש</button>
+            <button class="filter-tab" data-category="events">אירועים</button>
+            <button class="filter-tab" data-category="tips">טיפים כלליים</button>
+        </div>
+
+        <!-- Videos Section -->
+        <section class="videos-section">
+            <h2 class="section-title">סרטוני מדריכים</h2>
+            
+            <div class="videos-grid" id="videosGrid">
+                <!-- Video Card 1 -->
+                <div class="video-card" data-category="wedding" data-video-id="dQw4w9WgXcQ">
+                    <span class="video-badge">חדש</span>
+                    <img src="https://via.placeholder.com/640x360/FF5EA1/FFFFFF?text=איך+לבחור+אולם+חתונות" alt="איך לבחור אולם חתונות" class="video-thumbnail">
+                    <div class="video-play-btn">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="video-overlay">
+                        <h3 class="video-title">איך לבחור אולם חתונות מושלם?</h3>
+                        <div class="video-duration">
+                            <i class="far fa-clock"></i>
+                            <span>8:45</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Card 2 -->
+                <div class="video-card" data-category="vacation" data-video-id="dQw4w9WgXcQ">
+                    <img src="https://via.placeholder.com/640x360/00E0FF/FFFFFF?text=5+טיפים+לבחירת+וילה" alt="5 טיפים לבחירת וילה" class="video-thumbnail">
+                    <div class="video-play-btn">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="video-overlay">
+                        <h3 class="video-title">5 טיפים חיוניים לבחירת וילה להשכרה</h3>
+                        <div class="video-duration">
+                            <i class="far fa-clock"></i>
+                            <span>12:20</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Card 3 -->
+                <div class="video-card" data-category="tips" data-video-id="dQw4w9WgXcQ">
+                    <span class="video-badge">פופולרי</span>
+                    <img src="https://via.placeholder.com/640x360/A06BFF/FFFFFF?text=מה+לבדוק+לפני+ההזמנה" alt="מה לבדוק לפני ההזמנה" class="video-thumbnail">
+                    <div class="video-play-btn">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="video-overlay">
+                        <h3 class="video-title">מה חייבים לבדוק לפני שמזמינים לוקיישן?</h3>
+                        <div class="video-duration">
+                            <i class="far fa-clock"></i>
+                            <span>6:30</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Card 4 -->
+                <div class="video-card" data-category="wedding" data-video-id="dQw4w9WgXcQ">
+                    <img src="https://via.placeholder.com/640x360/FF5EA1/FFFFFF?text=תכנון+שבת+חתן" alt="תכנון שבת חתן" class="video-thumbnail">
+                    <div class="video-play-btn">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="video-overlay">
+                        <h3 class="video-title">תכנון שבת חתן מושלמת - המדריך המלא</h3>
+                        <div class="video-duration">
+                            <i class="far fa-clock"></i>
+                            <span>15:10</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Card 5 -->
+                <div class="video-card" data-category="events" data-video-id="dQw4w9WgXcQ">
+                    <img src="https://via.placeholder.com/640x360/2D7FFF/FFFFFF?text=אירועים+עסקיים" alt="אירועים עסקיים" class="video-thumbnail">
+                    <div class="video-play-btn">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="video-overlay">
+                        <h3 class="video-title">בחירת מקום לאירועים עסקיים וימי גיבוש</h3>
+                        <div class="video-duration">
+                            <i class="far fa-clock"></i>
+                            <span>9:45</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Card 6 -->
+                <div class="video-card" data-category="vacation" data-video-id="dQw4w9WgXcQ">
+                    <img src="https://via.placeholder.com/640x360/00E0FF/FFFFFF?text=צימרים+רומנטיים" alt="צימרים רומנטיים" class="video-thumbnail">
+                    <div class="video-play-btn">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="video-overlay">
+                        <h3 class="video-title">המדריך לבחירת צימר רומנטי מושלם</h3>
+                        <div class="video-duration">
+                            <i class="far fa-clock"></i>
+                            <span>7:15</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Card 7 -->
+                <div class="video-card" data-category="tips" data-video-id="dQw4w9WgXcQ">
+                    <span class="video-badge">חדש</span>
+                    <img src="https://via.placeholder.com/640x360/A06BFF/FFFFFF?text=טעויות+נפוצות" alt="טעויות נפוצות" class="video-thumbnail">
+                    <div class="video-play-btn">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="video-overlay">
+                        <h3 class="video-title">7 טעויות שכולם עושים בבחירת לוקיישן</h3>
+                        <div class="video-duration">
+                            <i class="far fa-clock"></i>
+                            <span>10:30</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Card 8 -->
+                <div class="video-card" data-category="wedding" data-video-id="dQw4w9WgXcQ">
+                    <img src="https://via.placeholder.com/640x360/FF5EA1/FFFFFF?text=חתונה+בחוץ" alt="חתונה בחוץ" class="video-thumbnail">
+                    <div class="video-play-btn">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="video-overlay">
+                        <h3 class="video-title">חתונה בחוץ - מה חשוב לדעת?</h3>
+                        <div class="video-duration">
+                            <i class="far fa-clock"></i>
+                            <span>11:20</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Card 9 -->
+                <div class="video-card" data-category="vacation" data-video-id="dQw4w9WgXcQ">
+                    <img src="https://via.placeholder.com/640x360/00E0FF/FFFFFF?text=נופש+משפחתי" alt="נופש משפחתי" class="video-thumbnail">
+                    <div class="video-play-btn">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="video-overlay">
+                        <h3 class="video-title">איך לבחור מקום לנופש משפחתי מוצלח</h3>
+                        <div class="video-duration">
+                            <i class="far fa-clock"></i>
+                            <span>8:00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <a href="/" class="footer-logo">
+            <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="MULTIBRAWN לוגו">
+            <span>MULTIBRAWN</span>
+        </a>
+        <nav class="footer-links">
+            <a href="privacy.html">מדיניות פרטיות</a>
+            <a href="accessibility.html">הצהרת נגישות</a>
+            <a href="about.html">אודות</a>
+            <a href="contact.html">צור קשר</a>
+        </nav>
+        <p class="footer-copy">© 2025 MULTIBRAWN. כל הזכויות שמורות.</p>
+    </footer>
+
+    <!-- Video Modal -->
+    <div class="video-modal" id="videoModal">
+        <div class="video-modal-content">
+            <button class="video-modal-close" id="closeModal">&times;</button>
+            <iframe id="videoIframe" src="" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <script>
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.pageYOffset > 100);
+        }, { passive: true });
+
+        // Filter tabs
+        const filterTabs = document.querySelectorAll('.filter-tab');
+        const videoCards = document.querySelectorAll('.video-card');
+
+        filterTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Update active tab
+                filterTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                // Filter videos
+                const category = tab.dataset.category;
+                videoCards.forEach(card => {
+                    if (category === 'all' || card.dataset.category === category) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // Video modal
+        const videoModal = document.getElementById('videoModal');
+        const videoIframe = document.getElementById('videoIframe');
+        const closeModal = document.getElementById('closeModal');
+
+        videoCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const videoId = card.dataset.videoId;
+                videoIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+                videoModal.classList.add('active');
+            });
+        });
+
+        closeModal.addEventListener('click', () => {
+            videoModal.classList.remove('active');
+            videoIframe.src = '';
+        });
+
+        videoModal.addEventListener('click', (e) => {
+            if (e.target === videoModal) {
+                videoModal.classList.remove('active');
+                videoIframe.src = '';
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && videoModal.classList.contains('active')) {
+                videoModal.classList.remove('active');
+                videoIframe.src = '';
+            }
+        });
+    </script>
+</body>
+</html>
