@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>טיפים ומדריכים - MULTIBRAWN</title>
-    <meta name="description" content="טיפים מקצועיים לבחירת לוקיישן מושלם, הכנת אירועים ונופש. מדריכים בווידאו מערדית - מומחית הלוקיישנים שלנו.">
-    
-    <!-- Fonts -->
+    <title>הסוכן החכם | Multibrawn</title>
+    <meta name="description" content="בוט חכם שמבין מה אתם באמת מחפשים ומתאים את עצמו אליכם">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
@@ -18,378 +17,473 @@
             --secondary-bg-glass: rgba(255, 255, 255, 0.15);
             --accent-primary: #FF5EA1;
             --accent-secondary: #00E0FF;
+            --accent-success: #10B981;
             --white: #FAFAFA;
             --text-dark: #1a0b2e;
             --text-muted: #444;
             --font-display: 'Playfair Display', serif;
             --font-body: 'Heebo', sans-serif;
-            --netflix-black: #141414;
-            --netflix-red: #E50914;
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body { 
-            font-family: var(--font-body); 
+        body {
+            font-family: var(--font-body);
             background: var(--primary-bg);
             background-attachment: fixed;
             color: var(--text-dark);
-            line-height: 1.6; 
-            overflow-x: hidden; 
-        }
-        h1, h2, h3 { font-family: var(--font-display); font-weight: 700; }
-        
-        /* === Header === */
-        header { 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            right: 0; 
-            z-index: 1000; 
-            background: rgba(255, 255, 255, 0.1); 
-            backdrop-filter: blur(20px); 
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2); 
-            transition: all 0.3s ease; 
-        }
-        header.scrolled { 
-            background: rgba(255, 255, 255, 0.2); 
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
-        }
-        nav { 
-            max-width: 1400px; 
-            margin: 0 auto; 
-            padding: 1.5rem 3rem; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-        }
-        .logo { 
-            display: flex; 
-            align-items: center; 
-            gap: 1rem; 
-            text-decoration: none; 
-        }
-        .logo img { width: 45px; height: 45px; }
-        .logo span { 
-            font-size: 1.5rem; 
-            font-weight: 700; 
-            color: var(--text-dark); 
-            font-family: var(--font-display); 
-        }
-        .nav-links { 
-            display: flex; 
-            gap: 2.5rem; 
-            align-items: center; 
-        }
-        .nav-links a { 
-            color: var(--text-dark); 
-            text-decoration: none; 
-            font-size: 0.95rem; 
-            transition: opacity 0.3s; 
-            font-weight: 500;
-        }
-        .nav-links a:hover { opacity: 0.6; }
-        .nav-cta { 
-            background: var(--accent-primary); 
-            color: var(--white) !important; 
-            padding: 0.7rem 1.8rem; 
-            border-radius: 6px;
-            box-shadow: 0 4px 20px rgba(255, 94, 161, 0.4);
-        }
-        
-        /* === Hero Section === */
-        .tips-hero {
-            padding: 120px 3rem 6rem;
-            text-align: center;
-        }
-        .tips-hero h1 {
-            font-size: clamp(3rem, 6vw, 5rem);
-            margin-bottom: 1rem;
-            color: var(--text-dark);
-        }
-        .tips-hero p {
-            font-size: clamp(1.1rem, 2vw, 1.4rem);
-            color: var(--text-muted);
-            max-width: 700px;
-            margin: 0 auto 2rem;
-        }
-        .tips-hero .host-intro {
+            line-height: 1.6;
+            overflow: hidden;
+            height: 100vh;
             display: flex;
+            flex-direction: column;
+        }
+
+        h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 700; }
+
+        /* Header */
+        header {
+            position: relative; z-index: 1000;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        nav {
+            max-width: 1400px; margin: 0 auto; padding: 1.5rem 3rem;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo { display: flex; align-items: center; gap: 1rem; text-decoration: none; }
+        .logo img { width: 45px; height: 45px; }
+        .logo span { font-size: 1.5rem; font-weight: 700; color: var(--text-dark); }
+        .nav-links { display: flex; gap: 2.5rem; align-items: center; }
+        .nav-links a { color: var(--text-dark); text-decoration: none; font-size: 0.95rem; transition: opacity 0.3s; font-weight: 500; }
+        .nav-links a:hover { opacity: 0.6; }
+        .nav-cta {
+            background: var(--accent-primary);
+            color: var(--white) !important; padding: 0.7rem 1.8rem; border-radius: 6px;
+            box-shadow: 0 4px 15px rgba(255, 94, 161, 0.3);
+            transition: all 0.3s ease;
+        }
+        .nav-cta:hover { transform: translateY(-2px); }
+
+        /* Main Container */
+        .vibe-bot-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 1.5rem;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
             padding: 2rem;
-            border-radius: 15px;
-            max-width: 600px;
-            margin: 0 auto;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        .host-avatar {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            border: 3px solid var(--accent-primary);
-            object-fit: cover;
-        }
-        .host-info h3 {
-            font-size: 1.4rem;
-            margin-bottom: 0.5rem;
-            color: var(--text-dark);
-        }
-        .host-info p {
-            font-size: 1rem;
-            color: var(--text-muted);
-            margin: 0;
-        }
-        
-        /* === Filter Tabs === */
-        .filter-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-            padding: 3rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .filter-tab {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: var(--text-dark);
-            padding: 0.8rem 1.8rem;
-            border-radius: 30px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-        }
-        .filter-tab:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
-        }
-        .filter-tab.active {
-            background: var(--accent-primary);
-            color: var(--white);
-            border-color: var(--accent-primary);
-            box-shadow: 0 5px 20px rgba(255, 94, 161, 0.3);
-        }
-        
-        /* === Netflix-Style Video Grid === */
-        .videos-section {
-            padding: 2rem 3rem 6rem;
-        }
-        .section-title {
-            font-size: clamp(1.8rem, 3vw, 2.5rem);
-            margin-bottom: 2rem;
-            padding-right: 2rem;
-            color: var(--text-dark);
-        }
-        .videos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        /* === Video Card (Netflix Style) === */
-        .video-card {
-            position: relative;
-            border-radius: 8px;
             overflow: hidden;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            background: rgba(20, 20, 20, 0.3);
-            aspect-ratio: 16/9;
         }
-        .video-card.hidden {
-            display: none;
+
+        .bot-header {
+            margin-bottom: 2rem;
+            text-align: center;
         }
-        .video-card:hover {
-            transform: scale(1.05);
-            z-index: 10;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        .bot-header h1 {
+            font-size: clamp(2rem, 5vw, 2.5rem);
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
         }
-        .video-thumbnail {
+        .bot-header p {
+            font-size: clamp(1rem, 2vw, 1.1rem);
+            color: var(--text-muted);
+        }
+
+        /* AI Thinking Bubble */
+        .ai-bubble {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            padding: 1rem 1.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            font-weight: 500;
+            max-width: 400px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+        .ai-bubble.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .ai-bubble::before {
+            content: '🤖';
+            position: absolute;
+            right: -15px;
+            top: -15px;
+            font-size: 1.5rem;
+        }
+
+        /* Card Stack */
+        .card-stack {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            height: 500px;
+            perspective: 1000px;
+        }
+        
+        .vibe-card {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transform: translateY(20px) scale(0.9);
+            opacity: 0;
+            z-index: 1;
+        }
+        
+        .vibe-card.go-no {
+            transform: translateX(-150%) rotate(-30deg) !important;
+            opacity: 0 !important;
+        }
+        .vibe-card.go-yes {
+            transform: translateX(150%) rotate(30deg) !important;
+            opacity: 0 !important;
+        }
+
+        .vibe-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: opacity 0.3s ease;
+            filter: brightness(0.75);
         }
-        .video-card:hover .video-thumbnail {
-            opacity: 0.7;
-        }
-        .video-overlay {
+
+        .card-text {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 1.5rem;
-            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            padding: 2rem;
+            background: linear-gradient(to top, rgba(26, 11, 46, 0.95), transparent);
+            text-align: center;
         }
-        .video-card:hover .video-overlay {
-            opacity: 1;
-        }
-        .video-title {
-            font-size: 1.1rem;
-            font-weight: 700;
+        .card-text h3 {
+            font-size: 2rem;
+            font-weight: 800;
             color: var(--white);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.7);
             margin-bottom: 0.5rem;
         }
-        .video-duration {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+        .card-text p {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin: 0;
         }
-        .video-play-btn {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 70px;
-            height: 70px;
-            background: rgba(255, 94, 161, 0.9);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-        .video-card:hover .video-play-btn {
-            opacity: 1;
-        }
-        .video-play-btn i {
-            font-size: 1.8rem;
-            color: var(--white);
-            margin-right: -3px;
-        }
-        .video-badge {
+
+        /* Smart Badge */
+        .smart-badge {
             position: absolute;
             top: 1rem;
             left: 1rem;
-            background: var(--accent-primary);
+            background: var(--accent-success);
             color: var(--white);
-            padding: 0.4rem 1rem;
+            padding: 0.5rem 1rem;
             border-radius: 20px;
             font-size: 0.85rem;
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            z-index: 2;
+            animation: pulse 2s infinite;
         }
-        
-        /* === Video Modal (Lightbox) === */
-        .video-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            z-index: 2000;
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Controls */
+        .vibe-controls {
             display: flex;
             justify-content: center;
-            align-items: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
+            gap: 2rem;
+            margin-top: 2rem;
         }
-        .video-modal.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-        .video-modal-content {
-            position: relative;
-            width: 90%;
-            max-width: 1200px;
-            aspect-ratio: 16/9;
-        }
-        .video-modal iframe {
-            width: 100%;
-            height: 100%;
+        .control-btn {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
             border: none;
-            border-radius: 8px;
-        }
-        .video-modal-close {
-            position: absolute;
-            top: -50px;
-            right: 0;
-            background: none;
-            border: none;
-            color: var(--white);
-            font-size: 2.5rem;
             cursor: pointer;
-            transition: transform 0.2s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            font-size: 2rem;
         }
-        .video-modal-close:hover {
-            transform: scale(1.2);
+        .control-btn:hover {
+            transform: scale(1.1) translateY(-3px);
         }
-        
-        /* === Footer === */
-        footer { 
-            background: rgba(255, 255, 255, 0.1); 
+        #no-btn {
+            background: var(--white);
+            color: #e11d48;
+        }
+        #yes-btn {
+            background: var(--accent-primary);
+            color: var(--white);
+        }
+
+        /* Progress */
+        .progress-container {
+            width: 100%;
+            max-width: 400px;
+            margin-top: 2rem;
+        }
+        .progress-bar-container {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background: var(--accent-primary);
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+        .progress-text {
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        /* Summary Screen */
+        .summary-screen {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .summary-screen h2 {
+            font-size: 2.5rem;
+            color: var(--accent-primary);
+            margin-bottom: 1rem;
+        }
+        .match-score {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--accent-success);
+            margin-bottom: 1rem;
+        }
+        .summary-screen p {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            max-width: 500px;
+            margin-bottom: 2rem;
+        }
+        .summary-list {
+            list-style: none;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+        }
+        .summary-list li {
+            margin-bottom: 0.8rem;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
             backdrop-filter: blur(10px);
-            padding: 3rem 2rem; 
-            border-top: 1px solid rgba(255, 255, 255, 0.2); 
-            text-align: center; 
+            text-align: right;
         }
-        .footer-logo { 
-            display: inline-flex; 
-            align-items: center; 
-            gap: 1rem; 
-            margin-bottom: 2rem; 
-            text-decoration: none; 
-        }
-        .footer-logo img { width: 40px; height: 40px; }
-        .footer-logo span { 
-            font-size: 1.3rem; 
-            font-weight: 600; 
-            color: var(--text-dark); 
-        }
-        .footer-links { 
-            display: flex; 
-            justify-content: center; 
-            gap: 2rem; 
-            margin-bottom: 2rem; 
-            flex-wrap: wrap; 
-        }
-        .footer-links a { 
-            color: var(--text-muted); 
-            text-decoration: none; 
-        }
-        .footer-copy { 
-            color: var(--text-muted); 
-            font-size: 0.85rem; 
+        .summary-list i {
+            color: var(--accent-primary);
+            margin-left: 0.5rem;
         }
         
-        /* === Responsive === */
+        /* Contact Form Styles */
+        .contact-form {
+            width: 100%;
+            max-width: 500px;
+            margin-top: 2rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: right;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            color: var(--text-dark);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            background: rgba(255, 255, 255, 0.3);
+        }
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--text-muted);
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        
+        .whatsapp-cta {
+            background: #25D366;
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .whatsapp-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.6);
+        }
+
+        /* Details Form Screen */
+        .details-screen {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+            max-width: 500px;
+            width: 100%;
+        }
+        .details-screen h2 {
+            font-size: 2.5rem;
+            color: var(--accent-primary);
+            margin-bottom: 1rem;
+        }
+        .details-screen > p {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+        }
+        .details-form {
+            width: 100%;
+            text-align: right;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            text-align: right;
+        }
+        .form-group label i {
+            margin-left: 0.5rem;
+            color: var(--accent-primary);
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            color: var(--text-dark);
+            font-size: 1rem;
+            font-family: var(--font-body);
+            transition: all 0.3s ease;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            background: rgba(255, 255, 255, 0.3);
+        }
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--text-muted);
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--accent-primary);
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 94, 161, 0.4);
+            margin-top: 1rem;
+        }
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 94, 161, 0.6);
+        }
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
         @media (max-width: 768px) {
             nav { padding: 1rem 1.5rem; }
             .nav-links { display: none; }
-            .tips-hero { padding: 100px 1.5rem 3rem; }
-            .tips-hero h1 { font-size: 2.5rem; }
-            .host-intro { flex-direction: column; text-align: center; }
-            .filter-tabs { padding: 2rem 1.5rem; }
-            .videos-section { padding: 1rem 1.5rem 4rem; }
-            .videos-grid { 
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-            .section-title {
-                padding-right: 0;
-            }
+            .card-stack { height: 450px; max-width: 350px; }
+            .vibe-controls { gap: 1.5rem; }
+            .control-btn { width: 65px; height: 65px; font-size: 1.5rem; }
         }
     </style>
 </head>
 <body>
-    <header id="header">
+    <header>
         <nav>
-            <a href="/" class="logo">
-                <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="MULTIBRAWN לוגו">
+            <a href="index.html" class="logo">
+                <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="MULTIBRAWN">
                 <span>MULTIBRAWN</span>
             </a>
             <div class="nav-links">
@@ -402,232 +496,468 @@
         </nav>
     </header>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="tips-hero">
-            <h1>הטיפים המקצועיים שלנו</h1>
-            <p>מדריכים, טיפים וכל מה שצריך לדעת כדי לבחור את הלוקיישן המושלם לאירוע או לנופש שלכם</p>
-            
-            <div class="host-intro">
-                <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="ערדית - מומחית הלוקיישנים" class="host-avatar">
-                <div class="host-info">
-                    <h3>ערדית מלכה</h3>
-                    <p>מומחית לוקיישנים עם +10 שנות ניסיון<br>מנהלת MULTIBRAWN</p>
-                </div>
+    <main class="vibe-bot-container">
+        <div id="game-container">
+            <div class="bot-header">
+                <h1>הסוכן החכם שלך 🧠</h1>
+                <p>בוט שמבין אתכם ומתאים את עצמו לפי התשובות</p>
             </div>
-        </section>
 
-        <!-- Filter Tabs -->
-        <div class="filter-tabs">
-            <button class="filter-tab active" data-category="all">הכל</button>
-            <button class="filter-tab" data-category="wedding">חתונות</button>
-            <button class="filter-tab" data-category="vacation">נופש</button>
-            <button class="filter-tab" data-category="events">אירועים</button>
-            <button class="filter-tab" data-category="tips">טיפים כלליים</button>
+            <!-- AI Thinking Bubble -->
+            <div class="ai-bubble" id="ai-bubble"></div>
+
+            <div class="card-stack" id="card-stack"></div>
+
+            <div class="vibe-controls">
+                <button class="control-btn" id="no-btn" aria-label="לא"><i class="fas fa-times"></i></button>
+                <button class="control-btn" id="yes-btn" aria-label="כן"><i class="fas fa-heart"></i></button>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+                <div class="progress-text" id="progress-text">שאלה 1</div>
+            </div>
         </div>
 
-        <!-- Videos Section -->
-        <section class="videos-section">
-            <h2 class="section-title">סרטוני מדריכים</h2>
+        <div class="summary-screen" id="summary-screen">
+            <h2>🎯 מצאנו את ההתאמה!</h2>
+            <div class="match-score" id="match-score">95%</div>
+            <p>על סמך התשובות שלכם, הצלחנו לסנן בדיוק את מה שאתם מחפשים</p>
+            <ul class="summary-list" id="summary-list"></ul>
             
-            <div class="videos-grid" id="videosGrid">
-                <!-- Video Card 1 - סרטון ערדית 1 -->
-                <div class="video-card" data-category="tips" data-video-url="https://res.cloudinary.com/dptyfvwyo/video/upload/v1763684105/Video4_qlc7y4.mp4">
-                    <span class="video-badge">חדש</span>
-                    <video class="video-thumbnail" muted loop>
-                        <source src="https://res.cloudinary.com/dptyfvwyo/video/upload/v1763684105/Video4_qlc7y4.mp4" type="video/mp4">
-                    </video>
-                    <div class="video-play-btn">
-                        <i class="fas fa-play"></i>
+            <!-- Contact Form -->
+            <div class="contact-form" id="contact-form">
+                <h3 style="margin-bottom: 1.5rem; color: var(--text-dark);">עוד רגע ושולחים...</h3>
+                <p style="margin-bottom: 2rem; color: var(--text-muted);">רק פרטים קטנים ואנחנו מעבירים את ההצעות המושלמות אליכם</p>
+                
+                <form id="user-details-form" style="max-width: 500px; width: 100%;">
+                    <div class="form-group">
+                        <label for="user-name">שם מלא *</label>
+                        <input type="text" id="user-name" name="name" required placeholder="איך לקרוא לכם?">
                     </div>
-                    <div class="video-overlay">
-                        <h3 class="video-title">טיפים מערדית - סרטון 1</h3>
-                        <div class="video-duration">
-                            <i class="far fa-clock"></i>
-                            <span>צפו עכשיו</span>
-                        </div>
+                    
+                    <div class="form-group">
+                        <label for="user-phone">טלפון *</label>
+                        <input type="tel" id="user-phone" name="phone" required placeholder="050-1234567">
                     </div>
-                </div>
-
-                <!-- Video Card 2 - סרטון ערדית 2 -->
-                <div class="video-card" data-category="tips" data-video-url="https://res.cloudinary.com/dptyfvwyo/video/upload/v1763684101/Video3_omgivy.mp4">
-                    <span class="video-badge">פופולרי</span>
-                    <video class="video-thumbnail" muted loop>
-                        <source src="https://res.cloudinary.com/dptyfvwyo/video/upload/v1763684101/Video3_omgivy.mp4" type="video/mp4">
-                    </video>
-                    <div class="video-play-btn">
-                        <i class="fas fa-play"></i>
+                    
+                    <div class="form-group">
+                        <label for="user-dates">תאריכים מועדפים *</label>
+                        <input type="text" id="user-dates" name="dates" required placeholder='לדוגמה: "סוף שבוע הקרוב" או "15-17.12"'>
                     </div>
-                    <div class="video-overlay">
-                        <h3 class="video-title">טיפים מערדית - סרטון 2</h3>
-                        <div class="video-duration">
-                            <i class="far fa-clock"></i>
-                            <span>צפו עכשיו</span>
-                        </div>
+                    
+                    <div class="form-group">
+                        <label for="user-notes">הערות נוספות (אופציונלי)</label>
+                        <textarea id="user-notes" name="notes" rows="3" placeholder="משהו חשוב שכדאי שנדע?"></textarea>
                     </div>
-                </div>
-
-                <!-- Video Card 3 - סרטון ערדית 3 -->
-                <div class="video-card" data-category="vacation" data-video-url="https://res.cloudinary.com/dptyfvwyo/video/upload/v1763684097/Video1_hs8e9d.mp4">
-                    <video class="video-thumbnail" muted loop>
-                        <source src="https://res.cloudinary.com/dptyfvwyo/video/upload/v1763684097/Video1_hs8e9d.mp4" type="video/mp4">
-                    </video>
-                    <div class="video-play-btn">
-                        <i class="fas fa-play"></i>
-                    </div>
-                    <div class="video-overlay">
-                        <h3 class="video-title">טיפים לבחירת נופש מושלם</h3>
-                        <div class="video-duration">
-                            <i class="far fa-clock"></i>
-                            <span>צפו עכשיו</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Video Card 4 - סרטון ערדית 4 -->
-                <div class="video-card" data-category="wedding" data-video-url="https://res.cloudinary.com/dptyfvwyo/video/upload/v1763328612/V2_cj6div.mp4">
-                    <video class="video-thumbnail" muted loop>
-                        <source src="https://res.cloudinary.com/dptyfvwyo/video/upload/v1763328612/V2_cj6div.mp4" type="video/mp4">
-                    </video>
-                    <div class="video-play-btn">
-                        <i class="fas fa-play"></i>
-                    </div>
-                    <div class="video-overlay">
-                        <h3 class="video-title">תכנון אירועים עם ערדית</h3>
-                        <div class="video-duration">
-                            <i class="far fa-clock"></i>
-                            <span>צפו עכשיו</span>
-                        </div>
-                    </div>
-                </div>
+                    
+                    <button type="submit" class="whatsapp-cta" style="width: 100%; justify-content: center;">
+                        <i class="fab fa-whatsapp"></i>
+                        שלחו לי את ההצעות המושלמות
+                    </button>
+                </form>
             </div>
-        </section>
+        </div>
+
+        <!-- Details Form Screen (NEW!) -->
+        <div class="details-screen" id="details-screen">
+            <h2>🎉 כמעט סיימנו!</h2>
+            <p>רק עוד כמה פרטים כדי שנוכל לשלוח לכם הצעות מדויקות</p>
+            
+            <form class="details-form" id="details-form">
+                <div class="form-group">
+                    <label for="user-name">
+                        <i class="fas fa-user"></i>
+                        שם מלא
+                    </label>
+                    <input 
+                        type="text" 
+                        id="user-name" 
+                        name="name" 
+                        placeholder="איך קוראים לכם?"
+                        required
+                        autocomplete="name"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="user-phone">
+                        <i class="fas fa-phone"></i>
+                        טלפון
+                    </label>
+                    <input 
+                        type="tel" 
+                        id="user-phone" 
+                        name="phone" 
+                        placeholder="050-1234567"
+                        required
+                        pattern="[0-9]{3}-?[0-9]{7}|[0-9]{10}"
+                        autocomplete="tel"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="user-dates">
+                        <i class="fas fa-calendar"></i>
+                        תאריכים משוערים
+                    </label>
+                    <input 
+                        type="text" 
+                        id="user-dates" 
+                        name="dates" 
+                        placeholder="לדוגמה: סוף שבוע הבא, 15-17 בינואר"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="user-notes">
+                        <i class="fas fa-comment"></i>
+                        הערות נוספות (אופציונלי)
+                    </label>
+                    <textarea 
+                        id="user-notes" 
+                        name="notes" 
+                        placeholder="יש משהו חשוב שרציתם להוסיף?"
+                        rows="3"
+                    ></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i>
+                    המשך לראות את ההתאמות
+                </button>
+            </form>
+        </div>
     </main>
 
-    <footer>
-        <a href="/" class="footer-logo">
-            <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="MULTIBRAWN לוגו">
-            <span>MULTIBRAWN</span>
-        </a>
-        <nav class="footer-links">
-            <a href="privacy.html">מדיניות פרטיות</a>
-            <a href="accessibility.html">הצהרת נגישות</a>
-            <a href="about.html">אודות</a>
-            <a href="contact.html">צור קשר</a>
-        </nav>
-        <p class="footer-copy">© 2025 MULTIBRAWN. כל הזכויות שמורות.</p>
-    </footer>
-
-    <!-- Video Modal -->
-    <div class="video-modal" id="videoModal">
-        <div class="video-modal-content">
-            <button class="video-modal-close" id="closeModal">&times;</button>
-            <iframe id="videoIframe" src="" allowfullscreen></iframe>
-        </div>
-    </div>
-
     <script>
-        // Header scroll effect
-        const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            header.classList.toggle('scrolled', window.pageYOffset > 100);
-        }, { passive: true });
+        // ==============================================
+        // 🧠 THE SMART BRAIN - Dynamic Question Logic
+        // ==============================================
+        
+        const allQuestions = {
+            // Phase 1: Vibe (תמיד שואל)
+            vibe: [
+                { id: 'vibe_romance', text: 'רומנטיקה ושקט 🥂', hint: 'מתאים לזוגות', img: 'https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818996/Zimmer2_ge7g6h.jpg' },
+                { id: 'vibe_family', text: 'זמן משפחתי 👨‍👩‍👧‍👦', hint: 'מתאים למשפחות', img: 'https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villas/3.jpeg' },
+                { id: 'vibe_party', text: 'מסיבה ואנרגיות 🥳', hint: 'מתאים לקבוצות', img: 'https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818934/22_tt9jvz.jpg' },
+                { id: 'vibe_event', text: 'אירוע מיוחד 💍', hint: 'חתונות ואירועים', img: 'https://res.cloudinary.com/dptyfvwyo/image/upload/v1762003191/1_tsc6xx.jpg' }
+            ],
+            
+            // Phase 2: Size (תלוי ב-Vibe)
+            size_couple: [
+                { id: 'size_zimmer', text: 'צימר אינטימי 🏡', hint: 'מושלם לזוגות', img: 'https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818996/Zimmer1_buveb2.jpg', condition: 'vibe_romance' }
+            ],
+            size_family: [
+                { id: 'size_villa', text: 'וילה משפחתית 🏠', hint: 'מקום לכל המשפחה', img: 'https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villas/3.jpeg', condition: 'vibe_family' },
+                { id: 'size_complex', text: 'מתחם גדול 🏘️', hint: 'למשפחות מורחבות', img: 'https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818934/21_f14cql.jpg', condition: 'vibe_family' }
+            ],
+            
+            // Phase 3: Area (תמיד שואל)
+            area: [
+                { id: 'area_north', text: 'הצפון 🏔️', hint: 'גליל וגולן', img: 'https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villas/1.jpg' },
+                { id: 'area_center', text: 'המרכז 🏙️', hint: 'קרוב לכל מקום', img: 'https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818934/20_t6yw8m.jpg' },
+                { id: 'area_south', text: 'הדרום 🌵', hint: 'ים המלח ואילת', img: 'https://via.placeholder.com/640x360/F4A460/FFFFFF?text=הדרום' }
+            ],
+            
+            // Phase 4: Budget (תמיד שואל)
+            budget: [
+                { id: 'budget_mid', text: '3-6K ₪ 💎', hint: 'תקציב סביר', img: 'https://via.placeholder.com/640x360/FFD700/FFFFFF?text=תקציב+בינוני' },
+                { id: 'budget_high', text: '6-10K ₪ 👑', hint: 'יוקרה אמיתית', img: 'https://via.placeholder.com/640x360/FF69B4/FFFFFF?text=יוקרה' },
+                { id: 'budget_luxury', text: '10K+ ₪ 🌟', hint: 'פרימיום מקסימלי', img: 'https://via.placeholder.com/640x360/9370DB/FFFFFF?text=פרימיום' }
+            ],
+            
+            // Phase 5: Special (מותנה)
+            special_religious: [
+                { id: 'kosher', text: 'שומרי שבת 🕎', hint: 'כשרות וקרבה לבית כנסת', img: 'https://via.placeholder.com/640x360/4682B4/FFFFFF?text=שומרי+שבת', condition: 'vibe_family' }
+            ],
+            special_party: [
+                { id: 'noise', text: 'אישור לרעש 🎶', hint: 'מוזיקה ומסיבה', img: 'https://via.placeholder.com/640x360/FF1493/FFFFFF?text=מסיבה', condition: 'vibe_party' }
+            ],
+            
+            // Phase 6: Features (חכם - מראה רק רלוונטי)
+            features: [
+                { id: 'pool', text: 'בריכה מחוממת 🏊', hint: 'הכרחי בקיץ', img: 'https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villas/Villa_Wow.jpg' },
+                { id: 'jacuzzi', text: 'ג\'קוזי פרטי 🛁', hint: 'פינוק רומנטי', img: 'https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818996/Zimmer2_ge7g6h.jpg', condition: 'vibe_romance' },
+                { id: 'view', text: 'נוף מדהים 🌄', hint: 'הנוף הוא הכל', img: 'https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villas/1.jpg' },
+                { id: 'bbq', text: 'גריל וחצר 🍖', hint: 'לארוחות בחוץ', img: 'https://via.placeholder.com/640x360/8B4513/FFFFFF?text=גריל', condition: 'vibe_family' }
+            ]
+        };
 
-        // Filter tabs
-        const filterTabs = document.querySelectorAll('.filter-tab');
-        const videoCards = document.querySelectorAll('.video-card');
+        // Smart Messages
+        const aiMessages = {
+            start: "היי! אני הבוט החכם של מולטיבראון. בואו נמצא את המקום המושלם 🎯",
+            vibe_romance: "אהה, רומנטיקה! אני אתמקד בצימרים אינטימיים ומקומות שקטים 💕",
+            vibe_family: "משפחה - מעולה! אני אסנן מקומות מרווחים ובטוחים לילדים 👨‍👩‍👧‍👦",
+            vibe_party: "מסיבה! אני אחפש מקומות עם אישור לרעש ומרחב פתוח 🎉",
+            vibe_event: "אירוע מיוחד! אני אמצא מקומות מרשימים וייצוגיים ✨",
+            budget_mid: "תקציב סביר - יש לנו אופציות מצוינות בטווח הזה 💎",
+            budget_high: "יוקרה! אני אתמקד רק בנכסים פרימיום 👑",
+            area_north: "הצפון - אזור מדהים! הרבה נוף ושקט 🏔️",
+            almost_done: "עוד קצת ואני מוכן להציג לכם את ההתאמות המושלמות! 🎯",
+            perfect_match: "מצאתי בדיוק מה שאתם מחפשים! 🎉"
+        };
 
-        filterTabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                // Update active tab
-                filterTabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
+        // State
+        let userChoices = {};
+        let currentQuestionSet = [];
+        let currentIndex = 0;
+        let totalQuestions = 0;
+        let allCards = [];
 
-                // Filter videos
-                const category = tab.dataset.category;
-                videoCards.forEach(card => {
-                    if (category === 'all' || card.dataset.category === category) {
-                        card.classList.remove('hidden');
-                    } else {
-                        card.classList.add('hidden');
-                    }
-                });
-            });
-        });
+        const stack = document.getElementById('card-stack');
+        const yesBtn = document.getElementById('yes-btn');
+        const noBtn = document.getElementById('no-btn');
+        const progressBar = document.getElementById('progress-bar');
+        const progressText = document.getElementById('progress-text');
+        const aiBubble = document.getElementById('ai-bubble');
+        const gameContainer = document.getElementById('game-container');
+        const summaryContainer = document.getElementById('summary-screen');
 
-        // Video modal
-        const videoModal = document.getElementById('videoModal');
-        const videoIframe = document.getElementById('videoIframe');
-        const closeModal = document.getElementById('closeModal');
-
-        videoCards.forEach(card => {
-            // Hover effect - play preview
-            const video = card.querySelector('.video-thumbnail');
-            if (video && video.tagName === 'VIDEO') {
-                card.addEventListener('mouseenter', () => {
-                    video.play().catch(() => {});
-                });
-                card.addEventListener('mouseleave', () => {
-                    video.pause();
-                    video.currentTime = 0;
-                });
+        // 🧠 SMART LOGIC: Build Dynamic Question Flow
+        function buildQuestionFlow() {
+            let questions = [];
+            
+            // Always ask Vibe first
+            questions = questions.concat(allQuestions.vibe);
+            
+            // Based on vibe, add size questions
+            if (userChoices.vibe_romance) {
+                questions = questions.concat(allQuestions.size_couple);
+            } else if (userChoices.vibe_family) {
+                questions = questions.concat(allQuestions.size_family);
             }
+            
+            // Always ask Area
+            questions = questions.concat(allQuestions.area);
+            
+            // Always ask Budget
+            questions = questions.concat(allQuestions.budget);
+            
+            // Conditional: Religious
+            if (userChoices.vibe_family) {
+                questions = questions.concat(allQuestions.special_religious);
+            }
+            
+            // Conditional: Party
+            if (userChoices.vibe_party) {
+                questions = questions.concat(allQuestions.special_party);
+            }
+            
+            // Smart Features
+            questions = questions.concat(allQuestions.features.filter(q => {
+                return !q.condition || userChoices[q.condition];
+            }));
+            
+            return questions;
+        }
 
-            // Click - open full video
-            card.addEventListener('click', () => {
-                const videoUrl = card.dataset.videoUrl;
-                if (videoUrl) {
-                    // Create video element for Cloudinary videos
-                    videoIframe.style.display = 'none';
-                    
-                    let videoPlayer = document.getElementById('cloudinary-player');
-                    if (!videoPlayer) {
-                        videoPlayer = document.createElement('video');
-                        videoPlayer.id = 'cloudinary-player';
-                        videoPlayer.controls = true;
-                        videoPlayer.style.width = '100%';
-                        videoPlayer.style.height = '100%';
-                        videoPlayer.style.borderRadius = '8px';
-                        videoIframe.parentNode.appendChild(videoPlayer);
-                    }
-                    
-                    videoPlayer.src = videoUrl;
-                    videoPlayer.style.display = 'block';
-                    videoPlayer.play();
-                    videoModal.classList.add('active');
+        // Show AI Message
+        function showAIMessage(key) {
+            const message = aiMessages[key];
+            if (!message) return;
+            
+            aiBubble.textContent = message;
+            aiBubble.classList.add('show');
+            
+            setTimeout(() => {
+                aiBubble.classList.remove('show');
+            }, 3000);
+        }
+
+        // Initialize
+        function initCards() {
+            currentQuestionSet = buildQuestionFlow();
+            totalQuestions = currentQuestionSet.length;
+            
+            stack.innerHTML = '';
+            currentQuestionSet.forEach((q, i) => {
+                const cardEl = document.createElement('div');
+                cardEl.className = 'vibe-card';
+                cardEl.innerHTML = `
+                    ${i === 0 ? '<div class="smart-badge"><i class="fas fa-brain"></i> חכם</div>' : ''}
+                    <img src="${q.img}" alt="${q.text}" loading="lazy">
+                    <div class="card-text">
+                        <h3>${q.text}</h3>
+                        <p>${q.hint || ''}</p>
+                    </div>
+                `;
+                stack.appendChild(cardEl);
+            });
+            
+            allCards = Array.from(stack.querySelectorAll('.vibe-card')).reverse();
+            updateCardStack();
+            updateProgress();
+            showAIMessage('start');
+        }
+
+        function updateCardStack() {
+            allCards.forEach((card, index) => {
+                const relativeIndex = index - (allCards.length - 1 - currentIndex);
+                
+                if (relativeIndex === 0) {
+                    card.style.transform = 'translateY(0) scale(1)';
+                    card.style.opacity = '1';
+                    card.style.zIndex = '3';
+                } else if (relativeIndex === 1) {
+                    card.style.transform = 'translateY(10px) scale(0.95)';
+                    card.style.opacity = '1';
+                    card.style.zIndex = '2';
+                } else if (relativeIndex === 2) {
+                    card.style.transform = 'translateY(20px) scale(0.9)';
+                    card.style.opacity = '1';
+                    card.style.zIndex = '1';
+                } else {
+                    card.style.opacity = '0';
+                    card.style.zIndex = '0';
                 }
             });
-        });
+        }
 
-        closeModal.addEventListener('click', () => {
-            videoModal.classList.remove('active');
-            const cloudinaryPlayer = document.getElementById('cloudinary-player');
-            if (cloudinaryPlayer) {
-                cloudinaryPlayer.pause();
-                cloudinaryPlayer.currentTime = 0;
-            }
-            videoIframe.src = '';
-        });
+        function updateProgress() {
+            const progress = ((currentIndex + 1) / totalQuestions) * 100;
+            progressBar.style.width = `${progress}%`;
+            progressText.textContent = `שאלה ${currentIndex + 1} מתוך ${totalQuestions}`;
+        }
 
-        videoModal.addEventListener('click', (e) => {
-            if (e.target === videoModal) {
-                videoModal.classList.remove('active');
-                const cloudinaryPlayer = document.getElementById('cloudinary-player');
-                if (cloudinaryPlayer) {
-                    cloudinaryPlayer.pause();
-                    cloudinaryPlayer.currentTime = 0;
+        function handleChoice(choice) {
+            const currentQ = currentQuestionSet[currentIndex];
+            const cardEl = stack.children[currentIndex];
+
+            if (!cardEl) return;
+
+            // Save choice
+            if (choice) {
+                userChoices[currentQ.id] = true;
+                
+                // Show smart message
+                if (aiMessages[currentQ.id]) {
+                    setTimeout(() => showAIMessage(currentQ.id), 300);
                 }
-                videoIframe.src = '';
             }
+
+            // Animate
+            cardEl.classList.add(choice ? 'go-yes' : 'go-no');
+
+            // Next
+            currentIndex++;
+            updateProgress();
+            setTimeout(updateCardStack, 100);
+
+            // Check if we need to rebuild (dynamic questions)
+            if (currentIndex === currentQuestionSet.length) {
+                const newFlow = buildQuestionFlow();
+                if (newFlow.length > currentQuestionSet.length) {
+                    // Add more questions!
+                    const additionalQuestions = newFlow.slice(currentQuestionSet.length);
+                    currentQuestionSet = newFlow;
+                    totalQuestions = newFlow.length;
+                    
+                    additionalQuestions.forEach(q => {
+                        const cardEl = document.createElement('div');
+                        cardEl.className = 'vibe-card';
+                        cardEl.innerHTML = `
+                            <img src="${q.img}" alt="${q.text}">
+                            <div class="card-text">
+                                <h3>${q.text}</h3>
+                                <p>${q.hint || ''}</p>
+                            </div>
+                        `;
+                        stack.appendChild(cardEl);
+                    });
+                    
+                    allCards = Array.from(stack.querySelectorAll('.vibe-card')).reverse();
+                    updateCardStack();
+                } else {
+                    // Done!
+                    setTimeout(showSummary, 600);
+                }
+            }
+        }
+
+        function showSummary() {
+            gameContainer.style.display = 'none';
+            document.getElementById('details-screen').style.display = 'flex';
+        }
+
+        // Handle Details Form Submission
+        document.getElementById('details-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Collect form data
+            const formData = new FormData(e.target);
+            const userDetails = {
+                name: formData.get('name'),
+                phone: formData.get('phone'),
+                dates: formData.get('dates'),
+                notes: formData.get('notes') || ''
+            };
+
+            // Show final summary
+            showFinalSummary(userDetails);
         });
 
-        // Close modal with Escape key
+        function showFinalSummary(userDetails) {
+            document.getElementById('details-screen').style.display = 'none';
+            document.getElementById('summary-screen').style.display = 'flex';
+
+            // Calculate match score
+            const yesCount = Object.keys(userChoices).length;
+            const matchScore = Math.min(95, 70 + (yesCount * 3));
+            document.getElementById('match-score').textContent = `${matchScore}%`;
+
+            // Build summary
+            let summaryHTML = "";
+            const selectedItems = Object.keys(userChoices).map(id => {
+                for (let category in allQuestions) {
+                    const found = allQuestions[category].find(q => q.id === id);
+                    if (found) return found.text;
+                }
+            }).filter(Boolean);
+
+            if (selectedItems.length > 0) {
+                summaryHTML = `<li><i class="fas fa-check-circle"></i> <strong>העדפות:</strong> ${selectedItems.join(', ')}</li>`;
+            }
+            summaryHTML += `<li><i class="fas fa-user"></i> <strong>שם:</strong> ${userDetails.name}</li>`;
+            summaryHTML += `<li><i class="fas fa-phone"></i> <strong>טלפון:</strong> ${userDetails.phone}</li>`;
+            summaryHTML += `<li><i class="fas fa-calendar"></i> <strong>תאריכים:</strong> ${userDetails.dates}</li>`;
+            if (userDetails.notes) {
+                summaryHTML += `<li><i class="fas fa-comment"></i> <strong>הערות:</strong> ${userDetails.notes}</li>`;
+            }
+
+            document.getElementById('summary-list').innerHTML = summaryHTML;
+
+            // WhatsApp message
+            let waMessage = `היי! סיימתי את הבוט החכם:\n\n`;
+            waMessage += `👤 *שם:* ${userDetails.name}\n`;
+            waMessage += `📞 *טלפון:* ${userDetails.phone}\n`;
+            waMessage += `📅 *תאריכים:* ${userDetails.dates}\n\n`;
+            if (selectedItems.length > 0) {
+                waMessage += `✅ *העדפות:* ${selectedItems.join(', ')}\n`;
+            }
+            if (userDetails.notes) {
+                waMessage += `💬 *הערות:* ${userDetails.notes}\n`;
+            }
+            waMessage += `\n📊 התאמה: ${matchScore}%\n\n`;
+            waMessage += `אשמח לקבל הצעות מותאמות! 🎯`;
+            
+            document.getElementById('whatsapp-link').href = `https://wa.me/972523983394?text=${encodeURIComponent(waMessage)}`;
+        }
+
+        // Events
+        yesBtn.addEventListener('click', () => handleChoice(true));
+        noBtn.addEventListener('click', () => handleChoice(false));
+        
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && videoModal.classList.contains('active')) {
-                videoModal.classList.remove('active');
-                videoIframe.src = '';
-            }
+            if (e.key === 'ArrowRight' || e.key === 'y') handleChoice(true);
+            if (e.key === 'ArrowLeft' || e.key === 'n') handleChoice(false);
         });
+
+        // Start
+        initCards();
     </script>
 </body>
 </html>
