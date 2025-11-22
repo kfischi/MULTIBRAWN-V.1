@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>טיפים למציאת לוקיישן מושלם - MULTIBRAWN</title>
-    <meta name="description" content="המדריך המלא לבחירת לוקיישן - טיפים מקצועיים לחתונות, נופש, אירועים עסקיים ושבתות חתן. כל מה שצריך לדעת לפני שמזמינים.">
-    <meta name="keywords" content="טיפים לוקיישן, איך לבחור וילה, חתונה מושלמת, נופש משפחתי">
+    <title>טיפים - MULTIBRAWN | סרטונים קצרים שחוסכים לכם כסף</title>
+    <meta name="description" content="טיפים מהירים וחדים בסרטונים קצרים - כל מה שצריך לדעת לפני שמזמינים לוקיישן">
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png">
@@ -38,7 +37,7 @@
             font-family: var(--font-body);
             background: var(--primary-bg);
             color: var(--text-dark);
-            line-height: 1.8;
+            line-height: 1.6;
             overflow-x: hidden;
         }
         
@@ -122,14 +121,14 @@
         
         /* ========== HERO SECTION ========== */
         .tips-hero {
-            padding: 12rem 2rem 4rem;
+            padding: 12rem 2rem 3rem;
             text-align: center;
-            max-width: 1000px;
+            max-width: 800px;
             margin: 0 auto;
         }
         
         .tips-hero h1 {
-            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
             margin-bottom: 1rem;
             background: linear-gradient(135deg, var(--text-dark), var(--accent-primary));
             -webkit-background-clip: text;
@@ -138,85 +137,107 @@
         }
         
         .tips-hero p {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             opacity: 0.85;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
         }
         
-        /* ========== FEATURED ARTICLE ========== */
-        .featured-article {
-            max-width: 1200px;
-            margin: 0 auto 6rem;
-            padding: 0 2rem;
+        /* ========== REELS GRID ========== */
+        .reels-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
         }
         
-        .featured-card {
+        .reels-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .reel-card {
+            position: relative;
             border-radius: 20px;
             overflow: hidden;
-            padding: 3rem;
-            align-items: center;
-        }
-        
-        .featured-image {
-            border-radius: 15px;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .featured-image img,
-        .featured-image video {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-        }
-        
-        .video-container {
-            position: relative;
-        }
-        
-        .video-thumbnail {
-            position: relative;
             cursor: pointer;
-            overflow: hidden;
-            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.1);
+            aspect-ratio: 9/16;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         
-        .video-thumbnail img {
-            transition: transform 0.3s ease;
+        .reel-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
         }
         
-        .video-thumbnail:hover img {
-            transform: scale(1.05);
+        .reel-thumbnail {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: linear-gradient(135deg, rgba(0, 224, 255, 0.2), rgba(45, 127, 255, 0.2), rgba(160, 107, 255, 0.2));
         }
         
-        .video-play-icon {
+        .reel-thumbnail.video-thumb {
+            pointer-events: none;
+        }
+        
+        .reel-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2.5rem 1.5rem 1.5rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.8) 70%, transparent 100%);
+            color: white;
+            z-index: 2;
+        }
+        
+        .reel-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+        
+        .reel-duration {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        
+        .play-button {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 70px;
-            height: 70px;
-            background: rgba(255, 94, 161, 0.9);
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 94, 161, 0.95);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-size: 2rem;
+            z-index: 3;
             transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(255, 94, 161, 0.4);
         }
         
-        .video-thumbnail:hover .video-play-icon {
-            transform: translate(-50%, -50%) scale(1.1);
+        .reel-card:hover .play-button {
+            transform: translate(-50%, -50%) scale(1.15);
             background: var(--accent-primary);
         }
         
+        /* ========== VIDEO MODAL (FULLSCREEN) ========== */
         .video-modal {
             display: none;
             position: fixed;
@@ -224,11 +245,11 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.95);
+            background: rgba(0, 0, 0, 0.98);
             z-index: 10000;
             align-items: center;
             justify-content: center;
-            padding: 2rem;
+            padding: 0;
         }
         
         .video-modal.active {
@@ -237,155 +258,60 @@
         
         .video-modal-content {
             position: relative;
-            max-width: 900px;
             width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .video-modal video {
+            max-width: 450px;
             width: 100%;
-            border-radius: 10px;
+            max-height: 100vh;
+            border-radius: 0;
+            object-fit: contain;
+            background: #000;
         }
         
         .video-close {
-            position: absolute;
-            top: -40px;
-            right: 0;
-            background: none;
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
             border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
             color: white;
-            font-size: 2rem;
+            font-size: 1.5rem;
             cursor: pointer;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            z-index: 10001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .video-close:hover {
-            transform: scale(1.2);
-        }
-        
-        .featured-content {
-            padding: 1rem;
-        }
-        
-        .featured-tag {
-            display: inline-block;
             background: var(--accent-primary);
-            color: white;
-            padding: 0.4rem 1rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
+            transform: scale(1.1);
         }
         
-        .featured-content h2 {
-            font-size: clamp(1.8rem, 3vw, 2.5rem);
-            margin-bottom: 1rem;
-            color: var(--text-dark);
-        }
-        
-        .featured-content p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            opacity: 0.85;
-        }
-        
-        .read-more {
-            display: inline-block;
-            background: var(--accent-primary);
-            color: white;
-            padding: 0.8rem 2rem;
+        .video-title-overlay {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            padding: 1rem 2rem;
             border-radius: 50px;
-            text-decoration: none;
+            color: white;
+            font-size: 1.1rem;
             font-weight: 600;
-            transition: transform 0.3s ease;
-        }
-        
-        .read-more:hover {
-            transform: translateY(-3px);
-        }
-        
-        /* ========== TIPS GRID ========== */
-        .tips-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem 4rem;
-        }
-        
-        .section-title {
-            font-size: clamp(2rem, 4vw, 3rem);
-            text-align: center;
-            margin-bottom: 3rem;
-            color: var(--text-dark);
-        }
-        
-        .tips-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2.5rem;
-        }
-        
-        .tip-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .tip-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-        }
-        
-        .tip-image {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
-        
-        .tip-content {
-            padding: 2rem;
-        }
-        
-        .tip-category {
-            display: inline-block;
-            background: var(--accent-secondary);
-            color: var(--text-dark);
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-        
-        .tip-content h3 {
-            font-size: 1.4rem;
-            margin-bottom: 0.8rem;
-            color: var(--text-dark);
-            line-height: 1.4;
-        }
-        
-        .tip-content p {
-            font-size: 1rem;
-            line-height: 1.7;
-            opacity: 0.85;
-            margin-bottom: 1.5rem;
-        }
-        
-        .tip-link {
-            color: var(--accent-primary);
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: gap 0.3s ease;
-        }
-        
-        .tip-link:hover {
-            gap: 1rem;
+            z-index: 10001;
         }
         
         /* ========== CTA SECTION ========== */
@@ -477,17 +403,6 @@
         }
         
         /* ========== RESPONSIVE ========== */
-        @media (max-width: 1024px) {
-            .tips-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .featured-card {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-        }
-        
         @media (max-width: 768px) {
             nav { padding: 1rem 1.5rem; }
             
@@ -511,12 +426,23 @@
             
             .tips-hero { padding: 10rem 1.5rem 3rem; }
             
-            .tips-grid {
+            .reels-grid {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 1.5rem;
             }
             
-            .featured-card { padding: 2rem; }
+            .video-modal video {
+                max-width: 100%;
+                width: 100%;
+                object-fit: contain;
+            }
+            
+            .video-close {
+                top: 1rem;
+                right: 1rem;
+                width: 45px;
+                height: 45px;
+            }
             
             .cta-tips {
                 padding: 3rem 1.5rem;
@@ -548,142 +474,91 @@
 
     <!-- Hero -->
     <section class="tips-hero">
-        <h1>המדריך המלא</h1>
-        <p>כל מה שצריך לדעת לפני שמזמינים לוקיישן - טיפים, תובנות וחוכמה שנצברה מ-10 שנות ניסיון</p>
+        <h1>💡 טיפים מהירים</h1>
+        <p>סרטונים קצרים שחוסכים לכם כסף, זמן ועצבים</p>
     </section>
 
-    <!-- Featured Video Article -->
-    <section class="featured-article">
-        <div class="featured-card">
-            <div class="featured-image">
-                <div class="video-container">
-                    <video 
-                        controls 
-                        poster="https://res.cloudinary.com/dptyfvwyo/image/upload/v1763828637/%D7%90%D7%99%D7%9C%D7%AA_rtmczk.png"
-                        style="width: 100%; height: 400px; object-fit: cover; border-radius: 15px;">
-                        <source src="https://res.cloudinary.com/dptyfvwyo/video/upload/v1763684426/%D7%90%D7%99%D7%9C%D7%AA_ba7jjj.mp4" type="video/mp4">
-                        הדפדפן שלך לא תומך בסרטונים.
-                    </video>
-                    <div class="play-overlay" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none;">
-                        <i class="fas fa-play-circle" style="font-size: 4rem; color: white; opacity: 0.9;"></i>
+    <!-- Reels Grid -->
+    <section class="reels-container">
+        <div class="reels-grid">
+            
+            <!-- Reel 1: שבת חתן בראש שקט -->
+            <div class="reel-card" onclick="openReel('reel1', 'שבת חתן בראש שקט')">
+                <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818995/Event1_c4hx5u.jpg" alt="שבת חתן בראש שקט" class="reel-thumbnail">
+                <div class="play-button">
+                    <i class="fas fa-play"></i>
+                </div>
+                <div class="reel-overlay">
+                    <div class="reel-title">✡️ שבת חתן בראש שקט</div>
+                    <div class="reel-duration">
+                        <i class="fas fa-clock"></i> 45 שניות
                     </div>
                 </div>
             </div>
-            <div class="featured-content">
-                <span class="featured-tag">🎥 וידאו</span>
-                <h2>המדריך המלא לנופש באילת</h2>
-                <p>אילת - עיר הנופש הדרומית שלנו! גלו את המקומות הכי שווים, הטיפים הכי חמים, והסודות שרק המקומיים יודעים. כל מה שצריך לדעת לפני הטיסה דרומה...</p>
-                <button onclick="document.querySelector('.featured-image video').play()" class="read-more">
-                    <i class="fas fa-play"></i> צפה בסרטון
-                </button>
-            </div>
-        </div>
-    </section>
 
-    <!-- Tips Grid -->
-    <section class="tips-container">
-        <h2 class="section-title">מאמרים נוספים</h2>
-        
-        <div class="tips-grid">
-            <!-- Tip 1 - VIDEO -->
-            <article class="tip-card" id="tip1">
-                <div class="video-thumbnail" onclick="openVideoModal('video1')">
-                    <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818934/22_tt9jvz.jpg" alt="איך לבחור וילה" class="tip-image">
-                    <div class="video-play-icon">
-                        <i class="fas fa-play"></i>
+            <!-- Reel 2: נוסעים לאילת? -->
+            <div class="reel-card" onclick="openReel('reel2', 'נוסעים לאילת? שלא יעקצו אותכם')">
+                <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1763828637/%D7%90%D7%99%D7%9C%D7%AA_rtmczk.png" alt="נוסעים לאילת" class="reel-thumbnail">
+                <div class="play-button">
+                    <i class="fas fa-play"></i>
+                </div>
+                <div class="reel-overlay">
+                    <div class="reel-title">🌴 נוסעים לאילת? שלא יעקצו אותכם</div>
+                    <div class="reel-duration">
+                        <i class="fas fa-clock"></i> 1 דקה
                     </div>
                 </div>
-                <div class="tip-content">
-                    <span class="tip-category">🎥 וידאו</span>
-                    <h3>איך לבחור וילה: המדריך המלא</h3>
-                    <p>כל הטיפים והסודות לבחירת וילה מושלמת - מה לבדוק, איך להימנע מטעויות, ומה שאף אחד לא מספר לכם...</p>
-                    <a href="#" onclick="openVideoModal('video1'); return false;" class="tip-link">
-                        <i class="fas fa-play-circle"></i> צפה בסרטון
-                    </a>
+            </div>
+
+            <!-- Reel 3: מחפשים זול? -->
+            <div class="reel-card" onclick="openReel('reel3', 'מחפשים זול? אל תתפלאו אם תקבלו זול')">
+                <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1763828638/%D7%96%D7%95%D7%9C_t7cops.png" alt="מחפשים זול" class="reel-thumbnail">
+                <div class="play-button">
+                    <i class="fas fa-play"></i>
                 </div>
-            </article>
-            
-            <!-- Tip 2 - VIDEO -->
-            <article class="tip-card">
-                <div class="video-thumbnail" onclick="openVideoModal('video2')">
-                    <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1763828638/%D7%96%D7%95%D7%9C_t7cops.png" alt="למה לא לשלם זול" class="tip-image">
-                    <div class="video-play-icon">
-                        <i class="fas fa-play"></i>
+                <div class="reel-overlay">
+                    <div class="reel-title">💰 מחפשים זול? אל תתפלאו אם תקבלו זול</div>
+                    <div class="reel-duration">
+                        <i class="fas fa-clock"></i> 50 שניות
                     </div>
                 </div>
-                <div class="tip-content">
-                    <span class="tip-category">🎥 כסף</span>
-                    <h3>למה לא כדאי לשלם זול על לוקיישן?</h3>
-                    <p>הטעות הכי יקרה שאנשים עושים - לשלם זול. הסרטון הזה יחסוך לכם אלפי שקלים ועצבים...</p>
-                    <a href="#" onclick="openVideoModal('video2'); return false;" class="tip-link">
-                        <i class="fas fa-play-circle"></i> צפה בסרטון
-                    </a>
+            </div>
+
+            <!-- Reel 4: ממה להיזהר -->
+            <div class="reel-card" onclick="openReel('reel4', 'ממה להיזהר כשמחפשים וילה')">
+                <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818934/22_tt9jvz.jpg" alt="ממה להיזהר בוילה" class="reel-thumbnail">
+                <div class="play-button">
+                    <i class="fas fa-play"></i>
                 </div>
-            </article>
-            
-            <!-- Tip 3 -->
-            <article class="tip-card">
-                <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818995/Event1_c4hx5u.jpg" alt="שבת חתן" class="tip-image">
-                <div class="tip-content">
-                    <span class="tip-category">שבתות חתן</span>
-                    <h3>איך לבחור וילה לשבת חתן: המדריך המלא</h3>
-                    <p>שבת חתן זה לא רק מקום ללון - זו החוויה המשפחתית הכי אינטימית. הנה מה שחייבים לבדוק...</p>
-                    <a href="#" class="tip-link">קרא עוד <i class="fas fa-arrow-left"></i></a>
+                <div class="reel-overlay">
+                    <div class="reel-title">⚠️ ממה להיזהר כשמחפשים וילה</div>
+                    <div class="reel-duration">
+                        <i class="fas fa-clock"></i> 1 דקה
+                    </div>
                 </div>
-            </article>
-            
-            <!-- Tip 4 -->
-            <article class="tip-card">
-                <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818996/Zimmer1_q31mjd.jpg" alt="נופש משפחתי" class="tip-image">
-                <div class="tip-content">
-                    <span class="tip-category">נופש</span>
-                    <h3>נופש משפחתי מושלם: וילה או צימר?</h3>
-                    <p>יש הבדל עצום בין הסוגים השונים של נופש. הנה איך לבחור בהתאם למשפחה שלכם...</p>
-                    <a href="#" class="tip-link">קרא עוד <i class="fas fa-arrow-left"></i></a>
-                </div>
-            </article>
-            
-            <!-- Tip 5 -->
-            <article class="tip-card">
-                <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818995/Event2_f7tqb2.jpg" alt="הסודות של לוקיישנים יוקרתיים" class="tip-image">
-                <div class="tip-content">
-                    <span class="tip-category">יוקרה</span>
-                    <h3>הסודות של לוקיישנים יוקרתיים</h3>
-                    <p>מה באמת הופך מקום ליוקרתי? זה הרבה יותר מסתם תמונות יפות באינסטגרם...</p>
-                    <a href="#" class="tip-link">קרא עוד <i class="fas fa-arrow-left"></i></a>
-                </div>
-            </article>
-            
-            <!-- Tip 6 -->
-            <article class="tip-card">
-                <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818996/Event3_gpltrp.jpg" alt="כנסים וימי גיבוש" class="tip-image">
-                <div class="tip-content">
-                    <span class="tip-category">אירועים עסקיים</span>
-                    <h3>מדריך: לוקיישנים לכנסים וימי גיבוש</h3>
-                    <p>איך לבחור מקום שיעשה את ההבדל בין כנס משעמם לחוויה בלתי נשכחת...</p>
-                    <a href="#" class="tip-link">קרא עוד <i class="fas fa-arrow-left"></i></a>
-                </div>
-            </article>
+            </div>
+
         </div>
     </section>
 
     <!-- CTA Section -->
     <section class="cta-tips">
-        <h2>מחפשים את הלוקיישן המושלם?</h2>
-        <p>ה-Multi AI שלנו כאן כדי לעזור לכם למצוא בדיוק מה שאתם צריכים</p>
+        <h2>רוצים לשמוע עוד טיפים?</h2>
+        <p>בואו לדבר איתנו - יש לנו המון ניסיון לשתף</p>
         <a href="contact.html" class="cta-button">בואו נדבר</a>
     </section>
 
-    <!-- Video Modal -->
+    <!-- Video Modal (Fullscreen) -->
     <div class="video-modal" id="videoModal">
+        <button class="video-close" onclick="closeReel()">
+            <i class="fas fa-times"></i>
+        </button>
         <div class="video-modal-content">
-            <button class="video-close" onclick="closeVideoModal()">
-                <i class="fas fa-times"></i>
-            </button>
-            <video id="modalVideo" controls style="width: 100%; border-radius: 10px;">
+            <video id="modalVideo" controls playsinline>
                 <source id="videoSource" src="" type="video/mp4">
             </video>
         </div>
+        <div class="video-title-overlay" id="videoTitle"></div>
     </div>
 
     <!-- Footer -->
@@ -713,57 +588,59 @@
             }
         });
         
-        // Mobile menu toggle
+        // Mobile menu
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
-        
         menuToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
         });
         
-        // Video Modal Functions
-        const videos = {
-            'video1': 'https://res.cloudinary.com/dptyfvwyo/video/upload/v1763684101/Video3_omgivy.mp4',
-            'video2': 'https://res.cloudinary.com/dptyfvwyo/video/upload/v1763718107/%D7%96%D7%95%D7%9C_lcwakc.mp4'
+        // Video URLs
+        const reelVideos = {
+            'reel1': 'https://res.cloudinary.com/dptyfvwyo/video/upload/v1763722048/%D7%A9%D7%91%D7%AA_%D7%97%D7%AA%D7%9F_neqhs1.mp4',
+            'reel2': 'https://res.cloudinary.com/dptyfvwyo/video/upload/v1763684426/%D7%90%D7%99%D7%9C%D7%AA_ba7jjj.mp4',
+            'reel3': 'https://res.cloudinary.com/dptyfvwyo/video/upload/v1763718107/%D7%96%D7%95%D7%9C_lcwakc.mp4',
+            'reel4': 'https://res.cloudinary.com/dptyfvwyo/video/upload/v1763684101/Video3_omgivy.mp4'
         };
         
-        function openVideoModal(videoId) {
+        function openReel(reelId, title) {
             const modal = document.getElementById('videoModal');
+            const video = document.getElementById('modalVideo');
             const videoSource = document.getElementById('videoSource');
-            const modalVideo = document.getElementById('modalVideo');
+            const videoTitle = document.getElementById('videoTitle');
             
-            videoSource.src = videos[videoId];
-            modalVideo.load();
+            videoSource.src = reelVideos[reelId];
+            video.load();
+            videoTitle.textContent = title;
+            
             modal.classList.add('active');
-            modalVideo.play();
+            video.play();
             
-            // Prevent body scroll
             document.body.style.overflow = 'hidden';
         }
         
-        function closeVideoModal() {
+        function closeReel() {
             const modal = document.getElementById('videoModal');
-            const modalVideo = document.getElementById('modalVideo');
+            const video = document.getElementById('modalVideo');
             
-            modalVideo.pause();
-            modalVideo.currentTime = 0;
+            video.pause();
+            video.currentTime = 0;
             modal.classList.remove('active');
             
-            // Restore body scroll
             document.body.style.overflow = 'auto';
         }
         
-        // Close modal on Escape key
+        // Keyboard controls
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
-                closeVideoModal();
+                closeReel();
             }
         });
         
-        // Close modal when clicking outside video
+        // Click outside to close
         document.getElementById('videoModal').addEventListener('click', (e) => {
             if (e.target.id === 'videoModal') {
-                closeVideoModal();
+                closeReel();
             }
         });
     </script>
