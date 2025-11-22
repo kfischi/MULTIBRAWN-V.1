@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>טיפים למציאת לוקיישן מושלם - MULTIBRAWN</title>
+    <meta name="description" content="המדריך המלא לבחירת לוקיישן - טיפים מקצועיים לחתונות, נופש, אירועים עסקיים ושבתות חתן. כל מה שצריך לדעת לפני שמזמינים.">
+    <meta name="keywords" content="טיפים לוקיישן, איך לבחור וילה, חתונה מושלמת, נופש משפחתי">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --primary-bg: linear-gradient(135deg, #00E0FF, #2D7FFF, #A06BFF);
+            --accent-primary: #FF5EA1;
+            --accent-secondary: #00E0FF;
+            --white: #FAFAFA;
+            --text-dark: #1a0b2e;
+            --glass-bg: rgba(255, 255, 255, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Heebo', sans-serif;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            background: var(--primary-bg);
+            color: var(--text-dark);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3 { font-family: var(--font-display); font-weight: 700; }
+        
+        /* ========== HEADER ========== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+        
+        .logo img { width: 45px; height: 45px; }
+        
+        .logo span {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            font-family: var(--font-display);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: opacity 0.3s;
+            font-weight: 500;
+        }
+        
+        .nav-links a:hover { opacity: 0.6; }
+        
+        .nav-cta {
+            background: var(--accent-primary);
+            color: var(--white) !important;
+            padding: 0.7rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            cursor: pointer;
+        }
+        
+        /* ========== HERO SECTION ========== */
+        .tips-hero {
+            padding: 12rem 2rem 4rem;
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .tips-hero h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-dark), var(--accent-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .tips-hero p {
+            font-size: 1.3rem;
+            opacity: 0.85;
+            margin-bottom: 3rem;
+        }
+        
+        /* ========== FEATURED ARTICLE ========== */
+        .featured-article {
+            max-width: 1200px;
+            margin: 0 auto 6rem;
+            padding: 0 2rem;
+        }
+        
+        .featured-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            overflow: hidden;
+            padding: 3rem;
+            align-items: center;
+        }
+        
+        .featured-image {
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .featured-image img,
+        .featured-image video {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+        
+        .video-container {
+            position: relative;
+        }
+        
+        .video-thumbnail {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        
+        .video-thumbnail img {
+            transition: transform 0.3s ease;
+        }
+        
+        .video-thumbnail:hover img {
+            transform: scale(1.05);
+        }
+        
+        .video-play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 94, 161, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .video-thumbnail:hover .video-play-icon {
+            transform: translate(-50%, -50%) scale(1.1);
+            background: var(--accent-primary);
+        }
+        
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .video-modal.active {
+            display: flex;
+        }
+        
+        .video-modal-content {
+            position: relative;
+            max-width: 900px;
+            width: 100%;
+        }
+        
+        .video-modal video {
+            width: 100%;
+            border-radius: 10px;
+        }
+        
+        .video-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .video-close:hover {
+            transform: scale(1.2);
+        }
+        
+        .featured-content {
+            padding: 1rem;
+        }
+        
+        .featured-tag {
+            display: inline-block;
+            background: var(--accent-primary);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .featured-content h2 {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+        
+        .featured-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            opacity: 0.85;
+        }
+        
+        .read-more {
+            display: inline-block;
+            background: var(--accent-primary);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+        
+        .read-more:hover {
+            transform: translateY(-3px);
+        }
+        
+        /* ========== TIPS GRID ========== */
+        .tips-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+        }
+        
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--text-dark);
+        }
+        
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+        }
+        
+        .tip-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .tip-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .tip-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .tip-content {
+            padding: 2rem;
+        }
+        
+        .tip-category {
+            display: inline-block;
+            background: var(--accent-secondary);
+            color: var(--text-dark);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .tip-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-dark);
+            line-height: 1.4;
+        }
+        
+        .tip-content p {
+            font-size: 1rem;
+            line-height: 1.7;
+            opacity: 0.85;
+            margin-bottom: 1.5rem;
+        }
+        
+        .tip-link {
+            color: var(--accent-primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s ease;
+        }
+        
+        .tip-link:hover {
+            gap: 1rem;
+        }
+        
+        /* ========== CTA SECTION ========== */
+        .cta-tips {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 4rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 30px;
+        }
+        
+        .cta-tips h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-tips p {
+            font-size: 1.2rem;
+            color: white;
+            opacity: 0.95;
+            margin-bottom: 2rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: var(--accent-primary);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 700;
+            transition: transform 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* ========== FOOTER ========== */
+        footer {
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        
+        .footer-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-decoration: none;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-logo img { width: 40px; height: 40px; }
+        
+        .footer-logo span {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            font-family: var(--font-display);
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-links a:hover { opacity: 0.6; }
+        
+        .footer-copy {
+            color: var(--text-dark);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1024px) {
+            .tips-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .featured-card {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav { padding: 1rem 1.5rem; }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+            
+            .nav-links.active { transform: translateX(0); }
+            
+            .menu-toggle { display: block; }
+            
+            .tips-hero { padding: 10rem 1.5rem 3rem; }
+            
+            .tips-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .featured-card { padding: 2rem; }
+            
+            .cta-tips {
+                padding: 3rem 1.5rem;
+                margin: 3rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <nav>
+            <a href="index-v2.html" class="logo">
+                <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="MULTIBRAWN לוגו" width="45" height="45">
+                <span>MULTIBRAWN</span>
+            </a>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="index-v2.html">דף הבית</a>
+                <a href="gallery.html">גלריה</a>
+                <a href="tips.html">טיפים</a>
+                <a href="about.html">אודות</a>
+                <a href="contact.html" class="nav-cta">צור קשר</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="tips-hero">
+        <h1>המדריך המלא</h1>
+        <p>כל מה שצריך לדעת לפני שמזמינים לוקיישן - טיפים, תובנות וחוכמה שנצברה מ-10 שנות ניסיון</p>
+    </section>
+
+    <!-- Featured Video Article -->
+    <section class="featured-article">
+        <div class="featured-card">
+            <div class="featured-image">
+                <div class="video-container">
+                    <video 
+                        controls 
+                        poster="https://res.cloudinary.com/dptyfvwyo/image/upload/v1763828637/%D7%90%D7%99%D7%9C%D7%AA_rtmczk.png"
+                        style="width: 100%; height: 400px; object-fit: cover; border-radius: 15px;">
+                        <source src="https://res.cloudinary.com/dptyfvwyo/video/upload/v1763684426/%D7%90%D7%99%D7%9C%D7%AA_ba7jjj.mp4" type="video/mp4">
+                        הדפדפן שלך לא תומך בסרטונים.
+                    </video>
+                    <div class="play-overlay" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none;">
+                        <i class="fas fa-play-circle" style="font-size: 4rem; color: white; opacity: 0.9;"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="featured-content">
+                <span class="featured-tag">🎥 וידאו</span>
+                <h2>המדריך המלא לנופש באילת</h2>
+                <p>אילת - עיר הנופש הדרומית שלנו! גלו את המקומות הכי שווים, הטיפים הכי חמים, והסודות שרק המקומיים יודעים. כל מה שצריך לדעת לפני הטיסה דרומה...</p>
+                <button onclick="document.querySelector('.featured-image video').play()" class="read-more">
+                    <i class="fas fa-play"></i> צפה בסרטון
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tips Grid -->
+    <section class="tips-container">
+        <h2 class="section-title">מאמרים נוספים</h2>
+        
+        <div class="tips-grid">
+            <!-- Tip 1 - VIDEO -->
+            <article class="tip-card" id="tip1">
+                <div class="video-thumbnail" onclick="openVideoModal('video1')">
+                    <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818934/22_tt9jvz.jpg" alt="איך לבחור וילה" class="tip-image">
+                    <div class="video-play-icon">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <div class="tip-content">
+                    <span class="tip-category">🎥 וידאו</span>
+                    <h3>איך לבחור וילה: המדריך המלא</h3>
+                    <p>כל הטיפים והסודות לבחירת וילה מושלמת - מה לבדוק, איך להימנע מטעויות, ומה שאף אחד לא מספר לכם...</p>
+                    <a href="#" onclick="openVideoModal('video1'); return false;" class="tip-link">
+                        <i class="fas fa-play-circle"></i> צפה בסרטון
+                    </a>
+                </div>
+            </article>
+            
+            <!-- Tip 2 - VIDEO -->
+            <article class="tip-card">
+                <div class="video-thumbnail" onclick="openVideoModal('video2')">
+                    <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1763828638/%D7%96%D7%95%D7%9C_t7cops.png" alt="למה לא לשלם זול" class="tip-image">
+                    <div class="video-play-icon">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <div class="tip-content">
+                    <span class="tip-category">🎥 כסף</span>
+                    <h3>למה לא כדאי לשלם זול על לוקיישן?</h3>
+                    <p>הטעות הכי יקרה שאנשים עושים - לשלם זול. הסרטון הזה יחסוך לכם אלפי שקלים ועצבים...</p>
+                    <a href="#" onclick="openVideoModal('video2'); return false;" class="tip-link">
+                        <i class="fas fa-play-circle"></i> צפה בסרטון
+                    </a>
+                </div>
+            </article>
+            
+            <!-- Tip 3 -->
+            <article class="tip-card">
+                <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818995/Event1_c4hx5u.jpg" alt="שבת חתן" class="tip-image">
+                <div class="tip-content">
+                    <span class="tip-category">שבתות חתן</span>
+                    <h3>איך לבחור וילה לשבת חתן: המדריך המלא</h3>
+                    <p>שבת חתן זה לא רק מקום ללון - זו החוויה המשפחתית הכי אינטימית. הנה מה שחייבים לבדוק...</p>
+                    <a href="#" class="tip-link">קרא עוד <i class="fas fa-arrow-left"></i></a>
+                </div>
+            </article>
+            
+            <!-- Tip 4 -->
+            <article class="tip-card">
+                <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818996/Zimmer1_q31mjd.jpg" alt="נופש משפחתי" class="tip-image">
+                <div class="tip-content">
+                    <span class="tip-category">נופש</span>
+                    <h3>נופש משפחתי מושלם: וילה או צימר?</h3>
+                    <p>יש הבדל עצום בין הסוגים השונים של נופש. הנה איך לבחור בהתאם למשפחה שלכם...</p>
+                    <a href="#" class="tip-link">קרא עוד <i class="fas fa-arrow-left"></i></a>
+                </div>
+            </article>
+            
+            <!-- Tip 5 -->
+            <article class="tip-card">
+                <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818995/Event2_f7tqb2.jpg" alt="הסודות של לוקיישנים יוקרתיים" class="tip-image">
+                <div class="tip-content">
+                    <span class="tip-category">יוקרה</span>
+                    <h3>הסודות של לוקיישנים יוקרתיים</h3>
+                    <p>מה באמת הופך מקום ליוקרתי? זה הרבה יותר מסתם תמונות יפות באינסטגרם...</p>
+                    <a href="#" class="tip-link">קרא עוד <i class="fas fa-arrow-left"></i></a>
+                </div>
+            </article>
+            
+            <!-- Tip 6 -->
+            <article class="tip-card">
+                <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818996/Event3_gpltrp.jpg" alt="כנסים וימי גיבוש" class="tip-image">
+                <div class="tip-content">
+                    <span class="tip-category">אירועים עסקיים</span>
+                    <h3>מדריך: לוקיישנים לכנסים וימי גיבוש</h3>
+                    <p>איך לבחור מקום שיעשה את ההבדל בין כנס משעמם לחוויה בלתי נשכחת...</p>
+                    <a href="#" class="tip-link">קרא עוד <i class="fas fa-arrow-left"></i></a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-tips">
+        <h2>מחפשים את הלוקיישן המושלם?</h2>
+        <p>ה-Multi AI שלנו כאן כדי לעזור לכם למצוא בדיוק מה שאתם צריכים</p>
+        <a href="contact.html" class="cta-button">בואו נדבר</a>
+    </section>
+
+    <!-- Video Modal -->
+    <div class="video-modal" id="videoModal">
+        <div class="video-modal-content">
+            <button class="video-close" onclick="closeVideoModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <video id="modalVideo" controls style="width: 100%; border-radius: 10px;">
+                <source id="videoSource" src="" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <a href="index-v2.html" class="footer-logo">
+            <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="MULTIBRAWN לוגו" width="40" height="40">
+            <span>MULTIBRAWN</span>
+        </a>
+        <nav class="footer-links">
+            <a href="privacy.html">מדיניות פרטיות</a>
+            <a href="accessibility.html">הצהרת נגישות</a>
+            <a href="about.html">אודות</a>
+            <a href="contact.html">צור קשר</a>
+        </nav>
+        <p class="footer-copy">© 2025 MULTIBRAWN. כל הזכויות שמורות.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Video Modal Functions
+        const videos = {
+            'video1': 'https://res.cloudinary.com/dptyfvwyo/video/upload/v1763684101/Video3_omgivy.mp4',
+            'video2': 'https://res.cloudinary.com/dptyfvwyo/video/upload/v1763718107/%D7%96%D7%95%D7%9C_lcwakc.mp4'
+        };
+        
+        function openVideoModal(videoId) {
+            const modal = document.getElementById('videoModal');
+            const videoSource = document.getElementById('videoSource');
+            const modalVideo = document.getElementById('modalVideo');
+            
+            videoSource.src = videos[videoId];
+            modalVideo.load();
+            modal.classList.add('active');
+            modalVideo.play();
+            
+            // Prevent body scroll
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeVideoModal() {
+            const modal = document.getElementById('videoModal');
+            const modalVideo = document.getElementById('modalVideo');
+            
+            modalVideo.pause();
+            modalVideo.currentTime = 0;
+            modal.classList.remove('active');
+            
+            // Restore body scroll
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modal on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeVideoModal();
+            }
+        });
+        
+        // Close modal when clicking outside video
+        document.getElementById('videoModal').addEventListener('click', (e) => {
+            if (e.target.id === 'videoModal') {
+                closeVideoModal();
+            }
+        });
+    </script>
+</body>
+</html>
