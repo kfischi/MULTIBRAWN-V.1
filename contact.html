@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>צור קשר - MULTIBRAWN | בואו נמצא את הלוקיישן המושלם שלכם</title>
+    <meta name="description" content="ספרו לנו מה אתם מחפשים - ה-Multi AI שלנו כאן לעזור. שירות 24/7, תשובות מיידיות, והכוונה ישירה לווטסאפ.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --primary-bg: linear-gradient(135deg, #00E0FF, #2D7FFF, #A06BFF);
+            --accent-primary: #FF5EA1;
+            --accent-secondary: #00E0FF;
+            --white: #FAFAFA;
+            --text-dark: #1a0b2e;
+            --glass-bg: rgba(255, 255, 255, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Heebo', sans-serif;
+            --whatsapp: #25D366;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            background: var(--primary-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3 { font-family: var(--font-display); font-weight: 700; }
+        
+        /* ========== HEADER ========== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+        
+        .logo img { width: 45px; height: 45px; }
+        
+        .logo span {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            font-family: var(--font-display);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: opacity 0.3s;
+            font-weight: 500;
+        }
+        
+        .nav-links a:hover { opacity: 0.6; }
+        
+        .nav-cta {
+            background: var(--accent-primary);
+            color: var(--white) !important;
+            padding: 0.7rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            cursor: pointer;
+        }
+        
+        /* ========== HERO SECTION ========== */
+        .contact-hero {
+            padding: 12rem 2rem 4rem;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .contact-hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-dark), var(--accent-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .contact-hero p {
+            font-size: 1.3rem;
+            opacity: 0.85;
+            margin-bottom: 3rem;
+        }
+        
+        /* ========== CHATBOT CONTAINER ========== */
+        .chatbot-container {
+            max-width: 700px;
+            margin: 0 auto 4rem;
+            padding: 0 2rem;
+        }
+        
+        .chatbot-box {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+        
+        .chatbot-header {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            padding: 1.5rem;
+            text-align: center;
+            color: white;
+        }
+        
+        .chatbot-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .chatbot-header p {
+            font-size: 0.95rem;
+            opacity: 0.95;
+        }
+        
+        .chat-messages {
+            padding: 2rem;
+            min-height: 400px;
+            max-height: 500px;
+            overflow-y: auto;
+            background: #f9f9f9;
+        }
+        
+        .chat-message {
+            margin-bottom: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+        
+        .chat-message.bot {
+            flex-direction: row;
+        }
+        
+        .chat-message.user {
+            flex-direction: row-reverse;
+        }
+        
+        .message-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .bot .message-avatar {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            color: white;
+        }
+        
+        .user .message-avatar {
+            background: var(--text-dark);
+            color: white;
+        }
+        
+        .message-bubble {
+            padding: 1rem 1.5rem;
+            border-radius: 18px;
+            max-width: 80%;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        .bot .message-bubble {
+            background: white;
+            color: var(--text-dark);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        
+        .user .message-bubble {
+            background: var(--accent-primary);
+            color: white;
+        }
+        
+        .chat-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+        
+        .option-btn {
+            background: white;
+            border: 2px solid var(--accent-primary);
+            color: var(--accent-primary);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-family: var(--font-body);
+        }
+        
+        .option-btn:hover {
+            background: var(--accent-primary);
+            color: white;
+            transform: translateX(-5px);
+        }
+        
+        .chat-input-area {
+            padding: 1.5rem;
+            background: white;
+            border-top: 1px solid #e0e0e0;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .chat-input {
+            flex: 1;
+            padding: 0.8rem 1.2rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            font-family: var(--font-body);
+            transition: border-color 0.3s ease;
+        }
+        
+        .chat-input:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+        }
+        
+        .send-btn {
+            background: var(--accent-primary);
+            color: white;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .send-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        /* ========== WHATSAPP BUTTON ========== */
+        .whatsapp-cta {
+            text-align: center;
+            padding: 3rem 2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            background: var(--whatsapp);
+            color: white;
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 700;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .whatsapp-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.4);
+        }
+        
+        .whatsapp-btn i {
+            font-size: 1.5rem;
+        }
+        
+        /* ========== ALTERNATIVE CONTACT ========== */
+        .alt-contact {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        
+        .contact-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .contact-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--accent-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.8rem;
+            color: white;
+        }
+        
+        .contact-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-dark);
+        }
+        
+        .contact-card p {
+            font-size: 1rem;
+            opacity: 0.85;
+            direction: ltr;
+        }
+        
+        .contact-card a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        /* ========== FOOTER ========== */
+        footer {
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        
+        .footer-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-decoration: none;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-logo img { width: 40px; height: 40px; }
+        
+        .footer-logo span {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            font-family: var(--font-display);
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-links a:hover { opacity: 0.6; }
+        
+        .footer-copy {
+            color: var(--text-dark);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        .typing-indicator {
+            display: none;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 1.5rem;
+            background: white;
+            border-radius: 18px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            width: fit-content;
+        }
+        
+        .typing-indicator.active {
+            display: flex;
+        }
+        
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-primary);
+            border-radius: 50%;
+            animation: typing 1.4s infinite;
+        }
+        
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+        
+        @keyframes typing {
+            0%, 60%, 100% { opacity: 0.3; }
+            30% { opacity: 1; }
+        }
+        
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1024px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav { padding: 1rem 1.5rem; }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+            
+            .nav-links.active { transform: translateX(0); }
+            
+            .menu-toggle { display: block; }
+            
+            .contact-hero { padding: 10rem 1.5rem 3rem; }
+            
+            .message-bubble { max-width: 90%; }
+            
+            .whatsapp-btn {
+                font-size: 1rem;
+                padding: 1rem 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <nav>
+            <a href="index-v2.html" class="logo">
+                <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="MULTIBRAWN לוגו" width="45" height="45">
+                <span>MULTIBRAWN</span>
+            </a>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="index-v2.html">דף הבית</a>
+                <a href="gallery.html">גלריה</a>
+                <a href="tips.html">טיפים</a>
+                <a href="about.html">אודות</a>
+                <a href="contact.html" class="nav-cta">צור קשר</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="contact-hero">
+        <h1>בואו נמצא את המקום המושלם שלכם</h1>
+        <p>ספרו לנו מה אתם מחפשים - ה-Multi AI שלנו כאן לעזור</p>
+    </section>
+
+    <!-- AI Chatbot -->
+    <section class="chatbot-container">
+        <div class="chatbot-box">
+            <div class="chatbot-header">
+                <h3>💬 Multi AI</h3>
+                <p>העוזר האישי שלכם למציאת לוקיישן מושלם</p>
+            </div>
+            
+            <div class="chat-messages" id="chatMessages">
+                <div class="chat-message bot">
+                    <div class="message-avatar">🤖</div>
+                    <div>
+                        <div class="message-bubble">
+                            היי! אני Multi AI, העוזר האישי שלכם 👋<br><br>
+                            אני כאן כדי לעזור לכם למצוא את הלוקיישן המושלם. בואו נתחיל - איזה סוג אירוע או נופש מעניין אתכם?
+                        </div>
+                        <div class="chat-options" id="initialOptions">
+                            <button class="option-btn" onclick="selectOption('חתונה')">💍 חתונה או אירוע פרטי</button>
+                            <button class="option-btn" onclick="selectOption('שבת חתן')">✡️ שבת חתן</button>
+                            <button class="option-btn" onclick="selectOption('נופש')">🌴 נופש משפחתי</button>
+                            <button class="option-btn" onclick="selectOption('כנס')">👥 כנס או יום גיבוש</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="typing-indicator" id="typingIndicator">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                </div>
+            </div>
+            
+            <div class="chat-input-area">
+                <input type="text" class="chat-input" id="chatInput" placeholder="או כתבו לנו במילים שלכם..." disabled>
+                <button class="send-btn" id="sendBtn" disabled>
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp CTA -->
+    <section class="whatsapp-cta" id="whatsappSection" style="display: none;">
+        <h2 style="margin-bottom: 1.5rem; font-size: 2rem;">מוכנים להמשיך?</h2>
+        <p style="margin-bottom: 2rem; font-size: 1.1rem; opacity: 0.85;">בואו נעבור לווטסאפ ונמצא לכם את המקום המושלם</p>
+        <a href="#" class="whatsapp-btn" id="whatsappBtn">
+            <i class="fab fa-whatsapp"></i>
+            המשך בווטסאפ
+        </a>
+    </section>
+
+    <!-- Alternative Contact Methods -->
+    <section class="alt-contact">
+        <h2 style="text-align: center; margin-bottom: 3rem; font-size: 2.5rem;">או צרו קשר ישירות</h2>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-phone"></i>
+                </div>
+                <h3>טלפון</h3>
+                <p><a href="tel:+972523983394">052-398-3394</a></p>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <h3>מייל</h3>
+                <p><a href="mailto:info@multibrawn.co.il">info@multibrawn.co.il</a></p>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3>שעות פעילות</h3>
+                <p>א'-ו': 08:00-22:00</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <a href="index-v2.html" class="footer-logo">
+            <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="MULTIBRAWN לוגו" width="40" height="40">
+            <span>MULTIBRAWN</span>
+        </a>
+        <nav class="footer-links">
+            <a href="privacy.html">מדיניות פרטיות</a>
+            <a href="accessibility.html">הצהרת נגישות</a>
+            <a href="about.html">אודות</a>
+            <a href="contact.html">צור קשר</a>
+        </nav>
+        <p class="footer-copy">© 2025 MULTIBRAWN. כל הזכויות שמורות.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Mobile menu
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Chatbot Logic
+        const chatMessages = document.getElementById('chatMessages');
+        const chatInput = document.getElementById('chatInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const whatsappSection = document.getElementById('whatsappSection');
+        const whatsappBtn = document.getElementById('whatsappBtn');
+        const typingIndicator = document.getElementById('typingIndicator');
+        
+        let chatData = {
+            eventType: '',
+            guests: '',
+            date: '',
+            budget: '',
+            notes: ''
+        };
+        
+        let currentStep = 0;
+        
+        function selectOption(option) {
+            chatData.eventType = option;
+            addUserMessage(option);
+            document.getElementById('initialOptions').style.display = 'none';
+            
+            setTimeout(() => askNextQuestion(), 800);
+        }
+        
+        function addUserMessage(text) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'chat-message user';
+            messageDiv.innerHTML = `
+                <div class="message-avatar">👤</div>
+                <div class="message-bubble">${text}</div>
+            `;
+            chatMessages.appendChild(messageDiv);
+            scrollToBottom();
+        }
+        
+        function addBotMessage(text, showOptions = false, options = []) {
+            showTyping();
+            
+            setTimeout(() => {
+                hideTyping();
+                
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'chat-message bot';
+                
+                let optionsHTML = '';
+                if (showOptions && options.length > 0) {
+                    optionsHTML = '<div class="chat-options">';
+                    options.forEach(opt => {
+                        optionsHTML += `<button class="option-btn" onclick="handleOption('${opt}')">${opt}</button>`;
+                    });
+                    optionsHTML += '</div>';
+                }
+                
+                messageDiv.innerHTML = `
+                    <div class="message-avatar">🤖</div>
+                    <div>
+                        <div class="message-bubble">${text}</div>
+                        ${optionsHTML}
+                    </div>
+                `;
+                chatMessages.appendChild(messageDiv);
+                scrollToBottom();
+            }, 1000);
+        }
+        
+        function showTyping() {
+            typingIndicator.classList.add('active');
+            scrollToBottom();
+        }
+        
+        function hideTyping() {
+            typingIndicator.classList.remove('active');
+        }
+        
+        function scrollToBottom() {
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        
+        function askNextQuestion() {
+            currentStep++;
+            
+            switch(currentStep) {
+                case 1:
+                    addBotMessage('מעולה! כמה אנשים צפויים?', true, ['עד 50', '50-100', '100-200', '200+']);
+                    break;
+                case 2:
+                    addBotMessage('נהדר! מתי אתם מתכננים את האירוע/הנופש?');
+                    chatInput.disabled = false;
+                    sendBtn.disabled = false;
+                    chatInput.focus();
+                    chatInput.placeholder = 'למשל: יוני 2025';
+                    break;
+                case 3:
+                    addBotMessage('אוקיי! מה תקציב משוער למקום? (לא חובה)', true, ['עד 10K', '10K-20K', '20K-30K', '30K+', 'דלג']);
+                    break;
+                case 4:
+                    addBotMessage('כמעט סיימנו! יש משהו חשוב שכדאי שנדע? (חזון, דרישות מיוחדות...)');
+                    chatInput.disabled = false;
+                    sendBtn.disabled = false;
+                    chatInput.placeholder = 'למשל: חשוב לי נוף, כשרות...';
+                    break;
+                case 5:
+                    finishChat();
+                    break;
+            }
+        }
+        
+        function handleOption(option) {
+            addUserMessage(option);
+            
+            if (currentStep === 1) {
+                chatData.guests = option;
+            } else if (currentStep === 3) {
+                chatData.budget = option;
+            }
+            
+            // Disable all buttons in this step
+            const buttons = document.querySelectorAll('.chat-options button');
+            buttons.forEach(btn => btn.disabled = true);
+            
+            setTimeout(() => askNextQuestion(), 800);
+        }
+        
+        function finishChat() {
+            const summary = `
+סוג אירוע: ${chatData.eventType}
+מספר אנשים: ${chatData.guests}
+תאריך: ${chatData.date}
+תקציב: ${chatData.budget}
+הערות: ${chatData.notes}`;
+            
+            addBotMessage(`מושלם! קיבלתי את כל הפרטים 🎉<br><br>עכשיו בואו נעבור לווטסאפ כדי שאוכל למצוא לכם את המקום המושלם ולתאם את כל הפרטים.`);
+            
+            chatInput.disabled = true;
+            sendBtn.disabled = true;
+            
+            // Build WhatsApp message
+            const whatsappMessage = encodeURIComponent(
+                `היי! סיימתי את השיחה עם Multi AI.\n\nהפרטים שלי:\n${summary}\n\nאשמח לקבל המלצות 😊`
+            );
+            
+            const whatsappNumber = '972523983394';
+            whatsappBtn.href = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+            
+            setTimeout(() => {
+                whatsappSection.style.display = 'block';
+                whatsappSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 1500);
+        }
+        
+        // Handle text input
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && chatInput.value.trim() !== '') {
+                sendMessage();
+            }
+        });
+        
+        sendBtn.addEventListener('click', sendMessage);
+        
+        function sendMessage() {
+            const message = chatInput.value.trim();
+            if (message === '') return;
+            
+            addUserMessage(message);
+            
+            if (currentStep === 2) {
+                chatData.date = message;
+            } else if (currentStep === 4) {
+                chatData.notes = message;
+            }
+            
+            chatInput.value = '';
+            chatInput.disabled = true;
+            sendBtn.disabled = true;
+            
+            setTimeout(() => askNextQuestion(), 800);
+        }
+    </script>
+</body>
+</html>
