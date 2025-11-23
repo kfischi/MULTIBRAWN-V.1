@@ -529,7 +529,7 @@
             <div class="nav-links" id="navLinks">
                 <a href="index-v2.html">דף הבית</a>
                 <a href="gallery.html">גלריה</a>
-                <a href="tips.html">טיפים</a>
+                <a href="tips-reels.html">טיפים</a>
                 <a href="about.html">אודות</a>
                 <a href="contact.html" class="nav-cta">צור קשר</a>
             </div>
@@ -610,7 +610,7 @@
                     <i class="fas fa-envelope"></i>
                 </div>
                 <h3>מייל</h3>
-                <p><a href="mailto:info@multibrawn.co.il">info@multibrawn.co.il</a></p>
+                <p><a href="/cdn-cgi/l/email-protection#bdd4d3dbd2fdd0c8d1c9d4dfcfdccad393ded293d4d1"><span class="__cf_email__" data-cfemail="472e292128072a322b332e2535263029692428692e2b">[email&#160;protected]</span></a></p>
             </div>
             
             <div class="contact-card">
@@ -639,7 +639,7 @@
     </footer>
 
     <!-- JavaScript -->
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Header scroll effect
         const header = document.getElementById('header');
         window.addEventListener('scroll', () => {
@@ -827,15 +827,4 @@
             if (currentStep === 2) {
                 chatData.date = message;
             } else if (currentStep === 4) {
-                chatData.notes = message;
-            }
-            
-            chatInput.value = '';
-            chatInput.disabled = true;
-            sendBtn.disabled = true;
-            
-            setTimeout(() => askNextQuestion(), 800);
-        }
-    </script>
-</body>
-</html>
+                chatData.notes = messag
