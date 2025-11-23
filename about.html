@@ -3,717 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Primary Meta Tags -->
-    <title>אודות MULTIBRAWN - הסיפור שלנו | ערדית בראון</title>
-    <meta name="description" content="הכירו את ערדית בראון ואת הסיפור מאחורי Multibrawn - 10 שנות ניסיון בחיבור בין אנשים לחלומות שלהם. שירות אישי, אמינות 100%">
-    <meta name="keywords" content="ערדית בראון, multibrawn, סוכן לוקיישנים, סיפור מותג, אמינות">
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="אודות MULTIBRAWN - הסיפור שלנו">
-    <meta property="og:description" content="10 שנות ניסיון בחיבור בין אנשים לחלומות שלהם">
-    <meta property="og:image" content="https://res.cloudinary.com/dptyfvwyo/image/upload/v1762004983/HERO_zb7pwc.jpg">
-    <meta property="og:type" content="website">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png">
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
+    <title>MULTIBRAWN - אודות</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <!-- AOS Animation Library -->
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --site-accent: #FF5EA1; --site-text: #1a0b2e; }
+        body { font-family: 'Heebo', sans-serif; background: linear-gradient(135deg, #00E0FF 0%, #2D7FFF 50%, #A06BFF 100%); color: var(--site-text); overflow-x: hidden; min-height: 100vh; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
         
-        :root {
-            --primary-bg: linear-gradient(135deg, #00E0FF, #2D7FFF, #A06BFF);
-            --accent-primary: #FF5EA1;
-            --accent-secondary: #00E0FF;
-            --white: #FAFAFA;
-            --text-dark: #1a0b2e;
-            --glass-bg: rgba(255, 255, 255, 0.15);
-            --glass-border: rgba(255, 255, 255, 0.2);
-            --font-display: 'Playfair Display', serif;
-            --font-body: 'Heebo', sans-serif;
-        }
+        #main-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.3); height: 90px; display: flex; align-items: center; }
+        nav { width: 100%; max-width: 1400px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo img { width: 80px; height: 80px; }
+        .logo span { font-size: 2rem; font-weight: 800; color: var(--site-text); font-family: 'Playfair Display', serif; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { color: var(--site-text); text-decoration: none; font-size: 1.1rem; font-weight: 500; }
+        .nav-cta { background: var(--site-accent); color: white !important; padding: 0.7rem 1.8rem; border-radius: 50px; font-weight: 600; box-shadow: 0 4px 20px rgba(255, 94, 161, 0.4); }
+
+        .hero-about { text-align: center; padding: 10rem 2rem 4rem; }
+        .hero-tag { display: inline-block; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); padding: 0.5rem 1.5rem; border-radius: 50px; font-size: 0.9rem; font-weight: 600; margin-bottom: 2rem; }
+        .hero-about h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: 1.5rem; line-height: 1.1; }
         
-        body {
-            font-family: var(--font-body);
-            background: var(--primary-bg);
-            color: var(--text-dark);
-            line-height: 1.8;
-            overflow-x: hidden;
-        }
+        .story-section { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; }
+        .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .story-image img { width: 100%; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
+        .highlight-text { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-right: 4px solid var(--site-accent); padding: 1.5rem; border-radius: 10px; margin: 2rem 0; font-weight: 600; }
         
-        h1, h2, h3, h4 { 
-            font-family: var(--font-display); 
-            font-weight: 700; 
-            line-height: 1.2;
-        }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; max-width: 1000px; margin: 4rem auto; padding: 0 2rem; }
+        .stat-box { background: rgba(255,255,255,0.2); border-radius: 15px; padding: 2rem; text-align: center; }
+        .stat-number { font-size: 2.5rem; font-weight: 800; color: var(--site-accent); }
         
-        /* ========== HEADER ========== */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--glass-border);
-            transition: all 0.3s ease;
-        }
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background-color: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.3); z-index: 9999; }
+        footer { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 3rem 2rem; text-align: center; margin-top: 4rem; border-top: 1px solid rgba(255,255,255,0.2); }
         
-        header.scrolled {
-            background: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        nav {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1.5rem 3rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            text-decoration: none;
-        }
-        
-        .logo img { width: 45px; height: 45px; }
-        
-        .logo span {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            font-family: var(--font-display);
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            align-items: center;
-        }
-        
-        .nav-links a {
-            color: var(--text-dark);
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: opacity 0.3s;
-            font-weight: 500;
-        }
-        
-        .nav-links a:hover { opacity: 0.6; }
-        
-        .nav-cta {
-            background: var(--accent-primary);
-            color: var(--white) !important;
-            padding: 0.7rem 1.8rem;
-            border-radius: 50px;
-            font-weight: 600;
-        }
-        
-        .nav-cta:hover { transform: scale(1.05); }
-        
-        /* Mobile Menu Toggle */
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.8rem;
-            color: var(--text-dark);
-            cursor: pointer;
-        }
-        
-        /* ========== HERO SECTION ========== */
-        .hero-about {
-            min-height: 70vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 10rem 2rem 6rem;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero-about::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(255, 94, 161, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 50%, rgba(0, 224, 255, 0.3) 0%, transparent 50%);
-            z-index: 0;
-        }
-        
-        .hero-content {
-            max-width: 900px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .hero-tag {
-            display: inline-block;
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 2rem;
-            color: var(--text-dark);
-        }
-        
-        .hero-about h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, var(--text-dark), var(--accent-primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .hero-quote {
-            font-size: clamp(1.2rem, 2.5vw, 1.6rem);
-            font-weight: 300;
-            font-style: italic;
-            color: var(--text-dark);
-            opacity: 0.85;
-            line-height: 1.8;
-            margin-bottom: 2rem;
-        }
-        
-        /* ========== STORY SECTION ========== */
-        .story-section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 6rem 2rem;
-        }
-        
-        .story-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-        
-        .story-image {
-            position: relative;
-        }
-        
-        .story-image img {
-            width: 100%;
-            height: 600px;
-            object-fit: cover;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-        }
-        
-        .story-image::before {
-            content: '';
-            position: absolute;
-            top: -20px;
-            right: -20px;
-            width: 200px;
-            height: 200px;
-            background: var(--accent-secondary);
-            opacity: 0.3;
-            border-radius: 50%;
-            z-index: -1;
-        }
-        
-        .story-text h2 {
-            font-size: clamp(2rem, 4vw, 3rem);
-            margin-bottom: 1.5rem;
-            color: var(--text-dark);
-        }
-        
-        .story-text p {
-            font-size: 1.1rem;
-            line-height: 1.9;
-            margin-bottom: 1.5rem;
-            color: var(--text-dark);
-            opacity: 0.9;
-        }
-        
-        .highlight-text {
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border-right: 4px solid var(--accent-primary);
-            padding: 1.5rem;
-            border-radius: 10px;
-            margin: 2rem 0;
-            font-weight: 600;
-            font-size: 1.15rem;
-        }
-        
-        /* ========== VALUES SECTION ========== */
-        .values-section {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            padding: 6rem 2rem;
-            margin: 4rem 0;
-        }
-        
-        .section-header {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 4rem;
-        }
-        
-        .section-header h2 {
-            font-size: clamp(2rem, 4vw, 3.5rem);
-            margin-bottom: 1rem;
-            color: var(--text-dark);
-        }
-        
-        .section-header p {
-            font-size: 1.2rem;
-            opacity: 0.85;
-            color: var(--text-dark);
-        }
-        
-        .values-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 3rem;
-        }
-        
-        .value-card {
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 3rem 2rem;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .value-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-        
-        .value-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--accent-primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 2rem;
-            color: white;
-        }
-        
-        .value-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--text-dark);
-        }
-        
-        .value-card p {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: var(--text-dark);
-            opacity: 0.85;
-        }
-        
-        /* ========== STATS SECTION ========== */
-        .stats-section {
-            max-width: 1200px;
-            margin: 6rem auto;
-            padding: 0 2rem;
-        }
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-        }
-        
-        .stat-box {
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 2.5rem 1.5rem;
-            text-align: center;
-        }
-        
-        .stat-number {
-            font-size: clamp(2.5rem, 4vw, 4rem);
-            font-weight: 800;
-            color: var(--accent-primary);
-            font-family: var(--font-display);
-            line-height: 1;
-        }
-        
-        .stat-label {
-            font-size: 1rem;
-            margin-top: 0.5rem;
-            color: var(--text-dark);
-            opacity: 0.8;
-        }
-        
-        /* ========== CTA SECTION ========== */
-        .cta-about {
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            padding: 6rem 2rem;
-            text-align: center;
-            border-radius: 30px;
-            max-width: 1200px;
-            margin: 6rem auto;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-        }
-        
-        .cta-about h2 {
-            font-size: clamp(2rem, 4vw, 3.5rem);
-            color: white;
-            margin-bottom: 1rem;
-        }
-        
-        .cta-about p {
-            font-size: 1.3rem;
-            color: white;
-            opacity: 0.95;
-            margin-bottom: 2.5rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .cta-button {
-            display: inline-block;
-            background: white;
-            color: var(--accent-primary);
-            padding: 1.2rem 3rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: 700;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-        }
-        
-        /* ========== FOOTER ========== */
-        footer {
-            background: rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(10px);
-            padding: 3rem 2rem;
-            text-align: center;
-            margin-top: 4rem;
-        }
-        
-        .footer-logo {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.8rem;
-            text-decoration: none;
-            margin-bottom: 1.5rem;
-        }
-        
-        .footer-logo img { width: 40px; height: 40px; }
-        
-        .footer-logo span {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            font-family: var(--font-display);
-        }
-        
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-        }
-        
-        .footer-links a {
-            color: var(--text-dark);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: opacity 0.3s;
-        }
-        
-        .footer-links a:hover { opacity: 0.6; }
-        
-        .footer-copy {
-            color: var(--text-dark);
-            opacity: 0.7;
-            font-size: 0.9rem;
-        }
-        
-        /* ========== RESPONSIVE ========== */
-        @media (max-width: 1024px) {
-            .story-grid { 
-                grid-template-columns: 1fr; 
-                gap: 3rem; 
-            }
-            
-            .values-grid { 
-                grid-template-columns: 1fr; 
-                gap: 2rem; 
-            }
-            
-            .stats-grid { 
-                grid-template-columns: repeat(2, 1fr); 
-            }
-        }
-        
-        @media (max-width: 768px) {
-            nav { padding: 1rem 1.5rem; }
-            
-            .nav-links {
-                position: fixed;
-                top: 80px;
-                left: 0;
-                right: 0;
-                background: rgba(255, 255, 255, 0.98);
-                backdrop-filter: blur(20px);
-                flex-direction: column;
-                padding: 2rem;
-                gap: 1.5rem;
-                transform: translateX(-100%);
-                transition: transform 0.3s ease;
-                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            }
-            
-            .nav-links.active { transform: translateX(0); }
-            
-            .menu-toggle { display: block; }
-            
-            .hero-about { 
-                padding: 8rem 1.5rem 4rem; 
-                min-height: 60vh;
-            }
-            
-            .stats-grid { grid-template-columns: 1fr; }
-            
-            .cta-about { 
-                padding: 4rem 1.5rem; 
-                margin: 3rem 1rem; 
-            }
-        }
+        @media (max-width: 768px) { .nav-links { display: none; } .story-grid { grid-template-columns: 1fr; } .stats-grid { grid-template-columns: 1fr 1fr; } }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header id="header">
+    <header id="main-header">
         <nav>
-            <a href="index-v2.html" class="logo">
-                <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="MULTIBRAWN לוגו" width="45" height="45">
-                <span>MULTIBRAWN</span>
-            </a>
-            <button class="menu-toggle" id="menuToggle" aria-label="תפריט ניווט">
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="nav-links" id="navLinks">
-                <a href="index-v2.html">דף הבית</a>
+            <a href="index.html" class="logo"><img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="Logo"><span>MULTIBRAWN</span></a>
+            <div class="nav-links">
+                <a href="index.html">דף הבית</a>
                 <a href="gallery.html">גלריה</a>
-                <a href="tips-reels.html">טיפים</a>
-                <a href="about.html">אודות</a>
+                <a href="tips.html">טיפים חשובים</a>
+                <a href="about.html" style="color: var(--site-accent);">אודות</a>
                 <a href="contact.html" class="nav-cta">צור קשר</a>
             </div>
         </nav>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero-about">
-        <div class="hero-content" data-aos="fade-up">
-            <span class="hero-tag">הסיפור שלנו</span>
-            <h1>מתסכול אישי<br>לחזון משנה מציאות</h1>
-            <p class="hero-quote">"לכל אדם מגיע שירות אישי שחוסך לו זמן ומבטיח לו 100% אמינות"</p>
-        </div>
+        <span class="hero-tag">הסיפור שלנו</span>
+        <h1 data-aos="fade-up">מתסכול אישי<br>לחזון משנה מציאות</h1>
+        <p style="font-size: 1.3rem; opacity: 0.9;">"לכל אדם מגיע שירות אישי שחוסך לו זמן ומבטיח לו 100% אמינות"</p>
     </section>
 
-    <!-- Story Section -->
     <section class="story-section">
         <div class="story-grid">
             <div class="story-image" data-aos="fade-left">
-                <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1762004983/HERO_zb7pwc.jpg" alt="ערדית בראון - מייסדת MULTIBRAWN">
+                <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1762012646/Ardit_znq9aj.jpg" alt="ערדית בראון">
             </div>
             <div class="story-text" data-aos="fade-right">
-                <h2>שלום, אני ערדית בראון</h2>
-                <p>יזמית עם מעל <strong>10 שנות ניסיון</strong> בחיבור בין אנשים לחלומות שלהם.</p>
-                
-                <p>הכל התחיל מתסכול אישי: ראיתי איך אנשים יקרים מבזבזים שעות בחיפושים אינסופיים, רק כדי להתאכזב ממקום שלא תאם את התמונות.</p>
-                
-                <div class="highlight-text">
-                    <i class="fas fa-quote-right" style="opacity: 0.3; font-size: 1.5rem; float: left; margin-left: 1rem;"></i>
-                    הקמתי את Multibrawn על עיקרון פשוט: לכל אדם מגיע שירות אישי שחוסך לו זמן ומבטיח לו 100% אמינות.
-                </div>
-                
-                <p>היום אני גאה להוביל צוות מומחים שמכיר כל נכס באופן אישי. אנחנו לא "עוד פלטפורמה" – <strong>אנחנו הסוכנים האישיים שלכם.</strong></p>
-                
-                <p>ההבטחה שלנו פשוטה: אנחנו מבצעים את כל הבדיקות, התיאומים והסינונים, כדי שלכם יישאר רק החלק המהנה – <strong>החוויה.</strong></p>
+                <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">שלום, שמי ערדית בראון</h2>
+                <p class="mb-4 text-lg">יזמית עם מעל <strong>10 שנות ניסיון</strong> בחיבור בין אנשים לחלומות שלהם.</p>
+                <p class="mb-4">הכל התחיל מתסכול אישי: ראיתי איך אנשים מבזבזים שעות בחיפושים אינסופיים, רק כדי להתאכזב ממקום שלא תאם את התמונות.</p>
+                <div class="highlight-text">הקמתי את Multibrawn על עיקרון פשוט: לכל אדם מגיע שירות אישי שחוסך לו זמן ומבטיח לו 100% אמינות.</div>
+                <p>היום אני גאה להוביל צוות מומחים שמכיר כל נכס באופן אישי. אנחנו לא "עוד פלטפורמה", אנחנו הסוכנים האישיים שלכם.</p>
+                <p>ההבטחה שלנו פשוטה: אנחנו מבצעים את כל הבדיקות והתיאומים, כדי שלכם יישאר רק החלק המהנה - החוויה.</p>
             </div>
         </div>
     </section>
 
-    <!-- Values Section -->
-    <section class="values-section">
-        <div class="section-header" data-aos="fade-up">
-            <h2>למה אנחנו שונים?</h2>
-            <p>שלושת העמודים שעליהם בנינו את Multibrawn</p>
-        </div>
-        
-        <div class="values-grid">
-            <div class="value-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="value-icon">
-                    <i class="fas fa-handshake"></i>
-                </div>
-                <h3>ביקור אישי בכל נכס</h3>
-                <p>כל מקום שאנחנו ממליצים עליו, אנחנו מכירים באופן אישי. אין הפתעות לא נעימות. אנחנו בודקים הכל בעצמנו.</p>
-            </div>
-            
-            <div class="value-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="value-icon">
-                    <i class="fas fa-key"></i>
-                </div>
-                <h3>מאגר בלעדי ייחודי</h3>
-                <p>יש לנו גישה למקומות שלא תמצאו בחיפוש רגיל. לוקיישנים שזמינים רק דרכנו – מאגר סגור של אוצרות מוסתרים.</p>
-            </div>
-            
-            <div class="value-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="value-icon">
-                    <i class="fas fa-shield-alt"></i>
-                </div>
-                <h3>שקט נפשי מובטח</h3>
-                <p>טיפים חיוניים שיחסכו לכם כסף, זמן ואכזבות. כל מה שצריך לדעת לפני החופשה או האירוע הבאים.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
     <section class="stats-section">
         <div class="stats-grid">
-            <div class="stat-box" data-aos="zoom-in" data-aos-delay="100">
-                <div class="stat-number">10+</div>
-                <div class="stat-label">שנות ניסיון</div>
-            </div>
-            <div class="stat-box" data-aos="zoom-in" data-aos-delay="200">
-                <div class="stat-number">500+</div>
-                <div class="stat-label">אירועים מוצלחים</div>
-            </div>
-            <div class="stat-box" data-aos="zoom-in" data-aos-delay="300">
-                <div class="stat-number">50+</div>
-                <div class="stat-label">לוקיישנים בלעדיים</div>
-            </div>
-            <div class="stat-box" data-aos="zoom-in" data-aos-delay="400">
-                <div class="stat-number">100%</div>
-                <div class="stat-label">שביעות רצון</div>
-            </div>
+            <div class="stat-box" data-aos="zoom-in"><div class="stat-number">10+</div><div>שנות ניסיון</div></div>
+            <div class="stat-box" data-aos="zoom-in" data-aos-delay="100"><div class="stat-number">500+</div><div>אירועים</div></div>
+            <div class="stat-box" data-aos="zoom-in" data-aos-delay="200"><div class="stat-number">50+</div><div>לוקיישנים</div></div>
+            <div class="stat-box" data-aos="zoom-in" data-aos-delay="300"><div class="stat-number">100%</div><div>אמינות</div></div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-about" data-aos="fade-up">
-        <h2>מוכנים למצוא את הלוקיישן המושלם?</h2>
-        <p>ה-Multi AI שלנו זמין 24/7 כדי לעזור לכם למצוא את המקום שלכם ולשריין תאריך במהירות.</p>
-        <a href="contact.html" class="cta-button">בואו נדבר</a>
-    </section>
+    <a href="https://wa.me/972523983394?text=שלום,%20אני%20פונה%20מאתר%20מולטיבראון" target="_blank" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
 
-    <!-- Footer -->
     <footer>
-        <a href="index-v2.html" class="footer-logo">
-            <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="MULTIBRAWN לוגו" width="40" height="40">
-            <span>MULTIBRAWN</span>
-        </a>
-        <nav class="footer-links">
-            <a href="privacy.html">מדיניות פרטיות</a>
-            <a href="accessibility.html">הצהרת נגישות</a>
-            <a href="about.html">אודות</a>
-            <a href="contact.html">צור קשר</a>
-        </nav>
-        <p class="footer-copy">© 2025 MULTIBRAWN. כל הזכויות שמורות.</p>
+        <div style="margin-bottom:1rem;"><img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" style="width:60px;margin:0 auto;"></div>
+        <a href="contact.html" class="nav-cta" style="display:inline-block; margin-top:1rem;">הזמן עכשיו</a>
+        <p style="margin-top:2rem; opacity:0.7;">© 2025 MULTIBRAWN</p>
     </footer>
-
-    <!-- AOS Animation Library -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
-    <!-- JavaScript -->
-    <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 1000,
-            once: true,
-            offset: 100
-        });
-        
-        // Header scroll effect
-        const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-        
-        // Mobile menu toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
-        
-        if (menuToggle && navLinks) {
-            menuToggle.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-                const icon = menuToggle.querySelector('i');
-                if (navLinks.classList.contains('active')) {
-                    icon.classList.remove('fa-bars');
-                    icon.classList.add('fa-times');
-                } else {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                }
-            });
-            
-            // Close menu when clicking on a link
-            navLinks.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    navLinks.classList.remove('active');
-                    const icon = menuToggle.querySelector('i');
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                });
-            });
-        }
-        
-        // Header scroll effect
-        const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        }, { passive: true });
-    </script>
+    <script>AOS.init();</script>
 </body>
 </html>
