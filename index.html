@@ -949,10 +949,11 @@
                 field: "features"
             },
             dates: {
-                text: "מתי תרצו להגיע? בחרו תאריך או כתבו בערך (למשל: \"סופ\"ש הבא\")",
+                text: "מתי תרצו להגיע? בחרו תאריך מהיומן",
                 type: "date_flexible",
                 next: "budget",
                 field: "date",
+                // Mock availability check animation
                 onAnswer: () => {
                     const container = document.getElementById('chatMessages');
                     const loadMsg = document.createElement('div');
@@ -1003,7 +1004,9 @@
                 text: "זהו! סיימנו. אני שולח אותך לוואטסאפ עם כל הפרטים מוכנים. לחץ על הכפתור למטה.",
                 type: "action",
                 action: "whatsapp",
+                // Simulate sending data to CRM
                 onLoad: () => {
+                    // Here you would normally fetch() to N8N webhook
                     const webhookURL = 'https://webmasterpro.app.n8n.cloud/webhook/6286a24e-50bb-48f2-8925-4f09b3533108';
                     fetch(webhookURL, {
                         method: 'POST',
@@ -1016,7 +1019,10 @@
                     savingMsg.className = 'message bot';
                     savingMsg.innerHTML = `<div class="bubble">⏳ שומר פרטים ב-CRM ושולח מייל אישור...</div>`;
                     container.appendChild(savingMsg);
-                    setTimeout(() => { savingMsg.innerHTML = `<div class="bubble">✅ הפרטים נשמרו בהצלחה!</div>`; }, 2000);
+                    
+                    setTimeout(() => {
+                       savingMsg.innerHTML = `<div class="bubble">✅ הפרטים נשמרו בהצלחה!</div>`; 
+                    }, 2000);
                 }
             }
         };
