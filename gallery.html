@@ -449,7 +449,7 @@
             <div class="nav-links" id="navLinks">
                 <a href="index-v2.html">דף הבית</a>
                 <a href="gallery.html">גלריה</a>
-                <a href="tips.html">טיפים</a>
+                <a href="tips-reels.html">טיפים</a>
                 <a href="about.html">אודות</a>
                 <a href="contact.html" class="nav-cta">צור קשר</a>
             </div>
@@ -665,13 +665,32 @@
         const filterBtns = document.querySelectorAll('.filter-btn');
         const categories = document.querySelectorAll('.category-section');
         
-        // Show only villas on load
+        // Check for category from URL hash or localStorage
         window.addEventListener('load', () => {
+            const urlHash = window.location.hash.substring(1); // Remove # from hash
+            const savedFilter = localStorage.getItem('galleryFilter');
+            const initialFilter = urlHash || savedFilter || 'villas';
+            
+            // Clear localStorage after using it
+            if (savedFilter) {
+                localStorage.removeItem('galleryFilter');
+            }
+            
+            // Show the selected category
             categories.forEach(cat => {
-                if (cat.dataset.category === 'villas') {
+                if (cat.dataset.category === initialFilter) {
                     cat.style.display = 'block';
                 } else {
                     cat.style.display = 'none';
+                }
+            });
+            
+            // Set active button
+            filterBtns.forEach(btn => {
+                if (btn.dataset.filter === initialFilter) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
                 }
             });
         });
@@ -684,6 +703,9 @@
                 btn.classList.add('active');
                 
                 const filter = btn.dataset.filter;
+                
+                // Update URL hash
+                window.location.hash = filter;
                 
                 categories.forEach(cat => {
                     if (cat.dataset.category === filter) {
