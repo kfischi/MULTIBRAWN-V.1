@@ -3,119 +3,1159 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MULTIBRAWN - דף הבית</title>
-    <meta name="description" content="מולטיבראון - הסוכן האישי שלכם לאיתור לוקיישנים.">
+    
+    <!-- SEO Meta Tags -->
+    <title>MULTIBRAWN - סוכן אישי לאיתור לוקיישנים | וילות, צימרים ואירועים</title>
+    <meta name="description" content="מולטיבראון - הסוכן האישי שלכם לאיתור הלוקיישן המושלם. וילות יוקרה, צימרים רומנטיים ומתחמי אירועים בישראל. שירות VIP וחוסך זמן.">
+    <meta name="keywords" content="וילות להשכרה, צימרים בצפון, לוקיישן לחתונה, נופש משפחתי, מולטיבראון, ערדית בראון">
+    <meta name="author" content="Multibrawn">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://multibrawn.co.il/">
+    <meta property="og:title" content="MULTIBRAWN - מוצאים לך את המקום המושלם">
+    <meta property="og:description" content="וילות, צימרים ומתחמי אירועים בסטנדרט בינלאומי. שירות אישי ואמינות 100%.">
+    <meta property="og:image" content="https://res.cloudinary.com/dptyfvwyo/image/upload/v1762004983/HERO_zb7pwc.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://multibrawn.co.il/">
+    <meta property="twitter:title" content="MULTIBRAWN - סוכן אישי לאיתור לוקיישנים">
+    <meta property="twitter:description" content="וילות, צימרים ומתחמי אירועים בסטנדרט בינלאומי.">
+    <meta property="twitter:image" content="https://res.cloudinary.com/dptyfvwyo/image/upload/v1762004983/HERO_zb7pwc.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png">
+
+    <!-- Libraries -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
-        :root { --site-accent: #FF5EA1; --site-text: #1a0b2e; }
-        body { font-family: 'Heebo', sans-serif; background: linear-gradient(135deg, #00E0FF 0%, #2D7FFF 50%, #A06BFF 100%); color: var(--site-text); overflow-x: hidden; min-height: 100vh; }
-        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        /* --- CSS Variables --- */
+        :root {
+            --site-primary-bg: linear-gradient(135deg, #00E0FF 0%, #2D7FFF 50%, #A06BFF 100%);
+            --site-secondary-bg: rgba(255, 255, 255, 0.25);
+            --site-accent: #FF5EA1;
+            --site-text: #1a0b2e;
+            --site-white: #FAFAFA;
+            --glass-bg: rgba(255, 255, 255, 0.3);
+            --glass-border: rgba(255, 255, 255, 0.4);
+        }
+
+        /* --- General Reset --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Heebo', sans-serif;
+            background: var(--site-primary-bg);
+            background-attachment: fixed;
+            color: var(--site-text);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+
+        /* --- Accessibility Classes --- */
+        body.access-large-text { font-size: 120%; }
+        body.access-high-contrast { filter: contrast(150%); background: black !important; color: white !important; }
+        body.access-grayscale { filter: grayscale(100%); }
+        body.access-links-highlight a { text-decoration: underline !important; background: yellow !important; color: black !important; }
+
+        /* --- Navigation Bar --- */
+        #main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            height: 90px;
+            display: flex;
+            align-items: center;
+        }
+        #main-header.scrolled {
+            background: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        nav {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         
-        /* Header */
-        #main-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.3); height: 90px; display: flex; align-items: center; transition: 0.3s; }
-        #main-header.scrolled { background: rgba(255, 255, 255, 0.4); }
-        nav { width: 100%; max-width: 1400px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; }
-        .logo img { width: 80px; height: 80px; transition: transform 0.3s; }
-        .logo:hover img { transform: scale(1.1); }
-        .logo span { font-size: 2rem; font-weight: 800; color: var(--site-text); font-family: 'Playfair Display', serif; }
+        /* Logo */
+        .logo { display: flex; align-items: center; gap: 0.8rem; text-decoration: none; cursor: pointer; }
+        .logo img { width: 50px; height: 50px; transition: transform 0.3s; }
+        .logo:hover img { transform: scale(1.05); }
+        .logo span { 
+            font-size: 1.4rem;
+            font-weight: 800; 
+            color: var(--site-text); 
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Menu Links */
         .nav-links { display: flex; gap: 2rem; align-items: center; }
-        .nav-links a { color: var(--site-text); text-decoration: none; font-size: 1.1rem; font-weight: 500; transition: 0.3s; position: relative; }
-        .nav-links a:hover { color: var(--site-accent); }
-        .nav-cta { background: var(--site-accent); color: white !important; padding: 0.7rem 1.8rem; border-radius: 50px; font-weight: 600; box-shadow: 0 4px 20px rgba(255, 94, 161, 0.4); }
+        .nav-links a {
+            color: var(--site-text);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+        }
+        .nav-links a:not(.nav-cta):hover { color: var(--site-accent); }
+        .nav-links a:not(.nav-cta)::after {
+            content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0;
+            background-color: var(--site-accent); transition: width 0.3s;
+        }
+        .nav-links a:not(.nav-cta):hover::after { width: 100%; }
+
+        /* CTA Button */
+        .nav-cta {
+            background: var(--site-accent);
+            color: white !important;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(255, 94, 161, 0.3);
+            transition: transform 0.3s;
+        }
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 94, 161, 0.5); }
         
-        /* Hero */
-        .hero-video { position: relative; width: 100%; height: 100vh; overflow: hidden; margin-top: -90px; }
-        .video-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
-        .video-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(26,11,46,0.2), rgba(26,11,46,0.5)); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 1; text-align: center; padding: 2rem; }
-        .hero-title { font-size: clamp(3rem, 8vw, 6rem); margin-bottom: 1rem; text-shadow: 0 4px 30px rgba(0,0,0,0.5); font-weight: 900; color: white; line-height: 1.1; }
-        .hero-subtitle { font-size: clamp(1.1rem, 2.5vw, 1.5rem); color: rgba(255,255,255,0.95); margin-bottom: 2rem; }
-        .btn-primary { background: var(--site-accent); color: white; padding: 1rem 2.5rem; border-radius: 50px; font-weight: 700; display: inline-flex; align-items: center; gap: 0.5rem; transition: 0.3s; }
+        /* Mobile Menu Icon */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--site-text);
+            cursor: pointer;
+        }
+
+        /* --- Page Views & Router --- */
+        .page-view { display: none; padding-top: 90px; min-height: 100vh; }
+        .page-view.active { display: block; animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- Home Page --- */
+        .hero-video {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            margin-top: -90px;
+        }
+        .video-bg {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover; z-index: 0;
+        }
+        .video-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to bottom, rgba(26,11,46,0.1), rgba(26,11,46,0.4));
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            z-index: 1; text-align: center; padding: 2rem;
+        }
+        .hero-content { max-width: 900px; }
+        .hero-title { 
+            font-size: clamp(2.5rem, 6vw, 5rem); 
+            margin-bottom: 1rem; 
+            text-shadow: 0 4px 30px rgba(0,0,0,0.3); 
+            font-weight: 900; color: white; line-height: 1.1;
+        }
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem); color: rgba(255,255,255,0.95); margin-bottom: 2rem;
+        }
+        .hero-btn-group { display: flex; gap: 1rem; justify-content: center; margin-top: 2rem; flex-wrap: wrap; }
+        .hero-btn {
+            padding: 1rem 2.5rem; border-radius: 50px; text-decoration: none; font-weight: 700; 
+            display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer; transition: 0.3s;
+        }
+        .btn-primary { background: var(--site-accent); color: white; box-shadow: 0 10px 30px rgba(255, 94, 161, 0.4); }
         .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(255, 94, 161, 0.6); }
-        .btn-glass { background: rgba(255,255,255,0.2); border: 1px solid white; color: white; backdrop-filter: blur(10px); padding: 1rem 2.5rem; border-radius: 50px; font-weight: 700; transition: 0.3s; }
+        .btn-glass { background: rgba(255,255,255,0.2); border: 1px solid white; color: white; backdrop-filter: blur(10px); }
         .btn-glass:hover { background: rgba(255,255,255,0.3); transform: translateY(-3px); }
 
-        /* Locations */
-        .locations-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1400px; margin: 4rem auto; padding: 0 2rem; }
-        .location-card { position: relative; aspect-ratio: 4/5; border-radius: 20px; overflow: hidden; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; }
+        /* Locations Grid */
+        .locations-grid { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 2rem; max-width: 1400px; margin: 4rem auto; padding: 0 2rem; 
+        }
+        .location-card { 
+            position: relative; aspect-ratio: 4/5; border-radius: 20px; overflow: hidden; cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
         .location-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
-        .location-card img { width: 100%; height: 100%; object-fit: cover; }
-        .location-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 2rem; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); color: white; }
-        
-        /* Footer */
-        footer { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 3rem 2rem; text-align: center; margin-top: 4rem; border-top: 1px solid rgba(255,255,255,0.2); }
-        .footer-social a { margin: 0 10px; color: var(--site-text); font-size: 1.2rem; }
-        
-        /* Floating */
-        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background-color: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.3); z-index: 9999; transition: transform 0.3s; }
-        .whatsapp-float:hover { transform: scale(1.1); }
+        .location-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .location-card:hover img { transform: scale(1.1); }
+        .location-overlay {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            padding: 2rem; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+        }
+        .location-overlay h3 { font-size: 1.5rem; font-weight: 700; }
 
-        @media (max-width: 768px) { .nav-links { display: none; } }
+        /* --- Gallery --- */
+        .gallery-hero {
+            min-height: 40vh; display: flex; align-items: center; justify-content: center;
+            position: relative; color: white; text-align: center; margin-top: -90px;
+            background: url('https://res.cloudinary.com/dptyfvwyo/image/upload/v1762004983/HERO_zb7pwc.jpg') no-repeat center/cover;
+            border-radius: 0 0 40px 40px; margin-bottom: 3rem;
+        }
+        .gallery-hero::before { content:''; position: absolute; inset:0; background: rgba(0,0,0,0.3); border-radius: 0 0 40px 40px; }
+        .hero-content-inner { position: relative; z-index: 2; padding-top: 80px; }
+        
+        .filter-container { display: flex; justify-content: center; gap: 0.8rem; flex-wrap: wrap; padding: 1rem; margin-bottom: 2rem; }
+        .filter-btn {
+            padding: 0.6rem 1.5rem; border-radius: 50px; border: 1px solid rgba(255,255,255,0.4);
+            background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); cursor: pointer;
+            transition: all 0.3s; font-weight: 600; font-size: 0.95rem;
+        }
+        .filter-btn:hover, .filter-btn.active { background: var(--site-accent); color: white; border-color: var(--site-accent); }
+        
+        .category-section { margin-bottom: 4rem; padding: 0 2rem; max-width: 1400px; margin-left: auto; margin-right: auto; }
+        .category-title {
+            font-size: 1.8rem; margin-bottom: 1.5rem; padding-right: 1rem;
+            color: var(--site-text); border-right: 5px solid var(--site-accent);
+        }
+        
+        .gallery-row {
+            display: flex; gap: 1.5rem; overflow-x: auto; padding-bottom: 1.5rem;
+            scroll-behavior: smooth; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+        }
+        .gallery-row::-webkit-scrollbar { display: none; }
+        
+        .gallery-card {
+            flex: 0 0 300px; height: 400px; position: relative; border-radius: 15px;
+            overflow: hidden; cursor: pointer; transition: transform 0.3s;
+        }
+        .video-play-overlay {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 60px; height: 60px; background: rgba(255, 94, 161, 0.8);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 1.5rem; z-index: 3; pointer-events: none;
+        }
+
+        /* --- Tips / Reels --- */
+        .reels-container { padding: 0 2rem; max-width: 1400px; margin: 0 auto; }
+        .reels-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .reel-card {
+            position: relative; border-radius: 20px; overflow: hidden; cursor: pointer;
+            background: rgba(0,0,0,0.1); aspect-ratio: 9/16; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .reel-card:hover { transform: translateY(-8px); }
+        .reel-thumbnail { width: 100%; height: 100%; object-fit: cover; }
+        .play-button {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 60px; height: 60px; background: rgba(255, 94, 161, 0.9);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 1.5rem; z-index: 2; transition: 0.3s;
+        }
+        .reel-card:hover .play-button { transform: translate(-50%, -50%) scale(1.1); }
+        .reel-overlay {
+            position: absolute; bottom: 0; left: 0; right: 0; padding: 2rem 1rem 1rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); color: white; z-index: 2;
+        }
+
+        /* --- Chatbot --- */
+        .chat-container {
+            max-width: 800px; margin: 2rem auto; background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(20px); border-radius: 20px; overflow: hidden; 
+            height: 650px; display: flex; flex-direction: column;
+            border: 1px solid rgba(255,255,255,0.3); box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+        .chat-header {
+            padding: 1.5rem; background: white; border-bottom: 1px solid #eee;
+            display: flex; align-items: center; gap: 1rem;
+        }
+        .chat-bot-avatar {
+            width: 45px; height: 45px; background: var(--site-accent); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: white;
+        }
+        .chat-messages { 
+            flex: 1; overflow-y: auto; padding: 2rem; display: flex; flex-direction: column; gap: 1rem; 
+            scroll-behavior: smooth; background: #f9fafb;
+        }
+        .message { display: flex; gap: 1rem; max-width: 85%; opacity: 0; animation: msgFadeIn 0.3s forwards; }
+        @keyframes msgFadeIn { to { opacity: 1; transform: translateY(0); } from { opacity: 0; transform: translateY(10px); } }
+        .message.bot { align-self: flex-start; }
+        .message.user { align-self: flex-end; flex-direction: row-reverse; }
+        .bubble { padding: 1rem 1.5rem; border-radius: 18px; font-size: 0.95rem; line-height: 1.5; position: relative; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .bot .bubble { background: white; color: #333; border-top-right-radius: 4px; }
+        .user .bubble { background: var(--site-accent); color: white; border-top-left-radius: 4px; }
+        .chat-options { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
+        .chat-option-btn {
+            background: white; border: 1px solid var(--site-accent); color: var(--site-accent);
+            padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.9rem; cursor: pointer;
+            transition: all 0.2s;
+        }
+        .chat-option-btn:hover { background: var(--site-accent); color: white; }
+        .chat-input-area { 
+            padding: 1.5rem; background: white; display: flex; gap: 1rem; align-items: center;
+            border-top: 1px solid #eee;
+        }
+        .chat-input-area input { 
+            flex: 1; padding: 0.8rem 1.5rem; border-radius: 50px; border: 1px solid #ddd; 
+            background: #f3f4f6; color: #333; outline: none; transition: 0.3s;
+        }
+        .chat-input-area input:focus { border-color: var(--site-accent); background: white; }
+        .chat-send-btn {
+            width: 45px; height: 45px; border-radius: 50%; background: var(--site-accent); color: white;
+            border: none; cursor: pointer; display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; transition: 0.2s;
+        }
+
+        /* --- Floating Buttons --- */
+        .floating-btn {
+            position: fixed; width: 55px; height: 55px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; color: white;
+            font-size: 1.8rem; box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 9999;
+            transition: transform 0.3s; cursor: pointer;
+        }
+        .floating-btn:hover { transform: scale(1.1); }
+        .whatsapp-float { bottom: 30px; right: 30px; background-color: #25D366; }
+        .accessibility-float { bottom: 30px; left: 30px; background-color: #0072b1; font-size: 1.4rem; }
+
+        /* --- Accessibility Menu --- */
+        .accessibility-menu {
+            position: fixed; bottom: 90px; left: 30px; width: 220px;
+            background: white; border-radius: 12px; padding: 1rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); z-index: 9998;
+            display: none; color: #333; border: 1px solid #eee;
+        }
+        .accessibility-menu.active { display: block; animation: slideUp 0.3s ease; }
+        .access-btn {
+            display: block; width: 100%; padding: 0.6rem; margin-bottom: 0.5rem;
+            background: #f3f4f6; border: none; border-radius: 6px; font-size: 0.9rem;
+            text-align: right; cursor: pointer; transition: 0.2s;
+        }
+        .access-btn:hover { background: #e5e7eb; }
+        @keyframes slideUp { from { transform: translateY(10px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+        /* --- Footer --- */
+        footer { 
+            background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); 
+            padding: 3rem 2rem; text-align: center; margin-top: 4rem; border-top: 1px solid rgba(255,255,255,0.2);
+        }
+        .footer-social { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1.5rem; }
+        .social-icon { 
+            width: 40px; height: 40px; background: white; border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; color: var(--site-text);
+            font-size: 1.2rem; transition: 0.3s;
+        }
+        .social-icon:hover { transform: translateY(-3px); color: var(--site-accent); }
+        
+        /* --- Modal --- */
+        .video-modal {
+            display: none; position: fixed; inset: 0; background: black; z-index: 10000;
+            flex-direction: column; justify-content: center; align-items: center;
+        }
+        .video-modal.active { display: flex; }
+        .video-modal video, .video-modal img { max-width: 100%; max-height: 85vh; }
+        .modal-close-btn {
+            position: absolute; top: 20px; right: 20px; color: white; font-size: 2rem; cursor: pointer; z-index: 10001;
+        }
+
+        /* --- About Styling --- */
+        .hero-about { text-align: center; padding: 6rem 2rem; }
+        .story-section { padding: 4rem 2rem; max-width: 1200px; margin: 0 auto; }
+        .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .story-image img { width: 100%; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.2); }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; max-width: 1000px; margin: 4rem auto; padding: 0 2rem; }
+        .stat-box { background: rgba(255,255,255,0.2); border-radius: 15px; padding: 2rem; text-align: center; }
+        .stat-number { font-size: 2.5rem; font-weight: 800; color: var(--site-accent); }
+        
+        /* --- Privacy & Accessibility Pages --- */
+        .legal-section { max-width: 1000px; margin: 2rem auto; padding: 2rem; background: var(--glass-bg); border-radius: 20px; }
+        .legal-section h1 { font-size: 2.5rem; margin-bottom: 1.5rem; }
+        .legal-section h2 { font-size: 1.5rem; margin-top: 2rem; margin-bottom: 0.8rem; font-weight: bold; }
+        .legal-section p { margin-bottom: 1rem; opacity: 0.9; }
+        .legal-section ul { list-style: disc; padding-right: 1.5rem; margin-bottom: 1rem; }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            .nav-links { 
+                display: none; position: fixed; top: 90px; left: 0; right: 0; 
+                background: rgba(255,255,255,0.98); flex-direction: column; padding: 2rem; 
+                border-bottom: 1px solid #eee;
+            }
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: block; }
+            .hero-title { font-size: 2.5rem; }
+            .story-grid, .stats-grid, .reels-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .chat-container { height: 80vh; margin: 1rem; }
+        }
     </style>
 </head>
 <body>
+
+    <!-- Header -->
     <header id="main-header">
         <nav>
-            <a href="index.html" class="logo">
+            <div class="logo" onclick="navigateTo('home')">
                 <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="Logo">
                 <span>MULTIBRAWN</span>
-            </a>
-            <div class="nav-links">
-                <a href="index.html" style="color: var(--site-accent);">דף הבית</a>
-                <a href="gallery.html">גלריה</a>
-                <a href="tips.html">טיפים חשובים</a>
-                <a href="about.html">אודות</a>
-                <a href="contact.html" class="nav-cta">צור קשר</a>
             </div>
+            
+            <div class="nav-links" id="navLinks">
+                <a onclick="navigateTo('home')">דף הבית</a>
+                <a onclick="navigateTo('gallery')">גלריה</a>
+                <a onclick="navigateTo('blog')">טיפים חשובים</a>
+                <a onclick="navigateTo('about')">אודות</a>
+                <a onclick="navigateTo('contact')" class="nav-cta">צור קשר</a>
+            </div>
+
+            <button class="menu-toggle" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
         </nav>
     </header>
 
-    <section class="hero-video">
-        <video class="video-bg" autoplay muted loop playsinline>
-            <source src="https://res.cloudinary.com/dptyfvwyo/video/upload/v1763834667/Video-Multi_b11ehy.mp4" type="video/mp4">
-        </video>
-        <div class="video-overlay">
-            <div class="hero-content" data-aos="fade-up">
-                <h1 class="hero-title">הלוקיישן המושלם<br>מחכה לכם</h1>
-                <p class="hero-subtitle">וילות יוקרה, צימרים ומתחמי אירועים בסטנדרט בינלאומי</p>
-                <div class="hero-btn-group" style="display:flex; gap:1rem; justify-content:center; margin-top:2rem;">
-                    <a href="contact.html" class="btn-primary">בואו נמצא לכם מקום</a>
-                    <a href="gallery.html" class="btn-glass">צפו בגלריה</a>
+    <!-- 1. HOME VIEW -->
+    <div id="home-view" class="page-view active">
+        <section class="hero-video">
+            <video class="video-bg" autoplay muted loop playsinline>
+                <source src="https://res.cloudinary.com/dptyfvwyo/video/upload/v1763834667/Video-Multi_b11ehy.mp4" type="video/mp4">
+            </video>
+            <div class="video-overlay">
+                <div class="hero-content" data-aos="fade-up">
+                    <h1 class="hero-title">הלוקיישן המושלם<br>מחכה לכם</h1>
+                    <p class="hero-subtitle text-xl text-white/90 mb-8">וילות יוקרה, צימרים ומתחמי אירועים בסטנדרט בינלאומי</p>
+                    <div class="hero-btn-group">
+                        <a onclick="navigateTo('contact')" class="btn-primary hero-btn">
+                            בואו נמצא לכם מקום <i class="fas fa-arrow-left mr-2"></i>
+                        </a>
+                        <a onclick="navigateTo('gallery')" class="btn-glass hero-btn">
+                            צפו בגלריה
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="locations-grid">
+            <div class="location-card" onclick="navigateTo('gallery', 'villas')">
+                <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818934/22_tt9jvz.jpg">
+                <div class="location-overlay"><h3>וילות מפוארות</h3></div>
+            </div>
+            <div class="location-card" onclick="navigateTo('gallery', 'zimmer')">
+                <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1763726367/AA_s4nej0.jpg">
+                <div class="location-overlay"><h3>צימרים</h3></div>
+            </div>
+            <div class="location-card" onclick="navigateTo('gallery', 'apartments')">
+                <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818995/Apartment1_mrxdad.jpg">
+                <div class="location-overlay"><h3>דירות נופש</h3></div>
+            </div>
+            <div class="location-card" onclick="navigateTo('gallery', 'hotels')">
+                <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818995/Hotel1_ihkey7.jpg">
+                <div class="location-overlay"><h3>מלונות בוטיק</h3></div>
+            </div>
+            <div class="location-card" onclick="navigateTo('gallery', 'events')">
+                <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1762003191/1_tsc6xx.jpg">
+                <div class="location-overlay"><h3>מתחמי אירועים</h3></div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 2. GALLERY VIEW -->
+    <div id="gallery-view" class="page-view">
+        <div class="gallery-hero">
+            <div class="hero-content-inner text-center pt-20">
+                <h1 class="text-5xl font-bold mb-4">הגלריה שלנו</h1>
+                <p class="text-xl opacity-90">הצצה למקומות הכי שווים בארץ</p>
+            </div>
+        </div>
+
+        <div class="filter-container">
+            <button class="filter-btn active" onclick="filterGallery('all')">הכל</button>
+            <button class="filter-btn" onclick="filterGallery('villas')">וילות</button>
+            <button class="filter-btn" onclick="filterGallery('zimmer')">צימרים</button>
+            <button class="filter-btn" onclick="filterGallery('apartments')">דירות</button>
+            <button class="filter-btn" onclick="filterGallery('hotels')">מלונות</button>
+            <button class="filter-btn" onclick="filterGallery('events')">אירועים</button>
+        </div>
+
+        <div class="gallery-section" id="gallery-grid">
+            <div class="category-section" data-category="villas">
+                <h2 class="category-title">🏛️ וילות מפוארות</h2>
+                <div class="gallery-row">
+                    <a class="gallery-card" onclick="openGalleryImage('https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818934/21_f14cql.jpg')"><img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818934/21_f14cql.jpg"></a>
+                    <a class="gallery-card" onclick="openGalleryImage('https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818995/Hotel2_ag6ani.jpg')"><img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818995/Hotel2_ag6ani.jpg"></a>
+                    <a class="gallery-card" onclick="openGalleryImage('https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818933/18_uwsdum.jpg')"><img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818933/18_uwsdum.jpg"></a>
+                    <a class="gallery-card" onclick="openGalleryVideo('https://res.cloudinary.com/dptyfvwyo/video/upload/v1760818935/villa4.1_dhev1f.mp4')">
+                        <video class="reel-thumbnail" muted playsinline><source src="https://res.cloudinary.com/dptyfvwyo/video/upload/v1760818935/villa4.1_dhev1f.mp4#t=0.1" type="video/mp4"></video>
+                        <div class="video-play-overlay"><i class="fas fa-play"></i></div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="category-section" data-category="zimmer">
+                <h2 class="category-title">🌄 צימרים</h2>
+                <div class="gallery-row">
+                    <a class="gallery-card" onclick="openGalleryImage('https://res.cloudinary.com/dptyfvwyo/image/upload/v1763726367/AA_s4nej0.jpg')"><img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1763726367/AA_s4nej0.jpg"></a>
+                    <a class="gallery-card" onclick="openGalleryImage('https://res.cloudinary.com/dptyfvwyo/image/upload/v1763726074/A7_rwzsuo.jpg')"><img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1763726074/A7_rwzsuo.jpg"></a>
+                </div>
+            </div>
+            
+            <div class="category-section" data-category="events">
+                <h2 class="category-title">💍 אירועים</h2>
+                <div class="gallery-row">
+                    <a class="gallery-card" onclick="openGalleryVideo('https://res.cloudinary.com/dptyfvwyo/video/upload/v1762002985/1_s3cpd8.mp4')">
+                        <video class="reel-thumbnail" muted playsinline><source src="https://res.cloudinary.com/dptyfvwyo/video/upload/v1762002985/1_s3cpd8.mp4#t=0.1" type="video/mp4"></video>
+                        <div class="video-play-overlay"><i class="fas fa-play"></i></div>
+                    </a>
+                     <a class="gallery-card" onclick="openGalleryImage('https://res.cloudinary.com/dptyfvwyo/image/upload/v1762003191/1_tsc6xx.jpg')"><img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1762003191/1_tsc6xx.jpg"></a>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <section class="locations-grid">
-        <a href="gallery.html#villas" class="location-card"><img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818934/22_tt9jvz.jpg"><div class="location-overlay"><h3>וילות מפוארות</h3></div></a>
-        <a href="gallery.html#zimmer" class="location-card"><img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1763726367/AA_s4nej0.jpg"><div class="location-overlay"><h3>צימרים</h3></div></a>
-        <a href="gallery.html#apartments" class="location-card"><img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818995/Apartment1_mrxdad.jpg"><div class="location-overlay"><h3>דירות נופש</h3></div></a>
-        <a href="gallery.html#hotels" class="location-card"><img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818995/Hotel1_ihkey7.jpg"><div class="location-overlay"><h3>מלונות בוטיק</h3></div></a>
-        <a href="gallery.html#events" class="location-card"><img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1762003191/1_tsc6xx.jpg"><div class="location-overlay"><h3>מתחמי אירועים</h3></div></a>
-    </section>
+    <!-- 3. TIPS VIEW -->
+    <div id="blog-view" class="page-view">
+        <div class="content-section">
+            <h1 style="margin-bottom: 3rem; font-size: 3rem; font-weight: 800;">טיפים חשובים שחוסכים לכם כסף</h1>
+            <div class="reels-container">
+                <div class="reels-grid">
+                    <div class="reel-card" onclick="openReel('reel1')">
+                        <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1763828299/%D7%A9%D7%91%D7%AA_%D7%97%D7%AA%D7%9F_zo14ig.png" class="reel-thumbnail">
+                        <div class="play-button"><i class="fas fa-play"></i></div>
+                        <div class="reel-overlay"><div class="reel-title">✡️ שבת חתן בראש שקט</div></div>
+                    </div>
+                    <div class="reel-card" onclick="openReel('reel2')">
+                        <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1763828637/%D7%90%D7%99%D7%9C%D7%AA_rtmczk.png" class="reel-thumbnail">
+                        <div class="play-button"><i class="fas fa-play"></i></div>
+                        <div class="reel-overlay"><div class="reel-title">🌴 נוסעים לאילת? תיזהרו</div></div>
+                    </div>
+                    <div class="reel-card" onclick="openReel('reel3')">
+                        <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1763828638/%D7%96%D7%95%D7%9C_t7cops.png" class="reel-thumbnail">
+                        <div class="play-button"><i class="fas fa-play"></i></div>
+                        <div class="reel-overlay"><div class="reel-title">💰 מחפשים זול?</div></div>
+                    </div>
+                    <div class="reel-card" onclick="openReel('reel4')">
+                        <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818934/22_tt9jvz.jpg" class="reel-thumbnail">
+                        <div class="play-button"><i class="fas fa-play"></i></div>
+                        <div class="reel-overlay"><div class="reel-title">⚠️ ממה להיזהר בוילה</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <a href="https://wa.me/972523983394?text=שלום,%20אני%20פונה%20מאתר%20מולטיבראון" target="_blank" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
+    <!-- 4. ABOUT VIEW -->
+    <div id="about-view" class="page-view">
+        <section class="hero-about">
+            <span class="inline-block bg-white/10 backdrop-blur px-4 py-1 rounded-full border border-white/20 mb-4 font-bold text-sm">הסיפור שלנו</span>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6">מתסכול אישי<br>לחזון משנה מציאות</h1>
+            <p class="text-xl opacity-90 max-w-2xl mx-auto">"לכל אדם מגיע שירות אישי שחוסך לו זמן ומבטיח לו 100% אמינות"</p>
+        </section>
 
-    <footer>
-        <div class="logo" style="justify-content: center; margin-bottom: 1rem;">
-            <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="Logo" style="width:60px; height:60px;">
-            <span>MULTIBRAWN</span>
+        <section class="story-section">
+            <div class="story-grid">
+                <div class="story-image" data-aos="fade-left">
+                    <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1762012646/Ardit_znq9aj.jpg" alt="ערדית בראון">
+                </div>
+                <div class="story-text" data-aos="fade-right">
+                    <h2 class="text-3xl font-bold mb-4">שלום, שמי ערדית בראון</h2>
+                    <p class="mb-4 text-lg">יזמית עם מעל <strong>10 שנות ניסיון</strong> בחיבור בין אנשים לחלומות שלהם.</p>
+                    <p class="mb-4">הכל התחיל מתסכול אישי: ראיתי איך אנשים מבזבזים שעות בחיפושים אינסופיים, רק כדי להתאכזב ממקום שלא תאם את התמונות והשאיפות שלהם.</p>
+                    <div class="p-6 bg-white/5 border-r-4 border-pink-500 rounded-lg my-6 font-medium text-lg">
+                        הקמתי את Multibrawn על עיקרון פשוט: לכל אדם מגיע שירות אישי שחוסך לו זמן ומבטיח לו 100% אמינות.
+                    </div>
+                    <p class="mb-4">היום אני גאה להוביל צוות מומחים שמכיר כל נכס באופן אישי. אנחנו לא "עוד פלטפורמה", אנחנו הסוכנים האישיים שלכם.</p>
+                    <p>ההבטחה שלנו פשוטה: אנחנו מבצעים את כל הבדיקות, התיאומים והסינונים, כדי שלכם יישאר רק החלק המהנה - החוויה.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-box" data-aos="zoom-in"><div class="stat-number">10+</div><div>שנות ניסיון</div></div>
+                <div class="stat-box" data-aos="zoom-in" data-aos-delay="100"><div class="stat-number">500+</div><div>אירועים</div></div>
+                <div class="stat-box" data-aos="zoom-in" data-aos-delay="200"><div class="stat-number">50+</div><div>לוקיישנים</div></div>
+                <div class="stat-box" data-aos="zoom-in" data-aos-delay="300"><div class="stat-number">100%</div><div>אמינות</div></div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 5. CONTACT / CHATBOT -->
+    <div id="contact-view" class="page-view">
+        <div class="content-section">
+            <h1 class="text-4xl font-bold mb-4">הבוט החכם של Multibrawn</h1>
+            <p class="text-xl opacity-80 mb-10">ענו על מספר שאלות קצרות ואמצא לכם את הלוקיישן המושלם</p>
+            
+            <div class="chat-container">
+                <div class="chat-header">
+                    <div class="w-12 h-12 bg-pink-500 rounded-full flex items-center justify-center text-white text-xl shadow-lg">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-800">Multi-Agent</h3>
+                        <span class="text-xs text-green-500 font-bold">● מחובר</span>
+                    </div>
+                </div>
+                <div class="chat-messages" id="chatMessages"></div>
+                <div class="chat-input-area">
+                    <input type="text" id="chatInput" placeholder="הקלידו תשובה..." onkeypress="handleKeyPress(event)">
+                    <button class="chat-send-btn" onclick="sendUserText()"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
         </div>
-        <div class="footer-social">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-tiktok"></i></a>
+    </div>
+    
+    <!-- 6. PRIVACY & ACCESSIBILITY VIEWS -->
+    <div id="privacy-view" class="page-view">
+        <div class="legal-section">
+            <div class="flex items-center justify-between mb-6">
+                <h1>מדיניות פרטיות</h1>
+                <button onclick="navigateTo('home')" class="text-indigo-500 hover:underline">חזרה לדף הבית</button>
+            </div>
+            <p>ב-MULTIBRAWN, הפרטיות שלך חשובה לנו. מסמך זה מפרט את סוגי המידע שאנו אוספים, כיצד אנו משתמשים בו, וכיצד אנו שומרים עליו.</p>
+            
+            <h2>איסוף מידע</h2>
+            <p>אנו אוספים מידע אישי שאתה מספק לנו מרצונך, כגון שם, מספר טלפון, וכתובת דוא"ל בעת יצירת קשר או הרשמה לשירותים שלנו.</p>
+            
+            <h2>שימוש במידע</h2>
+            <ul>
+                <li>ליצירת קשר עמך ולמתן מענה לפניותיך.</li>
+                <li>להתאמת השירותים וההצעות שלנו לצרכיך.</li>
+                <li>לשיפור האתר והחוויה שלך.</li>
+            </ul>
+            
+            <h2>אבטחת מידע</h2>
+            <p>אנו נוקטים באמצעי זהירות סבירים כדי להגן על המידע האישי שלך מפני גישה בלתי מורשית, שינוי או השמדה.</p>
         </div>
-        <div style="margin-top: 1rem;">
-            <a href="contact.html" class="bg-white text-indigo-900 px-8 py-3 rounded-full font-bold shadow-lg inline-block">הזמן עכשיו</a>
+    </div>
+
+    <div id="accessibility-view" class="page-view">
+        <div class="legal-section">
+            <div class="flex items-center justify-between mb-6">
+                <h1>הצהרת נגישות</h1>
+                <button onclick="navigateTo('home')" class="text-indigo-500 hover:underline">חזרה לדף הבית</button>
+            </div>
+            <p>אנו ב-MULTIBRAWN מחויבים לספק חווית גלישה נגישה לכלל האוכלוסייה, כולל אנשים עם מוגבלויות.</p>
+            
+            <h2>התאמות הנגישות באתר</h2>
+            <ul>
+                <li>האתר מותאם לקוראי מסך.</li>
+                <li>אפשרות לניווט באמצעות המקלדת.</li>
+                <li>טקסטים ברורים וקריאים עם ניגודיות מתאימה.</li>
+                <li>תמיכה בהגדלת טקסט ושינוי גוונים (באמצעות תפריט הנגישות).</li>
+            </ul>
+            
+            <h2>יצירת קשר בנושא נגישות</h2>
+            <p>אם נתקלת בקושי בגלישה באתר או שיש לך הערות בנושא נגישות, נשמח לשמוע ממך:</p>
+            <p>טלפון: 052-398-3394<br>מייל: info@multibrawn.co.il</p>
         </div>
-        <p style="margin-top: 2rem; opacity: 0.7;">© 2025 MULTIBRAWN</p>
+    </div>
+
+    <!-- MODALS (Video Player) -->
+    <div class="video-modal" id="videoModal">
+        <div class="absolute top-5 right-5 z-[10002]">
+            <button onclick="closeReel()" class="text-white bg-white/20 hover:bg-white/40 rounded-full p-3 transition">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+        </div>
+        <div class="w-full h-full flex items-center justify-center">
+            <video id="modalVideo" controls playsinline style="display:none;"></video>
+            <img id="modalImage" style="display:none;">
+        </div>
+    </div>
+
+    <!-- FLOATING ACTION BUTTONS -->
+    <a href="https://wa.me/972523983394?text=שלום,%20אני%20פונה%20מאתר%20מולטיבראון.%20אשמח%20שנדבר" target="_blank" class="floating-btn whatsapp-float" title="וואטסאפ">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    
+    <div class="floating-btn accessibility-float" onclick="toggleAccessibility()" title="נגישות">
+        <i class="fas fa-wheelchair"></i>
+    </div>
+    
+    <div class="accessibility-menu" id="accessibilityMenu">
+        <div class="access-header">כלי נגישות</div>
+        <button class="access-btn" onclick="toggleAccess('large-text')">הגדלת טקסט</button>
+        <button class="access-btn" onclick="toggleAccess('high-contrast')">ניגודיות גבוהה</button>
+        <button class="access-btn" onclick="toggleAccess('grayscale')">גווני אפור</button>
+        <button class="access-btn" onclick="toggleAccess('links-highlight')">הדגשת קישורים</button>
+        <button class="access-btn" onclick="resetAccess()" style="color:red;">איפוס הגדרות</button>
+    </div>
+
+    <!-- FOOTER -->
+    <footer id="main-footer">
+        <div class="flex flex-col items-center">
+            <div class="logo mb-6">
+                <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="Logo">
+                <span>MULTIBRAWN</span>
+            </div>
+            
+            <div class="footer-social">
+                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+            </div>
+            
+            <div class="flex gap-6 mb-6 text-sm opacity-80">
+                <a onclick="navigateTo('privacy')" class="hover:text-white cursor-pointer">מדיניות פרטיות</a>
+                <a onclick="navigateTo('accessibility')" class="hover:text-white cursor-pointer">הצהרת נגישות</a>
+            </div>
+            
+            <a onclick="navigateTo('contact')" class="bg-white text-indigo-900 px-8 py-3 rounded-full font-bold text-lg shadow-lg hover:scale-105 transition cursor-pointer mb-6 inline-block">
+                הזמן עכשיו
+            </a>
+            
+            <p class="text-xs opacity-60">© 2025 MULTIBRAWN. כל הזכויות שמורות.</p>
+        </div>
     </footer>
 
+    <!-- JAVASCRIPT LOGIC -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>AOS.init(); window.addEventListener('scroll', () => { document.getElementById('main-header').classList.toggle('scrolled', window.scrollY > 50); });</script>
+    <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+    <script>
+        AOS.init();
+
+        // Navigation
+        function navigateTo(viewId, filter = null) {
+            document.querySelectorAll('.page-view').forEach(el => el.classList.remove('active'));
+            const target = document.getElementById(viewId + '-view');
+            if(target) target.classList.add('active');
+            window.scrollTo(0, 0);
+            
+            if(viewId === 'gallery' && filter) {
+                setTimeout(() => filterGallery(filter), 100);
+            }
+            
+            document.getElementById('navLinks').classList.remove('active');
+            if (viewId === 'contact') startChat();
+        }
+
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+        
+        // Header Scroll
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 50) header.classList.add('scrolled');
+            else header.classList.remove('scrolled');
+        });
+
+        // Accessibility
+        function toggleAccessibility() {
+            document.getElementById('accessibilityMenu').classList.toggle('active');
+        }
+        function toggleAccess(cls) {
+            document.body.classList.toggle('access-' + cls);
+        }
+        function resetAccess() {
+            document.body.className = '';
+        }
+
+        // Gallery Filtering
+        function filterGallery(category) {
+            // Update buttons
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+                let btnText = btn.innerText;
+                let isActive = false;
+                if (category === 'villas' && btnText.includes('וילות')) isActive = true;
+                else if (category === 'zimmer' && btnText.includes('צימרים')) isActive = true;
+                else if (category === 'apartments' && btnText.includes('דירות')) isActive = true;
+                else if (category === 'hotels' && btnText.includes('מלונות')) isActive = true;
+                else if (category === 'events' && btnText.includes('אירועים')) isActive = true;
+                else if (category === 'all' && btnText.includes('הכל')) isActive = true;
+                if (isActive) btn.classList.add('active');
+            });
+            
+            // Show/Hide Sections
+            const sections = document.querySelectorAll('.category-section');
+            sections.forEach(sec => {
+                if (category === 'all' || sec.dataset.category === category) {
+                    sec.style.display = 'block';
+                } else {
+                    sec.style.display = 'none';
+                }
+            });
+        }
+
+        // Video/Image Modal Logic
+        const reelVideos = {
+            'reel1': 'https://res.cloudinary.com/dptyfvwyo/video/upload/v1763722048/%D7%A9%D7%91%D7%AA_%D7%97%D7%AA%D7%9F_neqhs1.mp4',
+            'reel2': 'https://res.cloudinary.com/dptyfvwyo/video/upload/v1763684426/%D7%90%D7%99%D7%9C%D7%AA_ba7jjj.mp4',
+            'reel3': 'https://res.cloudinary.com/dptyfvwyo/video/upload/v1763718107/%D7%96%D7%95%D7%9C_lcwakc.mp4',
+            'reel4': 'https://res.cloudinary.com/dptyfvwyo/video/upload/v1763684101/Video3_omgivy.mp4'
+        };
+
+        function openReel(reelId) {
+            openGalleryVideo(reelVideos[reelId]);
+        }
+
+        function openGalleryVideo(src) {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('modalVideo');
+            const img = document.getElementById('modalImage');
+            
+            img.style.display = 'none';
+            video.style.display = 'block';
+            video.src = src;
+            video.load();
+            
+            modal.classList.add('active');
+            video.play();
+            document.body.style.overflow = 'hidden';
+        }
+
+        function openGalleryImage(src) {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('modalVideo');
+            const img = document.getElementById('modalImage');
+            
+            video.style.display = 'none';
+            video.pause();
+            img.style.display = 'block';
+            img.src = src;
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeReel() {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('modalVideo');
+            video.pause();
+            video.currentTime = 0;
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Chatbot Logic
+        let chatState = { step: 0, data: {} };
+        
+        const questions = {
+            start: {
+                text: "היי! 👋 אני הבוט החכם של מולטיבראון. בוא נמצא לך את המקום המושלם. מה אתה מחפש?",
+                type: "buttons",
+                options: [
+                    { label: "🏡 צימר", next: "vacation_type", value: "צימר" },
+                    { label: "🏛️ וילה", next: "vacation_type", value: "וילה" },
+                    { label: "🏨 מלון", next: "hotel_flow", value: "מלון" },
+                    { label: "🏙️ דירת נופש", next: "vacation_type", value: "דירת נופש" },
+                    { label: "💍 מתחם אירועים", next: "event_type", value: "מתחם אירועים" }
+                ],
+                field: "type"
+            },
+            vacation_type: {
+                text: "מעולה! עבור מי הנופש?",
+                type: "buttons",
+                options: [
+                    { label: "💑 זוג", next: "couple_flow", value: "זוג" },
+                    { label: "👨‍👩‍👧‍👦 משפחה", next: "family_pax", value: "משפחה" },
+                    { label: "🎉 קבוצת חברים", next: "group_pax", value: "קבוצה" }
+                ],
+                field: "composition"
+            },
+            couple_flow: {
+                text: "רומנטיקה זה אנחנו! 💕 מה חשוב לכם שיהיה?",
+                type: "buttons",
+                options: [
+                    { label: "ג'קוזי פרטי", next: "religious_check", value: "ג'קוזי" },
+                    { label: "בריכה פרטית", next: "religious_check", value: "בריכה פרטית" },
+                    { label: "נוף ופרטיות", next: "religious_check", value: "נוף ופרטיות" },
+                    { label: "לא משנה", next: "religious_check", value: "ללא העדפה" }
+                ],
+                field: "features"
+            },
+            family_pax: {
+                text: "כיף! כמה אנשים תהיו (מבוגרים + ילדים)?",
+                type: "buttons",
+                options: [
+                    { label: "עד 5", next: "religious_check", value: "עד 5" },
+                    { label: "5-10", next: "religious_check", value: "5-10" },
+                    { label: "10-20", next: "religious_check", value: "10-20" },
+                    { label: "20+", next: "religious_check", value: "מעל 20" }
+                ],
+                field: "pax"
+            },
+            group_pax: {
+                text: "מסיבה או גיבוש? כמה אנשים אתם?",
+                type: "buttons",
+                options: [
+                    { label: "עד 8", next: "religious_check", value: "עד 8" },
+                    { label: "8-15", next: "religious_check", value: "8-15" },
+                    { label: "15-30", next: "religious_check", value: "15-30" },
+                    { label: "30+", next: "religious_check", value: "מעל 30" }
+                ],
+                field: "pax"
+            },
+            religious_check: {
+                text: "האם חשוב לכם עניין הדת/כשרות?",
+                type: "buttons",
+                options: [
+                    { label: "כן, שומרי שבת", next: "dates", value: "שומרי שבת" },
+                    { label: "לא קריטי", next: "dates", value: "חילוני/לא משנה" }
+                ],
+                field: "religious"
+            },
+            hotel_flow: {
+                text: "אין כמו מלון טוב. כמה אנשים ואיזה הרכב?",
+                type: "buttons",
+                options: [
+                    { label: "זוג", next: "dates", value: "זוג" },
+                    { label: "זוג + 1", next: "dates", value: "זוג + 1" },
+                    { label: "זוג + 2", next: "dates", value: "זוג + 2" },
+                    { label: "משפחה (4+)", next: "dates", value: "משפחה (4+)" },
+                    { label: "קבוצה", next: "dates", value: "קבוצה" }
+                ],
+                field: "pax"
+            },
+            event_type: {
+                text: "מזל טוב! 🥂 איזה אירוע חוגגים?",
+                type: "buttons",
+                options: [
+                    { label: "חתונה", next: "event_pax", value: "חתונה" },
+                    { label: "בר/בת מצווה", next: "event_pax", value: "בר/בת מצווה" },
+                    { label: "יום הולדת", next: "event_pax", value: "יום הולדת" },
+                    { label: "אירוע חברה", next: "event_pax", value: "אירוע חברה" }
+                ],
+                field: "event_kind"
+            },
+            event_pax: {
+                text: "כמה מוזמנים צפויים להגיע?",
+                type: "buttons",
+                options: [
+                    { label: "עד 50", next: "event_features", value: "עד 50" },
+                    { label: "50-100", next: "event_features", value: "50-100" },
+                    { label: "100-250", next: "event_features", value: "100-250" },
+                    { label: "250-500", next: "event_features", value: "250-500" },
+                    { label: "500+", next: "event_features", value: "מעל 500" }
+                ],
+                field: "pax"
+            },
+            event_features: {
+                text: "מה הכי חשוב שיהיה במתחם? (בריכה, כשרות, נגישות...)",
+                type: "text",
+                next: "dates",
+                field: "features"
+            },
+            dates: {
+                text: "מתי תרצו להגיע? בחרו תאריך מהיומן",
+                type: "date_flexible",
+                next: "budget",
+                field: "date",
+                onAnswer: () => {
+                    const container = document.getElementById('chatMessages');
+                    const loadMsg = document.createElement('div');
+                    loadMsg.className = 'message bot';
+                    loadMsg.innerHTML = `<div class="bubble"><i class="fas fa-spinner fa-spin"></i> בודק זמינות...</div>`;
+                    container.appendChild(loadMsg);
+                    setTimeout(() => {
+                        loadMsg.innerHTML = `<div class="bubble"><i class="fas fa-check"></i> התאריך נראה פנוי! ממשיכים...</div>`;
+                    }, 1500);
+                }
+            },
+            budget: {
+                text: "מה התקציב המשוער שלכם?",
+                type: "buttons",
+                options: (state) => {
+                    if (state.data.type === "מתחם אירועים") {
+                        return [
+                            { label: "עד 10,000 ₪", next: "contact_details", value: "עד 10,000 ₪" },
+                            { label: "10-25 אלף ₪", next: "contact_details", value: "10-25 אלף ₪" },
+                            { label: "25-50 אלף ₪", next: "contact_details", value: "25-50 אלף ₪" },
+                            { label: "מעל 50,000 ₪", next: "contact_details", value: "50 אלף ומעלה" },
+                            { label: "גמיש", next: "contact_details", value: "גמיש" }
+                        ];
+                    }
+                    return [
+                        { label: "עד 1,500 ₪", next: "contact_details", value: "עד 1,500 ₪" },
+                        { label: "1,500-3,000 ₪", next: "contact_details", value: "1,500-3,000 ₪" },
+                        { label: "3,000-5,000 ₪", next: "contact_details", value: "3,000-5,000 ₪" },
+                        { label: "5,000+ (יוקרה)", next: "contact_details", value: "מעל 5,000 ₪" },
+                        { label: "גמיש", next: "contact_details", value: "גמיש" }
+                    ];
+                },
+                field: "budget"
+            },
+            contact_details: {
+                text: "מעולה! אני מכין את ההצעה. רק כדי שאשלח לך - מה השם המלא?",
+                type: "text",
+                next: "phone",
+                field: "name"
+            },
+            phone: {
+                text: "מה המספר לוואטסאפ?",
+                type: "text",
+                next: "finish",
+                field: "phone"
+            },
+            finish: {
+                text: "זהו! סיימנו. אני שולח אותך לוואטסאפ עם כל הפרטים מוכנים. לחץ על הכפתור למטה.",
+                type: "action",
+                action: "whatsapp",
+                onLoad: () => {
+                    const webhookURL = 'https://webmasterpro.app.n8n.cloud/webhook/6286a24e-50bb-48f2-8925-4f09b3533108';
+                    fetch(webhookURL, {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify(chatState.data)
+                    }).then(res => console.log("Sent to N8N")).catch(err => console.error("Error sending to N8N", err));
+                    
+                    const container = document.getElementById('chatMessages');
+                    const savingMsg = document.createElement('div');
+                    savingMsg.className = 'message bot';
+                    savingMsg.innerHTML = `<div class="bubble">⏳ שומר פרטים ב-CRM ושולח מייל אישור...</div>`;
+                    container.appendChild(savingMsg);
+                    setTimeout(() => { savingMsg.innerHTML = `<div class="bubble">✅ הפרטים נשמרו בהצלחה!</div>`; }, 2000);
+                }
+            }
+        };
+
+        let currentQ = "start";
+
+        function startChat() {
+            const container = document.getElementById('chatMessages');
+            container.innerHTML = '';
+            chatState.data = {};
+            currentQ = "start";
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const container = document.getElementById('chatMessages');
+            const q = questions[currentQ];
+            if (q.onLoad) q.onLoad();
+
+            const botMsg = document.createElement('div');
+            botMsg.className = 'message bot';
+            botMsg.innerHTML = `<div class="bubble">${q.text}</div>`;
+            container.appendChild(botMsg);
+
+            const inputEl = document.getElementById('chatInput');
+            inputEl.type = 'text';
+
+            if (q.type === 'date_flexible') {
+                const dateBtnDiv = document.createElement('div');
+                dateBtnDiv.className = 'chat-options';
+                const btn = document.createElement('button');
+                btn.className = 'chat-option-btn';
+                btn.innerText = "📅 בחירת תאריך מיומן";
+                btn.onclick = () => { inputEl.type = 'date'; inputEl.focus(); inputEl.showPicker && inputEl.showPicker(); };
+                dateBtnDiv.appendChild(btn);
+                const optsMsg = document.createElement('div');
+                optsMsg.className = 'message bot';
+                optsMsg.style.display = 'block';
+                optsMsg.appendChild(dateBtnDiv);
+                container.appendChild(optsMsg);
+                inputEl.focus();
+            } else if (q.type === 'text') {
+                inputEl.focus();
+            }
+
+            if (q.type === 'buttons') {
+                const optsDiv = document.createElement('div');
+                optsDiv.className = 'chat-options';
+                const optionsList = typeof q.options === 'function' ? q.options(chatState) : q.options;
+                optionsList.forEach(opt => {
+                    const btn = document.createElement('button');
+                    btn.className = 'chat-option-btn';
+                    btn.innerText = opt.label;
+                    btn.onclick = () => handleInput(opt.value, opt.next);
+                    optsDiv.appendChild(btn);
+                });
+                const optsMsg = document.createElement('div');
+                optsMsg.className = 'message bot';
+                optsMsg.style.display = 'block';
+                optsMsg.appendChild(optsDiv);
+                container.appendChild(optsMsg);
+            } else if (q.type === 'action' && q.action === 'whatsapp') {
+                generateWhatsAppButton(container);
+            }
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function handleInput(value, nextStep) {
+            const container = document.getElementById('chatMessages');
+            const userMsg = document.createElement('div');
+            userMsg.className = 'message user';
+            userMsg.innerHTML = `<div class="bubble">${value}</div>`;
+            container.appendChild(userMsg);
+
+            const currentQuestionObj = questions[currentQ];
+            const fieldName = currentQuestionObj.field;
+            if (fieldName) chatState.data[fieldName] = value;
+            if (currentQuestionObj.onAnswer) currentQuestionObj.onAnswer();
+
+            const oldBtns = container.querySelectorAll('.chat-options');
+            oldBtns.forEach(el => el.style.display = 'none');
+
+            if (nextStep) {
+                currentQ = nextStep;
+                setTimeout(renderQuestion, 600);
+            } else if (questions[currentQ].next) {
+                currentQ = questions[currentQ].next;
+                setTimeout(renderQuestion, 600);
+            }
+        }
+
+        function sendUserText() {
+            const input = document.getElementById('chatInput');
+            const val = input.value.trim();
+            if (!val) return;
+            if (questions[currentQ].type === 'text' || questions[currentQ].type === 'date_flexible') {
+                handleInput(val, questions[currentQ].next);
+                input.value = '';
+                input.type = 'text';
+            }
+        }
+
+        function handleKeyPress(e) { if (e.key === 'Enter') sendUserText(); }
+
+        function generateWhatsAppButton(container) {
+            const data = chatState.data;
+            let text = `*היי מולטיבראון, אשמח לעזרה במציאת לוקיישן!* 👋%0A`;
+            text += `-----------------------%0A`;
+            if(data.type) text += `🏠 *סוג:* ${data.type}%0A`;
+            if(data.composition) text += `👥 *הרכב:* ${data.composition}%0A`;
+            if(data.event_kind) text += `🎉 *אירוע:* ${data.event_kind}%0A`;
+            if(data.pax) text += `🔢 *מספר אנשים:* ${data.pax}%0A`;
+            if(data.date) text += `📅 *תאריך:* ${data.date}%0A`;
+            if(data.features) text += `✨ *חשוב שיהיה:* ${data.features}%0A`;
+            if(data.religious) text += `✡️ *דת/כשרות:* ${data.religious}%0A`;
+            if(data.budget) text += `💰 *תקציב:* ${data.budget}%0A`;
+            text += `-----------------------%0A`;
+            if(data.name) text += `👤 *שם:* ${data.name}%0A`;
+            if(data.phone) text += `📞 *טלפון:* ${data.phone}%0A`;
+            
+            const btn = document.createElement('button');
+            btn.className = 'nav-cta';
+            btn.style.marginTop = '1rem';
+            btn.style.width = '100%';
+            btn.innerHTML = `<i class="fab fa-whatsapp"></i> שלח כרטיס לקוח בוואטסאפ`;
+            btn.onclick = () => window.open(`https://wa.me/972523983394?text=${text}`, '_blank');
+            
+            const btnContainer = document.createElement('div');
+            btnContainer.className = 'message bot';
+            btnContainer.style.width = '100%';
+            btnContainer.appendChild(btn);
+            container.appendChild(btnContainer);
+            container.scrollTop = container.scrollHeight;
+        }
+    </script>
 </body>
 </html>
