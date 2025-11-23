@@ -3,40 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>צור קשר - MULTIBRAWN | בואו נמצא את הלוקיישן המושלם שלכם</title>
-    <meta name="description" content="ספרו לנו מה אתם מחפשים - ה-Multi AI שלנו כאן לעזור. שירות 24/7, תשובות מיידיות, והכוונה ישירה לווטסאפ.">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png">
+    <title>בואו נמצא את המקום המושלם - MULTIBRAWN</title>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
         :root {
-            --primary-bg: linear-gradient(135deg, #00E0FF, #2D7FFF, #A06BFF);
+            --primary-bg: linear-gradient(135deg, #00E0FF 0%, #2D7FFF 50%, #A06BFF 100%);
             --accent-primary: #FF5EA1;
             --accent-secondary: #00E0FF;
+            --accent-tertiary: #A06BFF;
             --white: #FAFAFA;
             --text-dark: #1a0b2e;
             --glass-bg: rgba(255, 255, 255, 0.15);
             --glass-border: rgba(255, 255, 255, 0.2);
             --font-display: 'Playfair Display', serif;
             --font-body: 'Heebo', sans-serif;
-            --whatsapp: #25D366;
         }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
             font-family: var(--font-body);
             background: var(--primary-bg);
+            background-attachment: fixed;
             color: var(--text-dark);
             line-height: 1.6;
             overflow-x: hidden;
@@ -107,8 +101,8 @@
             background: var(--accent-primary);
             color: var(--white) !important;
             padding: 0.7rem 1.8rem;
-            border-radius: 50px;
-            font-weight: 600;
+            border-radius: 6px;
+            box-shadow: 0 4px 20px rgba(255, 94, 161, 0.4);
         }
         
         .menu-toggle {
@@ -120,343 +114,147 @@
             cursor: pointer;
         }
         
-        /* ========== HERO SECTION ========== */
-        .contact-hero {
-            padding: 12rem 2rem 4rem;
-            text-align: center;
+        /* ========== CHAT CONTAINER ========== */
+        .chat-hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 2rem 4rem;
+        }
+        
+        .chat-container {
             max-width: 900px;
-            margin: 0 auto;
+            width: 100%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            animation: slideUp 0.8s ease;
         }
         
-        .contact-hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--text-dark), var(--accent-primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
-        .contact-hero p {
-            font-size: 1.3rem;
-            opacity: 0.85;
-            margin-bottom: 3rem;
-        }
-        
-        /* ========== CHATBOT CONTAINER ========== */
-        .chatbot-container {
-            max-width: 700px;
-            margin: 0 auto 4rem;
-            padding: 0 2rem;
-        }
-        
-        .chatbot-box {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        .chat-header {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            padding: 2.5rem;
+            text-align: center;
+            position: relative;
             overflow: hidden;
         }
         
-        .chatbot-header {
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            padding: 1.5rem;
-            text-align: center;
-            color: white;
+        .chat-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
         }
         
-        .chatbot-header h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.3rem;
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
         }
         
-        .chatbot-header p {
-            font-size: 0.95rem;
-            opacity: 0.95;
+        .chat-header h1 {
+            color: var(--white);
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .chat-header p {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 1;
         }
         
         .chat-messages {
-            padding: 2rem;
-            min-height: 400px;
-            max-height: 500px;
+            padding: 2.5rem;
+            max-height: 600px;
             overflow-y: auto;
-            background: #f9f9f9;
+            scroll-behavior: smooth;
         }
         
-        .chat-message {
+        .chat-messages::-webkit-scrollbar { width: 8px; }
+        .chat-messages::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.1); border-radius: 10px; }
+        .chat-messages::-webkit-scrollbar-thumb { background: var(--accent-primary); border-radius: 10px; }
+        
+        .message {
             margin-bottom: 1.5rem;
-            display: flex;
-            gap: 1rem;
-            align-items: flex-start;
+            animation: messageSlide 0.5s ease;
         }
         
-        .chat-message.bot {
-            flex-direction: row;
+        @keyframes messageSlide {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
         }
         
-        .chat-message.user {
-            flex-direction: row-reverse;
+        .message.user {
+            animation: messageSlideUser 0.5s ease;
         }
         
-        .message-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            flex-shrink: 0;
-        }
-        
-        .bot .message-avatar {
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            color: white;
-        }
-        
-        .user .message-avatar {
-            background: var(--text-dark);
-            color: white;
+        @keyframes messageSlideUser {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
         }
         
         .message-bubble {
-            padding: 1rem 1.5rem;
-            border-radius: 18px;
-            max-width: 80%;
-            line-height: 1.6;
-            font-size: 0.95rem;
-        }
-        
-        .bot .message-bubble {
-            background: white;
-            color: var(--text-dark);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-        
-        .user .message-bubble {
-            background: var(--accent-primary);
-            color: white;
-        }
-        
-        .chat-options {
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-            margin-top: 1rem;
-        }
-        
-        .option-btn {
-            background: white;
-            border: 2px solid var(--accent-primary);
-            color: var(--accent-primary);
-            padding: 0.8rem 1.5rem;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 0.95rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            font-family: var(--font-body);
-        }
-        
-        .option-btn:hover {
-            background: var(--accent-primary);
-            color: white;
-            transform: translateX(-5px);
-        }
-        
-        .chat-input-area {
-            padding: 1.5rem;
-            background: white;
-            border-top: 1px solid #e0e0e0;
-            display: flex;
-            gap: 1rem;
-        }
-        
-        .chat-input {
-            flex: 1;
-            padding: 0.8rem 1.2rem;
-            border: 2px solid #e0e0e0;
-            border-radius: 25px;
-            font-size: 0.95rem;
-            font-family: var(--font-body);
-            transition: border-color 0.3s ease;
-        }
-        
-        .chat-input:focus {
-            outline: none;
-            border-color: var(--accent-primary);
-        }
-        
-        .send-btn {
-            background: var(--accent-primary);
-            color: white;
-            border: none;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-            transition: transform 0.3s ease;
-        }
-        
-        .send-btn:hover {
-            transform: scale(1.1);
-        }
-        
-        /* ========== WHATSAPP BUTTON ========== */
-        .whatsapp-cta {
-            text-align: center;
-            padding: 3rem 2rem;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        .whatsapp-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 1rem;
-            background: var(--whatsapp);
-            color: white;
-            padding: 1.2rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: 700;
-            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .whatsapp-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.4);
-        }
-        
-        .whatsapp-btn i {
-            font-size: 1.5rem;
-        }
-        
-        /* ========== ALTERNATIVE CONTACT ========== */
-        .alt-contact {
-            max-width: 1000px;
-            margin: 4rem auto;
-            padding: 0 2rem;
-        }
-        
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-        
-        .contact-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
+            display: inline-block;
+            padding: 1.2rem 1.8rem;
             border-radius: 20px;
-            padding: 2.5rem 2rem;
-            text-align: center;
-            transition: transform 0.3s ease;
+            max-width: 80%;
+            word-wrap: break-word;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
         
-        .contact-card:hover {
-            transform: translateY(-5px);
+        .message.bot .message-bubble {
+            background: white;
+            color: var(--text-dark);
+            border-bottom-right-radius: 5px;
         }
         
-        .contact-icon {
-            width: 70px;
-            height: 70px;
-            background: var(--accent-primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 1.8rem;
+        .message.user {
+            text-align: left;
+        }
+        
+        .message.user .message-bubble {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-tertiary));
             color: white;
+            border-bottom-left-radius: 5px;
         }
         
-        .contact-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.8rem;
-            color: var(--text-dark);
-        }
-        
-        .contact-card p {
-            font-size: 1rem;
-            opacity: 0.85;
-            direction: ltr;
-        }
-        
-        .contact-card a {
-            color: var(--text-dark);
-            text-decoration: none;
-            font-weight: 600;
-        }
-        
-        /* ========== FOOTER ========== */
-        footer {
-            background: rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(10px);
-            padding: 3rem 2rem;
-            text-align: center;
-            margin-top: 4rem;
-        }
-        
-        .footer-logo {
+        .bot-avatar {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent-secondary), var(--accent-tertiary));
+            border-radius: 50%;
             display: inline-flex;
             align-items: center;
-            gap: 0.8rem;
-            text-decoration: none;
-            margin-bottom: 1.5rem;
-        }
-        
-        .footer-logo img { width: 40px; height: 40px; }
-        
-        .footer-logo span {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            font-family: var(--font-display);
-        }
-        
-        .footer-links {
-            display: flex;
             justify-content: center;
-            gap: 2rem;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-        }
-        
-        .footer-links a {
-            color: var(--text-dark);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: opacity 0.3s;
-        }
-        
-        .footer-links a:hover { opacity: 0.6; }
-        
-        .footer-copy {
-            color: var(--text-dark);
-            opacity: 0.7;
-            font-size: 0.9rem;
+            margin-left: 0.8rem;
+            color: white;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(0, 224, 255, 0.4);
         }
         
         .typing-indicator {
-            display: none;
-            align-items: center;
-            gap: 0.5rem;
+            display: inline-flex;
+            gap: 5px;
             padding: 1rem 1.5rem;
             background: white;
-            border-radius: 18px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            width: fit-content;
-        }
-        
-        .typing-indicator.active {
-            display: flex;
+            border-radius: 20px;
+            border-bottom-right-radius: 5px;
         }
         
         .typing-dot {
@@ -464,25 +262,224 @@
             height: 8px;
             background: var(--accent-primary);
             border-radius: 50%;
-            animation: typing 1.4s infinite;
+            animation: typingDot 1.4s infinite;
         }
         
         .typing-dot:nth-child(2) { animation-delay: 0.2s; }
         .typing-dot:nth-child(3) { animation-delay: 0.4s; }
         
-        @keyframes typing {
-            0%, 60%, 100% { opacity: 0.3; }
-            30% { opacity: 1; }
+        @keyframes typingDot {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-10px); }
+        }
+        
+        /* ========== OPTIONS ========== */
+        .options-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .option-btn {
+            background: white;
+            border: 2px solid var(--accent-primary);
+            color: var(--accent-primary);
+            padding: 1rem;
+            border-radius: 15px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: var(--font-body);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .option-btn i {
+            font-size: 1.5rem;
+        }
+        
+        .option-btn:hover {
+            background: var(--accent-primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 94, 161, 0.4);
+        }
+        
+        .option-btn.selected {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-tertiary));
+            color: white;
+            border-color: var(--accent-primary);
+        }
+        
+        /* ========== INPUT ========== */
+        .chat-input-container {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-top: 1px solid var(--glass-border);
+        }
+        
+        .input-wrapper {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .chat-input {
+            flex: 1;
+            padding: 1.2rem 1.5rem;
+            border: 2px solid var(--glass-border);
+            border-radius: 25px;
+            background: white;
+            font-size: 1rem;
+            font-family: var(--font-body);
+            transition: all 0.3s ease;
+        }
+        
+        .chat-input:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px rgba(255, 94, 161, 0.1);
+        }
+        
+        .send-btn {
+            width: 55px;
+            height: 55px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-tertiary));
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 94, 161, 0.4);
+        }
+        
+        .send-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(255, 94, 161, 0.6);
+        }
+        
+        .send-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        /* ========== PROGRESS BAR ========== */
+        .progress-container {
+            padding: 1.5rem 2.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid var(--glass-border);
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-secondary), var(--accent-primary));
+            border-radius: 10px;
+            transition: width 0.5s ease;
+            box-shadow: 0 0 10px rgba(255, 94, 161, 0.5);
+        }
+        
+        .progress-text {
+            text-align: center;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: white;
+            font-weight: 600;
+        }
+        
+        /* ========== SUMMARY CARD ========== */
+        .summary-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .summary-card h3 {
+            color: var(--accent-primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            text-align: center;
+        }
+        
+        .summary-item {
+            display: flex;
+            padding: 1rem;
+            border-bottom: 1px solid #f0f0f0;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .summary-item:last-child {
+            border-bottom: none;
+        }
+        
+        .summary-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-tertiary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+        }
+        
+        .summary-content {
+            flex: 1;
+        }
+        
+        .summary-label {
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 0.2rem;
+        }
+        
+        .summary-value {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        
+        .whatsapp-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: #25D366;
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            transition: all 0.3s ease;
+            font-family: var(--font-body);
+        }
+        
+        .whatsapp-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
         }
         
         /* ========== RESPONSIVE ========== */
-        @media (max-width: 1024px) {
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-        }
-        
         @media (max-width: 768px) {
             nav { padding: 1rem 1.5rem; }
             
@@ -505,23 +502,25 @@
             
             .menu-toggle { display: block; }
             
-            .contact-hero { padding: 10rem 1.5rem 3rem; }
+            .chat-hero { padding: 6rem 1rem 2rem; }
+            
+            .chat-messages { padding: 1.5rem; max-height: 400px; }
             
             .message-bubble { max-width: 90%; }
             
-            .whatsapp-btn {
-                font-size: 1rem;
-                padding: 1rem 2rem;
+            .options-container {
+                grid-template-columns: 1fr 1fr;
             }
+            
+            .chat-input-container { padding: 1.5rem; }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header id="header">
         <nav>
             <a href="index-v2.html" class="logo">
-                <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="MULTIBRAWN לוגו" width="45" height="45">
+                <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="MULTIBRAWN" width="45" height="45">
                 <span>MULTIBRAWN</span>
             </a>
             <button class="menu-toggle" id="menuToggle">
@@ -537,120 +536,685 @@
         </nav>
     </header>
 
-    <!-- Hero -->
-    <section class="contact-hero">
-        <h1>בואו נמצא את המקום המושלם שלכם</h1>
-        <p>ספרו לנו מה אתם מחפשים - ה-Multi AI שלנו כאן לעזור</p>
-    </section>
-
-    <!-- AI Chatbot -->
-    <section class="chatbot-container">
-        <div class="chatbot-box">
-            <div class="chatbot-header">
-                <h3>💬 Multi AI</h3>
-                <p>העוזר האישי שלכם למציאת לוקיישן מושלם</p>
+    <main class="chat-hero">
+        <div class="chat-container">
+            <div class="chat-header">
+                <h1>🌟 בואו נמצא את המקום המושלם</h1>
+                <p>אני כאן לעזור לכם למצוא בדיוק מה שאתם מחפשים</p>
+            </div>
+            
+            <div class="progress-container" id="progressContainer" style="display: none;">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-text" id="progressText"></div>
             </div>
             
             <div class="chat-messages" id="chatMessages">
-                <div class="chat-message bot">
-                    <div class="message-avatar">🤖</div>
-                    <div>
-                        <div class="message-bubble">
-                            היי! אני Multi AI, העוזר האישי שלכם 👋<br><br>
-                            אני כאן כדי לעזור לכם למצוא את הלוקיישן המושלם. בואו נתחיל - איזה סוג אירוע או נופש מעניין אתכם?
-                        </div>
-                        <div class="chat-options" id="initialOptions">
-                            <button class="option-btn" onclick="selectOption('חתונה')">💍 חתונה או אירוע פרטי</button>
-                            <button class="option-btn" onclick="selectOption('שבת חתן')">✡️ שבת חתן</button>
-                            <button class="option-btn" onclick="selectOption('נופש')">🌴 נופש משפחתי</button>
-                            <button class="option-btn" onclick="selectOption('כנס')">👥 כנס או יום גיבוש</button>
-                        </div>
+                <div class="message bot">
+                    <div class="bot-avatar"><i class="fas fa-robot"></i></div>
+                    <div class="message-bubble">
+                        שלום! 👋 אני כאן כדי לעזור לכם למצוא את המקום המושלם לאירוע או לנופש שלכם. בואו נתחיל!
                     </div>
                 </div>
+            </div>
+            
+            <div class="chat-input-container">
+                <div class="input-wrapper">
+                    <input type="text" class="chat-input" id="chatInput" placeholder="הקלידו את התשובה שלכם..." disabled>
+                    <button class="send-btn" id="sendBtn" disabled>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // State
+        const conversationState = {
+            venueType: '',
+            area: '',
+            composition: '',
+            guestCount: '',
+            features: [],
+            eventType: '',
+            importantFeatures: '',
+            date: '',
+            budget: '',
+            additionalInfo: '',
+            name: '',
+            phone: '',
+            email: '',
+            currentStep: 0,
+            isCouple: false,
+            isFamily: false,
+            isEvent: false
+        };
+
+        // Elements
+        const chatMessages = document.getElementById('chatMessages');
+        const chatInput = document.getElementById('chatInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const progressContainer = document.getElementById('progressContainer');
+        const progressFill = document.getElementById('progressFill');
+        const progressText = document.getElementById('progressText');
+        
+        // Questions Flow
+        const questions = [
+            {
+                step: 0,
+                question: "מה סוג המתחם שאתם מחפשים?",
+                type: "options",
+                options: [
+                    { icon: "🏡", text: "צימר", value: "צימר" },
+                    { icon: "🏛️", text: "וילה", value: "וילה" },
+                    { icon: "🏙️", text: "דירת נופש", value: "דירת נופש" },
+                    { icon: "🏨", text: "מלון בוטיק", value: "מלון בוטיק" },
+                    { icon: "💍", text: "מתחם לאירועים", value: "מתחם לאירועים" }
+                ],
+                field: "venueType",
+                onAnswer: (value, state) => {
+                    state.isEvent = value === "מתחם לאירועים";
+                }
+            },
+            {
+                step: 1,
+                question: "באיזה אזור בארץ אתם מעוניינים?",
+                type: "options",
+                options: [
+                    { icon: "⛰️", text: "צפון", value: "צפון" },
+                    { icon: "🏖️", text: "חוף הים", value: "חוף הים" },
+                    { icon: "🏙️", text: "מרכז", value: "מרכז" },
+                    { icon: "🕌", text: "ירושלים והסביבה", value: "ירושלים והסביבה" },
+                    { icon: "🌵", text: "דרום", value: "דרום" },
+                    { icon: "🌊", text: "אילת", value: "אילת" },
+                    { icon: "❓", text: "גמיש", value: "גמיש" }
+                ],
+                field: "area"
+            },
+            {
+                step: 2,
+                question: "זה לזוג או למשפחה?",
+                type: "options",
+                options: [
+                    { icon: "💑", text: "זוג", value: "זוג" },
+                    { icon: "👨‍👩‍👧‍👦", text: "משפחה", value: "משפחה" },
+                    { icon: "👥", text: "קבוצת חברים", value: "קבוצת חברים" }
+                ],
+                field: "composition",
+                condition: (state) => !state.isEvent,
+                onAnswer: (value, state) => {
+                    state.isCouple = value === "זוג";
+                    state.isFamily = value === "משפחה";
+                    
+                    // Set guest count automatically for couples
+                    if (state.isCouple) {
+                        state.guestCount = "2 (זוג)";
+                    }
+                }
+            },
+            {
+                step: 2.5,
+                question: "איזה סוג אירוע אתם מתכננים?",
+                type: "options",
+                options: [
+                    { icon: "💒", text: "חתונה", value: "חתונה" },
+                    { icon: "🕍", text: "שבת חתן", value: "שבת חתן" },
+                    { icon: "🎂", text: "בר/בת מצווה", value: "בר/בת מצווה" },
+                    { icon: "🎉", text: "יום הולדת", value: "יום הולדת" },
+                    { icon: "🎊", text: "מסיבת רווקים", value: "מסיבת רווקים" },
+                    { icon: "👔", text: "אירוע עסקי", value: "אירוע עסקי" },
+                    { icon: "🎭", text: "אחר", value: "אחר" }
+                ],
+                field: "eventType",
+                condition: (state) => state.isEvent
+            },
+            {
+                step: 3,
+                question: (state) => {
+                    if (state.isCouple) return "מושלם! 💕 זוג זה 2 אנשים - עוברים לשלב הבא...";
+                    if (state.isFamily) return "כמה אנשים יהיו במשפחה?";
+                    return "כמה אנשים בערך?";
+                },
+                type: (state) => state.isCouple ? "skip" : "text",
+                field: "guestCount",
+                placeholder: "הקלידו מספר...",
+                condition: (state) => !state.isEvent,
+                skipIfCouple: true
+            },
+            {
+                step: 3.5,
+                question: "כמה אורחים משוער לאירוע?",
+                type: "options",
+                options: [
+                    { icon: "👥", text: "עד 50", value: "עד 50 אורחים" },
+                    { icon: "👥👥", text: "50-100", value: "50-100 אורחים" },
+                    { icon: "👥👥👥", text: "100-200", value: "100-200 אורחים" },
+                    { icon: "🎪", text: "200-400", value: "200-400 אורחים" },
+                    { icon: "🏟️", text: "400+", value: "400+ אורחים" }
+                ],
+                field: "guestCount",
+                condition: (state) => state.isEvent
+            },
+            {
+                step: 4,
+                question: (state) => {
+                    if (state.isCouple) return "מה חשוב לכם לחוויה הרומנטית? 💕 (בחרו כל מה שרלוונטי)";
+                    if (state.isFamily) return "מה חשוב לכם למשפחה? (בחרו כל מה שרלוונטי)";
+                    return "מה חשוב לכם שיהיה במקום? (בחרו כל מה שרלוונטי)";
+                },
+                type: "multiOptions",
+                options: (state) => {
+                    if (state.isCouple) {
+                        return [
+                            { icon: "🛁", text: "ג'קוזי פרטי", value: "ג'קוזי פרטי" },
+                            { icon: "🌅", text: "נוף רומנטי", value: "נוף רומנטי" },
+                            { icon: "🔥", text: "אח", value: "אח" },
+                            { icon: "🍷", text: "פינת ישיבה אינטימית", value: "פינת ישיבה אינטימית" },
+                            { icon: "🌳", text: "גינה פרטית", value: "גינה פרטית" },
+                            { icon: "🏊", text: "בריכה", value: "בריכה" },
+                            { icon: "🛏️", text: "מיטה זוגית גדולה", value: "מיטה זוגית גדולה" },
+                            { icon: "🎵", text: "מערכת שמע", value: "מערכת שמע" },
+                            { icon: "🕌", text: "שומר שבת", value: "שומר שבת" },
+                            { icon: "📶", text: "WiFi", value: "WiFi" }
+                        ];
+                    }
+                    if (state.isFamily) {
+                        return [
+                            { icon: "🏊", text: "בריכה", value: "בריכה" },
+                            { icon: "🎮", text: "פינת משחקים לילדים", value: "פינת משחקים" },
+                            { icon: "🌳", text: "גינה גדולה", value: "גינה גדולה" },
+                            { icon: "🍳", text: "מטבח מאובזר", value: "מטבח מאובזר" },
+                            { icon: "🛏️", text: "מספיק חדרי שינה", value: "מספיק חדרי שינה" },
+                            { icon: "🚗", text: "חניה", value: "חניה" },
+                            { icon: "♿", text: "נגישות", value: "נגישות" },
+                            { icon: "🍖", text: "מנגל", value: "מנגל" },
+                            { icon: "🕌", text: "שומר שבת", value: "שומר שבת" },
+                            { icon: "📶", text: "WiFi", value: "WiFi" },
+                            { icon: "🐕", text: "מתאים לכלבים", value: "מתאים לכלבים" }
+                        ];
+                    }
+                    if (state.isEvent) {
+                        return [
+                            { icon: "🏛️", text: "אולם מקורה", value: "אולם מקורה" },
+                            { icon: "🌳", text: "חצר/גינה", value: "חצר/גינה" },
+                            { icon: "🚗", text: "חניה מרווחת", value: "חניה מרווחת" },
+                            { icon: "🍽️", text: "קייטרינג במקום", value: "קייטרינג במקום" },
+                            { icon: "🎵", text: "מערכת קול מקצועית", value: "מערכת קול" },
+                            { icon: "💡", text: "תאורה", value: "תאורה" },
+                            { icon: "❄️", text: "מיזוג אוויר", value: "מיזוג אוויר" },
+                            { icon: "🚻", text: "שירותים נרחבים", value: "שירותים נרחבים" },
+                            { icon: "♿", text: "נגישות מלאה", value: "נגישות" },
+                            { icon: "🕌", text: "שומר שבת", value: "שומר שבת" },
+                            { icon: "🏨", text: "אפשרות לינה", value: "אפשרות לינה" }
+                        ];
+                    }
+                    // Default for groups
+                    return [
+                        { icon: "🏊", text: "בריכה", value: "בריכה" },
+                        { icon: "🛁", text: "ג'קוזי", value: "ג'קוזי" },
+                        { icon: "🔥", text: "אח", value: "אח" },
+                        { icon: "🍳", text: "מטבח מאובזר", value: "מטבח מאובזר" },
+                        { icon: "🚗", text: "חניה", value: "חניה" },
+                        { icon: "🌳", text: "גינה", value: "גינה" },
+                        { icon: "♿", text: "נגישות", value: "נגישות" },
+                        { icon: "🐕", text: "מתאים לכלבים", value: "מתאים לכלבים" },
+                        { icon: "📶", text: "WiFi", value: "WiFi" },
+                        { icon: "🕌", text: "שומר שבת", value: "שומר שבת" },
+                        { icon: "🍖", text: "מנגל", value: "מנגל" },
+                        { icon: "🎵", text: "מערכת קול", value: "מערכת קול" }
+                    ];
+                },
+                field: "features"
+            },
+            {
+                step: 5,
+                question: (state) => {
+                    if (state.isCouple) return "יש עוד משהו מיוחד שחשוב לכם לחוויה הרומנטית? 💕";
+                    if (state.isFamily) return "יש עוד דברים חשובים למשפחה שלכם?";
+                    if (state.isEvent) return "יש דרישות או בקשות מיוחדות לאירוע?";
+                    return "יש משהו נוסף שחשוב לכם?";
+                },
+                type: "text",
+                field: "additionalInfo",
+                placeholder: "כתבו כאן...",
+                optional: true
+            },
+            {
+                step: 6,
+                question: "מתי בערך אתם מתכננים?",
+                type: "text",
+                field: "date",
+                placeholder: "למשל: סוף השבוע הבא, אוגוסט 2025..."
+            },
+            {
+                step: 7,
+                question: (state) => {
+                    if (state.isEvent) return "מה התקציב המשוער לאירוע?";
+                    if (state.isCouple) return "מה התקציב שלכם לסופ\"ש רומנטי?";
+                    return "מה התקציב המשוער שלכם?";
+                },
+                type: "options",
+                options: (state) => {
+                    if (state.isEvent) {
+                        return [
+                            { icon: "💰", text: "עד 50,000 ₪", value: "עד 50,000 ₪" },
+                            { icon: "💰💰", text: "50,000-100,000 ₪", value: "50,000-100,000 ₪" },
+                            { icon: "💰💰💰", text: "100,000-200,000 ₪", value: "100,000-200,000 ₪" },
+                            { icon: "💎", text: "200,000+ ₪", value: "200,000+ ₪" },
+                            { icon: "❓", text: "גמיש", value: "גמיש" }
+                        ];
+                    }
+                    return [
+                        { icon: "💰", text: "עד 2,000 ₪", value: "עד 2,000 ₪" },
+                        { icon: "💰💰", text: "2,000-5,000 ₪", value: "2,000-5,000 ₪" },
+                        { icon: "💰💰💰", text: "5,000-10,000 ₪", value: "5,000-10,000 ₪" },
+                        { icon: "💎", text: "10,000+ ₪", value: "10,000+ ₪" },
+                        { icon: "❓", text: "גמיש", value: "גמיש" }
+                    ];
+                },
+                field: "budget"
+            },
+            {
+                step: 8,
+                question: (state) => {
+                    if (state.isCouple) return "מעולף! 💕 עכשיו בואו נדבר איתכם. איך קוראים לכם?";
+                    return "מעולה! עכשיו בואו נדבר איתכם 😊 מה השם שלכם?";
+                },
+                type: "text",
+                field: "name",
+                placeholder: "השם שלכם..."
+            },
+            {
+                step: 9,
+                question: "ומה מספר הטלפון שלכם?",
+                type: "phone",
+                field: "phone",
+                placeholder: "050-1234567"
+            },
+            {
+                step: 10,
+                question: "ולבסוף, מה כתובת האימייל שלכם?",
+                type: "email",
+                field: "email",
+                placeholder: "example@email.com"
+            }
+        ];
+
+        // Add bot message
+        function addBotMessage(message, delay = 1000) {
+            return new Promise(resolve => {
+                // Show typing indicator
+                const typingDiv = document.createElement('div');
+                typingDiv.className = 'message bot';
+                typingDiv.innerHTML = `
+                    <div class="bot-avatar"><i class="fas fa-robot"></i></div>
+                    <div class="typing-indicator">
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                    </div>
+                `;
+                chatMessages.appendChild(typingDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
                 
-                <div class="typing-indicator" id="typingIndicator">
-                    <div class="typing-dot"></div>
-                    <div class="typing-dot"></div>
-                    <div class="typing-dot"></div>
-                </div>
-            </div>
+                setTimeout(() => {
+                    typingDiv.remove();
+                    
+                    const messageDiv = document.createElement('div');
+                    messageDiv.className = 'message bot';
+                    messageDiv.innerHTML = `
+                        <div class="bot-avatar"><i class="fas fa-robot"></i></div>
+                        <div class="message-bubble">${message}</div>
+                    `;
+                    chatMessages.appendChild(messageDiv);
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                    resolve();
+                }, delay);
+            });
+        }
+
+        // Add user message
+        function addUserMessage(message) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message user';
+            messageDiv.innerHTML = `
+                <div class="message-bubble">${message}</div>
+            `;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Show options
+        function showOptions(options, isMulti = false) {
+            const optionsDiv = document.createElement('div');
+            optionsDiv.className = 'message bot';
             
-            <div class="chat-input-area">
-                <input type="text" class="chat-input" id="chatInput" placeholder="או כתבו לנו במילים שלכם..." disabled>
-                <button class="send-btn" id="sendBtn" disabled>
-                    <i class="fas fa-paper-plane"></i>
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- WhatsApp CTA -->
-    <section class="whatsapp-cta" id="whatsappSection" style="display: none;">
-        <h2 style="margin-bottom: 1.5rem; font-size: 2rem;">מוכנים להמשיך?</h2>
-        <p style="margin-bottom: 2rem; font-size: 1.1rem; opacity: 0.85;">בואו נעבור לווטסאפ ונמצא לכם את המקום המושלם</p>
-        <a href="#" class="whatsapp-btn" id="whatsappBtn">
-            <i class="fab fa-whatsapp"></i>
-            המשך בווטסאפ
-        </a>
-    </section>
-
-    <!-- Alternative Contact Methods -->
-    <section class="alt-contact">
-        <h2 style="text-align: center; margin-bottom: 3rem; font-size: 2.5rem;">או צרו קשר ישירות</h2>
-        <div class="contact-grid">
-            <div class="contact-card">
-                <div class="contact-icon">
-                    <i class="fas fa-phone"></i>
-                </div>
-                <h3>טלפון</h3>
-                <p><a href="tel:+972523983394">052-398-3394</a></p>
-            </div>
+            let optionsHTML = '<div class="options-container">';
+            options.forEach((option, index) => {
+                optionsHTML += `
+                    <button class="option-btn" data-value="${option.value}" data-index="${index}">
+                        <span>${option.icon}</span>
+                        <span>${option.text}</span>
+                    </button>
+                `;
+            });
+            optionsHTML += '</div>';
             
-            <div class="contact-card">
-                <div class="contact-icon">
-                    <i class="fas fa-envelope"></i>
-                </div>
-                <h3>מייל</h3>
-                <p><a href="/cdn-cgi/l/email-protection#bdd4d3dbd2fdd0c8d1c9d4dfcfdccad393ded293d4d1"><span class="__cf_email__" data-cfemail="472e292128072a322b332e2535263029692428692e2b">[email&#160;protected]</span></a></p>
-            </div>
+            optionsDiv.innerHTML = optionsHTML;
+            chatMessages.appendChild(optionsDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
             
-            <div class="contact-card">
-                <div class="contact-icon">
-                    <i class="fas fa-clock"></i>
-                </div>
-                <h3>שעות פעילות</h3>
-                <p>א'-ו': 08:00-22:00</p>
-            </div>
-        </div>
-    </section>
+            // Add click handlers
+            const buttons = optionsDiv.querySelectorAll('.option-btn');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    if (isMulti) {
+                        btn.classList.toggle('selected');
+                        
+                        // Enable input for multi-select
+                        chatInput.disabled = false;
+                        sendBtn.disabled = false;
+                        chatInput.placeholder = "לחצו על הכפתורים שרלוונטיים ואז שלחו...";
+                        chatInput.focus();
+                    } else {
+                        const value = btn.getAttribute('data-value');
+                        handleAnswer(value);
+                        buttons.forEach(b => b.disabled = true);
+                    }
+                });
+            });
+        }
 
-    <!-- Footer -->
-    <footer>
-        <a href="index-v2.html" class="footer-logo">
-            <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="MULTIBRAWN לוגו" width="40" height="40">
-            <span>MULTIBRAWN</span>
-        </a>
-        <nav class="footer-links">
-            <a href="privacy.html">מדיניות פרטיות</a>
-            <a href="accessibility.html">הצהרת נגישות</a>
-            <a href="about.html">אודות</a>
-            <a href="contact.html">צור קשר</a>
-        </nav>
-        <p class="footer-copy">© 2025 MULTIBRAWN. כל הזכויות שמורות.</p>
-    </footer>
+        // Update progress
+        function updateProgress() {
+            const totalSteps = questions.filter(q => !q.condition || q.condition(conversationState)).length;
+            const progress = (conversationState.currentStep / totalSteps) * 100;
+            
+            if (conversationState.currentStep > 0) {
+                progressContainer.style.display = 'block';
+            }
+            
+            progressFill.style.width = progress + '%';
+            progressText.textContent = `שלב ${conversationState.currentStep} מתוך ${totalSteps}`;
+        }
 
-    <!-- JavaScript -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // Header scroll effect
-        const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 100) {
-                header.classList.add('scrolled');
+        // Handle answer
+        async function handleAnswer(answer) {
+            // Disable input
+            chatInput.disabled = true;
+            sendBtn.disabled = true;
+            chatInput.value = '';
+            
+            // Add user message
+            addUserMessage(answer);
+            
+            // Save answer
+            const currentQuestion = questions.find(q => q.step === conversationState.currentStep);
+            if (currentQuestion) {
+                conversationState[currentQuestion.field] = answer;
+                
+                // Call onAnswer callback if exists
+                if (currentQuestion.onAnswer) {
+                    currentQuestion.onAnswer(answer, conversationState);
+                }
+            }
+            
+            // Update progress
+            conversationState.currentStep++;
+            updateProgress();
+            
+            // Get next question
+            const nextQuestion = getNextQuestion();
+            
+            if (nextQuestion) {
+                await askQuestion(nextQuestion);
             } else {
-                header.classList.remove('scrolled');
+                await showSummary();
+            }
+        }
+
+        // Get next question
+        function getNextQuestion() {
+            for (let i = 0; i < questions.length; i++) {
+                const q = questions[i];
+                if (q.step >= conversationState.currentStep) {
+                    if (!q.condition || q.condition(conversationState)) {
+                        conversationState.currentStep = q.step;
+                        return q;
+                    }
+                }
+            }
+            return null;
+        }
+
+        // Ask question
+        async function askQuestion(question) {
+            // Handle skip type (for couples)
+            if (typeof question.type === 'function') {
+                const type = question.type(conversationState);
+                if (type === 'skip') {
+                    await addBotMessage(typeof question.question === 'function' ? 
+                        question.question(conversationState) : question.question, 800);
+                    // Auto-proceed to next question
+                    conversationState.currentStep++;
+                    const nextQuestion = getNextQuestion();
+                    if (nextQuestion) {
+                        setTimeout(() => askQuestion(nextQuestion), 1500);
+                    }
+                    return;
+                }
+            }
+            
+            // Get dynamic question text
+            const questionText = typeof question.question === 'function' ? 
+                question.question(conversationState) : question.question;
+            
+            await addBotMessage(questionText, 800);
+            
+            if (question.type === "options" || (typeof question.type === 'function' && question.type(conversationState) === 'options')) {
+                const options = typeof question.options === 'function' ? 
+                    question.options(conversationState) : question.options;
+                showOptions(options, false);
+            } else if (question.type === "multiOptions") {
+                const options = typeof question.options === 'function' ? 
+                    question.options(conversationState) : question.options;
+                showOptions(options, true);
+                
+                // Set up send button for multi-select
+                const handleMultiSend = () => {
+                    const selected = document.querySelectorAll('.option-btn.selected');
+                    if (selected.length > 0) {
+                        const values = Array.from(selected).map(btn => btn.getAttribute('data-value'));
+                        conversationState.features = values;
+                        handleAnswer(values.join(', '));
+                        sendBtn.removeEventListener('click', handleMultiSend);
+                        chatInput.removeEventListener('keypress', handleMultiEnter);
+                    }
+                };
+                
+                const handleMultiEnter = (e) => {
+                    if (e.key === 'Enter') {
+                        handleMultiSend();
+                    }
+                };
+                
+                sendBtn.addEventListener('click', handleMultiSend);
+                chatInput.addEventListener('keypress', handleMultiEnter);
+                
+            } else {
+                // Enable text input
+                chatInput.disabled = false;
+                sendBtn.disabled = false;
+                chatInput.placeholder = question.placeholder || "הקלידו את התשובה...";
+                chatInput.focus();
+                
+                if (question.optional) {
+                    await addBotMessage("(אופציונלי - אפשר גם לדלג ולהקליד 'דלג')", 300);
+                }
+            }
+        }
+
+        // Show summary and send to WhatsApp
+        async function showSummary() {
+            if (conversationState.isCouple) {
+                await addBotMessage("איזה יופי! זוג רומנטי 💕", 800);
+            } else if (conversationState.isFamily) {
+                await addBotMessage("מעולה! משפחה מקסימה 👨‍👩‍👧‍👦", 800);
+            } else {
+                await addBotMessage("מעולה! קיבלתי את כל הפרטים 🎉", 800);
+            }
+            
+            await addBotMessage("הנה סיכום של מה שחיפשנו:", 1000);
+            
+            const summaryDiv = document.createElement('div');
+            summaryDiv.className = 'message bot';
+            summaryDiv.style.maxWidth = '100%';
+            
+            let summaryHTML = '<div class="summary-card">';
+            
+            if (conversationState.isCouple) {
+                summaryHTML += '<h3>💕 חוויה רומנטית לזוג</h3>';
+            } else if (conversationState.isFamily) {
+                summaryHTML += '<h3>👨‍👩‍👧‍👦 חופשה משפחתית</h3>';
+            } else if (conversationState.isEvent) {
+                summaryHTML += '<h3>🎉 אירוע מיוחד</h3>';
+            } else {
+                summaryHTML += '<h3>📋 סיכום הפרטים שלכם</h3>';
+            }
+            
+            const summaryItems = [
+                { icon: '🏠', label: 'סוג מתחם', value: conversationState.venueType },
+                { icon: '📍', label: 'אזור', value: conversationState.area }
+            ];
+            
+            if (conversationState.isEvent) {
+                summaryItems.push({ icon: '💍', label: 'סוג אירוע', value: conversationState.eventType });
+            } else {
+                summaryItems.push({ icon: '👥', label: 'הרכב', value: conversationState.composition });
+            }
+            
+            summaryItems.push({ icon: '🎯', label: 'כמות אנשים', value: conversationState.guestCount });
+            
+            if (conversationState.features && conversationState.features.length > 0) {
+                summaryItems.push({ icon: '✨', label: 'מאפיינים', value: Array.isArray(conversationState.features) ? conversationState.features.join(', ') : conversationState.features });
+            }
+            
+            summaryItems.push(
+                { icon: '📅', label: 'תאריך משוער', value: conversationState.date },
+                { icon: '💰', label: 'תקציב', value: conversationState.budget }
+            );
+            
+            if (conversationState.additionalInfo && conversationState.additionalInfo !== 'דלג') {
+                summaryItems.push({ icon: '📝', label: 'מידע נוסף', value: conversationState.additionalInfo });
+            }
+            
+            summaryItems.push(
+                { icon: '👤', label: 'שם', value: conversationState.name },
+                { icon: '📞', label: 'טלפון', value: conversationState.phone },
+                { icon: '📧', label: 'אימייל', value: conversationState.email }
+            );
+            
+            summaryItems.forEach(item => {
+                if (item.value) {
+                    summaryHTML += `
+                        <div class="summary-item">
+                            <div class="summary-icon">${item.icon}</div>
+                            <div class="summary-content">
+                                <div class="summary-label">${item.label}</div>
+                                <div class="summary-value">${item.value}</div>
+                            </div>
+                        </div>
+                    `;
+                }
+            });
+            
+            summaryHTML += `
+                <button class="whatsapp-btn" onclick="sendToWhatsApp()">
+                    <i class="fab fa-whatsapp"></i>
+                    שלחו לי את הפרטים לוואטסאפ
+                </button>
+            </div>`;
+            
+            summaryDiv.innerHTML = summaryHTML;
+            chatMessages.appendChild(summaryDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            
+            if (conversationState.isCouple) {
+                await addBotMessage("אני אמצא לכם את המקום הכי רומנטי! 💕", 1500);
+            } else {
+                await addBotMessage("אני אצור איתכם קשר בהקדם! 💜", 1500);
+            }
+        }
+
+        // Send to WhatsApp
+        function sendToWhatsApp() {
+            let message = '';
+            
+            if (conversationState.isCouple) {
+                message = `💕 *זוג רומנטי מחפש חוויה מושלמת* 💕\n\n`;
+            } else if (conversationState.isFamily) {
+                message = `👨‍👩‍👧‍👦 *משפחה מחפשת חופשה* 👨‍👩‍👧‍👦\n\n`;
+            } else if (conversationState.isEvent) {
+                message = `🎉 *פנייה לאירוע מיוחד* 🎉\n\n`;
+            } else {
+                message = `🌟 *פנייה חדשה מהאתר* 🌟\n\n`;
+            }
+
+            message += `📋 *פרטי החיפוש:*\n\n`;
+            message += `🏠 *סוג מתחם:* ${conversationState.venueType}\n`;
+            message += `📍 *אזור:* ${conversationState.area}\n`;
+            
+            if (conversationState.isEvent) {
+                message += `💍 *סוג אירוע:* ${conversationState.eventType}\n`;
+            } else {
+                message += `👥 *הרכב:* ${conversationState.composition}\n`;
+            }
+            
+            message += `🎯 *כמות אנשים:* ${conversationState.guestCount}\n`;
+            
+            if (conversationState.features && conversationState.features.length > 0) {
+                const featuresText = Array.isArray(conversationState.features) ? 
+                    conversationState.features.join(', ') : conversationState.features;
+                message += `✨ *מאפיינים:* ${featuresText}\n`;
+            }
+            
+            message += `📅 *תאריך:* ${conversationState.date}\n`;
+            message += `💰 *תקציב:* ${conversationState.budget}\n`;
+            
+            if (conversationState.additionalInfo && conversationState.additionalInfo !== 'דלג') {
+                message += `📝 *מידע נוסף:* ${conversationState.additionalInfo}\n`;
+            }
+            
+            message += `\n👤 *פרטי יצירת קשר:*\n`;
+            message += `שם: ${conversationState.name}\n`;
+            message += `טלפון: ${conversationState.phone}\n`;
+            message += `אימייל: ${conversationState.email}`;
+
+            const whatsappNumber = '972523983394';
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+            
+            window.open(whatsappURL, '_blank');
+        }
+
+        // Send message handler
+        function sendMessage() {
+            const message = chatInput.value.trim();
+            if (message) {
+                handleAnswer(message);
+            }
+        }
+
+        // Event listeners
+        sendBtn.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
             }
         });
-        
+
         // Mobile menu
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
@@ -668,7 +1232,6 @@
                 }
             });
             
-            // Close menu when clicking on a link
             navLinks.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', () => {
                     navLinks.classList.remove('active');
@@ -678,8 +1241,8 @@
                 });
             });
         }
-        
-        // Header scroll effect
+
+        // Header scroll
         const header = document.getElementById('header');
         window.addEventListener('scroll', () => {
             if (window.pageYOffset > 100) {
@@ -688,175 +1251,14 @@
                 header.classList.remove('scrolled');
             }
         }, { passive: true });
-        
-        // Chatbot Logic
-        const chatMessages = document.getElementById('chatMessages');
-        const chatInput = document.getElementById('chatInput');
-        const sendBtn = document.getElementById('sendBtn');
-        const whatsappSection = document.getElementById('whatsappSection');
-        const whatsappBtn = document.getElementById('whatsappBtn');
-        const typingIndicator = document.getElementById('typingIndicator');
-        
-        let chatData = {
-            eventType: '',
-            guests: '',
-            date: '',
-            budget: '',
-            notes: ''
-        };
-        
-        let currentStep = 0;
-        
-        function selectOption(option) {
-            chatData.eventType = option;
-            addUserMessage(option);
-            document.getElementById('initialOptions').style.display = 'none';
-            
-            setTimeout(() => askNextQuestion(), 800);
-        }
-        
-        function addUserMessage(text) {
-            const messageDiv = document.createElement('div');
-            messageDiv.className = 'chat-message user';
-            messageDiv.innerHTML = `
-                <div class="message-avatar">👤</div>
-                <div class="message-bubble">${text}</div>
-            `;
-            chatMessages.appendChild(messageDiv);
-            scrollToBottom();
-        }
-        
-        function addBotMessage(text, showOptions = false, options = []) {
-            showTyping();
-            
-            setTimeout(() => {
-                hideTyping();
-                
-                const messageDiv = document.createElement('div');
-                messageDiv.className = 'chat-message bot';
-                
-                let optionsHTML = '';
-                if (showOptions && options.length > 0) {
-                    optionsHTML = '<div class="chat-options">';
-                    options.forEach(opt => {
-                        optionsHTML += `<button class="option-btn" onclick="handleOption('${opt}')">${opt}</button>`;
-                    });
-                    optionsHTML += '</div>';
-                }
-                
-                messageDiv.innerHTML = `
-                    <div class="message-avatar">🤖</div>
-                    <div>
-                        <div class="message-bubble">${text}</div>
-                        ${optionsHTML}
-                    </div>
-                `;
-                chatMessages.appendChild(messageDiv);
-                scrollToBottom();
-            }, 1000);
-        }
-        
-        function showTyping() {
-            typingIndicator.classList.add('active');
-            scrollToBottom();
-        }
-        
-        function hideTyping() {
-            typingIndicator.classList.remove('active');
-        }
-        
-        function scrollToBottom() {
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
-        
-        function askNextQuestion() {
-            currentStep++;
-            
-            switch(currentStep) {
-                case 1:
-                    addBotMessage('מעולה! כמה אנשים צפויים?', true, ['עד 50', '50-100', '100-200', '200+']);
-                    break;
-                case 2:
-                    addBotMessage('נהדר! מתי אתם מתכננים את האירוע/הנופש?');
-                    chatInput.disabled = false;
-                    sendBtn.disabled = false;
-                    chatInput.focus();
-                    chatInput.placeholder = 'למשל: יוני 2025';
-                    break;
-                case 3:
-                    addBotMessage('אוקיי! מה תקציב משוער למקום? (לא חובה)', true, ['עד 10K', '10K-20K', '20K-30K', '30K+', 'דלג']);
-                    break;
-                case 4:
-                    addBotMessage('כמעט סיימנו! יש משהו חשוב שכדאי שנדע? (חזון, דרישות מיוחדות...)');
-                    chatInput.disabled = false;
-                    sendBtn.disabled = false;
-                    chatInput.placeholder = 'למשל: חשוב לי נוף, כשרות...';
-                    break;
-                case 5:
-                    finishChat();
-                    break;
+
+        // Start conversation
+        setTimeout(() => {
+            const firstQuestion = getNextQuestion();
+            if (firstQuestion) {
+                askQuestion(firstQuestion);
             }
-        }
-        
-        function handleOption(option) {
-            addUserMessage(option);
-            
-            if (currentStep === 1) {
-                chatData.guests = option;
-            } else if (currentStep === 3) {
-                chatData.budget = option;
-            }
-            
-            // Disable all buttons in this step
-            const buttons = document.querySelectorAll('.chat-options button');
-            buttons.forEach(btn => btn.disabled = true);
-            
-            setTimeout(() => askNextQuestion(), 800);
-        }
-        
-        function finishChat() {
-            const summary = `
-סוג אירוע: ${chatData.eventType}
-מספר אנשים: ${chatData.guests}
-תאריך: ${chatData.date}
-תקציב: ${chatData.budget}
-הערות: ${chatData.notes}`;
-            
-            addBotMessage(`מושלם! קיבלתי את כל הפרטים 🎉<br><br>עכשיו בואו נעבור לווטסאפ כדי שאוכל למצוא לכם את המקום המושלם ולתאם את כל הפרטים.`);
-            
-            chatInput.disabled = true;
-            sendBtn.disabled = true;
-            
-            // Build WhatsApp message
-            const whatsappMessage = encodeURIComponent(
-                `היי! סיימתי את השיחה עם Multi AI.\n\nהפרטים שלי:\n${summary}\n\nאשמח לקבל המלצות 😊`
-            );
-            
-            const whatsappNumber = '972523983394';
-            whatsappBtn.href = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
-            
-            setTimeout(() => {
-                whatsappSection.style.display = 'block';
-                whatsappSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }, 1500);
-        }
-        
-        // Handle text input
-        chatInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter' && chatInput.value.trim() !== '') {
-                sendMessage();
-            }
-        });
-        
-        sendBtn.addEventListener('click', sendMessage);
-        
-        function sendMessage() {
-            const message = chatInput.value.trim();
-            if (message === '') return;
-            
-            addUserMessage(message);
-            
-            if (currentStep === 2) {
-                chatData.date = message;
-            } else if (currentStep === 4) {
-                chatData.notes = messag
+        }, 2000);
+    </script>
+</body>
+</html>
