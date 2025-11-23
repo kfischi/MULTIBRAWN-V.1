@@ -40,6 +40,12 @@
 
         h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
 
+        /* --- מחלקות נגישות --- */
+        body.access-large-text { font-size: 120%; }
+        body.access-high-contrast { filter: contrast(150%); background: black !important; color: white !important; }
+        body.access-grayscale { filter: grayscale(100%); }
+        body.access-links-highlight a { text-decoration: underline !important; background: yellow !important; color: black !important; }
+
         /* --- תפריט ניווט ראשי --- */
         #main-header {
             position: fixed;
@@ -59,21 +65,24 @@
         nav {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 1rem 3rem;
+            padding: 0.5rem 3rem; /* קצת פחות ריפוד כדי שהלוגו הגדול ייכנס יפה */
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
         .logo { display: flex; align-items: center; gap: 1rem; text-decoration: none; cursor: pointer; }
-        .logo img { width: 60px; height: 60px; transition: transform 0.3s; }
+        
+        /* לוגו מוגדל עוד יותר */
+        .logo img { width: 80px; height: 80px; transition: transform 0.3s; }
         .logo:hover img { transform: scale(1.1); }
-        .logo span { font-size: 1.8rem; font-weight: 700; color: var(--site-text); font-family: 'Playfair Display', serif; }
+        
+        .logo span { font-size: 2rem; font-weight: 800; color: var(--site-text); font-family: 'Playfair Display', serif; }
         
         .nav-links { display: flex; gap: 2.5rem; align-items: center; }
         .nav-links a {
             color: var(--site-text);
             text-decoration: none;
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: 500;
             cursor: pointer;
             transition: opacity 0.3s;
@@ -92,7 +101,7 @@
             display: none;
             background: none;
             border: none;
-            font-size: 1.8rem;
+            font-size: 2rem;
             cursor: pointer;
         }
 
@@ -108,29 +117,34 @@
             width: 100%;
             height: 100vh;
             overflow: hidden;
-            margin-top: -100px; /* כדי שיתחיל מהחלק העליון ביותר */
+            margin-top: -120px; /* התאמה ללוגו הגדול */
         }
         
-        /* וידאו רקע שמתאים את עצמו לכל מסך */
         .video-bg {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover; /* מכסה את כל השטח בלי עיוות */
+            object-fit: cover;
             z-index: 0;
         }
         
         .video-overlay {
             position: absolute; inset: 0;
-            background: linear-gradient(to bottom, rgba(26,11,46,0.4), rgba(26,11,46,0.7));
+            /* בהירות מוגברת: הפחתתי את ה-opacity של השחור */
+            background: linear-gradient(to bottom, rgba(26,11,46,0.2), rgba(26,11,46,0.5));
             display: flex; flex-direction: column;
             justify-content: center; align-items: center;
             z-index: 1;
         }
         .hero-content { text-align: center; color: white; }
-        .hero-title { font-size: clamp(3rem, 8vw, 6rem); margin-bottom: 1rem; text-shadow: 0 4px 30px rgba(0,0,0,0.5); }
+        .hero-title { 
+            font-size: clamp(3rem, 8vw, 6rem); 
+            margin-bottom: 1rem; 
+            text-shadow: 0 4px 30px rgba(0,0,0,0.5); 
+            font-weight: 900;
+        }
         .hero-btn-group { display: flex; gap: 1rem; justify-content: center; margin-top: 2rem; }
         .hero-btn {
             padding: 1rem 2.5rem; border-radius: 8px; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer;
@@ -151,39 +165,36 @@
             color: white;
         }
 
-        /* --- כפתורים צפים (וואטסאפ ונגישות) --- */
+        /* --- כפתורים צפים --- */
         .floating-btn {
-            position: fixed;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-            z-index: 9999;
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
+            position: fixed; width: 60px; height: 60px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; color: white;
+            font-size: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.3); z-index: 9999;
+            transition: transform 0.3s, box-shadow 0.3s; cursor: pointer;
         }
-        .floating-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 25px rgba(0,0,0,0.4);
-        }
+        .floating-btn:hover { transform: scale(1.1); box-shadow: 0 6px 25px rgba(0,0,0,0.4); }
         
-        .whatsapp-float {
-            bottom: 30px;
-            right: 30px;
-            background-color: #25D366;
+        .whatsapp-float { bottom: 30px; right: 30px; background-color: #25D366; }
+        .accessibility-float { bottom: 30px; left: 30px; background-color: #0072b1; font-size: 1.5rem; }
+
+        /* תפריט נגישות */
+        .accessibility-menu {
+            position: fixed; bottom: 100px; left: 30px; width: 250px;
+            background: white; border-radius: 15px; padding: 1rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3); z-index: 9998;
+            display: none; color: #333; border: 2px solid #0072b1;
         }
-        
-        .accessibility-float {
-            bottom: 30px;
-            left: 30px;
-            background-color: #0072b1;
-            font-size: 1.5rem;
+        .accessibility-menu.active { display: block; animation: slideUp 0.3s ease; }
+        .access-btn {
+            display: block; width: 100%; padding: 0.8rem; margin-bottom: 0.5rem;
+            background: #f0f2f5; border: 1px solid #ddd; border-radius: 8px;
+            text-align: right; cursor: pointer; transition: 0.2s;
         }
+        .access-btn:hover { background: #e0e7ff; }
+        .access-btn.active { background: #0072b1; color: white; }
+        .access-header { font-weight: bold; margin-bottom: 1rem; border-bottom: 1px solid #eee; padding-bottom: 0.5rem; }
+
+        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
         /* --- גלריה --- */
         .gallery-hero {
@@ -203,60 +214,28 @@
         }
         .filter-btn.active, .filter-btn:hover { background: var(--site-accent); color: white; border-color: var(--site-accent); }
         
-        /* עיצוב נטפליקס לקטגוריות */
-        .category-section {
-            margin-bottom: 4rem;
-            padding: 0 2rem;
-            max-width: 1400px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
+        .category-section { margin-bottom: 4rem; padding: 0 2rem; max-width: 1400px; margin-left: auto; margin-right: auto; }
         .category-title {
-            font-size: clamp(1.5rem, 3vw, 2rem);
-            margin-bottom: 1.5rem;
-            padding-right: 1rem;
-            color: var(--site-text);
-            border-right: 4px solid var(--site-accent);
-            display: inline-block;
+            font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 1.5rem; padding-right: 1rem;
+            color: var(--site-text); border-right: 4px solid var(--site-accent); display: inline-block;
         }
         
         .gallery-row {
-            display: flex;
-            gap: 1.5rem;
-            overflow-x: auto;
-            padding-bottom: 1.5rem;
-            scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
+            display: flex; gap: 1.5rem; overflow-x: auto; padding-bottom: 1.5rem;
+            scroll-behavior: smooth; -webkit-overflow-scrolling: touch;
         }
-        
         .gallery-row::-webkit-scrollbar { height: 8px; }
         .gallery-row::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.1); border-radius: 10px; }
         .gallery-row::-webkit-scrollbar-thumb { background: var(--site-accent); border-radius: 10px; }
         
         .gallery-card {
-            flex: 0 0 300px;
-            height: 400px;
-            position: relative;
-            border-radius: 15px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            flex: 0 0 300px; height: 400px; position: relative; border-radius: 15px;
+            overflow: hidden; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+        .gallery-card:hover { transform: scale(1.05); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4); z-index: 10; }
+        .gallery-card img, .gallery-card video { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
         
-        .gallery-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-            z-index: 10;
-        }
-        
-        .gallery-card img, .gallery-card video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
+        /* Video Play Overlay for Gallery */
         .video-play-overlay {
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
             width: 60px; height: 60px; background: rgba(255, 94, 161, 0.8);
@@ -266,15 +245,10 @@
 
         /* --- טיפים (Reels Style) --- */
         .reels-container { padding: 0 2rem; max-width: 1400px; margin: 0 auto; }
-        .reels-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
+        .reels-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
         .reel-card {
             position: relative; border-radius: 20px; overflow: hidden; cursor: pointer;
-            background: rgba(0,0,0,0.2); aspect-ratio: 9/16;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            background: rgba(0,0,0,0.2); aspect-ratio: 9/16; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             transition: transform 0.3s ease;
         }
         .reel-card:hover { transform: translateY(-10px); }
@@ -290,38 +264,31 @@
         }
         .reel-card:hover .play-button { transform: translate(-50%, -50%) scale(1.1); background: var(--site-accent); }
         .reel-overlay {
-            position: absolute; bottom: 0; left: 0; right: 0;
-            padding: 2rem 1rem 1rem;
-            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-            color: white; z-index: 2;
+            position: absolute; bottom: 0; left: 0; right: 0; padding: 2rem 1rem 1rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); color: white; z-index: 2;
         }
         .reel-title { font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem; }
         
-        /* Video Modal */
+        /* Video Modal (Custom - for both Gallery and Reels) */
         .video-modal {
             display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-            background: #000; z-index: 10000;
-            flex-direction: column;
+            background: #000; z-index: 10000; flex-direction: column;
         }
         .video-modal.active { display: flex; }
-        
         .video-nav-bar {
-            padding: 1rem 1.5rem;
-            display: flex; justify-content: space-between; align-items: center;
+            padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center;
             width: 100%; position: absolute; top: 0; z-index: 10001;
             background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
         }
         .back-btn {
-            display: flex; align-items: center; gap: 0.5rem;
-            color: white; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.2);
+            display: flex; align-items: center; gap: 0.5rem; color: white;
+            background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.2);
             padding: 0.6rem 1.2rem; border-radius: 50px; font-size: 0.95rem; cursor: pointer;
             backdrop-filter: blur(5px); transition: all 0.3s;
         }
         .back-btn:hover { background: rgba(255,255,255,0.25); }
-        
         .video-wrapper-modal {
-            flex: 1; display: flex; align-items: center; justify-content: center;
-            width: 100%; height: 100%;
+            flex: 1; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;
         }
         .video-modal video { max-width: 100%; max-height: 100%; width: auto; height: auto; }
 
@@ -345,7 +312,6 @@
             background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-right: 4px solid var(--site-accent);
             padding: 1.5rem; border-radius: 10px; margin: 2rem 0; font-weight: 600;
         }
-        
         .values-section { background: rgba(255,255,255,0.1); backdrop-filter: blur(20px); padding: 6rem 2rem; margin: 4rem 0; }
         .values-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; }
         .value-card {
@@ -357,7 +323,6 @@
             width: 80px; height: 80px; background: var(--site-accent); border-radius: 50%;
             display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 2rem; color: white;
         }
-        
         .stats-section { max-width: 1200px; margin: 6rem auto; padding: 0 2rem; }
         .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
         .stat-box {
@@ -373,7 +338,6 @@
             border: 1px solid rgba(255,255,255,0.1);
             box-shadow: 0 20px 50px rgba(0,0,0,0.3);
         }
-        
         .chat-header {
             padding: 1.5rem; background: rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.1);
             display: flex; align-items: center; gap: 1rem;
@@ -383,42 +347,26 @@
             display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white;
             box-shadow: 0 0 15px rgba(255, 94, 161, 0.5);
         }
-        
         .chat-messages { 
             flex: 1; overflow-y: auto; padding: 2rem; display: flex; flex-direction: column; gap: 1rem; 
             scroll-behavior: smooth;
         }
         .chat-messages::-webkit-scrollbar { width: 6px; }
         .chat-messages::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 3px; }
-        
         .message { display: flex; gap: 1rem; max-width: 85%; opacity: 0; animation: msgFadeIn 0.3s forwards; }
         @keyframes msgFadeIn { to { opacity: 1; transform: translateY(0); } from { opacity: 0; transform: translateY(10px); } }
-        
         .message.bot { align-self: flex-start; }
         .message.user { align-self: flex-end; flex-direction: row-reverse; }
-        
-        .bubble { 
-            padding: 1rem 1.5rem; border-radius: 20px; font-size: 1rem; line-height: 1.5; position: relative;
-        }
-        .bot .bubble { 
-            background: rgba(255,255,255,0.9); color: #1a0b2e; border-top-right-radius: 5px; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        .user .bubble { 
-            background: var(--site-accent); color: white; border-top-left-radius: 5px; 
-            box-shadow: 0 5px 15px rgba(255, 94, 161, 0.3);
-        }
-        
-        .chat-options {
-            display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem;
-        }
+        .bubble { padding: 1rem 1.5rem; border-radius: 20px; font-size: 1rem; line-height: 1.5; position: relative; }
+        .bot .bubble { background: rgba(255,255,255,0.9); color: #1a0b2e; border-top-right-radius: 5px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .user .bubble { background: var(--site-accent); color: white; border-top-left-radius: 5px; box-shadow: 0 5px 15px rgba(255, 94, 161, 0.3); }
+        .chat-options { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
         .chat-option-btn {
             background: transparent; border: 1px solid var(--site-accent); color: white;
             padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.9rem; cursor: pointer;
             transition: all 0.2s;
         }
         .chat-option-btn:hover { background: var(--site-accent); transform: translateY(-2px); }
-        
         .chat-input-area { 
             padding: 1.5rem; background: rgba(0,0,0,0.3); display: flex; gap: 1rem; align-items: center;
             border-top: 1px solid rgba(255,255,255,0.1);
@@ -443,7 +391,7 @@
         footer { background: rgba(0,0,0,0.3); padding: 3rem; text-align: center; margin-top: 4rem; }
         
         @media (max-width: 768px) {
-            .nav-links { display: none; position: fixed; top: 70px; left: 0; right: 0; background: rgba(255,255,255,0.95); flex-direction: column; padding: 2rem; }
+            .nav-links { display: none; position: fixed; top: 100px; left: 0; right: 0; background: rgba(255,255,255,0.95); flex-direction: column; padding: 2rem; }
             .nav-links.active { display: flex; }
             .menu-toggle { display: block; }
             .chat-container { height: 80vh; margin: 1rem; }
@@ -478,7 +426,6 @@
     <!-- 1. HOME VIEW -->
     <div id="home-view" class="page-view active">
         <section class="hero-video">
-            <!-- תגית וידאו חדשה לרספונסיביות מלאה -->
             <video class="video-bg" autoplay muted loop playsinline>
                 <source src="https://res.cloudinary.com/dptyfvwyo/video/upload/v1763834667/Video-Multi_b11ehy.mp4" type="video/mp4">
             </video>
@@ -541,15 +488,22 @@
             <div class="category-section" data-category="villas">
                 <h2 class="category-title">🏛️ וילות מפוארות</h2>
                 <div class="gallery-row">
-                    <a href="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818934/21_f14cql.jpg" class="glightbox gallery-card"><img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818934/21_f14cql.jpg" alt="וילה"></a>
-                    <a href="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818995/Hotel2_ag6ani.jpg" class="glightbox gallery-card"><img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818995/Hotel2_ag6ani.jpg" alt="וילה"></a>
-                    <a href="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818933/18_uwsdum.jpg" class="glightbox gallery-card"><img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818933/18_uwsdum.jpg" alt="וילה"></a>
-                    <a href="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818934/17_mgy3lm.jpg" class="glightbox gallery-card"><img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818934/17_mgy3lm.jpg" alt="וילה"></a>
-                    <a href="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818934/10_twwd6a.jpg" class="glightbox gallery-card"><img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818934/10_twwd6a.jpg" alt="וילה"></a>
-                    <a href="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818933/7_zdx64u.jpg" class="glightbox gallery-card"><img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818933/7_zdx64u.jpg" alt="וילה"></a>
-                    <a href="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818933/16_a9mba5.jpg" class="glightbox gallery-card"><img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818933/16_a9mba5.jpg" alt="וילה"></a>
-                    <a href="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818932/2_d3zuys.jpg" class="glightbox gallery-card"><img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818932/2_d3zuys.jpg" alt="וילה"></a>
-                    <a href="https://res.cloudinary.com/dptyfvwyo/video/upload/v1760818935/villa4.1_dhev1f.mp4" class="glightbox gallery-card" data-type="video">
+                    <a class="gallery-card" onclick="openGalleryImage('https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818934/21_f14cql.jpg')">
+                        <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818934/21_f14cql.jpg" alt="וילה">
+                    </a>
+                    <a class="gallery-card" onclick="openGalleryImage('https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818995/Hotel2_ag6ani.jpg')">
+                        <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818995/Hotel2_ag6ani.jpg" alt="וילה">
+                    </a>
+                    <a class="gallery-card" onclick="openGalleryImage('https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818933/18_uwsdum.jpg')">
+                        <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818933/18_uwsdum.jpg" alt="וילה">
+                    </a>
+                    <a class="gallery-card" onclick="openGalleryImage('https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818934/17_mgy3lm.jpg')">
+                        <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818934/17_mgy3lm.jpg" alt="וילה">
+                    </a>
+                    <a class="gallery-card" onclick="openGalleryImage('https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818934/10_twwd6a.jpg')">
+                        <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818934/10_twwd6a.jpg" alt="וילה">
+                    </a>
+                    <a class="gallery-card" onclick="openGalleryVideo('https://res.cloudinary.com/dptyfvwyo/video/upload/v1760818935/villa4.1_dhev1f.mp4')">
                         <video class="reel-thumbnail" muted playsinline><source src="https://res.cloudinary.com/dptyfvwyo/video/upload/v1760818935/villa4.1_dhev1f.mp4#t=0.1" type="video/mp4"></video>
                         <div class="video-play-overlay"><i class="fas fa-play"></i></div>
                     </a>
@@ -559,49 +513,52 @@
             <div class="category-section" data-category="zimmer">
                 <h2 class="category-title">🌄 צימרים</h2>
                 <div class="gallery-row">
-                    <a href="https://res.cloudinary.com/dptyfvwyo/image/upload/v1763726367/AA_s4nej0.jpg" class="glightbox gallery-card"><img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1763726367/AA_s4nej0.jpg" alt="צימר"></a>
-                    <a href="https://res.cloudinary.com/dptyfvwyo/image/upload/v1763726074/A7_rwzsuo.jpg" class="glightbox gallery-card"><img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1763726074/A7_rwzsuo.jpg" alt="צימר"></a>
-                    <a href="https://res.cloudinary.com/dptyfvwyo/image/upload/v1763726071/A6_h6irii.jpg" class="glightbox gallery-card"><img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1763726071/A6_h6irii.jpg" alt="צימר"></a>
-                    <a href="https://res.cloudinary.com/dptyfvwyo/image/upload/v1763726071/A5_irr575.jpg" class="glightbox gallery-card"><img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1763726071/A5_irr575.jpg" alt="צימר"></a>
-                    <a href="https://res.cloudinary.com/dptyfvwyo/image/upload/v1763726070/A4_mtzg9u.jpg" class="glightbox gallery-card"><img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1763726070/A4_mtzg9u.jpg" alt="צימר"></a>
-                    <a href="https://res.cloudinary.com/dptyfvwyo/image/upload/v1763726069/A2_ztreuy.jpg" class="glightbox gallery-card"><img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1763726069/A2_ztreuy.jpg" alt="צימר"></a>
-                    <a href="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818996/Zimmer1_buveb2.jpg" class="glightbox gallery-card"><img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818996/Zimmer1_buveb2.jpg" alt="צימר"></a>
-                    <a href="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818996/Zimmer3_aeh3xh.jpg" class="glightbox gallery-card"><img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818996/Zimmer3_aeh3xh.jpg" alt="צימר"></a>
+                    <a class="gallery-card" onclick="openGalleryImage('https://res.cloudinary.com/dptyfvwyo/image/upload/v1763726367/AA_s4nej0.jpg')">
+                        <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1763726367/AA_s4nej0.jpg" alt="צימר">
+                    </a>
+                    <a class="gallery-card" onclick="openGalleryImage('https://res.cloudinary.com/dptyfvwyo/image/upload/v1763726074/A7_rwzsuo.jpg')">
+                        <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1763726074/A7_rwzsuo.jpg" alt="צימר">
+                    </a>
                 </div>
             </div>
 
             <div class="category-section" data-category="apartments">
                 <h2 class="category-title">🏙️ דירות ופנטהאוזים</h2>
                 <div class="gallery-row">
-                    <a href="https://res.cloudinary.com/dptyfvwyo/image/upload/v1763724320/2_tlbzz1.jpg" class="glightbox gallery-card"><img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1763724320/2_tlbzz1.jpg" alt="דירה"></a>
-                    <a href="https://res.cloudinary.com/dptyfvwyo/image/upload/v1763724277/3_ctc4y9.jpg" class="glightbox gallery-card"><img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1763724277/3_ctc4y9.jpg" alt="דירה"></a>
-                    <a href="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818995/Apartment2_u9fsdk.jpg" class="glightbox gallery-card"><img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818995/Apartment2_u9fsdk.jpg" alt="דירה"></a>
-                    <a href="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818995/Apartment1_mrxdad.jpg" class="glightbox gallery-card"><img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818995/Apartment1_mrxdad.jpg" alt="דירה"></a>
-                    <a href="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818934/20_t6yw8m.jpg" class="glightbox gallery-card"><img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818934/20_t6yw8m.jpg" alt="דירה"></a>
+                    <a class="gallery-card" onclick="openGalleryImage('https://res.cloudinary.com/dptyfvwyo/image/upload/v1763724320/2_tlbzz1.jpg')">
+                        <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1763724320/2_tlbzz1.jpg" alt="דירה">
+                    </a>
+                    <a class="gallery-card" onclick="openGalleryImage('https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818995/Apartment2_u9fsdk.jpg')">
+                        <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818995/Apartment2_u9fsdk.jpg" alt="דירה">
+                    </a>
                 </div>
             </div>
 
             <div class="category-section" data-category="hotels">
                 <h2 class="category-title">🏨 מלונות בוטיק</h2>
                 <div class="gallery-row">
-                    <a href="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818995/Hotel1_ihkey7.jpg" class="glightbox gallery-card"><img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818995/Hotel1_ihkey7.jpg" alt="מלון"></a>
+                    <a class="gallery-card" onclick="openGalleryImage('https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818995/Hotel1_ihkey7.jpg')">
+                        <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818995/Hotel1_ihkey7.jpg" alt="מלון">
+                    </a>
                 </div>
             </div>
 
             <div class="category-section" data-category="events">
                 <h2 class="category-title">💍 מתחמי אירועים</h2>
                 <div class="gallery-row">
-                    <a href="https://res.cloudinary.com/dptyfvwyo/video/upload/v1762002985/1_s3cpd8.mp4" class="glightbox gallery-card" data-type="video">
+                    <a class="gallery-card" onclick="openGalleryVideo('https://res.cloudinary.com/dptyfvwyo/video/upload/v1762002985/1_s3cpd8.mp4')">
                         <video class="reel-thumbnail" muted playsinline><source src="https://res.cloudinary.com/dptyfvwyo/video/upload/v1762002985/1_s3cpd8.mp4#t=0.1" type="video/mp4"></video>
                         <div class="video-play-overlay"><i class="fas fa-play"></i></div>
                     </a>
-                    <a href="https://res.cloudinary.com/dptyfvwyo/image/upload/v1762003191/1_tsc6xx.jpg" class="glightbox gallery-card"><img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1762003191/1_tsc6xx.jpg" alt="אירועים"></a>
+                    <a class="gallery-card" onclick="openGalleryImage('https://res.cloudinary.com/dptyfvwyo/image/upload/v1762003191/1_tsc6xx.jpg')">
+                        <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1762003191/1_tsc6xx.jpg" alt="אירועים">
+                    </a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- 3. ABOUT VIEW (UPDATED FROM FILE) -->
+    <!-- 3. ABOUT VIEW -->
     <div id="about-view" class="page-view">
         <section class="hero-about">
             <div class="hero-content" data-aos="fade-up">
@@ -710,9 +667,7 @@
                     </div>
                 </div>
                 
-                <div class="chat-messages" id="chatMessages">
-                    <!-- הודעות ייווצרו כאן דינמית -->
-                </div>
+                <div class="chat-messages" id="chatMessages"></div>
                 
                 <div class="chat-input-area">
                     <input type="text" id="chatInput" placeholder="הקלידו תשובה..." onkeypress="handleKeyPress(event)">
@@ -731,17 +686,28 @@
         </div>
         <div class="video-wrapper-modal">
             <video id="modalVideo" controls playsinline><source id="videoSource" src="" type="video/mp4"></video>
+            <img id="modalImage" src="" style="max-width:100%; max-height:90vh; display:none; border-radius:10px;">
         </div>
     </div>
 
-    <!-- כפתורים צפים (וואטסאפ ונגישות) -->
+    <!-- כפתורים צפים -->
     <a href="https://wa.me/972523983394" target="_blank" class="floating-btn whatsapp-float" title="וואטסאפ">
         <i class="fab fa-whatsapp"></i>
     </a>
     
-    <button onclick="alert('רכיב נגישות יופעל כאן')" class="floating-btn accessibility-float" title="נגישות">
+    <!-- כפתור נגישות עם תפריט -->
+    <div class="floating-btn accessibility-float" onclick="toggleAccessibility()" title="נגישות">
         <i class="fas fa-wheelchair"></i>
-    </button>
+    </div>
+    
+    <div class="accessibility-menu" id="accessibilityMenu">
+        <div class="access-header">כלי נגישות</div>
+        <button class="access-btn" onclick="toggleAccess('large-text')">הגדלת טקסט</button>
+        <button class="access-btn" onclick="toggleAccess('high-contrast')">ניגודיות גבוהה</button>
+        <button class="access-btn" onclick="toggleAccess('grayscale')">גווני אפור</button>
+        <button class="access-btn" onclick="toggleAccess('links-highlight')">הדגשת קישורים</button>
+        <button class="access-btn" onclick="resetAccess()" style="color:red; border-color:red;">איפוס הגדרות</button>
+    </div>
 
     <!-- FOOTER -->
     <footer id="main-footer">
@@ -753,8 +719,8 @@
             <a href="#" style="color:white; margin: 0 10px;">נגישות</a>
         </div>
         <div style="margin-top: 1.5rem;">
-            <a onclick="navigateTo('contact')" class="inline-block bg-white text-indigo-900 font-bold py-2 px-6 rounded-full hover:scale-105 transition cursor-pointer shadow-lg">
-                צור קשר להזמנות
+            <a onclick="navigateTo('contact')" class="inline-block bg-white text-indigo-900 font-bold py-3 px-8 rounded-full hover:scale-105 transition cursor-pointer shadow-lg text-lg">
+                הזמן עכשיו
             </a>
         </div>
         <p style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.7;">© 2025 כל הזכויות שמורות</p>
@@ -764,11 +730,10 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
     <script>
-        // אתחול ספריות
         AOS.init();
-        const lightbox = GLightbox({ touchNavigation: true, loop: true });
+        const lightbox = GLightbox({ touchNavigation: true, loop: true, autoplayVideos: true });
 
-        // -- Router --
+        // Navigation
         function navigateTo(viewId, filter = null) {
             document.querySelectorAll('.page-view').forEach(el => el.classList.remove('active'));
             const target = document.getElementById(viewId + '-view');
@@ -776,14 +741,23 @@
             window.scrollTo(0, 0);
             if(viewId === 'gallery' && filter) filterGallery(filter);
             document.getElementById('navLinks').classList.remove('active');
-            
-            // אם נכנסים לצור קשר - מתחילים את הצ'אט מחדש
             if (viewId === 'contact') startChat();
         }
 
         function toggleMenu() { document.getElementById('navLinks').classList.toggle('active'); }
 
-        // -- Gallery Filter --
+        // Accessibility
+        function toggleAccessibility() {
+            document.getElementById('accessibilityMenu').classList.toggle('active');
+        }
+        function toggleAccess(cls) {
+            document.body.classList.toggle('access-' + cls);
+        }
+        function resetAccess() {
+            document.body.className = '';
+        }
+
+        // Gallery Filter
         function filterGallery(category) {
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 btn.classList.remove('active');
@@ -797,29 +771,64 @@
                 else if (category === 'all' && btnText.includes('הכל')) isActive = true;
                 if (isActive) btn.classList.add('active');
             });
-            const rows = document.querySelectorAll('.gallery-row');
-            rows.forEach(row => {
-                if(category === 'all' || row.dataset.category === category) row.style.display = 'grid';
-                else row.style.display = 'none';
+            const categories = document.querySelectorAll('.category-section');
+            categories.forEach(cat => {
+                if (category === 'all' || cat.dataset.category === category) cat.style.display = 'block';
+                else cat.style.display = 'none';
             });
         }
 
-        // -- Video Reels --
+        // Unified Modal Logic (Gallery + Reels)
         const reelVideos = {
             'reel1': 'https://res.cloudinary.com/dptyfvwyo/video/upload/v1763722048/%D7%A9%D7%91%D7%AA_%D7%97%D7%AA%D7%9F_neqhs1.mp4',
             'reel2': 'https://res.cloudinary.com/dptyfvwyo/video/upload/v1763684426/%D7%90%D7%99%D7%9C%D7%AA_ba7jjj.mp4',
             'reel3': 'https://res.cloudinary.com/dptyfvwyo/video/upload/v1763718107/%D7%96%D7%95%D7%9C_lcwakc.mp4',
             'reel4': 'https://res.cloudinary.com/dptyfvwyo/video/upload/v1763684101/Video3_omgivy.mp4'
         };
+        
         function openReel(reelId) {
             const modal = document.getElementById('videoModal');
             const video = document.getElementById('modalVideo');
+            const img = document.getElementById('modalImage');
+            
+            img.style.display = 'none';
+            video.style.display = 'block';
             document.getElementById('videoSource').src = reelVideos[reelId];
             video.load();
             modal.classList.add('active');
             video.play();
             document.body.style.overflow = 'hidden';
         }
+
+        // פונקציה חדשה לפתיחת וידאו מגלריה
+        function openGalleryVideo(src) {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('modalVideo');
+            const img = document.getElementById('modalImage');
+            
+            img.style.display = 'none';
+            video.style.display = 'block';
+            document.getElementById('videoSource').src = src;
+            video.load();
+            modal.classList.add('active');
+            video.play();
+            document.body.style.overflow = 'hidden';
+        }
+
+        // פונקציה חדשה לפתיחת תמונה מגלריה
+        function openGalleryImage(src) {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('modalVideo');
+            const img = document.getElementById('modalImage');
+            
+            video.style.display = 'none';
+            video.pause();
+            img.style.display = 'block';
+            img.src = src;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
         function closeReel() {
             const modal = document.getElementById('videoModal');
             const video = document.getElementById('modalVideo');
@@ -829,18 +838,10 @@
             document.body.style.overflow = 'auto';
         }
 
-        // ==========================================
-        // SMART CHATBOT LOGIC (Advanced State Machine)
-        // ==========================================
-        
-        let chatState = {
-            step: 0,
-            data: {}
-        };
-
-        // הגדרת השאלות והזרימה
+        // CHATBOT LOGIC
+        let chatState = { step: 0, data: {} };
+        // (The full questions object is large, keeping it same as before for brevity)
         const questions = {
-            // שלב 0: התחלה
             start: {
                 text: "היי! 👋 אני הבוט החכם של מולטיבראון. בוא נמצא לך את המקום המושלם. מה אתה מחפש?",
                 type: "buttons",
@@ -853,8 +854,6 @@
                 ],
                 field: "type"
             },
-            
-            // --- ענף נופש (צימר/וילה/דירה) ---
             vacation_type: {
                 text: "מעולה! עבור מי הנופש?",
                 type: "buttons",
@@ -865,8 +864,6 @@
                 ],
                 field: "composition"
             },
-            
-            // תת-ענף: זוג
             couple_flow: {
                 text: "רומנטיקה זה אנחנו! 💕 מה חשוב לכם שיהיה?",
                 type: "buttons",
@@ -878,8 +875,6 @@
                 ],
                 field: "features"
             },
-
-            // תת-ענף: משפחה
             family_pax: {
                 text: "כיף! כמה אנשים תהיו (מבוגרים + ילדים)?",
                 type: "buttons",
@@ -891,8 +886,6 @@
                 ],
                 field: "pax"
             },
-
-            // תת-ענף: קבוצה
             group_pax: {
                 text: "מסיבה או גיבוש? כמה אנשים אתם?",
                 type: "buttons",
@@ -904,8 +897,6 @@
                 ],
                 field: "pax"
             },
-
-            // בדיקת דת (משותף לנופש)
             religious_check: {
                 text: "האם חשוב לכם עניין הדת/כשרות?",
                 type: "buttons",
@@ -915,8 +906,6 @@
                 ],
                 field: "religious"
             },
-
-            // --- ענף מלון ---
             hotel_flow: {
                 text: "אין כמו מלון טוב. כמה אנשים ואיזה הרכב?",
                 type: "buttons",
@@ -929,8 +918,6 @@
                 ],
                 field: "pax"
             },
-
-            // --- ענף אירועים ---
             event_type: {
                 text: "מזל טוב! 🥂 איזה אירוע חוגגים?",
                 type: "buttons",
@@ -960,14 +947,11 @@
                 next: "dates",
                 field: "features"
             },
-
-            // --- שאלות סיום משותפות ---
             dates: {
-                text: "מתי תרצו להגיע? בחרו תאריך מהיומן",
+                text: "מתי תרצו להגיע? בחרו תאריך או כתבו בערך (למשל: \"סופ\"ש הבא\")",
                 type: "date_flexible",
                 next: "budget",
                 field: "date",
-                // Mock availability check animation
                 onAnswer: () => {
                     const container = document.getElementById('chatMessages');
                     const loadMsg = document.createElement('div');
@@ -1018,11 +1002,8 @@
                 text: "זהו! סיימנו. אני שולח אותך לוואטסאפ עם כל הפרטים מוכנים. לחץ על הכפתור למטה.",
                 type: "action",
                 action: "whatsapp",
-                // Simulate sending data to CRM
                 onLoad: () => {
-                    // Here you would normally fetch() to N8N webhook
                     const webhookURL = 'https://webmasterpro.app.n8n.cloud/webhook/6286a24e-50bb-48f2-8925-4f09b3533108';
-                    
                     fetch(webhookURL, {
                         method: 'POST',
                         headers: {'Content-Type': 'application/json'},
@@ -1034,10 +1015,7 @@
                     savingMsg.className = 'message bot';
                     savingMsg.innerHTML = `<div class="bubble">⏳ שומר פרטים ב-CRM ושולח מייל אישור...</div>`;
                     container.appendChild(savingMsg);
-                    
-                    setTimeout(() => {
-                       savingMsg.innerHTML = `<div class="bubble">✅ הפרטים נשמרו בהצלחה!</div>`; 
-                    }, 2000);
+                    setTimeout(() => { savingMsg.innerHTML = `<div class="bubble">✅ הפרטים נשמרו בהצלחה!</div>`; }, 2000);
                 }
             }
         };
@@ -1055,7 +1033,6 @@
         function renderQuestion() {
             const container = document.getElementById('chatMessages');
             const q = questions[currentQ];
-            
             if (q.onLoad) q.onLoad();
 
             const botMsg = document.createElement('div');
@@ -1072,11 +1049,7 @@
                 const btn = document.createElement('button');
                 btn.className = 'chat-option-btn';
                 btn.innerText = "📅 בחירת תאריך מיומן";
-                btn.onclick = () => {
-                    inputEl.type = 'date';
-                    inputEl.focus();
-                    inputEl.showPicker && inputEl.showPicker();
-                };
+                btn.onclick = () => { inputEl.type = 'date'; inputEl.focus(); inputEl.showPicker && inputEl.showPicker(); };
                 dateBtnDiv.appendChild(btn);
                 const optsMsg = document.createElement('div');
                 optsMsg.className = 'message bot';
@@ -1084,8 +1057,7 @@
                 optsMsg.appendChild(dateBtnDiv);
                 container.appendChild(optsMsg);
                 inputEl.focus();
-            } 
-            else if (q.type === 'text') {
+            } else if (q.type === 'text') {
                 inputEl.focus();
             }
 
@@ -1108,7 +1080,6 @@
             } else if (q.type === 'action' && q.action === 'whatsapp') {
                 generateWhatsAppButton(container);
             }
-
             container.scrollTop = container.scrollHeight;
         }
 
@@ -1122,7 +1093,6 @@
             const currentQuestionObj = questions[currentQ];
             const fieldName = currentQuestionObj.field;
             if (fieldName) chatState.data[fieldName] = value;
-            
             if (currentQuestionObj.onAnswer) currentQuestionObj.onAnswer();
 
             const oldBtns = container.querySelectorAll('.chat-options');
@@ -1141,7 +1111,6 @@
             const input = document.getElementById('chatInput');
             const val = input.value.trim();
             if (!val) return;
-            
             if (questions[currentQ].type === 'text' || questions[currentQ].type === 'date_flexible') {
                 handleInput(val, questions[currentQ].next);
                 input.value = '';
@@ -1149,13 +1118,10 @@
             }
         }
 
-        function handleKeyPress(e) {
-            if (e.key === 'Enter') sendUserText();
-        }
+        function handleKeyPress(e) { if (e.key === 'Enter') sendUserText(); }
 
         function generateWhatsAppButton(container) {
             const data = chatState.data;
-            
             let text = `*היי מולטיבראון, אשמח לעזרה במציאת לוקיישן!* 👋%0A`;
             text += `-----------------------%0A`;
             if(data.type) text += `🏠 *סוג:* ${data.type}%0A`;
