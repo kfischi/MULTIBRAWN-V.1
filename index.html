@@ -38,11 +38,11 @@
         /* --- CSS Variables --- */
         :root {
             --site-primary-bg: linear-gradient(135deg, #00E0FF 0%, #2D7FFF 50%, #A06BFF 100%);
-            --site-secondary-bg: rgba(255, 255, 255, 0.25); /* בהיר יותר */
+            --site-secondary-bg: rgba(255, 255, 255, 0.25);
             --site-accent: #FF5EA1;
             --site-text: #1a0b2e;
             --site-white: #FAFAFA;
-            --glass-bg: rgba(255, 255, 255, 0.3); /* בהיר יותר */
+            --glass-bg: rgba(255, 255, 255, 0.3);
             --glass-border: rgba(255, 255, 255, 0.4);
         }
 
@@ -73,16 +73,16 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.2); /* בהיר יותר */
+            background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.3);
             transition: all 0.3s ease;
-            height: 90px; /* גובה קבוע */
+            height: 90px;
             display: flex;
             align-items: center;
         }
         #main-header.scrolled {
-            background: rgba(255, 255, 255, 0.4); /* עוד יותר בהיר בגלילה */
+            background: rgba(255, 255, 255, 0.4);
             box-shadow: 0 4px 20px rgba(0,0,0,0.05);
         }
         nav {
@@ -100,7 +100,7 @@
         .logo img { width: 50px; height: 50px; transition: transform 0.3s; }
         .logo:hover img { transform: scale(1.05); }
         .logo span { 
-            font-size: 1.4rem; /* קטן יותר */
+            font-size: 1.4rem;
             font-weight: 800; 
             color: var(--site-text); 
             font-family: 'Playfair Display', serif;
@@ -112,7 +112,7 @@
         .nav-links a {
             color: var(--site-text);
             text-decoration: none;
-            font-size: 0.95rem; /* קטן יותר */
+            font-size: 0.95rem;
             font-weight: 500;
             cursor: pointer;
             transition: all 0.3s;
@@ -159,7 +159,7 @@
             width: 100%;
             height: 100vh;
             overflow: hidden;
-            margin-top: -90px; /* מתחיל מהטופ */
+            margin-top: -90px;
         }
         .video-bg {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
@@ -167,7 +167,7 @@
         }
         .video-overlay {
             position: absolute; inset: 0;
-            background: linear-gradient(to bottom, rgba(26,11,46,0.1), rgba(26,11,46,0.4)); /* בהיר יותר */
+            background: linear-gradient(to bottom, rgba(26,11,46,0.1), rgba(26,11,46,0.4));
             display: flex; flex-direction: column;
             justify-content: center; align-items: center;
             z-index: 1; text-align: center; padding: 2rem;
@@ -382,6 +382,13 @@
         .stat-box { background: rgba(255,255,255,0.2); border-radius: 15px; padding: 2rem; text-align: center; }
         .stat-number { font-size: 2.5rem; font-weight: 800; color: var(--site-accent); }
         
+        /* --- Privacy & Accessibility Pages --- */
+        .legal-section { max-width: 1000px; margin: 2rem auto; padding: 2rem; background: var(--glass-bg); border-radius: 20px; }
+        .legal-section h1 { font-size: 2.5rem; margin-bottom: 1.5rem; }
+        .legal-section h2 { font-size: 1.5rem; margin-top: 2rem; margin-bottom: 0.8rem; font-weight: bold; }
+        .legal-section p { margin-bottom: 1rem; opacity: 0.9; }
+        .legal-section ul { list-style: disc; padding-right: 1.5rem; margin-bottom: 1rem; }
+
         /* --- Responsive --- */
         @media (max-width: 768px) {
             .nav-links { 
@@ -486,7 +493,6 @@
         </div>
 
         <div class="gallery-section" id="gallery-grid">
-            <!-- Categories injected dynamically or static as needed -->
             <div class="category-section" data-category="villas">
                 <h2 class="category-title">🏛️ וילות מפוארות</h2>
                 <div class="gallery-row">
@@ -612,6 +618,52 @@
             </div>
         </div>
     </div>
+    
+    <!-- 6. PRIVACY & ACCESSIBILITY VIEWS -->
+    <div id="privacy-view" class="page-view">
+        <div class="legal-section">
+            <div class="flex items-center justify-between mb-6">
+                <h1>מדיניות פרטיות</h1>
+                <button onclick="navigateTo('home')" class="text-indigo-500 hover:underline">חזרה לדף הבית</button>
+            </div>
+            <p>ב-MULTIBRAWN, הפרטיות שלך חשובה לנו. מסמך זה מפרט את סוגי המידע שאנו אוספים, כיצד אנו משתמשים בו, וכיצד אנו שומרים עליו.</p>
+            
+            <h2>איסוף מידע</h2>
+            <p>אנו אוספים מידע אישי שאתה מספק לנו מרצונך, כגון שם, מספר טלפון, וכתובת דוא"ל בעת יצירת קשר או הרשמה לשירותים שלנו.</p>
+            
+            <h2>שימוש במידע</h2>
+            <ul>
+                <li>ליצירת קשר עמך ולמתן מענה לפניותיך.</li>
+                <li>להתאמת השירותים וההצעות שלנו לצרכיך.</li>
+                <li>לשיפור האתר והחוויה שלך.</li>
+            </ul>
+            
+            <h2>אבטחת מידע</h2>
+            <p>אנו נוקטים באמצעי זהירות סבירים כדי להגן על המידע האישי שלך מפני גישה בלתי מורשית, שינוי או השמדה.</p>
+        </div>
+    </div>
+
+    <div id="accessibility-view" class="page-view">
+        <div class="legal-section">
+            <div class="flex items-center justify-between mb-6">
+                <h1>הצהרת נגישות</h1>
+                <button onclick="navigateTo('home')" class="text-indigo-500 hover:underline">חזרה לדף הבית</button>
+            </div>
+            <p>אנו ב-MULTIBRAWN מחויבים לספק חווית גלישה נגישה לכלל האוכלוסייה, כולל אנשים עם מוגבלויות.</p>
+            
+            <h2>התאמות הנגישות באתר</h2>
+            <ul>
+                <li>האתר מותאם לקוראי מסך.</li>
+                <li>אפשרות לניווט באמצעות המקלדת.</li>
+                <li>טקסטים ברורים וקריאים עם ניגודיות מתאימה.</li>
+                <li>תמיכה בהגדלת טקסט ושינוי גוונים (באמצעות תפריט הנגישות).</li>
+            </ul>
+            
+            <h2>יצירת קשר בנושא נגישות</h2>
+            <p>אם נתקלת בקושי בגלישה באתר או שיש לך הערות בנושא נגישות, נשמח לשמוע ממך:</p>
+            <p>טלפון: 052-398-3394<br>מייל: info@multibrawn.co.il</p>
+        </div>
+    </div>
 
     <!-- MODALS (Video Player) -->
     <div class="video-modal" id="videoModal">
@@ -660,8 +712,8 @@
             </div>
             
             <div class="flex gap-6 mb-6 text-sm opacity-80">
-                <a href="#" class="hover:text-white">מדיניות פרטיות</a>
-                <a href="#" class="hover:text-white">הצהרת נגישות</a>
+                <a onclick="navigateTo('privacy')" class="hover:text-white cursor-pointer">מדיניות פרטיות</a>
+                <a onclick="navigateTo('accessibility')" class="hover:text-white cursor-pointer">הצהרת נגישות</a>
             </div>
             
             <a onclick="navigateTo('contact')" class="bg-white text-indigo-900 px-8 py-3 rounded-full font-bold text-lg shadow-lg hover:scale-105 transition cursor-pointer mb-6 inline-block">
@@ -958,13 +1010,11 @@
                 action: "whatsapp",
                 onLoad: () => {
                     const webhookURL = 'https://webmasterpro.app.n8n.cloud/webhook/6286a24e-50bb-48f2-8925-4f09b3533108';
-                    
-                    // שליחת נתונים ל-N8N
                     fetch(webhookURL, {
                         method: 'POST',
                         headers: {'Content-Type': 'application/json'},
                         body: JSON.stringify(chatState.data)
-                    }).then(res => console.log("Data Sent to N8N")).catch(err => console.error("Error", err));
+                    }).then(res => console.log("Sent to N8N")).catch(err => console.error("Error sending to N8N", err));
                     
                     const container = document.getElementById('chatMessages');
                     const savingMsg = document.createElement('div');
