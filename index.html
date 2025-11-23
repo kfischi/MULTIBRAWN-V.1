@@ -52,7 +52,7 @@
     </script>
     
     <style>
-        /* === Critical CSS - Loaded immediately === */
+        /* === Critical CSS === */
         :root {
             --primary-bg: linear-gradient(135deg, #00E0FF 0%, #2D7FFF 50%, #A06BFF 100%);
             --secondary-bg-glass: rgba(255, 255, 255, 0.15);
@@ -137,6 +137,15 @@
         .nav-cta:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 30px rgba(255, 94, 161, 0.6);
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            cursor: pointer;
         }
         
         /* === Hero Video Section === */
@@ -285,7 +294,7 @@
         .locations { background: rgba(255, 255, 255, 0.1); }
         .locations-grid { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
             gap: 2rem; 
             max-width: 1400px; 
             margin: 0 auto; 
@@ -520,7 +529,25 @@
         /* === Responsive === */
         @media (max-width: 768px) {
             nav { padding: 1rem 1.5rem; }
-            .nav-links { display: none; }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+            
+            .nav-links.active { transform: translateX(0); }
+            
+            .menu-toggle { display: block; }
+            
             section { padding: 4rem 1.5rem; }
             .hero-title { font-size: 2.5rem; }
             .hero-cta-group { flex-direction: column; }
@@ -533,19 +560,21 @@
     </style>
 </head>
 <body>
-    <a href="#main-content" class="skip-to-main">דלג לתוכן הראשי</a>
     
     <header id="header">
         <nav>
-            <a href="/" class="logo">
+            <a href="index-v2.html" class="logo">
                 <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="MULTIBRAWN לוגו" width="45" height="45">
                 <span>MULTIBRAWN</span>
             </a>
-            <div class="nav-links">
-                <a href="index.html">דף הבית</a>
-                <a href="about.html">אודות</a>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="index-v2.html">דף הבית</a>
                 <a href="gallery.html">גלריה</a>
-                <a href="tips.html">טיפים</a>
+                <a href="tips-reels.html">טיפים</a>
+                <a href="about.html">אודות</a>
                 <a href="contact.html" class="nav-cta">צור קשר</a>
             </div>
         </nav>
@@ -590,35 +619,51 @@
                 <p>בחרו את סוג הנכס המתאים למה שאתם מחפשים</p>
             </div>
             <div class="locations-grid">
-                <a href="villas.html" class="location-card-link" aria-label="וילות פרטיות">
+                <a href="gallery.html#villas" class="location-card-link" aria-label="וילות מפוארות">
                     <article class="location-card">
-                        <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/w_600,q_auto,f_auto/v1762004983/HERO_zb7pwc.jpg" 
-                             alt="וילה פרטית עם בריכה" 
+                        <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818934/22_tt9jvz.jpg" 
+                             alt="וילה מפוארת" 
                              width="600" 
                              height="750"
                              loading="lazy">
                         <div class="location-overlay">
-                            <h3>וילות פרטיות</h3>
+                            <h3>וילות מפוארות</h3>
                             <p>יוקרה, פרטיות והרבה מקום</p>
                         </div>
                     </article>
                 </a>
-                <a href="zimmers.html" class="location-card-link" aria-label="צימרים רומנטיים">
+                
+                <a href="gallery.html#zimmer" class="location-card-link" aria-label="צימרים">
                     <article class="location-card">
-                        <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/w_600,q_auto,f_auto/v1760818996/Zimmer2_ge7g6h.jpg" 
-                             alt="צימר רומנטי עם ג'קוזי" 
+                        <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1763726367/AA_s4nej0.jpg" 
+                             alt="צימר" 
                              width="600" 
                              height="750"
                              loading="lazy">
                         <div class="location-overlay">
-                            <h3>צימרים רומנטיים</h3>
+                            <h3>צימרים</h3>
                             <p>בריחה לטבע עם כל הפינוקים</p>
                         </div>
                     </article>
                 </a>
-                <a href="hotels.html" class="location-card-link" aria-label="מלונות בוטיק">
+                
+                <a href="gallery.html#apartments" class="location-card-link" aria-label="דירות נופש ופנטהאוזים">
                     <article class="location-card">
-                        <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/w_600,q_auto,f_auto/v1760818995/Hotel1_ihkey7.jpg" 
+                        <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1763724320/2_tlbzz1.jpg" 
+                             alt="דירת נופש" 
+                             width="600" 
+                             height="750"
+                             loading="lazy">
+                        <div class="location-overlay">
+                            <h3>דירות נופש ופנטהאוזים</h3>
+                            <p>נוף לים, מרפסות ומיקום מרכזי</p>
+                        </div>
+                    </article>
+                </a>
+                
+                <a href="gallery.html#hotels" class="location-card-link" aria-label="מלונות בוטיק">
+                    <article class="location-card">
+                        <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818995/Hotel1_ihkey7.jpg" 
                              alt="מלון בוטיק יוקרתי" 
                              width="600" 
                              height="750"
@@ -626,6 +671,20 @@
                         <div class="location-overlay">
                             <h3>מלונות בוטיק</h3>
                             <p>מקומות עם אישיות ושירות אישי</p>
+                        </div>
+                    </article>
+                </a>
+                
+                <a href="gallery.html#events" class="location-card-link" aria-label="מתחמי אירועים">
+                    <article class="location-card">
+                        <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/v1762003191/1_tsc6xx.jpg" 
+                             alt="מתחם אירועים" 
+                             width="600" 
+                             height="750"
+                             loading="lazy">
+                        <div class="location-overlay">
+                            <h3>מתחמי אירועים</h3>
+                            <p>חתונות ואירועים בלתי נשכחים</p>
                         </div>
                     </article>
                 </a>
@@ -691,7 +750,7 @@
     </main>
 
     <footer>
-        <a href="/" class="footer-logo">
+        <a href="index-v2.html" class="footer-logo">
             <img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="MULTIBRAWN לוגו" width="40" height="40" loading="lazy">
             <span>MULTIBRAWN</span>
         </a>
@@ -705,7 +764,7 @@
     </footer>
 
     <!-- Chatbot Launcher -->
-    <button class="chatbot-launcher" aria-label="פתח צ'אט">
+    <button class="chatbot-launcher" onclick="window.location.href='contact.html'" aria-label="פתח צ'אט">
         <i class="fas fa-comment-dots"></i>
     </button>
 
@@ -719,6 +778,42 @@
                 header.classList.remove('scrolled');
             }
         }, { passive: true });
+        
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                const icon = menuToggle.querySelector('i');
+                if (navLinks.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+            
+            // Close menu when clicking on a link
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    const icon = menuToggle.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                });
+            });
+        }
+        
+        // Handle gallery links with category filtering
+        document.querySelectorAll('a[href^="gallery.html#"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const category = link.getAttribute('href').split('#')[1];
+                localStorage.setItem('galleryFilter', category);
+            });
+        });
     </script>
 </body>
 </html>
