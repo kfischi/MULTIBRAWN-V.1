@@ -3,133 +3,806 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MULTIBRAWN - צור קשר</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>בואו נמצא את המקום המושלם - MULTIBRAWN</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
     
     <style>
-        :root { --site-accent: #FF5EA1; --site-text: #1a0b2e; }
-        body { font-family: 'Heebo', sans-serif; background: linear-gradient(135deg, #00E0FF 0%, #2D7FFF 50%, #A06BFF 100%); color: var(--site-text); overflow-x: hidden; min-height: 100vh; }
-        h1 { font-family: 'Playfair Display', serif; }
+        :root {
+            --primary-bg: linear-gradient(135deg, #00E0FF 0%, #2D7FFF 50%, #A06BFF 100%);
+            --accent-primary: #FF5EA1;
+            --white: #FAFAFA;
+            --text-dark: #1a0b2e;
+            --glass-bg: rgba(255, 255, 255, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
         
-        #main-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.3); height: 90px; display: flex; align-items: center; }
-        nav { width: 100%; max-width: 1400px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; }
-        .logo img { width: 80px; height: 80px; }
-        .logo span { font-size: 2rem; font-weight: 800; color: var(--site-text); font-family: 'Playfair Display', serif; }
-        .nav-links { display: flex; gap: 2rem; align-items: center; }
-        .nav-links a { color: var(--site-text); text-decoration: none; font-size: 1.1rem; font-weight: 500; }
-        .nav-cta { background: var(--site-accent); color: white !important; padding: 0.7rem 1.8rem; border-radius: 50px; font-weight: 600; box-shadow: 0 4px 20px rgba(255, 94, 161, 0.4); }
-
-        .chat-section { padding: 8rem 2rem 4rem; max-width: 1000px; margin: 0 auto; text-align: center; }
-        .chat-container { max-width: 800px; margin: 2rem auto; background: rgba(30, 41, 59, 0.8); backdrop-filter: blur(20px); border-radius: 20px; overflow: hidden; height: 650px; display: flex; flex-direction: column; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
-        .chat-header { padding: 1.5rem; background: rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; gap: 1rem; }
-        .chat-bot-avatar { width: 50px; height: 50px; background: var(--site-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white; }
+        body {
+            font-family: 'Heebo', sans-serif;
+            background: var(--primary-bg);
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
         
-        .chat-messages { flex: 1; overflow-y: auto; padding: 2rem; display: flex; flex-direction: column; gap: 1rem; scroll-behavior: smooth; }
-        .message { display: flex; gap: 1rem; max-width: 85%; }
-        .message.bot { align-self: flex-start; }
-        .message.user { align-self: flex-end; flex-direction: row-reverse; }
-        .bubble { padding: 1rem 1.5rem; border-radius: 20px; font-size: 1rem; line-height: 1.5; }
-        .bot .bubble { background: rgba(255,255,255,0.9); color: #1a0b2e; border-top-right-radius: 5px; }
-        .user .bubble { background: var(--site-accent); color: white; border-top-left-radius: 5px; }
+        .chat-container {
+            width: 100%;
+            max-width: 900px;
+            height: 85vh;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            border: 2px solid var(--glass-border);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
         
-        .chat-options { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
-        .chat-option-btn { background: transparent; border: 1px solid var(--site-accent); color: white; padding: 0.5rem 1.2rem; border-radius: 50px; cursor: pointer; transition: 0.2s; }
-        .chat-option-btn:hover { background: var(--site-accent); }
+        /* Header */
+        .chat-header {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+        }
         
-        .chat-input-area { padding: 1.5rem; background: rgba(0,0,0,0.3); display: flex; gap: 1rem; align-items: center; border-top: 1px solid rgba(255,255,255,0.1); }
-        .chat-input-area input { flex: 1; padding: 1rem 1.5rem; border-radius: 50px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.1); color: white; outline: none; }
-        .chat-send-btn { width: 50px; height: 50px; border-radius: 50%; background: var(--site-accent); color: white; border: none; cursor: pointer; }
+        .chat-header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            font-family: 'Playfair Display', serif;
+        }
         
-        footer { background: rgba(0,0,0,0.3); padding: 3rem 2rem; text-align: center; margin-top: 4rem; border-top: 1px solid rgba(255,255,255,0.2); }
+        .chat-header p {
+            color: rgba(26, 11, 46, 0.8);
+            font-size: 1rem;
+        }
         
-        @media (max-width: 768px) { .nav-links { display: none; } }
+        /* Messages Area */
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .chat-messages::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .chat-messages::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        
+        .chat-messages::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+        }
+        
+        /* Message Styles */
+        .message {
+            display: flex;
+            gap: 1rem;
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .message.bot {
+            justify-content: flex-start;
+        }
+        
+        .message.user {
+            justify-content: flex-end;
+        }
+        
+        .bot-avatar {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--accent-primary), #A06BFF);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .message-bubble {
+            max-width: 70%;
+            padding: 1.2rem 1.5rem;
+            border-radius: 20px;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+        
+        .message.bot .message-bubble {
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--text-dark);
+            border-bottom-left-radius: 5px;
+        }
+        
+        .message.user .message-bubble {
+            background: var(--accent-primary);
+            color: white;
+            border-bottom-right-radius: 5px;
+        }
+        
+        /* Typing Indicator */
+        .typing-indicator {
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            border-bottom-left-radius: 5px;
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-primary);
+            border-radius: 50%;
+            animation: typing 1.4s infinite;
+        }
+        
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        
+        @keyframes typing {
+            0%, 60%, 100% {
+                transform: translateY(0);
+                opacity: 0.7;
+            }
+            30% {
+                transform: translateY(-10px);
+                opacity: 1;
+            }
+        }
+        
+        /* Quick Replies / Options */
+        .quick-replies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 0.5rem;
+        }
+        
+        .quick-reply-btn {
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid transparent;
+            border-radius: 25px;
+            color: var(--text-dark);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+        
+        .quick-reply-btn:hover {
+            background: var(--accent-primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 94, 161, 0.4);
+        }
+        
+        .quick-reply-btn.selected {
+            background: var(--accent-primary);
+            color: white;
+            border-color: white;
+        }
+        
+        /* Input Area */
+        .chat-input-area {
+            padding: 1.5rem 2rem;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid var(--glass-border);
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .chat-input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid transparent;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-family: 'Heebo', sans-serif;
+            color: var(--text-dark);
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        
+        .chat-input:focus {
+            background: white;
+            border-color: var(--accent-primary);
+        }
+        
+        .chat-input:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .send-btn {
+            width: 50px;
+            height: 50px;
+            background: var(--accent-primary);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .send-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(255, 94, 161, 0.4);
+        }
+        
+        .send-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        /* Progress Bar */
+        .progress-container {
+            padding: 0 2rem 1rem;
+            display: none;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-primary), #A06BFF);
+            transition: width 0.5s ease;
+            width: 0%;
+        }
+        
+        .progress-text {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            font-weight: 600;
+        }
+        
+        /* WhatsApp Button */
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: #25D366;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+        
+        .whatsapp-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .chat-container {
+                height: 95vh;
+                border-radius: 20px;
+            }
+            
+            .chat-header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .message-bubble {
+                max-width: 85%;
+            }
+            
+            .quick-reply-btn {
+                font-size: 0.85rem;
+                padding: 0.6rem 1.2rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <header id="main-header">
-        <nav>
-            <a href="index.html" class="logo"><img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" alt="Logo"><span>MULTIBRAWN</span></a>
-            <div class="nav-links">
-                <a href="index.html">דף הבית</a>
-                <a href="gallery.html">גלריה</a>
-                <a href="tips.html">טיפים חשובים</a>
-                <a href="about.html">אודות</a>
-                <a href="contact.html" class="nav-cta" style="background:white; color:var(--site-accent) !important;">צור קשר</a>
-            </div>
-        </nav>
-    </header>
-
-    <div class="chat-section">
-        <h1 class="text-4xl font-bold mb-4">הבוט החכם של Multibrawn</h1>
-        <p class="text-xl opacity-80 mb-6">ענו על מספר שאלות קצרות ואמצא לכם את הלוקיישן המושלם</p>
+    <div class="chat-container">
+        <!-- Header -->
+        <div class="chat-header">
+            <h1>👋 שלום! אני כאן לעזור</h1>
+            <p>בואו נמצא ביחד את המקום המושלם עבורכם</p>
+        </div>
         
-        <div class="chat-container">
-            <div class="chat-header">
-                <div class="chat-bot-avatar"><i class="fas fa-robot"></i></div>
-                <div><h3 class="font-bold text-white">Multi-Agent</h3><span class="text-xs text-green-400">● מחובר</span></div>
+        <!-- Progress -->
+        <div class="progress-container" id="progressContainer">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
             </div>
-            <div class="chat-messages" id="chatMessages"></div>
-            <div class="chat-input-area">
-                <input type="text" id="chatInput" placeholder="הקלידו תשובה..." onkeypress="handleKeyPress(event)">
-                <button class="chat-send-btn" onclick="sendUserText()"><i class="fas fa-paper-plane"></i></button>
-            </div>
+            <div class="progress-text" id="progressText"></div>
+        </div>
+        
+        <!-- Messages -->
+        <div class="chat-messages" id="chatMessages"></div>
+        
+        <!-- Input -->
+        <div class="chat-input-area">
+            <input 
+                type="text" 
+                class="chat-input" 
+                id="chatInput" 
+                placeholder="הקלידו את התשובה שלכם..."
+                disabled
+            />
+            <button class="send-btn" id="sendBtn" disabled>
+                <i class="fas fa-paper-plane"></i>
+            </button>
         </div>
     </div>
 
-    <footer>
-        <div style="margin-bottom:1rem;"><img src="https://github.com/kfischi/MULTIBRAWN-V.1/raw/main/Gallery/לוגו2.png" style="width:60px;margin:0 auto;"></div>
-        <p style="margin-top:2rem; opacity:0.7;">© 2025 MULTIBRAWN</p>
-    </footer>
-
     <script>
-        // CHATBOT LOGIC (Simplified for brevity, full logic same as previous)
-        let chatState = { step: 0, data: {} };
-        const questions = {
-            start: { text: "היי! 👋 אני הבוט החכם. מה אתם מחפשים?", type: "buttons", options: [ { label: "🏡 צימר", value: "צימר", next: "dates" }, { label: "🏛️ וילה", value: "וילה", next: "dates" }, { label: "💍 אירוע", value: "אירוע", next: "dates" } ], field: "type" },
-            dates: { text: "מתי תרצו להגיע?", type: "date", next: "budget", field: "date" },
-            budget: { text: "מה התקציב המשוער?", type: "buttons", options: [{label:"עד 1500", value:"1500", next:"finish"}, {label:"גמיש", value:"גמיש", next:"finish"}], field: "budget" },
-            finish: { text: "סיימנו! שולח פרטים...", type: "action", action: "whatsapp", onLoad: () => {
-                fetch('https://webmasterpro.app.n8n.cloud/webhook/6286a24e-50bb-48f2-8925-4f09b3533108', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(chatState.data) });
-            }}
+        // ═══════════════════════════════════════════════════════════
+        // CHATBOT CONFIGURATION
+        // ═══════════════════════════════════════════════════════════
+        
+        const chatMessages = document.getElementById('chatMessages');
+        const chatInput = document.getElementById('chatInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const progressContainer = document.getElementById('progressContainer');
+        const progressFill = document.getElementById('progressFill');
+        const progressText = document.getElementById('progressText');
+        
+        // Conversation State
+        let conversationState = {
+            step: 0,
+            eventType: null,
+            location: null,
+            budget: null,
+            guests: null,
+            date: null,
+            preferences: [],
+            name: null,
+            phone: null,
+            email: null
         };
-
-        let currentQ = "start";
-        window.onload = () => renderQuestion();
-
-        function renderQuestion() {
-            const q = questions[currentQ];
-            const container = document.getElementById('chatMessages');
-            const msg = document.createElement('div');
-            msg.className = 'message bot';
-            msg.innerHTML = `<div class="bubble">${q.text}</div>`;
-            container.appendChild(msg);
-            
-            if (q.type === 'buttons') {
-                const opts = document.createElement('div');
-                opts.className = 'chat-options';
-                q.options.forEach(opt => {
-                    const btn = document.createElement('button');
-                    btn.className = 'chat-option-btn';
-                    btn.innerText = opt.label;
-                    btn.onclick = () => handleInput(opt.value, opt.next);
-                    opts.appendChild(btn);
+        
+        let totalSteps = 8;
+        
+        // ═══════════════════════════════════════════════════════════
+        // CORE FUNCTIONS
+        // ═══════════════════════════════════════════════════════════
+        
+        // Add Bot Message
+        async function addBotMessage(message, delay = 1000) {
+            return new Promise(resolve => {
+                // Show typing indicator
+                const typingDiv = document.createElement('div');
+                typingDiv.className = 'message bot';
+                typingDiv.innerHTML = `
+                    <div class="bot-avatar"><i class="fas fa-robot"></i></div>
+                    <div class="typing-indicator">
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                    </div>
+                `;
+                chatMessages.appendChild(typingDiv);
+                scrollToBottom();
+                
+                setTimeout(() => {
+                    typingDiv.remove();
+                    
+                    const messageDiv = document.createElement('div');
+                    messageDiv.className = 'message bot';
+                    messageDiv.innerHTML = `
+                        <div class="bot-avatar"><i class="fas fa-robot"></i></div>
+                        <div class="message-bubble">${message}</div>
+                    `;
+                    chatMessages.appendChild(messageDiv);
+                    scrollToBottom();
+                    resolve();
+                }, delay);
+            });
+        }
+        
+        // Add User Message
+        function addUserMessage(message) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message user';
+            messageDiv.innerHTML = `
+                <div class="message-bubble">${message}</div>
+            `;
+            chatMessages.appendChild(messageDiv);
+            scrollToBottom();
+        }
+        
+        // Show Quick Replies
+        function showQuickReplies(options, allowMultiple = false) {
+            return new Promise(resolve => {
+                const repliesDiv = document.createElement('div');
+                repliesDiv.className = 'message bot';
+                
+                let html = '<div class="bot-avatar"><i class="fas fa-robot"></i></div><div class="quick-replies">';
+                options.forEach((option, index) => {
+                    html += `<button class="quick-reply-btn" data-value="${option.value}">${option.text}</button>`;
                 });
-                container.appendChild(opts);
+                html += '</div>';
+                
+                repliesDiv.innerHTML = html;
+                chatMessages.appendChild(repliesDiv);
+                scrollToBottom();
+                
+                const buttons = repliesDiv.querySelectorAll('.quick-reply-btn');
+                let selectedValues = [];
+                
+                buttons.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        if (allowMultiple) {
+                            btn.classList.toggle('selected');
+                            const value = btn.dataset.value;
+                            if (selectedValues.includes(value)) {
+                                selectedValues = selectedValues.filter(v => v !== value);
+                            } else {
+                                selectedValues.push(value);
+                            }
+                            
+                            // Enable input if something selected
+                            if (selectedValues.length > 0) {
+                                chatInput.disabled = false;
+                                sendBtn.disabled = false;
+                                chatInput.placeholder = "לחצו 'שלח' כשסיימתם...";
+                            }
+                        } else {
+                            const value = btn.dataset.value;
+                            const text = btn.textContent;
+                            buttons.forEach(b => b.disabled = true);
+                            addUserMessage(text);
+                            resolve(value);
+                        }
+                    });
+                });
+                
+                if (allowMultiple) {
+                    // Wait for send button
+                    const handleSend = () => {
+                        if (selectedValues.length > 0) {
+                            const selectedText = selectedValues.join(', ');
+                            addUserMessage(selectedText);
+                            sendBtn.removeEventListener('click', handleSend);
+                            resolve(selectedValues);
+                        }
+                    };
+                    sendBtn.addEventListener('click', handleSend);
+                }
+            });
+        }
+        
+        // Get Text Input
+        function getTextInput(placeholder = "הקלידו את התשובה...") {
+            return new Promise(resolve => {
+                chatInput.disabled = false;
+                sendBtn.disabled = false;
+                chatInput.placeholder = placeholder;
+                chatInput.focus();
+                
+                const handleSend = () => {
+                    const value = chatInput.value.trim();
+                    if (value) {
+                        addUserMessage(value);
+                        chatInput.value = '';
+                        chatInput.disabled = true;
+                        sendBtn.disabled = true;
+                        sendBtn.removeEventListener('click', handleSend);
+                        chatInput.removeEventListener('keypress', handleEnter);
+                        resolve(value);
+                    }
+                };
+                
+                const handleEnter = (e) => {
+                    if (e.key === 'Enter') handleSend();
+                };
+                
+                sendBtn.addEventListener('click', handleSend);
+                chatInput.addEventListener('keypress', handleEnter);
+            });
+        }
+        
+        // Update Progress
+        function updateProgress() {
+            if (conversationState.step > 0) {
+                progressContainer.style.display = 'block';
+            }
+            const progress = (conversationState.step / totalSteps) * 100;
+            progressFill.style.width = progress + '%';
+            progressText.textContent = `שלב ${conversationState.step} מתוך ${totalSteps}`;
+        }
+        
+        // Scroll to Bottom
+        function scrollToBottom() {
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        
+        // ═══════════════════════════════════════════════════════════
+        // CONVERSATION FLOW
+        // ═══════════════════════════════════════════════════════════
+        
+        async function startConversation() {
+            await addBotMessage("שלום! אני כאן כדי לעזור לכם למצוא את המקום המושלם 🎉");
+            await addBotMessage("בואו נתחיל - איזה סוג אירוע או חופשה מעניין אתכם?", 800);
+            
+            conversationState.step++;
+            updateProgress();
+            
+            const eventType = await showQuickReplies([
+                { text: "💍 חתונה", value: "חתונה" },
+                { text: "🎂 בר/בת מצווה", value: "בר מצווה" },
+                { text: "🎉 אירוע משפחתי", value: "אירוע משפחתי" },
+                { text: "🏖️ חופשה רומנטית", value: "חופשה" },
+                { text: "👨‍👩‍👧‍👦 חופשה משפחתית", value: "חופשה משפחתית" },
+                { text: "💼 אירוע עסקי", value: "אירוע עסקי" }
+            ]);
+            
+            conversationState.eventType = eventType;
+            
+            // Dynamic response based on event type
+            if (eventType === "חתונה") {
+                await addBotMessage("אוו, חתונה! כמה מרגש! 💕 אני אעזור לכם למצוא את המקום המושלם ליום המיוחד שלכם.");
+            } else if (eventType === "חופשה") {
+                await addBotMessage("חופשה רומנטית - נשמע מדהים! 🌹 בואו נמצא לכם מקום שיהיה בדיוק מה שאתם צריכים.");
+            } else {
+                await addBotMessage(`מעולה! ${eventType} - בואו נמצא את המקום המושלם עבורכם.`);
             }
             
-            if (q.onLoad) q.onLoad();
+            // Location
+            await addBotMessage("באיזה אזור אתם מחפשים?", 600);
+            conversationState.step++;
+            updateProgress();
+            
+            const location = await showQuickReplies([
+                { text: "🏔️ צפון", value: "צפון" },
+                { text: "🏙️ מרכז", value: "מרכז" },
+                { text: "🏜️ דרום", value: "דרום" },
+                { text: "🌊 ים המלח", value: "ים המלח" },
+                { text: "❓ עדיין לא החלטתי", value: "גמיש" }
+            ]);
+            
+            conversationState.location = location;
+            
+            if (location === "גמיש") {
+                await addBotMessage("מעולה! אין בעיה, נוכל למצוא לכם אפשרויות בכל הארץ 😊");
+            } else {
+                await addBotMessage(`${location} - בחירה מצוינת! יש שם מקומות מדהימים 🌟`);
+            }
+            
+            // Budget
+            await addBotMessage("מה הטווח התקציבי שלכם ללילה? (זה עוזר לי להתאים המלצות מדויקות)", 700);
+            conversationState.step++;
+            updateProgress();
+            
+            const budget = await showQuickReplies([
+                { text: "💰 עד 1,000 ₪", value: "עד 1000" },
+                { text: "💰💰 1,000-2,000 ₪", value: "1000-2000" },
+                { text: "💰💰💰 2,000-3,500 ₪", value: "2000-3500" },
+                { text: "💎 3,500+ ₪", value: "3500+" },
+                { text: "❓ גמיש", value: "גמיש" }
+            ]);
+            
+            conversationState.budget = budget;
+            await addBotMessage("מעולה, זה עוזר לי מאוד! 👍");
+            
+            // Guests
+            await addBotMessage("כמה אורחים צפויים?", 600);
+            conversationState.step++;
+            updateProgress();
+            
+            let guestsOptions;
+            if (eventType === "חתונה" || eventType.includes("אירוע")) {
+                guestsOptions = [
+                    { text: "עד 50 איש", value: "עד 50" },
+                    { text: "50-100 איש", value: "50-100" },
+                    { text: "100-200 איש", value: "100-200" },
+                    { text: "200+ איש", value: "200+" }
+                ];
+            } else {
+                guestsOptions = [
+                    { text: "זוג", value: "2" },
+                    { text: "משפחה קטנה (3-4)", value: "3-4" },
+                    { text: "משפחה גדולה (5-8)", value: "5-8" },
+                    { text: "קבוצה (8+)", value: "8+" }
+                ];
+            }
+            
+            const guests = await showQuickReplies(guestsOptions);
+            conversationState.guests = guests;
+            
+            // Date
+            await addBotMessage("מתי התאריך המתוכנן? (זה עוזר לבדוק זמינות)", 600);
+            conversationState.step++;
+            updateProgress();
+            
+            const date = await getTextInput("לדוגמה: 15.08.2025 או אוגוסט 2025");
+            conversationState.date = date;
+            await addBotMessage("מצוין! קיבלתי את התאריך 📅");
+            
+            // Preferences
+            await addBotMessage("מה חשוב לכם במקום? (אפשר לבחור כמה שרוצים)", 700);
+            conversationState.step++;
+            updateProgress();
+            
+            await showQuickReplies([
+                { text: "🏊 בריכה", value: "בריכה" },
+                { text: "🌳 גינה גדולה", value: "גינה" },
+                { text: "🏔️ נוף מרהיב", value: "נוף" },
+                { text: "🎵 מערכת סאונד", value: "סאונד" },
+                { text: "🍽️ מטבח מאובזר", value: "מטבח" },
+                { text: "♿ נגישות", value: "נגישות" },
+                { text: "🚗 חניה", value: "חניה" },
+                { text: "🐕 ידידותי לחיות מחמד", value: "חיות מחמד" }
+            ], true);
+            
+            // Name
+            await addBotMessage("נהדר! עכשיו בואו נסיים את הפרטים. מה השם שלכם?", 600);
+            conversationState.step++;
+            updateProgress();
+            
+            const name = await getTextInput("השם שלי...");
+            conversationState.name = name;
+            await addBotMessage(`נעים מאוד ${name}! 😊`);
+            
+            // Phone
+            await addBotMessage("מה מספר הטלפון שלכם? (כדי שנוכל לשלוח לכם את ההצעות)", 500);
+            conversationState.step++;
+            updateProgress();
+            
+            const phone = await getTextInput("050-1234567");
+            conversationState.phone = phone;
+            
+            // Final Summary
+            await addBotMessage("מעולה! קיבלתי את כל הפרטים 🎉", 700);
+            await addBotMessage("תוך דקות אני אשלח לכם את ההצעות המתאימות ביותר דרך וואטסאפ!", 800);
+            
+            conversationState.step = totalSteps;
+            updateProgress();
+            
+            // Send to n8n
+            await sendToN8N();
+            
+            // Show WhatsApp button
+            await showWhatsAppButton();
         }
+        
+        // ═══════════════════════════════════════════════════════════
+        // SEND TO N8N
+        // ═══════════════════════════════════════════════════════════
+        
+        async function sendToN8N() {
+            const webhookURL = "YOUR_N8N_WEBHOOK_URL_HERE"; // <-- החלף כאן!
+            
+            try {
+                const response = await fetch(webhookURL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        eventType: conversationState.eventType,
+                        location: conversationState.location,
+                        budget: conversationState.budget,
+                        guests: conversationState.guests,
+                        date: conversationState.date,
+                        preferences: conversationState.preferences.join(', '),
+                        name: conversationState.name,
+                        phone: conversationState.phone,
+                        timestamp: new Date().toISOString()
+                    })
+                });
+                
+                if (response.ok) {
+                    console.log('✅ נשלח בהצלחה ל-n8n!');
+                } else {
+                    console.error('❌ שגיאה בשליחה ל-n8n');
+                }
+            } catch (error) {
+                console.error('❌ שגיאה:', error);
+            }
+        }
+        
+        // ═══════════════════════════════════════════════════════════
+        // SHOW WHATSAPP BUTTON
+        // ═══════════════════════════════════════════════════════════
+        
+        async function showWhatsAppButton() {
+            const phoneNumber = "972523983394"; // מספר הוואטסאפ שלך
+            
+            const message = `
+היי! אני ${conversationState.name}
 
-        function handleInput(val, next) {
-            const container = document.getElementById('chatMessages');
-            container.innerHTML += `<div class="message user"><div class="bubble">${val}</div></div>`;
-            chatState.data[questions[currentQ].field] = val;
-            currentQ = next;
-            setTimeout(renderQuestion, 500);
+פרטי האירוע/החופשה:
+• סוג: ${conversationState.eventType}
+• אזור: ${conversationState.location}
+• תקציב: ${conversationState.budget}
+• מספר אורחים: ${conversationState.guests}
+• תאריך: ${conversationState.date}
+• העדפות: ${conversationState.preferences.join(', ') || 'לא צוין'}
+
+מספר טלפון: ${conversationState.phone}
+
+מחכה להצעות שלכם! 😊
+            `.trim();
+            
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+            
+            const btnDiv = document.createElement('div');
+            btnDiv.className = 'message bot';
+            btnDiv.innerHTML = `
+                <div class="bot-avatar"><i class="fas fa-robot"></i></div>
+                <div class="message-bubble" style="text-align: center;">
+                    <p style="margin-bottom: 1rem;">לחצו כאן כדי לפתוח את השיחה בוואטסאפ:</p>
+                    <a href="${whatsappURL}" target="_blank" class="whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i>
+                        פתחו שיחה בוואטסאפ
+                    </a>
+                </div>
+            `;
+            chatMessages.appendChild(btnDiv);
+            scrollToBottom();
         }
+        
+        // ═══════════════════════════════════════════════════════════
+        // START
+        // ═══════════════════════════════════════════════════════════
+        
+        setTimeout(() => {
+            startConversation();
+        }, 500);
+        
     </script>
 </body>
 </html>
