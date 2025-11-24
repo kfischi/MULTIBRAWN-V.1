@@ -11,7 +11,6 @@
         :root {
             --primary-bg: linear-gradient(135deg, #00E0FF 0%, #2D7FFF 50%, #A06BFF 100%);
             --accent-primary: #FF5EA1;
-            --accent-secondary: #A06BFF;
             --white: #FAFAFA;
             --text-dark: #1a0b2e;
             --glass-bg: rgba(255, 255, 255, 0.15);
@@ -38,9 +37,8 @@
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--glass-border);
-            transition: all 0.3s ease;
         }
-        header.scrolled { background: rgba(255, 255, 255, 0.2); box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+        header.scrolled { background: rgba(255, 255, 255, 0.2); }
         nav {
             max-width: 1400px;
             margin: 0 auto;
@@ -52,8 +50,8 @@
         .logo { display: flex; align-items: center; gap: 1rem; text-decoration: none; }
         .logo span { font-size: 1.5rem; font-weight: 700; color: var(--text-dark); font-family: 'Playfair Display', serif; }
         .nav-links { display: flex; gap: 2.5rem; align-items: center; }
-        .nav-links a { color: var(--text-dark); text-decoration: none; font-size: 0.95rem; transition: all 0.3s; font-weight: 500; }
-        .nav-links a:hover, .nav-links a.active { opacity: 0.6; transform: translateY(-2px); }
+        .nav-links a { color: var(--text-dark); text-decoration: none; font-size: 0.95rem; transition: opacity 0.3s; font-weight: 500; }
+        .nav-links a:hover, .nav-links a.active { opacity: 0.6; }
         .nav-cta {
             background: var(--accent-primary);
             color: var(--white);
@@ -64,11 +62,8 @@
             transition: all 0.3s ease;
         }
         .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(255, 94, 161, 0.4); }
-        .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 1001; }
+        .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
         .burger span { width: 25px; height: 3px; background: var(--text-dark); border-radius: 3px; transition: 0.3s; }
-        .burger.active span:nth-child(1) { transform: rotate(45deg) translate(8px, 8px); }
-        .burger.active span:nth-child(2) { opacity: 0; }
-        .burger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
         
         /* Main */
         main { padding-top: 100px; min-height: 100vh; }
@@ -80,6 +75,16 @@
             padding: 8rem 2rem 5rem;
             overflow: hidden;
             border-radius: 0 0 50px 50px;
+        }
+        .contact-hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url('https://res.cloudinary.com/dptyfvwyo/image/upload/v1763935665/%D7%A2%D7%A8%D7%93%D7%99%D7%AA_n1fzok.jpg');
+            background-size: cover;
+            background-position: center 20%;
+            opacity: 0.15;
+            z-index: 0;
         }
         .contact-hero::after {
             content: '';
@@ -128,14 +133,12 @@
             background: linear-gradient(135deg, var(--text-dark) 0%, var(--accent-primary) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: fadeInUp 0.8s ease;
         }
         .contact-hero p {
             font-size: 1.2rem;
             color: var(--text-dark);
             max-width: 600px;
             font-weight: 500;
-            animation: fadeInUp 0.8s ease 0.2s both;
         }
         .hero-badge {
             display: inline-flex;
@@ -149,14 +152,8 @@
             font-weight: 600;
             color: var(--text-dark);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            animation: fadeInUp 0.8s ease 0.4s both;
         }
         .hero-badge i { color: var(--accent-primary); font-size: 1.2rem; }
-        
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
         
         /* Container */
         .contact-container {
@@ -165,25 +162,7 @@
             padding: 0 2rem 4rem;
             display: flex;
             flex-direction: column;
-            gap: 3rem;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 1rem;
-            animation: fadeInUp 0.8s ease;
-        }
-        .section-title h2 {
-            font-size: clamp(2rem, 5vw, 3rem);
-            margin-bottom: 0.5rem;
-            background: linear-gradient(135deg, var(--text-dark) 0%, var(--accent-primary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .section-title p {
-            font-size: 1.1rem;
-            color: rgba(26, 11, 46, 0.8);
-            font-weight: 500;
+            gap: 4rem;
         }
         
         /* Chat */
@@ -194,41 +173,17 @@
             border: 2px solid var(--glass-border);
             box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
             height: 700px;
-            max-width: 100%;
             display: flex;
             flex-direction: column;
-            animation: slideInLeft 0.6s ease;
         }
-        
-        @keyframes slideInLeft {
-            from { opacity: 0; transform: translateX(-50px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        
         .chat-header {
             padding: 2rem;
-            background: linear-gradient(135deg, rgba(255, 94, 161, 0.2), rgba(160, 107, 255, 0.2));
+            background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--glass-border);
-            border-radius: 30px 30px 0 0;
         }
-        .chat-header h2 { 
-            font-size: 1.8rem; 
-            color: var(--text-dark); 
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .chat-header h2 .robot-icon {
-            animation: bounce 2s infinite;
-        }
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        .chat-header p { color: rgba(26, 11, 46, 0.8); font-weight: 500; }
-        
+        .chat-header h2 { font-size: 1.8rem; color: var(--text-dark); margin-bottom: 0.5rem; }
+        .chat-header p { color: rgba(26, 11, 46, 0.8); }
         .chat-messages {
             flex: 1;
             overflow-y: auto;
@@ -236,29 +191,17 @@
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
-            background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
         }
         .chat-messages::-webkit-scrollbar { width: 8px; }
         .chat-messages::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.1); border-radius: 10px; }
-        .chat-messages::-webkit-scrollbar-thumb { background: linear-gradient(180deg, var(--accent-primary), var(--accent-secondary)); border-radius: 10px; }
-        
-        .message { 
-            display: flex; 
-            gap: 1rem; 
-            animation: messageSlide 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-        @keyframes messageSlide {
-            from { opacity: 0; transform: translateY(20px) scale(0.8); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-        
+        .chat-messages::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.3); border-radius: 10px; }
+        .message { display: flex; gap: 1rem; animation: slideIn 0.3s ease; }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         .message.bot { justify-content: flex-start; }
         .message.user { justify-content: flex-end; }
-        
         .bot-avatar {
-            width: 45px; 
-            height: 45px;
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            width: 45px; height: 45px;
+            background: linear-gradient(135deg, var(--accent-primary), #A06BFF);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -266,34 +209,15 @@
             color: white;
             font-size: 1.2rem;
             flex-shrink: 0;
-            box-shadow: 0 4px 15px rgba(255, 94, 161, 0.4);
-            animation: pulse 2s infinite;
         }
-        @keyframes pulse {
-            0%, 100% { box-shadow: 0 4px 15px rgba(255, 94, 161, 0.4); }
-            50% { box-shadow: 0 4px 25px rgba(255, 94, 161, 0.6); }
-        }
-        
         .message-bubble {
             max-width: 70%;
             padding: 1.2rem 1.5rem;
             border-radius: 20px;
             line-height: 1.6;
-            position: relative;
         }
-        .message.bot .message-bubble { 
-            background: rgba(255, 255, 255, 0.95); 
-            color: var(--text-dark); 
-            border-bottom-left-radius: 5px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-        .message.user .message-bubble { 
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary)); 
-            color: white; 
-            border-bottom-right-radius: 5px;
-            box-shadow: 0 4px 15px rgba(255, 94, 161, 0.3);
-        }
-        
+        .message.bot .message-bubble { background: rgba(255, 255, 255, 0.95); color: var(--text-dark); border-bottom-left-radius: 5px; }
+        .message.user .message-bubble { background: var(--accent-primary); color: white; border-bottom-right-radius: 5px; }
         .typing-indicator {
             padding: 1rem 1.5rem;
             background: rgba(255, 255, 255, 0.95);
@@ -301,28 +225,17 @@
             border-bottom-left-radius: 5px;
             display: flex;
             gap: 0.5rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
         .typing-dot {
-            width: 8px; 
-            height: 8px;
+            width: 8px; height: 8px;
             background: var(--accent-primary);
             border-radius: 50%;
             animation: typing 1.4s infinite;
         }
         .typing-dot:nth-child(2) { animation-delay: 0.2s; }
         .typing-dot:nth-child(3) { animation-delay: 0.4s; }
-        @keyframes typing { 
-            0%, 60%, 100% { transform: translateY(0); opacity: 0.7; } 
-            30% { transform: translateY(-10px); opacity: 1; } 
-        }
-        
-        .quick-replies { 
-            display: flex; 
-            flex-wrap: wrap; 
-            gap: 0.75rem; 
-            margin-top: 0.5rem; 
-        }
+        @keyframes typing { 0%, 60%, 100% { transform: translateY(0); opacity: 0.7; } 30% { transform: translateY(-10px); opacity: 1; } }
+        .quick-replies { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.5rem; }
         .quick-reply-btn {
             padding: 0.75rem 1.5rem;
             background: rgba(255, 255, 255, 0.95);
@@ -331,28 +244,14 @@
             color: var(--text-dark);
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            font-family: 'Heebo', sans-serif;
-            font-size: 0.95rem;
+            transition: all 0.3s ease;
         }
         .quick-reply-btn:hover {
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            background: var(--accent-primary);
             color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(255, 94, 161, 0.4);
+            transform: translateY(-2px);
         }
-        .quick-reply-btn.selected { 
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary)); 
-            color: white; 
-            border-color: white;
-            transform: scale(1.05);
-        }
-        .quick-reply-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-        
+        .quick-reply-btn.selected { background: var(--accent-primary); color: white; border-color: white; }
         .chat-input-area {
             padding: 1.5rem 2rem;
             background: rgba(255, 255, 255, 0.2);
@@ -360,7 +259,6 @@
             border-top: 1px solid var(--glass-border);
             display: flex;
             gap: 1rem;
-            border-radius: 0 0 30px 30px;
         }
         .chat-input {
             flex: 1;
@@ -371,19 +269,12 @@
             font-size: 1rem;
             font-family: 'Heebo', sans-serif;
             outline: none;
-            transition: all 0.3s ease;
         }
-        .chat-input:focus { 
-            background: white; 
-            border-color: var(--accent-primary); 
-            box-shadow: 0 4px 15px rgba(255, 94, 161, 0.2);
-        }
+        .chat-input:focus { background: white; border-color: var(--accent-primary); }
         .chat-input:disabled { opacity: 0.5; cursor: not-allowed; }
-        
         .send-btn {
-            width: 50px; 
-            height: 50px;
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            width: 50px; height: 50px;
+            background: var(--accent-primary);
             border: none;
             border-radius: 50%;
             color: white;
@@ -392,81 +283,34 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            box-shadow: 0 4px 15px rgba(255, 94, 161, 0.4);
         }
-        .send-btn:hover { 
-            transform: scale(1.1) rotate(15deg); 
-            box-shadow: 0 6px 20px rgba(255, 94, 161, 0.6);
-        }
-        .send-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: scale(1); }
-        
-        .progress-container { 
-            padding: 1rem 2rem 1rem; 
-            background: rgba(255, 255, 255, 0.1);
-        }
-        .progress-bar { 
-            width: 100%; 
-            height: 8px; 
-            background: rgba(255, 255, 255, 0.2); 
-            border-radius: 10px; 
-            overflow: hidden; 
-        }
-        .progress-fill { 
-            height: 100%; 
-            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary)); 
-            transition: width 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55); 
-            width: 0%; 
-            box-shadow: 0 0 10px rgba(255, 94, 161, 0.5);
-        }
-        .progress-text { 
-            text-align: center; 
-            color: rgba(26, 11, 46, 0.9); 
-            font-size: 0.85rem; 
-            margin-top: 0.5rem; 
-            font-weight: 600; 
-        }
-        
+        .send-btn:hover { transform: scale(1.1); }
+        .send-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .progress-container { padding: 0 2rem 1rem; display: none; }
+        .progress-bar { width: 100%; height: 8px; background: rgba(255, 255, 255, 0.2); border-radius: 10px; overflow: hidden; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent-primary), #A06BFF); transition: width 0.5s ease; width: 0%; }
+        .progress-text { text-align: center; color: rgba(26, 11, 46, 0.8); font-size: 0.85rem; margin-top: 0.5rem; font-weight: 600; }
         .whatsapp-btn {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
             padding: 1rem 2rem;
-            background: linear-gradient(135deg, #25D366, #128C7E);
+            background: #25D366;
             color: white;
             text-decoration: none;
             border-radius: 25px;
             font-weight: 600;
-            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transition: all 0.3s ease;
             margin-top: 1rem;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
         }
-        .whatsapp-btn:hover { 
-            transform: scale(1.05) translateY(-3px); 
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
-        }
-        .whatsapp-btn i {
-            font-size: 1.3rem;
-            animation: swing 2s infinite;
-        }
-        @keyframes swing {
-            0%, 100% { transform: rotate(0deg); }
-            25% { transform: rotate(15deg); }
-            75% { transform: rotate(-15deg); }
-        }
+        .whatsapp-btn:hover { transform: scale(1.05); }
         
         /* Sidebar */
         .contact-sidebar { 
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            animation: slideInRight 0.6s ease;
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 2rem; 
         }
-        @keyframes slideInRight {
-            from { opacity: 0; transform: translateX(50px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        
         .contact-card {
             background: var(--glass-bg);
             backdrop-filter: blur(20px);
@@ -474,21 +318,13 @@
             border: 2px solid var(--glass-border);
             padding: 2rem;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-        }
-        .contact-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
         }
         .contact-card h3 { font-size: 1.5rem; margin-bottom: 1.5rem; }
-        
-        .contact-item { display: flex; gap: 1rem; margin-bottom: 1.5rem; align-items: center; }
+        .contact-item { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
         .contact-item:last-child { margin-bottom: 0; }
-        
         .contact-icon {
-            width: 45px; 
-            height: 45px;
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            width: 45px; height: 45px;
+            background: linear-gradient(135deg, var(--accent-primary), #A06BFF);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -496,22 +332,13 @@
             color: white;
             font-size: 1.2rem;
             flex-shrink: 0;
-            box-shadow: 0 4px 15px rgba(255, 94, 161, 0.4);
         }
-        
         .contact-details h4 { font-size: 1rem; font-weight: 600; margin-bottom: 0.25rem; }
-        .contact-details a { 
-            color: rgba(26, 11, 46, 0.8); 
-            text-decoration: none; 
-            transition: all 0.3s; 
-            font-weight: 500;
-        }
-        .contact-details a:hover { color: var(--accent-primary); transform: translateX(-3px); }
-        
-        .social-links { display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; }
+        .contact-details a { color: rgba(26, 11, 46, 0.8); text-decoration: none; transition: color 0.3s; }
+        .contact-details a:hover { color: var(--accent-primary); }
+        .social-links { display: flex; gap: 1rem; margin-top: 1rem; }
         .social-btn {
-            width: 50px; 
-            height: 50px;
+            width: 50px; height: 50px;
             background: rgba(255, 255, 255, 0.2);
             border-radius: 50%;
             display: flex;
@@ -520,14 +347,8 @@
             color: var(--text-dark);
             font-size: 1.3rem;
             text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
-        .social-btn:hover { 
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary)); 
-            color: white; 
-            transform: translateY(-5px) rotate(10deg);
-            box-shadow: 0 6px 20px rgba(255, 94, 161, 0.4);
-        }
+        .social-btn:hover { background: var(--accent-primary); color: white; transform: translateY(-3px); }
         
         /* Footer */
         footer {
@@ -546,15 +367,13 @@
             margin-bottom: 2rem;
         }
         .footer-section h3 { font-size: 1.3rem; margin-bottom: 1rem; color: var(--white); }
-        .footer-section p { color: rgba(255, 255, 255, 0.8); }
         .footer-section a {
             color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
             display: block;
             margin-bottom: 0.5rem;
-            transition: all 0.3s;
         }
-        .footer-section a:hover { color: var(--accent-primary); transform: translateX(-5px); }
+        .footer-section a:hover { color: var(--accent-primary); }
         .footer-bottom {
             text-align: center;
             padding-top: 2rem;
@@ -565,47 +384,32 @@
         /* Responsive */
         @media (max-width: 1024px) {
             .chat-wrapper { height: 600px; }
-            .contact-sidebar {
-                grid-template-columns: 1fr;
-            }
+            .contact-sidebar { grid-template-columns: 1fr; }
         }
         @media (max-width: 768px) {
-            nav { padding: 1.5rem; }
             .nav-links {
                 position: fixed;
-                top: 0;
+                top: 80px;
                 right: -100%;
                 width: 100%;
-                height: 100vh;
-                background: rgba(255, 255, 255, 0.98);
+                height: calc(100vh - 80px);
+                background: rgba(255, 255, 255, 0.95);
                 backdrop-filter: blur(20px);
                 flex-direction: column;
-                padding: 6rem 3rem 3rem;
-                transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-                justify-content: flex-start;
+                padding: 3rem;
+                transition: right 0.3s ease;
             }
             .nav-links.active { right: 0; }
             .burger { display: flex; }
             .contact-hero { padding: 5rem 1.5rem 3rem; border-radius: 0 0 30px 30px; }
-            .contact-hero-content {
-                flex-direction: column;
-                gap: 2rem;
-            }
-            .hero-image-wrapper {
-                width: 150px;
-                height: 150px;
-            }
-            .hero-text-content {
-                text-align: center;
-            }
+            .contact-hero-content { flex-direction: column; gap: 2rem; }
+            .hero-image-wrapper { width: 150px; height: 150px; }
+            .hero-text-content { text-align: center; }
             .contact-hero p { margin: 0 auto; }
-            .chat-wrapper { height: 550px; }
+            .chat-wrapper { height: 500px; }
             .message-bubble { max-width: 85%; }
-            .quick-replies { justify-content: center; }
-            .contact-sidebar {
-                grid-template-columns: 1fr;
-            }
-            .footer-content { grid-template-columns: 1fr; gap: 2rem; }
+            .contact-sidebar { grid-template-columns: 1fr; }
+            .footer-content { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -621,11 +425,7 @@
                 <a href="/contact.html" class="active">צור קשר</a>
                 <a href="https://wa.me/972523983394" class="nav-cta"><i class="fab fa-whatsapp"></i> וואטסאפ</a>
             </div>
-            <div class="burger" id="burger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <div class="burger" id="burger"><span></span><span></span><span></span></div>
         </nav>
     </header>
 
@@ -638,95 +438,57 @@
                 <div class="hero-text-content">
                     <h1>👋 בואו נדבר!</h1>
                     <p>אנחנו כאן כדי לעזור לכם למצוא את המקום המושלם. ספרו לנו מה חיפשתם ונחזור אליכם עם ההצעות הטובות ביותר.</p>
-                    <div class="hero-badge">
-                        <i class="fas fa-star"></i>
-                        <span>ערדית בראון - מומחית לאירועים</span>
-                    </div>
+                    <div class="hero-badge"><i class="fas fa-star"></i><span>ערדית בראון - מומחית לאירועים</span></div>
                 </div>
             </div>
         </div>
 
         <div class="contact-container">
-            <div class="section-title">
-                <h2>🤖 הצ'אטבוט החכם שלנו</h2>
-                <p>ספרו לנו על האירוע או החופשה שלכם ונמצא לכם את המקום המושלם</p>
-            </div>
-            
             <div class="chat-wrapper">
                 <div class="chat-header">
-                    <h2><span class="robot-icon">💬</span> שיחה עם הבוט</h2>
-                    <p>ענו על כמה שאלות קצרות ✨</p>
+                    <h2>🤖 הצ'אטבוט החכם שלנו</h2>
+                    <p>ענו על כמה שאלות קצרות ונמצא לכם את המקום המושלם</p>
                 </div>
-                <div class="progress-container" id="progressContainer" style="display: none;">
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="progressFill"></div>
-                    </div>
+                <div class="progress-container" id="progressContainer">
+                    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
                     <div class="progress-text" id="progressText"></div>
                 </div>
                 <div class="chat-messages" id="chatMessages"></div>
                 <div class="chat-input-area">
                     <input type="text" class="chat-input" id="chatInput" placeholder="הקלידו את התשובה..." disabled />
-                    <button class="send-btn" id="sendBtn" disabled>
-                        <i class="fas fa-paper-plane"></i>
-                    </button>
+                    <button class="send-btn" id="sendBtn" disabled><i class="fas fa-paper-plane"></i></button>
                 </div>
             </div>
 
-            <div class="section-title">
-                <h2>📞 פרטי התקשרות</h2>
-                <p>אנחנו זמינים עבורכם בכל דרך שנוחה לכם</p>
-            </div>
-            
             <aside class="contact-sidebar">
                 <div class="contact-card">
-                    <h3>יצירת קשר</h3>
+                    <h3>📞 פרטי התקשרות</h3>
                     <div class="contact-item">
                         <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
-                        <div class="contact-details">
-                            <h4>וואטסאפ</h4>
-                            <a href="https://wa.me/972523983394">052-398-3394</a>
-                        </div>
+                        <div class="contact-details"><h4>וואטסאפ</h4><a href="https://wa.me/972523983394">052-398-3394</a></div>
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon"><i class="fas fa-phone"></i></div>
-                        <div class="contact-details">
-                            <h4>טלפון</h4>
-                            <a href="tel:+972523983394">052-398-3394</a>
-                        </div>
+                        <div class="contact-details"><h4>טלפון</h4><a href="tel:+972523983394">052-398-3394</a></div>
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-                        <div class="contact-details">
-                            <h4>אימייל</h4>
-                            <a href="mailto:multibrawn@gmail.com">multibrawn@gmail.com</a>
-                        </div>
+                        <div class="contact-details"><h4>אימייל</h4><a href="/cdn-cgi/l/email-protection#422b2c242d022f372e362b203023352c6c212d2f"><span class="__cf_email__" data-cfemail="dfb6b1b9b09fb2aab3abb6bdadbea8b1f1bcb0b2">[email&#160;protected]</span></a></div>
                     </div>
                 </div>
-                
                 <div class="contact-card">
-                    <h3>שעות פעילות</h3>
+                    <h3>🕐 שעות פעילות</h3>
                     <div class="contact-item">
                         <div class="contact-icon"><i class="fas fa-clock"></i></div>
-                        <div class="contact-details">
-                            <h4>זמינים עבורכם</h4>
-                            <p>א'-ו': 9:00-20:00</p>
-                            <p>שבת: לפי תיאום</p>
-                        </div>
+                        <div class="contact-details"><h4>זמינים עבורכם</h4><p>א'-ה': 9:00-20:00</p><p>שישי-שבת: לפי תיאום</p></div>
                     </div>
                 </div>
-                
                 <div class="contact-card">
-                    <h3>רשתות חברתיות</h3>
+                    <h3>💬 עקבו אחרינו</h3>
                     <div class="social-links">
-                        <a href="https://instagram.com/multibrawn" class="social-btn" title="Instagram">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://facebook.com/multibrawn" class="social-btn" title="Facebook">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="https://wa.me/972523983394" class="social-btn" title="WhatsApp">
-                            <i class="fab fa-whatsapp"></i>
-                        </a>
+                        <a href="https://instagram.com/multibrawn" class="social-btn"><i class="fab fa-instagram"></i></a>
+                        <a href="https://facebook.com/multibrawn" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://wa.me/972523983394" class="social-btn"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
             </aside>
@@ -737,56 +499,33 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h3>MULTIBRAWN</h3>
-                <p>מומחים למציאת מקומות מושלמים לאירועים וחופשות בישראל. 🌟</p>
+                <p>מומחים למציאת מקומות מושלמים לאירועים וחופשות בישראל.</p>
             </div>
             <div class="footer-section">
                 <h3>קישורים</h3>
                 <a href="/">דף הבית</a>
                 <a href="/about.html">אודות</a>
                 <a href="/gallery.html">גלריה</a>
-                <a href="/tips.html">טיפים</a>
                 <a href="/contact.html">צור קשר</a>
             </div>
             <div class="footer-section">
                 <h3>משפטי</h3>
                 <a href="/privacy.html">מדיניות פרטיות</a>
-                <a href="/terms.html">תנאי שימוש</a>
-                <a href="/accessibility.html">הצהרת נגישות</a>
+                <a href="/accessibility.html">נגישות</a>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 MULTIBRAWN. כל הזכויות שמורות. 💜</p>
-        </div>
+        <div class="footer-bottom"><p>&copy; 2025 MULTIBRAWN. כל הזכויות שמורות.</p></div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Navigation
         const header = document.getElementById('header');
         const burger = document.getElementById('burger');
         const navLinks = document.getElementById('navLinks');
-        
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-        
-        burger.addEventListener('click', () => {
-            burger.classList.toggle('active');
-            navLinks.classList.toggle('active');
-        });
-        
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!burger.contains(e.target) && !navLinks.contains(e.target)) {
-                burger.classList.remove('active');
-                navLinks.classList.remove('active');
-            }
-        });
+        window.addEventListener('scroll', () => { if (window.scrollY > 50) header.classList.add('scrolled'); else header.classList.remove('scrolled'); });
+        burger.addEventListener('click', () => { burger.classList.toggle('active'); navLinks.classList.toggle('active'); });
 
-        // Chatbot Logic
+        // Chatbot
         const chatMessages = document.getElementById('chatMessages');
         const chatInput = document.getElementById('chatInput');
         const sendBtn = document.getElementById('sendBtn');
@@ -794,44 +533,21 @@
         const progressFill = document.getElementById('progressFill');
         const progressText = document.getElementById('progressText');
         
-        let conversationState = {
-            step: 0,
-            eventType: null,
-            location: null,
-            budget: null,
-            guests: null,
-            date: null,
-            preferences: [],
-            name: null,
-            phone: null
-        };
+        let conversationState = { step: 0, eventType: null, location: null, budget: null, guests: null, date: null, preferences: [], name: null, phone: null };
+        let totalSteps = 8;
         
-        const totalSteps = 8;
-        
-        // Add bot message with typing animation
         async function addBotMessage(message, delay = 1000) {
             return new Promise(resolve => {
                 const typingDiv = document.createElement('div');
                 typingDiv.className = 'message bot';
-                typingDiv.innerHTML = `
-                    <div class="bot-avatar"><i class="fas fa-robot"></i></div>
-                    <div class="typing-indicator">
-                        <div class="typing-dot"></div>
-                        <div class="typing-dot"></div>
-                        <div class="typing-dot"></div>
-                    </div>
-                `;
+                typingDiv.innerHTML = '<div class="bot-avatar"><i class="fas fa-robot"></i></div><div class="typing-indicator"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>';
                 chatMessages.appendChild(typingDiv);
                 chatMessages.scrollTop = chatMessages.scrollHeight;
-                
                 setTimeout(() => {
                     typingDiv.remove();
                     const messageDiv = document.createElement('div');
                     messageDiv.className = 'message bot';
-                    messageDiv.innerHTML = `
-                        <div class="bot-avatar"><i class="fas fa-robot"></i></div>
-                        <div class="message-bubble">${message}</div>
-                    `;
+                    messageDiv.innerHTML = '<div class="bot-avatar"><i class="fas fa-robot"></i></div><div class="message-bubble">' + message + '</div>';
                     chatMessages.appendChild(messageDiv);
                     chatMessages.scrollTop = chatMessages.scrollHeight;
                     resolve();
@@ -839,27 +555,21 @@
             });
         }
         
-        // Add user message
         function addUserMessage(message) {
             const messageDiv = document.createElement('div');
             messageDiv.className = 'message user';
-            messageDiv.innerHTML = `<div class="message-bubble">${message}</div>`;
+            messageDiv.innerHTML = '<div class="message-bubble">' + message + '</div>';
             chatMessages.appendChild(messageDiv);
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
         
-        // Show quick reply buttons
         function showQuickReplies(options, allowMultiple = false) {
             return new Promise(resolve => {
                 const repliesDiv = document.createElement('div');
                 repliesDiv.className = 'message bot';
-                
-                let html = '<div class="bot-avatar"><i class="fas fa-list"></i></div><div class="quick-replies">';
-                options.forEach(opt => {
-                    html += `<button class="quick-reply-btn" data-value="${opt.value}">${opt.text}</button>`;
-                });
+                let html = '<div class="bot-avatar"><i class="fas fa-robot"></i></div><div class="quick-replies">';
+                options.forEach(opt => { html += '<button class="quick-reply-btn" data-value="' + opt.value + '">' + opt.text + '</button>'; });
                 html += '</div>';
-                
                 repliesDiv.innerHTML = html;
                 chatMessages.appendChild(repliesDiv);
                 chatMessages.scrollTop = chatMessages.scrollHeight;
@@ -872,39 +582,28 @@
                         if (allowMultiple) {
                             const value = btn.dataset.value;
                             
-                            // If "Skip" button clicked
+                            // אם לחצו על "דלג" (value ריק)
                             if (value === '') {
                                 buttons.forEach(b => b.disabled = true);
-                                addUserMessage('⏭️ דילגתי');
-                                setTimeout(() => resolve([]), 300);
+                                addUserMessage('דלגתי');
+                                resolve([]);
                                 return;
                             }
                             
-                            // Toggle selection
                             btn.classList.toggle('selected');
-                            if (selectedValues.includes(value)) {
-                                selectedValues = selectedValues.filter(v => v !== value);
-                            } else {
-                                selectedValues.push(value);
-                            }
-                            
-                            // Enable send button if something selected
+                            if (selectedValues.includes(value)) selectedValues = selectedValues.filter(v => v !== value);
+                            else selectedValues.push(value);
                             if (selectedValues.length > 0) {
                                 chatInput.disabled = false;
                                 sendBtn.disabled = false;
-                                chatInput.placeholder = "לחצו 'שלח' כשסיימתם או בחרו עוד...";
-                            } else {
-                                chatInput.disabled = true;
-                                sendBtn.disabled = true;
-                                chatInput.placeholder = "בחרו לפחות אפשרות אחת...";
+                                chatInput.placeholder = "לחצו 'שלח' כשסיימתם...";
                             }
                         } else {
-                            // Single selection
                             const value = btn.dataset.value;
                             const text = btn.textContent;
                             buttons.forEach(b => b.disabled = true);
                             addUserMessage(text);
-                            setTimeout(() => resolve(value), 300);
+                            resolve(value);
                         }
                     });
                 });
@@ -912,31 +611,17 @@
                 if (allowMultiple) {
                     const handleSend = () => {
                         if (selectedValues.length > 0) {
-                            const selectedText = selectedValues.map(v => 
-                                options.find(o => o.value === v).text
-                            ).join(', ');
-                            addUserMessage(selectedText);
-                            buttons.forEach(b => b.disabled = true);
+                            addUserMessage(selectedValues.join(', '));
                             sendBtn.removeEventListener('click', handleSend);
-                            chatInput.removeEventListener('keypress', handleEnter);
-                            chatInput.disabled = true;
-                            sendBtn.disabled = true;
-                            setTimeout(() => resolve(selectedValues), 300);
+                            resolve(selectedValues);
                         }
                     };
-                    
-                    const handleEnter = (e) => {
-                        if (e.key === 'Enter') handleSend();
-                    };
-                    
                     sendBtn.addEventListener('click', handleSend);
-                    chatInput.addEventListener('keypress', handleEnter);
                 }
             });
         }
         
-        // Get text input from user
-        function getTextInput(placeholder = "הקלידו כאן...") {
+        function getTextInput(placeholder = "הקלידו...") {
             return new Promise(resolve => {
                 chatInput.disabled = false;
                 sendBtn.disabled = false;
@@ -952,80 +637,57 @@
                         sendBtn.disabled = true;
                         sendBtn.removeEventListener('click', handleSend);
                         chatInput.removeEventListener('keypress', handleEnter);
-                        setTimeout(() => resolve(value), 300);
+                        resolve(value);
                     }
                 };
                 
-                const handleEnter = (e) => {
-                    if (e.key === 'Enter') handleSend();
-                };
-                
+                const handleEnter = (e) => { if (e.key === 'Enter') handleSend(); };
                 sendBtn.addEventListener('click', handleSend);
                 chatInput.addEventListener('keypress', handleEnter);
             });
         }
         
-        // Update progress bar
         function updateProgress() {
-            if (conversationState.step > 0) {
-                progressContainer.style.display = 'block';
-            }
+            if (conversationState.step > 0) progressContainer.style.display = 'block';
             const progress = (conversationState.step / totalSteps) * 100;
             progressFill.style.width = progress + '%';
-            progressText.textContent = `שלב ${conversationState.step} מתוך ${totalSteps} ✨`;
+            progressText.textContent = 'שלב ' + conversationState.step + ' מתוך ' + totalSteps;
         }
         
-        // Main conversation flow
         async function startConversation() {
-            await addBotMessage("היי! 👋 אני הבוט החכם של MULTIBRAWN!", 500);
-            await addBotMessage("אני כאן כדי לעזור לכם למצוא את המקום המושלם לאירוע או לחופשה שלכם 🎉", 800);
-            await addBotMessage("בואו נתחיל - איזה סוג אירוע או חופשה מעניין אתכם?", 700);
-            
-            conversationState.step++;
-            updateProgress();
+            await addBotMessage("שלום! אני כאן כדי לעזור לכם למצוא את המקום המושלם 🎉");
+            await addBotMessage("בואו נתחיל - איזה סוג אירוע או חופשה מעניין אתכם?", 800);
+            conversationState.step++; updateProgress();
             
             const eventType = await showQuickReplies([
                 { text: "💍 חתונה", value: "חתונה" },
                 { text: "🎂 בר/בת מצווה", value: "בר מצווה" },
                 { text: "🎉 אירוע משפחתי", value: "אירוע משפחתי" },
-                { text: "🏖️ חופשה רומנטית", value: "חופשה רומנטית" },
+                { text: "🏖️ חופשה רומנטית", value: "חופשה" },
                 { text: "👨‍👩‍👧‍👦 חופשה משפחתית", value: "חופשה משפחתית" },
                 { text: "💼 אירוע עסקי", value: "אירוע עסקי" }
             ]);
             conversationState.eventType = eventType;
             
-            // Custom responses based on event type
-            if (eventType === "חתונה") {
-                await addBotMessage("אוו, חתונה! 💕 כמה מרגש! אני אעזור לכם למצוא את המקום המושלם ליום המיוחד שלכם.", 700);
-            } else if (eventType.includes("חופשה")) {
-                await addBotMessage("חופשה - נשמע מדהים! 🌴 בואו נמצא לכם מקום שיהיה בדיוק מה שצריך לנופש מושלם.", 700);
-            } else {
-                await addBotMessage(`מעולה! ${eventType} - בואו נמצא את המקום המושלם! ✨`, 700);
-            }
+            if (eventType === "חתונה") await addBotMessage("אוו, חתונה! כמה מרגש! 💕 אני אעזור לכם למצוא את המקום המושלם ליום המיוחד.");
+            else if (eventType === "חופשה") await addBotMessage("חופשה רומנטית - נשמע מדהים! 🌹 בואו נמצא לכם מקום שיהיה בדיוק מה שצריך.");
+            else await addBotMessage("מעולה! " + eventType + " - בואו נמצא את המקום המושלם.");
             
-            await addBotMessage("באיזה אזור בארץ אתם מחפשים?", 600);
-            conversationState.step++;
-            updateProgress();
-            
+            await addBotMessage("באיזה אזור אתם מחפשים?", 600);
+            conversationState.step++; updateProgress();
             const location = await showQuickReplies([
                 { text: "🏔️ צפון", value: "צפון" },
                 { text: "🏙️ מרכז", value: "מרכז" },
                 { text: "🏜️ דרום", value: "דרום" },
                 { text: "🌊 ים המלח", value: "ים המלח" },
-                { text: "❓ גמיש לכל הארץ", value: "גמיש" }
+                { text: "❓ גמיש", value: "גמיש" }
             ]);
             conversationState.location = location;
+            if (location === "גמיש") await addBotMessage("מעולה! נוכל למצוא לכם אפשרויות בכל הארץ 😊");
+            else await addBotMessage(location + " - בחירה מצוינת! 🌟");
             
-            if (location === "גמיש") {
-                await addBotMessage("מעולה! נוכל למצוא לכם את האפשרויות הטובות ביותר בכל רחבי הארץ 🗺️", 600);
-            } else {
-                await addBotMessage(`${location} - בחירה מצוינת! יש שם מקומות מדהימים 🌟`, 600);
-            }
-            
-            await addBotMessage("מה הטווח התקציבי שלכם ללילה?", 700);
-            conversationState.step++;
-            updateProgress();
-            
+            await addBotMessage("מה הטווח התקציבי ללילה?", 700);
+            conversationState.step++; updateProgress();
             const budget = await showQuickReplies([
                 { text: "💰 עד 1,000 ₪", value: "עד 1000" },
                 { text: "💰💰 1,000-2,000 ₪", value: "1000-2000" },
@@ -1034,143 +696,82 @@
                 { text: "❓ גמיש", value: "גמיש" }
             ]);
             conversationState.budget = budget;
-            await addBotMessage("מצוין! 👍 זה עוזר לי למצוא את המתאים ביותר עבורכם.", 500);
+            await addBotMessage("מעולה! 👍");
             
-            await addBotMessage("כמה אורחים צפויים באירוע/חופשה?", 600);
-            conversationState.step++;
-            updateProgress();
-            
-            let guestsOptions;
-            if (eventType === "חתונה" || eventType.includes("אירוע")) {
-                guestsOptions = [
-                    { text: "👥 עד 50", value: "עד 50" },
-                    { text: "👥👥 50-100", value: "50-100" },
-                    { text: "👥👥👥 100-200", value: "100-200" },
-                    { text: "🎊 200+", value: "200+" }
-                ];
-            } else {
-                guestsOptions = [
-                    { text: "💑 זוג", value: "2" },
-                    { text: "👨‍👩‍👧 משפחה קטנה (3-4)", value: "3-4" },
-                    { text: "👨‍👩‍👧‍👦 משפחה גדולה (5-8)", value: "5-8" },
-                    { text: "👥 קבוצה (8+)", value: "8+" }
-                ];
-            }
+            await addBotMessage("כמה אורחים צפויים?", 600);
+            conversationState.step++; updateProgress();
+            let guestsOptions = (eventType === "חתונה" || eventType.includes("אירוע")) ? [
+                { text: "עד 50", value: "עד 50" },
+                { text: "50-100", value: "50-100" },
+                { text: "100-200", value: "100-200" },
+                { text: "200+", value: "200+" }
+            ] : [
+                { text: "זוג", value: "2" },
+                { text: "משפחה קטנה (3-4)", value: "3-4" },
+                { text: "משפחה גדולה (5-8)", value: "5-8" },
+                { text: "קבוצה (8+)", value: "8+" }
+            ];
             const guests = await showQuickReplies(guestsOptions);
             conversationState.guests = guests;
-            await addBotMessage("נהדר! 🎯", 400);
             
-            await addBotMessage("מתי התאריך המתוכנן? (לדוגמה: 15.08.2025)", 600);
-            conversationState.step++;
-            updateProgress();
-            
+            await addBotMessage("מתי התאריך המתוכנן?", 600);
+            conversationState.step++; updateProgress();
             const date = await getTextInput("לדוגמה: 15.08.2025");
             conversationState.date = date;
-            await addBotMessage("מצוין! 📅 רשמתי את התאריך.", 500);
+            await addBotMessage("מצוין! 📅");
             
-            await addBotMessage("מה חשוב לכם במקום? (בחרו כמה שרוצים, או לחצו 'דלג')", 700);
-            conversationState.step++;
-            updateProgress();
-            
+            await addBotMessage("מה חשוב לכם במקום? (בחרו כמה שרוצים או דלגו)", 700);
+            conversationState.step++; updateProgress();
             const preferences = await showQuickReplies([
                 { text: "🏊 בריכה", value: "בריכה" },
-                { text: "🌳 גינה מטופחת", value: "גינה" },
-                { text: "🏔️ נוף מרהיב", value: "נוף" },
-                { text: "🎵 מערכת סאונד", value: "סאונד" },
-                { text: "🍽️ מטבח מאובזר", value: "מטבח" },
+                { text: "🌳 גינה", value: "גינה" },
+                { text: "🏔️ נוף", value: "נוף" },
+                { text: "🎵 סאונד", value: "סאונד" },
+                { text: "🍽️ מטבח", value: "מטבח" },
                 { text: "♿ נגישות", value: "נגישות" },
                 { text: "🚗 חניה", value: "חניה" },
-                { text: "🐕 ידידותי לחיות", value: "חיות מחמד" },
+                { text: "🐕 חיות", value: "חיות" },
                 { text: "⏭️ דלג", value: "" }
             ], true);
             conversationState.preferences = preferences;
             
-            await addBotMessage("נהדר! כמעט סיימנו 🎉", 500);
-            await addBotMessage("בואו נסיים עם כמה פרטים אחרונים...", 600);
-            
-            await addBotMessage("מה השם שלכם?", 500);
-            conversationState.step++;
-            updateProgress();
-            
-            const name = await getTextInput("השם המלא שלי...");
+            await addBotMessage("נהדר! עכשיו בואו נסיים את הפרטים. מה השם שלכם?", 600);
+            conversationState.step++; updateProgress();
+            const name = await getTextInput("השם שלי...");
             conversationState.name = name;
-            await addBotMessage(`נעים מאוד ${name}! 😊 שמחתי להכיר!`, 600);
+            await addBotMessage("נעים מאוד " + name + "! 😊");
             
-            await addBotMessage("ומה מספר הטלפון שלכם?", 500);
-            conversationState.step++;
-            updateProgress();
-            
+            await addBotMessage("מה מספר הטלפון שלכם?", 500);
+            conversationState.step++; updateProgress();
             const phone = await getTextInput("050-1234567");
             conversationState.phone = phone;
             
-            await addBotMessage("🎉 מושלם! קיבלתי את כל הפרטים!", 700);
-            await addBotMessage("אני כבר מעביר את המידע לערדית, והיא תחזור אליכם בהקדם עם הצעות מותאמות אישית! 💜", 900);
+            await addBotMessage("מעולה! קיבלתי את כל הפרטים 🎉", 700);
+            await addBotMessage("תוך דקות אשלח לכם את ההצעות דרך וואטסאפ!", 800);
+            conversationState.step = totalSteps; updateProgress();
             
-            conversationState.step = totalSteps;
-            updateProgress();
-            
-            // Send to n8n webhook
+            // Send to n8n
             try {
-                const prefsToSend = conversationState.preferences.length > 0 
-                    ? conversationState.preferences.join(', ') 
-                    : 'לא צוין';
-                    
+                const prefsText = conversationState.preferences.length > 0 ? conversationState.preferences.join(', ') : 'לא צוין';
                 await fetch("YOUR_N8N_WEBHOOK_URL_HERE", {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        ...conversationState,
-                        preferences: prefsToSend,
-                        timestamp: new Date().toISOString()
-                    })
+                    body: JSON.stringify({ ...conversationState, preferences: prefsText, timestamp: new Date().toISOString() })
                 });
-            } catch (error) {
-                console.error('Webhook error:', error);
-            }
+            } catch (e) { console.error('Error:', e); }
             
-            // Create WhatsApp message
-            const preferencesText = conversationState.preferences.length > 0 
-                ? conversationState.preferences.join(', ') 
-                : 'לא צוין';
-                
-            const whatsappMessage = `
-היי! אני ${conversationState.name} 👋
-
-פרטי האירוע/החופשה שלי:
-━━━━━━━━━━━━━━━━━━━
-🎯 סוג: ${conversationState.eventType}
-📍 אזור: ${conversationState.location}
-💰 תקציב: ${conversationState.budget}
-👥 אורחים: ${conversationState.guests}
-📅 תאריך: ${conversationState.date}
-✨ העדפות: ${preferencesText}
-📱 טלפון: ${conversationState.phone}
-
-מחכה להצעות שלכם! 😊
-            `.trim();
-            
-            const phoneNumber = "972523983394";
-            const encodedMessage = encodeURIComponent(whatsappMessage);
-            const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-            
-            // Show WhatsApp button
-            await addBotMessage("לחצו על הכפתור כדי לפתוח את השיחה בוואטסאפ ולקבל את ההצעות המושלמות! 👇", 800);
-            
+            // WhatsApp
+            const prefsText = conversationState.preferences.length > 0 ? conversationState.preferences.join(', ') : 'לא צוין';
+            const msg = 'היי! אני ' + conversationState.name + '\n\nפרטי האירוע:\n• סוג: ' + conversationState.eventType + '\n• אזור: ' + conversationState.location + '\n• תקציב: ' + conversationState.budget + '\n• אורחים: ' + conversationState.guests + '\n• תאריך: ' + conversationState.date + '\n• העדפות: ' + prefsText + '\n• טלפון: ' + conversationState.phone + '\n\nמחכה להצעות! 😊';
+            const waURL = 'https://wa.me/972523983394?text=' + encodeURIComponent(msg);
             const btnDiv = document.createElement('div');
             btnDiv.className = 'message bot';
-            btnDiv.innerHTML = `
-                <div class="bot-avatar"><i class="fab fa-whatsapp"></i></div>
-                <div class="message-bubble" style="text-align: center; padding: 1.5rem;">
-                    <p style="margin-bottom: 1.5rem; font-size: 1.1rem; font-weight: 600;">
-                        🎁 המתנה שלנו לכם: ייעוץ ראשוני חינם!
-                    </p>
-                    <a href="${whatsappURL}" target="_blank" class="whatsapp-btn">
-                        <i class="fab fa-whatsapp"></i>
-                        פתחו שיחה בוואטסאפ
-                    </a>
-                    <p style="margin-top: 1rem; font-size: 0.9rem; color: rgba(26, 11, 46, 0.7);">
-                        נחזור אליכם תוך דקות! ⚡
-                    </p>
-                </div>
-            `;
-            chatMessages.appendChild(btnDi
+            btnDiv.innerHTML = '<div class="bot-avatar"><i class="fas fa-robot"></i></div><div class="message-bubble" style="text-align:center;"><p style="margin-bottom:1rem;">לחצו כאן לפתיחת השיחה:</p><a href="' + waURL + '" target="_blank" class="whatsapp-btn"><i class="fab fa-whatsapp"></i> פתחו שיחה בוואטסאפ</a></div>';
+            chatMessages.appendChild(btnDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        
+        setTimeout(startConversation, 500);
+    </script>
+</body>
+</html>
