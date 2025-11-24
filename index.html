@@ -192,10 +192,28 @@
         /* Hero Section - critical */
         .hero { height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; }
         .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-        .hero-bg::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(0, 224, 255, 0.1), rgba(45, 127, 255, 0.1), rgba(160, 107, 255, 0.2)); z-index: 1; }
-        .hero-slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 1.5s; }
-        .hero-slide.active { opacity: 1; }
-        .hero-slide img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.6); }
+        .hero-video { 
+            position: absolute; 
+            top: 50%; 
+            left: 50%; 
+            min-width: 100%; 
+            min-height: 100%; 
+            width: auto; 
+            height: auto; 
+            transform: translate(-50%, -50%); 
+            object-fit: cover;
+            filter: brightness(0.5);
+        }
+        .hero-overlay { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            right: 0; 
+            bottom: 0; 
+            background: linear-gradient(135deg, rgba(0, 224, 255, 0.15), rgba(45, 127, 255, 0.15), rgba(160, 107, 255, 0.25)); 
+            z-index: 1; 
+        }
         .hero-content { 
             position: relative; z-index: 2; max-width: 1000px; padding: 0 2rem; 
             animation: fadeInUp 1s; 
@@ -248,30 +266,12 @@
     </header>
 
     <main id="main-content">
-        <section class="hero" aria-label="גיבור - לוקיישנים שווים במינימום מאמץ">
+        <section class="hero" aria-label="גיבור - מתחמים יוקרתיים במינימום מאמץ">
             <div class="hero-bg" role="presentation">
-                <div class="hero-slide active">
-                    <img src="https://res.cloudinary.com/dptyfvwyo/image/upload/w_1920,q_auto,f_auto/v1762004983/HERO_zb7pwc.jpg" 
-                         alt="וילה יוקרתית עם בריכה וג'קוזי" 
-                         width="1920" 
-                         height="1080"
-                         loading="eager"
-                         fetchpriority="high">
-                </div>
-                <div class="hero-slide">
-                    <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villa1.jpg" 
-                         alt="וילה מעוצבת למשפחות" 
-                         width="1920" 
-                         height="1080"
-                         loading="lazy">
-                </div>
-                <div class="hero-slide">
-                    <img src="https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Villas/Villa_Wow.jpg" 
-                         alt="לוקיישן אירועים מרהיב" 
-                         width="1920" 
-                         height="1080"
-                         loading="lazy">
-                </div>
+                <video autoplay muted loop playsinline class="hero-video">
+                    <source src="https://res.cloudinary.com/dptyfvwyo/video/upload/v1762685252/MV-Villa-Video_uomxlh.mp4" type="video/mp4">
+                </video>
+                <div class="hero-overlay"></div>
             </div>
             <div class="hero-content">
                 <h1>מתחמים יוקרתיים במינימום מאמץ</h1>
@@ -450,19 +450,6 @@
             
             lastScroll = currentScroll;
         }, { passive: true });
-
-        // Hero Slider
-        const slides = document.querySelectorAll('.hero-slide');
-        let currentSlide = 0;
-        
-        if (slides.length > 0) {
-            slides[0].classList.add('active');
-            setInterval(() => {
-                slides[currentSlide].classList.remove('active');
-                currentSlide = (currentSlide + 1) % slides.length;
-                slides[currentSlide].classList.add('active');
-            }, 5000);
-        }
 
         // Chatbot Iframe Launcher
         const chatbotButton = document.getElementById('chatbotButton');
