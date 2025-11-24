@@ -1,132 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-                            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-    
-    <!-- Homepage -->
-    <url>
-        <loc>https://multibrawn.co.il/</loc>
-        <lastmod>2025-01-19</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>1.0</priority>
-        <image:image>
-            <image:loc>https://res.cloudinary.com/dptyfvwyo/image/upload/v1762004983/HERO_zb7pwc.jpg</image:loc>
-            <image:title>לוקיישנים שווים במינימום מאמץ - MULTIBRAWN</image:title>
-        </image:image>
-    </url>
-    
-    <!-- About Page -->
-    <url>
-        <loc>https://multibrawn.co.il/about.html</loc>
-        <lastmod>2025-01-19</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-        <image:image>
-            <image:loc>https://raw.githubusercontent.com/kfischi/MULTIBRAWN-V.1/main/Gallery/Ardit.jpg</image:loc>
-            <image:title>ערדית בראון - מייסדת MULTIBRAWN</image:title>
-        </image:image>
-    </url>
-    
-    <!-- Gallery -->
-    <url>
-        <loc>https://multibrawn.co.il/gallery.html</loc>
-        <lastmod>2025-01-19</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    
-    <!-- Contact -->
-    <url>
-        <loc>https://multibrawn.co.il/contact.html</loc>
-        <lastmod>2025-01-19</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    
-    <!-- Blog/Guides -->
-    <url>
-        <loc>https://multibrawn.co.il/blog.html</loc>
-        <lastmod>2025-01-19</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    
-    <!-- Apartments -->
-    <url>
-        <loc>https://multibrawn.co.il/apartments.html</loc>
-        <lastmod>2025-01-19</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-        <image:image>
-            <image:loc>https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818934/20_t6yw8m.jpg</image:loc>
-            <image:title>דירות נופש ופנטהאוזים - MULTIBRAWN</image:title>
-        </image:image>
-    </url>
-    
-    <!-- Villas -->
-    <url>
-        <loc>https://multibrawn.co.il/villas.html</loc>
-        <lastmod>2025-01-19</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-        <image:image>
-            <image:loc>https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818934/22_tt9jvz.jpg</image:loc>
-            <image:title>וילות פרטיות להשכרה - MULTIBRAWN</image:title>
-        </image:image>
-    </url>
-    
-    <!-- Events -->
-    <url>
-        <loc>https://multibrawn.co.il/events.html</loc>
-        <lastmod>2025-01-19</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-        <image:image>
-            <image:loc>https://res.cloudinary.com/dptyfvwyo/image/upload/v1762003191/1_tsc6xx.jpg</image:loc>
-            <image:title>מתחמי אירועים - MULTIBRAWN</image:title>
-        </image:image>
-    </url>
-    
-    <!-- Zimmers -->
-    <url>
-        <loc>https://multibrawn.co.il/zimmers.html</loc>
-        <lastmod>2025-01-19</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-        <image:image>
-            <image:loc>https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818996/Zimmer2_ge7g6h.jpg</image:loc>
-            <image:title>צימרים רומנטיים - MULTIBRAWN</image:title>
-        </image:image>
-    </url>
-    
-    <!-- Hotels -->
-    <url>
-        <loc>https://multibrawn.co.il/hotels.html</loc>
-        <lastmod>2025-01-19</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-        <image:image>
-            <image:loc>https://res.cloudinary.com/dptyfvwyo/image/upload/v1760818995/Hotel1_ihkey7.jpg</image:loc>
-            <image:title>מלונות בוטיק - MULTIBRAWN</image:title>
-        </image:image>
-    </url>
-    
-    <!-- Privacy Policy -->
-    <url>
-        <loc>https://multibrawn.co.il/privacy.html</loc>
-        <lastmod>2025-01-19</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>0.3</priority>
-    </url>
-    
-    <!-- Accessibility -->
-    <url>
-        <loc>https://multibrawn.co.il/accessibility.html</loc>
-        <lastmod>2025-01-19</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>0.3</priority>
-    </url>
-    
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- דף הבית -->
+  <url>
+    <loc>https://multibrawn.com/</loc>
+    <lastmod>2025-01-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- אודות -->
+  <url>
+    <loc>https://multibrawn.com/about.html</loc>
+    <lastmod>2025-01-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- גלריה -->
+  <url>
+    <loc>https://multibrawn.com/gallery.html</loc>
+    <lastmod>2025-01-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- טיפים -->
+  <url>
+    <loc>https://multibrawn.com/tips.html</loc>
+    <lastmod>2025-01-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- צור קשר -->
+  <url>
+    <loc>https://multibrawn.com/contact.html</loc>
+    <lastmod>2025-01-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- נגישות -->
+  <url>
+    <loc>https://multibrawn.com/accessibility.html</loc>
+    <lastmod>2025-01-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+  <!-- פרטיות -->
+  <url>
+    <loc>https://multibrawn.com/privacy.html</loc>
+    <lastmod>2025-01-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
 </urlset>
