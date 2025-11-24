@@ -474,7 +474,6 @@
         <div class="footer-bottom"><p>&copy; 2025 MULTIBRAWN. כל הזכויות שמורות.</p></div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Navigation
         const header = document.getElementById('header');
         const burger = document.getElementById('burger');
@@ -709,15 +708,17 @@
             
             // Send to n8n
             try {
+                const prefsToSend = conversationState.preferences.length > 0 ? conversationState.preferences.join(', ') : 'לא צוין';
                 await fetch("YOUR_N8N_WEBHOOK_URL_HERE", {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ ...conversationState, preferences: conversationState.preferences.join(', '), timestamp: new Date().toISOString() })
+                    body: JSON.stringify({ ...conversationState, preferences: prefsToSend, timestamp: new Date().toISOString() })
                 });
             } catch (e) { console.error('Error:', e); }
             
             // WhatsApp
-            const msg = 'היי! אני ' + conversationState.name + '\n\nפרטי האירוע:\n• סוג: ' + conversationState.eventType + '\n• אזור: ' + conversationState.location + '\n• תקציב: ' + conversationState.budget + '\n• אורחים: ' + conversationState.guests + '\n• תאריך: ' + conversationState.date + '\n• העדפות: ' + conversationState.preferences.join(', ') + '\n• טלפון: ' + conversationState.phone + '\n\nמחכה להצעות! 😊';
+            const preferencesText = conversationState.preferences.length > 0 ? conversationState.preferences.join(', ') : 'לא צוין';
+            const msg = 'היי! אני ' + conversationState.name + '\n\nפרטי האירוע:\n• סוג: ' + conversationState.eventType + '\n• אזור: ' + conversationState.location + '\n• תקציב: ' + conversationState.budget + '\n• אורחים: ' + conversationState.guests + '\n• תאריך: ' + conversationState.date + '\n• העדפות: ' + preferencesText + '\n• טלפון: ' + conversationState.phone + '\n\nמחכה להצעות! 😊';
             const waURL = 'https://wa.me/972523983394?text=' + encodeURIComponent(msg);
             const btnDiv = document.createElement('div');
             btnDiv.className = 'message bot';
