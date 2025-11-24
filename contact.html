@@ -81,9 +81,10 @@
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
             background-image: url('https://res.cloudinary.com/dptyfvwyo/image/upload/v1763935665/%D7%A2%D7%A8%D7%93%D7%99%D7%AA_n1fzok.jpg');
-            background-size: cover;
-            background-position: center 20%;
-            opacity: 0.15;
+            background-size: 250px auto;
+            background-position: center top 20px;
+            background-repeat: no-repeat;
+            opacity: 0.12;
             z-index: 0;
         }
         .contact-hero::after {
@@ -429,7 +430,7 @@
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-                        <div class="contact-details"><h4>אימייל</h4><a href="mailto:info@multibrawn.com">info@multibrawn.com</a></div>
+                        <div class="contact-details"><h4>אימייל</h4><a href="mailto:multibrawn@gmail.com">multibrawn@gmail.com</a></div>
                     </div>
                 </div>
                 <div class="contact-card">
@@ -473,7 +474,7 @@
         <div class="footer-bottom"><p>&copy; 2025 MULTIBRAWN. כל הזכויות שמורות.</p></div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Navigation
         const header = document.getElementById('header');
         const burger = document.getElementById('burger');
@@ -536,8 +537,17 @@
                 buttons.forEach(btn => {
                     btn.addEventListener('click', () => {
                         if (allowMultiple) {
-                            btn.classList.toggle('selected');
                             const value = btn.dataset.value;
+                            
+                            // אם לחצו על "דלג"
+                            if (value === '') {
+                                buttons.forEach(b => b.disabled = true);
+                                addUserMessage('דלג');
+                                resolve([]);
+                                return;
+                            }
+                            
+                            btn.classList.toggle('selected');
                             if (selectedValues.includes(value)) selectedValues = selectedValues.filter(v => v !== value);
                             else selectedValues.push(value);
                             if (selectedValues.length > 0) {
@@ -667,7 +677,7 @@
             conversationState.date = date;
             await addBotMessage("מצוין! 📅");
             
-            await addBotMessage("מה חשוב לכם במקום? (בחרו כמה שרוצים)", 700);
+            await addBotMessage("מה חשוב לכם במקום? (בחרו כמה שרוצים, או לחצו 'דלג')", 700);
             conversationState.step++; updateProgress();
             const preferences = await showQuickReplies([
                 { text: "🏊 בריכה", value: "בריכה" },
@@ -677,7 +687,8 @@
                 { text: "🍽️ מטבח", value: "מטבח" },
                 { text: "♿ נגישות", value: "נגישות" },
                 { text: "🚗 חניה", value: "חניה" },
-                { text: "🐕 חיות", value: "חיות" }
+                { text: "🐕 חיות", value: "חיות" },
+                { text: "⏭️ דלג", value: "" }
             ], true);
             conversationState.preferences = preferences;
             
@@ -710,12 +721,4 @@
             const waURL = 'https://wa.me/972523983394?text=' + encodeURIComponent(msg);
             const btnDiv = document.createElement('div');
             btnDiv.className = 'message bot';
-            btnDiv.innerHTML = '<div class="bot-avatar"><i class="fas fa-robot"></i></div><div class="message-bubble" style="text-align:center;"><p style="margin-bottom:1rem;">לחצו כאן לפתיחת השיחה:</p><a href="' + waURL + '" target="_blank" class="whatsapp-btn"><i class="fab fa-whatsapp"></i> פתחו שיחה בוואטסאפ</a></div>';
-            chatMessages.appendChild(btnDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
-        
-        setTimeout(startConversation, 500);
-    </script>
-</body>
-</html>
+            btnDiv.innerHTML = '<div class="bot-avatar"><i class="fas fa-robot"></i></div><div class="message-bubble" style="text-align:center;"><p style="margin-bottom:1rem;">לחצו כאן לפתיחת השיחה:</p><a href="' + waURL + '" target="_blank" class="whatsapp-btn"><i class="fab fa-whatsapp"></i> פתח�
