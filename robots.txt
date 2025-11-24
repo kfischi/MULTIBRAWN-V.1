@@ -1,34 +1,13 @@
-# robots.txt for MULTIBRAWN.co.il
-# Updated: 2025-01-19
+# robots.txt for multibrawn.com
 
 User-agent: *
 Allow: /
 
-# Disallow admin and system files
-Disallow: /admin/
-Disallow: /private/
-Disallow: /temp/
-Disallow: /*.pdf$
-
-# Allow all images
-Allow: /*.jpg$
-Allow: /*.jpeg$
-Allow: /*.png$
-Allow: /*.gif$
-Allow: /*.webp$
-Allow: /*.svg$
-
 # Sitemap location
-Sitemap: https://multibrawn.co.il/sitemap.xml
+Sitemap: https://multibrawn.com/sitemap.xml
 
-# Crawl-delay for polite bots
-Crawl-delay: 1
-
-# Specific rules for major search engines
+# Allow all search engines
 User-agent: Googlebot
-Allow: /
-
-User-agent: Googlebot-Image
 Allow: /
 
 User-agent: Bingbot
@@ -37,19 +16,17 @@ Allow: /
 User-agent: Slurp
 Allow: /
 
-# Block bad bots
-User-agent: AhrefsBot
-Crawl-delay: 10
+# Disallow admin/private areas (if any)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
 
-User-agent: SemrushBot
-Crawl-delay: 10
+# Allow CSS and JS for better rendering
+User-agent: *
+Allow: /assets/css/
+Allow: /assets/js/
+Allow: /*.css$
+Allow: /*.js$
 
-# Social Media Bots (allow for Open Graph)
-User-agent: facebookexternalhit
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: WhatsApp
-Allow: /
+# Crawl delay (optional - be nice to server)
+Crawl-delay: 1
